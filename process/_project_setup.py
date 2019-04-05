@@ -55,14 +55,17 @@ year   = df_parameters.loc['year']['value']
 # The main directory for data
 folderPath = df_parameters.loc['folderPath']['value']
 
-# Set up locale (ie. defined at command line, or else testing)
-if len(sys.argv) >= 2:
-  locale = '{studyregion}'.format(studyregion = sys.argv[1])
-else:
-  locale = 'testing'
+# # Set up locale (ie. defined at command line, or else testing)
+# if len(sys.argv) >= 2:
+  # locale = '{studyregion}'.format(studyregion = sys.argv[1])
+# else:
+  # locale = 'testing'
+  
+locale = 'bangkok'    
+  
 if __name__ == '__main__':
   print("\nProcessing script {} for locale {}...\n".format(sys.argv[0],locale))
-
+ 
 def pretty(d, indent=0):
    for key, value in d.items():
       depth = 0
@@ -134,6 +137,9 @@ db_host   = df_parameters.loc['db_host']['value']
 db_port   = '{}'.format(df_parameters.loc['db_port']['value'])
 db_user   = df_parameters.loc['db_user']['value']
 db_pwd    = df_parameters.loc['db_pwd']['value']
+admin_db  = df_parameters.loc['db_main']['value']
+admin_user_name = admin_db
+admin_pwd = db_pwd
 
 # Database names -- derived from above parameters; (no need to change!)
 gdb       = '{}.gdb'.format(db)

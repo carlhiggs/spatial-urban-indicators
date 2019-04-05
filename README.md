@@ -1,10 +1,10 @@
 # Bangkok Liveability #
 
-This respository contains the processes used in the Bangkok Liveability indicators project, 2019.
+This repository contains the processes used in the Bangkok Liveability indicators project, 2019.
 
 ### How do I get set up? ###
 
-* install Git and Docker
+* install [Git](https://git-scm.com/downloads) and [Docker](https://www.docker.com/products/docker-desktop)
 
 * git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git
 

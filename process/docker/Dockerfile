@@ -14,11 +14,11 @@
 # >>> docker build -t ind_bangkok .
 #
 # Run bash in this container and export final conda environment to a yml file:
-# >>> docker run --rm -it -u 0 --name ind_bangkok -v %cd%:/home/bangkok ind_bangkok /bin/bash
-# >>> conda env export -n base > /home/bangkok/environment.yml
+# >>> docker run --rm -it -u 0 --name ind_bangkok -v %cd%:/home/jovyan/work ind_bangkok /bin/bash
+# >>> conda env export -n base > /home/jovyan/work/environment.yml
 #
 # Run jupyter lab in this container:
-# >>> docker run --rm -it --name ind_bangkok -p 8888:8888 -v %cd%:/home/bangkok ind_bangkok
+# >>> docker run --rm -it --name ind_bangkok -p 8888:8888 -v %cd%:/home/jovyan/work ind_bangkok
 #
 # Stop/delete all local docker containers/images:
 # >>> docker stop $(docker ps -aq)
@@ -46,7 +46,7 @@ RUN conda config --set show_channel_urls true && \
     conda list
 
 # launch notebook in the local working directory that we mount
-WORKDIR /home/bangkok
+WORKDIR /home/jovyan/work
 
 # set default command to launch when container is run
 CMD ["jupyter", "lab", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''"]
