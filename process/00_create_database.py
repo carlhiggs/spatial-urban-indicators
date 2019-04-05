@@ -22,16 +22,6 @@ if not os.path.exists(os.path.join(folderPath,'study_region')):
 if not os.path.exists(locale_dir):
     os.makedirs(locale_dir)    
 
-# INPUT PARAMETERS
-# default database
-# print("Please enter default PostgreSQL database details to procede with new database creation, or close terminal to abort.")
-# admin_db   = input("Database: ")    
-# admin_user_name = input("Username: ")
-# admin_pwd = getpass.getpass("Password for user {} on database {}: ".format(admin_user_name, admin_db))
-admin_db   = 'postgres'
-admin_user_name = 'postgres'
-admin_pwd = db_pwd
-
 print("Connecting to default database to action queries.")
 conn = psycopg2.connect(dbname=admin_db, user=admin_user_name, password=admin_pwd, host = db_host, port = db_port)
 conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)

@@ -85,7 +85,7 @@ region = df_studyregion.loc[locale]['region']
 locale_dir = os.path.join(folderPath,'study_region','{}'.format(locale.lower()))
 
 # Study region boundary
-region_shape = os.path.join(folderPath,df_studyregion.loc[locale]['region_shape'])
+region_shape = df_studyregion.loc[locale]['region_shape']
 
 # SQL Query to select study region
 region_where_clause = df_studyregion.loc[locale]['region_where_clause']
@@ -102,7 +102,7 @@ if pandas.np.isnan(suffix):
 
 
 # derived study region name (no need to change!)
-study_region = '{0}_{1}'.format(region,year).lower()
+study_region = '{}_{}_{}'.format(locale,region,year).lower()
 db = 'li_{0}_{1}{2}'.format(locale,year,suffix).lower()
 
 # ; Project spatial reference (for ArcGIS)
@@ -192,34 +192,38 @@ for area in areas_of_interest + ['urban']:
       else:
         areas[area][field] = df_parameters.loc['{}_{}'.format(prefix,field)]['value']
 
-area_info = {}
-for info in ['dwellings','disadvantage']:
-  area_info[info] = {}
-  if df_parameters.loc['{}_data'.format(info)]['value']!= '':
-    area_info[info]['data']      = os.path.join(folderPath,df_parameters.loc['{}_data'.format(info)]['value'])
-    area_info[info]['table']     = 'area_{}'.format(info)
-    area_info[info]['area']      = int(df_parameters.loc['{}_area'.format(info)]['value'])
-    area_info[info]['id']        = df_parameters.loc['{}_id'.format(info)]['value']
-    area_info[info]['field']     = df_parameters.loc['{}_field'.format(info)]['value']
-    area_info[info]['exclusion'] = df_parameters.loc['{}_exclusion'.format(info)]['value']
+area_filter = df_parameters.loc['area_filter_field']['value']
+area_filter_field = df_parameters.loc['area_filter_field']['value']
+area_filter_value = df_parameters.loc['area_filter_value']['value']
+        
+# area_info = {}
+# for info in ['dwellings','disadvantage']:
+  # area_info[info] = {}
+  # if df_parameters.loc['{}_data'.format(info)]['value']!= '':
+    # area_info[info]['data']      = os.path.join(folderPath,df_parameters.loc['{}_data'.format(info)]['value'])
+    # area_info[info]['table']     = 'area_{}'.format(info)
+    # area_info[info]['area']      = int(df_parameters.loc['{}_area'.format(info)]['value'])
+    # area_info[info]['id']        = df_parameters.loc['{}_id'.format(info)]['value']
+    # area_info[info]['field']     = df_parameters.loc['{}_field'.format(info)]['value']
+    # area_info[info]['exclusion'] = df_parameters.loc['{}_exclusion'.format(info)]['value']
 
-# This is a legacy configuration option not yet updated to the generic framework
-# ie. this configuration is Australia specific, but must be generalised to non-specific region
-# However, as of February 2019 I haven't had time to make the full update
-# This configuration retained for compatability with scripts until full re-write
-# Meshblock Dwellings feature name
-# meshblocks = areas[0]['data']
-# abs_SA1    = areas[1]['data']
-# abs_SA2    = areas[2]['data']
+# # This is a legacy configuration option not yet updated to the generic framework
+# # ie. this configuration is Australia specific, but must be generalised to non-specific region
+# # However, as of February 2019 I haven't had time to make the full update
+# # This configuration retained for compatability with scripts until full re-write
+# # Meshblock Dwellings feature name
+# # meshblocks = areas[0]['data']
+# # abs_SA1    = areas[1]['data']
+# # abs_SA2    = areas[2]['data']
 
-# suburb_feature = areas[6]['table']
-# lga_feature = areas[5]['table']
+# # suburb_feature = areas[6]['table']
+# # lga_feature = areas[5]['table']
 
-# data ids
-# meshblock_id     = areas[0]['id']
-dwellings        = area_info['dwellings']['data']
-dwellings_id     = area_info['dwellings']['id']
-dwellings_field  = area_info['dwellings']['field']
+# # data ids
+# # meshblock_id     = areas[0]['id']
+# dwellings        = area_info['dwellings']['data']
+# dwellings_id     = area_info['dwellings']['id']
+# dwellings_field  = area_info['dwellings']['field']
 
 # Point data locations used for sampling
 # Note that the process assumes we have already transformed points to the project's spatial reference
