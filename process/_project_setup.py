@@ -37,19 +37,17 @@ import subprocess as sp
 # Load settings from _project_configuration.xlsx
 xls = pandas.ExcelFile(os.path.join(sys.path[0],'_project_configuration.xlsx'))
 df_parameters = pandas.read_excel(xls, 'Parameters',index_col=0)
+df_parameters.value = df_parameters.value.fillna('')
 
 # THE FOLLOWING ALL REQUIRE UPDATING TO NEW FORMAT
-df_studyregion = pandas.read_excel(xls, 'study_regions',index_col=1)
+# df_parameters.loc = pandas.read_excel(xls, 'study_regions',index_col=1)
 df_inds = pandas.read_excel(xls, 'ind_study_region_matrix')
 df_destinations = pandas.read_excel(xls, 'destinations')
 df_osm = pandas.read_excel(xls, 'osm_and_open_space_defs')
 df_osm_dest = pandas.read_excel(xls, 'osm_dest_definitions')
 df_data_catalogue = pandas.read_excel(xls, 'data_catalogue')
 
-df_parameters.value = df_parameters.value.fillna('')
-
-study_regions = [x.encode() for x in df_studyregion.index.tolist() if x not in ['testing','australia']]
-responsible = df_studyregion['responsible']
+responsible = df_parameters.loc['responsible']['value']
 year   = df_parameters.loc['year']['value']
 
 # The main directory for data
@@ -80,26 +78,18 @@ def pretty(d, indent=0):
   
 # More study region details
 
-region = df_studyregion.loc[locale]['region']
+region = df_parameters.loc['region']['value']
 
 locale_dir = os.path.join(folderPath,'study_region','{}'.format(locale.lower()))
 
 # Study region boundary
-region_shape = df_studyregion.loc[locale]['region_shape']
+region_shape = df_parameters.loc['region_shape']['value']
 
 # SQL Query to select study region
-region_where_clause = df_studyregion.loc[locale]['region_where_clause']
+region_where_clause = df_parameters.loc['region_where_clause']['value']
 
 # db suffix
-suffix = df_studyregion.loc[locale]['suffix']
-if suffix.dtype!='float64':
-  # this implies at least one value was a string, and this can be encoded as utf
-  suffix = suffix
-  
-if pandas.np.isnan(suffix):
-  # this implies all suffixes are blank and this has been interpreted as 'nan'
-  suffix = ''
-
+suffix = df_parameters.loc['suffix']['value']
 
 # derived study region name (no need to change!)
 study_region = '{}_{}_{}'.format(locale,region,year).lower()
@@ -155,15 +145,14 @@ os.environ['PGUSER']     = db_user
 os.environ['PGPASSWORD'] = db_pwd
 os.environ['PGDATABASE'] = db
 
-osm_data = os.path.join(df_studyregion.loc[locale]['osm_data'])
-osm_prefix = os.path.join(df_studyregion.loc[locale]['osm_prefix'])
+osm_data = os.path.join(folderPath,df_parameters.loc['osm_data']['value'])
+osm_prefix = 'osm_{}'.format(df_parameters.loc['osm_date']['value'])
 osmconvert = df_parameters.loc['osmconvert']['value']
 osm2pgsql_exe = os.path.join(folderPath,df_parameters.loc['osm2pgsql_exe']['value'])
 osm2pgsql_style = os.path.join(folderPath,df_parameters.loc['osm2pgsql_style']['value'])
-# osm_source = df_studyregion.loc[locale]['osm_source']
+# osm_source = df_parameters.loc['osm_source']
 # osm_source = D:/ntnl_li_2018_template/data/study_region/bangkok/bangkok_thailand_2016_10000m_20181001.osm
 osm_source = os.path.join(folderPath,'study_region',locale,'{}_{}.osm'.format(buffered_study_region,osm_prefix))
-osm_prefix = df_studyregion.loc[locale]['osm_prefix']
 
 grant_query = '''GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO {0};
                  GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO {0};'''.format(db_user)
@@ -260,14 +249,14 @@ soft_threshold_slope = df_parameters.loc['soft_threshold_slope']['value']
 # They identify contexts where null indicator values are expected to be legitimate due to true network isolation, 
 # not connectivity errors. 
 # For example, for Rottnest Island in Western Australia: sa1_maincode IN ('50702116525')
-island_exception = df_studyregion.fillna('').loc[locale]['island_exception']
+island_exception = df_parameters.loc['island_exception']['value']
 
 # Sausage buffer run parameters
 # If you experience 'no forward edges' issues, change this value to 1
 # this means that for *subsequently processed* buffers, it will use 
 # an ST_SnapToGrid parameter of 0.01 instead of 0.001
 ## The first pass should use 0.001, however.
-no_foward_edge_issues = df_studyregion.loc[locale]['no_forward_edge_issues']
+no_foward_edge_issues = df_parameters.loc['no_forward_edge_issues']['value']
 snap_to_grid = 0.001
 if no_foward_edge_issues == 1:
   snap_to_grid = 0.01

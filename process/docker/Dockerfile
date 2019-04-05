@@ -39,8 +39,7 @@ RUN conda config --set show_channel_urls true && \
     conda config --prepend channels conda-forge && \
     conda update --strict-channel-priority --yes -n base conda && \
     conda install --strict-channel-priority --update-all --force-reinstall --yes osmnx python-igraph && \
-    conda install -y psycopg2 && \
-    conda install -y xlrd && \
+    conda install -y psycopg2 geoalchemy2 rasterio xlrd && \
     conda clean --yes --all && \
     conda info --all && \
     conda list

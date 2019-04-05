@@ -7,6 +7,7 @@ import time
 import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
 from sqlalchemy import create_engine
+import folium
 
 from script_running_log import script_running_log
 
@@ -63,6 +64,11 @@ CREATE TABLE {buffered_study_region} AS SELECT'{study_region} with {buffer} km b
 '''.format(study_region = study_region,
            buffered_study_region = buffered_study_region,
            buffer = study_buffer))
+
+sr = gpd.GeoDataFrame.from_postgis('SELECT ST_Transform(geom,4326) geom FROM {}'.format(study_region), engine, geom_col='geom' )       
+xy = [float(sr.centroid.y),float(sr.centroid.x)]    
+m = folium.Map(location=xy, tiles='Stamen Toner', zoom_start=10, control_scale=True, prefer_canvas=True)
+m.save('../maps/study_region.html')
 
 # output to completion log					
 script_running_log(script, task, start, locale)
