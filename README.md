@@ -1,41 +1,15 @@
-# README #
+# Bangkok Liveability #
 
-This respository contains the processes used in the Lancet indicators project; at least, as these processes are developed, they will be recorded here.
-
-### What is this repository for? ###
-
-* Quick summary
-The repository provides a template for indicator calculation across diverse regions (e.g. cities within countries around the world, with important differences but broadly considered 'urban').
-
-* Version
-0.00
+This respository contains the processes used in the Bangkok Liveability indicators project, 2019.
 
 ### How do I get set up? ###
 
-* Summary of set up
-Not yet defined.
+* install Git and Docker
 
-* Configuration
-Perhaps a conda mini install process?  Or virtual box? or Docker?  Let's review.
+* git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git
 
-* Dependencies
-Depends on above.
+* follow directions in _environment_setup.sh  (TO DO: flesh these out here)
 
-* Database configuration
-Postgresql? SQLite? Let's review.
-
-* How to run tests
-
-
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
+### Contact ###
 
 * carl.higgs@rmit.edu.au
-* carlhiggs@gmail.com
