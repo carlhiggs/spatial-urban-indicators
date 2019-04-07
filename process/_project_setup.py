@@ -113,7 +113,11 @@ study_buffer = df_parameters.loc['study_buffer']['value']
 buffered_study_region = '{0}_{1}{2}'.format(study_region,study_buffer,units)
 
 # Population
-population_raster = ['.{}'.format(df_datasets.loc['population']['data_dir']),int(df_datasets.loc['population']['band_if_raster'])]
+population_raster ={}
+population_raster['data'] = '.{}'.format(df_datasets.loc['population']['data_dir'])
+population_raster['band'] = int(df_datasets.loc['population']['band_if_raster'])
+population_raster['crs'] = int(df_datasets.loc['population']['epsg'])
+
 # above raster will be vectorised to a grid; here we get its name
 population_grid   = df_parameters.loc['pop_grid']['value']
 
