@@ -52,7 +52,11 @@ print("\nCreate analytical boundaries...")
 print("\tCreate study region boundary... ")
 engine.execute('''
 DROP TABLE IF EXISTS {study_region}; 
-CREATE TABLE {study_region} AS SELECT '{study_region}'::text,geom FROM {region_shape} where {where};
+CREATE TABLE {study_region} AS 
+      SELECT '{study_region}'::text AS description,
+             geom 
+        FROM {region_shape} 
+       WHERE {where};
 '''.format(study_region = study_region,
            region_shape = region_shape,
            where = region_where_clause))
@@ -60,14 +64,39 @@ CREATE TABLE {study_region} AS SELECT '{study_region}'::text,geom FROM {region_s
 print("\tCreate {} km buffered study region... ".format(study_buffer))
 engine.execute('''
 DROP TABLE IF EXISTS {buffered_study_region}; 
-CREATE TABLE {buffered_study_region} AS SELECT'{study_region} with {buffer} km buffer'::text, ST_Buffer(geom,{buffer}) FROM {study_region};
+CREATE TABLE {buffered_study_region} AS 
+      SELECT '{study_region} with {buffer} km buffer'::text AS description, 
+             ST_Buffer(geom,{buffer}) AS geom 
+        FROM {study_region};
 '''.format(study_region = study_region,
            buffered_study_region = buffered_study_region,
            buffer = study_buffer))
 
-sr = gpd.GeoDataFrame.from_postgis('SELECT ST_Transform(geom,4326) geom FROM {}'.format(study_region), engine, geom_col='geom' )       
-xy = [float(sr.centroid.y),float(sr.centroid.x)]    
-m = folium.Map(location=xy, tiles='Stamen Toner', zoom_start=10, control_scale=True, prefer_canvas=True)
+print("Preparing output map,")...
+# retrieve layers
+map_layers={}
+map_layers['study_region'] = gpd.GeoDataFrame.from_postgis('SELECT description,ST_Transform(geom,4326) geom FROM {}'.format(study_region), engine, geom_col='geom' )
+map_layers['buffer'] = gpd.GeoDataFrame.from_postgis('SELECT description,ST_Transform(geom,4326) geom FROM {}'.format(buffered_study_region), engine, geom_col='geom' )
+map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis('SELECT "{id}" As "Subdistrict",ST_Transform(geom,4326) geom FROM {table}'.format(id = 'Adm3Name',table = areas[0]['name_s']), engine, geom_col='geom' )
+# get map centroid from study region
+xy = [float(map_layers['study_region'].centroid.y),float(map_layers['study_region'].centroid.x)]    
+
+# initialise map
+m = folium.Map(location=xy, zoom_start=10, control_scale=True, prefer_canvas=True)
+m.add_tile_layer(tiles='Stamen Toner',name='simple map', overlay=True,active=True)
+# add layers (not true choropleth - for this it is just a convenient way to colour polygons)
+m.choropleth(map_layers['buffer'].to_json(),name='10km study region buffer',fill_color=colours['qualitative'][1],fill_opacity=0,line_color=colours['qualitative'][1], highlight=True)
+m.choropleth(map_layers['study_region'].to_json(),name='Study region',fill_color=colours['qualitative'][0],line_color=colours['qualitative'][0], highlight=True)
+feature = folium.Choropleth(map_layers[areas[0]['name_s']].to_json(),name=areas[0]['name_f'], highlight=True).add_to(m)
+folium.features.GeoJsonTooltip(fields=['Subdistrict'],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(feature.geojson)
+
+folium.LayerControl(collapsed=False).add_to(m)
+
+# checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
+# save map
 m.save('../maps/study_region.html')
 
 # output to completion log					

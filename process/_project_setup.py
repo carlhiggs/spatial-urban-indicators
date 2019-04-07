@@ -285,6 +285,27 @@ destination_list = [x for x in df_destinations.destination.tolist()] # the desti
 
 df_osm_dest = df_osm_dest.replace(pandas.np.nan, 'NULL', regex=True)
 
+# Colours for presenting maps
+colours = {}
+# http://colorbrewer2.org/#type=qualitative&scheme=Dark2&n=8
+colours['qualitative'] = ['#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e','#e6ab02','#a6761d','#666666']
+# http://colorbrewer2.org/#type=diverging&scheme=PuOr&n=8
+colours['diverging'] = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e']
+
+def style_function(feature,type = 'qualitative',colour=0):
+    if type not in ['qualitative','diverging']:
+        print("Specified type unknown; assuming 'qualitative'.")
+        type = 'qualitative'
+    return {
+        'fillOpacity': 0.5,
+        'line_opacity': 0.2,
+        'weight': 0,
+        'fillColor': colours[type][colour],
+        'lineColor': colours[type][colour]
+    }
+
+  
+
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
  
