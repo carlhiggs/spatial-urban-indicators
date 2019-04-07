@@ -39,6 +39,11 @@ xls = pandas.ExcelFile(os.path.join(sys.path[0],'_project_configuration.xlsx'))
 df_parameters = pandas.read_excel(xls, 'Parameters',index_col=0)
 df_parameters.value = df_parameters.value.fillna('')
 
+df_datasets = pandas.read_excel(xls, 'Datasets')
+df_datasets.name_s = df_datasets.name_s.fillna('')
+df_datasets = df_datasets[(df_datasets.purpose=='indicators') & (df_datasets.target_region=='Bangkok') & (df_datasets.name_s!='')]
+df_datasets.set_index('name_s',inplace=True)
+
 # THE FOLLOWING ALL REQUIRE UPDATING TO NEW FORMAT
 # df_parameters.loc = pandas.read_excel(xls, 'study_regions',index_col=1)
 df_inds = pandas.read_excel(xls, 'ind_study_region_matrix')
@@ -106,6 +111,16 @@ units_full = df_parameters.loc['units_full']['value']
 # Study region buffer
 study_buffer = df_parameters.loc['study_buffer']['value']
 buffered_study_region = '{0}_{1}{2}'.format(study_region,study_buffer,units)
+
+# Population
+population_raster = ['.{}'.format(df_datasets.loc['population']['data_dir']),int(df_datasets.loc['population']['band_if_raster'])]
+# above raster will be vectorised to a grid; here we get its name
+population_grid   = df_parameters.loc['pop_grid']['value']
+
+pop_alt_data = {}
+for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]].index):
+    data_type = pop_data.split(':')[1]
+    pop_alt_data[data_type] = '.{}'.format(df_datasets.loc['population:district'].data_dir)
 
 # Number of processors to use in when multiprocessing
 nWorkers = df_parameters.loc['multiprocessing']['value']
@@ -292,14 +307,13 @@ colours['qualitative'] = ['#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e','#e6
 # http://colorbrewer2.org/#type=diverging&scheme=PuOr&n=8
 colours['diverging'] = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e']
 
-def style_function(feature,type = 'qualitative',colour=0):
+def style_dict_fcn(type = 'qualitative',colour=0):
     if type not in ['qualitative','diverging']:
         print("Specified type unknown; assuming 'qualitative'.")
         type = 'qualitative'
     return {
         'fillOpacity': 0.5,
         'line_opacity': 0.2,
-        'weight': 0,
         'fillColor': colours[type][colour],
         'lineColor': colours[type][colour]
     }
