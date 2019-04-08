@@ -80,46 +80,43 @@ reproject_raster(inpath = population_raster_clipped,
 
 # get map data
 map_layers={}
-map_layers['study_region'] = gpd.GeoDataFrame.from_postgis('''SELECT 'Bangkok' AS "Description",ST_Transform(geom,4326) geom FROM {}'''.format(study_region), engine, geom_col='geom' )
 map_layers['buffer'] = gpd.GeoDataFrame.from_postgis('''SELECT '10km study region buffer' AS "Description",ST_Transform(geom,4326) geom FROM {}'''.format(buffered_study_region), engine, geom_col='geom' )
+map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis('''SELECT "{id}" As "Subdistrict",ST_Transform(geom,4326) geom FROM {table}'''.format(id = 'Adm3Name',table = areas[0]['name_s']), engine, geom_col='geom' )
 
 with rasterio.open(population_raster_clipped) as src:
     boundary = src.bounds
     map_layers['population'] = src.read()
     nodata = src.nodata
 
-xy = [float(map_layers['study_region'].centroid.y),float(map_layers['study_region'].centroid.x)]  
+xy = [float(map_layers['buffer'].centroid.y),float(map_layers['buffer'].centroid.x)]  
 bounds = map_layers['buffer'].bounds.transpose().to_dict()[0]
 
 # initialise map
-m = folium.Map(location=xy, zoom_start=10, control_scale=True, prefer_canvas=True)
+m = folium.Map(location=xy, zoom_start=10,tiles=None, control_scale=True, prefer_canvas=True)
 m.add_tile_layer(tiles='Stamen Toner',name='simple map', overlay=True,active=True)
 # add layers (not true choropleth - for this it is just a convenient way to colour polygons)
-buffer = folium.Choropleth(map_layers['buffer'].to_json(),name='10km study region buffer',fill_color=colours['qualitative'][1],fill_opacity=0,line_color=colours['qualitative'][1], highlight=True).add_to(m)
-folium.features.GeoJsonTooltip(fields=['Description'],
+buffer = folium.Choropleth(map_layers['buffer'].to_json(),name='10km study region buffer',fill_color=colours['qualitative'][1],fill_opacity=0,line_color=colours['qualitative'][1], highlight=False).add_to(m)
+
+feature = folium.Choropleth(map_layers[areas[0]['name_s']].to_json(),name=str.title(areas[0]['name_f']),fill_opacity=0,line_color=colours['qualitative'][0], highlight=False).add_to(m)
+folium.features.GeoJsonTooltip(fields=['Subdistrict'],
                                labels=True, 
                                sticky=True
-                              ).add_to(buffer.geojson)
-
-
-study_region = folium.Choropleth(map_layers['study_region'].to_json(),name='Study region',fill_color=colours['qualitative'][0],line_color=colours['qualitative'][0], highlight=True).add_to(m)
-folium.features.GeoJsonTooltip(fields=['Description'],
-                               labels=True, 
-                               sticky=True
-                              ).add_to(study_region.geojson)
+                              ).add_to(feature.geojson)
 
 m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0], 
+                                 name='Poplulation per pixel (WorldPop predicted model: 2020, UN adjusted)',
                                  opacity=.7,
                                  bounds=[[bounds['miny'],bounds['minx']], 
-                                         [bounds['maxy'], bounds['maxx']]]
-                                 )
+                                         [bounds['maxy'], bounds['maxx']]],
+                                 colormap=lambda x: (1, 0, x, x),#R,G,B,alpha
+                                 ))
 
 
-folium.LayerControl(collapsed=False).add_to(m)
+folium.LayerControl(collapsed=True).add_to(m)
 
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
-map_name = '01_study_region.html'
+map_name = '01_population.html'
 m.save('../maps/{}'.format(map_name))
 print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))              
               
