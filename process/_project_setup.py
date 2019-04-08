@@ -116,7 +116,9 @@ buffered_study_region = '{0}_{1}{2}'.format(study_region,study_buffer,units)
 population_raster ={}
 population_raster['data'] = '.{}'.format(df_datasets.loc['population']['data_dir'])
 population_raster['band'] = int(df_datasets.loc['population']['band_if_raster'])
-population_raster['crs'] = int(df_datasets.loc['population']['epsg'])
+population_raster['epsg'] = int(df_datasets.loc['population']['epsg'])
+population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',locale,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
+population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',locale,os.path.basename(population_raster['data'])[:-4]),srid)
 
 # above raster will be vectorised to a grid; here we get its name
 population_grid   = df_parameters.loc['pop_grid']['value']
@@ -126,6 +128,36 @@ for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]
     data_type = pop_data.split(':')[1]
     pop_alt_data[data_type] = '.{}'.format(df_datasets.loc['population:district'].data_dir)
 
+# gdf to json function (for rasterio)
+def gdf_to_json(gdf):
+    """Function to parse features from GeoDataFrame in such a manner that rasterio wants them"""
+    import json
+    return [json.loads(gdf.to_json())['features'][0]['geometry']]    
+    
+def reproject_raster(inpath, outpath, new_crs):
+    from rasterio.warp import calculate_default_transform, reproject, Resampling
+    dst_crs = new_crs # CRS for web meractor 
+    with rasterio.open(inpath) as src:
+        transform, width, height = calculate_default_transform(
+            src.crs, dst_crs, src.width, src.height, *src.bounds)
+        kwargs = src.meta.copy()
+        kwargs.update({
+            'crs': dst_crs,
+            'transform': transform,
+            'width': width,
+            'height': height
+        })
+        with rasterio.open(outpath, 'w', **kwargs) as dst:
+            for i in range(1, src.count + 1):
+                reproject(
+                    source=rasterio.band(src, i),
+                    destination=rasterio.band(dst, i),
+                    src_transform=src.transform,
+                    src_crs=src.crs,
+                    dst_transform=transform,
+                    dst_crs=dst_crs,
+                    resampling=Resampling.nearest)
+    
 # Number of processors to use in when multiprocessing
 nWorkers = df_parameters.loc['multiprocessing']['value']
 
