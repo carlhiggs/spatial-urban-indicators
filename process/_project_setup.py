@@ -135,6 +135,7 @@ def gdf_to_json(gdf):
     return [json.loads(gdf.to_json())['features'][0]['geometry']]    
     
 def reproject_raster(inpath, outpath, new_crs):
+    import rasterio
     from rasterio.warp import calculate_default_transform, reproject, Resampling
     dst_crs = new_crs # CRS for web meractor 
     with rasterio.open(inpath) as src:

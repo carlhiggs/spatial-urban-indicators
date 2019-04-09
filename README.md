@@ -32,7 +32,7 @@ docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=huilhuil
 * run analysis environment from Bash
 
 ```
-docker run --rm -it -u 0 --name ind_bangkok --net=host -v %cd%:/home/bangkok ind_bangkok /bin/bash 
+docker run --rm -it -u 0 --name ind_bangkok --net=host -v %cd%:/home/jovyan/work ind_bangkok /bin/bash 
 ```
 
 ### Contact ###

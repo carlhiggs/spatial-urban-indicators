@@ -92,7 +92,7 @@ xy = [float(map_layers['buffer'].centroid.y),float(map_layers['buffer'].centroid
 bounds = map_layers['buffer'].bounds.transpose().to_dict()[0]
 
 # initialise map
-m = folium.Map(location=xy, zoom_start=10,tiles=None, control_scale=True, prefer_canvas=True)
+m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
 m.add_tile_layer(tiles='Stamen Toner',name='simple map', overlay=True,active=True)
 # add layers (not true choropleth - for this it is just a convenient way to colour polygons)
 buffer = folium.Choropleth(map_layers['buffer'].to_json(),name='10km study region buffer',fill_color=colours['qualitative'][1],fill_opacity=0,line_color=colours['qualitative'][1], highlight=False).add_to(m)
@@ -116,7 +116,7 @@ folium.LayerControl(collapsed=True).add_to(m)
 
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
-map_name = '01_population.html'
+map_name = '02_population.html'
 m.save('../maps/{}'.format(map_name))
 print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))              
               
