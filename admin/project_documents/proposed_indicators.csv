@@ -1,0 +1,18 @@
+new?,Grouping,Area measure,Indicator,Comments
+discussed,Walkability,average score,Average walkability score (relative to city),"Possible discussion: We usually calculate using z-scores relative to the city --- in theory though, we could standardise across cities so cities can be more appropriately compared"
+discussed,Transport,% of population,"Access  to any public transport, within mode specific distance",need to discuss mode specific distances in international context
+discussed,Transport,% of population,"Access to any frequent public transport (serviced every ? minutes on a normal day), within mode specific distance",pending data availability of GTFS data; need to discuss mode specific distances in international context
+proposed,Transport,ratio,full road network (km) to pedestrian network (km) ,proposed feasible alternative to ratio of roads (km) to footpaths and cycle lanes (km)
+discussed,Employment,% of population,Access to employment within 30 mins of home by walking,pending data availability of journey to work data
+discussed,Employment,% of population,Access to employment within 30 mins of home by cycling,pending data availability of journey to work data
+discussed,Employment,% of population,Access to employment within 30 mins of home by public transport,pending data availability of journey to work data
+discussed,Employment,ratio,Employed persons to working population,pending data availability of journey to work data
+alternative,Employment,distance,Median commute distance for area,proposed alternative if destination specific journey to work data not available
+discussed,Density,% of population,within 1.2km of activity centres,Need to discuss definitions
+discussed,Density,% of population,within 1.2km of public transport hubs,Need to discuss definitions
+discussed,Density,% of population,within 1.2km of urban fringe developments,"Urban fringe - some distance, say 20km, from city boundary?  Need to discuss"
+proposed,Density,% of urban fringe population,within 1.2km of activity centres and public transport hubs,Need to discuss definitions
+proposed,Density,% of non-urban fringe population,within 1.2km of activity centres and public transport hubs,Need to discuss definitions
+proposed,Destinations,% of population ,Access to destinations required for daily living (excluding PT),"Need to discuss international context of daily living destinations, and how we represent using OSM"
+discussed,Open space,% of land area ,allocated to open space,Need to discuss definition of open space with regard to OSM (ie. confirm we agree on HLC approach in national context)
+proposed,Open space,% of population ,access to public open space,Additional measure which could be of interest (pending POS definition)

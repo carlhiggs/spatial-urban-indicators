@@ -1,0 +1,104 @@
+category,question,response
+Timestamp,Timestamp,30/01/2019 16:06
+region,Email address,carl.higgs@rmit.edu.au
+region,Name,Carl Higgs
+region,What is the city for which you are uploading data?,Bangkok
+region,Country,Thailand
+boundary,City boundary data (study region),https://drive.google.com/open?id=1KgCdti869UWwmuna8TlfyibbhTsAR8-g
+boundary,Data source,HDX
+boundary,URL or citation,https://data.humdata.org/dataset/d24bdc45-eb4c-4e3d-8b16-44db02667c27/resource/3b931e68-8894-4e99-b6d7-0e522f9ba2d0/download/tha_adm1_gista_plyg_v5.zip
+boundary,Reference date,17/08/2017
+boundary,Spatial reference EPSG code,32647
+boundary,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",None specified
+boundary,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+network,Is an alternative routable street network data set to OpenStreetMap prefered for indicator calculation in your city?,No
+network,Street network data,
+network,Data source,
+network,URL or citation,
+network,Reference date,
+network,Spatial reference EPSG code,
+network,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",
+network,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+gtfs,Do you have access to General Transit Feed Specifiction (GTFS) data for your city?,No
+gtfs,GTFS data,
+gtfs,Data source(s),
+gtfs,URL(s) or citation(s),
+gtfs,Reference date(s),
+gtfs,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",
+gtfs,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+poi,"Are alternative or supplementary Points of Interest (POIs) / destinations / activity centre data preferred for indicator calculation in your city, instead of or in addition to those sourced from OpenStreetMap?",Yes
+poi,POI data,https://drive.google.com/open?id=1ipytt_ATxN5nJYTeJuZPpDzsAxNWyo4V
+poi,Data source(s),Bangkok GIS (BMA)
+poi,URL(s) or citation(s),http://www.bangkokgis.com/bangkokgis_2008/userfiles/files/download/Shapefile/eco/department_store.rar
+poi,Reference date(s),27/08/2014
+poi,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",none specified
+poi,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+population,Population per city area table,https://drive.google.com/open?id=1fvOw5uCOsetWIeYWXIYpXTABVC1pexQr
+population,Data source,template test
+population,URL or citation,template test
+population,Reference date,09/01/2019
+population,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",none
+population,"Please detail any restrictions, limitations or other important points to note on the use of this data",
+population,Area boundaries,https://drive.google.com/open?id=1-T9HK9vn-nApXYAIeURG23BtAwrBm57b
+population,Attribute column used for linkage with the population per area csv,grrgege
+population,Data source,HDX
+population,URL or citation,dfdaeeaf
+population,Reference date,30/01/2017
+population,Spatial reference EPSG code,4326
+population,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",none specified
+population,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+dwellings,Please upload a CSV or Excel file with the area ID (or name) and count of dwellings.,https://drive.google.com/open?id=115z3eCODgRobfRKDXTU0BMruJnl3nP74
+dwellings,Data source,feewefwe
+dwellings,URL or citation,efewfef
+dwellings,Reference date,25/02/0052
+dwellings,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",5gfra
+dwellings,"Please detail any restrictions, limitations or other important points to note on the use of this data",dafad
+dwellings,Are the area boundaries associated with dwelling counts the same as those previously uploaded for population?,Yes
+dwellings,Area boundaries,
+dwellings,Attribute column used for linkage with the dwellings per area csv,
+dwellings,Data source,
+dwellings,URL or citation,
+dwellings,Reference date,
+dwellings,Spatial reference EPSG code,
+dwellings,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",
+dwellings,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+jtw,Please upload a CSV or Excel file with the area ID (or name) of usual residence and usual place of work and joint counts.,https://drive.google.com/open?id=1qHCf1AJH_z4AVKfUSk-2qBGAHfiCuA3I
+jtw,Data source,templateet e
+jtw,URL or citation,ta t da gd
+jtw,Reference date,15/01/2019
+jtw,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",None
+jtw,"Please detail any restrictions, limitations or other important points to note on the use of this data",
+jtw,Are the area boundaries associated with journey to work counts the same as those previously uploaded for population or dwellings?,Yes
+jtw,Area boundaries,
+jtw,Attribute column used for linkage with the journey to work csv,
+jtw,Data source,
+jtw,URL or citation,
+jtw,Reference date,
+jtw,Spatial reference EPSG code,
+jtw,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",
+jtw,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+dem,Can you provide Digital Elevation Model (DEM) data for your study region superior to that which will be made available under NASADEM as described at https://earthdata.nasa.gov/community/community-data-system-programs/measures-projects/nasadem.,Yes
+dem,DEM GeoTiff zip file (s),"https://drive.google.com/open?id=1JjDtQ11b59sBSkjtXoGBoVOLWqNM2Jql, https://drive.google.com/open?id=1oj5DzaA43Pol6EW0Lfc5DiUu_tIiKE2i, https://drive.google.com/open?id=1uOgtw4F_pwfxdMOEil9kdLpMauRhFSoG, https://drive.google.com/open?id=1HxilYm3whMeVu1ut-cfQzjJk4zSVlAmP"
+dem,Data source,adsga g
+dem,URL or citation,faefag
+dem,Reference date,08/01/2019
+dem,Spatial reference EPSG code,4326
+dem,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",none specified
+dem,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+address,Do you have an open source residential address data set available for your city which is appropriate for use in this project?,No
+address,Residential address points,
+address,Data source,
+address,URL or citation,
+address,Reference date,
+address,Spatial reference EPSG code,
+address,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",
+address,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
+os,Do you have a source of open space / green space data to be preferred over use of OpenStreetMap data,No
+os,Open Space data,
+os,"Definition of open space / green space used as basis for this dataset. For example, are these parks, or public spaces including town squares? Are private clubs included? Is there an attribute which should be used to distinguish classes of open space in this dataset?",
+os,Data source,
+os,URL or citation,
+os,Reference date,
+os,Spatial reference EPSG code,
+os,"Licence type (e.g. ""CC BY 4.0"", ""none specified"", etc).",
+os,"Please detail any restrictions, limitations or other important points to note on the use of this data in this project",
