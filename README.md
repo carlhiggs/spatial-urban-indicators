@@ -1,41 +1,43 @@
-# README #
+# Bangkok Liveability #
 
-This respository contains the processes used in the Lancet indicators project; at least, as these processes are developed, they will be recorded here.
-
-### What is this repository for? ###
-
-* Quick summary
-The repository provides a template for indicator calculation across diverse regions (e.g. cities within countries around the world, with important differences but broadly considered 'urban').
-
-* Version
-0.00
+This repository contains the processes used in the Bangkok Liveability indicators project, 2019.
 
 ### How do I get set up? ###
 
-* Summary of set up
-Not yet defined.
+* install [Git](https://git-scm.com/downloads) and [Docker](https://www.docker.com/products/docker-desktop)
 
-* Configuration
-Perhaps a conda mini install process?  Or virtual box? or Docker?  Let's review.
+* git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git
 
-* Dependencies
-Depends on above.
+* set up analysis environment container, based on OSMnx
 
-* Database configuration
-Postgresql? SQLite? Let's review.
+```
+cd ./process/docker
+docker build -t ind_bangkok .
+cd ../..
+```
 
-* How to run tests
+* set up spatial database container, based on Postgis
+
+```
+docker pull mdillon/postgis
+```
 
 
-* Deployment instructions
+* run postgis server container
 
-### Contribution guidelines ###
+```
+docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=huilhuil!42 -e POSTGRES_DBNAME=ind_bangkok  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql mdillon/postgis
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+* run analysis environment from Bash
 
-### Who do I talk to? ###
+```
+docker run --rm -it -u 0 --name ind_bangkok --net=host -v %cd%:/home/jovyan/work ind_bangkok /bin/bash 
+```
+
+### Contact ###
 
 * carl.higgs@rmit.edu.au
-* carlhiggs@gmail.com
+=======
+# ind_bangkok
+
