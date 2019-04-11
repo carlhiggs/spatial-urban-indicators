@@ -38,6 +38,8 @@ docker run --rm -it -u 0 --name ind_global --net=host -v %cd%:/home/jovyan/work 
 ### Contact ###
 
 carl.higgs@rmit.edu.au
+
 liu.shiqi@husky.neu.edu
+
 g.boeing@northeastern.edu
 
