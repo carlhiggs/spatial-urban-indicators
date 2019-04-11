@@ -35,6 +35,14 @@ docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=password
 docker run --rm -it -u 0 --name ind_global --net=host -v %cd%:/home/jovyan/work ind_global /bin/bash 
 ```
 
+### Progress ###
+The scripts in the 'process' folder have been brought in from a seperate Australia based national project.  They are in the process of being re-factored for a more stream-lined and generalised workflow using the Bangkok branch.
+
+This master branch is a proposed location for updates for the broader global indicators project, however modifications will be required to be made to the Bangkok implementation to work in global context
+(e.g. study region configuration, which for Bangkok's purposes no longer functions as directly as it did for the national project, so will have to be re-implemented if we choose to use the scripts as a basis for our work).
+
+See the Bangkok branch for indication on which scripts have been updated for that project.  Seperately, if we choose to adopt the structure of this approach for the global project, we should track which parts have been updated in a similar list below perhaps.
+
 ### Contact ###
 
 carl.higgs@rmit.edu.au
