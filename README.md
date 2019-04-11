@@ -1,18 +1,18 @@
-# Bangkok Liveability #
+# Global liveability indicators project#
 
-This repository contains the processes used in the Bangkok Liveability indicators project, 2019.
+This (proposed) repository contains documentation and processes used in the global liveability indicators ('Lancet series') project, 2019.
 
 ### How do I get set up? ###
 
 * install [Git](https://git-scm.com/downloads) and [Docker](https://www.docker.com/products/docker-desktop)
 
-* git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git
+* git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_global.git
 
 * set up analysis environment container, based on OSMnx
 
 ```
 cd ./process/docker
-docker build -t ind_bangkok .
+docker build -t ind_global .
 cd ../..
 ```
 
@@ -26,18 +26,18 @@ docker pull mdillon/postgis
 * run postgis server container
 
 ```
-docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=huilhuil!42 -e POSTGRES_DBNAME=ind_bangkok  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql mdillon/postgis
+docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=password -e POSTGRES_DBNAME=ind_global  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql mdillon/postgis
 ```
 
 * run analysis environment from Bash
 
 ```
-docker run --rm -it -u 0 --name ind_bangkok --net=host -v %cd%:/home/jovyan/work ind_bangkok /bin/bash 
+docker run --rm -it -u 0 --name ind_global --net=host -v %cd%:/home/jovyan/work ind_global /bin/bash 
 ```
 
 ### Contact ###
 
-* carl.higgs@rmit.edu.au
-=======
-# ind_bangkok
+carl.higgs@rmit.edu.au
+liu.shiqi@husky.neu.edu
+g.boeing@northeastern.edu
 
