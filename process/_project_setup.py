@@ -127,12 +127,6 @@ pop_alt_data = {}
 for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]].index):
     data_type = pop_data.split(':')[1]
     pop_alt_data[data_type] = '.{}'.format(df_datasets.loc['population:district'].data_dir)
-
-# gdf to json function (for rasterio)
-def gdf_to_json(gdf):
-    """Function to parse features from GeoDataFrame in such a manner that rasterio wants them"""
-    import json
-    return [json.loads(gdf.to_json())['features'][0]['geometry']]    
     
 def reproject_raster(inpath, outpath, new_crs):
     import rasterio
