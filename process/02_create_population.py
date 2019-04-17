@@ -3,6 +3,7 @@
 import rasterio
 from rasterio.mask import mask
 import geopandas as gpd
+from geoalchemy2 import Geometry, WKTElement
 import folium
 from folium import plugins
 from sqlalchemy import create_engine
@@ -15,6 +16,7 @@ from _project_setup import *
 # simple timer for log file
 start  = time.time()
 script = os.path.basename(sys.argv[0])
+task = 'Import population raster and associate with administrative areas'
 
 engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_user,
                                                                       pwd  = db_pwd,
@@ -58,8 +60,7 @@ nodata = raster_pop.nodata
 subdistricts = gpd.GeoDataFrame.from_postgis(areas[0]['name_s'],
                                              engine, 
                                              geom_col='geom', 
-                                             index_col=areas[0]['id'],
-                                             dtype={'geom': Geometry('POLYGON', srid=srid))
+                                             index_col=areas[0]['id'])
 
 area_json = [json.loads(subdistricts.to_json())['features']][0]
 
@@ -78,13 +79,15 @@ for area in area_json:
     pop += area_pop
     subdistricts.loc[area_name,'population'] = area_pop
 # Replace subdistricts table in project Postgis database
+# Create WKT geometry (postgis won't read shapely geometry)
+subdistricts['geom'] = subdistricts['geom'].apply(lambda x: WKTElement(x.wkt, srid=srid))
 subdistricts.to_sql(areas[0]['name_s'], 
                     engine, 
                     if_exists='replace', 
-                    index=True, 
+                    index=True,
                     dtype={'geom': Geometry('POLYGON', srid=srid)})
 print('Estimated population for Bangkok study region in 2020'
-      ' based on UN adjusted WorldPop data is {}.'.format(pop))
+      ' based on UN adjusted WorldPop data is {:,}.'.format(pop))
            
 # get map data
 map_layers={}
@@ -96,13 +99,14 @@ FROM {}
 '''.format(buffered_study_region)
 map_layers['buffer'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
 
+population_field = 'Population (2020 estimate)'
 sql = '''
-SELECT "{id}" As "Subdistrict",
-         population,
-         ST_Transform(geom,4326) geom 
+SELECT "ADM3_TH"||' ('||"{id}"||')' As "Subdistrict",
+       TO_CHAR(population, '999,999') "{population_field}",
+       ST_Transform(geom,4326) geom 
 FROM {table}
-'''.format(id = 'ADM3_EN',table = areas[0]['name_s'])
-map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom', index_col='Subdistrict')
+'''.format(id = 'ADM3_EN',table = areas[0]['name_s'], population_field=population_field)
+map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
 
 # load up the reprojected raster
 with rasterio.open(population_raster_clipped) as src:
@@ -130,7 +134,7 @@ feature = folium.Choropleth(map_layers[areas[0]['name_s']].to_json(),
                             line_color=colours['qualitative'][0], 
                             highlight=False).add_to(m)
                             
-folium.features.GeoJsonTooltip(fields=['Subdistrict','population'],
+folium.features.GeoJsonTooltip(fields=['Subdistrict',population_field],
                                labels=True, 
                                sticky=True
                               ).add_to(feature.geojson)
@@ -150,47 +154,7 @@ folium.LayerControl(collapsed=True).add_to(m)
 map_name = '02_population.html'
 m.save('../maps/{}'.format(map_name))
 print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))              
-              
-# pop_vector = gpd.GeoDataFrame.from_postgis('''SELECT * FROM {table}'''.format(id = 'Adm3Name',table = areas[0]['name_s']), engine, geom_col='geom' )   
-
-# with rasterio.open(population_raster['data']) as src:
-    # # set pop_vector to match crs of input raster
-    # # the above works as tested (raster is epsg 4326)
-    # # in theory, works if epsg is otherwise detectable in rasterio
-    # pop_vector.to_crs({'init':test.crs['init']},inplace=True)
-    
-
-    
-     # out_image, out_transform = mask(src, geoms, crop=True)
-                                                                   
-# gdf.to_crs(epsg=4326, inplace=True) 
-
-
-# if src_ds is None:
-    # print('Unable to open {}'.format(src_filename))
-    # sys.exit(1)
-
-# try:
-    # srcband = src_ds.GetRasterBand(population_raster[1])
-# except RuntimeError as e:
-    # # for example, try GetRasterBand(10)
-    # print('Band ( {} ) not found'.format(population_raster[1]))
-    # print(e)
-    # sys.exit(1)
-
-# #
-# #  create output datasource
-# #
-# dst_layername = population_grid
-# drv = ogr.GetDriverByName("ESRI Shapefile")
-# dst_ds = drv.CreateDataSource( dst_layername + ".shp" )
-# dst_layer = dst_ds.CreateLayer(dst_layername, srs = None )
-
-# gdal.Polygonize( srcband, None, dst_layer, -1, [], callback=None )
-
-
-# https://postgis.net/docs/RT_ST_PixelAsPolygons.html
-
+ 
 # # output to completion log					
 script_running_log(script, task, start, locale)
 engine.dispose()
