@@ -1,18 +1,18 @@
-# Global liveability indicators project#
+# Bangkok Liveability #
 
-This (proposed) repository contains documentation and processes used in the global liveability indicators ('Lancet series') project, 2019.
+This repository contains the processes used in the Bangkok Liveability indicators project, 2019.
 
 ### How do I get set up? ###
 
 * install [Git](https://git-scm.com/downloads) and [Docker](https://www.docker.com/products/docker-desktop)
 
-* git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_global.git
+* git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git
 
 * set up analysis environment container, based on OSMnx
 
 ```
 cd ./process/docker
-docker build -t ind_global .
+docker build -t ind_bangkok .
 cd ../..
 ```
 
@@ -26,28 +26,36 @@ docker pull mdillon/postgis
 * run postgis server container
 
 ```
-docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=password -e POSTGRES_DBNAME=ind_global  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql mdillon/postgis
+docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=huilhuil!42 -e POSTGRES_DBNAME=ind_bangkok  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql mdillon/postgis
 ```
 
 * run analysis environment from Bash
 
 ```
-docker run --rm -it -u 0 --name ind_global --net=host -v %cd%:/home/jovyan/work ind_global /bin/bash 
+docker run --rm -it -u 0 --name ind_bangkok --net=host -v %cd%:/home/jovyan/work ind_bangkok /bin/bash 
 ```
 
 ### Progress ###
-The scripts in the 'process' folder have been brought in from a seperate Australia based national project.  They are in the process of being re-factored for a more stream-lined and generalised workflow using the Bangkok branch.
+The scripts in the 'process' folder have been brought in from a seperate Australia based national project.  They are in the process of being re-factored for a more stream-lined and generalised workflow.
 
-This master branch is a proposed location for updates for the broader global indicators project, however modifications will be required to be made to the Bangkok implementation to work in global context
-(e.g. study region configuration, which for Bangkok's purposes no longer functions as directly as it did for the national project, so will have to be re-implemented if we choose to use the scripts as a basis for our work).
+Currently, the following have been part way updated for the Bangkok workflow:
 
-See the Bangkok branch for indication on which scripts have been updated for that project.  Seperately, if we choose to adopt the structure of this approach for the global project, we should track which parts have been updated in a similar list below perhaps.
+* ./process/_project_configuration.xlsx
+
+* ./process/_project_setup.py
+
+* ./process/00_create_database.py
+
+* ./process/01_create_study_region.py
+
+* ./process/02_create_population.py
+
+* ./process/docker/*
+
+* ./process/_environment_setup.sh
+
+
 
 ### Contact ###
 
 carl.higgs@rmit.edu.au
-
-liu.shiqi@husky.neu.edu
-
-g.boeing@northeastern.edu
-
