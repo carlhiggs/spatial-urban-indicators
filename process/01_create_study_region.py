@@ -71,12 +71,32 @@ CREATE TABLE {buffered_study_region} AS
 '''.format(study_region = study_region,
            buffered_study_region = buffered_study_region,
            buffer = study_buffer))
-
+       
 # Prepare map
+engine.execute('''
+CREATE TABLE IF NOT EXISTS study_region_map AS
+SELECT 'Bangkok' AS "Description",
+       ST_Transform(geom,4326) geom 
+FROM {study_region};
+
+CREATE TABLE IF NOT EXISTS buffered_study_region_map AS 
+SELECT '10km study region buffer' AS "Description",
+       ST_Transform(geom,4326) geom 
+FROM {buffered_study_region};
+
+CREATE TABLE IF NOT EXISTS subdistricts_map AS
+SELECT "{subdistricts_id}" As "Subdistrict",
+       ST_Transform(geom,4326) geom 
+FROM {subdistricts};
+'''.format(study_region=study_region,
+        buffered_study_region= buffered_study_region,
+        subdistricts_id = areas[0]['id'],
+        subdistricts = areas[0]['name_s']))
+
 map_layers={}
-map_layers['study_region'] = gpd.GeoDataFrame.from_postgis('''SELECT 'Bangkok' AS "Description",ST_Transform(geom,4326) geom FROM {}'''.format(study_region), engine, geom_col='geom' )
-map_layers['buffer'] = gpd.GeoDataFrame.from_postgis('''SELECT '10km study region buffer' AS "Description",ST_Transform(geom,4326) geom FROM {}'''.format(buffered_study_region), engine, geom_col='geom' )
-map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis('''SELECT "{id}" As "Subdistrict",ST_Transform(geom,4326) geom FROM {table}'''.format(id = areas[0]['id'],table = areas[0]['name_s']), engine, geom_col='geom' )
+map_layers['study_region'] = gpd.GeoDataFrame.from_postgis("study_region_map", engine, geom_col='geom' )
+map_layers['buffer'] = gpd.GeoDataFrame.from_postgis("buffered_study_region_map", engine, geom_col='geom' )
+map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis("subdistricts_map", engine, geom_col='geom' )
 # get map centroid from study region
 xy = [float(map_layers['study_region'].centroid.y),float(map_layers['study_region'].centroid.x)]    
 

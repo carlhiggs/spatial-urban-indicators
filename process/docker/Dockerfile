@@ -35,14 +35,19 @@ RUN ln -s /opt/conda/bin/jupyter /usr/local/bin
 USER $NB_UID
 
 # configure conda and install packages in one RUN to keep image tidy
-RUN conda config --set show_channel_urls true && \
-    conda config --prepend channels conda-forge && \
-    conda update --strict-channel-priority --yes -n base conda && \
-    conda install --strict-channel-priority --update-all --force-reinstall --yes osmnx python-igraph && \
-    conda install -y psycopg2 geoalchemy2 rasterio xlrd && \
-    conda clean --yes --all && \
-    conda info --all && \
-    conda list
+RUN conda config --set show_channel_urls true                                                        \
+ && conda config --prepend channels conda-forge                                                      \
+ && conda update --strict-channel-priority --yes -n base conda                                       \
+ && conda install --strict-channel-priority --update-all --force-reinstall --yes osmnx python-igraph \
+ && conda install -y psycopg2 geoalchemy2 rasterio xlrd seaborn bokeh                                \
+ && conda clean --yes --all                                                                          \
+ && conda info --all                                                                                 \
+ && conda list
+    
+RUN apt-get update               \
+ && apt-get install -y osmctools \
+ && apt-get install -y osm2pgsql \
+ && apt-get clean
 
 # launch notebook in the local working directory that we mount
 WORKDIR /home/jovyan/work

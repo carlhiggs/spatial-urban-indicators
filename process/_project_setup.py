@@ -193,6 +193,7 @@ os.environ['PGDATABASE'] = db
 
 osm_data = os.path.join(folderPath,df_parameters.loc['osm_data']['value'])
 osm_prefix = 'osm_{}'.format(df_parameters.loc['osm_date']['value'])
+osm_region = '{}_{}.osm'.format(locale,osm_prefix)
 osmconvert = df_parameters.loc['osmconvert']['value']
 osm2pgsql_exe = os.path.join(folderPath,df_parameters.loc['osm2pgsql_exe']['value'])
 osm2pgsql_style = os.path.join(folderPath,df_parameters.loc['osm2pgsql_style']['value'])
