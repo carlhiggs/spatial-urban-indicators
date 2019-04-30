@@ -32,9 +32,33 @@ LABEL maintainer="Carl Higgs <carl.higgs@rmit.edu.au>"
 # symlink and permissions
 USER root
 RUN ln -s /opt/conda/bin/jupyter /usr/local/bin
-USER $NB_UID
 
+
+# Install OpenJDK-8
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
+    apt-get install ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f;
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+
+# Install OSM tools
+RUN wget https://bretth.dev.openstreetmap.org/osmosis-build/osmosis-latest.tgz  \
+ && mkdir osmosis                                                               \
+ && mv osmosis-latest.tgz osmosis                                               \
+ && cd osmosis                                                                  \
+ && tar xvfz osmosis-latest.tgz                                                 \
+ && rm osmosis-latest.tgz                                                       \
+ && chmod a+x bin/osmosis                    
+
+ENV DEBIAN_FRONTEND=noninteractive  
+RUN sudo apt-get install -y osm2pgsql
+ 
 # configure conda and install packages in one RUN to keep image tidy
+USER $NB_UID
 RUN conda config --set show_channel_urls true                                                        \
  && conda config --prepend channels conda-forge                                                      \
  && conda update --strict-channel-priority --yes -n base conda                                       \
@@ -43,11 +67,6 @@ RUN conda config --set show_channel_urls true                                   
  && conda clean --yes --all                                                                          \
  && conda info --all                                                                                 \
  && conda list
-    
-RUN apt-get update               \
- && apt-get install -y osmctools \
- && apt-get install -y osm2pgsql \
- && apt-get clean
 
 # launch notebook in the local working directory that we mount
 WORKDIR /home/jovyan/work
