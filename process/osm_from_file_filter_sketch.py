@@ -181,13 +181,13 @@ def graph_from_file_filtered(filename,
     if simplify:
         G = ox.simplify_graph(G)
     
-    # log('graph_from_file() returning graph with {:,} nodes and {:,} edges'.format(len(list(G.nodes())), len(list(G.edges()))))
+    print('graph_from_file() returning graph with {:,} nodes and {:,} edges'.format(len(list(G.nodes())), len(list(G.edges()))))
     return G    
     
 G = graph_from_file_filtered(filename='D:/ind_bangkok/data/osm/sathorn-taksin-sample_20190430.osm',
                              custom_filter=pedestrian)
                              
-filename='D:/ntnl_li_2018_template/data/21Cities/OSM_Roads/AlburyWodonga/AlburyWodonga.osm'  
+filename='D:/ind_bangkok/data/osm/sathorn-taksin-sample_20190430.osm' 
 custom_filter=pedestrian    
 name = 'unnamed'                       
 network_type='walk'
