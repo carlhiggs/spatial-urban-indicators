@@ -198,7 +198,15 @@ osm_region = '{}_{}.osm'.format(locale,osm_prefix)
 # osm_source = D:/ntnl_li_2018_template/data/study_region/bangkok/bangkok_thailand_2016_10000m_20181001.osm
 osm_source = os.path.join(folderPath,'study_region',locale,'{}_{}.osm'.format(buffered_study_region,osm_prefix))
 osmnx_retain_all = df_parameters.loc['osmnx_retain_all']['value']
-    
+# define pedestrian network custom filter (based on OSMnx 'walk' network type, without the cycling exclusion)
+pedestrian = (
+             '["area"!~"yes"]' 
+             '["highway"!~"motor|proposed|construction|abandoned|platform|raceway"]'
+             '["foot"!~"no"]'  
+             '["service"!~"private"]' 
+             '["access"!~"private"]'
+             )
+             
 grant_query = '''GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO {0};
                  GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO {0};'''.format(db_user)
 
