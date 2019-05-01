@@ -15,10 +15,10 @@ ox.__version__
 from shapely.geometry import shape, MultiPolygon, Polygon
 
 # location of source OSM file
-dir = 'D:/osm/planet_archives/planet-latest_20181001.osm.pbf'
+dir = 'D:/ind_bangkok/data/osm/thailand-latest.20190430.osm.pbf'
   
 # location of boundary files to iterate over
-search_dir = 'D:/ntnl_li_2018_template/data/21Cities/OSM_Roads'
+search_dir = 'D:\ind_bangkok\data\study_region\bangkok'
 
 
 # define pedestrian network custom filter (based on OSMnx 'walk' network type, without the cycling exclusion)
@@ -90,7 +90,8 @@ def check_filter_list(element, filter_list, attribute = 'tags'):
 filter_list = format_filter_list(pedestrian)              
 
 
-data = [ox.overpass_json_from_file('D:/ntnl_li_2018_template/data/21Cities/OSM_Roads/AlburyWodonga/AlburyWodonga.osm')]
+# data = [ox.overpass_json_from_file('D:/ind_bangkok/data/osm/sathorn-taksin-sample_20190430.osm')]
+data = ox.overpass_json_from_file('D:/ind_bangkok/data/osm/sathorn-taksin-sample_20190430.osm')
 # Format of data is as per http://overpass-api.de/output_formats.html#json
 
 len(data)
@@ -180,10 +181,10 @@ def graph_from_file_filtered(filename,
     if simplify:
         G = ox.simplify_graph(G)
     
-    log('graph_from_file() returning graph with {:,} nodes and {:,} edges'.format(len(list(G.nodes())), len(list(G.edges()))))
+    # log('graph_from_file() returning graph with {:,} nodes and {:,} edges'.format(len(list(G.nodes())), len(list(G.edges()))))
     return G    
     
-G = graph_from_file_filtered(filename='D:/ntnl_li_2018_template/data/21Cities/OSM_Roads/AlburyWodonga/AlburyWodonga.osm',
+G = graph_from_file_filtered(filename='D:/ind_bangkok/data/osm/sathorn-taksin-sample_20190430.osm',
                              custom_filter=pedestrian)
                              
 filename='D:/ntnl_li_2018_template/data/21Cities/OSM_Roads/AlburyWodonga/AlburyWodonga.osm'  

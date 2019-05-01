@@ -54,8 +54,14 @@ RUN wget https://bretth.dev.openstreetmap.org/osmosis-build/osmosis-latest.tgz  
  && rm osmosis-latest.tgz                                                       \
  && chmod a+x bin/osmosis                    
 
-ENV DEBIAN_FRONTEND=noninteractive  
-RUN sudo apt-get install -y osm2pgsql
+ENV TZ 'Australia/Melbourne'
+RUN echo $TZ > /etc/timezone && \
+apt-get update && apt-get install -y tzdata && \
+rm /etc/localtime && \
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+dpkg-reconfigure -f noninteractive tzdata && \
+apt-get clean 
+RUN apt-get install -y osm2pgsql
  
 # configure conda and install packages in one RUN to keep image tidy
 USER $NB_UID

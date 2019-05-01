@@ -50,7 +50,6 @@ df_inds = pandas.read_excel(xls, 'ind_study_region_matrix')
 df_destinations = pandas.read_excel(xls, 'destinations')
 df_osm = pandas.read_excel(xls, 'osm_and_open_space_defs')
 df_osm_dest = pandas.read_excel(xls, 'osm_dest_definitions')
-df_data_catalogue = pandas.read_excel(xls, 'data_catalogue')
 
 responsible = df_parameters.loc['responsible']['value']
 year   = df_parameters.loc['year']['value']
@@ -194,12 +193,59 @@ os.environ['PGDATABASE'] = db
 osm_data = os.path.join(folderPath,df_parameters.loc['osm_data']['value'])
 osm_prefix = 'osm_{}'.format(df_parameters.loc['osm_date']['value'])
 osm_region = '{}_{}.osm'.format(locale,osm_prefix)
-osmconvert = df_parameters.loc['osmconvert']['value']
-osm2pgsql_exe = os.path.join(folderPath,df_parameters.loc['osm2pgsql_exe']['value'])
-osm2pgsql_style = os.path.join(folderPath,df_parameters.loc['osm2pgsql_style']['value'])
+
 # osm_source = df_parameters.loc['osm_source']
 # osm_source = D:/ntnl_li_2018_template/data/study_region/bangkok/bangkok_thailand_2016_10000m_20181001.osm
 osm_source = os.path.join(folderPath,'study_region',locale,'{}_{}.osm'.format(buffered_study_region,osm_prefix))
+osmnx_retain_all = os.path.join(folderPath,df_parameters.loc['osmnx_retain_all']['value'])
+# Supplementary OSMNX filter OSM file command
+def graph_from_file_filtered(filename, 
+                             network_type='all_private', 
+                             simplify=True,
+                             retain_all=False, 
+                             name='unnamed',
+                             custom_filter=None):
+    """
+    Create a networkx graph from OSM data in an XML file.
+
+    Parameters
+    ----------
+    filename : string
+        the name of a file containing OSM XML data
+    network_type : string
+        what type of street network to get
+    custom_filter : string
+        a custom network filter to be used instead of the network_type presets, following OSMnx (Overpass) format
+    simplify : bool
+        if true, simplify the graph topology
+    retain_all : bool
+        if True, return the entire graph even if it is not connected
+    name : string
+        the name of the graph
+
+    Returns
+    -------
+    networkx multidigraph
+    """
+    import osmnx as ox
+    # transmogrify file of OSM XML data into JSON
+    response_jsons = [ox.overpass_json_from_file(filename)]
+    
+    if custom_filter is not None:
+        filter_list = format_filter_list(custom_filter)
+        response_jsons[0]['elements'] = [x for x in response_jsons[0]['elements'] if x['type'] in ['way','node'] and (check_filter_list(x,filter_list) or x['tags']=={})]
+    
+    # create graph using this response JSON
+    G = ox.create_graph(response_jsons, 
+                     network_type=network_type,
+                     retain_all=retain_all, name=name)
+    
+    # simplify the graph topology as the last step.
+    if simplify:
+        G = ox.simplify_graph(G)
+    
+    log('graph_from_file() returning graph with {:,} nodes and {:,} edges'.format(len(list(G.nodes())), len(list(G.edges()))))
+    return G 
 
 grant_query = '''GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO {0};
                  GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO {0};'''.format(db_user)
@@ -231,35 +277,6 @@ for area in areas_of_interest + ['urban']:
 area_filter = df_parameters.loc['area_filter_field']['value']
 area_filter_field = df_parameters.loc['area_filter_field']['value']
 area_filter_value = df_parameters.loc['area_filter_value']['value']
-        
-# area_info = {}
-# for info in ['dwellings','disadvantage']:
-  # area_info[info] = {}
-  # if df_parameters.loc['{}_data'.format(info)]['value']!= '':
-    # area_info[info]['data']      = os.path.join(folderPath,df_parameters.loc['{}_data'.format(info)]['value'])
-    # area_info[info]['table']     = 'area_{}'.format(info)
-    # area_info[info]['area']      = int(df_parameters.loc['{}_area'.format(info)]['value'])
-    # area_info[info]['id']        = df_parameters.loc['{}_id'.format(info)]['value']
-    # area_info[info]['field']     = df_parameters.loc['{}_field'.format(info)]['value']
-    # area_info[info]['exclusion'] = df_parameters.loc['{}_exclusion'.format(info)]['value']
-
-# # This is a legacy configuration option not yet updated to the generic framework
-# # ie. this configuration is Australia specific, but must be generalised to non-specific region
-# # However, as of February 2019 I haven't had time to make the full update
-# # This configuration retained for compatability with scripts until full re-write
-# # Meshblock Dwellings feature name
-# # meshblocks = areas[0]['data']
-# # abs_SA1    = areas[1]['data']
-# # abs_SA2    = areas[2]['data']
-
-# # suburb_feature = areas[6]['table']
-# # lga_feature = areas[5]['table']
-
-# # data ids
-# # meshblock_id     = areas[0]['id']
-# dwellings        = area_info['dwellings']['data']
-# dwellings_id     = area_info['dwellings']['id']
-# dwellings_field  = area_info['dwellings']['field']
 
 # Point data locations used for sampling
 # Note that the process assumes we have already transformed points to the project's spatial reference
