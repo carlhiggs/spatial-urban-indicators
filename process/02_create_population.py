@@ -86,8 +86,8 @@ subdistricts.to_sql(areas[0]['name_s'],
                     if_exists='replace', 
                     index=True,
                     dtype={'geom': Geometry('POLYGON', srid=srid)})
-print('Estimated population for Bangkok study region in 2020'
-      ' based on UN adjusted WorldPop data is {:,}.'.format(pop))
+print('Estimated population for {} study region in {}'
+      ' based on UN adjusted WorldPop data is {:,}.'.format(full_locale,population_target,pop))
            
 # get map data
 map_layers={}
@@ -140,7 +140,7 @@ folium.features.GeoJsonTooltip(fields=['Subdistrict',population_field],
                               ).add_to(feature.geojson)
 
 m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0], 
-                                 name='Poplulation per pixel (WorldPop predicted model: 2020, UN adjusted)',
+                                 name='Poplulation per pixel (WorldPop predicted model: {}, UN adjusted)'.format(population_target),
                                  opacity=.7,
                                  bounds=[[bounds['miny'],bounds['minx']], 
                                          [bounds['maxy'], bounds['maxx']]],
@@ -151,7 +151,7 @@ folium.LayerControl(collapsed=True).add_to(m)
 
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
-map_name = '02_population.html'
+map_name = '{}_02_population.html'.format(locale)
 m.save('../maps/{}'.format(map_name))
 print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))              
  

@@ -34,10 +34,21 @@ import time
 import pandas
 import subprocess as sp
 
+
+# Set up locale (ie. defined at command line, or else testing)
+if len(sys.argv) >= 2:
+  locale = '{studyregion}'.format(studyregion = sys.argv[1])
+else:
+  locale = 'bangkok'
+if __name__ == '__main__':
+  print("\nProcessing script {} for locale {}...\n".format(sys.argv[0],locale))
+
+
 # Load settings from _project_configuration.xlsx
 xls = pandas.ExcelFile(os.path.join(sys.path[0],'_project_configuration.xlsx'))
 df_parameters = pandas.read_excel(xls, 'Parameters',index_col=0)
-df_parameters.value = df_parameters.value.fillna('')
+df_parameters[locale] = df_parameters[locale].fillna('')
+full_locale = df_parameters.loc['full_locale'][locale]
 
 df_datasets = pandas.read_excel(xls, 'Datasets')
 df_datasets.name_s = df_datasets.name_s.fillna('')
@@ -51,11 +62,11 @@ df_destinations = pandas.read_excel(xls, 'destinations')
 df_osm = pandas.read_excel(xls, 'osm_and_open_space_defs')
 df_osm_dest = pandas.read_excel(xls, 'osm_dest_definitions')
 
-responsible = df_parameters.loc['responsible']['value']
-year   = df_parameters.loc['year']['value']
+responsible = df_parameters.loc['responsible'][locale]
+year   = df_parameters.loc['year'][locale]
 
 # The main directory for data
-folderPath = df_parameters.loc['folderPath']['value']
+folderPath = df_parameters.loc['folderPath'][locale]
 
 # # Set up locale (ie. defined at command line, or else testing)
 # if len(sys.argv) >= 2:
@@ -63,10 +74,6 @@ folderPath = df_parameters.loc['folderPath']['value']
 # else:
   # locale = 'testing'
   
-locale = 'bangkok'    
-  
-if __name__ == '__main__':
-  print("\nProcessing script {} for locale {}...\n".format(sys.argv[0],locale))
  
 def pretty(d, indent=0):
    for key, value in d.items():
@@ -82,45 +89,46 @@ def pretty(d, indent=0):
   
 # More study region details
 
-region = df_parameters.loc['region']['value']
+region = df_parameters.loc['region'][locale]
 
 locale_dir = os.path.join(folderPath,'study_region','{}'.format(locale.lower()))
 
 # Study region boundary
-region_shape = df_parameters.loc['region_shape']['value']
+region_shape = df_parameters.loc['region_shape'][locale]
 
 # SQL Query to select study region
-region_where_clause = df_parameters.loc['region_where_clause']['value']
+region_where_clause = df_parameters.loc['region_where_clause'][locale]
 
 # db suffix
-suffix = df_parameters.loc['suffix']['value']
+suffix = df_parameters.loc['suffix'][locale]
 
 # derived study region name (no need to change!)
 study_region = '{}_{}_{}'.format(locale,region,year).lower()
 db = 'li_{0}_{1}{2}'.format(locale,year,suffix).lower()
 
 # ; Project spatial reference (for ArcGIS)
-SpatialRef = df_parameters.loc['SpatialRef']['value']
+SpatialRef = df_parameters.loc['SpatialRef'][locale]
 
 # Project spatial reference EPSG code (for Postgis)
-srid       = df_parameters.loc['srid']['value']
-units      = df_parameters.loc['units']['value']
-units_full = df_parameters.loc['units_full']['value']
+srid       = df_parameters.loc['srid'][locale]
+units      = df_parameters.loc['units'][locale]
+units_full = df_parameters.loc['units_full'][locale]
 
 # Study region buffer
-study_buffer = df_parameters.loc['study_buffer']['value']
+study_buffer = df_parameters.loc['study_buffer'][locale]
 buffered_study_region = '{0}_{1}{2}'.format(study_region,study_buffer,units)
 
 # Population
+population_grid   = df_parameters.loc['pop_grid'][locale]
+population_target   = df_parameters.loc['pop_target'][locale]
 population_raster ={}
-population_raster['data'] = '.{}'.format(df_datasets.loc['population']['data_dir'])
-population_raster['band'] = int(df_datasets.loc['population']['band_if_raster'])
-population_raster['epsg'] = int(df_datasets.loc['population']['epsg'])
+population_raster['data'] = '.{}'.format(df_datasets.loc[population_grid]['data_dir'])
+population_raster['band'] = int(df_datasets.loc[population_grid]['band_if_raster'])
+population_raster['epsg'] = int(df_datasets.loc[population_grid]['epsg'])
 population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',locale,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
 population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',locale,os.path.basename(population_raster['data'])[:-4]),srid)
 
-# above raster will be vectorised to a grid; here we get its name
-population_grid   = df_parameters.loc['pop_grid']['value']
+
 
 pop_alt_data = {}
 for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]].index):
@@ -153,14 +161,14 @@ def reproject_raster(inpath, outpath, new_crs):
                     resampling=Resampling.nearest)
     
 # Number of processors to use in when multiprocessing
-nWorkers = df_parameters.loc['multiprocessing']['value']
+nWorkers = df_parameters.loc['multiprocessing'][locale]
 
 # hexagon diagonal length and buffer distance (metres)
 #   -- hexagon sides will be half the length of this value
 #   -- hexagon area is 3/2 * sqrt(3) * (hex_diag/2)^2
 #  so with diag of 3000 m, area is 5845671.476 sq.m.
-hex_diag   = df_parameters.loc['hex_diag']['value']
-hex_buffer = df_parameters.loc['hex_buffer']['value']
+hex_diag   = df_parameters.loc['hex_diag'][locale]
+hex_buffer = df_parameters.loc['hex_buffer'][locale]
 
 # Derived hex settings - no need to change
 hex_grid = '{0}_hex_{1}{2}_diag'.format(study_region,hex_diag,units)
@@ -168,11 +176,11 @@ hex_grid_buffer =  '{0}_hex_{1}{2}_diag_{3}{2}_buffer'.format(study_region,hex_d
 hex_side = float(hex_diag)*0.5
 
 # SQL Settings
-db_host   = df_parameters.loc['db_host']['value']
-db_port   = '{}'.format(df_parameters.loc['db_port']['value'])
-db_user   = df_parameters.loc['db_user']['value']
-db_pwd    = df_parameters.loc['db_pwd']['value']
-admin_db  = df_parameters.loc['db_main']['value']
+db_host   = df_parameters.loc['db_host'][locale]
+db_port   = '{}'.format(df_parameters.loc['db_port'][locale])
+db_user   = df_parameters.loc['db_user'][locale]
+db_pwd    = df_parameters.loc['db_pwd'][locale]
+admin_db  = df_parameters.loc['db_main'][locale]
 admin_user_name = admin_db
 admin_pwd = db_pwd
 
@@ -190,14 +198,14 @@ os.environ['PGUSER']     = db_user
 os.environ['PGPASSWORD'] = db_pwd
 os.environ['PGDATABASE'] = db
 
-osm_data = os.path.join(folderPath,df_parameters.loc['osm_data']['value'])
-osm_prefix = 'osm_{}'.format(df_parameters.loc['osm_date']['value'])
+osm_data = os.path.join(folderPath,df_parameters.loc['osm_data'][locale])
+osm_prefix = 'osm_{}'.format(df_parameters.loc['osm_date'][locale])
 osm_region = '{}_{}.osm'.format(locale,osm_prefix)
 
 # osm_source = df_parameters.loc['osm_source']
 # osm_source = D:/ntnl_li_2018_template/data/study_region/bangkok/bangkok_thailand_2016_10000m_20181001.osm
 osm_source = os.path.join(folderPath,'study_region',locale,'{}_{}.osm'.format(buffered_study_region,osm_prefix))
-osmnx_retain_all = df_parameters.loc['osmnx_retain_all']['value']
+osmnx_retain_all = df_parameters.loc['osmnx_retain_all'][locale]
 # define pedestrian network custom filter (based on OSMnx 'walk' network type, without the cycling exclusion)
 pedestrian = (
              '["area"!~"yes"]' 
@@ -211,87 +219,87 @@ grant_query = '''GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA pu
                  GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO {0};'''.format(db_user)
 
 # Region set up
-areas_of_interest = [int(x) for x in df_parameters.loc['regions_of_interest']['value'].split(',')]
+areas_of_interest = [int(x) for x in df_parameters.loc['regions_of_interest'][locale].split(',')]
 areas = {}
 for area in areas_of_interest + ['urban']:
   prefix = area
   if type(area) is int:
     prefix = 'region{}'.format(area)
-  if df_parameters.loc['{}_data'.format(prefix)]['value'] != '':
+  if df_parameters.loc['{}_data'.format(prefix)][locale] != '':
     areas[area] = {}
     for field in ['data','name','id']:
       if field=='data':
         # join with data path prefix
-        areas[area][field] = os.path.join(folderPath,df_parameters.loc['{}_{}'.format(prefix,field)]['value'])
+        areas[area][field] = os.path.join(folderPath,df_parameters.loc['{}_{}'.format(prefix,field)][locale])
         areas[area]['table'] = os.path.splitext(os.path.basename(areas[area]['data']))[0].lower()
       elif field=='name': 
         # split into full (f) and short (s) lower case versions; latter is safe for database use
-        areas[area]['name_f'] = df_parameters.loc['{}_name'.format(prefix)]['value'].split(',')[0]
-        if len(df_parameters.loc['{}_name'.format(prefix)]['value'].split(',')) > 1:
-          areas[area]['name_s'] = df_parameters.loc['{}_name'.format(prefix)]['value'].split(',')[1].lower()
+        areas[area]['name_f'] = df_parameters.loc['{}_name'.format(prefix)][locale].split(',')[0]
+        if len(df_parameters.loc['{}_name'.format(prefix)][locale].split(',')) > 1:
+          areas[area]['name_s'] = df_parameters.loc['{}_name'.format(prefix)][locale].split(',')[1].lower()
         else:
           areas[area]['name_s'] = areas[area]['name_f'].lower()
       else:
-        areas[area][field] = df_parameters.loc['{}_{}'.format(prefix,field)]['value']
+        areas[area][field] = df_parameters.loc['{}_{}'.format(prefix,field)][locale]
 
-area_filter = df_parameters.loc['area_filter_field']['value']
-area_filter_field = df_parameters.loc['area_filter_field']['value']
-area_filter_value = df_parameters.loc['area_filter_value']['value']
+area_filter = df_parameters.loc['area_filter_field'][locale]
+area_filter_field = df_parameters.loc['area_filter_field'][locale]
+area_filter_value = df_parameters.loc['area_filter_value'][locale]
 
 # Point data locations used for sampling
 # Note that the process assumes we have already transformed points to the project's spatial reference
 # Point data locations (e.g. GNAF address point features)
 points = 'sample_points'
-points_id = df_parameters.loc['points_id']['value']
+points_id = df_parameters.loc['points_id'][locale]
 
 # roads
 # Define network data name structures
-# road_data = df_parameters.loc['road_data']['value']  # the folder where road data is kept
+# road_data = df_parameters.loc['road_data'][locale]  # the folder where road data is kept
 network_folder = 'osm_{}_epsg{}_pedestrian_{}'.format(buffered_study_region,srid,osm_prefix)
 network_source = os.path.join(locale_dir,network_folder)
-network_edges = df_parameters.loc['network_edges']['value']
-network_junctions = df_parameters.loc['network_junctions']['value']
+network_edges = df_parameters.loc['network_edges'][locale]
+network_junctions = df_parameters.loc['network_junctions'][locale]
 
 # network
 # sausage buffer network size  -- in units specified above
-distance = df_parameters.loc['distance']['value']
+distance = df_parameters.loc['distance'][locale]
 
 # intersection tolerance
-intersection_tolerance = df_parameters.loc['intersection_tolerance']['value']
+intersection_tolerance = df_parameters.loc['intersection_tolerance'][locale]
 
 # search tolderance (in units specified above; features outside tolerance not located when adding locations)
 # NOTE: may need to increase if no locations are found
-tolerance = df_parameters.loc['tolerance']['value']
+tolerance = df_parameters.loc['tolerance'][locale]
  
 # buffer distance for network lines as sausage buffer  
-line_buffer = df_parameters.loc['line_buffer']['value']
+line_buffer = df_parameters.loc['line_buffer'][locale]
 
 # Threshold paramaters
-soft_threshold_slope = df_parameters.loc['soft_threshold_slope']['value']
+soft_threshold_slope = df_parameters.loc['soft_threshold_slope'][locale]
 
 # Island exceptions are defined using ABS constructs in the project configuration file.
 # They identify contexts where null indicator values are expected to be legitimate due to true network isolation, 
 # not connectivity errors. 
 # For example, for Rottnest Island in Western Australia: sa1_maincode IN ('50702116525')
-island_exception = df_parameters.loc['island_exception']['value']
+island_exception = df_parameters.loc['island_exception'][locale]
 
 # Sausage buffer run parameters
 # If you experience 'no forward edges' issues, change this value to 1
 # this means that for *subsequently processed* buffers, it will use 
 # an ST_SnapToGrid parameter of 0.01 instead of 0.001
 ## The first pass should use 0.001, however.
-no_foward_edge_issues = df_parameters.loc['no_forward_edge_issues']['value']
+no_foward_edge_issues = df_parameters.loc['no_forward_edge_issues'][locale]
 snap_to_grid = 0.001
 if no_foward_edge_issues == 1:
   snap_to_grid = 0.01
 
 # Areas of Open Space
-aos_threshold = df_parameters.loc['aos_threshold']['value']
+aos_threshold = df_parameters.loc['aos_threshold'][locale]
     
 # Destinations - locate destinations.gdb within dest_dir (ie. 'D:\ntnl_li_2018\data\destinations\' or whereever your ntnl_li_2018 folder is located)
 # Destinations data directory
-dest_dir = os.path.join(folderPath,df_parameters.loc['dest_dir']['value'])
-destination_id = df_parameters.loc['destination_id']['value']
+dest_dir = os.path.join(folderPath,df_parameters.loc['dest_dir'][locale])
+destination_id = df_parameters.loc['destination_id'][locale]
 
 study_destinations = 'study_destinations'
 

@@ -8,7 +8,7 @@ import time
 # import getpass
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
-# Import custom variables for National Liveability indicator process
+# Import project configuration file
 from _project_setup import *
 
 # simple timer for log file

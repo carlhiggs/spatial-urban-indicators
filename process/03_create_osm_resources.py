@@ -158,6 +158,7 @@ command = '''../../osmosis/bin/osmosis \
 print(command)
 sp.call(command, shell=True)  
 print("Done.\n")
+
 print("Get networks and save as graphs.")
 if osmnx_retain_all == 'False':
     osmnx_retain_all = False
@@ -189,31 +190,31 @@ else:
   # # load buffered study region in EPSG4326 from postgis
   # polygon =  gpd.GeoDataFrame.from_postgis("buffered_study_region_map", engine, geom_col='geom' )['geom'][0]
   print('Creating and saving all roads network... '),
-  W = ox.graph_from_file(filename='{dir}/routable_all_{osm}'.format(dir = region_dir, 
+  W = graph_from_file_modified(filename='{dir}/routable_all_{osm}'.format(dir = region_dir, 
                                                                     osm = osm_region),
                                                                     retain_all = osmnx_retain_all)
   ox.save_graphml(W, 
-     filename=os.path.join(region_dir,
+     filename=os.path.join('..',region_dir,
                            '{studyregion}_all_{osm_prefix}.graphml'.format(studyregion = buffered_study_region,
                            osm_prefix = osm_prefix)), 
      folder=None, 
      gephi=False)
   ox.save_graph_shapefile(W, 
-     filename=os.path.join(region_dir,
+     filename=os.path.join('..',region_dir,
                            '{studyregion}_all_{osm_prefix}'.format(studyregion = buffered_study_region,
                                                                        osm_prefix = osm_prefix)))
   print('Done.')
   print('Creating and saving pedestrian roads network... '),
-  W = ox.graph_from_file(filename='{dir}/routable_pedestrian_{osm}'.format(dir = region_dir, 
+  W = graph_from_file_modified(filename='{dir}/routable_pedestrian_{osm}'.format(dir = region_dir, 
                                                                     osm = osm_region),
                                                                     retain_all = osmnx_retain_all)
-  ox.save_graphml(W, filename=os.path.join(region_dir,
-      '{studyregion}_pedestrian_{osm_prefix}.graphml'.format(studyregion = buffered_study_region,
+  ox.save_graphml(W, filename=os.path.join('..',region_dir,
+      '{studyregion}_pedestrian_{osm_prefix}_unsimplified.graphml'.format(studyregion = buffered_study_region,
                                                             osm_prefix = osm_prefix)), 
       folder=None, 
       gephi=False)
   ox.save_graph_shapefile(W, 
-      filename=os.path.join(region_dir,
+      filename=os.path.join('..',region_dir,
       '{studyregion}_pedestrian_{osm_prefix}'.format(studyregion = filename,
                                                     osm_prefix = osm_prefix)))
   print('Done.')                                                            

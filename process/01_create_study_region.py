@@ -75,7 +75,7 @@ CREATE TABLE {buffered_study_region} AS
 # Prepare map
 engine.execute('''
 CREATE TABLE IF NOT EXISTS study_region_map AS
-SELECT 'Bangkok' AS "Description",
+SELECT '{full_locale}' AS "Description",
        ST_Transform(geom,4326) geom 
 FROM {study_region};
 
@@ -88,7 +88,8 @@ CREATE TABLE IF NOT EXISTS subdistricts_map AS
 SELECT "{subdistricts_id}" As "Subdistrict",
        ST_Transform(geom,4326) geom 
 FROM {subdistricts};
-'''.format(study_region=study_region,
+'''.format(full_locale = full_locale,
+        study_region=study_region,
         buffered_study_region= buffered_study_region,
         subdistricts_id = areas[0]['id'],
         subdistricts = areas[0]['name_s']))
@@ -127,7 +128,7 @@ folium.LayerControl(collapsed=False).add_to(m)
 
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
-map_name = '01_study_region.html'
+map_name = '{}_01_study_region.html'.format(locale)
 m.save('../maps/{}'.format(map_name))
 print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))
 # output to completion log					
