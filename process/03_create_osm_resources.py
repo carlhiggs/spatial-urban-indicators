@@ -59,8 +59,7 @@ print("Done.")
 print("Extract OSM for studyregion"),
 if os.path.isfile('{}/{}'.format(region_dir,osm_region)):
   print('...\r\n.osm file "{}/{}" already exists'.format(region_dir,osm_region))
-
-if not os.path.isfile('{}/{}'.format(region_dir,osm_region)):
+else:
   print(" using command:")
   command = (
              '../../osmosis/bin/osmosis --read-pbf file="{osm_data}"' 
@@ -93,70 +92,72 @@ if res is None:
     print(command)
     sp.call(command, shell=True)                           
     print("Done.")
+    
+    required_fields_list = df_osm["required_tags"].dropna().tolist()
+    
+    for shape in ['line','point','polygon','roads']:
+        # Define tags for which presence of values is suggestive of some kind of open space 
+        # These are defined in the _project_configuration worksheet 'open_space_defs' under the 'required_tags' column.
+        required_tags = '\n'.join([(
+            'ALTER TABLE {prefix}_{shape} ADD COLUMN IF NOT EXISTS "{field}" varchar;'
+            ).format(prefix = osm_prefix,
+                    shape = shape, 
+                    field = x) for x in required_fields_list]
+            )
+        sql = ['''
+        -- Add geom column to polygon table, appropriately transformed to project spatial reference system
+        ALTER TABLE {osm_prefix}_{shape} ADD COLUMN geom geometry; 
+        UPDATE {osm_prefix}_{shape} SET geom = ST_Transform(way,{srid}); 
+        CREATE INDEX {osm_prefix}_{shape}_idx ON {osm_prefix}_{shape} USING GIST (geom);
+        '''.format(osm_prefix = osm_prefix, shape = shape,srid=srid),
+        '''
+        -- Add other columns which are important if they exists, but not important if they don't
+        -- --- except that there presence is required for ease of accurate querying.
+        {}'''.format(required_tags)]
+        for query in sql:
+            start = time.time()
+            print("\nExecuting: {}".format(query))
+            curs.execute(query)
+            conn.commit()
+            print("Executed in {} mins".format((time.time()-start)/60))
+        
+    curs.execute(grant_query)
+    conn.commit()    
 else:
     print("It appears that OSM data has already been imported for this region.")
-
-# connect to the PostgreSQL server and ensure privileges are granted for all public tables
-curs.execute(grant_query)
-conn.commit()
-
-required_fields_list = df_osm["required_tags"].dropna().tolist()
-
-for shape in ['line','point','polygon','roads']:
-  # Define tags for which presence of values is suggestive of some kind of open space 
-  # These are defined in the _project_configuration worksheet 'open_space_defs' under the 'required_tags' column.
-  required_tags = '\n'.join([(
-    'ALTER TABLE {prefix}_{shape} ADD COLUMN IF NOT EXISTS "{field}" varchar;'
-    ).format(prefix = osm_prefix,
-             shape = shape, 
-             field = x) for x in required_fields_list]
-    )
-  sql = ['''
-  -- Add geom column to polygon table, appropriately transformed to project spatial reference system
-  ALTER TABLE {osm_prefix}_{shape} ADD COLUMN geom geometry; 
-  UPDATE {osm_prefix}_{shape} SET geom = ST_Transform(way,{srid}); 
-  CREATE INDEX {osm_prefix}_{shape}_idx ON {osm_prefix}_{shape} USING GIST (geom);
-  '''.format(osm_prefix = osm_prefix, shape = shape,srid=srid),
-  '''
-  -- Add other columns which are important if they exists, but not important if they don't
-  -- --- except that there presence is required for ease of accurate querying.
-  {}'''.format(required_tags)]
-  for query in sql:
-    start = time.time()
-    print("\nExecuting: {}".format(query))
-    curs.execute(query)
-    conn.commit()
-    print("Executed in {} mins".format((time.time()-start)/60))
-
-curs.execute(grant_query)
-conn.commit()    
-
+    
 print("Create filtered networks using Osmosis")
 print("  -- all highways")
-command = '''
-../../osmosis/bin/osmosis \
---read-xml {dir}/{osm} \
---tf accept-ways highway=* \
---tf reject-relations \
---used-node \
---write-xml {dir}/routable_all_{osm}
-'''.format(dir = region_dir, osm = osm_region)
-print(command)
-sp.call(command, shell=True)  
+if os.path.isfile('{}/routable_all_{}'.format(region_dir,osm_region)):
+  print('...\r\n.osm file "{}/routable_all_{}" already exists'.format(region_dir,osm_region))
+else:
+    command = '''
+    ../../osmosis/bin/osmosis \
+    --read-xml {dir}/{osm} \
+    --tf accept-ways highway=* \
+    --tf reject-relations \
+    --used-node \
+    --write-xml {dir}/routable_all_{osm}
+    '''.format(dir = region_dir, osm = osm_region)
+    print(command)
+    sp.call(command, shell=True)  
 print("  -- pedestrian ways")
-command = '''../../osmosis/bin/osmosis \
---read-xml {dir}/routable_all_{osm} \
---tf accept-ways highway=* \
---tf reject-ways highway=motorway,motor,proposed,construction,abandoned,platform,raceway \
---tf reject-ways foot=no \
---tf reject-ways service=private \
---tf reject-ways access=private \
---tf reject-relations \
---used-node \
---write-xml {dir}/routable_pedestrian_{osm}
-'''.format(dir = region_dir, osm = osm_region)
-print(command)
-sp.call(command, shell=True)  
+if os.path.isfile('{}/routable_pedestrian_{}'.format(region_dir,osm_region)):
+  print('...\r\n.osm file "{}/routable_pedestrian_{}" already exists'.format(region_dir,osm_region))
+else:
+    command = '''../../osmosis/bin/osmosis \
+    --read-xml {dir}/routable_all_{osm} \
+    --tf accept-ways highway=* \
+    --tf reject-ways highway=motorway,motor,proposed,construction,abandoned,platform,raceway \
+    --tf reject-ways foot=no \
+    --tf reject-ways service=private \
+    --tf reject-ways access=private \
+    --tf reject-relations \
+    --used-node \
+    --write-xml {dir}/routable_pedestrian_{osm}
+    '''.format(dir = region_dir, osm = osm_region)
+    print(command)
+    sp.call(command, shell=True)  
 print("Done.\n")
 
 print("Get networks and save as graphs.")
@@ -190,7 +191,7 @@ else:
   # # load buffered study region in EPSG4326 from postgis
   # polygon =  gpd.GeoDataFrame.from_postgis("buffered_study_region_map", engine, geom_col='geom' )['geom'][0]
   print('Creating and saving all roads network... '),
-  W = graph_from_file_modified(filename='{dir}/routable_all_{osm}'.format(dir = region_dir, 
+  W = ox.graph_from_file(filename='{dir}/routable_all_{osm}'.format(dir = region_dir, 
                                                                     osm = osm_region),
                                                                     retain_all = osmnx_retain_all)
   ox.save_graphml(W, 
@@ -205,7 +206,8 @@ else:
                                                                        osm_prefix = osm_prefix)))
   print('Done.')
   print('Creating and saving pedestrian roads network... '),
-  W = graph_from_file_modified(filename='{dir}/routable_pedestrian_{osm}'.format(dir = region_dir, 
+  W = ox.graph_from_file(filename='{dir}/routable_pedestrian_{osm}'.format(dir = region_dir, 
+  W = ox.graph_from_file(filename='{dir}/routable_pedestrian_{osm}'.format(dir = region_dir, 
                                                                     osm = osm_region),
                                                                     retain_all = osmnx_retain_all)
   ox.save_graphml(W, filename=os.path.join('..',region_dir,
