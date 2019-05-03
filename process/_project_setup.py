@@ -264,6 +264,7 @@ distance = df_parameters.loc['distance'][locale]
 
 # intersection tolerance
 intersection_tolerance = df_parameters.loc['intersection_tolerance'][locale]
+intersections_table = "clean_intersections_{}m".format(intersection_tolerance)
 
 # search tolderance (in units specified above; features outside tolerance not located when adding locations)
 # NOTE: may need to increase if no locations are found

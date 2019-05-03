@@ -20,7 +20,7 @@ task = 'create destination indicator tables'
 
 region_dir = '../data/study_region/{}/'.format(locale)
 
-conn = psycopg2.connect(database=db, user=db_user, password=db_pwd)
+conn = psycopg2.connect(database=db, user=db_user, password=db_pwd, host=db_host,port=db_port)
 curs = conn.cursor()
 
 # create polygon boundary .poly file for extracting OSM             
