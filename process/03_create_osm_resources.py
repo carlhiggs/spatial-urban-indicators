@@ -19,7 +19,6 @@ from geoalchemy2 import Geometry, WKTElement
 from script_running_log import script_running_log
 # Import custom variables for National Liveability indicator process
 from _project_setup import *
-from osmnx_additional_custom_functions import *
 
 # simple timer for log file
 start = time.time()
@@ -155,7 +154,7 @@ if os.path.isfile(os.path.join(region_dir,
 else:
   subtime = datetime.now()
   # # load buffered study region in EPSG4326 from postgis
-  # polygon =  gpd.GeoDataFrame.from_postgis("buffered_study_region_map", engine, geom_col='geom' )['geom'][0]
+  polygon =  gpd.GeoDataFrame.from_postgis("buffered_study_region_map", engine, geom_col='geom' )['geom'][0]
   print('Creating and saving all roads network... '),
   W = ox.graph_from_polygon(polygon,  network_type= 'all', retain_all = retain_all)
   ox.save_graphml(W, 
