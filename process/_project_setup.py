@@ -197,7 +197,8 @@ os.environ['PGPASSWORD'] = db_pwd
 os.environ['PGDATABASE'] = db
 
 osm_data = os.path.join(folderPath,df_parameters.loc['osm_data'][locale])
-osm_prefix = 'osm_{}'.format(df_parameters.loc['osm_date'][locale])
+osm_date = '{}'.format(df_parameters.loc['osm_date'][locale])
+osm_prefix = 'osm_{}'.format(osm_date)
 osm_region = '{}_{}.osm'.format(locale,osm_prefix)
 
 # osm_source = df_parameters.loc['osm_source']

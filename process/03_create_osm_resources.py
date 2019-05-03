@@ -112,7 +112,7 @@ if res is None:
     conn.commit()    
 else:
     print("It appears that OSM data has already been imported for this region.")
-
+    
 script_running_log(script, task, start)
 
 # clean up

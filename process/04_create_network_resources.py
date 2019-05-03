@@ -16,6 +16,11 @@ from shapely.geometry import shape, MultiPolygon, Polygon
 import geopandas as gpd
 from sqlalchemy import create_engine
 from geoalchemy2 import Geometry, WKTElement
+
+import folium
+from folium.plugins import MarkerCluster
+from folium.plugins import FastMarkerCluster
+
 from script_running_log import script_running_log
 # Import custom variables for National Liveability indicator process
 from _project_setup import *
@@ -90,7 +95,7 @@ else:
       folder = region_dir)
   print('Done.')  
   
-print("Copy the network edges and nodes from shapefiles to postgis..."),
+print("Copy the network edges and nodes from shapefiles to Postgis..."),
 curs.execute('''SELECT 1 WHERE to_regclass('public.edges') IS NOT NULL AND to_regclass('public.nodes') IS NOT NULL;''')
 res = curs.fetchone()
 if res is None:
@@ -114,15 +119,14 @@ if res is None:
         sp.call(command, shell=True)
     print("Done (although, if it didn't work you can use the printed command above to do it manually)")  
 else:
-    print("It appears that clean intersection data has already been prepared and imported for this region.")  
+    print("  - It appears that pedestrian network edges and nodes have already been exported to Postgis.")  
 
-# Copy network to postgis
+# Copy clean intersections to postgis
+print("Prepare and copy clean intersections to postgis... ")
 curs.execute('''SELECT 1 WHERE to_regclass('public.{}') IS NOT NULL;'''.format(intersections_table))
 res = curs.fetchone()
 if res is None:
-    
     # Clean intersections
-    print("Prepare cleaned intersections... "),
     
     G_proj = ox.project_graph(W)
     intersections = ox.clean_intersections(G_proj, tolerance=intersection_tolerance, dead_ends=False)
@@ -145,10 +149,87 @@ if res is None:
             points = ', '.join(["(ST_GeometryFromText('{}',4326))".format(x.wkt) for x in intersections_latlon]),
             srid = srid)  
     conn.execute(statement)      
-    print("Done.")
+    print("  - Done.")
 else:
-    print("It appears that clean intersection data has already been prepared and imported for this region.")  
+    print("  - It appears that clean intersection data has already been prepared and imported for this region.")  
 
+# get map data
+map_layers={}
+
+sql = '''
+SELECT '10km study region buffer' AS "Description",
+       ST_Transform(geom,4326) geom 
+FROM {}
+'''.format(buffered_study_region)
+map_layers['buffer'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
+
+population_field = 'Population ({} estimate)'.format(population_target)
+sql = '''
+SELECT "ADM3_TH"||' ('||"{id}"||')' As "Subdistrict",
+       TO_CHAR(population, '999,999') "{population_field}",
+       ST_Transform(geom,4326) geom 
+FROM {table}
+'''.format(id = areas[0]['id'],table = areas[0]['name_s'], population_field=population_field)
+map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
+
+sql = '''
+SELECT ST_Transform(geom,4326) geom
+FROM {table};
+'''.format(table = intersections_table) 
+map_layers['intersections'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
+
+sql = '''
+SELECT ST_Transform(geom,4326) geom
+FROM {table};
+'''.format(table = 'edges') 
+map_layers['edges'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
+
+xy = [float(map_layers['buffer'].centroid.y),float(map_layers['buffer'].centroid.x)]  
+bounds = map_layers['buffer'].bounds.transpose().to_dict()[0]
+
+# initialise map
+m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
+m.add_tile_layer(tiles='Stamen Toner',name='simple map', overlay=True,active=True)
+# add layers (not true choropleth - for this it is just a convenient way to colour polygons)
+buffer = folium.Choropleth(map_layers['buffer'].to_json(),
+                           name='10km study region buffer',
+                           fill_color=colours['qualitative'][1],
+                           fill_opacity=0,
+                           line_color=colours['qualitative'][1], 
+                           highlight=False).add_to(m)
+
+feature = folium.Choropleth(map_layers[areas[0]['name_s']].to_json(),
+                            name=str.title(areas[0]['name_f']),
+                            fill_opacity=0,
+                            line_color=colours['qualitative'][0], 
+                            highlight=False).add_to(m)
+                            
+folium.features.GeoJsonTooltip(fields=['Subdistrict',population_field],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(feature.geojson)
+                              
+# add clustered markers for intersections
+locations = list(zip(map_layers['intersections'].centroid.y, map_layers['intersections'].centroid.x))
+# cluster = folium.MarkerCluster(locations=locations, icons=icons, popups=popups)
+# m.add_child(cluster)
+
+callback = ('function (row) {' 
+            'var circle = L.circle(new L.LatLng(row[0], row[1],{color: "red", radius: 20000}));'
+            'return circle'
+            '};')
+m.add_child(FastMarkerCluster(locations, 
+                              callback=callback, 
+                              name = 'intersections (cleaned; OSM, {year})'.format(year = osm_date[0:4])))
+folium.PolyLine(map_layers['edges'].loc[0,'geom'].coords[:]).add_to(m)  
+folium.LayerControl(collapsed=True).add_to(m)
+
+# checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
+# save map
+map_name = '{}_04_network.html'.format(locale)
+m.save('../maps/{}'.format(map_name))
+print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))          
+    
 script_running_log(script, task, start)
 
 # clean up

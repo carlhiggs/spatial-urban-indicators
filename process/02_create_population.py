@@ -6,6 +6,7 @@ import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
 import folium
 from folium import plugins
+import branca
 from sqlalchemy import create_engine
 import numpy as np
 import json
@@ -99,13 +100,15 @@ FROM {}
 '''.format(buffered_study_region)
 map_layers['buffer'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
 
-population_field = 'Population (2020 estimate)'
+population_field = 'Population ({} estimate)'.format(population_target)
 sql = '''
 SELECT "ADM3_TH"||' ('||"{id}"||')' As "Subdistrict",
        TO_CHAR(population, '999,999') "{population_field}",
+       population,
+       ROUND((population/(ST_Area(geom)/10000.0))::numeric,2) "{population_field} per hectare",
        ST_Transform(geom,4326) geom 
 FROM {table}
-'''.format(id = 'ADM3_EN',table = areas[0]['name_s'], population_field=population_field)
+'''.format(id = areas[0]['id'],table = areas[0]['name_s'], population_field=population_field)
 map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
 
 # load up the reprojected raster
@@ -119,8 +122,9 @@ bounds = map_layers['buffer'].bounds.transpose().to_dict()[0]
 
 # initialise map
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='simple map', overlay=True,active=True)
+m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
 # add layers (not true choropleth - for this it is just a convenient way to colour polygons)
+
 buffer = folium.Choropleth(map_layers['buffer'].to_json(),
                            name='10km study region buffer',
                            fill_color=colours['qualitative'][1],
@@ -128,30 +132,90 @@ buffer = folium.Choropleth(map_layers['buffer'].to_json(),
                            line_color=colours['qualitative'][1], 
                            highlight=False).add_to(m)
 
-feature = folium.Choropleth(map_layers[areas[0]['name_s']].to_json(),
-                            name=str.title(areas[0]['name_f']),
-                            fill_opacity=0,
-                            line_color=colours['qualitative'][0], 
-                            highlight=False).add_to(m)
+bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+population_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
+                  geo_data =map_layers[areas[0]['name_s']].to_json(),
+                  name = population_field,
+                  columns =['Subdistrict','population'],
+                  key_on='feature.properties.Subdistrict',
+                  fill_color='YlGn',
+                  fill_opacity=0.7,
+                  line_opacity=0.2,
+                  legend_name=population_field,
+                  # bins=bins,
+                  reset=True,
+                  overlay = True,
+                  show=True
+                  ).add_to(m)
                             
 folium.features.GeoJsonTooltip(fields=['Subdistrict',population_field],
                                labels=True, 
                                sticky=True
-                              ).add_to(feature.geojson)
-
+                              ).add_to(population_layer.geojson)                          
+                              
 m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0], 
                                  name='Poplulation per pixel (WorldPop predicted model: {}, UN adjusted)'.format(population_target),
                                  opacity=.7,
                                  bounds=[[bounds['miny'],bounds['minx']], 
                                          [bounds['maxy'], bounds['maxx']]],
-                                 colormap=lambda x: (1, 0, x, x),#R,G,B,alpha
-                                 ))
-
+                                 colormap=lambda x: (1, 0, x, x),#R,G,B,alpha,
+                                 overlay=True
+                                 ))                              
+                              
 folium.LayerControl(collapsed=True).add_to(m)
 
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
-map_name = '{}_02_population.html'.format(locale)
+map_name = '{}_02_population_{}.html'.format(locale,population_target)
+m.save('../maps/{}'.format(map_name))
+
+# initialise map
+m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
+m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
+# add layers (not true choropleth - for this it is just a convenient way to colour polygons)
+
+buffer = folium.Choropleth(map_layers['buffer'].to_json(),
+                           name='10km study region buffer',
+                           fill_color=colours['qualitative'][1],
+                           fill_opacity=0,
+                           line_color=colours['qualitative'][1], 
+                           highlight=False).add_to(m)
+
+bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+
+density_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
+                  geo_data =map_layers[areas[0]['name_s']].to_json(),
+                  name = '{} per hectare'.format(population_field),
+                  columns =['Subdistrict','{} per hectare'.format(population_field)],
+                  key_on='feature.properties.Subdistrict',
+                  fill_color='YlGn',
+                  fill_opacity=0.7,
+                  line_opacity=0.2,
+                  legend_name='{} per hectare'.format(population_field),
+                  # bins=bins,
+                  reset=True,
+                  overlay = True,
+                  ).add_to(m)
+                            
+folium.features.GeoJsonTooltip(fields=['Subdistrict','{} per hectare'.format(population_field)],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(density_layer.geojson)                              
+                              
+m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0], 
+                                 name='Poplulation per pixel (WorldPop predicted model: {}, UN adjusted)'.format(population_target),
+                                 opacity=.7,
+                                 bounds=[[bounds['miny'],bounds['minx']], 
+                                         [bounds['maxy'], bounds['maxx']]],
+                                 colormap=lambda x: (1, 0, x, x),#R,G,B,alpha,
+                                 overlay=True
+                                 ))                              
+                              
+folium.LayerControl(collapsed=True).add_to(m)
+
+# checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
+# save map
+map_name = '{}_02_population_density_{}.html'.format(locale,population_target)
 m.save('../maps/{}'.format(map_name))
 print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))              
  
