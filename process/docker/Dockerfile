@@ -74,7 +74,14 @@ RUN conda config --set show_channel_urls true                                   
  && conda info --all                                                                                 \
  && conda list
 
+USER root 
+RUN locale-gen en_AU.UTF-8 
+ENV LC_ALL=en_AU.UTF-8  
+ENV LANG=en_AU.UTF-8   
+ENV LANGUAGE=en_AU.UTF-8
+
 # launch notebook in the local working directory that we mount
+USER $NB_UID 
 WORKDIR /home/jovyan/work
 
 # set default command to launch when container is run

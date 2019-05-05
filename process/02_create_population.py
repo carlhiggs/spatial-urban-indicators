@@ -57,58 +57,70 @@ reproject_raster(inpath = population_raster_clipped,
 # Load up the clipped and projected raster population
 raster_pop = rasterio.open(population_raster_projected)    
 nodata = raster_pop.nodata
-# ... and the subdistricts 
-subdistricts = gpd.GeoDataFrame.from_postgis(areas[0]['name_s'],
-                                             engine, 
-                                             geom_col='geom', 
-                                             index_col=areas[0]['id'])
 
-area_json = [json.loads(subdistricts.to_json())['features']][0]
-
-# create null field for population values
-subdistricts['population'] = np.nan    
-subdistricts['population'].astype('Int64', inplace=True)
-# associate subdistricts with aggregate population estimates
-pop = 0
-for area in area_json:
-    area_name = area['id']
-    subraster, bounds = mask(dataset = raster_pop, 
-                             shapes  = [area['geometry']],
-                             nodata = nodata)
-    area_pop = int(np.sum(subraster[subraster>nodata]))
-    # print('{}: {}'.format(area_name,area_pop))
-    pop += area_pop
-    subdistricts.loc[area_name,'population'] = area_pop
-# Replace subdistricts table in project Postgis database
-# Create WKT geometry (postgis won't read shapely geometry)
-subdistricts['geom'] = subdistricts['geom'].apply(lambda x: WKTElement(x.wkt, srid=srid))
-subdistricts.to_sql(areas[0]['name_s'], 
-                    engine, 
-                    if_exists='replace', 
-                    index=True,
-                    dtype={'geom': Geometry('POLYGON', srid=srid)})
+# ... and the areas in this region
+for admin_area in areas: 
+    analysis_area = gpd.GeoDataFrame.from_postgis('''SELECT "{}",geom FROM {}'''.format(areas[admin_area]['id'],
+                                                                                      areas[admin_area]['name_s']),
+                                                engine, 
+                                                geom_col='geom', 
+                                                index_col=areas[admin_area]['id'])
+    
+    area_json = [json.loads(analysis_area.to_json())['features']][0]
+    
+    # create null field for population values
+    analysis_area['population'] = np.nan    
+    analysis_area['population'].astype('Int64', inplace=True)
+    # associate analysis_area with aggregate population estimates
+    pop = 0
+    for area in area_json:
+        area_name = area['id']
+        subraster, bounds = mask(dataset = raster_pop, 
+                                shapes  = [area['geometry']],
+                                nodata = nodata)
+        area_pop = int(np.sum(subraster[subraster>nodata]))
+        # print('{}: {}'.format(area_name,area_pop))
+        pop += area_pop
+        analysis_area.loc[area_name,'population'] = area_pop
+    # create temp table for re-linkage of indicator with area back in postgis
+    analysis_area['population'].to_sql('temp', 
+                         engine, 
+                         if_exists='replace', 
+                         index=True)
+    
+    engine.execute('''
+    ALTER TABLE {table} ADD COLUMN IF NOT EXISTS "population" int;
+    ALTER TABLE {table} ADD COLUMN IF NOT EXISTS "{population_field}" text;
+    ALTER TABLE {table} ADD COLUMN IF NOT EXISTS "{population_field} per hectare" double precision;
+    UPDATE {table} a
+        SET 
+            population = temp.population,
+            "{population_field}" = TO_CHAR(temp.population, '999,999'),
+            "{population_field} per hectare" = (temp.population/area_ha)::double precision
+        FROM temp 
+        WHERE a."{id}" = temp."{id}";
+    '''.format(table = areas[admin_area]['name_s'],
+               id = areas[admin_area]['id'],
+               population_field = population_field))
+               
 print('Estimated population for {} study region in {}'
       ' based on UN adjusted WorldPop data is {:,}.'.format(full_locale,population_target,pop))
-           
+
 # get map data
 map_layers={}
 
-sql = '''
-SELECT '10km study region buffer' AS "Description",
-       ST_Transform(geom,4326) geom 
-FROM {}
-'''.format(buffered_study_region)
+sql = '''SELECT "Description", geom_4326 geom FROM {}'''.format(buffered_study_region)
 map_layers['buffer'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
 
-population_field = 'Population ({} estimate)'.format(population_target)
 sql = '''
-SELECT "ADM3_TH"||' ('||"{id}"||')' As "Subdistrict",
-       TO_CHAR(population, '999,999') "{population_field}",
+SELECT "{id}",
+       "{analysis_field}",
        population,
-       ROUND((population/(ST_Area(geom)/10000.0))::numeric,2) "{population_field} per hectare",
-       ST_Transform(geom,4326) geom 
+       "{population_field}",
+       ROUND("{population_field} per hectare"::numeric,2) "{population_field} per hectare",
+       geom_4326 geom
 FROM {table}
-'''.format(id = areas[0]['id'],table = areas[0]['name_s'], population_field=population_field)
+'''.format(id =areas[0]['id'],analysis_field = analysis_field,table = area_analysis, population_field=population_field)
 map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
 
 # load up the reprojected raster
@@ -136,8 +148,8 @@ bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5,
 population_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
                   geo_data =map_layers[areas[0]['name_s']].to_json(),
                   name = population_field,
-                  columns =['Subdistrict','population'],
-                  key_on='feature.properties.Subdistrict',
+                  columns =[areas[0]['id'],'population'],
+                  key_on="feature.properties.{}".format(areas[0]['id']),
                   fill_color='YlGn',
                   fill_opacity=0.7,
                   line_opacity=0.2,
@@ -148,7 +160,7 @@ population_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
                   show=True
                   ).add_to(m)
                             
-folium.features.GeoJsonTooltip(fields=['Subdistrict',population_field],
+folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],population_field],
                                labels=True, 
                                sticky=True
                               ).add_to(population_layer.geojson)                          
@@ -175,7 +187,7 @@ m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
 # add layers (not true choropleth - for this it is just a convenient way to colour polygons)
 
 buffer = folium.Choropleth(map_layers['buffer'].to_json(),
-                           name='10km study region buffer',
+                           name=buffered_study_region_name,
                            fill_color=colours['qualitative'][1],
                            fill_opacity=0,
                            line_color=colours['qualitative'][1], 
@@ -186,8 +198,8 @@ bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5,
 density_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
                   geo_data =map_layers[areas[0]['name_s']].to_json(),
                   name = '{} per hectare'.format(population_field),
-                  columns =['Subdistrict','{} per hectare'.format(population_field)],
-                  key_on='feature.properties.Subdistrict',
+                  columns =[areas[0]['id'],'{} per hectare'.format(population_field)],
+                  key_on="feature.properties.{}".format(areas[0]['id']),
                   fill_color='YlGn',
                   fill_opacity=0.7,
                   line_opacity=0.2,
@@ -197,7 +209,7 @@ density_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
                   overlay = True,
                   ).add_to(m)
                             
-folium.features.GeoJsonTooltip(fields=['Subdistrict','{} per hectare'.format(population_field)],
+folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],'{} per hectare'.format(population_field)],
                                labels=True, 
                                sticky=True
                               ).add_to(density_layer.geojson)                              

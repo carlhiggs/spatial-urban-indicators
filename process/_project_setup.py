@@ -116,18 +116,19 @@ units_full = df_parameters.loc['units_full'][locale]
 
 # Study region buffer
 study_buffer = df_parameters.loc['study_buffer'][locale]
-buffered_study_region = '{0}_{1}{2}'.format(study_region,study_buffer,units)
+buffered_study_region = '{}_{}{}'.format(study_region,study_buffer,units)
+buffered_study_region_name = df_parameters.loc['buffered_study_region_name'][locale]
 
 # Population
 population_grid   = df_parameters.loc['pop_grid'][locale]
 population_target   = df_parameters.loc['pop_target'][locale]
+population_field = 'Population ({} estimate)'.format(population_target)
 population_raster ={}
 population_raster['data'] = '.{}'.format(df_datasets.loc[population_grid]['data_dir'])
 population_raster['band'] = int(df_datasets.loc[population_grid]['band_if_raster'])
 population_raster['epsg'] = int(df_datasets.loc[population_grid]['epsg'])
 population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',locale,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
 population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',locale,os.path.basename(population_raster['data'])[:-4]),srid)
-
 pop_alt_data = {}
 for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]].index):
     data_type = pop_data.split(':')[1]
@@ -226,7 +227,7 @@ for area in areas_of_interest + ['urban']:
     prefix = 'region{}'.format(area)
   if df_parameters.loc['{}_data'.format(prefix)][locale] != '':
     areas[area] = {}
-    for field in ['data','name','id']:
+    for field in ['data','name','id','display']:
       if field=='data':
         # join with data path prefix
         areas[area][field] = os.path.join(folderPath,df_parameters.loc['{}_{}'.format(prefix,field)][locale])
@@ -238,12 +239,19 @@ for area in areas_of_interest + ['urban']:
           areas[area]['name_s'] = df_parameters.loc['{}_name'.format(prefix)][locale].split(',')[1].lower()
         else:
           areas[area]['name_s'] = areas[area]['name_f'].lower()
+      elif field=='display':
+        if len('{}'.format(df_parameters.loc['{}_display'.format(prefix)][locale])) > 1:
+          areas[area]['display'] = df_parameters.loc['{}_display'.format(prefix)][locale]
+        else:
+          areas[area]['display'] = df_parameters.loc['{}_id'.format(prefix)][locale]
       else:
         areas[area][field] = df_parameters.loc['{}_{}'.format(prefix,field)][locale]
 
 area_filter = df_parameters.loc['area_filter_field'][locale]
 area_filter_field = df_parameters.loc['area_filter_field'][locale]
 area_filter_value = df_parameters.loc['area_filter_value'][locale]
+area_analysis  = areas[df_parameters.loc['analysis_scale'][locale]]['name_s']
+analysis_field = areas[df_parameters.loc['analysis_scale'][locale]]['name_f']
 
 # Point data locations used for sampling
 # Note that the process assumes we have already transformed points to the project's spatial reference

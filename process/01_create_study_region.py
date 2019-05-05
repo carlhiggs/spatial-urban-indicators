@@ -46,15 +46,16 @@ for area in areas:
   gdf.drop('geometry', 1, inplace=True)
   # Copy to project Postgis database
   gdf.to_sql(areas[area]['name_s'], engine, if_exists='replace', index=True, dtype={'geom': Geometry('POLYGON', srid=srid)})
-  print('\t{} {} imported'.format(len(gdf),areas[area]['name_f'])), 
+  print('\t{} {}'.format(len(gdf),areas[area]['name_f'])), 
 
 print("\nCreate analytical boundaries...")
 print("\tCreate study region boundary... ")
 engine.execute('''
 DROP TABLE IF EXISTS {study_region}; 
 CREATE TABLE {study_region} AS 
-      SELECT '{study_region}'::text AS description,
-             geom 
+      SELECT '{study_region}'::text AS "Description",
+            ST_Transform(geom,4326) AS geom_4326,
+            geom 
         FROM {region_shape} 
        WHERE {where};
 '''.format(study_region = study_region,
@@ -65,65 +66,68 @@ print("\tCreate {} km buffered study region... ".format(study_buffer))
 engine.execute('''
 DROP TABLE IF EXISTS {buffered_study_region}; 
 CREATE TABLE {buffered_study_region} AS 
-      SELECT '{study_region} with {buffer} m buffer'::text AS description, 
+      SELECT '{buffered_study_region_name}'::text AS "Description", 
+             ST_Transform(ST_Buffer(geom,{buffer}),4326) AS geom_4326,
              ST_Buffer(geom,{buffer}) AS geom 
         FROM {study_region};
 '''.format(study_region = study_region,
            buffered_study_region = buffered_study_region,
+           buffered_study_region_name = buffered_study_region_name,
            buffer = study_buffer))
-       
+
+print("\tCalculate area in Hectares (Ha) and square kilometres (sqkm) and set up display formats for mapping for each area scale... ".format(study_buffer))           
+for area in areas:
+    engine.execute('''
+    ALTER TABLE {area_analysis} 
+    ADD COLUMN IF NOT EXISTS "{display_name}" text,
+    ADD COLUMN IF NOT EXISTS area_ha double precision,
+    ADD COLUMN IF NOT EXISTS area_sqkm double precision,
+    ADD COLUMN IF NOT EXISTS geom_4326 geometry;
+    UPDATE {area_analysis} 
+    SET "{display_name}" = {display_sql},
+        area_ha   = (ST_Area(geom)/10000.0)::double precision,
+        area_sqkm = (ST_Area(geom)/1000000.0)::double precision,
+        geom_4326 = ST_Transform(geom,4326);
+    '''.format(area_analysis = areas[area]['name_s'],
+               display_name  = areas[area]['name_f'],
+               display_sql   = areas[area]['display'],
+               buffered_study_region = buffered_study_region,
+               buffer = study_buffer))
+print("Done.")
+          
 # Prepare map
-engine.execute('''
-CREATE TABLE IF NOT EXISTS study_region_map AS
-SELECT '{full_locale}' AS "Description",
-       ST_Transform(geom,4326) geom 
-FROM {study_region};
-
-CREATE TABLE IF NOT EXISTS buffered_study_region_map AS 
-SELECT '10km study region buffer' AS "Description",
-       ST_Transform(geom,4326) geom 
-FROM {buffered_study_region};
-
-CREATE TABLE IF NOT EXISTS subdistricts_map AS
-SELECT "{subdistricts_id}" As "Subdistrict",
-       ST_Transform(geom,4326) geom 
-FROM {subdistricts};
-'''.format(full_locale = full_locale,
-        study_region=study_region,
-        buffered_study_region= buffered_study_region,
-        subdistricts_id = areas[0]['id'],
-        subdistricts = areas[0]['name_s']))
-
 map_layers={}
-map_layers['study_region'] = gpd.GeoDataFrame.from_postgis("study_region_map", engine, geom_col='geom' )
-map_layers['buffer'] = gpd.GeoDataFrame.from_postgis("buffered_study_region_map", engine, geom_col='geom' )
-map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis("subdistricts_map", engine, geom_col='geom' )
-# get map centroid from study region
-xy = [float(map_layers['study_region'].centroid.y),float(map_layers['study_region'].centroid.x)]    
+tables    = [study_region,buffered_study_region,area_analysis]
+fields    = ['Description','Description',analysis_field]
+names     =  ['Study region',buffered_study_region_name,analysis_field]
+opacity   =  [0.4,0,.7]
+highlight =  [False,False,True]
+for i in range(0,len(tables)):
+    table = tables[i]
+    field = fields[i]
+    sql = '''SELECT "{}",geom_4326 geom FROM {}'''.format(field,table)
+    map_layers[table] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
 
+# get map centroid from study region
+xy = [float(map_layers[study_region].centroid.y),float(map_layers[study_region].centroid.x)]    
 # initialise map
 m = folium.Map(location=xy, zoom_start=10, control_scale=True, prefer_canvas=True)
 m.add_tile_layer(tiles='Stamen Toner',name='simple map', overlay=True,active=True)
+
 # add layers (not true choropleth - for this it is just a convenient way to colour polygons)
-buffer = folium.Choropleth(map_layers['buffer'].to_json(),name='10km study region buffer',fill_color=colours['qualitative'][1],fill_opacity=0,line_color=colours['qualitative'][1], highlight=True).add_to(m)
-folium.features.GeoJsonTooltip(fields=['Description'],
-                               labels=True, 
-                               sticky=True
-                              ).add_to(buffer.geojson)
-
-
-study_region = folium.Choropleth(map_layers['study_region'].to_json(),name='Study region',fill_color=colours['qualitative'][0],line_color=colours['qualitative'][0], highlight=True).add_to(m)
-folium.features.GeoJsonTooltip(fields=['Description'],
-                               labels=True, 
-                               sticky=True
-                              ).add_to(study_region.geojson)
-
-feature = folium.Choropleth(map_layers[areas[0]['name_s']].to_json(),name=str.title(areas[0]['name_f']), highlight=True).add_to(m)
-folium.features.GeoJsonTooltip(fields=['Subdistrict'],
+map_groups = {}
+for i in range(0,len(tables)):
+    feature = folium.Choropleth(map_layers[tables[i]].to_json(),
+                  name=names[i],
+                  fill_color=colours['qualitative'][i],
+                  fill_opacity=opacity[i],
+                  line_color=colours['qualitative'][i], 
+                  highlight=highlight[i])
+    feature.add_to(m)
+    folium.features.GeoJsonTooltip(fields=[fields[i]],
                                labels=True, 
                                sticky=True
                               ).add_to(feature.geojson)
-
 folium.LayerControl(collapsed=False).add_to(m)
 
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
