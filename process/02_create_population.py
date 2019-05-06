@@ -106,21 +106,66 @@ for admin_area in areas:
 print('Estimated population for {} study region in {}'
       ' based on UN adjusted WorldPop data is {:,}.'.format(full_locale,population_target,pop))
 
-# get map data
+# Calculate "Ratio of community population to district population" 
+# as, the ratio of area level population to larger area levels
+for area in areas:
+    # only process those areas smaller than the largest scale
+    if area < len(areas)-1:
+        other_larger_areas = [a for a in areas if a != area and a > area]
+        for other_area in other_larger_areas:
+            engine.execute('''
+            ALTER TABLE {area} ADD COLUMN IF NOT EXISTS "pop_ratio_{area}_{other_area}" double precision;
+            UPDATE {area} a
+                SET 
+                     "pop_ratio_{area}_{other_area}" = (a.population/(b.population::float)::double precision)
+                FROM {other_area} b
+                WHERE a."{other_area_id}" = b."{other_area_id}";
+            '''.format(area = areas[area]['name_s'],
+                       area_id = areas[area]['id'],
+                       other_area = areas[other_area]['name_s'],
+                       other_area_id = areas[other_area]['id']))
+    
+# Prepare maps
+# checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 map_layers={}
 
 sql = '''SELECT "Description", geom_4326 geom FROM {}'''.format(buffered_study_region)
 map_layers['buffer'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
 
 sql = '''
-SELECT "{id}",
-       "{analysis_field}",
-       population,
-       "{population_field}",
-       ROUND("{population_field} per hectare"::numeric,2) "{population_field} per hectare",
-       geom_4326 geom
-FROM {table}
-'''.format(id =areas[0]['id'],analysis_field = analysis_field,table = area_analysis, population_field=population_field)
+SELECT a."{id}",
+       a."{analysis_field}",
+       a.population,
+       a."{population_field}",
+       ROUND(a."{population_field} per hectare"::numeric,2) "{population_field} per hectare",
+       ROUND(100*a."pop_ratio_districts_provinces"::numeric,2) "Percent of Bangkok population in subdistrict",
+       a.geom_4326 geom
+ FROM {area} a
+'''.format(id =areas[1]['id'],
+           analysis_field = areas[1]['name_f'],
+           area = areas[1]['name_s'],
+           population_field=population_field)
+map_layers[areas[1]['name_s']] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
+
+sql = '''
+SELECT a."{id}",
+       a."{analysis_field}",
+       a.population,
+       a."{population_field}",
+       ROUND(a."{population_field} per hectare"::numeric,2) "{population_field} per hectare",
+       ROUND(100*a."pop_ratio_subdistricts_districts"::numeric,2) "Percent of district population in subdistrict",
+       ROUND(100*a."pop_ratio_subdistricts_provinces"::numeric,2) "Percent of Bangkok population in subdistrict",
+       b."{other_area_name}",
+       a.geom_4326 geom
+FROM {area} a
+LEFT JOIN {other_area} b ON a."{other_area_id}" = b."{other_area_id}"
+'''.format(id =areas[0]['id'],
+           analysis_field = analysis_field,
+           area = area_analysis, 
+           population_field=population_field,
+           other_area = areas[1]['name_s'],
+           other_area_name = areas[1]['name_f'],
+           other_area_id = areas[1]['id'])
 map_layers[areas[0]['name_s']] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
 
 # load up the reprojected raster
@@ -131,20 +176,27 @@ with rasterio.open(population_raster_clipped) as src:
     
 xy = [float(map_layers['buffer'].centroid.y),float(map_layers['buffer'].centroid.x)]  
 bounds = map_layers['buffer'].bounds.transpose().to_dict()[0]
-
-# initialise map
+print("\nPlease inspect results using interactive maps saved in project maps folder:")
+# Population map
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
 m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
-# add layers (not true choropleth - for this it is just a convenient way to colour polygons)
-
-buffer = folium.Choropleth(map_layers['buffer'].to_json(),
-                           name='10km study region buffer',
-                           fill_color=colours['qualitative'][1],
-                           fill_opacity=0,
-                           line_color=colours['qualitative'][1], 
-                           highlight=False).add_to(m)
-
-bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+# add layers
+# bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],
+                  name=areas[1]['name_f'],
+                  fill_opacity=0,
+                  line_color=colours['qualitative'][1], 
+                  highlight=True,
+                  overlay = True,
+                  active = False
+                  ).add_to(m)
+folium.features.GeoJsonTooltip(fields=[areas[1]['name_f'],
+                                       population_field,
+                                       '{} per hectare'.format(population_field),
+                                       'Percent of Bangkok population in subdistrict',],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(districts_layer.geojson)    
 population_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
                   geo_data =map_layers[areas[0]['name_s']].to_json(),
                   name = population_field,
@@ -160,7 +212,12 @@ population_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
                   show=True
                   ).add_to(m)
                             
-folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],population_field],
+folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],
+                                       areas[1]['name_f'],
+                                       population_field,
+                                       '{} per hectare'.format(population_field),
+                                       'Percent of district population in subdistrict',
+                                       'Percent of Bangkok population in subdistrict',],
                                labels=True, 
                                sticky=True
                               ).add_to(population_layer.geojson)                          
@@ -176,25 +233,32 @@ m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0],
                               
 folium.LayerControl(collapsed=True).add_to(m)
 
-# checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
 map_name = '{}_02_population_{}.html'.format(locale,population_target)
 m.save('../maps/{}'.format(map_name))
+print("\t{}".format(map_name))           
 
-# initialise map
+# Population density map
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
 m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
-# add layers (not true choropleth - for this it is just a convenient way to colour polygons)
+# add layers
 
-buffer = folium.Choropleth(map_layers['buffer'].to_json(),
-                           name=buffered_study_region_name,
-                           fill_color=colours['qualitative'][1],
-                           fill_opacity=0,
-                           line_color=colours['qualitative'][1], 
-                           highlight=False).add_to(m)
-
-bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
-
+# bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],
+                  name=areas[1]['name_f'],
+                  fill_opacity=0,
+                  line_color=colours['qualitative'][1], 
+                  highlight=True,
+                  overlay = True,
+                  active = False
+                  ).add_to(m)
+folium.features.GeoJsonTooltip(fields=[areas[1]['name_f'],
+                                       population_field,
+                                       '{} per hectare'.format(population_field),
+                                       'Percent of Bangkok population in subdistrict',],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(districts_layer.geojson)    
 density_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
                   geo_data =map_layers[areas[0]['name_s']].to_json(),
                   name = '{} per hectare'.format(population_field),
@@ -206,10 +270,15 @@ density_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
                   legend_name='{} per hectare'.format(population_field),
                   # bins=bins,
                   reset=True,
-                  overlay = True,
+                  overlay = True
                   ).add_to(m)
                             
-folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],'{} per hectare'.format(population_field)],
+folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],
+                                       areas[1]['name_f'],
+                                       population_field,
+                                       '{} per hectare'.format(population_field),
+                                       'Percent of district population in subdistrict',
+                                       'Percent of Bangkok population in subdistrict',],
                                labels=True, 
                                sticky=True
                               ).add_to(density_layer.geojson)                              
@@ -225,12 +294,136 @@ m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0],
                               
 folium.LayerControl(collapsed=True).add_to(m)
 
-# checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
 map_name = '{}_02_population_density_{}.html'.format(locale,population_target)
 m.save('../maps/{}'.format(map_name))
-print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))              
- 
+print("\t{}".format(map_name))              
+
+
+# Percent of district population in subdistrict
+m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
+m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
+# add layers 
+
+# bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],
+                  name=areas[1]['name_f'],
+                  fill_opacity=0,
+                  line_color=colours['qualitative'][1], 
+                  highlight=True,
+                  overlay = True,
+                  active = False
+                  ).add_to(m)
+folium.features.GeoJsonTooltip(fields=[areas[1]['name_f'],
+                                       population_field,
+                                       '{} per hectare'.format(population_field),
+                                       'Percent of Bangkok population in subdistrict',],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(districts_layer.geojson)      
+                              
+population_percent_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
+                  geo_data =map_layers[areas[0]['name_s']].to_json(),
+                  name = 'Percent of district population in subdistrict',
+                  columns =[areas[0]['id'],'Percent of district population in subdistrict'],
+                  key_on="feature.properties.{}".format(areas[0]['id']),
+                  fill_color='YlGn',
+                  fill_opacity=0.7,
+                  line_opacity=0.2,
+                  legend_name='Percent of district population in subdistrict',
+                  # bins=bins,
+                  reset=True,
+                  overlay = True
+                  ).add_to(m)
+                            
+folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],
+                                       areas[1]['name_f'],
+                                       population_field,
+                                       '{} per hectare'.format(population_field),
+                                       'Percent of district population in subdistrict',
+                                       'Percent of Bangkok population in subdistrict',],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(population_percent_layer.geojson)                              
+                              
+m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0], 
+                                 name='Poplulation per pixel (WorldPop predicted model: {}, UN adjusted)'.format(population_target),
+                                 opacity=.7,
+                                 bounds=[[bounds['miny'],bounds['minx']], 
+                                         [bounds['maxy'], bounds['maxx']]],
+                                 colormap=lambda x: (1, 0, x, x),#R,G,B,alpha,
+                                 overlay=True
+                                 ))                              
+                              
+folium.LayerControl(collapsed=True).add_to(m)
+
+# save map
+map_name = '{}_02_percent_of_district_population_in_subdistrict_{}.html'.format(locale,population_target)
+m.save('../maps/{}'.format(map_name))
+print("\t{}".format(map_name))   
+
+
+# Percent of Bangkok population in subdistrict
+m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
+m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
+# add layers 
+
+# bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],
+                  name=areas[1]['name_f'],
+                  fill_opacity=0,
+                  line_color=colours['qualitative'][1], 
+                  highlight=True,
+                  overlay = True,
+                  active = False
+                  ).add_to(m)
+folium.features.GeoJsonTooltip(fields=[areas[1]['name_f'],
+                                       population_field,
+                                       '{} per hectare'.format(population_field),
+                                       'Percent of Bangkok population in subdistrict',],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(districts_layer.geojson)    
+population_percent_layer = folium.Choropleth(data=map_layers[areas[0]['name_s']],
+                  geo_data =map_layers[areas[0]['name_s']].to_json(),
+                  name = 'Percent of Bangkok population in subdistrict',
+                  columns =[areas[0]['id'],'Percent of Bangkok population in subdistrict'],
+                  key_on="feature.properties.{}".format(areas[0]['id']),
+                  fill_color='YlGn',
+                  fill_opacity=0.7,
+                  line_opacity=0.2,
+                  legend_name='Percent of Bangkok population in subdistrict',
+                  # bins=bins,
+                  reset=True,
+                  overlay = True
+                  ).add_to(m)
+                            
+folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],
+                                       areas[1]['name_f'],
+                                       population_field,
+                                       '{} per hectare'.format(population_field),
+                                       'Percent of district population in subdistrict',
+                                       'Percent of Bangkok population in subdistrict',],
+                               labels=True, 
+                               sticky=True
+                              ).add_to(population_percent_layer.geojson)                              
+                              
+m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0], 
+                                 name='Poplulation per pixel (WorldPop predicted model: {}, UN adjusted)'.format(population_target),
+                                 opacity=.7,
+                                 bounds=[[bounds['miny'],bounds['minx']], 
+                                         [bounds['maxy'], bounds['maxx']]],
+                                 colormap=lambda x: (1, 0, x, x),#R,G,B,alpha,
+                                 overlay=True
+                                 ))                              
+                              
+folium.LayerControl(collapsed=True).add_to(m)
+
+# save map
+map_name = '{}_02_percent_of_Bangkok_population_in_subdistrict_{}.html'.format(locale,population_target)
+m.save('../maps/{}'.format(map_name))
+print("\t{}".format(map_name))   
+
 # # output to completion log					
 script_running_log(script, task, start, locale)
 engine.dispose()

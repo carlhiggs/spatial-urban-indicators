@@ -57,7 +57,7 @@ df_datasets.set_index('name_s',inplace=True)
 
 # THE FOLLOWING ALL REQUIRE UPDATING TO NEW FORMAT
 # df_parameters.loc = pandas.read_excel(xls, 'study_regions',index_col=1)
-df_inds = pandas.read_excel(xls, 'ind_study_region_matrix')
+df_inds = pandas.read_excel(xls, 'indicator_queries')
 df_destinations = pandas.read_excel(xls, 'destinations')
 df_osm = pandas.read_excel(xls, 'osm_and_open_space_defs')
 df_osm_dest = pandas.read_excel(xls, 'osm_dest_definitions')
