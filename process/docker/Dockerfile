@@ -81,7 +81,12 @@ RUN conda install -y geckodriver selenium \
  && conda list
  
 USER root 
-RUN apt-get install -y firefox
+RUN apt-get install -y firefox               
+RUN apt-get install -y fonts-unfonts-core    \
+ && apt-get install -y fonts-unfonts-extra   \
+ && apt-get install -y fonts-tlwg-loma       \
+ && apt-get install -y fonts-tlwg-loma-otf   \
+ && apt-get install -y fonts-thai-tlwg
 
 # set locale
 RUN locale-gen en_AU.UTF-8 

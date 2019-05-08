@@ -92,7 +92,7 @@ def pretty(d, indent=0):
 region = df_parameters.loc['region'][locale]
 
 locale_dir = os.path.join(folderPath,'study_region','{}'.format(locale.lower()))
-locale_maps = os.path.join(locale_dir,'maps')
+locale_maps = os.path.join('../maps/',locale.lower())
 
 # Study region boundary
 region_shape = df_parameters.loc['region_shape'][locale]

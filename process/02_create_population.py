@@ -179,7 +179,7 @@ bounds = map_layers['buffer'].bounds.transpose().to_dict()[0]
 print("\nPlease inspect results using interactive maps saved in project maps folder:")
 # Population map
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
+m.add_tile_layer(tiles='Stamen Toner',name='Basemap (Stamen Toner)', overlay=True,active=True)
 # add layers
 # bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
 districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],

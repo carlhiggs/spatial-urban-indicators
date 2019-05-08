@@ -4,13 +4,12 @@
 # Date:    2018 06 05
 
 import time
+import os
 import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
 from sqlalchemy import create_engine
 import folium
-# import selenium.webdriver
-from PIL import Image
-from io import BytesIO
+import selenium.webdriver
 
 from script_running_log import script_running_log
 
@@ -103,11 +102,11 @@ if not os.path.exists(locale_maps):
     os.makedirs(locale_maps)    
     
 map_layers={}
-tables    = [study_region,buffered_study_region,area_analysis]
-fields    = ['Description','Description',analysis_field]
-names     =  ['Study region',buffered_study_region_name,analysis_field]
-opacity   =  [0.4,0,.7]
-highlight =  [False,False,True]
+tables    = [buffered_study_region,study_region]
+fields    = ['Description','Description']
+names     =  [buffered_study_region_name,'Study region']
+opacity   =  [0,0.4]
+highlight =  [False,False]
 for i in range(0,len(tables)):
     table = tables[i]
     field = fields[i]
@@ -117,8 +116,8 @@ for i in range(0,len(tables)):
 # get map centroid from study region
 xy = [float(map_layers[study_region].centroid.y),float(map_layers[study_region].centroid.x)]    
 # initialise map
-m = folium.Map(location=xy, zoom_start=10, control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='simple map', overlay=True,active=True)
+m = folium.Map(location=xy, zoom_start=10, tiles=None,control_scale=True, prefer_canvas=True)
+m.add_tile_layer(tiles='Stamen Toner',name='Basemap (Stamen Toner)', overlay=True,active=True)
 
 # add layers (not true choropleth - for this it is just a convenient way to colour polygons)
 map_groups = {}
@@ -136,15 +135,32 @@ for i in range(0,len(tables)):
                               ).add_to(feature.geojson)
 
 folium.LayerControl(collapsed=False).add_to(m)
+m.fit_bounds(m.get_bounds())
 
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
 map_name = '{}_01_study_region'.format(locale)
 m.save('{}/{}.html'.format(locale_maps,map_name))
-png = m._to_png()
-im = Image.open(BytesIO(png))
-im.save('{}/{}.png'.format(locale_maps,map_name))
-print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))
+
+options=selenium.webdriver.firefox.options.Options()
+options.add_argument('--headless')
+driver = selenium.webdriver.Firefox(options=options)
+driver.set_window_size(1000, 800)  # choose a resolution
+driver.get('file:///{}/{}/{}.html'.format(os.getcwd(),locale_maps,map_name))
+# You may need to add time.sleep(seconds) here
+time.sleep(3)
+# Remove zoom controls from snapshot
+element = driver.find_element_by_class_name("leaflet-control-zoom")
+driver.execute_script("""
+var element = arguments[0];
+element.parentNode.removeChild(element);
+""", element)
+driver.save_screenshot('{}/{}.png'.format(locale_maps,map_name))
+driver.close()
+print("\nPlease inspect results using interactive map saved in project maps folder:".format(map_name))
+print('    - {}/{}.html'.format(locale_maps,map_name))
+
+print('')
 # output to completion log					
 script_running_log(script, task, start, locale)
 engine.dispose()
