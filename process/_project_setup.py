@@ -344,6 +344,41 @@ def style_dict_fcn(type = 'qualitative',colour=0):
         'lineColor': colours[type][colour]
     }
 
+def folium_to_png(locale_maps,map_name,width=1000,height=800,pause=3):
+    import selenium.webdriver
+    try:
+        options=selenium.webdriver.firefox.options.Options()
+        options.add_argument('--headless')
+        driver = selenium.webdriver.Firefox(options=options)
+        driver.set_window_size(width, height)  # choose a resolution
+        driver.get('file:///{}/{}/{}.html'.format(os.getcwd(),locale_maps,map_name))
+        # You may need to add time.sleep(seconds) here
+        time.sleep(pause)
+        # Remove zoom controls from snapshot
+        for leaflet_class in ["leaflet-control-zoom","leaflet-control-layers"]:
+            element = driver.find_element_by_class_name(leaflet_class)
+            driver.execute_script("""
+            var element = arguments[0];
+            element.parentNode.removeChild(element);
+            """, element)
+        driver.save_screenshot('{}/{}.png'.format(locale_maps,map_name))
+        driver.close()
+    except:
+        print("Export of {} failed.".format('{}/{}.png'.format(locale_maps,map_name)))
+        
+legend_style = '''
+<style>
+.legend {
+    padding: 0px 0px;
+    font: 10px sans-serif;
+    background: white;
+    background: rgba(255,255,255,1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    }
+</style>
+'''        
+
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
  

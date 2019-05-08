@@ -9,7 +9,6 @@ import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
 from sqlalchemy import create_engine
 import folium
-import selenium.webdriver
 
 from script_running_log import script_running_log
 
@@ -19,7 +18,7 @@ from _project_setup import *
 # simple timer for log file
 start = time.time()
 script = os.path.basename(sys.argv[0])
-task = 'create study region boundary files in new geodatabase'
+task = 'create study region boundary'
 
 engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_user,
                                                                       pwd  = db_pwd,
@@ -135,30 +134,17 @@ for i in range(0,len(tables)):
                               ).add_to(feature.geojson)
 
 folium.LayerControl(collapsed=False).add_to(m)
+# m.fit_bounds(m.get_bounds(),padding=(3, 3))
 m.fit_bounds(m.get_bounds())
-
+m.get_root().html.add_child(folium.Element(legend_style))
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
 map_name = '{}_01_study_region'.format(locale)
 m.save('{}/{}.html'.format(locale_maps,map_name))
+folium_to_png(locale_maps,map_name)
 
-options=selenium.webdriver.firefox.options.Options()
-options.add_argument('--headless')
-driver = selenium.webdriver.Firefox(options=options)
-driver.set_window_size(1000, 800)  # choose a resolution
-driver.get('file:///{}/{}/{}.html'.format(os.getcwd(),locale_maps,map_name))
-# You may need to add time.sleep(seconds) here
-time.sleep(3)
-# Remove zoom controls from snapshot
-element = driver.find_element_by_class_name("leaflet-control-zoom")
-driver.execute_script("""
-var element = arguments[0];
-element.parentNode.removeChild(element);
-""", element)
-driver.save_screenshot('{}/{}.png'.format(locale_maps,map_name))
-driver.close()
 print("\nPlease inspect results using interactive map saved in project maps folder:".format(map_name))
-print('    - {}/{}.html'.format(locale_maps,map_name))
+print('\t- {}/{}.html'.format(locale_maps,map_name))
 
 print('')
 # output to completion log					
