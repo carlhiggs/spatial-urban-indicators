@@ -8,6 +8,9 @@ import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
 from sqlalchemy import create_engine
 import folium
+# import selenium.webdriver
+from PIL import Image
+from io import BytesIO
 
 from script_running_log import script_running_log
 
@@ -96,6 +99,9 @@ for area in areas:
 print("Done.")
           
 # Prepare map
+if not os.path.exists(locale_maps):
+    os.makedirs(locale_maps)    
+    
 map_layers={}
 tables    = [study_region,buffered_study_region,area_analysis]
 fields    = ['Description','Description',analysis_field]
@@ -128,12 +134,16 @@ for i in range(0,len(tables)):
                                labels=True, 
                                sticky=True
                               ).add_to(feature.geojson)
+
 folium.LayerControl(collapsed=False).add_to(m)
 
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
-map_name = '{}_01_study_region.html'.format(locale)
-m.save('../maps/{}'.format(map_name))
+map_name = '{}_01_study_region'.format(locale)
+m.save('{}/{}.html'.format(locale_maps,map_name))
+png = m._to_png()
+im = Image.open(BytesIO(png))
+im.save('{}/{}.png'.format(locale_maps,map_name))
 print("\nPlease inspect results using interactive map saved in project maps folder: {}\n".format(map_name))
 # output to completion log					
 script_running_log(script, task, start, locale)

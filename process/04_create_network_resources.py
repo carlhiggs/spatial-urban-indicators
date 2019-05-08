@@ -125,7 +125,7 @@ else:
 print("Prepare and copy clean intersections to postgis... ")
 curs.execute('''SELECT 1 WHERE to_regclass('public.{}') IS NOT NULL;'''.format(intersections_table))
 res = curs.fetchone()
-if res is None:
+if res is False:
     # Clean intersections
     
     G_proj = ox.project_graph(W)

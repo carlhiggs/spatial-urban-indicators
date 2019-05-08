@@ -74,7 +74,16 @@ RUN conda config --set show_channel_urls true                                   
  && conda info --all                                                                                 \
  && conda list
 
+# additional packages for rendering html maps to png
+RUN conda install -y geckodriver selenium \
+ && conda clean --yes --all               \
+ && conda info --all                      \
+ && conda list
+ 
 USER root 
+RUN apt-get install -y firefox
+
+# set locale
 RUN locale-gen en_AU.UTF-8 
 ENV LC_ALL=en_AU.UTF-8  
 ENV LANG=en_AU.UTF-8   
