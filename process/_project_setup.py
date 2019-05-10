@@ -88,11 +88,7 @@ def pretty(d, indent=0):
         print(' ' + str(value))
   
 # More study region details
-
 region = df_parameters.loc['region'][locale]
-
-locale_dir = os.path.join(folderPath,'study_region','{}'.format(locale.lower()))
-locale_maps = os.path.join('../maps/',locale.lower())
 
 # Study region boundary
 region_shape = df_parameters.loc['region_shape'][locale]
@@ -106,6 +102,10 @@ suffix = df_parameters.loc['suffix'][locale]
 # derived study region name (no need to change!)
 study_region = '{}_{}_{}'.format(locale,region,year).lower()
 db = 'li_{0}_{1}{2}'.format(locale,year,suffix).lower()
+
+# region specific output locations
+locale_dir = os.path.join(folderPath,'study_region','{}'.format(study_region))
+locale_maps = os.path.join('../maps/',study_region)
 
 # ; Project spatial reference (for ArcGIS)
 SpatialRef = df_parameters.loc['SpatialRef'][locale]
@@ -128,8 +128,17 @@ population_raster ={}
 population_raster['data'] = '.{}'.format(df_datasets.loc[population_grid]['data_dir'])
 population_raster['band'] = int(df_datasets.loc[population_grid]['band_if_raster'])
 population_raster['epsg'] = int(df_datasets.loc[population_grid]['epsg'])
-population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',locale,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
-population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',locale,os.path.basename(population_raster['data'])[:-4]),srid)
+population_raster['attribution'] = (
+                                    'Population data: <a href=\"{source_url}/\">{provider}</a> '
+                                    'under <a href=\"{licence_url}/\">{licence}</a>'
+                                    ).format(
+                                    source_url = df_datasets.loc[population_grid]['source_url'],
+                                    provider = df_datasets.loc[population_grid]['provider'],
+                                    licence_url = df_datasets.loc[population_grid]['licence_url'],
+                                    licence = df_datasets.loc[population_grid]['licence'])
+
+population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
+population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),srid)
 pop_alt_data = {}
 for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]].index):
     data_type = pop_data.split(':')[1]
@@ -228,7 +237,7 @@ for area in areas_of_interest + ['urban']:
     prefix = 'region{}'.format(area)
   if df_parameters.loc['{}_data'.format(prefix)][locale] != '':
     areas[area] = {}
-    for field in ['data','name','id','display']:
+    for field in ['data','name','id','display','attribution']:
       if field=='data':
         # join with data path prefix
         areas[area][field] = os.path.join(folderPath,df_parameters.loc['{}_{}'.format(prefix,field)][locale])
@@ -245,6 +254,15 @@ for area in areas_of_interest + ['urban']:
           areas[area]['display'] = df_parameters.loc['{}_display'.format(prefix)][locale]
         else:
           areas[area]['display'] = df_parameters.loc['{}_id'.format(prefix)][locale]
+      elif field=='attribution':
+          areas[area]['attribution'] = (
+                                    'Boundary data: <a href=\"{source_url}/\">{provider}</a> '
+                                    'under <a href=\"{licence_url}/\">{licence}</a>'
+                                    ).format(
+                                    source_url  = df_datasets.loc[areas[area]['name_s']]['source_url'],
+                                    provider    = df_datasets.loc[areas[area]['name_s']]['provider'],
+                                    licence_url = df_datasets.loc[areas[area]['name_s']]['licence_url'],
+                                    licence     = df_datasets.loc[areas[area]['name_s']]['licence'])
       else:
         areas[area][field] = df_parameters.loc['{}_{}'.format(prefix,field)][locale]
 
@@ -344,14 +362,22 @@ def style_dict_fcn(type = 'qualitative',colour=0):
         'lineColor': colours[type][colour]
     }
 
-def folium_to_png(locale_maps,map_name,width=1000,height=800,pause=3):
+def folium_to_png(input_dir='',output_dir='',map_name='',width=1000,height=800,pause=3):
     import selenium.webdriver
     try:
+        if (input_dir=='' or map_name==''):
+            raise Exception(('This function requires specification of an input directory.\n'
+                   'Please specify the function in the following form:\n'
+                   'folium_to_png(intput_dir,output_dir,map_name,[width],[height],[pause])'
+                   ))
+            return
+        if output_dir=='':
+            output_dir = input_dir
         options=selenium.webdriver.firefox.options.Options()
         options.add_argument('--headless')
         driver = selenium.webdriver.Firefox(options=options)
         driver.set_window_size(width, height)  # choose a resolution
-        driver.get('file:///{}/{}/{}.html'.format(os.getcwd(),locale_maps,map_name))
+        driver.get('file:///{}/{}/{}.html'.format(os.getcwd(),input_dir,map_name))
         # You may need to add time.sleep(seconds) here
         time.sleep(pause)
         # Remove zoom controls from snapshot
@@ -361,24 +387,29 @@ def folium_to_png(locale_maps,map_name,width=1000,height=800,pause=3):
             var element = arguments[0];
             element.parentNode.removeChild(element);
             """, element)
-        driver.save_screenshot('{}/{}.png'.format(locale_maps,map_name))
+        driver.save_screenshot('{}/{}.png'.format(output_dir,map_name))
         driver.close()
-    except:
-        print("Export of {} failed.".format('{}/{}.png'.format(locale_maps,map_name)))
+    except Exception as error:
+        print("Export of {} failed.".format('{}/{}.png: {}'.format(output_dir,map_name,error)))
         
-legend_style = '''
+map_style = '''
 <style>
 .legend {
     padding: 0px 0px;
-    font: 10px sans-serif;
+    font: 12px sans-serif;
     background: white;
     background: rgba(255,255,255,1);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
     }
+.leaflet-control-attribution {
+	width: 60%;
+	height: auto;
+	}
 </style>
-'''        
-
+'''    
+    
+map_attribution = df_parameters.loc['map_attribution'][locale]
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
  

@@ -95,7 +95,7 @@ for admin_area in areas:
     UPDATE {table} a
         SET 
             population = temp.population,
-            "{population_field}" = TO_CHAR(temp.population, '999,999'),
+            "{population_field}" = TO_CHAR(temp.population, '999,999,999'),
             "{population_field} per hectare" = (temp.population/area_ha)::double precision
         FROM temp 
         WHERE a."{id}" = temp."{id}";
@@ -126,6 +126,8 @@ for area in areas:
                        other_area_id = areas[other_area]['id']))
     
 # Prepare maps
+map_attribution = '{} | {} | {}'.format(map_attribution,areas[area]['attribution'],population_raster['attribution'])
+
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 map_layers={}
 
@@ -180,8 +182,17 @@ print("\nPlease inspect results using interactive maps saved in project maps fol
 
 # Population raster map (includes the raster overlay)
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='Basemap (Stamen Toner)', overlay=True,active=True)
-# add layers
+m.add_tile_layer(tiles='Stamen Toner',
+                 name='simple map', 
+                 active=True,
+                 attr=((
+                       " {} | "
+                       "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                       "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                       "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                       "under ODbL.").format(map_attribution))
+                        )
+                        
 # bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))  
 population_layer = folium.Choropleth(map_layers[areas[0]['name_s']],
                   name = areas[0]['name_f'],
@@ -213,19 +224,26 @@ m.add_child(folium.raster_layers.ImageOverlay(map_layers['population'][0],
                               
 folium.LayerControl(collapsed=True).add_to(m)
 m.fit_bounds(m.get_bounds())
-m.get_root().html.add_child(folium.Element(legend_style))
+m.get_root().html.add_child(folium.Element(map_style))
 
 # save map
 map_name = '{}_02_population_raster_{}.html'.format(locale,population_target)
-m.save('{}/{}.html'.format(locale_maps,map_name))
-folium_to_png(locale_maps,map_name)
+m.save('{}/html/{}.html'.format(locale_maps,map_name))
+folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
 print("\t- {}".format(map_name)) 
 
 # Population map
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='Basemap (Stamen Toner)', overlay=True,active=True)
-# add layers
-# bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+m.add_tile_layer(tiles='Stamen Toner',
+                 name='simple map', 
+                 active=True,
+                 attr=((
+                       " {} | "
+                       "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                       "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                       "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                       "under ODbL.").format(map_attribution))
+                        )
 districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],
                   name=areas[1]['name_f'],
                   fill_opacity=0,
@@ -266,20 +284,26 @@ folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],
                               
 folium.LayerControl(collapsed=True).add_to(m)
 m.fit_bounds(m.get_bounds())
-m.get_root().html.add_child(folium.Element(legend_style))
+m.get_root().html.add_child(folium.Element(map_style))
 
 # save map
 map_name = '{}_02_population_{}.html'.format(locale,population_target)
-m.save('{}/{}.html'.format(locale_maps,map_name))
-folium_to_png(locale_maps,map_name)
+m.save('{}/html/{}.html'.format(locale_maps,map_name))
+folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
 print("\t- {}".format(map_name))           
 
 # Population density map
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
-# add layers
-
-# bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+m.add_tile_layer(tiles='Stamen Toner',
+                 name='simple map', 
+                 active=True,
+                 attr=((
+                       " {} | "
+                       "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                       "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                       "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                       "under ODbL.").format(map_attribution))
+                        )
 districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],
                   name=areas[1]['name_f'],
                   fill_opacity=0,
@@ -320,21 +344,27 @@ folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],
                               
 folium.LayerControl(collapsed=True).add_to(m)
 m.fit_bounds(m.get_bounds())
-m.get_root().html.add_child(folium.Element(legend_style))
+m.get_root().html.add_child(folium.Element(map_style))
 
 # save map
 map_name = '{}_02_population_density_{}.html'.format(locale,population_target)
-m.save('{}/{}.html'.format(locale_maps,map_name))
-folium_to_png(locale_maps,map_name)
+m.save('{}/html/{}.html'.format(locale_maps,map_name))
+folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
 print("\t- {}".format(map_name))              
 
 
 # Percent of district population in subdistrict
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
-# add layers 
-
-# bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+m.add_tile_layer(tiles='Stamen Toner',
+                 name='simple map', 
+                 active=True,
+                 attr=((
+                       " {} | "
+                       "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                       "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                       "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                       "under ODbL.").format(map_attribution))
+                        )
 districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],
                   name=areas[1]['name_f'],
                   fill_opacity=0,
@@ -376,21 +406,27 @@ folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],
                               
 folium.LayerControl(collapsed=True).add_to(m)
 m.fit_bounds(m.get_bounds())
-m.get_root().html.add_child(folium.Element(legend_style))
+m.get_root().html.add_child(folium.Element(map_style))
 
 # save map
 map_name = '{}_02_percent_of_district_population_in_subdistrict_{}.html'.format(locale,population_target)
-m.save('{}/{}.html'.format(locale_maps,map_name))
-folium_to_png(locale_maps,map_name)
+m.save('{}/html/{}.html'.format(locale_maps,map_name))
+folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
 print("\t- {}".format(map_name))   
 
 
 # Percent of Bangkok population in subdistrict
 m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='simple map', active=True)
-# add layers 
-
-# bins = list(map_layers[areas[0]['name_s']]['population'].quantile([0, 0.25, 0.5, 0.75, 1]))
+m.add_tile_layer(tiles='Stamen Toner',
+                 name='simple map', 
+                 active=True,
+                 attr=((
+                       " {} | "
+                       "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                       "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                       "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                       "under ODbL.").format(map_attribution))
+                        )
 districts_layer = folium.Choropleth(map_layers[areas[1]['name_s']],
                   name=areas[1]['name_f'],
                   fill_opacity=0,
@@ -431,13 +467,28 @@ folium.features.GeoJsonTooltip(fields=[areas[0]['name_f'],
                               
 folium.LayerControl(collapsed=True).add_to(m)
 m.fit_bounds(m.get_bounds())
-m.get_root().html.add_child(folium.Element(legend_style))
+m.get_root().html.add_child(folium.Element(map_style))
 
 # save map
 map_name = '{}_02_percent_of_Bangkok_population_in_subdistrict_{}.html'.format(locale,population_target)
-m.save('{}/{}.html'.format(locale_maps,map_name))
-folium_to_png(locale_maps,map_name)
+m.save('{}/html/{}.html'.format(locale_maps,map_name))
+folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
 print("\t- {}".format(map_name))   
+
+print("Copying area population tables excerpt to geopackage..."),
+command = (
+            'ogr2ogr -overwrite -f GPKG {path}/{output_name}.gpkg '
+            'PG:"host={host} user={user} dbname={db} password={pwd}" '
+            '  {tables}'
+            ).format(output_name = '{}_population'.format(study_region),
+                     path = os.path.join(locale_maps,'gpkg'),
+                     host = db_host,
+                     user = db_user,
+                     pwd = db_pwd,
+                     db = db,
+                     tables = ' '.join(['"{}"'.format(areas[a]['name_s']) for a in areas])) 
+print(command)
+sp.call(command, shell=True)  
 
 # # output to completion log					
 script_running_log(script, task, start, locale)

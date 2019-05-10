@@ -99,7 +99,13 @@ print("Done.")
 # Prepare map
 if not os.path.exists(locale_maps):
     os.makedirs(locale_maps)    
-    
+for dir in ['html','png','pdf','gpkg']:
+    path = os.path.join(locale_maps,dir)
+    if not os.path.exists(path):
+        os.makedirs(path)   
+
+map_attribution = '{} | {}'.format(map_attribution,areas[area]['attribution'])
+        
 map_layers={}
 tables    = [buffered_study_region,study_region]
 fields    = ['Description','Description']
@@ -116,8 +122,17 @@ for i in range(0,len(tables)):
 xy = [float(map_layers[study_region].centroid.y),float(map_layers[study_region].centroid.x)]    
 # initialise map
 m = folium.Map(location=xy, zoom_start=10, tiles=None,control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',name='Basemap (Stamen Toner)', overlay=True,active=True)
-
+m.add_tile_layer(tiles='Stamen Toner',
+                 name='simple map', 
+                 active=True,
+                 attr=((
+                       " {} | "
+                       "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                       "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                       "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                       "under ODbL.").format(map_attribution))
+                        )
+                        
 # add layers (not true choropleth - for this it is just a convenient way to colour polygons)
 map_groups = {}
 for i in range(0,len(tables)):
@@ -136,15 +151,16 @@ for i in range(0,len(tables)):
 folium.LayerControl(collapsed=False).add_to(m)
 # m.fit_bounds(m.get_bounds(),padding=(3, 3))
 m.fit_bounds(m.get_bounds())
-m.get_root().html.add_child(folium.Element(legend_style))
+m.get_root().html.add_child(folium.Element(map_style))
 # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
 # save map
 map_name = '{}_01_study_region'.format(locale)
-m.save('{}/{}.html'.format(locale_maps,map_name))
-folium_to_png(locale_maps,map_name)
+m.save('{}/html/{}.html'.format(locale_maps,map_name))
+folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
 
 print("\nPlease inspect results using interactive map saved in project maps folder:".format(map_name))
-print('\t- {}/{}.html'.format(locale_maps,map_name))
+print('\t- {}/html/{}.html'.format(locale_maps,map_name))
+print('\t- {}/png/{}.png'.format(locale_maps,map_name))
 
 print('')
 # output to completion log					

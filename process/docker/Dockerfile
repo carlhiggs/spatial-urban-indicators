@@ -93,7 +93,8 @@ RUN locale-gen en_AU.UTF-8
 ENV LC_ALL=en_AU.UTF-8  
 ENV LANG=en_AU.UTF-8   
 ENV LANGUAGE=en_AU.UTF-8
-
+ENV PGCLIENTENCODING=UTF8
+RUN export LC_ALL LANG LANGUAGE PGCLIENTENCODING
 # launch notebook in the local working directory that we mount
 USER $NB_UID 
 WORKDIR /home/jovyan/work
