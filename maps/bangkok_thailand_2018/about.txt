@@ -1,0 +1,17 @@
+Bangkok Liveability project, 2019
+Carl Higgs, Amanda Alderton, Hannah Badland
+Healthy Liveable Cities group
+Bangkok Metropolitan Authority
+
+As indicators are calculated we plan to deliver previews of both the data and maps using the data.
+
+There are four folders in the zip file
+
+html - contains interactive maps as html files, with links to data sources and their licences
+png  - maps (static images, based on the styling of the interactive maps)
+gpkg - a geopackage containing the data used to make the above maps (administrative boundaries, associated with population data and indicators based on these)
+QGIS - contains a QGIS document with relative path to the geopackage file, and maps for the four main indicators (population, population density, subdistrict population relative to district, subdistrict population relative to Bangkok)
+
+To use the QGIS file, please ensure QGIS is installed (https://qgis.org/).
+
+As the project progresses, we envisage expanding on this documentation further.
