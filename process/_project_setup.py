@@ -60,6 +60,9 @@ locale_maps = os.path.join('../maps/',study_region)
 # Study region buffer
 buffered_study_region = '{}_{}{}'.format(study_region,study_buffer,units)
 
+# sample points
+points = '{}_{}m'.format(points,point_sampling_interval)
+
 # Population
 population_field = 'Population ({} estimate)'.format(population_target)
 population_raster ={}
@@ -128,6 +131,7 @@ os.environ['PGDATABASE'] = db
 
 # OSM settings
 osm_data = os.path.join(folderPath,osm_data)
+osm_date = str(osm_date)
 osm_prefix = 'osm_{}'.format(osm_date)
 osm_region = '{}_{}.osm'.format(locale,osm_prefix)
 

@@ -18,7 +18,8 @@ start = time.time()
 script = os.path.basename(sys.argv[0])
 task = 'create destination indicator tables'
 
-region_dir = '../data/study_region/{}/'.format(locale)
+# locale_dir = '../data/study_region/{}/'.format(locale)
+# locale_dir = '../data/study_region/{}/'.format(locale)
 
 conn = psycopg2.connect(database=db, user=db_user, password=db_pwd, host=db_host,port=db_port)
 curs = conn.cursor()
@@ -27,33 +28,33 @@ curs = conn.cursor()
 print("Create poly file, using command: "),
 locale_poly = 'poly_10km_study_region_buffer.poly'
 feature = (
- 'PG:"dbname={db} host={host} port={port} user={user} password = {pwd}" {layer}'
+ 'PG:"dbname={db} host={host} port={port} user={user} password={pwd}" {layer}'
  ).format(db  = db, 
           host= db_host, 
           port= db_port,
           user= db_user, 
           pwd = db_pwd, 
-          layer = 'buffered_study_region_map')
+          layer = buffered_study_region)
 command = 'python ogr2poly.py {feature} -f Description'.format(feature = feature)
 print(command)
 sp.call(command, shell=True)
-command = 'mv {poly} {dir}{poly}'.format(dir = region_dir,poly = locale_poly)
+command = 'mv {poly} {dir}/{poly}'.format(dir = locale_dir,poly = locale_poly)
 print('\t{}'.format(command))
 sp.call(command, shell=True)
 print("Done.")
 
 # Extract OSM
 print("Extract OSM for studyregion"),
-if os.path.isfile('{}/{}'.format(region_dir,osm_region)):
-  print('...\r\n.osm file "{}/{}" already exists'.format(region_dir,osm_region))
+if os.path.isfile('{}/{}'.format(locale_dir,osm_region)):
+  print('...\r\n.osm file "{}/{}" already exists'.format(locale_dir,osm_region))
 else:
   print(" using command:")
   command = (
              '../../osmosis/bin/osmosis --read-pbf file="{osm_data}"' 
-                     ' --bounding-polygon file="{dir}{poly}"' 
-                     ' --write-xml file="{dir}{osm_region}"'
+                     ' --bounding-polygon file="{dir}/{poly}"' 
+                     ' --write-xml file="{dir}/{osm_region}"'
             ).format(osm_data = osm_data,
-                     dir = region_dir,
+                     dir = locale_dir,
                      poly = locale_poly,
                      osm_region = osm_region)
   print(command)
@@ -68,12 +69,12 @@ if res is None:
     print("Copying OSM excerpt to pgsql..."),
     command = (
             'osm2pgsql -U {user} -l -d {db} --host {host} --port {port}'
-            ' {dir}{osm} --hstore --prefix {prefix}'
+            ' {dir}/{osm} --hstore --prefix {prefix}'
             ).format(user   = db_user, 
                     db     = db,
                     host   = db_host, 
                     port   = db_port,
-                    dir    = region_dir,
+                    dir    = locale_dir,
                     osm    = osm_region,
                     prefix = osm_prefix) 
     print(command)
