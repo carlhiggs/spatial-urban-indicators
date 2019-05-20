@@ -20,7 +20,7 @@ import sys
 import time
 import pandas
 import subprocess as sp
-
+import math 
 
 # Set up locale (ie. defined at command line, or else testing)
 if len(sys.argv) >= 2:
@@ -114,6 +114,7 @@ def reproject_raster(inpath, outpath, new_crs):
 hex_grid = '{0}_hex_{1}{2}_diag'.format(study_region,hex_diag,units)
 hex_grid_buffer =  '{0}_hex_{1}{2}_diag_{3}{2}_buffer'.format(study_region,hex_diag,units,hex_buffer)
 hex_side = float(hex_diag)*0.5
+hex_area_km2 = ((3*math.sqrt(3.0)/2)*(hex_side)**2)*10.0**-6
 
 # Database names -- derived from above parameters; (no need to change!)
 gdb       = '{}.gdb'.format(db)
@@ -301,6 +302,11 @@ def pretty(d, indent=0):
         pretty(value, indent+1)
       else:
         print(' ' + str(value))
+
+def table_exists(name):
+    ret = engine.dialect.has_table(engine, name)
+    print('Table "{}" exists: {}'.format(name, ret))
+    return ret
 
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
