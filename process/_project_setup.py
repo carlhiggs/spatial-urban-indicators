@@ -1,31 +1,18 @@
-# Script:  config_ntnl_li_process.py
-# Liveability indicator calculation template custom configuration file
-# Version: 20180907
+# Script:  _project_setup.py
+# Version: 20190520
 # Author:  Carl Higgs
 #
 # All scripts within the process folder draw on the sources, parameters and modules
 # specified in the file _project_configuration.xlsx to source and output 
-# resources. It is the best definition of where resources are sourced from and 
-# how the methods used have been parameterised.
+# resources. 
 #
 # If you are starting a new project, you can set up the global parameters which 
 # (pending overrides) should be applied for each study region in the 
 #  detailed_explanation' folder.
 #
 # If you are adding a new study region to an existing project, this study region
-# will be entered as a row in the 'study_regions' worksheet; the corresponding
-# column fields must be completed as required.  See the worksheet 'detailed 
-# explanation' for a description of what is expected for each field.
-#
-# If you are running a project on a specific computer that requires some kind of 
-# override of the parameters set up above, you can **in theory** use the 
-# 'local_environments' worksheet to do this.  In practice this hasn't been 
-# implemented yet, and the sheet is just a placeholder for the event that such 
-# overrides are required.
-#
-# The file which draws on the project, study region, destination and local settings 
-# specificied in the _project_configuration.xlsx file and implements these across 
-# scripts is THIS FILE config_ntnl_li_process.py
+# will be entered as a column within the 'Parameters' worksheet; the corresponding
+# row entries must be completed as required.
 
 # import modules
 import os
@@ -47,57 +34,20 @@ if __name__ == '__main__':
 # Load settings from _project_configuration.xlsx
 xls = pandas.ExcelFile(os.path.join(sys.path[0],'_project_configuration.xlsx'))
 df_parameters = pandas.read_excel(xls, 'Parameters',index_col=0)
-df_parameters[locale] = df_parameters[locale].fillna('')
-full_locale = df_parameters.loc['full_locale'][locale]
-
 df_datasets = pandas.read_excel(xls, 'Datasets')
-df_datasets.name_s = df_datasets.name_s.fillna('')
-df_datasets = df_datasets[(df_datasets.purpose=='indicators') & (df_datasets.target_region=='Bangkok') & (df_datasets.name_s!='')]
-df_datasets.set_index('name_s',inplace=True)
-
-# THE FOLLOWING ALL REQUIRE UPDATING TO NEW FORMAT
-# df_parameters.loc = pandas.read_excel(xls, 'study_regions',index_col=1)
 df_inds = pandas.read_excel(xls, 'indicator_queries')
 df_destinations = pandas.read_excel(xls, 'destinations')
 df_osm = pandas.read_excel(xls, 'osm_and_open_space_defs')
 df_osm_dest = pandas.read_excel(xls, 'osm_dest_definitions')
 
-responsible = df_parameters.loc['responsible'][locale]
-year   = df_parameters.loc['year'][locale]
-
-# The main directory for data
-folderPath = df_parameters.loc['folderPath'][locale]
-
-# # Set up locale (ie. defined at command line, or else testing)
-# if len(sys.argv) >= 2:
-  # locale = '{studyregion}'.format(studyregion = sys.argv[1])
-# else:
-  # locale = 'testing'
-  
- 
-def pretty(d, indent=0):
-   for key, value in d.items():
-      depth = 0
-      print('\t' * indent + str(key)+':'),
-      if isinstance(value, dict):
-        if depth == 0:
-          print(" ")
-          depth+=1
-        pretty(value, indent+1)
-      else:
-        print(' ' + str(value))
-  
-# More study region details
-region = df_parameters.loc['region'][locale]
-
-# Study region boundary
-region_shape = df_parameters.loc['region_shape'][locale]
-
-# SQL Query to select study region
-region_where_clause = df_parameters.loc['region_where_clause'][locale]
-
-# db suffix
-suffix = df_parameters.loc['suffix'][locale]
+# prepare and clean configuration entries
+df_parameters[locale] = df_parameters[locale].fillna('')
+for var in [x.encode('utf8') for x in  df_parameters.index.values]:
+    globals()[var] = df_parameters.loc[var][locale]
+# full_locale = df_parameters.loc['full_locale'][locale]
+df_datasets.name_s = df_datasets.name_s.fillna('')
+df_datasets = df_datasets[(df_datasets.purpose=='indicators') & (df_datasets.target_region==full_locale) & (df_datasets.name_s!='')]
+df_datasets.set_index('name_s',inplace=True)
 
 # derived study region name (no need to change!)
 study_region = '{}_{}_{}'.format(locale,region,year).lower()
@@ -107,22 +57,10 @@ db = 'li_{0}_{1}{2}'.format(locale,year,suffix).lower()
 locale_dir = os.path.join(folderPath,'study_region','{}'.format(study_region))
 locale_maps = os.path.join('../maps/',study_region)
 
-# ; Project spatial reference (for ArcGIS)
-SpatialRef = df_parameters.loc['SpatialRef'][locale]
-
-# Project spatial reference EPSG code (for Postgis)
-srid       = df_parameters.loc['srid'][locale]
-units      = df_parameters.loc['units'][locale]
-units_full = df_parameters.loc['units_full'][locale]
-
 # Study region buffer
-study_buffer = df_parameters.loc['study_buffer'][locale]
 buffered_study_region = '{}_{}{}'.format(study_region,study_buffer,units)
-buffered_study_region_name = df_parameters.loc['buffered_study_region_name'][locale]
 
 # Population
-population_grid   = df_parameters.loc['pop_grid'][locale]
-population_target   = df_parameters.loc['pop_target'][locale]
 population_field = 'Population ({} estimate)'.format(population_target)
 population_raster ={}
 population_raster['data'] = '.{}'.format(df_datasets.loc[population_grid]['data_dir'])
@@ -169,29 +107,10 @@ def reproject_raster(inpath, outpath, new_crs):
                     dst_crs=dst_crs,
                     resampling=Resampling.nearest)
     
-# Number of processors to use in when multiprocessing
-nWorkers = df_parameters.loc['multiprocessing'][locale]
-
-# hexagon diagonal length and buffer distance (metres)
-#   -- hexagon sides will be half the length of this value
-#   -- hexagon area is 3/2 * sqrt(3) * (hex_diag/2)^2
-#  so with diag of 3000 m, area is 5845671.476 sq.m.
-hex_diag   = df_parameters.loc['hex_diag'][locale]
-hex_buffer = df_parameters.loc['hex_buffer'][locale]
-
-# Derived hex settings - no need to change
+# Derived hex settings
 hex_grid = '{0}_hex_{1}{2}_diag'.format(study_region,hex_diag,units)
 hex_grid_buffer =  '{0}_hex_{1}{2}_diag_{3}{2}_buffer'.format(study_region,hex_diag,units,hex_buffer)
 hex_side = float(hex_diag)*0.5
-
-# SQL Settings
-db_host   = df_parameters.loc['db_host'][locale]
-db_port   = '{}'.format(df_parameters.loc['db_port'][locale])
-db_user   = df_parameters.loc['db_user'][locale]
-db_pwd    = df_parameters.loc['db_pwd'][locale]
-admin_db  = df_parameters.loc['db_main'][locale]
-admin_user_name = admin_db
-admin_pwd = db_pwd
 
 # Database names -- derived from above parameters; (no need to change!)
 gdb       = '{}.gdb'.format(db)
@@ -200,22 +119,20 @@ gdb_path    = os.path.join(locale_dir,gdb)
 db_sde_path = os.path.join(locale_dir,db_sde)
 dbComment = 'Liveability indicator data for {0} {1}.'.format(locale,year)
 
-
+# Environment settings for SQL
 os.environ['PGHOST']     = db_host
-os.environ['PGPORT']     = db_port
+os.environ['PGPORT']     = str(db_port)
 os.environ['PGUSER']     = db_user
 os.environ['PGPASSWORD'] = db_pwd
 os.environ['PGDATABASE'] = db
 
-osm_data = os.path.join(folderPath,df_parameters.loc['osm_data'][locale])
-osm_date = '{}'.format(df_parameters.loc['osm_date'][locale])
+# OSM settings
+osm_data = os.path.join(folderPath,osm_data)
 osm_prefix = 'osm_{}'.format(osm_date)
 osm_region = '{}_{}.osm'.format(locale,osm_prefix)
 
-# osm_source = df_parameters.loc['osm_source']
-# osm_source = D:/ntnl_li_2018_template/data/study_region/bangkok/bangkok_thailand_2016_10000m_20181001.osm
 osm_source = os.path.join(folderPath,'study_region',locale,'{}_{}.osm'.format(buffered_study_region,osm_prefix))
-osmnx_retain_all = df_parameters.loc['osmnx_retain_all'][locale]
+
 # define pedestrian network custom filter (based on OSMnx 'walk' network type, without the cycling exclusion)
 pedestrian = (
              '["area"!~"yes"]' 
@@ -229,31 +146,31 @@ grant_query = '''GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA pu
                  GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO {0};'''.format(db_user)
 
 # Region set up
-areas_of_interest = [int(x) for x in df_parameters.loc['regions_of_interest'][locale].split(',')]
+areas_of_interest = [int(x) for x in regions_of_interest.split(',')]
 areas = {}
 for area in areas_of_interest + ['urban']:
   prefix = area
   if type(area) is int:
     prefix = 'region{}'.format(area)
-  if df_parameters.loc['{}_data'.format(prefix)][locale] != '':
+  if globals()['{}_data'.format(prefix)] != '':
     areas[area] = {}
     for field in ['data','name','id','display','attribution']:
       if field=='data':
         # join with data path prefix
-        areas[area][field] = os.path.join(folderPath,df_parameters.loc['{}_{}'.format(prefix,field)][locale])
+        areas[area][field] = os.path.join(folderPath,globals()['{}_{}'.format(prefix,field)])
         areas[area]['table'] = os.path.splitext(os.path.basename(areas[area]['data']))[0].lower()
       elif field=='name': 
         # split into full (f) and short (s) lower case versions; latter is safe for database use
-        areas[area]['name_f'] = df_parameters.loc['{}_name'.format(prefix)][locale].split(',')[0]
-        if len(df_parameters.loc['{}_name'.format(prefix)][locale].split(',')) > 1:
-          areas[area]['name_s'] = df_parameters.loc['{}_name'.format(prefix)][locale].split(',')[1].lower()
+        areas[area]['name_f'] = globals()['{}_name'.format(prefix)].split(',')[0]
+        if len(globals()['{}_name'.format(prefix)].split(',')) > 1:
+          areas[area]['name_s'] = globals()['{}_name'.format(prefix)].split(',')[1].lower()
         else:
           areas[area]['name_s'] = areas[area]['name_f'].lower()
       elif field=='display':
-        if len('{}'.format(df_parameters.loc['{}_display'.format(prefix)][locale])) > 1:
-          areas[area]['display'] = df_parameters.loc['{}_display'.format(prefix)][locale]
+        if len('{}'.format(globals()['{}_display'.format(prefix)])) > 1:
+          areas[area]['display'] = globals()['{}_display'.format(prefix)]
         else:
-          areas[area]['display'] = df_parameters.loc['{}_id'.format(prefix)][locale]
+          areas[area]['display'] = globals()['{}_id'.format(prefix)]
       elif field=='attribution':
           areas[area]['attribution'] = (
                                     'Boundary data: <a href=\"{source_url}/\">{provider}</a> '
@@ -264,70 +181,29 @@ for area in areas_of_interest + ['urban']:
                                     licence_url = df_datasets.loc[areas[area]['name_s']]['licence_url'],
                                     licence     = df_datasets.loc[areas[area]['name_s']]['licence'])
       else:
-        areas[area][field] = df_parameters.loc['{}_{}'.format(prefix,field)][locale]
+        areas[area][field] = globals()['{}_{}'.format(prefix,field)]
 
-area_filter = df_parameters.loc['area_filter_field'][locale]
-area_filter_field = df_parameters.loc['area_filter_field'][locale]
-area_filter_value = df_parameters.loc['area_filter_value'][locale]
-area_analysis  = areas[df_parameters.loc['analysis_scale'][locale]]['name_s']
-analysis_field = areas[df_parameters.loc['analysis_scale'][locale]]['name_f']
-
-# Point data locations used for sampling
-# Note that the process assumes we have already transformed points to the project's spatial reference
-# Point data locations (e.g. GNAF address point features)
-points = 'sample_points'
-points_id = df_parameters.loc['points_id'][locale]
+area_analysis  = areas[analysis_scale]['name_s']
+analysis_field = areas[analysis_scale]['name_f']
 
 # roads
 # Define network data name structures
 # road_data = df_parameters.loc['road_data'][locale]  # the folder where road data is kept
 network_folder = 'osm_{}_epsg{}_pedestrian_{}'.format(buffered_study_region,srid,osm_prefix)
 network_source = os.path.join(locale_dir,network_folder)
-network_edges = df_parameters.loc['network_edges'][locale]
-network_junctions = df_parameters.loc['network_junctions'][locale]
-
-# network
-# sausage buffer network size  -- in units specified above
-distance = df_parameters.loc['distance'][locale]
-
-# intersection tolerance
-intersection_tolerance = df_parameters.loc['intersection_tolerance'][locale]
 intersections_table = "clean_intersections_{}m".format(intersection_tolerance)
-
-# search tolderance (in units specified above; features outside tolerance not located when adding locations)
-# NOTE: may need to increase if no locations are found
-tolerance = df_parameters.loc['tolerance'][locale]
- 
-# buffer distance for network lines as sausage buffer  
-line_buffer = df_parameters.loc['line_buffer'][locale]
-
-# Threshold paramaters
-soft_threshold_slope = df_parameters.loc['soft_threshold_slope'][locale]
-
-# Island exceptions are defined using ABS constructs in the project configuration file.
-# They identify contexts where null indicator values are expected to be legitimate due to true network isolation, 
-# not connectivity errors. 
-# For example, for Rottnest Island in Western Australia: sa1_maincode IN ('50702116525')
-island_exception = df_parameters.loc['island_exception'][locale]
 
 # Sausage buffer run parameters
 # If you experience 'no forward edges' issues, change this value to 1
 # this means that for *subsequently processed* buffers, it will use 
 # an ST_SnapToGrid parameter of 0.01 instead of 0.001
 ## The first pass should use 0.001, however.
-no_foward_edge_issues = df_parameters.loc['no_forward_edge_issues'][locale]
 snap_to_grid = 0.001
-if no_foward_edge_issues == 1:
+if no_forward_edge_issues == 1:
   snap_to_grid = 0.01
 
-# Areas of Open Space
-aos_threshold = df_parameters.loc['aos_threshold'][locale]
-    
-# Destinations - locate destinations.gdb within dest_dir (ie. 'D:\ntnl_li_2018\data\destinations\' or whereever your ntnl_li_2018 folder is located)
 # Destinations data directory
-dest_dir = os.path.join(folderPath,df_parameters.loc['dest_dir'][locale])
-destination_id = df_parameters.loc['destination_id'][locale]
-
+dest_dir = os.path.join(folderPath,dest_dir)
 study_destinations = 'study_destinations'
 
 # array / list of destinations 
@@ -409,7 +285,19 @@ map_style = '''
 </style>
 '''    
     
-map_attribution = df_parameters.loc['map_attribution'][locale]
+# function for printing dictionaries in 'pretty' format to screen 
+def pretty(d, indent=0):
+   for key, value in d.items():
+      depth = 0
+      print('\t' * indent + str(key)+':'),
+      if isinstance(value, dict):
+        if depth == 0:
+          print(" ")
+          depth+=1
+        pretty(value, indent+1)
+      else:
+        print(' ' + str(value))
+
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
  
