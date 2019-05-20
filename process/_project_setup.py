@@ -42,7 +42,7 @@ df_osm_dest = pandas.read_excel(xls, 'osm_dest_definitions')
 
 # prepare and clean configuration entries
 df_parameters[locale] = df_parameters[locale].fillna('')
-for var in [x.encode('utf8') for x in  df_parameters.index.values]:
+for var in [x for x in  df_parameters.index.values]:
     globals()[var] = df_parameters.loc[var][locale]
 # full_locale = df_parameters.loc['full_locale'][locale]
 df_datasets.name_s = df_datasets.name_s.fillna('')
