@@ -158,16 +158,17 @@ END$BODY$
 '''
 engine.execute(sql.replace('%','%%'))
 
+# create hexes with some additional offsetting to ensure complete study region coverage
 sql = '''
 DROP TABLE IF EXISTS {hex_grid};           
 CREATE TABLE {hex_grid} AS
 SELECT row_number() OVER () AS hex_id, geom
   FROM (
   SELECT hex_grid({hex_area_km2}, 
-                  ST_XMin(geom), 
-                  ST_YMin(geom), 
-                  ST_XMax(geom), 
-                  ST_YMax(geom), 
+                  ST_XMin(geom)-{hex_buffer}, 
+                  ST_YMin(geom)-{hex_buffer}, 
+                  ST_XMax(geom)+{hex_buffer}, 
+                  ST_YMax(geom)+{hex_buffer}, 
                   {srid}, 
                   {srid}, 
                   {srid}) geom, geom AS old_geom
@@ -177,7 +178,8 @@ CREATE UNIQUE INDEX {hex_grid}_idx ON {hex_grid} (hex_id);
 CREATE INDEX {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
 '''.format(hex_grid = hex_grid,
            hex_area_km2 = hex_area_km2,
-           srid = srid)           
+           srid = srid,
+           hex_buffer = hex_buffer)           
 engine.execute(sql)
 
 sql = '''
