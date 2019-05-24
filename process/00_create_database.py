@@ -23,7 +23,7 @@ if not os.path.exists(locale_dir):
     os.makedirs(locale_dir)    
 
 print("Connecting to default database to action queries.")
-conn = psycopg2.connect(dbname=admin_db, user=admin_user_name, password=admin_pwd, host = db_host, port = db_port)
+conn = psycopg2.connect(dbname=admin_db, user=admin_db, password=db_pwd, host = db_host, port = db_port)
 conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 curs = conn.cursor()
 
@@ -36,7 +36,7 @@ ENCODING = 'UTF8'
 TABLESPACE = pg_default 
 CONNECTION LIMIT = -1
 TEMPLATE template0;
-'''.format(db = db, admin_user_name = admin_user_name)
+'''.format(db = db, admin_user_name = admin_db)
 
 print('Creating database if not exists {}... '.format(db)),
 curs.execute("SELECT COUNT(*) = 0 FROM pg_catalog.pg_database WHERE datname = '{}'".format(db))
@@ -49,7 +49,7 @@ print('Done.')
 comment_database = '''
 COMMENT ON DATABASE {db} IS '{dbComment}';
 '''.format(db = db, dbComment = dbComment) 
-print('Adding comment "{}"... '.format(comment_database)),
+print('Adding comment "{}"... '.format(dbComment)),
 curs.execute(comment_database)
 print('Done.')
 
@@ -74,7 +74,7 @@ curs.execute(create_user)
 print('Done.')
           
 print("Connecting to {}.".format(db))
-conn = psycopg2.connect(dbname=db, user=admin_user_name, password=admin_pwd, host = db_host,  port = db_port)
+conn = psycopg2.connect(dbname=db, user=admin_db, password=db_pwd, host = db_host,  port = db_port)
 conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 curs = conn.cursor()
  
@@ -82,6 +82,7 @@ print('Creating required extensions ... '),
 create_extensions = '''
 CREATE EXTENSION IF NOT EXISTS postgis; 
 CREATE EXTENSION IF NOT EXISTS postgis_sfcgal;
+CREATE EXTENSION IF NOT EXISTS pgrouting;
 SELECT postgis_full_version(); 
 CREATE EXTENSION IF NOT EXISTS hstore; 
 CREATE EXTENSION IF NOT EXISTS tablefunc;

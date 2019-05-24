@@ -240,7 +240,7 @@ else:
     m.get_root().html.add_child(folium.Element(map_style))
     
     # save map
-    map_name = '{}_02_population_raster_{}.html'.format(locale,population_target)
+    map_name = '{}_02_population_raster_{}'.format(locale,population_target)
     m.save('{}/html/{}.html'.format(locale_maps,map_name))
     folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
     print("\t- {}".format(map_name)) 
@@ -300,7 +300,7 @@ else:
     m.get_root().html.add_child(folium.Element(map_style))
     
     # save map
-    map_name = '{}_02_population_{}.html'.format(locale,population_target)
+    map_name = '{}_02_population_{}'.format(locale,population_target)
     m.save('{}/html/{}.html'.format(locale_maps,map_name))
     folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
     print("\t- {}".format(map_name))           
@@ -360,7 +360,7 @@ else:
     m.get_root().html.add_child(folium.Element(map_style))
     
     # save map
-    map_name = '{}_02_population_density_{}.html'.format(locale,population_target)
+    map_name = '{}_02_population_density_{}'.format(locale,population_target)
     m.save('{}/html/{}.html'.format(locale_maps,map_name))
     folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
     print("\t- {}".format(map_name))              
@@ -422,7 +422,7 @@ else:
     m.get_root().html.add_child(folium.Element(map_style))
     
     # save map
-    map_name = '{}_02_percent_of_district_population_in_subdistrict_{}.html'.format(locale,population_target)
+    map_name = '{}_02_percent_of_district_population_in_subdistrict_{}'.format(locale,population_target)
     m.save('{}/html/{}.html'.format(locale_maps,map_name))
     folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
     print("\t- {}".format(map_name))   
@@ -483,7 +483,7 @@ else:
     m.get_root().html.add_child(folium.Element(map_style))
     
     # save map
-    map_name = '{}_02_percent_of_Bangkok_population_in_subdistrict_{}.html'.format(locale,population_target)
+    map_name = '{}_02_percent_of_Bangkok_population_in_subdistrict_{}'.format(locale,population_target)
     m.save('{}/html/{}.html'.format(locale_maps,map_name))
     folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
     print("\t- {}".format(map_name))   
@@ -500,7 +500,7 @@ command = (
                      pwd = db_pwd,
                      db = db,
                      tables = ' '.join(['"{}"'.format(areas[a]['name_s']) for a in areas])) 
-print(command)
+print(" Done.")
 sp.call(command, shell=True)  
 
 # # output to completion log					
