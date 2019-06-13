@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, NVARCHAR
 import folium
 import re
 
@@ -53,7 +53,7 @@ for root, dirs, files in os.walk('../data'):
                 sheet = df.loc[row,'Sheet']
                 description = df.loc[row,'Description']
                 heading = df.loc[row,'Heading']
-                map_name_suffix = df.loc[row,'map_name_suffix'].replace(' ','_',).replace('-','_')
+                map_name_suffix = df.loc[row,'table'].replace(' ','_',).replace('-','_')
                 area_layer = df.loc[row,'Area layer']
                 area_linkage_id = df.loc[row,'Area linkage ID']
                 area_index =  [k for k in areas.keys() if areas[k]['name_s']==area_layer][0]
@@ -63,6 +63,8 @@ for root, dirs, files in os.walk('../data'):
                 map_field = df.loc[row,'Map field']
                 if np.isnan(description):
                     description = map_field
+                    df.Description = df.Description.astype('object') 
+                    df.loc[row,'Description'] = map_field
                 source = df.loc[row,'Source']
                 mapxls = pd.ExcelFile(os.path.join(root,dataset))
                 mdf = pd.read_excel(mapxls,sheet)
@@ -86,6 +88,7 @@ for root, dirs, files in os.walk('../data'):
                 # Send to SQL database
                 mdf.columns = [map_name_suffix,'description']
                 mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
+                df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='append',index=False)
                 # Create map
                 attribution = '{} | {} | {}'.format(map_attribution,areas[area_index]['attribution'],source)
                 tables    = [buffered_study_region,study_region]
