@@ -11,6 +11,7 @@ import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
 from sqlalchemy import create_engine
 import folium
+import re
 
 from script_running_log import script_running_log
 
@@ -139,13 +140,14 @@ for root, dirs, files in os.walk('../data'):
                 m.get_root().html.add_child(folium.Element(map_style))
                 # Modify map heading (above legend)
                 html = m.get_root().render()
-                old = 'color_map_66a6a7f06f83420991f9e8431b3eae0d.svg = d3.select(".legend.leaflet-control").append("svg")'
+                color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
+                old = '{}.svg = d3.select(".legend.leaflet-control").append("svg")'.format(color_map)
                 new = '''
-                color_map_66a6a7f06f83420991f9e8431b3eae0d.title = d3.select(".legend.leaflet-control").append("div")
+                {color_map}.title = d3.select(".legend.leaflet-control").append("div")
                         .attr("style",'vertical-align: text-top;font-weight: bold;')
-                        .text("{}");
-                color_map_66a6a7f06f83420991f9e8431b3eae0d.svg = d3.select(".legend.leaflet-control").append("svg")
-                '''.format(heading)
+                        .text("{heading}");
+                {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
+                '''.format(color_map=color_map,heading=heading)
                 html = html.replace(old,new)
                 # save map
                 map_name = '{}_{}'.format(locale,map_name_suffix)
