@@ -26,18 +26,24 @@ engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_
                                                                       db   = db))
 
 print("Import administrative boundaries for study region... "),
+
 for area in areas:
+  # if aggregate_from_smallest and area != area_meta['areas_of_interest'][0]:
   if areas[area]['data'].endswith('zip'):
     # Open zipped file as geodataframe
-    gdf = gpd.read_file('zip://{}'.format(areas[area]['data']))
+    gdf = gpd.read_file('zip://../{}'.format(areas[area]['data']))
+  if '.gpkg:' in areas[area]['data']:
+    gpkg = areas[area]['data'].split(':')
+    gdf = gpd.read_file('../{}'.format(gpkg[0]), layer=gpkg[1])
   else:
     # Open spatial file as geodataframe
-    gdf = gpd.read_file(areas[area]['data'])
+    gdf = gpd.read_file('../{}'.format(areas[area]['data']))
   # Restrict to relevant region based on filter value 
   # (this assumes filter value and field is common to 
-  gdf = gdf[gdf[area_filter_field]==area_filter_value]
-  
+  if area_filter_field != '':
+    gdf = gdf[gdf[area_filter_field]==area_filter_value]
   # Set index
+  #### TO DO  - Need to ensure areas are aggregated first
   gdf.set_index(areas[area]['id'],inplace=True)
   # Transform to project projection
   gdf.to_crs(epsg=srid, inplace=True)

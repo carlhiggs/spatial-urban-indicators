@@ -69,7 +69,8 @@ area_meta_fields = ['areas_of_interest','area_datasets','area_ids','area_names',
 area_meta_test_length = []
 for i in area_meta_fields:
     area_meta[i] = [x.strip() for x in str(globals()[i]).split(',')]
-    area_meta_test_length.append(len(area_meta[i]))
+    array_length = len(area_meta[i])
+    area_meta_test_length.append(array_length)
 if any(x for x in area_meta_test_length if x != area_meta_test_length[1]):
   sys.exit('Please check area data in project configuration: not all areas of interest appear to have data specified...')
 
