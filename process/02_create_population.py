@@ -1,4 +1,4 @@
-# Import population raster and convert to polygons
+# Import population raster and calculate values for polygons
 
 import rasterio
 from rasterio.mask import mask

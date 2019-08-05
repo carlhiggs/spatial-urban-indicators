@@ -21,7 +21,7 @@ from _project_setup import *
 # simple timer for log file
 start = time.time()
 script = os.path.basename(sys.argv[0])
-task = 'create study region boundary'
+task = 'Create indicators from map_this_dir_config.xlsx files'
 
 engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_user,
                                                                       pwd  = db_pwd,
