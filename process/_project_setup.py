@@ -63,28 +63,69 @@ buffered_study_region = '{}_{}{}'.format(study_region,study_buffer,units)
 # sample points
 points = '{}_{}m'.format(points,point_sampling_interval)
 
-# Population
-population_field = 'Population ({} estimate)'.format(population_target)
-population_raster ={}
-population_raster['data'] = '.{}'.format(df_datasets.loc[population_grid]['data_dir'])
-population_raster['band'] = int(df_datasets.loc[population_grid]['band_if_raster'])
-population_raster['epsg'] = int(df_datasets.loc[population_grid]['epsg'])
-population_raster['attribution'] = (
-                                    'Population data: <a href=\"{source_url}/\">{provider}</a> '
+# Region set up
+area_meta = {}
+area_meta_fields = ['areas_of_interest','area_datasets','area_ids','area_names','area_displays']
+area_meta_test_length = []
+for i in area_meta_fields:
+    area_meta[i] = [x.strip() for x in str(globals()[i]).split(',')]
+    area_meta_test_length.append(len(area_meta[i]))
+if any(x for x in area_meta_test_length if x != area_meta_test_length[1]):
+  sys.exit('Please check area data in project configuration: not all areas of interest appear to have data specified...')
+
+
+areas = {}
+for area in area_meta['areas_of_interest']:
+  idx = area_meta['areas_of_interest'].index(area)
+  # print('{} {}'.format(area,idx))
+  if area_meta['area_datasets'] != '':
+    areas[area] = {}
+    areas[area]['data'] = df_datasets[df_datasets.index== area_meta['area_datasets'][idx]].data_dir.values[0]
+    areas[area]['name'] = area_meta['area_names'][idx]
+    areas[area]['id'] = area_meta['area_ids'][idx]
+    if len(area_meta['area_displays']) > 1:
+        areas[area]['display'] = area_meta['area_displays'][idx]
+    else: 
+        areas[area]['display'] = areas[area]['id']
+    areas[area]['attribution'] = (
+                                    'Boundary data: <a href=\"{source_url}/\">{provider}</a> '
                                     'under <a href=\"{licence_url}/\">{licence}</a>'
                                     ).format(
-                                    source_url = df_datasets.loc[population_grid]['source_url'],
-                                    provider = df_datasets.loc[population_grid]['provider'],
-                                    licence_url = df_datasets.loc[population_grid]['licence_url'],
-                                    licence = df_datasets.loc[population_grid]['licence'])
+                                    source_url  = df_datasets.loc[area_meta['area_datasets'][idx]]['source_url'],
+                                    provider    = df_datasets.loc[area_meta['area_datasets'][idx]]['provider'],
+                                    licence_url = df_datasets.loc[area_meta['area_datasets'][idx]]['licence_url'],
+                                    licence     = df_datasets.loc[area_meta['area_datasets'][idx]]['licence'])
 
-population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
-population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),srid)
-pop_alt_data = {}
+area_analysis  = areas[analysis_scale]['id']
+analysis_field = areas[analysis_scale]['name']
+
+# Population
+population_field = 'Population ({} estimate)'.format(population_target)
+
+population_linkage = {}
 for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]].index):
     data_type = pop_data.split(':')[1]
-    pop_alt_data[data_type] = '.{}'.format(df_datasets.loc['population:district'].data_dir)
-    
+    population_linkage[data_type] = {}
+    population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_dir)
+    population_linkage[data_type]['linkage'] = '.{}'.format(df_datasets.loc[pop_data].index_if_tabular)
+
+if population_grid != '':
+    population_raster ={}
+    population_raster['data'] = '.{}'.format(df_datasets.loc[population_data]['data_dir'])
+    population_raster['band'] = int(df_datasets.loc[population_data]['band_if_raster'])
+    population_raster['epsg'] = int(df_datasets.loc[population_data]['epsg'])
+    population_raster['attribution'] = (
+                                        'Population data: <a href=\"{source_url}/\">{provider}</a> '
+                                        'under <a href=\"{licence_url}/\">{licence}</a>'
+                                        ).format(
+                                        source_url = df_datasets.loc[population_data]['source_url'],
+                                        provider = df_datasets.loc[population_data]['provider'],
+                                        licence_url = df_datasets.loc[population_data]['licence_url'],
+                                        licence = df_datasets.loc[population_data]['licence'])
+
+    population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
+    population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),srid)
+
 def reproject_raster(inpath, outpath, new_crs):
     import rasterio
     from rasterio.warp import calculate_default_transform, reproject, Resampling
@@ -150,46 +191,7 @@ pedestrian = (
 grant_query = '''GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO {0};
                  GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO {0};'''.format(db_user)
 
-# Region set up
-areas_of_interest = [int(x) for x in regions_of_interest.split(',')]
-areas = {}
-for area in areas_of_interest + ['urban']:
-  prefix = area
-  if type(area) is int:
-    prefix = 'region{}'.format(area)
-  if globals()['{}_data'.format(prefix)] != '':
-    areas[area] = {}
-    for field in ['data','name','id','display','attribution']:
-      if field=='data':
-        # join with data path prefix
-        areas[area][field] = os.path.join(folderPath,globals()['{}_{}'.format(prefix,field)])
-        areas[area]['table'] = os.path.splitext(os.path.basename(areas[area]['data']))[0].lower()
-      elif field=='name': 
-        # split into full (f) and short (s) lower case versions; latter is safe for database use
-        areas[area]['name_f'] = globals()['{}_name'.format(prefix)].split(',')[0]
-        if len(globals()['{}_name'.format(prefix)].split(',')) > 1:
-          areas[area]['name_s'] = globals()['{}_name'.format(prefix)].split(',')[1].lower()
-        else:
-          areas[area]['name_s'] = areas[area]['name_f'].lower()
-      elif field=='display':
-        if len('{}'.format(globals()['{}_display'.format(prefix)])) > 1:
-          areas[area]['display'] = globals()['{}_display'.format(prefix)]
-        else:
-          areas[area]['display'] = globals()['{}_id'.format(prefix)]
-      elif field=='attribution':
-          areas[area]['attribution'] = (
-                                    'Boundary data: <a href=\"{source_url}/\">{provider}</a> '
-                                    'under <a href=\"{licence_url}/\">{licence}</a>'
-                                    ).format(
-                                    source_url  = df_datasets.loc[areas[area]['name_s']]['source_url'],
-                                    provider    = df_datasets.loc[areas[area]['name_s']]['provider'],
-                                    licence_url = df_datasets.loc[areas[area]['name_s']]['licence_url'],
-                                    licence     = df_datasets.loc[areas[area]['name_s']]['licence'])
-      else:
-        areas[area][field] = globals()['{}_{}'.format(prefix,field)]
 
-area_analysis  = areas[analysis_scale]['name_s']
-analysis_field = areas[analysis_scale]['name_f']
 
 # roads
 # Define network data name structures
