@@ -5,9 +5,12 @@
 
 import time
 import os
+import pandas as pd
+import numpy as np
 import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
 from sqlalchemy import create_engine
+from shapely.geometry import Polygon, MultiPolygon
 import folium
 
 from script_running_log import script_running_log
@@ -27,33 +30,95 @@ engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_
 
 print("Import administrative boundaries for study region... "),
 
-for area in areas:
-  # if aggregate_from_smallest and area != area_meta['areas_of_interest'][0]:
-  if areas[area]['data'].endswith('zip'):
-    # Open zipped file as geodataframe
-    gdf = gpd.read_file('zip://../{}'.format(areas[area]['data']))
-  if '.gpkg:' in areas[area]['data']:
-    gpkg = areas[area]['data'].split(':')
-    gdf = gpd.read_file('../{}'.format(gpkg[0]), layer=gpkg[1])
-  else:
-    # Open spatial file as geodataframe
-    gdf = gpd.read_file('../{}'.format(areas[area]['data']))
-  # Restrict to relevant region based on filter value 
-  # (this assumes filter value and field is common to 
-  if area_filter_field != '':
-    gdf = gdf[gdf[area_filter_field]==area_filter_value]
-  # Set index
-  #### TO DO  - Need to ensure areas are aggregated first
-  gdf.set_index(areas[area]['id'],inplace=True)
-  # Transform to project projection
-  gdf.to_crs(epsg=srid, inplace=True)
-  # Create WKT geometry (postgis won't read shapely geometry)
-  gdf['geom'] = gdf['geometry'].apply(lambda x: WKTElement(x.wkt, srid=srid))
-  # Drop original shapely geometry
-  gdf.drop('geometry', 1, inplace=True)
-  # Copy to project Postgis database
-  gdf.to_sql(areas[area]['name_s'], engine, if_exists='replace', index=True, dtype={'geom': Geometry('POLYGON', srid=srid)})
-  print('\t{} {}'.format(len(gdf),areas[area]['name_f'])), 
+gdf = {}
+if len(list(set([areas[area]['data'] for area in areas])))==1:
+  for area in areas:
+    if area==analysis_scale:
+      area = analysis_scale
+      # if aggregate_from_smallest and area != area_meta['areas_of_interest'][0]:
+      if areas[area]['data'].endswith('zip'):
+        # Open zipped file as geodataframe
+        gdf[area] = gpd.read_file('zip://../{}'.format(areas[area]['data']))
+      if '.gpkg:' in areas[area]['data']:
+        gpkg = areas[area]['data'].split(':')
+        gdf[area] = gpd.read_file('../{}'.format(gpkg[0]), layer=gpkg[1])
+      else:
+        # Open spatial file as geodataframe
+        gdf[area] = gpd.read_file('../{}'.format(areas[area]['data']))
+      # retain only known ids and geometry , and set index using analysis scale
+      # FUTURE >>> consider adding optional retain fields
+      gdf[area] = gdf[area][area_ids+['geometry']]
+      for i in area_id_types:
+        if i[1] == 'integer':
+            t = np.int64
+        else:
+            t = str
+        gdf[area][i[0]] = gdf[area][i[0]].astype(t)
+      gdf[area] = gdf[area].set_index(areas[area]['id'])
+      if population_linkage != '':
+        if population_linkage[area]['data'].endswith('csv'):
+          population = pd.read_csv(population_linkage[area]['data'],index_col=population_linkage[area]['linkage']) 
+          gdf[area] = gdf[area].join(population)
+        else:
+          print("Population linkage has only been coded to work with CSV files for now.")
+      # Transform to project projection
+      gdf[area].to_crs(epsg=srid, inplace=True)
+    else:
+      # Aggregate other area scales
+      # test = gdf[analysis_scale].dissolve(by=areas['district']['id'], aggfunc='sum')
+      agg_functions = {}
+      for a in [areas[area][x] for x in areas[area] if areas[area][x] in area_ids and  areas[area][x] != areas[area]['id']]:
+        agg_functions[a] = 'first'
+      if population_linkage != '':
+        for c in population.columns:
+          agg_functions[c] = 'sum'
+      gdf[area] = gdf[analysis_scale].dissolve(by=areas[area]['id'], aggfunc=agg_functions)
+  # now finalise area output for PostGIS 
+  for area in areas: 
+    gdf[area]['area_sqkm'] = gdf[area]['geometry'].area/10**6
+    if areas[area]['display_bracket'] == '':
+        gdf[area][area] = gdf[area][areas[area]['display_main']]
+    else:
+        gdf[area][area] = gdf[area][areas[area]['display_main']]+' ('+gdf[area][areas[area]['display_bracket']]+')'
+    # Create WKT geometry (postgis won't read shapely geometry)
+    gdf[area]["geometry"] = [MultiPolygon([feature]) if type(feature) == Polygon else feature for feature in gdf[area]["geometry"]]
+    gdf[area]['geom'] = gdf[area]['geometry'].apply(lambda x: WKTElement(x.wkt, srid=srid))
+    # Drop original shapely geometry
+    gdf[area].drop('geometry', 1, inplace=True)
+    # Ensure all geometries are multipolygons (specifically - can't be mixed type; complicates things)
+    # Copy to project Postgis database
+    gdf[area].to_sql(areas[area]['table'], engine, if_exists='replace', index=True, dtype={'geom': Geometry('MULTIPOLYGON', srid=srid)})
+    print('\t{} {}'.format(len(gdf[area]),areas[area]['name'])), 
+
+
+# Previous approach; may still be of use so retaining for now in case parts wish to be refactored later
+# for area in areas:
+  # # if aggregate_from_smallest and area != area_meta['areas_of_interest'][0]:
+  # if areas[area]['data'].endswith('zip'):
+    # # Open zipped file as geodataframe
+    # gdf = gpd.read_file('zip://../{}'.format(areas[area]['data']))
+  # if '.gpkg:' in areas[area]['data']:
+    # gpkg = areas[area]['data'].split(':')
+    # gdf = gpd.read_file('../{}'.format(gpkg[0]), layer=gpkg[1])
+  # else:
+    # # Open spatial file as geodataframe
+    # gdf = gpd.read_file('../{}'.format(areas[area]['data']))
+  # # Restrict to relevant region based on filter value 
+  # # (this assumes filter value and field is common to 
+  # if area_filter_field != '':
+    # gdf = gdf[gdf[area_filter_field]==area_filter_value]
+  # # Set index
+  # #### TO DO  - Need to ensure areas are aggregated first
+  # gdf.set_index(areas[area]['id'],inplace=True)
+  # # Transform to project projection
+  # gdf.to_crs(epsg=srid, inplace=True)
+  # # Create WKT geometry (postgis won't read shapely geometry)
+  # gdf['geom'] = gdf['geometry'].apply(lambda x: WKTElement(x.wkt, srid=srid))
+  # # Drop original shapely geometry
+  # gdf.drop('geometry', 1, inplace=True)
+  # # Copy to project Postgis database
+  # gdf.to_sql(areas[area]['name_s'], engine, if_exists='replace', index=True, dtype={'geom': Geometry('POLYGON', srid=srid)})
+  # print('\t{} {}'.format(len(gdf),areas[area]['name_f'])), 
 
 print("\nCreate analytical boundaries...")
 print("\tCreate study region boundary... ")

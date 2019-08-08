@@ -21,6 +21,7 @@ import time
 import pandas
 import subprocess as sp
 import math 
+import re
 
 # Set up locale (ie. defined at command line, or else testing)
 if len(sys.argv) >= 2:
@@ -65,15 +66,15 @@ points = '{}_{}m'.format(points,point_sampling_interval)
 
 # Region set up
 area_meta = {}
-area_meta_fields = ['areas_of_interest','area_datasets','area_ids','area_names','area_displays']
+area_meta_fields = ['areas_of_interest','area_datasets','area_ids','area_id_types','area_names','area_display_main','area_display_bracket']
 area_meta_test_length = []
 for i in area_meta_fields:
     area_meta[i] = [x.strip() for x in str(globals()[i]).split(',')]
     array_length = len(area_meta[i])
-    area_meta_test_length.append(array_length)
+    if i not in ['area_display_main','area_display_bracket']:
+      area_meta_test_length.append(array_length)
 if any(x for x in area_meta_test_length if x != area_meta_test_length[1]):
-  sys.exit('Please check area data in project configuration: not all areas of interest appear to have data specified...')
-
+  sys.exit('Please check area data in project configuration: not all required areas of interest parameters appear to have been defined...')
 
 areas = {}
 for area in area_meta['areas_of_interest']:
@@ -83,11 +84,25 @@ for area in area_meta['areas_of_interest']:
     areas[area] = {}
     areas[area]['data'] = df_datasets[df_datasets.index== area_meta['area_datasets'][idx]].data_dir.values[0]
     areas[area]['name'] = area_meta['area_names'][idx]
+    areas[area]['table'] = re.sub('[^\s\w]+', '', areas[area]['name']).lower().strip().replace(' ','_')
     areas[area]['id'] = area_meta['area_ids'][idx]
-    if len(area_meta['area_displays']) > 1:
-        areas[area]['display'] = area_meta['area_displays'][idx]
+    areas[area]['id_type'] = area_meta['area_id_types'][idx]
+    areas[area]['display_main'] = areas[area]['id']
+    areas[area]['display'] = areas[area]['id']
+    if len(area_meta['area_display_main']) > 1:
+        areas[area]['display_main'] = area_meta['area_display_main'][idx]
+        # areas[area]['display'] = areas[area]['display_main']
+        if len(area_meta['area_display_bracket']) > 1:
+            areas[area]['display_bracket'] = area_meta['area_display_bracket'][idx]
+        else:
+            areas[area]['display_bracket'] = ''
+            # if areas[area]['display_bracket']!='':
+                # areas[area]['display'] = (
+                # '''"{}"||' ('||"{}"||')'''
+                # ).format(areas[area]['display_main'],
+                         # areas[area]['display_bracket'])
     else: 
-        areas[area]['display'] = areas[area]['id']
+        areas[area]['display'] = areas[area]['display_main']
     areas[area]['attribution'] = (
                                     'Boundary data: <a href=\"{source_url}/\">{provider}</a> '
                                     'under <a href=\"{licence_url}/\">{licence}</a>'
@@ -99,6 +114,14 @@ for area in area_meta['areas_of_interest']:
 
 area_analysis  = areas[analysis_scale]['id']
 analysis_field = areas[analysis_scale]['name']
+area_ids = ([areas[area]['id'] for area in areas] + 
+           [areas[area]['display_main'] for area in areas] +
+           [areas[area]['display_bracket'] for area in areas])
+
+area_id_types = [[areas[area]['id'],areas[area]['id_type']] for area in areas]
+
+# An SQL query to define the field's display format for mapping
+# 
 
 # Population
 population_field = 'Population ({} estimate)'.format(population_target)
@@ -108,7 +131,7 @@ for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]
     data_type = pop_data.split(':')[1]
     population_linkage[data_type] = {}
     population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_dir)
-    population_linkage[data_type]['linkage'] = '.{}'.format(df_datasets.loc[pop_data].index_if_tabular)
+    population_linkage[data_type]['linkage'] = '{}'.format(df_datasets.loc[pop_data].index_if_tabular)
 
 if population_grid != '':
     population_raster ={}
