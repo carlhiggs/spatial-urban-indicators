@@ -103,14 +103,20 @@ for area in area_meta['areas_of_interest']:
                          # areas[area]['display_bracket'])
     else: 
         areas[area]['display'] = areas[area]['display_main']
+    licence = str(df_datasets.loc[area_meta['area_datasets'][idx]]['licence'])
+    if licence not in ['none specified','nan','']:
+        licence_attrib = (
+                          ' under <a href=\"{licence_url}/\">{licence}</a>'
+                          ).format(licence_url = df_datasets.loc[area_meta['area_datasets'][idx]]['licence_url'],
+                                   licence     = df_datasets.loc[area_meta['area_datasets'][idx]]['licence'])
+    else:
+        licence_attrib = ''
     areas[area]['attribution'] = (
-                                    'Boundary data: <a href=\"{source_url}/\">{provider}</a> '
-                                    'under <a href=\"{licence_url}/\">{licence}</a>'
-                                    ).format(
-                                    source_url  = df_datasets.loc[area_meta['area_datasets'][idx]]['source_url'],
-                                    provider    = df_datasets.loc[area_meta['area_datasets'][idx]]['provider'],
-                                    licence_url = df_datasets.loc[area_meta['area_datasets'][idx]]['licence_url'],
-                                    licence     = df_datasets.loc[area_meta['area_datasets'][idx]]['licence'])
+                                  'Boundary data: <a href=\"{source_url}/\">{provider}</a>{licence_attrib}'
+                                  ).format(source_url  = df_datasets.loc[area_meta['area_datasets'][idx]]['source_url'],
+                                           provider    = df_datasets.loc[area_meta['area_datasets'][idx]]['provider'],
+                                           licence_attrib = licence_attrib)
+    
 
 area_analysis  = areas[analysis_scale]['id']
 analysis_field = areas[analysis_scale]['name']
@@ -132,6 +138,19 @@ for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]
     population_linkage[data_type] = {}
     population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_dir)
     population_linkage[data_type]['linkage'] = '{}'.format(df_datasets.loc[pop_data].index_if_tabular)
+    licence = str(df_datasets.loc[pop_data]['licence'])
+    if licence not in ['none specified','nan','']:
+        licence_attrib = (
+                          ' under <a href=\"{licence_url}/\">{licence}</a>'
+                          ).format(licence_url = df_datasets.loc[pop_data]['licence_url'],
+                                   licence     = df_datasets.loc[pop_data]['licence'])
+    else:
+        licence_attrib = ''
+    population_linkage[data_type]['attribution'] = (
+                                  'Population data: <a href=\"{source_url}/\">{provider}</a>{licence_attrib}'
+                                  ).format(source_url  = df_datasets.loc[pop_data]['source_url'],
+                                           provider    = df_datasets.loc[pop_data]['provider'],
+                                           licence_attrib = licence_attrib)
 
 if population_grid != '':
     population_raster ={}
@@ -269,6 +288,8 @@ def style_dict_fcn(type = 'qualitative',colour=0):
         'lineColor': colours[type][colour]
     }
 
+## need to modify this to also allow to pdf -- perhaps using pdfkit
+# https://stackoverflow.com/questions/54390417/how-to-download-a-web-page-as-a-pdf-using-python
 def folium_to_png(input_dir='',output_dir='',map_name='',width=1000,height=800,pause=3):
     import selenium.webdriver
     try:

@@ -47,7 +47,12 @@ if len(list(set([areas[area]['data'] for area in areas])))==1:
         gdf[area] = gpd.read_file('../{}'.format(areas[area]['data']))
       # retain only known ids and geometry , and set index using analysis scale
       # FUTURE >>> consider adding optional retain fields
-      gdf[area] = gdf[area][area_ids+['geometry']]
+      if area_sqkm != '':
+        gdf[area] = gdf[area][area_ids+[area_sqkm,'geometry']]
+        gdf[area].rename(columns={area_sqkm: "area_sqkm"},inplace=True)
+        gdf[area]['area_sqkm'] = gdf[area]['area_sqkm'].astype(float)
+      else:
+        gdf[area] = gdf[area][area_ids+['geometry']]
       for i in area_id_types:
         if i[1] == 'integer':
             t = np.int64
@@ -55,7 +60,7 @@ if len(list(set([areas[area]['data'] for area in areas])))==1:
             t = str
         gdf[area][i[0]] = gdf[area][i[0]].astype(t)
       gdf[area] = gdf[area].set_index(areas[area]['id'])
-      if population_linkage != '':
+      if population_linkage != {}:
         if population_linkage[area]['data'].endswith('csv'):
           population = pd.read_csv(population_linkage[area]['data'],index_col=population_linkage[area]['linkage']) 
           gdf[area] = gdf[area].join(population)
@@ -69,13 +74,17 @@ if len(list(set([areas[area]['data'] for area in areas])))==1:
       agg_functions = {}
       for a in [areas[area][x] for x in areas[area] if areas[area][x] in area_ids and  areas[area][x] != areas[area]['id']]:
         agg_functions[a] = 'first'
-      if population_linkage != '':
+      if area_sqkm != '':
+        agg_functions['area_sqkm'] = 'sum'
+      if population_linkage != {}:
         for c in population.columns:
           agg_functions[c] = 'sum'
       gdf[area] = gdf[analysis_scale].dissolve(by=areas[area]['id'], aggfunc=agg_functions)
   # now finalise area output for PostGIS 
   for area in areas: 
-    gdf[area]['area_sqkm'] = gdf[area]['geometry'].area/10**6
+    if area_sqkm == '':
+        gdf[area]['area_sqkm'] = gdf[area]['geometry'].area/10**6
+    gdf[area]['population_per_sqkm'] = gdf[area]['population']/gdf[area]['area_sqkm']
     if areas[area]['display_bracket'] == '':
         gdf[area][area] = gdf[area][areas[area]['display_main']]
     else:
@@ -88,8 +97,7 @@ if len(list(set([areas[area]['data'] for area in areas])))==1:
     # Ensure all geometries are multipolygons (specifically - can't be mixed type; complicates things)
     # Copy to project Postgis database
     gdf[area].to_sql(areas[area]['table'], engine, if_exists='replace', index=True, dtype={'geom': Geometry('MULTIPOLYGON', srid=srid)})
-    print('\t{} {}'.format(len(gdf[area]),areas[area]['name'])), 
-
+    print('\t{} {}'.format(len(gdf[area]),areas[area]['name']))
 
 # Previous approach; may still be of use so retaining for now in case parts wish to be refactored later
 # for area in areas:
@@ -125,7 +133,7 @@ print("\tCreate study region boundary... ")
 engine.execute('''
 DROP TABLE IF EXISTS {study_region}; 
 CREATE TABLE {study_region} AS 
-      SELECT '{study_region}'::text AS "Description",
+      SELECT {region_shape} AS "Study region",
             ST_Transform(geom,4326) AS geom_4326,
             geom 
         FROM {region_shape} 
@@ -138,34 +146,35 @@ print("\tCreate {} km buffered study region... ".format(study_buffer))
 engine.execute('''
 DROP TABLE IF EXISTS {buffered_study_region}; 
 CREATE TABLE {buffered_study_region} AS 
-      SELECT '{buffered_study_region_name}'::text AS "Description", 
+      SELECT '{buffered_study_region_name}'::text AS "Study region buffer", 
              ST_Transform(ST_Buffer(geom,{buffer}),4326) AS geom_4326,
              ST_Buffer(geom,{buffer}) AS geom 
         FROM {study_region};
 '''.format(study_region = study_region,
            buffered_study_region = buffered_study_region,
-           buffered_study_region_name = buffered_study_region_name,
+           buffered_study_region_name = '{} km'.format(study_buffer/1000,1),
            buffer = study_buffer))
 
-print("\tCalculate area in Hectares (Ha) and square kilometres (sqkm) and set up display formats for mapping for each area scale... ".format(study_buffer))           
-for area in areas:
-    engine.execute('''
-    ALTER TABLE {area_analysis} 
-    ADD COLUMN IF NOT EXISTS "{display_name}" text,
-    ADD COLUMN IF NOT EXISTS area_ha double precision,
-    ADD COLUMN IF NOT EXISTS area_sqkm double precision,
-    ADD COLUMN IF NOT EXISTS geom_4326 geometry;
-    UPDATE {area_analysis} 
-    SET "{display_name}" = {display_sql},
-        area_ha   = (ST_Area(geom)/10000.0)::double precision,
-        area_sqkm = (ST_Area(geom)/1000000.0)::double precision,
-        geom_4326 = ST_Transform(geom,4326);
-    '''.format(area_analysis = areas[area]['name_s'],
-               display_name  = areas[area]['name_f'],
-               display_sql   = areas[area]['display'],
-               buffered_study_region = buffered_study_region,
-               buffer = study_buffer))
-print("Done.")
+# # Previous approach; may still be of use so retaining for now in case parts wish to be refactored later
+# print("\tCalculate area in Hectares (Ha) and square kilometres (sqkm) and set up display formats for mapping for each area scale... ".format(study_buffer))
+# for area in areas:
+    # engine.execute('''
+    # ALTER TABLE {area_analysis} 
+    # ADD COLUMN IF NOT EXISTS "{display_name}" text,
+    # ADD COLUMN IF NOT EXISTS area_ha double precision,
+    # ADD COLUMN IF NOT EXISTS area_sqkm double precision,
+    # ADD COLUMN IF NOT EXISTS geom_4326 geometry;
+    # UPDATE {area_analysis} 
+    # SET "{display_name}" = {display_sql},
+        # area_ha   = (ST_Area(geom)/10000.0)::double precision,
+        # area_sqkm = (ST_Area(geom)/1000000.0)::double precision,
+        # geom_4326 = ST_Transform(geom,4326);
+    # '''.format(area_analysis = areas[area]['name_s'],
+               # display_name  = areas[area]['name_f'],
+               # display_sql   = areas[area]['display'],
+               # buffered_study_region = buffered_study_region,
+               # buffer = study_buffer))
+# print("Done.")
           
 # Prepare map
 if not os.path.exists(locale_maps):
@@ -176,10 +185,13 @@ for dir in ['html','png','pdf','gpkg']:
         os.makedirs(path)   
 
 map_attribution = '{} | {}'.format(map_attribution,areas[area]['attribution'])
-        
+# if population_linkage != {}:
+    # map_attribution = '{} | {}'.format(map_attribution,population_linkage[analysis_scale]['attribution'])
+
+
 map_layers={}
 tables    = [buffered_study_region,study_region]
-fields    = ['Description','Description']
+fields    = ["Study region buffer","Study region"]
 names     =  [buffered_study_region_name,'Study region']
 opacity   =  [0,0.4]
 highlight =  [False,False]
