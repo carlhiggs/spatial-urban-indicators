@@ -37,6 +37,9 @@ if population_linkage != {}:
         if f in population_numeric:
             pop_data_fields_full.append('{} per sqkm'.format(f))
             pop_data_fields_to_map.append('{} per sqkm'.format(f))
+    column_names = {}
+    for f in pop_data_fields_full:
+        column_names[f] = f.replace('sqkm','km\u00B2')
     map_attribution = '{} | {} | {}'.format(map_attribution,areas[area]['attribution'],population_linkage[analysis_scale]['attribution'])
     map_data={}
     tables    = [buffered_study_region,study_region]
@@ -53,38 +56,25 @@ if population_linkage != {}:
     for area in areas:
         sql = '''
         SELECT {area},
-               # area_sqkm AS "area (km\u00B2)",
-               area_sqkm,
                {data_fields}
-               "population per sqkm" AS "population per km\u00B2",
-               population,
-               households,
-               "households per sqkm" AS "households per km\u00B2",
-               communities,
-               communities_per_sqkm AS "communities per km\u00B2",
-               "population in communities",
-               population_in_communities_per_sqkm AS "population in communities per km\u00B2",
-               "population not in communities",
-               population_not_in_communities_per_sqkm AS "population not in communities per km\u00B2",
                ST_Transform(geom, 4326) AS geom 
         FROM {area} a
         '''.format(area = area,
-                   data_fields = '{},'.format(','.join(pop_data_fields_full)))
+                   data_fields = '"{}",'.format('","'.join(pop_data_fields_full)))
         map_data[area] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
-    df.rename(str.lower, axis='columns')
-    fields =["males","females","population","households","communities","population in communities","population not in communities","area (km\u00B2)","population per km\u00B2" ]
-    map_fields = ["area (km\u00B2)",'population',"population per km\u00B2",'"population per km\u00B2","population per km\u00B2","population in communities per km\u00B2","population not in communities per km\u00B2"] 
-    map_fields = ["population per km\u00B2","population per km\u00B2","population per km\u00B2","population in communities per km\u00B2","population not in communities per km\u00B2"] 
+        map_data[area].rename(columns = column_names, inplace=True)
+        map_data[area].rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
+    data_fields =[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_full]
+    map_fields =[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_to_map]
     xy = [float(map_data[buffered_study_region].centroid.y),float(map_data[buffered_study_region].centroid.x)]  
     bounds = map_data[buffered_study_region].bounds.transpose().to_dict()[0]
     
     # Population map
-    for area in areas:
-        for field in fields:
-          if field != "area (km\u00B2)":
-            map_name = '{}_02_population_{}_{}'.format(locale,area,field)
-            if field == "population per km\u00B2":
-                map_name = '{}_02_population_{}_{}'.format(locale,area,'per_sqkm')
+    for field in map_fields:
+        for area in areas:
+          # this kind of map does not make sense for an overall summary
+          if len(map_data[area].index.values) > 1:
+            map_name = '{}_02_population_{}_{}'.format(locale,area,field.replace('km\u00B2','sqkm').replace(' ','_'))
             print("{}...".format(map_name))           
             m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
             # folium.CustomPane(name="basemaps", z_index=625, pointer_events=False).add_to(m)
@@ -112,9 +102,6 @@ if population_linkage != {}:
                                 # "under ODbL.").format(map_attribution))
                                     # ).add_to(m)
             map_layers={}                   
-            bins = 6
-            if len(map_data[area].index.values) == 1:
-                bins = 1
             map_layers[area] = folium.Choropleth(data = map_data[area],
                                                  geo_data =map_data[area].to_json(),
                                                  name = '{} ({})'.format(field,area),
@@ -124,11 +111,10 @@ if population_linkage != {}:
                                                  fill_opacity=0.7,
                                                  line_opacity=0.2,
                                                  legend_name='{}, by {}'.format(field,area),
-                                                 bins=bins,
                                                  reset=True,
                                                  overlay = False
                                ).add_to(m)
-            folium.features.GeoJsonTooltip(fields=[area]+fields,
+            folium.features.GeoJsonTooltip(fields=[area]+data_fields,
                                         localize=True,
                                         labels=True, 
                                         sticky=True
@@ -153,7 +139,7 @@ if population_linkage != {}:
                             output_dir = os.path.join(locale_maps,'png'),
                             map_name = map_name,
                             strip_elements=["leaflet-control-zoom"])
-            print(" - Done!\n")
+        print("\n")
 
 # # The following relates to previous code where raster grid was used for population
 # # This approach is not used in revised approach for this project; and the below 
@@ -631,13 +617,13 @@ command = (
             'ogr2ogr -overwrite -f GPKG {path}/{output_name}.gpkg '
             'PG:"host={host} user={user} dbname={db} password={pwd}" '
             '  {tables}'
-            ).format(output_name = '{}_population'.format(study_region),
+            ).format(output_name = '{}_population_{}'.format(study_region,population_linkage[analysis_scale]['year_target']),
                      path = os.path.join(locale_maps,'gpkg'),
                      host = db_host,
                      user = db_user,
                      pwd = db_pwd,
                      db = db,
-                     tables = ' '.join(['"{}"'.format([a for a in areas])) 
+                     tables =  ' '.join(['"{}"'.format(a) for a in areas])) 
 print(" Done.")
 sp.call(command, shell=True)     
 
