@@ -137,6 +137,7 @@ for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]
     data_type = pop_data.split(':')[1]
     population_linkage[data_type] = {}
     population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_dir)
+    population_linkage[data_type]['year_target'] = df_datasets.loc[pop_data].year_target
     population_linkage[data_type]['linkage'] = '{}'.format(df_datasets.loc[pop_data].index_if_tabular)
     licence = str(df_datasets.loc[pop_data]['licence'])
     if licence not in ['none specified','nan','']:
@@ -290,13 +291,15 @@ def style_dict_fcn(type = 'qualitative',colour=0):
 
 ## need to modify this to also allow to pdf -- perhaps using pdfkit
 # https://stackoverflow.com/questions/54390417/how-to-download-a-web-page-as-a-pdf-using-python
-def folium_to_png(input_dir='',output_dir='',map_name='',width=1000,height=800,pause=3):
+# I think in future should use puppeteer with headless chrome
+# (or pyppeteer)
+def folium_to_image(input_dir='',output_dir='',map_name='',formats=['png'],width=1000,height=800,pause=3,strip_elements=["leaflet-control-zoom","leaflet-control-layers"]):
     import selenium.webdriver
     try:
         if (input_dir=='' or map_name==''):
             raise Exception(('This function requires specification of an input directory.\n'
                    'Please specify the function in the following form:\n'
-                   'folium_to_png(intput_dir,output_dir,map_name,[width],[height],[pause])'
+                   'folium_to_png(input_dir,output_dir,map_name,[["format","format"]],[width],[height],[pause])'
                    ))
             return
         if output_dir=='':
@@ -309,13 +312,21 @@ def folium_to_png(input_dir='',output_dir='',map_name='',width=1000,height=800,p
         # You may need to add time.sleep(seconds) here
         time.sleep(pause)
         # Remove zoom controls from snapshot
-        for leaflet_class in ["leaflet-control-zoom","leaflet-control-layers"]:
+        for leaflet_class in strip_elements:
             element = driver.find_element_by_class_name(leaflet_class)
             driver.execute_script("""
             var element = arguments[0];
             element.parentNode.removeChild(element);
             """, element)
-        driver.save_screenshot('{}/{}.png'.format(output_dir,map_name))
+        if 'png' in formats:
+            driver.save_screenshot('{}/{}.png'.format(output_dir,map_name))
+        # if 'pdf' in formats:
+            # import pdfkit
+            # with open("{}/__folium_temp.html".format(output_dir), "w") as f:
+                # f.write(driver.page_source)
+            # pdfkit.from_file("{}/__folium_temp.html".format(output_dir), 
+                             # '{}/{}.pdf'.format(output_dir,map_name))
+            # os.remove("{}/__folium_temp.html".format(output_dir))
         driver.close()
     except Exception as error:
         print("Export of {} failed.".format('{}/{}.png: {}'.format(output_dir,map_name,error)))
@@ -335,6 +346,7 @@ map_style = '''
 	height: auto;
 	}
 </style>
+<script>L_DISABLE_3D = true;</script>
 '''    
     
 # function for printing dictionaries in 'pretty' format to screen 

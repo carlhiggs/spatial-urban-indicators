@@ -58,7 +58,7 @@ if len(list(set([areas[area]['data'] for area in areas])))==1:
             t = np.int64
         else:
             t = str
-        gdf[area][i[0]] = gdf[area][i[0]].astype(t)
+        gdf[area][i[0]] = gdf[area].loc[:,i[0]].astype(t)
       gdf[area] = gdf[area].set_index(areas[area]['id'])
       if population_linkage != {}:
         if population_linkage[area]['data'].endswith('csv'):
@@ -81,14 +81,20 @@ if len(list(set([areas[area]['data'] for area in areas])))==1:
           agg_functions[c] = 'sum'
       gdf[area] = gdf[analysis_scale].dissolve(by=areas[area]['id'], aggfunc=agg_functions)
   # now finalise area output for PostGIS 
+  # area density based measures
   for area in areas: 
     if area_sqkm == '':
         gdf[area]['area_sqkm'] = gdf[area]['geometry'].area/10**6
-    gdf[area]['population_per_sqkm'] = gdf[area]['population']/gdf[area]['area_sqkm']
-    if areas[area]['display_bracket'] == '':
-        gdf[area][area] = gdf[area][areas[area]['display_main']]
-    else:
+        if population_linkage != {}:
+            # Calculate density measures for numeric population linkage fields")
+            population_numeric = [c for c in population.columns if np.issubdtype(population[c].dtype, np.number)]
+            for field in population_numeric:
+                # print(" - {}".format(field))
+                gdf[area]['{} per sqkm'.format(field)] = gdf[area][field]/gdf[area]['area_sqkm']
+    if areas[area]['display_bracket'] != '':
         gdf[area][area] = gdf[area][areas[area]['display_main']]+' ('+gdf[area][areas[area]['display_bracket']]+')'
+    else:
+        gdf[area][area] = gdf[area][areas[area]['display_main']]
     # Create WKT geometry (postgis won't read shapely geometry)
     gdf[area]["geometry"] = [MultiPolygon([feature]) if type(feature) == Polygon else feature for feature in gdf[area]["geometry"]]
     gdf[area]['geom'] = gdf[area]['geometry'].apply(lambda x: WKTElement(x.wkt, srid=srid))
@@ -239,7 +245,7 @@ m.get_root().html.add_child(folium.Element(map_style))
 # save map
 map_name = '{}_01_study_region'.format(locale)
 m.save('{}/html/{}.html'.format(locale_maps,map_name))
-folium_to_png(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
+folium_to_image(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
 
 print("\nPlease inspect results using interactive map saved in project maps folder:".format(map_name))
 print('\t- {}/html/{}.html'.format(locale_maps,map_name))

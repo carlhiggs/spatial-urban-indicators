@@ -80,9 +80,17 @@ RUN conda install -y geckodriver selenium \
  && conda info --all                      \
  && conda list
  
+# additional packages for outputting pdf
+# RUN pip install pdfkit
+# RUN conda install -y python-pdfkit wkhtmltopdf folium \
+# && conda clean --yes --all               \
+# && conda info --all                      \
+# && conda list
+
 USER root 
-RUN apt-get install -y firefox               
-RUN apt-get install -y fonts-unfonts-core    \
+RUN apt-get update && \
+    apt-get install -y firefox               \
+ && apt-get install -y fonts-unfonts-core    \
  && apt-get install -y fonts-unfonts-extra   \
  && apt-get install -y fonts-tlwg-loma       \
  && apt-get install -y fonts-tlwg-loma-otf   \
@@ -95,6 +103,13 @@ ENV LANG=en_AU.UTF-8
 ENV LANGUAGE=en_AU.UTF-8
 ENV PGCLIENTENCODING=UTF8
 RUN export LC_ALL LANG LANGUAGE PGCLIENTENCODING
+
+# install this library as fix for wkhtmltopdf https related error
+# the first two lines help ensure that the service restarts automatically, non-interactively
+#RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
+#    && apt-get update && apt-get install -y -q --no-install-recommends \
+#       libssl-dev=1.0.2g-1ubuntu4.9
+
 # launch notebook in the local working directory that we mount
 USER $NB_UID 
 WORKDIR /home/jovyan/work
