@@ -1,7 +1,7 @@
-# Script:  _create_excel_indicators.py
-# Purpose: Create indicators based on Excel data where accompanied by a 'map_this_dir_config.xlsx' file with appropriate entries
+# Script:  _create_linkage_indicators.py
+# Purpose: Create indicators based on linkage with boundary data from specification in Datasets section of configuration file
 # Author:  Carl Higgs
-# Date:    20190610
+# Date:    20190812
 
 import time
 import os
