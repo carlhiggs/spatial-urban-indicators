@@ -79,6 +79,12 @@ RUN conda install -y geckodriver selenium \
  && conda clean --yes --all               \
  && conda info --all                      \
  && conda list
+
+# additional packages for documentation
+RUN conda install -y sphinx \
+ && conda clean --yes --all \
+ && conda info --all        \
+ && conda list
  
 # additional packages for outputting pdf
 # RUN pip install pdfkit

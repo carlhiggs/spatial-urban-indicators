@@ -26,7 +26,9 @@ engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_
                                                                       db   = db))  
 
 if population_linkage != {}:
+    # define heading for map
     heading = "Population statistics, {}".format(population_linkage[analysis_scale]['year_target'])
+    # get key fields from the specified population dataset
     population = pandas.read_csv(population_linkage[analysis_scale]['data'],index_col=population_linkage[analysis_scale]['linkage']) 
     population_numeric = [c for c in population.columns if np.issubdtype(population[c].dtype, np.number)]
     pop_data_fields = population_map_fields.split(',')
@@ -38,21 +40,16 @@ if population_linkage != {}:
             pop_data_fields_full.append('{} per sqkm'.format(f))
             pop_data_fields_to_map.append('{} per sqkm'.format(f))
     column_names = {}
+    # format to display superscript 2 for square kilometres
     for f in pop_data_fields_full:
         column_names[f] = f.replace('sqkm','km\u00B2')
+    # compile map attribution text
     map_attribution = '{} | {} | {}'.format(map_attribution,areas[area]['attribution'],population_linkage[analysis_scale]['attribution'])
+    # get study region map data for setting up map location
     map_data={}
-    tables    = [buffered_study_region,study_region]
-    fields    = ["Study region buffer","Study region"]
-    names     =  [buffered_study_region_name,'Study region']
-    opacity   =  [0,0.4]
-    highlight =  [False,False]
-    for i in range(0,len(tables)):
-        table = tables[i]
-        field = fields[i]
-        sql = '''SELECT "{}",geom_4326 geom FROM {}'''.format(field,table)
-        map_data[table] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
-    
+    sql = '''SELECT ST_Transform(ST_Buffer(geom,3),4326) geom FROM {}'''.format(study_region)
+    map_data['map_buffer'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
+    # get analytical layer data
     for area in areas:
         sql = '''
         SELECT {area},
@@ -66,9 +63,9 @@ if population_linkage != {}:
         map_data[area].rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
     data_fields =[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_full]
     map_fields =[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_to_map]
-    xy = [float(map_data[buffered_study_region].centroid.y),float(map_data[buffered_study_region].centroid.x)]  
-    bounds = map_data[buffered_study_region].bounds.transpose().to_dict()[0]
-    
+    # set up initial map location and bounds
+    xy = [float(map_data['map_buffer'].centroid.y),float(map_data['map_buffer'].centroid.x)]  
+    bounds = map_data['map_buffer'].bounds.transpose().to_dict()[0]
     # Population map
     for field in map_fields:
         for area in areas:
@@ -77,8 +74,7 @@ if population_linkage != {}:
             map_name = '{}_02_population_{}_{}'.format(locale,area,field.replace('km\u00B2','sqkm').replace(' ','_'))
             print("{}...".format(map_name))           
             m = folium.Map(location=xy, zoom_start=11,tiles=None, control_scale=True, prefer_canvas=True)
-            # folium.CustomPane(name="basemaps", z_index=625, pointer_events=False).add_to(m)
-            # folium.CustomPane(name="data", z_index=625, pointer_events=True).add_to(m)
+            # add in basemap
             folium.TileLayer(tiles='Stamen Toner',
                             name='simple map', 
                             active=True,
@@ -101,6 +97,7 @@ if population_linkage != {}:
                                 # "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
                                 # "under ODbL.").format(map_attribution))
                                     # ).add_to(m)
+            # Create choropleth map layer
             map_layers={}                   
             map_layers[area] = folium.Choropleth(data = map_data[area],
                                                  geo_data =map_data[area].to_json(),
@@ -114,6 +111,7 @@ if population_linkage != {}:
                                                  reset=True,
                                                  overlay = False
                                ).add_to(m)
+            # define tooltip on hover content, formatting and behaviour
             folium.features.GeoJsonTooltip(fields=[area]+data_fields,
                                         localize=True,
                                         labels=True, 
@@ -133,8 +131,13 @@ if population_linkage != {}:
             {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
             '''.format(color_map=color_map,heading=heading)
             html = html.replace(old,new)
+            # move legend to lower right corner
+            html = html.replace('''legend = L.control({position: \'topright''',                     '''legend = L.control({position: \'bottomright''')
             # save map
-            m.save('{}/html/{}.html'.format(locale_maps,map_name))
+            fid = open('{}/html/{}.html'.format(locale_maps,map_name), 'wb')
+            fid.write(html.encode('utf8'))
+            fid.close()
+            # output map to image (eg png)
             folium_to_image(input_dir  = os.path.join(locale_maps,'html'),
                             output_dir = os.path.join(locale_maps,'png'),
                             map_name = map_name,
