@@ -110,9 +110,6 @@ ENV LANGUAGE=en_AU.UTF-8
 ENV PGCLIENTENCODING=UTF8
 RUN export LC_ALL LANG LANGUAGE PGCLIENTENCODING
 
-# install make tools  -- to render Sphinx documentation
-RUN apt-get update && apt-get install -y make
-
 # install this library as fix for wkhtmltopdf https related error
 # the first two lines help ensure that the service restarts automatically, non-interactively
 #RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
