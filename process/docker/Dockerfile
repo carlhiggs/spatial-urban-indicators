@@ -120,6 +120,8 @@ RUN export LC_ALL LANG LANGUAGE PGCLIENTENCODING
 USER $NB_UID 
 WORKDIR /home/jovyan/work
 
+RUN conda install -y --channel conda-forge --force-reinstall proj4=5.2.0
+
 # set default command to launch when container is run
 CMD ["jupyter", "lab", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''"]
 
