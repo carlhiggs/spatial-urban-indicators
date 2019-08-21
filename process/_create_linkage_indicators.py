@@ -107,7 +107,7 @@ for row in df.index:
         mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
         # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
         # Create map
-        attribution = '{} | {} | {}'.format(map_attribution,areas[area_layer]['attribution'],source)
+        attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
         tables    = [buffered_study_region,study_region]
         fields    = ['Description','Description']
         sql = '''
@@ -133,25 +133,26 @@ for row in df.index:
         xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
         # initialise map
         m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True)
-        m.add_tile_layer(tiles='Stamen Toner',
+        folium.TileLayer(tiles='Stamen Toner',
                         name='simple map', 
-                        active=True,
+                        show =True,
+                        overlay=True,
                         attr=((
                             " {} | "
                             "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
                             "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                             "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
                             "under ODbL.").format(attribution))
-                                )
-        m.add_tile_layer(tiles='OpenStreetMap',
-                        name='OpenStreetMap', 
-                        attr=((
-                            " {} | "
-                            "Map tiles: <a href=\"http://openstreetmap.org/\">© OpenStreetMap contributors</a>, " 
-                            "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
-                            "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                            "under ODbL.").format(map_attribution))
-                                )
+                                ).add_to(m)
+        # m.add_tile_layer(tiles='OpenStreetMap',
+                        # name='OpenStreetMap', 
+                        # attr=((
+                            # " {} | "
+                            # "Map tiles: <a href=\"http://openstreetmap.org/\">© OpenStreetMap contributors</a>, " 
+                            # "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                            # "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                            # "under ODbL.").format(map_attribution))
+                                # )
         # Create choropleth map
         bins = 6
         value_list = set(map[map_field].dropna().unique())
@@ -171,6 +172,7 @@ for row in df.index:
                         line_opacity=0.2,
                         legend_name='{}, by {}{}'.format(map_field.title(),area_layer,aggregation_text),
                         bins = bins,
+                        smooth_factor = None,
                         reset=True,
                         overlay = True
                         ).add_to(m)
