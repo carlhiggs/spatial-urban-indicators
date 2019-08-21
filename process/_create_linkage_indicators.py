@@ -28,8 +28,8 @@ engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_
                                                                       host = db_host,
                                                                       db   = db))
 
-# retrieve subset of datasets which are Excel or CSV files to be joined based on linkage
-df = df_datasets[df_datasets.index.str.startswith('excel:') | df_datasets.index.str.startswith('csv:')]
+# retrieve subset of datasets which are files to be joined based on linkage
+df = df_datasets[df_datasets.index.str.startswith('linkage:')]
 
 # get key fields from the specified population dataset
 population = pandas.read_csv(population_linkage[analysis_scale]['data'],index_col=population_linkage[analysis_scale]['linkage']) 
@@ -51,6 +51,7 @@ for row in df.index:
     dataset = df.loc[row,'data_dir']
     print('  - "{}"'.format(dataset))
     sheet = df.loc[row,'excel_sheet']
+    data_type = valid_type(df.loc[row,'data_type'])
     description = df.loc[row,'alias']
     heading = df.loc[row,'map_heading']
     map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
@@ -60,118 +61,152 @@ for row in df.index:
     linkage_id = df.loc[row,'linkage_id']
     display_id = area_layer
     map_field = df.loc[row,'map_field']
-    if not area_layer in areas:
-       print("Please check that the specified 'linkage_layer' corresponds to one of those set up in the Parameters sheet.")
-       continue
-    if not areas[area_layer]['id']==linkage_id:
-       print("Please check that the specified 'linkage_id' corresponds to that of the specified linkage layer.")
-       continue
-    if description=='':
-        description = map_field
-        df.loc[row,'Description'] = map_field
-    source = df.loc[row,'provider']
-    mapxls = pd.ExcelFile('../{}'.format(dataset))
-    mdf = pd.read_excel(mapxls,sheet)
-    mdf = mdf.set_index(linkage_id)
-    mdf.index.name = area_linkage_id
-    # aggregate data by ID using specified method, if specified.
-    # Note that currently only 'sum' and 'average' have been programmed as options.
-    aggregation_text = ''
-    if aggregation =='sum':
-        mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
-        aggregation_text = " ({})".format(aggregation)
-    elif aggregation == 'average':
-        mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
-        aggregation_text = " ({})".format(aggregation)
-    elif not '{}'.format(description)=='nan':
-        print("Specified aggregation method has not been programmed as an option for this Excel file; no aggregation will be made if duplicate IDs are encountered.  If duplicate IDs exists, results are likely inaccurate,")
-    # we create an alternate description field as it may be that the map_field variable is > 63 characters 
-    # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
-    # with the 
-    mdf['description'] = map_field
-    # Send to SQL database
-    mdf.columns = [map_name_suffix,'description']
-    mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
-    # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
-    # Create map
-    attribution = '{} | {} | {}'.format(map_attribution,areas[area_layer]['attribution'],source)
-    tables    = [buffered_study_region,study_region]
-    fields    = ['Description','Description']
-    sql = '''
-        SELECT a.{area},
-               {data_fields}
-               b."{data}",
-               b.description,
-               ST_Transform(a.geom, 4326) AS geom 
-        FROM {area} a
-        LEFT JOIN {data} b 
-        USING ({id})
-        '''.format(area = area_layer,
-                   data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                   data = map_name_suffix,
-                   id = linkage_id)
-    map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
-    map.rename(columns = column_names, inplace=True)
-    map.rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
-    data_fields =[area_layer]+[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_full]+[map_name_suffix]    
-    # get map centroid from study region
-    xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
-    # initialise map
-    m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True)
-    m.add_tile_layer(tiles='Stamen Toner',
-                    name='simple map', 
-                    active=True,
-                    attr=((
-                        " {} | "
-                        "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
-                        "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
-                        "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                        "under ODbL.").format(attribution))
-                            )
-    # Create choropleth map
-    layer = folium.Choropleth(data=map,
-                    geo_data =map.to_json(),
-                    name = map_field,
-                    columns =[area_layer,map_name_suffix],
-                    key_on="feature.properties.{}".format(area_layer),
-                    fill_color='YlGn',
-                    fill_opacity=0.7,
-                    line_opacity=0.2,
-                    legend_name='{}, by {}{}'.format(map_field.title(),area_layer,aggregation_text),
-                    reset=True,
-                    overlay = True
-                    ).add_to(m)
-    folium.features.GeoJsonTooltip(fields=data_fields,
-                                        localize=True,
-                                labels=True, 
-                                sticky=True
-                                ).add_to(layer.geojson)    
-    # Add layer control
-    # folium.LayerControl(collapsed=False).add_to(m)
-    m.fit_bounds(m.get_bounds())
-    m.get_root().html.add_child(folium.Element(map_style))
-    # Modify map heading (above legend)
-    html = m.get_root().render()
-    color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
-    old = '{}.svg = d3.select(".legend.leaflet-control").append("svg")'.format(color_map)
-    new = '''
-    {color_map}.title = d3.select(".legend.leaflet-control").append("div")
-            .attr("style",'vertical-align: text-top;font-weight: bold;')
-            .text("{heading}");
-    {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
-    '''.format(color_map=color_map,heading=heading)
-    html = html.replace(old,new)
-    # move legend to lower right corner
-    html = html.replace('''legend = L.control({position: \'topright''',                     '''legend = L.control({position: \'bottomright''')
-    # save map
     map_name = '{}_ind_{}'.format(locale,map_name_suffix)
-    fid = open('{}/html/{}.html'.format(locale_maps,map_name), 'wb')
-    fid.write(html.encode('utf8'))
-    fid.close()
-    folium_to_image(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name,strip_elements=["leaflet-control-zoom"])
-    print('\t- {}/html/{}.html'.format(locale_maps,map_name))
-    print('\t- {}/png/{}.png'.format(locale_maps,map_name))
-    print('')
+    print('\t{}'.format(map_name))
+    if os.path.isfile('{}/html/{}.html'.format(locale_maps,map_name)):
+        print('\t - File appears to already have been processed (HTML output exists); skipping.')
+    else:
+        if not area_layer in areas:
+           print("\t - Please check that the specified 'linkage_layer' corresponds to one of those set up in the Parameters sheet.")
+           continue
+        if not areas[area_layer]['id']==linkage_id:
+           print("\t - Please check that the specified 'linkage_id' corresponds to that of the specified linkage layer.")
+           continue
+        if description=='':
+            description = map_field
+            df.loc[row,'Description'] = map_field
+        source = df.loc[row,'provider']
+        mapxls = pd.ExcelFile('../{}'.format(dataset))
+        mdf = pd.read_excel(mapxls,sheet)
+        mdf = mdf.set_index(linkage_id)
+        mdf.index.name = area_linkage_id
+        fill_na = '{}'.format(df.loc[row,'fill_na'])
+        if fill_na not in ['','nan']:
+            fill_na = fill_na.split(',')
+            for field in fill_na:
+                mdf[field] = mdf[field].fillna(method = 'ffill') 
+        # aggregate data by ID using specified method, if specified.
+        # Note that currently only 'sum' and 'average' have been programmed as options.
+        aggregation_text = ''
+        popup_agg_text = ''
+        if aggregation =='sum':
+            mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
+            aggregation_text = " ({})".format(aggregation)
+        elif aggregation == 'average':
+            mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
+            aggregation_text = " ({})".format(aggregation)
+            map_field = 'average {}'.format(map_field)
+        elif not '{}'.format(description)=='nan':
+            print("Specified aggregation method has not been programmed as an option for this Excel file; no aggregation will be made if duplicate IDs are encountered.  If duplicate IDs exists, results are likely inaccurate,")
+        # we create an alternate description field as it may be that the map_field variable is > 63 characters 
+        # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
+        # with the 
+        mdf['description'] = map_field
+        # Send to SQL database
+        mdf.columns = [map_name_suffix,'description']
+        mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
+        # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
+        # Create map
+        attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
+        tables    = [buffered_study_region,study_region]
+        fields    = ['Description','Description']
+        sql = '''
+            SELECT a.{area},
+                   {data_fields}
+                   b.{data} AS "{map_field}",
+                   b.description,
+                   ST_Transform(a.geom, 4326) AS geom 
+            FROM {area} a
+            LEFT JOIN {data} b 
+            USING ({id})
+            '''.format(area = area_layer,
+                       data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
+                       data = map_name_suffix,
+                       map_field = map_field,
+                       id = linkage_id)
+        map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
+        map.rename(columns = column_names, inplace=True)
+        map.rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
+        map[map_field] = map[map_field].astype(data_type)
+        data_fields =[area_layer]+[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_full]+[map_field]    
+        # get map centroid from study region
+        xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
+        # initialise map
+        m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True)
+        folium.TileLayer(tiles='Stamen Toner',
+                        name='simple map', 
+                        show =True,
+                        overlay=True,
+                        attr=((
+                            " {} | "
+                            "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                            "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                            "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                            "under ODbL.").format(attribution))
+                                ).add_to(m)
+        # m.add_tile_layer(tiles='OpenStreetMap',
+                        # name='OpenStreetMap', 
+                        # attr=((
+                            # " {} | "
+                            # "Map tiles: <a href=\"http://openstreetmap.org/\">© OpenStreetMap contributors</a>, " 
+                            # "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                            # "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                            # "under ODbL.").format(map_attribution))
+                                # )
+        # Create choropleth map
+        bins = 6
+        value_list = set(map[map_field].dropna().unique())
+        if len(value_list) < 6:
+            bins = len(value_list)
+        if len(value_list) < 3:
+            bins = list(value_list)+[max(value_list)+1]+[max(value_list)+2]
+        # else:
+            # bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
+        layer = folium.Choropleth(data=map,
+                        geo_data =map.to_json(),
+                        name = map_field,
+                        columns =[area_layer,map_field],
+                        key_on="feature.properties.{}".format(area_layer),
+                        fill_color='YlGn',
+                        fill_opacity=0.7,
+                        line_opacity=0.2,
+                        legend_name='{}, by {}{}'.format(map_field.title(),area_layer,aggregation_text),
+                        bins = bins,
+                        smooth_factor = None,
+                        reset=True,
+                        overlay = True
+                        ).add_to(m)
+        folium.features.GeoJsonTooltip(fields=data_fields,
+                                            localize=True,
+                                    labels=True, 
+                                    sticky=True
+                                    ).add_to(layer.geojson)    
+        # Add layer control
+        folium.LayerControl(collapsed=False).add_to(m)
+        m.fit_bounds(m.get_bounds())
+        m.get_root().html.add_child(folium.Element(map_style))
+        # Modify map heading (above legend)
+        html = m.get_root().render()
+        color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
+        old = '{}.svg = d3.select(".legend.leaflet-control").append("svg")'.format(color_map)
+        new = '''
+        {color_map}.title = d3.select(".legend.leaflet-control").append("div")
+                .attr("style",'vertical-align: text-top;font-weight: bold;')
+                .text("{heading}");
+        {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
+        '''.format(color_map=color_map,heading=heading)
+        html = html.replace(old,new)
+        # move legend to lower right corner
+        html = html.replace('''legend = L.control({position: \'topright''',                     '''legend = L.control({position: \'bottomright''')
+        # save map
+        # map_name = '{}_ind_{}'.format(locale,map_name_suffix)
+        fid = open('{}/html/{}.html'.format(locale_maps,map_name), 'wb')
+        fid.write(html.encode('utf8'))
+        fid.close()
+        folium_to_image(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
+        print('\t- {}/html/{}.html'.format(locale_maps,map_name))
+        print('\t- {}/png/{}.png'.format(locale_maps,map_name))
+        print('')
 # output to completion log					
 script_running_log(script, task, start, locale)
 engine.dispose()

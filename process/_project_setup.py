@@ -367,6 +367,17 @@ def table_exists(name):
     print('Table "{}" exists: {}'.format(name, ret))
     return ret
 
+# function for returning a pandas type given a string value representing that type
+def valid_type(str_of_type):
+    if str_of_type in ['int','integer']:
+        return('Int64')
+    elif str_of_type in ['float','double precision']:
+        return('float64')
+    elif str_of_type in ['str','string','text','object']:
+        return('object')
+    else:
+        return('object')
+
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
  
