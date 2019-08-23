@@ -110,20 +110,38 @@ for row in df.index:
         attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
         tables    = [buffered_study_region,study_region]
         fields    = ['Description','Description']
-        sql = '''
-            SELECT a.{area},
-                   {data_fields}
-                   b.{data} AS "{map_field}",
-                   b.description,
-                   ST_Transform(a.geom, 4326) AS geom 
-            FROM {area} a
-            LEFT JOIN {data} b 
-            USING ({id})
-            '''.format(area = area_layer,
-                       data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                       data = map_name_suffix,
-                       map_field = map_field,
-                       id = linkage_id)
+        coalesce_na = '{}'.format(df.loc[row,'coalesce_na'])
+        if coalesce_na in ['','nan']:
+            sql = '''
+                SELECT a.{area},
+                       {data_fields}
+                       b.{data} AS "{map_field}",
+                       b.description,
+                       ST_Transform(a.geom, 4326) AS geom 
+                FROM {area} a
+                LEFT JOIN {data} b 
+                USING ({id})
+                '''.format(area = area_layer,
+                           data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
+                           data = map_name_suffix,
+                           map_field = map_field,
+                           id = linkage_id)
+        else:
+            sql = '''
+                SELECT a.{area},
+                       {data_fields}
+                       COALESCE(b.{data},{coalesce_na}) AS "{map_field}",
+                       b.description,
+                       ST_Transform(a.geom, 4326) AS geom 
+                FROM {area} a
+                LEFT JOIN {data} b 
+                USING ({id})
+                '''.format(area = area_layer,
+                           data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
+                           data = map_name_suffix,
+                           map_field = map_field,
+                           id = linkage_id,
+                           coalesce_na = coalesce_na)
         map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
         map.rename(columns = column_names, inplace=True)
         map.rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
@@ -132,7 +150,7 @@ for row in df.index:
         # get map centroid from study region
         xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
         # initialise map
-        m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True)
+        m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr=' {}'.format(attribution))
         folium.TileLayer(tiles='Stamen Toner',
                         name='simple map', 
                         show =True,
@@ -155,13 +173,34 @@ for row in df.index:
                                 # )
         # Create choropleth map
         bins = 6
-        value_list = set(map[map_field].dropna().unique())
-        if len(value_list) < 6:
-            bins = len(value_list)
-        if len(value_list) < 3:
-            bins = list(value_list)+[max(value_list)+1]+[max(value_list)+2]
-        # else:
-            # bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
+        # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
+        legend_bins = '{}'.format(df.loc[row,'coalesce_na'])
+        if legend_bins in ['quartiles']:
+            bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
+        if legend_bins.startswith('equal'):
+            legend_bins = legend_bins.split(':')
+            if len(legend_bins) != 2:
+                bins = 6
+            else:
+                bins = legend_bins[1]
+        if legend_bins.startswith('custom'):
+            legend_bins = legend_bins.split(':')
+            if len(legend_bins) != 2:
+                bins = 6
+            else:
+                legend_bins = legend_bins[1].split(',')
+                bins = legend_bins
+        if bins == 6:
+            value_list = set(map[map_field].dropna().unique())
+            if len(value_list) < 6:
+                bins = len(value_list)
+                if len(value_list) < 3:
+                    bins = list(value_list)+[max(value_list)+1]+[max(value_list)+2]
+        if len(map_field) > 1:
+            # make first letter of map field upper case for legend
+            legend_title = map_field[0].upper()+map_field[1:]
+        else:
+            legend_title = map_field
         layer = folium.Choropleth(data=map,
                         geo_data =map.to_json(),
                         name = map_field,
@@ -169,8 +208,9 @@ for row in df.index:
                         key_on="feature.properties.{}".format(area_layer),
                         fill_color='YlGn',
                         fill_opacity=0.7,
+                        nan_fill_opacity=0.2,
                         line_opacity=0.2,
-                        legend_name='{}, by {}{}'.format(map_field.title(),area_layer,aggregation_text),
+                        legend_name='{}, by {}{}'.format(legend_title,area_layer,aggregation_text),
                         bins = bins,
                         smooth_factor = None,
                         reset=True,
@@ -207,6 +247,6 @@ for row in df.index:
         print('\t- {}/html/{}.html'.format(locale_maps,map_name))
         print('\t- {}/png/{}.png'.format(locale_maps,map_name))
         print('')
-# output to completion log					
+# output to completion log                  
 script_running_log(script, task, start, locale)
 engine.dispose()

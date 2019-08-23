@@ -211,16 +211,17 @@ for i in range(0,len(tables)):
 xy = [float(map_layers[study_region].centroid.y),float(map_layers[study_region].centroid.x)]    
 # initialise map
 m = folium.Map(location=xy, zoom_start=10, tiles=None,control_scale=True, prefer_canvas=True)
-m.add_tile_layer(tiles='Stamen Toner',
-                 name='simple map', 
-                 active=True,
-                 attr=((
-                       " {} | "
-                       "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
-                       "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
-                       "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                       "under ODbL.").format(map_attribution))
-                        )
+folium.TileLayer(tiles='Stamen Toner',
+                        name='simple map', 
+                        show =True,
+                        overlay=True,
+                        attr=((
+                            " {} | "
+                            "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                            "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                            "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                            "under ODbL.").format(map_attribution))
+                                ).add_to(m)
                         
 # add layers (not true choropleth - for this it is just a convenient way to colour polygons)
 map_groups = {}
@@ -229,6 +230,7 @@ for i in range(0,len(tables)):
                   name=names[i],
                   fill_color=colours['qualitative'][i],
                   fill_opacity=opacity[i],
+                  nan_fill_opacity=0.2,
                   line_color=colours['qualitative'][i], 
                   highlight=highlight[i])
     feature.add_to(m)

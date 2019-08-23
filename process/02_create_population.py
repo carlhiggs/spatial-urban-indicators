@@ -1,5 +1,6 @@
 # Import population raster and calculate values for polygons
 
+from script_running_log import script_running_log
 import rasterio
 from rasterio.mask import mask
 import geopandas as gpd
@@ -11,7 +12,6 @@ from sqlalchemy import create_engine
 import psycopg2
 import numpy as np
 import json
-from script_running_log import script_running_log
 # Import custom variables for National Liveability indicator process
 from _project_setup import *
 
@@ -106,6 +106,7 @@ if population_linkage != {}:
                                                  key_on="feature.properties.{}".format(area),
                                                  fill_color='YlGn',
                                                  fill_opacity=0.7,
+                                                 nan_fill_opacity=0.2,
                                                  line_opacity=0.2,
                                                  legend_name='{}, by {}'.format(field,area),
                                                  reset=True,
