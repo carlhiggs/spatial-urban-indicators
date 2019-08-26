@@ -345,6 +345,9 @@ map_style = '''
 	width: 60%;
 	height: auto;
 	}
+.leaflet-container {
+    background-color:rgba(255,0,0,0.0);
+}
 </style>
 <script>L_DISABLE_3D = true;</script>
 '''    

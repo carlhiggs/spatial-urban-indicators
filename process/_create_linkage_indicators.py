@@ -28,6 +28,12 @@ engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_
                                                                       host = db_host,
                                                                       db   = db))
 
+engine_sqlite = create_engine((
+                  'sqlite://{path}/{output_name}.gpkg'
+                  ).format(output_name = '{}'.format(study_region),
+                           path = os.path.join(locale_maps,'gpkg')),     
+                  , echo=False)
+
 # retrieve subset of datasets which are files to be joined based on linkage
 df = df_datasets[df_datasets.index.str.startswith('linkage:')]
 
@@ -53,7 +59,7 @@ for row in df.index:
     sheet = df.loc[row,'excel_sheet']
     data_type = valid_type(df.loc[row,'data_type'])
     description = df.loc[row,'alias']
-    heading = df.loc[row,'map_heading']
+    heading = '{}: {}'.format(full_locale,df.loc[row,'map_heading'])
     map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
     area_layer = df.loc[row,'linkage_layer']
     area_linkage_id = df.loc[row,'linkage_id']
@@ -105,6 +111,11 @@ for row in df.index:
         # Send to SQL database
         mdf.columns = [map_name_suffix,'description']
         mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
+        mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
+        mdf.to_csv('{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
+                                                                                  map_name_suffix),
+                                                     path = os.path.join(locale_maps,'csv')), 
+                    engine_sqlite, if_exists='replace',index=True)
         # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
         # Create map
         attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
@@ -150,10 +161,11 @@ for row in df.index:
         # get map centroid from study region
         xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
         # initialise map
-        m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr=' {}'.format(attribution))
-        folium.TileLayer(tiles='Stamen Toner',
-                        name='simple map', 
-                        show =True,
+        m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
+        # Add in location names
+        folium.TileLayer(tiles='http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
+                        name='Location labels', 
+                        show =False,
                         overlay=True,
                         attr=((
                             " {} | "
@@ -162,15 +174,39 @@ for row in df.index:
                             "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
                             "under ODbL.").format(attribution))
                                 ).add_to(m)
-        # m.add_tile_layer(tiles='OpenStreetMap',
-                        # name='OpenStreetMap', 
-                        # attr=((
-                            # " {} | "
-                            # "Map tiles: <a href=\"http://openstreetmap.org/\">© OpenStreetMap contributors</a>, " 
-                            # "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
-                            # "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                            # "under ODbL.").format(map_attribution))
-                                # )
+        # Add in the actual basemap to be shown
+        folium.TileLayer(tiles='http://tile.stamen.com/toner-background/{z}/{x}/{y}.png',
+                        name='Basemap: Simple', 
+                        show =True,
+                        overlay=False,
+                        attr=((
+                            " {} | "
+                            "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                            "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                            "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                            "under ODbL.").format(attribution))
+                                ).add_to(m)
+        # Add in alternate basemap
+        folium.TileLayer(tiles='OpenStreetMap',
+                        name='Basemap: OpenStreetMap', 
+                        show =False,
+                        overlay=False,
+                        attr=((
+                            " {} | "
+                            "Map tiles: <a href=\"http://openstreetmap.org/\">© OpenStreetMap contributors</a>, " 
+                            "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                            "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                            "under ODbL.").format(map_attribution))
+                                ).add_to(m)
+        # We add empty tile set in order to force display of data attribution; Basemaps are not overlay layers, so they are easily switchable
+        folium.TileLayer(tiles='Null tiles',
+                        name='Basemap: off', 
+                        show =False,
+                        overlay=False,
+                        attr=((
+                            " {}"
+                           ).format(attribution))
+                                ).add_to(m)
         # Create choropleth map
         bins = 6
         # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
@@ -217,10 +253,10 @@ for row in df.index:
                         overlay = True
                         ).add_to(m)
         folium.features.GeoJsonTooltip(fields=data_fields,
-                                            localize=True,
-                                    labels=True, 
-                                    sticky=True
-                                    ).add_to(layer.geojson)    
+                                       localize=True,
+                                       labels=True, 
+                                       sticky=True
+                                       ).add_to(layer.geojson)    
         # Add layer control
         folium.LayerControl(collapsed=False).add_to(m)
         m.fit_bounds(m.get_bounds())
@@ -243,7 +279,9 @@ for row in df.index:
         fid = open('{}/html/{}.html'.format(locale_maps,map_name), 'wb')
         fid.write(html.encode('utf8'))
         fid.close()
-        folium_to_image(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
+        folium_to_image(os.path.join(locale_maps,'html'),
+                        os.path.join(locale_maps,'png'),
+                        map_name)
         print('\t- {}/html/{}.html'.format(locale_maps,map_name))
         print('\t- {}/png/{}.png'.format(locale_maps,map_name))
         print('')

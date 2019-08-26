@@ -105,35 +105,6 @@ if len(list(set([areas[area]['data'] for area in areas])))==1:
     gdf[area].to_sql(areas[area]['table'], engine, if_exists='replace', index=True, dtype={'geom': Geometry('MULTIPOLYGON', srid=srid)})
     print('\t{} {}'.format(len(gdf[area]),areas[area]['name']))
 
-# Previous approach; may still be of use so retaining for now in case parts wish to be refactored later
-# for area in areas:
-  # # if aggregate_from_smallest and area != area_meta['areas_of_interest'][0]:
-  # if areas[area]['data'].endswith('zip'):
-    # # Open zipped file as geodataframe
-    # gdf = gpd.read_file('zip://../{}'.format(areas[area]['data']))
-  # if '.gpkg:' in areas[area]['data']:
-    # gpkg = areas[area]['data'].split(':')
-    # gdf = gpd.read_file('../{}'.format(gpkg[0]), layer=gpkg[1])
-  # else:
-    # # Open spatial file as geodataframe
-    # gdf = gpd.read_file('../{}'.format(areas[area]['data']))
-  # # Restrict to relevant region based on filter value 
-  # # (this assumes filter value and field is common to 
-  # if area_filter_field != '':
-    # gdf = gdf[gdf[area_filter_field]==area_filter_value]
-  # # Set index
-  # #### TO DO  - Need to ensure areas are aggregated first
-  # gdf.set_index(areas[area]['id'],inplace=True)
-  # # Transform to project projection
-  # gdf.to_crs(epsg=srid, inplace=True)
-  # # Create WKT geometry (postgis won't read shapely geometry)
-  # gdf['geom'] = gdf['geometry'].apply(lambda x: WKTElement(x.wkt, srid=srid))
-  # # Drop original shapely geometry
-  # gdf.drop('geometry', 1, inplace=True)
-  # # Copy to project Postgis database
-  # gdf.to_sql(areas[area]['name_s'], engine, if_exists='replace', index=True, dtype={'geom': Geometry('POLYGON', srid=srid)})
-  # print('\t{} {}'.format(len(gdf),areas[area]['name_f'])), 
-
 print("\nCreate analytical boundaries...")
 print("\tCreate study region boundary... ")
 engine.execute('''
@@ -160,32 +131,11 @@ CREATE TABLE {buffered_study_region} AS
            buffered_study_region = buffered_study_region,
            buffered_study_region_name = '{} km'.format(study_buffer/1000,1),
            buffer = study_buffer))
-
-# # Previous approach; may still be of use so retaining for now in case parts wish to be refactored later
-# print("\tCalculate area in Hectares (Ha) and square kilometres (sqkm) and set up display formats for mapping for each area scale... ".format(study_buffer))
-# for area in areas:
-    # engine.execute('''
-    # ALTER TABLE {area_analysis} 
-    # ADD COLUMN IF NOT EXISTS "{display_name}" text,
-    # ADD COLUMN IF NOT EXISTS area_ha double precision,
-    # ADD COLUMN IF NOT EXISTS area_sqkm double precision,
-    # ADD COLUMN IF NOT EXISTS geom_4326 geometry;
-    # UPDATE {area_analysis} 
-    # SET "{display_name}" = {display_sql},
-        # area_ha   = (ST_Area(geom)/10000.0)::double precision,
-        # area_sqkm = (ST_Area(geom)/1000000.0)::double precision,
-        # geom_4326 = ST_Transform(geom,4326);
-    # '''.format(area_analysis = areas[area]['name_s'],
-               # display_name  = areas[area]['name_f'],
-               # display_sql   = areas[area]['display'],
-               # buffered_study_region = buffered_study_region,
-               # buffer = study_buffer))
-# print("Done.")
           
 # Prepare map
 if not os.path.exists(locale_maps):
     os.makedirs(locale_maps)    
-for dir in ['html','png','pdf','gpkg']:
+for dir in ['html','png','pdf','gpkg','csv','geojson']:
     path = os.path.join(locale_maps,dir)
     if not os.path.exists(path):
         os.makedirs(path)   
