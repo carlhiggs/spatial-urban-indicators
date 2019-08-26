@@ -7,7 +7,7 @@ To install and run the tools required to calculate the Bangkok liveability indic
 
 On a computer running Windows 10, we first set up `Windows subsystem for linux`_ by running the following in PowerShell in Administrator mode:
 
-.. code-block:: powershell
+.. code-block:: text
    :linenos:
 
    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
@@ -20,7 +20,7 @@ Now, we install `Docker`_, a tool which helps to install a raft of other require
 
 With these pre-requisites met, we can open up cmd.exe or PowerShell to the ind_bangkok project directory and at the command line type the following to change directory to the Docker set up script, run this and return to the main script directory:
 
-.. code-block:: powershell
+.. code-block:: text
    :linenos: 
    
    cd ./process/docker
@@ -29,13 +29,13 @@ With these pre-requisites met, we can open up cmd.exe or PowerShell to the ind_b
 
 The above step which sets up an isolated 'container' or computational environment with software for spatial analysis and visualisation will take some time.  This container is called 'ind_bangkok'. Once successfully complete, we can set up a seperate spatial database container (`PostgreSQL with PostGIS and PgRouting`_):
 
-.. code-block:: powershell
+.. code-block:: text
    
    docker pull cityseer/postgis
    
 To initialise the running of the spatial database in the background on your system you can execute the following:
 
-.. code-block:: powershell
+.. code-block:: text
 
    docker run --name=pg_spatial -d -e PG_USER=hlc -e PG_PASSWORD=huilhuil!42 -e DB_NAME=ind_bangkok -p 127.0.0.1:5433:5432  --restart=unless-stopped --volume=/var/lib/pg_spatial:/postgresql/11/main cityseer/postgis:latest
 
