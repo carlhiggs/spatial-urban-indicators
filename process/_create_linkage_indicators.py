@@ -9,9 +9,11 @@ import pandas as pd
 import numpy as np
 import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
-from sqlalchemy import create_engine, NVARCHAR
+from sqlalchemy import create_engine, NVARCHAR, event
 import folium
 import re
+import sqlite3
+
 
 from script_running_log import script_running_log
 
@@ -29,10 +31,17 @@ engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_
                                                                       db   = db))
 
 engine_sqlite = create_engine((
-                  'sqlite://{path}/{output_name}.gpkg'
+                  'sqlite:///{path}/{output_name}.gpkg'
                   ).format(output_name = '{}'.format(study_region),
-                           path = os.path.join(locale_maps,'gpkg')),     
-                  , echo=False)
+                           path = os.path.join(locale_maps,'gpkg')),
+                           module = sqlite3)
+                  
+# engine_sqlite = sqlite3.connect((
+                  # 'sqlite://{path}/{output_name}.gpkg'
+                  # ).format(output_name = '{}'.format(study_region),
+                           # path = os.path.join(folderPath,locale_maps,'gpkg')))
+# engine_sqlite =  create_engine('sqlite:///../maps/bangkok_thailand_2018/gpkg/bangkok_thailand_2018.gpkg')
+
 
 # retrieve subset of datasets which are files to be joined based on linkage
 df = df_datasets[df_datasets.index.str.startswith('linkage:')]
@@ -107,15 +116,21 @@ for row in df.index:
         # we create an alternate description field as it may be that the map_field variable is > 63 characters 
         # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
         # with the 
-        mdf['description'] = map_field
+        # mdf['description'] = map_field
         # Send to SQL database
-        mdf.columns = [map_name_suffix,'description']
+        mdf.columns = [map_name_suffix]
         mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
+        print('\t- postgresql::{}/{}'.format(db,map_name_suffix))
         mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
+        print('\t- {path}/{output_name}.gpkg/{}'.format(output_name = '{}'.format(study_region),
+                                                        path = os.path.join(locale_maps,'gpkg'),
+                                                        map_name_suffix))
         mdf.to_csv('{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
                                                                                   map_name_suffix),
-                                                     path = os.path.join(locale_maps,'csv')), 
-                    engine_sqlite, if_exists='replace',index=True)
+                                                     path = os.path.join(locale_maps,'csv')))
+        print('\t- {path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
+                                                                                  map_name_suffix),
+                                                     path = os.path.join(locale_maps,'csv')))
         # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
         # Create map
         attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
@@ -127,7 +142,6 @@ for row in df.index:
                 SELECT a.{area},
                        {data_fields}
                        b.{data} AS "{map_field}",
-                       b.description,
                        ST_Transform(a.geom, 4326) AS geom 
                 FROM {area} a
                 LEFT JOIN {data} b 
@@ -142,7 +156,6 @@ for row in df.index:
                 SELECT a.{area},
                        {data_fields}
                        COALESCE(b.{data},{coalesce_na}) AS "{map_field}",
-                       b.description,
                        ST_Transform(a.geom, 4326) AS geom 
                 FROM {area} a
                 LEFT JOIN {data} b 
