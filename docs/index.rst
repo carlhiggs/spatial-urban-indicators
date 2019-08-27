@@ -5,14 +5,26 @@ Bangkok Liveability
 ===============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
+   :caption: Software documentation
    
    installation
+   setup
+   methods
+   outputs
+ 
+.. toctree::
+   :maxdepth: 3
+   :caption: Bangkok Liveability 2018
+   
+   indicators
+   datasources
+   maps
 
+      
+About
+=====
 
+.. raw:: html
+   :file: ../maps/bangkok_thailand_2018/html/bangkok_01_study_region.html
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`

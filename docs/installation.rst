@@ -59,8 +59,7 @@ docker run --rm -it -u jovyan --name ind_bangkok --shm-size 2g --net=host -v %cd
 # run analysis environment as Jupyter Lab (note - not yet conversing properly with database)
 docker run --rm -it --name ind_bangkok -p 8888:8888  -p 5433:5433 -v %cd%:/home/jovyan/work ind_bangkok
 
-Resources
-~~~~~~~~~
+
 .. _Windows subsystem for linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 .. _Ubuntu: https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows#0
 .. _Docker: https://www.docker.com/products/docker-desktop
