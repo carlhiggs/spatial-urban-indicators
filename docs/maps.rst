@@ -13,14 +13,28 @@ The province of Bangkok has been used to define the Bangkok metropolitan study r
 Population
 ~~~~~~~~~~
 
+Population density was plotted for subdistricts and districts.
+
+Subdistricts
+------------
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_per_sqkm.png
+
+Districts
+---------
 
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_per_sqkm.png
 
 Households
 ~~~~~~~~~~
 
+Subdistricts
+------------
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_households_per_sqkm.png
+
+Districts
+---------
 
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_households_per_sqkm.png
 
