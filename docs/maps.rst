@@ -41,11 +41,43 @@ Districts
 Communities
 ~~~~~~~~~~~
 
+Communities per square kilometre
+--------------------------------
+
+Subdistrict
+***********
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_communities_per_sqkm.png
+
+District
+********
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_communities_per_sqkm.png
+
+Population in communities per square kilometre
+----------------------------------------------
+
+Subdistrict
+***********
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png
+
+District
+********
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_in_communities_per_sqkm.png
+
+Population not in communities per square kilometre
+--------------------------------------------------
+
+Subdistrict
+***********
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.png
+
+District
+********
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_not_in_communities_per_sqkm.png
 
 Health

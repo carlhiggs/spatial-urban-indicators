@@ -14,7 +14,7 @@ Bangkok Liveability
    outputs
  
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :caption: Bangkok Liveability 2018
    
    indicators
@@ -25,6 +25,5 @@ Bangkok Liveability
 About
 =====
 
-.. raw:: html
-   :file: ../maps/bangkok_thailand_2018/html/bangkok_01_study_region.html
+
 
