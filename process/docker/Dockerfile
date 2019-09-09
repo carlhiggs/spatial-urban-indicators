@@ -116,11 +116,44 @@ RUN export LC_ALL LANG LANGUAGE PGCLIENTENCODING
 #    && apt-get update && apt-get install -y -q --no-install-recommends \
 #       libssl-dev=1.0.2g-1ubuntu4.9
 
+# Install tinytex, a minimal TeX distribution for making pdf documentation
+RUN apt-get update && apt-get install -y perl wget libfontconfig1 && \
+    wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh  && \
+    apt-get clean
+ENV PATH="${PATH}:bin"
+RUN echo $(ls bin)
+RUN tlmgr install xetex
+RUN fmtutil-sys --all
+
+# install only the packages you need
+# this is the bit which fails for most other methods of installation
+RUN tlmgr install xcolor pgf fancyhdr parskip babel-english units lastpage mdwtools comment genmisc fontawesome
+
+# instal the make build tools, for compiling sphinx documentation
+RUN apt-get update && apt-get install -y make
+
+RUN tlmgr install cmap
+
 # launch notebook in the local working directory that we mount
 USER $NB_UID 
 WORKDIR /home/jovyan/work
 
+# install documentation theme
+RUN pip install sphinx_rtd_theme
+
+# fix to get proj4 working
 RUN conda install -y --channel conda-forge --force-reinstall proj4=5.2.0
+
+# add latex tools to path
+ENV PATH=/home/jovyan/bin:$PATH
+
+USER root
+RUN tlmgr install times fncychap titlesec tabulary varwidth wrapfig capt-of needspace polyglossia fontspec
+RUN apt-get update && apt-get install -y fonts-freefont-otf
+RUN tlmgr install gnu-freefont
+USER $NB_UID 
+WORKDIR /home/jovyan/work
+RUN pip install sphinxmark
 
 # set default command to launch when container is run
 CMD ["jupyter", "lab", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''"]

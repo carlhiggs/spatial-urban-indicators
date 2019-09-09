@@ -122,9 +122,9 @@ for row in df.index:
         mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
         print('\t- postgresql::{}/{}'.format(db,map_name_suffix))
         mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
-        print('\t- {path}/{output_name}.gpkg/{}'.format(output_name = '{}'.format(study_region),
+        print('\t- {path}/{output_name}.gpkg/{layer}'.format(output_name = '{}'.format(study_region),
                                                         path = os.path.join(locale_maps,'gpkg'),
-                                                        map_name_suffix))
+                                                        layer = map_name_suffix))
         mdf.to_csv('{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
                                                                                   map_name_suffix),
                                                      path = os.path.join(locale_maps,'csv')))

@@ -18,9 +18,6 @@ start = time.time()
 script = os.path.basename(sys.argv[0])
 task = 'create destination indicator tables'
 
-# locale_dir = '../data/study_region/{}/'.format(locale)
-# locale_dir = '../data/study_region/{}/'.format(locale)
-
 conn = psycopg2.connect(database=db, user=db_user, password=db_pwd, host=db_host,port=db_port)
 curs = conn.cursor()
 

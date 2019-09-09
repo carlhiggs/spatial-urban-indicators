@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Bangkok Liveability'
-copyright = '2019, Carl Higgs, Amanda Alderton and Hannah Badland'
+project = 'Bangkok Liveability (preview documentation)'
+copyright = '2019, Carl Higgs, Amanda Alderton, Hannah Badland'
 author = 'Carl Higgs, Amanda Alderton and Hannah Badland'
 
 # The full version, including alpha/beta/rc tags
@@ -32,8 +32,7 @@ master_doc = 'index'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-]
+extensions = ['sphinxmark']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -49,7 +48,10 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+# html_theme = "alabaster"
 html_theme = "sphinx_rtd_theme"
+pygments_style = 'sphinx'
+
 html_theme_path = ["_themes", ]
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -74,3 +76,28 @@ html_theme_options = {
     # 'titles_only': False
     #'style_nav_header_background':'#2ca25f'
 }
+
+# To better support Thai when producing PDF
+latex_engine = 'xelatex'
+latex_use_xindy = True
+
+# Enable a draft watermark
+sphinxmark_enable = True
+sphinxmark_div = 'default'
+sphinxmark_image = 'text'
+sphinxmark_text = 'Pre-Release'
+sphinxmark_text_size = 80
+
+# -- Options for sphinxmark -----------------------------------------------
+# sphinxmark_div = 'docs-body'
+# sphinxmark_border = 'left'
+# sphinxmark_repeat = False
+# sphinxmark_fixed = True
+# sphinxmark_image = 'text'
+# sphinxmark_text = 'Mitaka'
+# sphinxmark_text_color = (255, 0, 0)
+# sphinxmark_text_size = 100
+# sphinxmark_text_width = 1000
+# sphinxmark_text_opacity = 50
+# sphinxmark_text_spacing = 600
+# sphinxmark_text_rotation = 90
