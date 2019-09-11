@@ -202,4 +202,4 @@ for filename in os.listdir(folder_path):
         
 # output combine geojson features to file (e.g. for timeseries mapping)
 with open(output, "w") as output_file:
-    json.dump(json_data, output_file, indent=4, sort_keys=True)
+    json.dump(geojson_join, output_file, indent=4, sort_keys=True)
