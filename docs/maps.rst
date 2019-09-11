@@ -177,10 +177,10 @@ Districts
 
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
 
-Combined diseases
------------------
+Vital diseases (combined)
+-------------------------
 
-Considering the combined presentation of outputatients for the above three categories of diseases
+Considering the combined presentation of outputatients for the above three categories of vital diseases
 
 .. _bangkok_ind_subdistrict_outpatients_combined_diseases:
 
