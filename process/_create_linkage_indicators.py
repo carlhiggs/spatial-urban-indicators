@@ -36,13 +36,6 @@ engine_sqlite = create_engine((
                            path = os.path.join(locale_maps,'gpkg')),
                            module = sqlite3)
                   
-# engine_sqlite = sqlite3.connect((
-                  # 'sqlite://{path}/{output_name}.gpkg'
-                  # ).format(output_name = '{}'.format(study_region),
-                           # path = os.path.join(folderPath,locale_maps,'gpkg')))
-# engine_sqlite =  create_engine('sqlite:///../maps/bangkok_thailand_2018/gpkg/bangkok_thailand_2018.gpkg')
-
-
 # retrieve subset of datasets which are files to be joined based on linkage
 df = df_datasets[df_datasets.index.str.startswith('linkage:')]
 
@@ -74,8 +67,13 @@ for row in df.index:
     area_linkage_id = df.loc[row,'linkage_id']
     aggregation = df.loc[row,'aggregation_if_duplicates']
     linkage_id = df.loc[row,'linkage_id']
+    point_overlay_xy = df.loc[row,'point_overlay_xy']
     display_id = area_layer
     map_field = df.loc[row,'map_field']
+    potential_column_width = len(map_field) + len(aggregation) + 1
+    if potential_column_width < pd.get_option("display.max_colwidth"):
+        pd.set_option("display.max_colwidth", potential_column_width)
+        gpd.pd.set_option("display.max_colwidth", potential_column_width)   
     map_name = '{}_ind_{}'.format(locale,map_name_suffix)
     print('\t{}'.format(map_name))
     if os.path.isfile('{}/html/{}.html'.format(locale_maps,map_name)):
@@ -100,10 +98,20 @@ for row in df.index:
             fill_na = fill_na.split(',')
             for field in fill_na:
                 mdf[field] = mdf[field].fillna(method = 'ffill') 
+        if '{}'.format(point_overlay_xy)!='':
+            # this means an attempt has been made to define point data locations
+            point_overlay_xy = point_overlay_xy.split(',')
+            point_overlay_name = df.loc[row,'point_overlay_name']
+            point_overlay_hover_field = df.loc[row,'point_overlay_hover_field']
+            point_overlay = gpd.GeoDataFrame(mdf, geometry=gpd.points_from_xy(mdf[point_overlay_xy[0]],mdf[point_overlay_xy[1]]))
         # aggregate data by ID using specified method, if specified.
         # Note that currently only 'sum' and 'average' have been programmed as options.
         aggregation_text = ''
         popup_agg_text = ''
+        if aggregation =='count':
+            mdf[map_field] = 1
+            mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
+            aggregation_text = " ({})".format(aggregation)
         if aggregation =='sum':
             mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
             aggregation_text = " ({})".format(aggregation)
@@ -112,7 +120,7 @@ for row in df.index:
             aggregation_text = " ({})".format(aggregation)
             map_field = 'average {}'.format(map_field)
         elif not '{}'.format(description)=='nan':
-            print("Specified aggregation method has not been programmed as an option for this Excel file; no aggregation will be made if duplicate IDs are encountered.  If duplicate IDs exists, results are likely inaccurate,")
+            print("Specified aggregation method has not been programmed as an option for this Excel file; no aggregation will be made. If duplicate IDs exists, results are likely inaccurate,")
         # we create an alternate description field as it may be that the map_field variable is > 63 characters 
         # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
         # with the 
@@ -141,7 +149,7 @@ for row in df.index:
             sql = '''
                 SELECT a.{area},
                        {data_fields}
-                       b.{data} AS "{map_field}",
+                       b.{data},
                        ST_Transform(a.geom, 4326) AS geom 
                 FROM {area} a
                 LEFT JOIN {data} b 
@@ -155,7 +163,7 @@ for row in df.index:
             sql = '''
                 SELECT a.{area},
                        {data_fields}
-                       COALESCE(b.{data},{coalesce_na}) AS "{map_field}",
+                       COALESCE(b.{data},{coalesce_na}) AS "{data}",
                        ST_Transform(a.geom, 4326) AS geom 
                 FROM {area} a
                 LEFT JOIN {data} b 
@@ -167,9 +175,9 @@ for row in df.index:
                            id = linkage_id,
                            coalesce_na = coalesce_na)
         map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
+        map.rename(columns = {map_name_suffix : map_field}, inplace=True)
         map.rename(columns = column_names, inplace=True)
         map.rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
-        map[map_field] = map[map_field].astype(data_type)
         data_fields =[area_layer]+[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_full]+[map_field]    
         # get map centroid from study region
         xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
@@ -270,6 +278,16 @@ for row in df.index:
                                        labels=True, 
                                        sticky=True
                                        ).add_to(layer.geojson)    
+        if '{}'.format(point_overlay_xy)!='':
+            point_layer = folium.features.GeoJson(data=point_overlay.to_json(), 
+                                                  name=point_overlay_name, 
+                                                  tooltip="feature.properties.{}".format(point_overlay_hover_field)
+                                                  ).add_to(m)
+            folium.features.GeoJsonTooltip(fields=[c for c in point_overlay.columns if c is not 'geometry'],
+                                           localize=True,
+                                           labels=True, 
+                                           sticky=True
+                                           ).add_to(point_layer)  
         # Add layer control
         folium.LayerControl(collapsed=False).add_to(m)
         m.fit_bounds(m.get_bounds())
