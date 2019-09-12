@@ -8,7 +8,7 @@ def define_geojson_coordinates(i,
             coords=['lat','long']):
     """Updates air4thai json coordinates for display as geojson
     
-    The air4thai data (http://air4thai.pcd.go.th) can be saved as json. 
+    The `Air4Thai`_ data can be saved as json. 
     This records measurements for various pollutants at stations across 
     Thailand, as well as metadata for each station including its coordi-
     nates in latitude and longitude.  
@@ -22,7 +22,7 @@ def define_geojson_coordinates(i,
     coordinates recorded for that feature.
     
     Example input:
-            {
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -44,7 +44,7 @@ def define_geojson_coordinates(i,
            }
         }
     Example output:
-            {
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -68,6 +68,12 @@ def define_geojson_coordinates(i,
     Returns:
         geojson feature: Geojson feature with coordinates replaced as per the specified
         coordinates in the input feature's properties record.
+    
+    .._Air4Thai:
+        http://air4thai.pcd.go.th
+    
+    Todo:
+        * abstract function further and add to utils.py module
 
     """
     i['geometry']['coordinates'][0] = float(i['properties'][coords[1]])
