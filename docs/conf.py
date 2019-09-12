@@ -12,8 +12,8 @@
 #
 import os
 import sys
-sys.path.append(os.path.abspath('../process'))
-
+# sys.path.append(os.path.abspath('../process'))
+sys.path.insert(0, os.path.abspath('../process'))
 
 # -- Project information -----------------------------------------------------
 
@@ -32,7 +32,7 @@ master_doc = 'index'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinxmark', 'sphinx.ext.autodoc', 'sphinx.ext.coverage', 'sphinx.ext.napoleon']
+extensions = ['sphinxmark', 'sphinx.ext.autodoc', 'sphinx.ext.coverage', 'sphinx.ext.napoleon','sphinx.ext.todo']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -59,6 +59,9 @@ html_theme_path = ["_themes", ]
 html_static_path = ['_static']
 
 # -- Custom changes --------------------------------------------------------
+
+autodoc_mock_imports = ['_project_setup']
+
 html_theme_options = {
     # 'canonical_url': '',
     # 'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
@@ -87,6 +90,9 @@ sphinxmark_div = 'default'
 sphinxmark_image = 'text'
 sphinxmark_text = 'Pre-Release'
 sphinxmark_text_size = 80
+
+# Enable display of todo notes
+todo_include_todos = True
 
 # -- Options for sphinxmark -----------------------------------------------
 # sphinxmark_div = 'docs-body'

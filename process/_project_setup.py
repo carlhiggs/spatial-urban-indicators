@@ -23,17 +23,24 @@ import subprocess as sp
 import math 
 import re
 
+# import custom utility functions
+from _utils import *
+
 # Set up locale (ie. defined at command line, or else testing)
 if len(sys.argv) >= 2:
   locale = '{studyregion}'.format(studyregion = sys.argv[1])
+if locale == '-M':
+    # this script is being run by Sphinx for autodoc purposes
+    locale = 'bangkok'
 else:
   locale = 'bangkok'
 if __name__ == '__main__':
   print("\nProcessing script {} for locale {}...\n".format(sys.argv[0],locale))
 
+cwd = os.path.join(os.getcwd(),'../process')
 
 # Load settings from _project_configuration.xlsx
-xls = pandas.ExcelFile(os.path.join(sys.path[0],'_project_configuration.xlsx'))
+xls = pandas.ExcelFile(os.path.join(cwd,'_project_configuration.xlsx'))
 df_parameters = pandas.read_excel(xls, 'Parameters',index_col=0)
 df_datasets = pandas.read_excel(xls, 'Datasets')
 df_inds = pandas.read_excel(xls, 'indicator_queries')
@@ -169,32 +176,7 @@ if population_grid != '':
 
     population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
     population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),srid)
-
-def reproject_raster(inpath, outpath, new_crs):
-    import rasterio
-    from rasterio.warp import calculate_default_transform, reproject, Resampling
-    dst_crs = new_crs # CRS for web meractor 
-    with rasterio.open(inpath) as src:
-        transform, width, height = calculate_default_transform(
-            src.crs, dst_crs, src.width, src.height, *src.bounds)
-        kwargs = src.meta.copy()
-        kwargs.update({
-            'crs': dst_crs,
-            'transform': transform,
-            'width': width,
-            'height': height
-        })
-        with rasterio.open(outpath, 'w', **kwargs) as dst:
-            for i in range(1, src.count + 1):
-                reproject(
-                    source=rasterio.band(src, i),
-                    destination=rasterio.band(dst, i),
-                    src_transform=src.transform,
-                    src_crs=src.crs,
-                    dst_transform=transform,
-                    dst_crs=dst_crs,
-                    resampling=Resampling.nearest)
-    
+   
 # Derived hex settings
 hex_grid = '{0}_hex_{1}{2}_diag'.format(study_region,hex_diag,units)
 hex_grid_buffer =  '{0}_hex_{1}{2}_diag_{3}{2}_buffer'.format(study_region,hex_diag,units,hex_buffer)
@@ -277,59 +259,6 @@ colours = {}
 colours['qualitative'] = ['#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e','#e6ab02','#a6761d','#666666']
 # http://colorbrewer2.org/#type=diverging&scheme=PuOr&n=8
 colours['diverging'] = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e']
-
-def style_dict_fcn(type = 'qualitative',colour=0):
-    if type not in ['qualitative','diverging']:
-        print("Specified type unknown; assuming 'qualitative'.")
-        type = 'qualitative'
-    return {
-        'fillOpacity': 0.5,
-        'line_opacity': 0.2,
-        'fillColor': colours[type][colour],
-        'lineColor': colours[type][colour]
-    }
-
-## need to modify this to also allow to pdf -- perhaps using pdfkit
-# https://stackoverflow.com/questions/54390417/how-to-download-a-web-page-as-a-pdf-using-python
-# I think in future should use puppeteer with headless chrome
-# (or pyppeteer)
-def folium_to_image(input_dir='',output_dir='',map_name='',formats=['png'],width=1000,height=800,pause=3,strip_elements=["leaflet-control-zoom","leaflet-control-layers"]):
-    import selenium.webdriver
-    try:
-        if (input_dir=='' or map_name==''):
-            raise Exception(('This function requires specification of an input directory.\n'
-                   'Please specify the function in the following form:\n'
-                   'folium_to_png(input_dir,output_dir,map_name,[["format","format"]],[width],[height],[pause])'
-                   ))
-            return
-        if output_dir=='':
-            output_dir = input_dir
-        options=selenium.webdriver.firefox.options.Options()
-        options.add_argument('--headless')
-        driver = selenium.webdriver.Firefox(options=options)
-        driver.set_window_size(width, height)  # choose a resolution
-        driver.get('file:///{}/{}/{}.html'.format(os.getcwd(),input_dir,map_name))
-        # You may need to add time.sleep(seconds) here
-        time.sleep(pause)
-        # Remove zoom controls from snapshot
-        for leaflet_class in strip_elements:
-            element = driver.find_element_by_class_name(leaflet_class)
-            driver.execute_script("""
-            var element = arguments[0];
-            element.parentNode.removeChild(element);
-            """, element)
-        if 'png' in formats:
-            driver.save_screenshot('{}/{}.png'.format(output_dir,map_name))
-        # if 'pdf' in formats:
-            # import pdfkit
-            # with open("{}/__folium_temp.html".format(output_dir), "w") as f:
-                # f.write(driver.page_source)
-            # pdfkit.from_file("{}/__folium_temp.html".format(output_dir), 
-                             # '{}/{}.pdf'.format(output_dir,map_name))
-            # os.remove("{}/__folium_temp.html".format(output_dir))
-        driver.close()
-    except Exception as error:
-        print("Export of {} failed.".format('{}/{}.png: {}'.format(output_dir,map_name,error)))
         
 map_style = '''
 <style>
@@ -351,35 +280,6 @@ map_style = '''
 </style>
 <script>L_DISABLE_3D = true;</script>
 '''    
-    
-# function for printing dictionaries in 'pretty' format to screen 
-def pretty(d, indent=0):
-   for key, value in d.items():
-      depth = 0
-      print('\t' * indent + str(key)+':'),
-      if isinstance(value, dict):
-        if depth == 0:
-          print(" ")
-          depth+=1
-        pretty(value, indent+1)
-      else:
-        print(' ' + str(value))
-
-def table_exists(name):
-    ret = engine.dialect.has_table(engine, name)
-    print('Table "{}" exists: {}'.format(name, ret))
-    return ret
-
-# function for returning a pandas type given a string value representing that type
-def valid_type(str_of_type):
-    if str_of_type in ['int','integer']:
-        return('Int64')
-    elif str_of_type in ['float','double precision']:
-        return('float64')
-    elif str_of_type in ['str','string','text','object']:
-        return('object')
-    else:
-        return('object')
 
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]

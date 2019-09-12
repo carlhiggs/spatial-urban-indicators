@@ -29,7 +29,7 @@ The aims of this project are to:
    maps
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Software documentation
    
    installation
