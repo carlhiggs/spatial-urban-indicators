@@ -17,9 +17,6 @@ Population mapping
 
 """
 
-# 
-
-from script_running_log import script_running_log
 import rasterio
 from rasterio.mask import mask
 import geopandas as gpd
@@ -31,6 +28,9 @@ from sqlalchemy import create_engine
 import psycopg2
 import numpy as np
 import json
+
+from script_running_log import script_running_log
+
 # Import custom variables for National Liveability indicator process
 from _project_setup import *
 
