@@ -107,8 +107,14 @@ RUN conda config --set show_channel_urls true                                   
 # add latex tools to path
 ENV PATH=/home/jovyan/bin:$PATH
 
-# install additional documentation libraries
-RUN pip install sphinx_rtd_theme sphinxmark
+# install additional python libraries
+# sphinx libraries are for documentation
+# netcdf4 is for reading .nc files from Copernicus satellite data using xarray
+RUN pip install sphinx_rtd_theme sphinxmark \
+ && conda install -y netcdf4 basemap
+
+# Add proj4 epsg codes to path (req'd for basemap)
+ENV PATH = /usr/share/proj:$PATH
 
 # set default command to launch when container is run
 CMD ["jupyter", "lab", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''"]

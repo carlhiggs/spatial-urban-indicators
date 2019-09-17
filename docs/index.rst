@@ -30,7 +30,7 @@ The aims of this project are to:
 
 .. toctree::
    :maxdepth: 3
-   :caption: Software documentation
+   :caption: Technical documentation
    
    installation
    setup

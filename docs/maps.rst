@@ -10,6 +10,9 @@ The province of Bangkok has been used to define the Bangkok metropolitan study r
 
 .. _bangkok_01_study_region: 
 
+
+`Open interactive <./../html/bangkok_01_study_region.html>`_
+
 .. image:: ../maps/bangkok_thailand_2018/png/bangkok_01_study_region.png
 
 Population

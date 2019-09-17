@@ -86,10 +86,11 @@ latex_use_xindy = True
 
 # Enable a draft watermark
 sphinxmark_enable = True
-sphinxmark_div = 'default'
+sphinxmark_div = 'document'
 sphinxmark_image = 'text'
-sphinxmark_text = 'Pre-Release'
-sphinxmark_text_size = 80
+sphinxmark_text = 'BETA'
+sphinxmark_text_size = 200
+sphinxmark_border = 'left'
 
 # Enable display of todo notes
 todo_include_todos = True

@@ -29,9 +29,6 @@ from _utils import *
 # Set up locale (ie. defined at command line, or else testing)
 if len(sys.argv) >= 2:
   locale = '{studyregion}'.format(studyregion = sys.argv[1])
-if locale == '-M':
-    # this script is being run by Sphinx for autodoc purposes
-    locale = 'bangkok'
 else:
   locale = 'bangkok'
 if __name__ == '__main__':

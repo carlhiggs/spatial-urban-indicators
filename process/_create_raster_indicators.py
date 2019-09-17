@@ -1,12 +1,12 @@
 """
 
-Create linkage indicators
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Create indicators from raster data sources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Script:  
-    _create_linkage_indicators.py
+    _create_raster_indicators.py
 Purpose: 
-    Create indicators based on linkage with boundary data from specification in datasets section of configuration file
+    Create indicators from raster data sources based on aggregation to vector boundaries, from specification in datasets section of configuration file
 Authors: 
     Carl Higgs
 
@@ -79,7 +79,6 @@ def main():
         point_overlay_xy = df.loc[row,'point_overlay_xy']
         display_id = area_layer
         map_field = df.loc[row,'map_field']
-        pop_density = df.loc[row,'pop_density']
         potential_column_width = len(map_field) + len(aggregation) + 1
         if potential_column_width < pd.get_option("display.max_colwidth"):
             pd.set_option("display.max_colwidth", potential_column_width)
@@ -131,30 +130,12 @@ def main():
                 map_field = 'average {}'.format(map_field)
             elif not '{}'.format(description)=='nan':
                 print("Specified aggregation method has not been programmed as an option for this Excel file; no aggregation will be made. If duplicate IDs exists, results are likely inaccurate,")
-            if population_linkage != {} and density!='':
-                sql = '''
-                    SELECT a.{area},
-                           population,
-                           area_sqkm
-                    FROM {area} a
-                    '''.format(area = area_layer,
-                               data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                               data = map_name_suffix,
-                               map_field = map_field,
-                               id = linkage_id)
-                area_data = pandas.read_sql(sql, engine, index_col=area_layer)
-                mdf = mdf.join(area_data)
-                mdf['{}_per_10k_capita'] = mdf[map_field]/mdf['population']
-                mdf['{}_per_sqkm'] = mdf[map_field]/mdf['population']
             # we create an alternate description field as it may be that the map_field variable is > 63 characters 
             # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
             # with the 
             # mdf['description'] = map_field
             # Send to SQL database
-            if len(mdf.columns) == 1:
-                mdf.columns = [map_name_suffix]
-            else:
-                mdf.columns = [map_name_suffix]+mdf.columns[1:]
+            mdf.columns = [map_name_suffix]
             mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
             print('\t- postgresql::{}/{}'.format(db,map_name_suffix))
             mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
