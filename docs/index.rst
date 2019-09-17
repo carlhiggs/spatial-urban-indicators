@@ -35,6 +35,7 @@ The aims of this project are to:
    installation
    setup
    methods
+   genindex
       
 
 Funding

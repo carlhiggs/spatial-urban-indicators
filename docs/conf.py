@@ -82,7 +82,7 @@ html_theme_options = {
 
 # To better support Thai when producing PDF
 latex_engine = 'xelatex'
-latex_use_xindy = True
+latex_use_xindy = False
 
 # Enable a draft watermark
 sphinxmark_enable = True
