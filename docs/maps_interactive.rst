@@ -7,21 +7,21 @@ Interactive maps
 
         <form name="change">
         <SELECT NAME="options" ONCHANGE="document.getElementById('maps_interactive').src = './../html/'+this.options[this.selectedIndex].value+'.html'">
-        <option>Please select a map to explore...</option>
+        <option value="bangkok_02_population_subdistrict_population_per_sqkm">Please select a map to explore...</option>
         <option value="bangkok_ind_subdistrict_health_centres">Health centers (n = 68), by subdistrict: health centers</option>
-        <option value="bangkok_ind_subdistrict_outpatients_mental_health">Outpatient numbers for 68 Health Centers, by subdistrict: mental and behavioural disorders (2018)</option>
-        <option value="bangkok_ind_subdistrict_outpatients_hypertension">Outpatient numbers for 68 Health Centers, by subdistrict: hypertension (2018)</option>
-        <option value="bangkok_ind_subdistrict_outpatients_diabetes">Outpatient numbers for 68 Health Centers, by subdistrict: diabetes (2018)</option>
-        <option value="bangkok_ind_subdistrict_outpatients_combined_diseases">Outpatient numbers for 68 Health Centers, by subdistrict: vital diseases (combined; 2018)</option>
+        <option value="bangkok_ind_subdistrict_outpatients_mental_health">Outpatient numbers for 68 Health Centers: mental and behavioural disorders (2018)</option>
+        <option value="bangkok_ind_subdistrict_outpatients_hypertension">Outpatient numbers for 68 Health Centers: hypertension (2018)</option>
+        <option value="bangkok_ind_subdistrict_outpatients_diabetes">Outpatient numbers for 68 Health Centers: diabetes (2018)</option>
+        <option value="bangkok_ind_subdistrict_outpatients_combined_diseases">Outpatient numbers for 68 Health Centers: vital diseases (combined; 2018)</option>
         <option value="bangkok_ind_district_health_centres">Health centers (n = 68), by district: health centers</option>
-        <option value="bangkok_ind_district_outpatients_mental_health">Outpatient numbers for 68 Health Centers, by subdistrict: mental and behavioural disorders (2018)</option>
-        <option value="bangkok_ind_district_outpatients_hypertension">Outpatient numbers for 68 Health Centers, by subdistrict: hypertension (2018)</option>
-        <option value="bangkok_ind_district_outpatients_diabetes">Outpatient numbers for 68 Health Centers, by subdistrict: diabetes (2018)</option>
-        <option value="bangkok_ind_district_outpatients_combined_diseases">Outpatient numbers for 68 Health Centers, by subdistrict: vital diseases (combined; 2018)</option>
+        <option value="bangkok_ind_district_outpatients_mental_health">Outpatient numbers for 68 Health Centers: mental and behavioural disorders (2018)</option>
+        <option value="bangkok_ind_district_outpatients_hypertension">Outpatient numbers for 68 Health Centers: hypertension (2018)</option>
+        <option value="bangkok_ind_district_outpatients_diabetes">Outpatient numbers for 68 Health Centers: diabetes (2018)</option>
+        <option value="bangkok_ind_district_outpatients_combined_diseases">Outpatient numbers for 68 Health Centers: vital diseases (combined; 2018)</option>
         <option value="bangkok_ind_district_water_quality_do">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018: DO (mg/l)</option>
         <option value="bangkok_ind_district_water_quality_bod">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018: BOD (mg/l)</option>
         <option value="bangkok_ind_district_water_quality_canals_poor">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018: canal water storage with < 2 mg/L DO</option>
-        <option value="bangkok_ind_fire_incidence">สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018 by district): fire incidence</option>
+        <option value="bangkok_ind_fire_incidence">สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018): fire incidence</option>
         <option value="bangkok_ind_subdistrict_main_road_flood_locations">14 flood areas of main roads in Bangkok Year 2018: main road flood locations</option>
         <option value="bangkok_ind_subdistrict_main_road_flood_days_rain">14 flood areas of main roads in Bangkok Year 2018: days of rain</option>
         <option value="bangkok_ind_subdistrict_main_road_flood_intensity">14 flood areas of main roads in Bangkok Year 2018: maximum intensity</option>

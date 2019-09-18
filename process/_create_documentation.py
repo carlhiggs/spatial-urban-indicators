@@ -47,7 +47,7 @@ def create_html_select(map_descriptions):
     return(text)
 
 def generate_interactive_maps_rst(select_text):
-    header = '''Interactive maps
+    header = f'''Interactive maps
 ================
 
 .. only:: html
@@ -56,12 +56,12 @@ def generate_interactive_maps_rst(select_text):
 
         <form name="change">
         <SELECT NAME="options" ONCHANGE="document.getElementById('maps_interactive').src = './../html/'+this.options[this.selectedIndex].value+'.html'">
-        <option>Please select a map to explore...</option>
+        <option value="{default_interactive_map}">Please select a map to explore...</option>
 '''
-    footer = '''
+    footer = f'''
         </SELECT>
         
-        <iframe name="iframe" id="maps_interactive" src="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" height="500px" width="100%"></iframe>
+        <iframe name="iframe" id="maps_interactive" src="./../html/{default_interactive_map}.html" height="500px" width="100%"></iframe>
         
 .. only:: latex
 
@@ -108,8 +108,8 @@ def make_locale_documentation(study_region):
             "  && make latexpdf"
            f"  && cp _build/latex/*.pdf ../maps/{study_region}"
             )
-    print(" Done.")
     sp.call(make, cwd ='../docs', shell=True)  
+    print(" Done.")
     
 def line_prepender(infile, outfile, line):
     with open(infile, 'r') as i:
