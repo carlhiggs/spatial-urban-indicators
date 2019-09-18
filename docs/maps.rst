@@ -6,15 +6,23 @@ Links to maps produced, perhaps?  Or at least images...
 Study region
 ~~~~~~~~~~~~
 
-The province of Bangkok has been used to define the Bangkok metropolitan study region extent.  A ten kilometre buffer extending beyond this is used when conducting analyses of access to resources, so that access to destinations outside the study region is accounted for peri-urban regions.
+The province of Bangkok has been used to define the Bangkok metropolitan study region extent.  A ten kilometre buffer extending beyond this is used when conducting analyses of access to resources, so that access to destinations outside the study region is accounted for peri-urban regions when undertaking network analysis.
 
-.. _bangkok_01_study_region: 
+.. _bangkok_01_study_region:
 
+.. only:: html
 
-`Open interactive <./../html/bangkok_01_study_region.html>`_
+    |bangkok_01_study_region|
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_01_study_region.png
+    .. |bangkok_01_study_region| raw:: html
 
+       <a href="./../html/bangkok_01_study_region.html" target="_blank">Open interactive map in new tab</a>
+       <img alt="Bangkok study region" src="./../png/bangkok_01_study_region.png">
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_01_study_region.png
+   
 Population
 ~~~~~~~~~~
 
