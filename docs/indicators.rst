@@ -9,8 +9,8 @@ Completed indicators and measures
    :header-rows: 1
 
    * - Indicator
-     - District
-     - Subdistrict
+     - dist.
+     - subd.
    * - Population per square kilometre
      - :ref:`x <bangkok_02_population_district_population_per_sqkm>`
      - :ref:`x <bangkok_02_population_subdistrict_population_per_sqkm>`

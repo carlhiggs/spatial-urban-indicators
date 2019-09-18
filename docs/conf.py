@@ -77,6 +77,10 @@ html_theme_options = {
 # To better support Thai when producing PDF
 latex_engine = 'xelatex'
 latex_use_xindy = False
+latex_elements = {
+    'papersize': 'a4paper',
+    'maketitle': '\\renewcommand\\Authfont{\\fontsize{12}{14.4}\\selectfont}',
+}
 
 # Enable a draft watermark
 sphinxmark_enable = True
