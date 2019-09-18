@@ -1,9 +1,12 @@
 # Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# http://www.sphinx-doc.org/en/master/config
+# -- Project information -----------------------------------------------------
 
+project = 'Bangkok Liveability'
+copyright = '2019, Carl Higgs, Amanda Alderton, Korn Nitviminol and Hannah Badland'
+author = 'Carl Higgs, Amanda Alderton, Korn Nitviminol and Hannah Badland'
+
+# The full version, including alpha/beta/rc tags
+release = '1.1'
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -14,15 +17,6 @@ import os
 import sys
 # sys.path.append(os.path.abspath('../process'))
 sys.path.insert(0, os.path.abspath('../process'))
-
-# -- Project information -----------------------------------------------------
-
-project = 'Bangkok Liveability (preview documentation)'
-copyright = '2019, Carl Higgs, Amanda Alderton, Korn Nitviminol, Hannah Badland'
-author = 'Carl Higgs, Amanda Alderton, Korn Nitviminol and Hannah Badland'
-
-# The full version, including alpha/beta/rc tags
-release = '1.0'
 
 # The master toctree document.
 master_doc = 'index'

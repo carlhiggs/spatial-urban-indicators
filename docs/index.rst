@@ -27,6 +27,7 @@ The aims of this project are to:
    outputs
    datasources
    maps
+   maps_interactive
 
 .. toctree::
    :maxdepth: 3

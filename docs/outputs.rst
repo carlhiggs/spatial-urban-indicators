@@ -3,6 +3,11 @@ Data structure
 
 Indicator data are output in a series of formats as a result of running the Bangkok Liveability scripted process.  These are represented by a series of folders for each output format.  
 
+Documentation
+~~~~~~~~~~~~~
+
+The 'docs' folder contains a project documentation website which may be accessed by opening the file index.html in a web browser.  In addition, a PDF version of the project documentation is also generated in the project output folder.
+
 CSV
 ~~~
 
