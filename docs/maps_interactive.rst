@@ -14,8 +14,8 @@ The province of Bangkok has been used to define the Bangkok metropolitan study r
 
     .. raw:: html
 
-       <a href="./../html/bangkok_01_study_region.html" target="_blank">Open interactive map in new tab</a>
-       <img alt="Bangkok study region" src="./../png/bangkok_01_study_region.png">
+       <iframe src="./../html/bangkok_01_study_region.html" height="345px" width="100%"></iframe>
+         
 
 .. only:: latex
 
@@ -36,8 +36,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_subdistrict_population_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -52,8 +51,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_district_population_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_district_population_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_district_population_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -71,8 +69,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_subdistrict_households_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_subdistrict_households_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_subdistrict_households_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -87,8 +84,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_district_households_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_district_households_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_district_households_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -110,8 +106,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_subdistrict_communities_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_subdistrict_communities_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_subdistrict_communities_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -126,8 +121,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_district_communities_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_district_communities_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_district_communities_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -145,8 +139,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -161,8 +154,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_district_population_in_communities_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_district_population_in_communities_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_district_population_in_communities_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -180,8 +172,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -196,8 +187,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_02_population_district_population_not_in_communities_per_sqkm.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_02_population_district_population_not_in_communities_per_sqkm.png">
+        <iframe src="./../html/bangkok_02_population_district_population_not_in_communities_per_sqkm.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -220,8 +210,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_health_centres.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_health_centres.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_health_centres.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -236,8 +225,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_health_centres.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_health_centres.png">
+        <iframe src="./../html/bangkok_ind_district_health_centres.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -255,8 +243,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_outpatients_mental_health.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_outpatients_mental_health.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -271,8 +258,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_outpatients_mental_health.png">
+        <iframe src="./../html/bangkok_ind_district_outpatients_mental_health.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -290,8 +276,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_outpatients_hypertension.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_outpatients_hypertension.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -306,8 +291,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_outpatients_hypertension.png">
+        <iframe src="./../html/bangkok_ind_district_outpatients_hypertension.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -325,8 +309,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_outpatients_diabetes.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_outpatients_diabetes.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -341,8 +324,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_outpatients_diabetes.png">
+        <iframe src="./../html/bangkok_ind_district_outpatients_diabetes.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -362,8 +344,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -378,8 +359,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_outpatients_combined_diseases.png">
+        <iframe src="./../html/bangkok_ind_district_outpatients_combined_diseases.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -404,8 +384,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_water_quality_canals_poor.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_water_quality_canals_poor.png">
+        <iframe src="./../html/bangkok_ind_district_water_quality_canals_poor.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -425,8 +404,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_water_quality_do.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_water_quality_do.png">
+        <iframe src="./../html/bangkok_ind_district_water_quality_do.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -446,8 +424,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_water_quality_bod.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_water_quality_bod.png">
+        <iframe src="./../html/bangkok_ind_district_water_quality_bod.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -468,8 +445,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_fire_incidence.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_fire_incidence.png">
+        <iframe src="./../html/bangkok_ind_fire_incidence.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -490,8 +466,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_main_road_flood_locations.png">
+        <iframe src="./../html/bangkok_ind_district_main_road_flood_locations.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -506,8 +481,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_main_road_flood_locations.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_main_road_flood_locations.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -525,8 +499,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_main_road_flood_days_rain.png">
+        <iframe src="./../html/bangkok_ind_district_main_road_flood_days_rain.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -541,8 +514,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_main_road_flood_days_rain.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_main_road_flood_days_rain.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -561,8 +533,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_main_road_flood_intensity.png">
+        <iframe src="./../html/bangkok_ind_district_main_road_flood_intensity.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -577,8 +548,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_main_road_flood_intensity.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_main_road_flood_intensity.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -597,8 +567,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_main_road_flood_days_flood.png">
+        <iframe src="./../html/bangkok_ind_district_main_road_flood_days_flood.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -613,8 +582,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_main_road_flood_days_flood.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_main_road_flood_days_flood.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -635,8 +603,7 @@ Districts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_district_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_district_vulnerable_flood_areas.png">
+        <iframe src="./../html/bangkok_ind_district_vulnerable_flood_areas.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
@@ -651,8 +618,7 @@ Subdistricts
 
     .. raw:: html
 
-        <a href="./../html/bangkok_ind_subdistrict_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a>
-        <img src="./../png/bangkok_ind_subdistrict_vulnerable_flood_areas.png">
+        <iframe src="./../html/bangkok_ind_subdistrict_vulnerable_flood_areas.html" height="345px" width="100%"></iframe>
 
 .. only:: latex
 
