@@ -12,12 +12,10 @@ The province of Bangkok has been used to define the Bangkok metropolitan study r
 
 .. only:: html
 
-    |bangkok_01_study_region|
+    .. raw:: html
 
-    .. |bangkok_01_study_region| raw:: html
-
-       <a href="./../html/bangkok_01_study_region.html" target="_blank">Open interactive map in new tab</a>
-       <img alt="Bangkok study region" src="./../png/bangkok_01_study_region.png">
+       <iframe src="./../html/bangkok_01_study_region.html" height="345px" width="100%"></iframe>
+         
 
 .. only:: latex
 
@@ -34,14 +32,30 @@ Subdistricts
 ------------
 
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_per_sqkm.png
 
 .. _bangkok_02_population_district_population_per_sqkm:
 
 Districts
 ---------
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_district_population_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_per_sqkm.png
 
 Households
 ~~~~~~~~~~
@@ -51,14 +65,30 @@ Households
 Subdistricts
 ------------
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_households_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_subdistrict_households_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_households_per_sqkm.png
 
 .. _bangkok_02_population_district_households_per_sqkm:
 
 Districts
 ---------
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_households_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_district_households_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_households_per_sqkm.png
 
 
 Communities
@@ -72,14 +102,30 @@ Communities per square kilometre
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_communities_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_subdistrict_communities_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_communities_per_sqkm.png
 
 .. _bangkok_02_population_district_communities_per_sqkm:
 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_communities_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_district_communities_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_communities_per_sqkm.png
 
 Population in communities per square kilometre
 ----------------------------------------------
@@ -89,14 +135,30 @@ Population in communities per square kilometre
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png
 
 .. _bangkok_02_population_district_population_in_communities_per_sqkm:
 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_in_communities_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_district_population_in_communities_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_in_communities_per_sqkm.png
 
 Population not in communities per square kilometre
 --------------------------------------------------
@@ -106,14 +168,30 @@ Population not in communities per square kilometre
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.png
 
 .. _bangkok_02_population_district_population_not_in_communities_per_sqkm:
 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_not_in_communities_per_sqkm.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_02_population_district_population_not_in_communities_per_sqkm.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_not_in_communities_per_sqkm.png
 
 Health
 ~~~~~~
@@ -128,14 +206,30 @@ Health centre locations
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_health_centres.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres.png
 
 .. _bangkok_ind_district_health_centres:
 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_health_centres.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres.png
 
 Mental health
 -------------
@@ -145,14 +239,30 @@ Mental health
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_outpatients_mental_health.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health.png
 
 .. _bangkok_ind_district_outpatients_mental_health:
 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_outpatients_mental_health.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health.png
 
 Hypertension
 ------------
@@ -162,14 +272,30 @@ Hypertension
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_outpatients_hypertension.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension.png
 
 .. _bangkok_ind_district_outpatients_hypertension:
 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_outpatients_hypertension.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension.png
 
 Diabetes
 --------
@@ -179,14 +305,30 @@ Diabetes
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_outpatients_diabetes.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes.png
 
 .. _bangkok_ind_district_outpatients_diabetes:
 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_outpatients_diabetes.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
 
 Vital diseases (combined)
 -------------------------
@@ -198,14 +340,30 @@ Considering the combined presentation of outputatients for the above three categ
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases.png
 
 .. _bangkok_ind_district_outpatients_combined_diseases:
 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_outpatients_combined_diseases.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases.png
 
 Water quality
 ~~~~~~~~~~~~~
@@ -222,7 +380,15 @@ Count of canals with poor water quality by district of sampling location
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_water_quality_canals_poor.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor.png
 
 Dissolved Oxygen (DO)
 ---------------------
@@ -234,7 +400,15 @@ Water quality in canals, where Dissolved Oxygen (DO) less than 2 amount 130 cana
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_do.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_water_quality_do.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_do.png
 
 Biochemical Oxygen Demand (BOD)
 -------------------------------
@@ -246,7 +420,15 @@ Biochemical Oxygen Demand (BOD) is the amount of oxygen that microorganisms use 
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_bod.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_water_quality_bod.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_bod.png
 
 Fire incidence
 ~~~~~~~~~~~~~~
@@ -259,7 +441,15 @@ Fire incident locations
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_fire_incidence.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_fire_incidence.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_fire_incidence.png
 
 Flood risk
 ~~~~~~~~~~
@@ -272,14 +462,30 @@ Main road flood locations
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_main_road_flood_locations.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations.png
 
 .. _bangkok_ind_subdistrict_main_road_flood_locations:
 
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_main_road_flood_locations.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations.png
 
 Main road flood locations - days of rain
 ----------------------------------------
@@ -289,14 +495,30 @@ Main road flood locations - days of rain
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_days_rain.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_main_road_flood_days_rain.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_days_rain.png
 
 .. _bangkok_ind_subdistrict_main_road_flood_days_rain:
 
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_days_rain.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_main_road_flood_days_rain.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_days_rain.png
 
 
 Main road flood locations - intensity
@@ -307,14 +529,30 @@ Main road flood locations - intensity
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_intensity.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_main_road_flood_intensity.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_intensity.png
 
 .. _bangkok_ind_subdistrict_main_road_flood_intensity:
 
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_intensity.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_main_road_flood_intensity.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_intensity.png
 
 
 Main road flood locations - days of flood
@@ -325,14 +563,30 @@ Main road flood locations - days of flood
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_days_flood.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_main_road_flood_days_flood.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_days_flood.png
 
 .. _bangkok_ind_subdistrict_main_road_flood_days_flood:
 
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_days_flood.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_main_road_flood_days_flood.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_days_flood.png
 
 
 Vulnerable flood areas
@@ -345,11 +599,27 @@ Areas which are likely to flood during heavy to very heavy rain events (more tha
 Districts
 *********
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_district_vulnerable_flood_areas.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas.png
 
 .. _bangkok_ind_subdistrict_vulnerable_flood_areas:
 
 Subdistricts
 ************
 
-.. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas.png
+.. only:: html
+
+    .. raw:: html
+
+        <iframe src="./../html/bangkok_ind_subdistrict_vulnerable_flood_areas.html" height="345px" width="100%"></iframe>
+
+.. only:: latex
+
+    .. image:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas.png
