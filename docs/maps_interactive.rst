@@ -35,7 +35,9 @@ Interactive maps
         <option value="bangkok_ind_district_pcd_monitoring_stations">Air quality: PM2.5: monitoring stations</option>
         <option value="bangkok_ind_district_pm2p5_days_exceeding_thai_standard">Air quality: PM2.5: days exceeding Thai standard (50 µg/m³; January 2019, PCD)</option>
         <option value="bangkok_ind_district_pm2p5_days_exceeding_who_standard">Air quality: PM2.5: days exceeding WHO standard (25 µg/m³; January 2019, PCD)</option>
-        <option value="bangkok_ind_district_restaurants">Number of food entrepreneurs: restaurants</option>
+        <option value="bangkok_ind_district_restaurants">Number of food entrepreneurs: ร้านอาหาร/Restaurant</option>
+        <option value="bangkok_ind_district_restaurants_per_10k_population">Number of food entrepreneurs per 10,000 population: ร้านอาหาร/Restaurant</option>
+        <option value="bangkok_ind_district_restaurants_per_sqkm">Number of food entrepreneurs per square kilometre: ร้านอาหาร/Restaurant</option>
         </SELECT>
         
         <iframe name="iframe" id="maps_interactive" src="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" height="500px" width="100%"></iframe>

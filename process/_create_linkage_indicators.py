@@ -34,10 +34,7 @@ def main():
     script = os.path.basename(sys.argv[0])
     task = 'Create indicators from linkage files'
     
-    engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_user,
-                                                                          pwd  = db_pwd,
-                                                                          host = db_host,
-                                                                          db   = db))
+    engine = create_engine(f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}")
     
     engine_sqlite = create_engine((
                       'sqlite:///{path}/{output_name}.gpkg'
@@ -57,8 +54,8 @@ def main():
     for f in pop_data_fields:
         pop_data_fields_full.append(f)
         if f in population_numeric:
-            pop_data_fields_full.append('{} per sqkm'.format(f))
-            pop_data_fields_to_map.append('{} per sqkm'.format(f))
+            pop_data_fields_full.append(f'{f} per sqkm')
+            pop_data_fields_to_map.append(f'{f} per sqkm')
     column_names = {}
     # format to display superscript 2 for square kilometres
     for f in pop_data_fields_full:
@@ -79,14 +76,14 @@ def main():
         point_overlay_xy = df.loc[row,'point_overlay_xy']
         display_id = area_layer
         map_field = df.loc[row,'map_field']
-        pop_density = df.loc[row,'pop_density']
+        density = df.loc[row,'density']
         potential_column_width = len(map_field) + len(aggregation) + 1
         if potential_column_width < pd.get_option("display.max_colwidth"):
             pd.set_option("display.max_colwidth", potential_column_width)
             gpd.pd.set_option("display.max_colwidth", potential_column_width)   
-        map_name = '{}_ind_{}'.format(locale,map_name_suffix)
+        map_name = f'{locale}_ind_{map_name_suffix}'
         print('\t{}'.format(map_name))
-        if os.path.isfile('{}/html/{}.html'.format(locale_maps,map_name)):
+        if os.path.isfile(f'{locale_maps}/html/{map_name}.html'):
             print('\t - File appears to already have been processed (HTML output exists); skipping.')
         else:
             if not area_layer in areas:
@@ -108,7 +105,7 @@ def main():
                 fill_na = fill_na.split(',')
                 for field in fill_na:
                     mdf[field] = mdf[field].fillna(method = 'ffill') 
-            if '{}'.format(point_overlay_xy)!='':
+            if '{}'.format(point_overlay_xy) not in ['','nan']:
                 # this means an attempt has been made to define point data locations
                 point_overlay_xy = point_overlay_xy.split(',')
                 point_overlay_name = df.loc[row,'point_overlay_name']
@@ -121,42 +118,72 @@ def main():
             if aggregation =='count':
                 mdf[map_field] = 1
                 mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
-                aggregation_text = " ({})".format(aggregation)
+                aggregation_text = f" ({aggregation})"
             if aggregation =='sum':
                 mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
-                aggregation_text = " ({})".format(aggregation)
+                aggregation_text = f" ({aggregation})"
             elif aggregation == 'average':
                 mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
-                aggregation_text = " ({})".format(aggregation)
-                map_field = 'average {}'.format(map_field)
+                aggregation_text = f" ({aggregation})"
+                map_field = f'average {map_field}'
             elif not '{}'.format(description)=='nan':
                 print("Specified aggregation method has not been programmed as an option for this Excel file; no aggregation will be made. If duplicate IDs exists, results are likely inaccurate,")
-            if population_linkage != {} and density!='':
-                sql = '''
-                    SELECT a.{area},
-                           population,
-                           area_sqkm
-                    FROM {area} a
-                    '''.format(area = area_layer,
-                               data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                               data = map_name_suffix,
-                               map_field = map_field,
-                               id = linkage_id)
-                area_data = pandas.read_sql(sql, engine, index_col=area_layer)
-                mdf = mdf.join(area_data)
-                mdf['{}_per_10k_capita'] = mdf[map_field]/mdf['population']
-                mdf['{}_per_sqkm'] = mdf[map_field]/mdf['population']
+            if population_linkage != {} and density not in ['','nan']:
+                # some sort of density calculation has been requested and must be processed
+                if density.startswith('population'):
+                    if len(density.split('.'))== 1:
+                        # default for population density is per 10,000 population
+                        density_units = 10000.0
+                    else:
+                        density_units = float(density.split('.')[1])
+                    sql = '''
+                        SELECT a.{area}_id,
+                               population
+                        FROM {area} a
+                        '''.format(area = area_layer,
+                                   data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
+                                   data = map_name_suffix,
+                                   map_field = map_field,
+                                   id = linkage_id)
+                    area_data = pandas.read_sql(sql, engine, index_col=f'{area_layer}_id')
+                    mdf = mdf.join(area_data)
+                    mdf[map_field] = mdf[map_field]/(mdf['population']/density_units)
+                    mdf.drop('population', axis=1, inplace=True)
+                elif density.startswith('sqkm'):
+                    if len(density.split('.'))==1:
+                        # default for area density is per sqkm
+                        density_units = 1.0
+                    else:
+                        density_units = float(density.split('.')[1])
+                    sql = '''
+                        SELECT a.{area}_id,
+                               area_sqkm
+                        FROM {area} a
+                        '''.format(area = area_layer,
+                                   data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
+                                   data = map_name_suffix,
+                                   map_field = map_field,
+                                   id = linkage_id)
+                    area_data = pandas.read_sql(sql, engine, index_col=f'{area_layer}_id')
+                    mdf = mdf.join(area_data)
+                    mdf[map_field] = mdf[map_field]/(mdf['area_sqkm']/density_units)
+                    mdf.drop('area_sqkm', axis=1, inplace=True)
+                else:
+                    print(f'undefined density "{density}"; please check configuration for this indicator')
             # we create an alternate description field as it may be that the map_field variable is > 63 characters 
             # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
             # with the 
             # mdf['description'] = map_field
             # Send to SQL database
-            if len(mdf.columns) == 1:
-                mdf.columns = [map_name_suffix]
-            else:
-                mdf.columns = [map_name_suffix]+mdf.columns[1:]
+            # print(mdf.columns)
+            mdf.columns = [map_name_suffix]
+            # if len(mdf.columns) == 1:
+                # mdf.columns = [map_name_suffix]
+            # else:
+                # print([map_name_suffix]+mdf.columns[1:])
+                # mdf.columns = [map_name_suffix]+mdf.columns[1:]
             mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
-            print('\t- postgresql::{}/{}'.format(db,map_name_suffix))
+            print(f'\t- postgresql::{db}/{map_name_suffix}')
             mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
             print('\t- {path}/{output_name}.gpkg/{layer}'.format(output_name = '{}'.format(study_region),
                                                             path = os.path.join(locale_maps,'gpkg'),
@@ -216,46 +243,44 @@ def main():
                             name='Location labels', 
                             show =False,
                             overlay=True,
-                            attr=((
-                                " {} | "
+                            attr=(
+                               f" {attribution} | "
                                 "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
                                 "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                                 "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                                "under ODbL.").format(attribution))
-                                    ).add_to(m)
+                                "under ODbL.")
+                            ).add_to(m)
             # Add in the actual basemap to be shown
             folium.TileLayer(tiles='http://tile.stamen.com/toner-background/{z}/{x}/{y}.png',
                             name='Basemap: Simple', 
                             show =True,
                             overlay=False,
-                            attr=((
-                                " {} | "
+                            attr=(
+                               f" {attribution} | "
                                 "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
                                 "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                                 "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                                "under ODbL.").format(attribution))
-                                    ).add_to(m)
+                                "under ODbL.")
+                            ).add_to(m)
             # Add in alternate basemap
             folium.TileLayer(tiles='OpenStreetMap',
                             name='Basemap: OpenStreetMap', 
                             show =False,
                             overlay=False,
-                            attr=((
-                                " {} | "
+                            attr=(
+                                " {attribution} | "
                                 "Map tiles: <a href=\"http://openstreetmap.org/\">© OpenStreetMap contributors</a>, " 
                                 "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                                 "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                                "under ODbL.").format(map_attribution))
-                                    ).add_to(m)
+                                "under ODbL.")
+                            ).add_to(m)
             # We add empty tile set in order to force display of data attribution; Basemaps are not overlay layers, so they are easily switchable
             folium.TileLayer(tiles='Null tiles',
                             name='Basemap: off', 
                             show =False,
                             overlay=False,
-                            attr=((
-                                " {}"
-                               ).format(attribution))
-                                    ).add_to(m)
+                            attr=f" {attribution}"
+                            ).add_to(m)
             # Create choropleth map
             bins = 6
             # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
@@ -290,12 +315,12 @@ def main():
                             geo_data =map.to_json(),
                             name = map_field,
                             columns =[area_layer,map_field],
-                            key_on="feature.properties.{}".format(area_layer),
+                            key_on=f"feature.properties.{area_layer}",
                             fill_color='YlGn',
                             fill_opacity=0.7,
                             nan_fill_opacity=0.2,
                             line_opacity=0.2,
-                            legend_name='{}, by {}{}'.format(legend_title,area_layer,aggregation_text),
+                            legend_name=f'{legend_title}, by {area_layer}{aggregation_text}',
                             bins = bins,
                             smooth_factor = None,
                             reset=True,
@@ -306,10 +331,10 @@ def main():
                                            labels=True, 
                                            sticky=True
                                            ).add_to(layer.geojson)    
-            if '{}'.format(point_overlay_xy)!='':
+            if '{}'.format(point_overlay_xy) not in ['','nan']:
                 point_layer = folium.features.GeoJson(data=point_overlay.to_json(), 
                                                       name=point_overlay_name, 
-                                                      tooltip="feature.properties.{}".format(point_overlay_hover_field)
+                                                      tooltip=f"feature.properties.{point_overlay_hover_field}"
                                                       ).add_to(m)
                 folium.features.GeoJsonTooltip(fields=[c for c in point_overlay.columns if c is not 'geometry'],
                                                localize=True,
@@ -336,14 +361,14 @@ def main():
                                 '''legend = L.control({position: \'bottomright''')
             # save map
             # map_name = '{}_ind_{}'.format(locale,map_name_suffix)
-            fid = open('{}/html/{}.html'.format(locale_maps,map_name), 'wb')
+            fid = open(f'{locale_maps}/html/{map_name}.html', 'wb')
             fid.write(html.encode('utf8'))
             fid.close()
             folium_to_image(os.path.join(locale_maps,'html'),
                             os.path.join(locale_maps,'png'),
                             map_name)
-            print('\t- {}/html/{}.html'.format(locale_maps,map_name))
-            print('\t- {}/png/{}.png'.format(locale_maps,map_name))
+            print(f'\t- {locale_maps}/html/{map_name}.html')
+            print(f'\t- {locale_maps}/png/{map_name}.png')
             print('')
     # output to completion log                  
     script_running_log(script, task, start, locale)
