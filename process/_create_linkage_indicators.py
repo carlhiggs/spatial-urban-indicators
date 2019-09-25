@@ -77,7 +77,10 @@ def main():
         display_id = area_layer
         map_field = df.loc[row,'map_field']
         density = df.loc[row,'density']
-        potential_column_width = len(map_field) + len(aggregation) + 1
+        if aggregation not in ['','nan']:
+            potential_column_width = len(map_field) 
+        else:
+            potential_column_width = len(map_field) + len(aggregation) + 1
         if potential_column_width < pd.get_option("display.max_colwidth"):
             pd.set_option("display.max_colwidth", potential_column_width)
             gpd.pd.set_option("display.max_colwidth", potential_column_width)   
@@ -127,8 +130,10 @@ def main():
                 aggregation_text = f" ({aggregation})"
                 map_field = f'average {map_field}'
             elif not '{}'.format(description)=='nan':
-                print("Specified aggregation method has not been programmed as an option for this Excel file; no aggregation will be made. If duplicate IDs exists, results are likely inaccurate,")
-            if population_linkage != {} and density not in ['','nan']:
+                print("\t\tNo aggregation method specified; assuming that all records map to distinct areas.")
+                mdf = mdf[[map_field]]
+            if population_linkage != {} and str(density) not in ['','nan']:
+                density_field = df.loc[row,'alias']
                 # some sort of density calculation has been requested and must be processed
                 if density.startswith('population'):
                     if len(density.split('.'))== 1:
@@ -147,8 +152,8 @@ def main():
                                    id = linkage_id)
                     area_data = pandas.read_sql(sql, engine, index_col=f'{area_layer}_id')
                     mdf = mdf.join(area_data)
-                    mdf[map_field] = mdf[map_field]/(mdf['population']/density_units)
-                    mdf.drop('population', axis=1, inplace=True)
+                    mdf[density_field] = mdf[map_field]/(mdf['population']/density_units)
+                    mdf.drop(['population',map_field], axis=1, inplace=True)
                 elif density.startswith('sqkm'):
                     if len(density.split('.'))==1:
                         # default for area density is per sqkm
@@ -166,22 +171,23 @@ def main():
                                    id = linkage_id)
                     area_data = pandas.read_sql(sql, engine, index_col=f'{area_layer}_id')
                     mdf = mdf.join(area_data)
-                    mdf[map_field] = mdf[map_field]/(mdf['area_sqkm']/density_units)
-                    mdf.drop('area_sqkm', axis=1, inplace=True)
+                    mdf[density_field] = mdf[map_field]/(mdf['area_sqkm']/density_units)
+                    mdf.drop(['area_sqkm',map_field], axis=1, inplace=True)
                 else:
                     print(f'undefined density "{density}"; please check configuration for this indicator')
+                map_field = density_field
             # we create an alternate description field as it may be that the map_field variable is > 63 characters 
             # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
             # with the 
             # mdf['description'] = map_field
             # Send to SQL database
             # print(mdf.columns)
-            mdf.columns = [map_name_suffix]
-            # if len(mdf.columns) == 1:
-                # mdf.columns = [map_name_suffix]
-            # else:
+            # mdf.columns = [map_name_suffix]
+            if len(mdf.columns) == 1:
+                mdf.columns = [map_name_suffix]
+            else:
                 # print([map_name_suffix]+mdf.columns[1:])
-                # mdf.columns = [map_name_suffix]+mdf.columns[1:]
+                mdf.columns = [map_name_suffix]+mdf.columns[1:]
             mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
             print(f'\t- postgresql::{db}/{map_name_suffix}')
             mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)

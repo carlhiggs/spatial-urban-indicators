@@ -38,6 +38,9 @@ Interactive maps
         <option value="bangkok_ind_district_restaurants">Number of food entrepreneurs: ร้านอาหาร/Restaurant</option>
         <option value="bangkok_ind_district_restaurants_per_10k_population">Number of food entrepreneurs per 10,000 population: ร้านอาหาร/Restaurant</option>
         <option value="bangkok_ind_district_restaurants_per_sqkm">Number of food entrepreneurs per square kilometre: ร้านอาหาร/Restaurant</option>
+        <option value="bangkok_ind_district_supermarkets">Number of food entrepreneurs: ซูเปอร์มาร์เกต/Supermarket</option>
+        <option value="bangkok_ind_district_supermarkets_per_10k_population">Number of food entrepreneurs per 10,000 population: ซูเปอร์มาร์เกต/Supermarket</option>
+        <option value="bangkok_ind_district_supermarkets_per_sqkm">Number of food entrepreneurs per square kilometre: ซูเปอร์มาร์เกต/Supermarket</option>
         </SELECT>
         
         <iframe name="iframe" id="maps_interactive" src="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" height="500px" width="100%"></iframe>
