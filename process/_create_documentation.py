@@ -70,6 +70,32 @@ def generate_interactive_maps_rst(select_text):
 '''
     return(f'{header}{select_text}{footer}')
 
+def generate_metadata_rst(df_datasets):
+    df = df_datasets[df_datasets.index.str.startswith('linkage:')]
+    indicators = df['name_f'].unique()
+    header = f'''Metadata
+================
+
+.. only:: html
+
+    .. raw:: html
+
+        <form name="change">
+        <SELECT NAME="options" ONCHANGE="document.getElementById('maps_interactive').src = './../html/'+this.options[this.selectedIndex].value+'.html'">
+        <option value="{default_interactive_map}">Please select a map to explore...</option>
+'''
+    footer = f'''
+        </SELECT>
+        
+        <iframe name="iframe" id="maps_interactive" src="./../html/{default_interactive_map}.html" height="500px" width="100%"></iframe>
+        
+.. only:: latex
+
+    Interactive maps for indicators were created and are browsable using the html documentation.
+        
+'''
+    return(f'{header}{select_text}{footer}')
+
 def get_sphinx_conf_header():
     import time
     
