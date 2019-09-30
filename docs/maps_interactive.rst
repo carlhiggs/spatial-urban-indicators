@@ -41,6 +41,15 @@ Interactive maps
         <option value="bangkok_ind_district_supermarkets">Number of food entrepreneurs: ซูเปอร์มาร์เกต/Supermarket</option>
         <option value="bangkok_ind_district_supermarkets_per_10k_population">Number of food entrepreneurs per 10,000 population: ซูเปอร์มาร์เกต/Supermarket</option>
         <option value="bangkok_ind_district_supermarkets_per_sqkm">Number of food entrepreneurs per square kilometre: ซูเปอร์มาร์เกต/Supermarket</option>
+        <option value="bangkok_ind_district_minimarts">Number of food entrepreneurs: มินิมาร์ท/Mini-mart</option>
+        <option value="bangkok_ind_district_minimarts_per_10k_population">Number of food entrepreneurs per 10,000 population: มินิมาร์ท/Mini-mart</option>
+        <option value="bangkok_ind_district_minimarts_per_sqkm">Number of food entrepreneurs per square kilometre: มินิมาร์ท/Mini-mart</option>
+        <option value="bangkok_ind_district_stalls">Number of food entrepreneurs: แผงลอย/Stall</option>
+        <option value="bangkok_ind_district_stalls_per_10k_population">Number of food entrepreneurs per 10,000 population: แผงลอย/Stall</option>
+        <option value="bangkok_ind_district_stalls_per_sqkm">Number of food entrepreneurs per square kilometre: แผงลอย/Stall</option>
+        <option value="bangkok_ind_district_markets">Number of food entrepreneurs: ตลาด/Market</option>
+        <option value="bangkok_ind_district_markets_per_10k_population">Number of food entrepreneurs per 10,000 population: ตลาด/Market</option>
+        <option value="bangkok_ind_district_markets_per_sqkm">Number of food entrepreneurs per square kilometre: ตลาด/Market</option>
         </SELECT>
         
         <iframe name="iframe" id="maps_interactive" src="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" height="500px" width="100%"></iframe>

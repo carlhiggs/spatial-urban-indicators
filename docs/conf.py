@@ -2,8 +2,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Bangkok Liveability'
-copyright = '2019, Carl Higgs, Amanda Alderton, Korn Nitviminol and Hannah Badland'
-author = 'Carl Higgs, Amanda Alderton, Korn Nitviminol and Hannah Badland'
+copyright = '2019, C Higgs, A Alderton, K Nitviminol and H Badland'
+author = 'C Higgs, A Alderton, K Nitviminol and H Badland'
 
 # The full version, including alpha/beta/rc tags
 release = '1.1'
