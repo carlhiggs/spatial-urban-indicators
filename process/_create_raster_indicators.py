@@ -222,7 +222,7 @@ def main():
         # Add in the actual basemap to be shown
         folium.TileLayer(tiles='http://tile.stamen.com/toner-background/{z}/{x}/{y}.png',
                         name='Basemap: Simple', 
-                        show =True,
+                        show =False,
                         overlay=False,
                         attr=((
                             " {} | "
@@ -246,7 +246,7 @@ def main():
         # Add in satellite basemap
         folium.TileLayer(tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' ,
                         name='Basemap: ESRI World Imagery (satellite)', 
-                        show =False,
+                        show =True,
                         overlay=False,
                         attr=((
                             " {} | "
@@ -314,21 +314,27 @@ def main():
                                        labels=True, 
                                        sticky=True
                                        ).add_to(layer.geojson)    
-        # # load up the reprojected raster
-        # NOT CURRENTLY FUNCTIONAL
-        # with rasterio.open(raster_clipped) as src:
-            # boundary = src.bounds
-            # nodata = raster_nodata
-            # raster_layer = src.read(1)
-        # m.add_child(folium.raster_layers.ImageOverlay(raster_layer, 
-                            # name=source_name,
-                            # opacity=.7,
-                            # bounds=[[bounds['miny'],bounds['minx']], 
-                                    # [bounds['maxy'], bounds['maxx']]],
-                            # colormap=lambda x: (1, 0, x, x),#R,G,B,alpha,
-                            # legend_name=source_name,
-                            # overlay=True
-                            # )) 
+        # load up the clipped raster (assumed to be epsg4326)
+        with rasterio.open(raster_clipped) as src:
+            boundary = src.bounds
+            nodata = raster_nodata
+            raster_layer = src.read(1)
+            # raster_layer = raster_layer.astype(float)
+            # raster_layer[raster_layer==raster_nodata] = np.nan
+            # TECHNICALLY INVALID WORKAROUND FOR DISPLAY PURPOSES ONLY
+            # ie. no data over water, display as though 'zero' so it does not show
+            raster_layer[raster_layer==raster_nodata] = 0
+            raster_layer = scale_factor*(raster_layer + raster_offset)
+        m.add_child(folium.raster_layers.ImageOverlay(raster_layer, 
+                            name=source_name,
+                            opacity=.7,
+                            bounds=[[boundary[1],boundary[0]], 
+                                    [boundary[3], boundary[2]]],
+                                    colormap=lambda x: (0, x, 0, x),#R,G,B,alpha,
+                            legend_name=source_name,
+                            overlay=True,
+                            show=False
+                            )) 
         # Add layer control
         folium.LayerControl(collapsed=False).add_to(m)
         m.fit_bounds(m.get_bounds())

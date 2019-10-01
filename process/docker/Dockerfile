@@ -109,9 +109,7 @@ ENV PATH=/home/jovyan/bin:$PATH
 
 # install additional python libraries
 # sphinx libraries are for documentation
-# netcdf4 is for reading .nc files from Copernicus satellite data using xarray
-RUN pip install sphinx_rtd_theme sphinxmark \
- && conda install -y netcdf4 basemap
+RUN pip install sphinx_rtd_theme sphinxmark rasterstats 
 
 # Add proj4 epsg codes to path (req'd for basemap)
 ENV PATH = /usr/share/proj:$PATH
