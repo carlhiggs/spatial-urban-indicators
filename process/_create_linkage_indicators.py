@@ -70,8 +70,8 @@ def main():
         heading = '{}: {}'.format(full_locale,df.loc[row,'map_heading'])
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
-        area_linkage_id = df.loc[row,'linkage_id']
-        aggregation = df.loc[row,'aggregation_if_duplicates']
+        area_linkage_id = areas[area_layer]['id']
+        aggregation = df.loc[row,'aggregation']
         linkage_id = df.loc[row,'linkage_id']
         point_overlay_xy = df.loc[row,'point_overlay_xy']
         display_id = area_layer

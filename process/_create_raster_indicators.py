@@ -24,6 +24,7 @@ import re
 import sqlite3
 import rasterio
 from rasterio.mask import mask
+from rasterstats import zonal_stats
 from folium import plugins
 # import branca
 import psycopg2
@@ -73,12 +74,36 @@ for f in pop_data_fields_full:
     column_names[f] = f.replace('sqkm','km\u00B2')
 
 for row in df.index:
-    dataset = df.loc[row,'data_dir']
+    dataset = '../{}'.format(df.loc[row,'data_dir'])
+    map_field = df.loc[row,'map_field']
+    heading = '{}: {}'.format(full_locale,df.loc[row,'map_heading'])
+    map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
+    area_layer = df.loc[row,'linkage_layer']
+    area_linkage_id = df.loc[row,'linkage_id']
+    # Must define a list of statistics in config file
+    # options are:
+    # ['count', 'min', 'max', 'mean', 'sum', 'std', 'median', 'majority', 'minority', 'unique', 'range', 'nodata', 'nan']
+    # Note that 'std' refers to standard deviation (ie. indicates within area variation about the mean)
+    raster_statistic = df.loc[row,'raster_statistic']
     raster_clipped  = f'{dataset}_clipped'
     raster_projected  = f'{dataset}_projected'
+    raster_band = int(df.loc[row,'raster_band'])
+    raster_mult = int(df.loc[row,'raster_mult'])
+    raster_offset = int(df.loc[row,'raster_offset'])
+    raster_nodata = int(df.loc[row,'raster_nodata')
+    raster_range = [int(x) for x in df.loc[row,'raster_range'].split(',')]
+    if len(raster_range) == 2:
+        scale_factor = (1/raster_range[1]) * raster_mult
+    else:
+        scale_factor = 1
+    raster_dtype = df.loc[row,'data_type'].split(":")[1]
+    raster_aggregation = df.loc[row,'aggregation']
+    # default aggregation is average
+    if raster_aggregation in ['','nan']:
+        raster_aggregation = 'average'
     print(f'  - "{dataset}"')
     # clip and save raster
-    with rasterio.open(dataset) as full_raster:
+    with rasterio.open(os.path.abspath(dataset)) as full_raster:
         # set pop_vector to match crs of input raster
         # the above works as tested (raster is epsg 4326)
         # in theory, works if epsg is otherwise detectable in rasterio
@@ -93,7 +118,7 @@ for row in df.index:
                         "transform": out_transform
                         }) 
     with rasterio.open(raster_clipped, "w", **out_meta) as dest:
-        dest.write(out_img)    
+        dest.write_band(raster_band,out_img)    
     # reproject and save the re-projected clipped raster
     # (see config file for reprojection function)
     reproject_raster(inpath = raster_clipped, 
@@ -101,132 +126,41 @@ for row in df.index:
                   new_crs = 'EPSG:{}'.format(srid))   
     # Aggregate raster in each subdistrict according to datasource set up (e.g. sum or average)
     # Load up the clipped and projected raster population
-    raster_pop = rasterio.open(population_raster_projected)    
-    nodata = raster_pop.nodata
+    # raster = rasterio.open(raster_projected)    
+    # with rasterio.open(raster_projected) as src:
+        # transform = src.meta['transform']
+        # array = src.read(1)
+    # nodata = raster_nodata
     # ... and the areas in this region to calculate zonal statistics
-    for admin_area in areas: 
-        analysis_area = gpd.GeoDataFrame.from_postgis('''SELECT "{}",geom FROM {}'''.format(areas[admin_area]['id'],
-                                                                                          areas[admin_area]['name_s']),
-                                                    engine, 
-                                                    geom_col='geom', 
-                                                    index_col=areas[admin_area]['id'])
-        area_json = [json.loads(analysis_area.to_json())['features']][0]
+    for a in areas: 
+        sql = '''SELECT "{}",geom FROM {}'''.format(areas[a]['id'],areas[a]['table'])
+        analysis_area = gpd.GeoDataFrame.from_postgis(sql,engine, geom_col='geom', index_col=areas[a]['id'])
         # create null field for population values
-        analysis_area['population'] = np.nan    
-        analysis_area['population'].astype('Int64', inplace=True)
-        # associate analysis_area with aggregate population estimates
-        pop = 0
-        for area in area_json:
-            area_name = area['id']
-            subraster, bounds = mask(dataset = raster_pop, 
-                                    shapes  = [area['geometry']],
-                                    nodata = nodata)
-            area_pop = int(np.sum(subraster[subraster>nodata]))
-            # print('{}: {}'.format(area_name,area_pop))
-            pop += area_pop
-            analysis_area.loc[area_name,'population'] = area_pop
-        # create temp table for re-linkage of indicator with area back in postgis
-        analysis_area['population'].to_sql('temp', 
-                             engine, 
-                             if_exists='replace', 
-                             index=True)
+        analysis_area[map_field] = np.nan    
+        analysis_area[map_field].astype(raster_dtype, inplace=True)
+        stats = zonal_stats(analysis_area,
+                             raster_projected,
+                             band_num=raster_band,
+                             no_data=raster_nodata,
+                             stats=raster_statistic,
+                             all_touched=True,
+                             geojson_out=True)
+        for x in range(0,len(stats)):
+            analysis_area.loc[int(stats[x]['id']),map_field]=scale_factor*stats[x]['properties'][raster_statistic]+raster_offset
         
-        engine.execute('''
-        ALTER TABLE {table} ADD COLUMN IF NOT EXISTS "population" int;
-        ALTER TABLE {table} ADD COLUMN IF NOT EXISTS "{population_field}" text;
-        ALTER TABLE {table} ADD COLUMN IF NOT EXISTS "{population_field} per hectare" double precision;
-        UPDATE {table} a
-            SET 
-                population = temp.population,
-                "{population_field}" = TO_CHAR(temp.population, '999,999,999'),
-                "{population_field} per hectare" = (temp.population/area_ha)::double precision
-            FROM temp 
-            WHERE a."{id}" = temp."{id}";
-        '''.format(table = areas[admin_area]['name_s'],
-                   id = areas[admin_area]['id'],
-                   population_field = population_field))
-    
-    
-    description = df.loc[row,'alias']
-    heading = '{}: {}'.format(full_locale,df.loc[row,'map_heading'])
-    map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
-    area_layer = df.loc[row,'linkage_layer']
-    area_linkage_id = df.loc[row,'linkage_id']
-    aggregation = df.loc[row,'aggregation_if_duplicates']
-    linkage_id = df.loc[row,'linkage_id']
-    point_overlay_xy = df.loc[row,'point_overlay_xy']
-    display_id = area_layer
-    map_field = df.loc[row,'map_field']
-    potential_column_width = len(map_field) + len(aggregation) + 1
-    if potential_column_width < pd.get_option("display.max_colwidth"):
-        pd.set_option("display.max_colwidth", potential_column_width)
-        gpd.pd.set_option("display.max_colwidth", potential_column_width)   
-    map_name = '{}_ind_{}'.format(locale,map_name_suffix)
-    print('\t{}'.format(map_name))
-    if os.path.isfile('{}/html/{}.html'.format(locale_maps,map_name)):
-        print('\t - File appears to already have been processed (HTML output exists); skipping.')
-    else:
-        if not area_layer in areas:
-           print("\t - Please check that the specified 'linkage_layer' corresponds to one of those set up in the Parameters sheet.")
-           continue
-        if not areas[area_layer]['id']==linkage_id:
-           print("\t - Please check that the specified 'linkage_id' corresponds to that of the specified linkage layer.")
-           continue
-        if description=='':
-            description = map_field
-            df.loc[row,'Description'] = map_field
-        source = df.loc[row,'provider']
-        mapxls = pd.ExcelFile('../{}'.format(dataset))
-        mdf = pd.read_excel(mapxls,sheet)
-        mdf = mdf.set_index(linkage_id)
-        mdf.index.name = area_linkage_id
-        fill_na = '{}'.format(df.loc[row,'fill_na'])
-        if fill_na not in ['','nan']:
-            fill_na = fill_na.split(',')
-            for field in fill_na:
-                mdf[field] = mdf[field].fillna(method = 'ffill') 
-        if '{}'.format(point_overlay_xy)!='':
-            # this means an attempt has been made to define point data locations
-            point_overlay_xy = point_overlay_xy.split(',')
-            point_overlay_name = df.loc[row,'point_overlay_name']
-            point_overlay_hover_field = df.loc[row,'point_overlay_hover_field']
-            point_overlay = gpd.GeoDataFrame(mdf, geometry=gpd.points_from_xy(mdf[point_overlay_xy[0]],mdf[point_overlay_xy[1]]))
-        # aggregate data by ID using specified method, if specified.
-        # Note that currently only 'sum' and 'average' have been programmed as options.
-        aggregation_text = ''
-        popup_agg_text = ''
-        if aggregation =='count':
-            mdf[map_field] = 1
-            mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
-            aggregation_text = " ({})".format(aggregation)
-        if aggregation =='sum':
-            mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
-            aggregation_text = " ({})".format(aggregation)
-        elif aggregation == 'average':
-            mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
-            aggregation_text = " ({})".format(aggregation)
-            map_field = 'average {}'.format(map_field)
-        elif not '{}'.format(description)=='nan':
-            print("Specified aggregation method has not been programmed as an option for this Excel file; no aggregation will be made. If duplicate IDs exists, results are likely inaccurate,")
-        # we create an alternate description field as it may be that the map_field variable is > 63 characters 
-        # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
-        # with the 
-        # mdf['description'] = map_field
-        # Send to SQL database
-        mdf.columns = [map_name_suffix]
-        mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
+        # output vector layers with new summary statistic
+        analysis_area[map_field].to_sql(map_name_suffix, engine, if_exists='replace', index=True)
         print('\t- postgresql::{}/{}'.format(db,map_name_suffix))
-        mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
+        analysis_area[map_field].to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
         print('\t- {path}/{output_name}.gpkg/{layer}'.format(output_name = '{}'.format(study_region),
                                                         path = os.path.join(locale_maps,'gpkg'),
                                                         layer = map_name_suffix))
-        mdf.to_csv('{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
+        analysis_area[map_field].to_csv('{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
                                                                                   map_name_suffix),
                                                      path = os.path.join(locale_maps,'csv')))
         print('\t- {path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
                                                                                   map_name_suffix),
                                                      path = os.path.join(locale_maps,'csv')))
-        # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
         # Create map
         attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
         tables    = [buffered_study_region,study_region]
