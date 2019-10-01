@@ -70,7 +70,7 @@ def main():
         heading = '{}: {}'.format(full_locale,df.loc[row,'map_heading'])
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
-        area_linkage_id = areas[area_layer]['id']
+        area_linkage_id = df.loc[row,'linkage_id']
         aggregation = df.loc[row,'aggregation']
         linkage_id = df.loc[row,'linkage_id']
         point_overlay_xy = df.loc[row,'point_overlay_xy']
@@ -280,6 +280,18 @@ def main():
                                 "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
                                 "under ODbL.")
                             ).add_to(m)
+            # Add in satellite basemap
+            folium.TileLayer(tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' ,
+                            name='Basemap: ESRI World Imagery (satellite)', 
+                            show =False,
+                            overlay=False,
+                            attr=((
+                                " {} | "
+                                "Map tiles: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community', " 
+                                "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                                "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                                "under ODbL.").format(map_attribution))
+                                    ).add_to(m)
             # We add empty tile set in order to force display of data attribution; Basemaps are not overlay layers, so they are easily switchable
             folium.TileLayer(tiles='Null tiles',
                             name='Basemap: off', 
