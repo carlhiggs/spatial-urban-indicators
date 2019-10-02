@@ -7,13 +7,12 @@ Urban Liveability in Bangkok
 Project documentation
 *********************
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
    
    about
-   indicators
    outputs
-   datasources
+   metadata
    maps
    maps_interactive
 

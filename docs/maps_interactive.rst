@@ -8,6 +8,10 @@ Interactive maps
         <form name="change">
         <SELECT NAME="options" ONCHANGE="document.getElementById('maps_interactive').src = './../html/'+this.options[this.selectedIndex].value+'.html'">
         <option value="bangkok_02_population_subdistrict_population_per_sqkm">Please select a map to explore...</option>
+        <option value="bangkok_ind_subdistrict_vegetation_pct_mean">Vegetation Percent (Copernicus, 2018): Vegetation Percent (Copernicus, 2018; mean)</option>
+        <option value="bangkok_ind_subdistrict_vegetation_pct_sd">Vegetation cover percent: Vegetation Percent (Copernicus, 2018; standard deviation)</option>
+        <option value="bangkok_ind_district_vegetation_pct_mean">Vegetation Percent (Copernicus, 2018): Vegetation Percent (Copernicus, 2018; mean)</option>
+        <option value="bangkok_ind_district_vegetation_pct_sd">Vegetation cover percent: Vegetation Percent (Copernicus, 2018; standard deviation)</option>
         <option value="bangkok_ind_subdistrict_health_centres">Health centers (n = 68), by subdistrict: health centers</option>
         <option value="bangkok_ind_subdistrict_outpatients_mental_health">Outpatient numbers for 68 Health Centers: mental and behavioural disorders (2018)</option>
         <option value="bangkok_ind_subdistrict_outpatients_hypertension">Outpatient numbers for 68 Health Centers: hypertension (2018)</option>

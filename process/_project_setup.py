@@ -51,7 +51,10 @@ for var in [x for x in  df_parameters.index.values]:
     globals()[var] = df_parameters.loc[var][locale]
 # full_locale = df_parameters.loc['full_locale'][locale]
 df_datasets.name_s = df_datasets.name_s.fillna('')
-df_datasets = df_datasets[(df_datasets.purpose=='indicators') & (df_datasets.target_region==full_locale) & (df_datasets.name_s!='')]
+df_datasets = df_datasets.query(
+     '(purpose == "indicators" | purpose == "population" | purpose == "boundaries") & '
+    f'target_region=="{full_locale}" & '
+     'name_s!=""')
 df_datasets.set_index('name_s',inplace=True)
 
 # derived study region name (no need to change!)

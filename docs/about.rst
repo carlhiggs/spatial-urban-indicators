@@ -31,5 +31,3 @@ Project partners
 * `Bangkok Metropolitan Administration <http://www.bangkok.go.th/main/index.php>`_    
   
 * `UN Global Compact – Cities Programme <https://citiesprogramme.org/>`_            
-  
-* `Australian Housing and Urban Research Institute <https://www.ahuri.edu.au/>`_       
