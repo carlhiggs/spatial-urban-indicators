@@ -12,8 +12,7 @@ Project documentation
    
    about
    outputs
-   metadata
-   maps
+   indicators
    maps_interactive
 
 Technical documentation

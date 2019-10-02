@@ -90,14 +90,14 @@ def generate_metadata_rst(ind_metadata):
                   ['data_dir'      ,'Data location relative to project folder']]
     # unformatted population items
     population_items = [
-     ['population per sqkm','{locale}_02_population_{level}_population_per_sqkm'],
-     ['households per sqkm','{locale}_02_population_{level}_households_per_sqkm'],
-     ['communities per sqkm','{locale}_02_population_{level}_communities_per_sqkm'],
-     ['population in communities per sqkm','{locale}_02_population_{level}_population_in_communities_per_sqkm'],
-     ['population not in communities per sqkm','{locale}_02_population_{level}_population_not_in_communities_per_sqkm']
+     ['Population per sqkm','{locale}_02_population_{level}_population_per_sqkm'],
+     ['Households per sqkm','{locale}_02_population_{level}_households_per_sqkm'],
+     ['Communities per sqkm','{locale}_02_population_{level}_communities_per_sqkm'],
+     ['Population in communities per sqkm','{locale}_02_population_{level}_population_in_communities_per_sqkm'],
+     ['Population not in communities per sqkm','{locale}_02_population_{level}_population_not_in_communities_per_sqkm']
     ]
     # defined page heading as first line
-    rst = 'Metadata\r\n========\r\n'
+    rst = 'Indicators\r\n==========\r\n'
     for d in ind_metadata.data_name.unique():
         # create heading for dataset
         rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,d,'~'*len(d))
@@ -154,11 +154,22 @@ def generate_metadata_rst(ind_metadata):
                 # add indicator method description
                 rst = '{}\r\n{}\r\n'.format(rst,df_ind.iloc[0].method_description_ind)
                 levels = df_ind.linkage_layer.unique()
-                map_scale_text = f'View maps for {full_locale} at available scales:'
+                # map_scale_text = f'View maps for {full_locale} at available scales:'
                 for level in df_ind.linkage_layer.unique(): 
-                    map_scale_text = '{} :ref:`{} <bangkok_ind_{}>`'.format(map_scale_text,level,
-                            df_ind.loc[df_ind.linkage_layer==level].table_out_name.to_list()[0])
-                rst = '{}\r\n\r\n{}\r\n'.format(rst,map_scale_text)
+                    ind_map = 'bangkok_ind_{}'.format(df_ind.loc[df_ind.linkage_layer==level].table_out_name.to_list()[0])
+                    rst = '{}\r\n\r\n.. _{}:\r\n\r\n**{}**\r\n'.format(rst,ind_map,level)
+                    map_code = (
+                                ''
+                                '.. only:: html\r\n\r\n'
+                                '    .. raw:: html\r\n\r\n'
+                                '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br>'
+                                '        <img alt="{description}" src="./../png/{map}.png">\r\n\r\n'
+                                '.. only:: latex\r\n\r\n'
+                                '    .. image:: ../maps/{study_region}/png/{map}.png\r\n\r\n'
+                                ).format(description = popi[0],
+                                         map = ind_map,
+                                         study_region = study_region)
+                    rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
     return(rst)
 
 def get_sphinx_conf_header():
@@ -213,7 +224,7 @@ def main():
         maps_interactive = generate_interactive_maps_rst(create_html_select(get_ind_metadata()))
         print(f"{maps_interactive}", file=text_file)
 
-    with open("../docs/metadata.rst", "w") as text_file:
+    with open("../docs/indicators.rst", "w") as text_file:
         metadata = generate_metadata_rst(get_ind_metadata())
         print(f"{metadata}", file=text_file)
         
