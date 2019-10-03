@@ -107,17 +107,23 @@ def generate_metadata_rst(ind_metadata):
         for i in data_items:
             if '{}'.format(ds.iloc[0][i[0]]) not in ['','nan']:
                 rst = '{}\r\n**{}**: {}\r\n'.format(rst,i[1],ds.iloc[0][i[0]])
-        if ds.iloc[0].purpose=='boundary':
+        if ds.iloc[0].purpose=='boundaries':
             # add description for further usage by indicators
             rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
             map_code = (
-                        '.. _{map}:\r\n\r\n'
+                        '\r\n'
                         '.. only:: html\r\n\r\n'
                         '    .. raw:: html\r\n\r\n'
-                        '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br>'
-                        '        <img alt="{description}" src="./../png/{map}.png">\r\n\r\n'
+                        '        <figure>\r\n'
+                        '        <img alt="{description}" src="./../png/{map}.png">\r\n'
+                        '        <figcaption>{description}. '
+                        '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
+                        '        </figure><br>\r\n\r\n'
                         '.. only:: latex\r\n\r\n'
-                        '    .. image:: ../maps/{study_region}/png/{map}.png\r\n\r\n'
+                        '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
+                        '       :width: 70%\r\n'
+                        '       :align: center\r\n\r\n'
+                        '       {description}\r\n\r\n'
                         ).format(description = f'{full_locale} study region',
                                          map = '{}_01_study_region'.format(locale),
                                  study_region = study_region)
@@ -130,17 +136,23 @@ def generate_metadata_rst(ind_metadata):
                 rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,popi[0],'-'*len(popi[0]))
                 for level in ['district','subdistrict']:
                     pop_map = popi[1].format(locale=locale,level=level)
-                    rst = '{}\r\n\r\n.. _{}:\r\n\r\n**{}**\r\n'.format(rst,pop_map,level)
+                    rst = '{}\r\n\r\n'.format(rst)
                     map_code = (
-                                ''
+                                '\r\n'
                                 '.. only:: html\r\n\r\n'
                                 '    .. raw:: html\r\n\r\n'
-                                '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br>'
-                                '        <img alt="{description}" src="./../png/{map}.png">\r\n\r\n'
+                                '        <figure>\r\n'
+                                '        <img alt="{description}" src="./../png/{map}.png">\r\n'
+                                '        <figcaption>{description}. '
+                                '        <a href="./../html/{map}.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>\r\n'
+                                '        </figure><br>\r\n\r\n'
                                 '.. only:: latex\r\n\r\n'
-                                '    .. image:: ../maps/{study_region}/png/{map}.png\r\n\r\n'
-                                ).format(description = popi[0],
-                                         map = pop_map,
+                                '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
+                                '       :width: 70%\r\n'
+                                '       :align: center\r\n\r\n'
+                                '       {description}\r\n\r\n'
+                                ).format(description = '{}, by {}'.format(popi[0],level).capitalize(),
+                                         map = pop_map.capitalize(),
                                          study_region = study_region)
                     rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
         if ds.iloc[0].purpose=='indicators':
@@ -157,17 +169,23 @@ def generate_metadata_rst(ind_metadata):
                 # map_scale_text = f'View maps for {full_locale} at available scales:'
                 for level in df_ind.linkage_layer.unique(): 
                     ind_map = 'bangkok_ind_{}'.format(df_ind.loc[df_ind.linkage_layer==level].table_out_name.to_list()[0])
-                    rst = '{}\r\n\r\n.. _{}:\r\n\r\n**{}**\r\n'.format(rst,ind_map,level)
+                    rst = '{}\r\n\r\n'.format(rst)
                     map_code = (
-                                ''
+                                '\r\n'
                                 '.. only:: html\r\n\r\n'
                                 '    .. raw:: html\r\n\r\n'
-                                '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br>'
-                                '        <img alt="{description}" src="./../png/{map}.png">\r\n\r\n'
+                                '        <figure>\r\n'
+                                '        <img alt="{description}" src="./../png/{map}.png">\r\n'
+                                '        <figcaption>{description}. '
+                                '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
+                                '        </figure><br>\r\n\r\n'
                                 '.. only:: latex\r\n\r\n'
-                                '    .. image:: ../maps/{study_region}/png/{map}.png\r\n\r\n'
-                                ).format(description = popi[0],
-                                         map = ind_map,
+                                '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
+                                '       :width: 70%\r\n'
+                                '       :align: center\r\n\r\n'
+                                '       {description}\r\n\r\n'
+                                ).format(description = f'{a}, by {level}',
+                                         map = ind_map.capitalize(),
                                          study_region = study_region)
                     rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
     return(rst)

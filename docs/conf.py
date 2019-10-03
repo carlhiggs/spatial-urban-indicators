@@ -79,6 +79,7 @@ latex_engine = 'xelatex'
 latex_use_xindy = False
 latex_elements = {
     'papersize': 'a4paper',
+    'figure_align': 'H',
 }
 
 # Enable a draft watermark
