@@ -365,7 +365,7 @@ Indicators
 ^^^^^^^^^^
 
 
-Vegetation Percent (Copernicus, 2018; mean)
+Vegetation percent (copernicus, 2018; mean)
 -------------------------------------------
 
 The estimated percentage of vegetation cover within each analysis area was calculated by first scaling the raster grid cell values by 100/250 ( a scale factor of 0.4) and then taking the mean (average) of all intersecting grid cells.
@@ -379,8 +379,8 @@ The estimated percentage of vegetation cover within each analysis area was calcu
     .. raw:: html
 
         <figure>
-        <img alt="Vegetation Percent (Copernicus, 2018; mean), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vegetation_pct_mean.png">
-        <figcaption>Vegetation Percent (Copernicus, 2018; mean), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vegetation_pct_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vegetation percent (copernicus, 2018; mean), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vegetation_pct_mean.png">
+        <figcaption>Vegetation percent (copernicus, 2018; mean), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vegetation_pct_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -389,7 +389,7 @@ The estimated percentage of vegetation cover within each analysis area was calcu
        :width: 70%
        :align: center
 
-       Vegetation Percent (Copernicus, 2018; mean), by subdistrict
+       Vegetation percent (copernicus, 2018; mean), by subdistrict
 
 
 
@@ -402,8 +402,8 @@ The estimated percentage of vegetation cover within each analysis area was calcu
     .. raw:: html
 
         <figure>
-        <img alt="Vegetation Percent (Copernicus, 2018; mean), by district" src="./../png/Bangkok_ind_district_vegetation_pct_mean.png">
-        <figcaption>Vegetation Percent (Copernicus, 2018; mean), by district.         <a href="./../html/Bangkok_ind_district_vegetation_pct_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vegetation percent (copernicus, 2018; mean), by district" src="./../png/Bangkok_ind_district_vegetation_pct_mean.png">
+        <figcaption>Vegetation percent (copernicus, 2018; mean), by district.         <a href="./../html/Bangkok_ind_district_vegetation_pct_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -412,12 +412,12 @@ The estimated percentage of vegetation cover within each analysis area was calcu
        :width: 70%
        :align: center
 
-       Vegetation Percent (Copernicus, 2018; mean), by district
+       Vegetation percent (copernicus, 2018; mean), by district
 
 
 
 
-Vegetation Percent (Copernicus, 2018; standard deviation)
+Vegetation percent (copernicus, 2018; standard deviation)
 ---------------------------------------------------------
 
 The estimated standard deviation of percentage of vegetation cover within each analysis area was calculated by first scaling the raster grid cell values by 100/250 ( a scale factor of 0.4) and then taking the standard deviation of all intersecting grid cells.  This is a measure of the degree to wich estimates vary across a particular area, and is a useful contextual measure to accompany the average vegetation percent for the area.
@@ -431,8 +431,8 @@ The estimated standard deviation of percentage of vegetation cover within each a
     .. raw:: html
 
         <figure>
-        <img alt="Vegetation Percent (Copernicus, 2018; standard deviation), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vegetation_pct_sd.png">
-        <figcaption>Vegetation Percent (Copernicus, 2018; standard deviation), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vegetation_pct_sd.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vegetation percent (copernicus, 2018; standard deviation), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vegetation_pct_sd.png">
+        <figcaption>Vegetation percent (copernicus, 2018; standard deviation), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vegetation_pct_sd.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -441,7 +441,7 @@ The estimated standard deviation of percentage of vegetation cover within each a
        :width: 70%
        :align: center
 
-       Vegetation Percent (Copernicus, 2018; standard deviation), by subdistrict
+       Vegetation percent (copernicus, 2018; standard deviation), by subdistrict
 
 
 
@@ -454,8 +454,8 @@ The estimated standard deviation of percentage of vegetation cover within each a
     .. raw:: html
 
         <figure>
-        <img alt="Vegetation Percent (Copernicus, 2018; standard deviation), by district" src="./../png/Bangkok_ind_district_vegetation_pct_sd.png">
-        <figcaption>Vegetation Percent (Copernicus, 2018; standard deviation), by district.         <a href="./../html/Bangkok_ind_district_vegetation_pct_sd.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vegetation percent (copernicus, 2018; standard deviation), by district" src="./../png/Bangkok_ind_district_vegetation_pct_sd.png">
+        <figcaption>Vegetation percent (copernicus, 2018; standard deviation), by district.         <a href="./../html/Bangkok_ind_district_vegetation_pct_sd.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -464,7 +464,7 @@ The estimated standard deviation of percentage of vegetation cover within each a
        :width: 70%
        :align: center
 
-       Vegetation Percent (Copernicus, 2018; standard deviation), by district
+       Vegetation percent (copernicus, 2018; standard deviation), by district
 
 
 
@@ -497,7 +497,7 @@ Indicators
 ^^^^^^^^^^
 
 
-health centres (combined, 2018)
+Health centres (combined, 2018)
 -------------------------------
 
 The count of health centers within each analysis area was calculated, based on the supplied data.
@@ -511,8 +511,8 @@ The count of health centers within each analysis area was calculated, based on t
     .. raw:: html
 
         <figure>
-        <img alt="health centres (combined, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_health_centres.png">
-        <figcaption>health centres (combined, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centres (combined, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_health_centres.png">
+        <figcaption>Health centres (combined, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -521,7 +521,7 @@ The count of health centers within each analysis area was calculated, based on t
        :width: 70%
        :align: center
 
-       health centres (combined, 2018), by subdistrict
+       Health centres (combined, 2018), by subdistrict
 
 
 
@@ -534,8 +534,8 @@ The count of health centers within each analysis area was calculated, based on t
     .. raw:: html
 
         <figure>
-        <img alt="health centres (combined, 2018), by district" src="./../png/Bangkok_ind_district_health_centres.png">
-        <figcaption>health centres (combined, 2018), by district.         <a href="./../html/Bangkok_ind_district_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centres (combined, 2018), by district" src="./../png/Bangkok_ind_district_health_centres.png">
+        <figcaption>Health centres (combined, 2018), by district.         <a href="./../html/Bangkok_ind_district_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -544,12 +544,12 @@ The count of health centers within each analysis area was calculated, based on t
        :width: 70%
        :align: center
 
-       health centres (combined, 2018), by district
+       Health centres (combined, 2018), by district
 
 
 
 
-mental and behavioural disorder outpatients (2018)
+Mental and behavioural disorder outpatients (2018)
 --------------------------------------------------
 
 Outpatient numbers for mental and behavioural disorders were summed across each analysis area.
@@ -563,8 +563,8 @@ Outpatient numbers for mental and behavioural disorders were summed across each 
     .. raw:: html
 
         <figure>
-        <img alt="mental and behavioural disorder outpatients (2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_mental_health.png">
-        <figcaption>mental and behavioural disorder outpatients (2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Mental and behavioural disorder outpatients (2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_mental_health.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -573,7 +573,7 @@ Outpatient numbers for mental and behavioural disorders were summed across each 
        :width: 70%
        :align: center
 
-       mental and behavioural disorder outpatients (2018), by subdistrict
+       Mental and behavioural disorder outpatients (2018), by subdistrict
 
 
 
@@ -586,8 +586,8 @@ Outpatient numbers for mental and behavioural disorders were summed across each 
     .. raw:: html
 
         <figure>
-        <img alt="mental and behavioural disorder outpatients (2018), by district" src="./../png/Bangkok_ind_district_outpatients_mental_health.png">
-        <figcaption>mental and behavioural disorder outpatients (2018), by district.         <a href="./../html/Bangkok_ind_district_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Mental and behavioural disorder outpatients (2018), by district" src="./../png/Bangkok_ind_district_outpatients_mental_health.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018), by district.         <a href="./../html/Bangkok_ind_district_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -596,12 +596,12 @@ Outpatient numbers for mental and behavioural disorders were summed across each 
        :width: 70%
        :align: center
 
-       mental and behavioural disorder outpatients (2018), by district
+       Mental and behavioural disorder outpatients (2018), by district
 
 
 
 
-hypertension outpatients (2018)
+Hypertension outpatients (2018)
 -------------------------------
 
 Outpatient numbers for hypertension were summed across each analysis area.
@@ -615,8 +615,8 @@ Outpatient numbers for hypertension were summed across each analysis area.
     .. raw:: html
 
         <figure>
-        <img alt="hypertension outpatients (2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_hypertension.png">
-        <figcaption>hypertension outpatients (2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Hypertension outpatients (2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_hypertension.png">
+        <figcaption>Hypertension outpatients (2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -625,7 +625,7 @@ Outpatient numbers for hypertension were summed across each analysis area.
        :width: 70%
        :align: center
 
-       hypertension outpatients (2018), by subdistrict
+       Hypertension outpatients (2018), by subdistrict
 
 
 
@@ -638,8 +638,8 @@ Outpatient numbers for hypertension were summed across each analysis area.
     .. raw:: html
 
         <figure>
-        <img alt="hypertension outpatients (2018), by district" src="./../png/Bangkok_ind_district_outpatients_hypertension.png">
-        <figcaption>hypertension outpatients (2018), by district.         <a href="./../html/Bangkok_ind_district_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Hypertension outpatients (2018), by district" src="./../png/Bangkok_ind_district_outpatients_hypertension.png">
+        <figcaption>Hypertension outpatients (2018), by district.         <a href="./../html/Bangkok_ind_district_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -648,12 +648,12 @@ Outpatient numbers for hypertension were summed across each analysis area.
        :width: 70%
        :align: center
 
-       hypertension outpatients (2018), by district
+       Hypertension outpatients (2018), by district
 
 
 
 
-diabetes outpatients (2018)
+Diabetes outpatients (2018)
 ---------------------------
 
 Outpatient numbers for diabetes were summed across each analysis area.
@@ -667,8 +667,8 @@ Outpatient numbers for diabetes were summed across each analysis area.
     .. raw:: html
 
         <figure>
-        <img alt="diabetes outpatients (2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_diabetes.png">
-        <figcaption>diabetes outpatients (2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Diabetes outpatients (2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_diabetes.png">
+        <figcaption>Diabetes outpatients (2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -677,7 +677,7 @@ Outpatient numbers for diabetes were summed across each analysis area.
        :width: 70%
        :align: center
 
-       diabetes outpatients (2018), by subdistrict
+       Diabetes outpatients (2018), by subdistrict
 
 
 
@@ -690,8 +690,8 @@ Outpatient numbers for diabetes were summed across each analysis area.
     .. raw:: html
 
         <figure>
-        <img alt="diabetes outpatients (2018), by district" src="./../png/Bangkok_ind_district_outpatients_diabetes.png">
-        <figcaption>diabetes outpatients (2018), by district.         <a href="./../html/Bangkok_ind_district_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Diabetes outpatients (2018), by district" src="./../png/Bangkok_ind_district_outpatients_diabetes.png">
+        <figcaption>Diabetes outpatients (2018), by district.         <a href="./../html/Bangkok_ind_district_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -700,12 +700,12 @@ Outpatient numbers for diabetes were summed across each analysis area.
        :width: 70%
        :align: center
 
-       diabetes outpatients (2018), by district
+       Diabetes outpatients (2018), by district
 
 
 
 
-vital diseases (combined, 2018)
+Vital diseases (combined, 2018)
 -------------------------------
 
 Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.
@@ -719,8 +719,8 @@ Outpatient numbers for all vital diseases (mental and behavioural disorders, hyp
     .. raw:: html
 
         <figure>
-        <img alt="vital diseases (combined, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_combined_diseases.png">
-        <figcaption>vital diseases (combined, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vital diseases (combined, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_combined_diseases.png">
+        <figcaption>Vital diseases (combined, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -729,7 +729,7 @@ Outpatient numbers for all vital diseases (mental and behavioural disorders, hyp
        :width: 70%
        :align: center
 
-       vital diseases (combined, 2018), by subdistrict
+       Vital diseases (combined, 2018), by subdistrict
 
 
 
@@ -742,8 +742,8 @@ Outpatient numbers for all vital diseases (mental and behavioural disorders, hyp
     .. raw:: html
 
         <figure>
-        <img alt="vital diseases (combined, 2018), by district" src="./../png/Bangkok_ind_district_outpatients_combined_diseases.png">
-        <figcaption>vital diseases (combined, 2018), by district.         <a href="./../html/Bangkok_ind_district_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vital diseases (combined, 2018), by district" src="./../png/Bangkok_ind_district_outpatients_combined_diseases.png">
+        <figcaption>Vital diseases (combined, 2018), by district.         <a href="./../html/Bangkok_ind_district_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -752,7 +752,7 @@ Outpatient numbers for all vital diseases (mental and behavioural disorders, hyp
        :width: 70%
        :align: center
 
-       vital diseases (combined, 2018), by district
+       Vital diseases (combined, 2018), by district
 
 
 
@@ -785,7 +785,7 @@ Indicators
 ^^^^^^^^^^
 
 
-Canal water storage DO (mg/L), 2018
+Canal water storage do (mg/l), 2018
 -----------------------------------
 
 The average milligrams of dissolved oxygen per litre (DO mg/L) recorded at sample points within each analysis area was recorded.
@@ -799,8 +799,8 @@ The average milligrams of dissolved oxygen per litre (DO mg/L) recorded at sampl
     .. raw:: html
 
         <figure>
-        <img alt="Canal water storage DO (mg/L), 2018, by district" src="./../png/Bangkok_ind_district_water_quality_do.png">
-        <figcaption>Canal water storage DO (mg/L), 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_do.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Canal water storage do (mg/l), 2018, by district" src="./../png/Bangkok_ind_district_water_quality_do.png">
+        <figcaption>Canal water storage do (mg/l), 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_do.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -809,12 +809,12 @@ The average milligrams of dissolved oxygen per litre (DO mg/L) recorded at sampl
        :width: 70%
        :align: center
 
-       Canal water storage DO (mg/L), 2018, by district
+       Canal water storage do (mg/l), 2018, by district
 
 
 
 
-Canal water storage BOD (mg/L), 2018
+Canal water storage bod (mg/l), 2018
 ------------------------------------
 
 The average milligrams of biochemical oxygen demand  per litre (DO mg/L) recorded at sample points within each analysis area was recorded.
@@ -828,8 +828,8 @@ The average milligrams of biochemical oxygen demand  per litre (DO mg/L) recorde
     .. raw:: html
 
         <figure>
-        <img alt="Canal water storage BOD (mg/L), 2018, by district" src="./../png/Bangkok_ind_district_water_quality_bod.png">
-        <figcaption>Canal water storage BOD (mg/L), 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_bod.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Canal water storage bod (mg/l), 2018, by district" src="./../png/Bangkok_ind_district_water_quality_bod.png">
+        <figcaption>Canal water storage bod (mg/l), 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_bod.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -838,12 +838,12 @@ The average milligrams of biochemical oxygen demand  per litre (DO mg/L) recorde
        :width: 70%
        :align: center
 
-       Canal water storage BOD (mg/L), 2018, by district
+       Canal water storage bod (mg/l), 2018, by district
 
 
 
 
-Canal water storage with < 2 mg/L DO, 2018
+Canal water storage with < 2 mg/l do, 2018
 ------------------------------------------
 
 The count of sample points with poor water quality (< 2 DO mg/L) was recorded for each analysis area.
@@ -857,8 +857,8 @@ The count of sample points with poor water quality (< 2 DO mg/L) was recorded fo
     .. raw:: html
 
         <figure>
-        <img alt="Canal water storage with < 2 mg/L DO, 2018, by district" src="./../png/Bangkok_ind_district_water_quality_canals_poor.png">
-        <figcaption>Canal water storage with < 2 mg/L DO, 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_canals_poor.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Canal water storage with < 2 mg/l do, 2018, by district" src="./../png/Bangkok_ind_district_water_quality_canals_poor.png">
+        <figcaption>Canal water storage with < 2 mg/l do, 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_canals_poor.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -867,7 +867,7 @@ The count of sample points with poor water quality (< 2 DO mg/L) was recorded fo
        :width: 70%
        :align: center
 
-       Canal water storage with < 2 mg/L DO, 2018, by district
+       Canal water storage with < 2 mg/l do, 2018, by district
 
 
 
@@ -898,7 +898,7 @@ Indicators
 ^^^^^^^^^^
 
 
-Fire incidence (BMA, 2018)
+Fire incidence (bma, 2018)
 --------------------------
 
 The number of fire occurences recorded for each analysis area within 2018 was recorded.
@@ -912,8 +912,8 @@ The number of fire occurences recorded for each analysis area within 2018 was re
     .. raw:: html
 
         <figure>
-        <img alt="Fire incidence (BMA, 2018), by district" src="./../png/Bangkok_ind_fire_incidence.png">
-        <figcaption>Fire incidence (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_fire_incidence.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Fire incidence (bma, 2018), by district" src="./../png/Bangkok_ind_fire_incidence.png">
+        <figcaption>Fire incidence (bma, 2018), by district.         <a href="./../html/Bangkok_ind_fire_incidence.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -922,7 +922,7 @@ The number of fire occurences recorded for each analysis area within 2018 was re
        :width: 70%
        :align: center
 
-       Fire incidence (BMA, 2018), by district
+       Fire incidence (bma, 2018), by district
 
 
 
@@ -953,7 +953,7 @@ Indicators
 ^^^^^^^^^^
 
 
-Main road flood area location count (BMA, 2018)
+Main road flood area location count (bma, 2018)
 -----------------------------------------------
 
 The count of main road flood areas associated with each analysis area was recorded.
@@ -967,8 +967,8 @@ The count of main road flood areas associated with each analysis area was record
     .. raw:: html
 
         <figure>
-        <img alt="Main road flood area location count (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_locations.png">
-        <figcaption>Main road flood area location count (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Main road flood area location count (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_locations.png">
+        <figcaption>Main road flood area location count (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -977,7 +977,7 @@ The count of main road flood areas associated with each analysis area was record
        :width: 70%
        :align: center
 
-       Main road flood area location count (BMA, 2018), by subdistrict
+       Main road flood area location count (bma, 2018), by subdistrict
 
 
 
@@ -990,8 +990,8 @@ The count of main road flood areas associated with each analysis area was record
     .. raw:: html
 
         <figure>
-        <img alt="Main road flood area location count (BMA, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_locations.png">
-        <figcaption>Main road flood area location count (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Main road flood area location count (bma, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_locations.png">
+        <figcaption>Main road flood area location count (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1000,12 +1000,12 @@ The count of main road flood areas associated with each analysis area was record
        :width: 70%
        :align: center
 
-       Main road flood area location count (BMA, 2018), by district
+       Main road flood area location count (bma, 2018), by district
 
 
 
 
-Average days of rain across 14 main road flood areas (BMA, 2018)
+Average days of rain across 14 main road flood areas (bma, 2018)
 ----------------------------------------------------------------
 
 The average number of days of rain recorded for 14 main road flood areas was taken for each analysis area.
@@ -1019,8 +1019,8 @@ The average number of days of rain recorded for 14 main road flood areas was tak
     .. raw:: html
 
         <figure>
-        <img alt="Average days of rain across 14 main road flood areas (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_days_rain.png">
-        <figcaption>Average days of rain across 14 main road flood areas (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average days of rain across 14 main road flood areas (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_days_rain.png">
+        <figcaption>Average days of rain across 14 main road flood areas (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1029,7 +1029,7 @@ The average number of days of rain recorded for 14 main road flood areas was tak
        :width: 70%
        :align: center
 
-       Average days of rain across 14 main road flood areas (BMA, 2018), by subdistrict
+       Average days of rain across 14 main road flood areas (bma, 2018), by subdistrict
 
 
 
@@ -1042,8 +1042,8 @@ The average number of days of rain recorded for 14 main road flood areas was tak
     .. raw:: html
 
         <figure>
-        <img alt="Average days of rain across 14 main road flood areas (BMA, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_days_rain.png">
-        <figcaption>Average days of rain across 14 main road flood areas (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average days of rain across 14 main road flood areas (bma, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_days_rain.png">
+        <figcaption>Average days of rain across 14 main road flood areas (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1052,12 +1052,12 @@ The average number of days of rain recorded for 14 main road flood areas was tak
        :width: 70%
        :align: center
 
-       Average days of rain across 14 main road flood areas (BMA, 2018), by district
+       Average days of rain across 14 main road flood areas (bma, 2018), by district
 
 
 
 
-Average maximum intensity across 14 main road flood areas (BMA, 2018)
+Average maximum intensity across 14 main road flood areas (bma, 2018)
 ---------------------------------------------------------------------
 
 The average maximum intensity recorded for 14 main road flood areas was taken for each analysis area.
@@ -1071,8 +1071,8 @@ The average maximum intensity recorded for 14 main road flood areas was taken fo
     .. raw:: html
 
         <figure>
-        <img alt="Average maximum intensity across 14 main road flood areas (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_intensity.png">
-        <figcaption>Average maximum intensity across 14 main road flood areas (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average maximum intensity across 14 main road flood areas (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_intensity.png">
+        <figcaption>Average maximum intensity across 14 main road flood areas (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1081,7 +1081,7 @@ The average maximum intensity recorded for 14 main road flood areas was taken fo
        :width: 70%
        :align: center
 
-       Average maximum intensity across 14 main road flood areas (BMA, 2018), by subdistrict
+       Average maximum intensity across 14 main road flood areas (bma, 2018), by subdistrict
 
 
 
@@ -1094,8 +1094,8 @@ The average maximum intensity recorded for 14 main road flood areas was taken fo
     .. raw:: html
 
         <figure>
-        <img alt="Average maximum intensity across 14 main road flood areas (BMA, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_intensity.png">
-        <figcaption>Average maximum intensity across 14 main road flood areas (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average maximum intensity across 14 main road flood areas (bma, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_intensity.png">
+        <figcaption>Average maximum intensity across 14 main road flood areas (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1104,12 +1104,12 @@ The average maximum intensity recorded for 14 main road flood areas was taken fo
        :width: 70%
        :align: center
 
-       Average maximum intensity across 14 main road flood areas (BMA, 2018), by district
+       Average maximum intensity across 14 main road flood areas (bma, 2018), by district
 
 
 
 
-Average days of flooding across 14 main road flood areas (BMA, 2018)
+Average days of flooding across 14 main road flood areas (bma, 2018)
 --------------------------------------------------------------------
 
 The average number of days of flooding recorded for 14 main road flood areas was taken for each analysis area.
@@ -1123,8 +1123,8 @@ The average number of days of flooding recorded for 14 main road flood areas was
     .. raw:: html
 
         <figure>
-        <img alt="Average days of flooding across 14 main road flood areas (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_days_flood.png">
-        <figcaption>Average days of flooding across 14 main road flood areas (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average days of flooding across 14 main road flood areas (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_days_flood.png">
+        <figcaption>Average days of flooding across 14 main road flood areas (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1133,7 +1133,7 @@ The average number of days of flooding recorded for 14 main road flood areas was
        :width: 70%
        :align: center
 
-       Average days of flooding across 14 main road flood areas (BMA, 2018), by subdistrict
+       Average days of flooding across 14 main road flood areas (bma, 2018), by subdistrict
 
 
 
@@ -1146,8 +1146,8 @@ The average number of days of flooding recorded for 14 main road flood areas was
     .. raw:: html
 
         <figure>
-        <img alt="Average days of flooding across 14 main road flood areas (BMA, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_days_flood.png">
-        <figcaption>Average days of flooding across 14 main road flood areas (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average days of flooding across 14 main road flood areas (bma, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_days_flood.png">
+        <figcaption>Average days of flooding across 14 main road flood areas (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1156,12 +1156,12 @@ The average number of days of flooding recorded for 14 main road flood areas was
        :width: 70%
        :align: center
 
-       Average days of flooding across 14 main road flood areas (BMA, 2018), by district
+       Average days of flooding across 14 main road flood areas (bma, 2018), by district
 
 
 
 
-Vulnerable flood area count (BMA, 2018)
+Vulnerable flood area count (bma, 2018)
 ---------------------------------------
 
 The count of vulnerable flood areas associated with each analysis area was recorded.
@@ -1175,8 +1175,8 @@ The count of vulnerable flood areas associated with each analysis area was recor
     .. raw:: html
 
         <figure>
-        <img alt="Vulnerable flood area count (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vulnerable_flood_areas.png">
-        <figcaption>Vulnerable flood area count (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vulnerable flood area count (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vulnerable_flood_areas.png">
+        <figcaption>Vulnerable flood area count (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1185,7 +1185,7 @@ The count of vulnerable flood areas associated with each analysis area was recor
        :width: 70%
        :align: center
 
-       Vulnerable flood area count (BMA, 2018), by subdistrict
+       Vulnerable flood area count (bma, 2018), by subdistrict
 
 
 
@@ -1198,8 +1198,8 @@ The count of vulnerable flood areas associated with each analysis area was recor
     .. raw:: html
 
         <figure>
-        <img alt="Vulnerable flood area count (BMA, 2018), by district" src="./../png/Bangkok_ind_district_vulnerable_flood_areas.png">
-        <figcaption>Vulnerable flood area count (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vulnerable flood area count (bma, 2018), by district" src="./../png/Bangkok_ind_district_vulnerable_flood_areas.png">
+        <figcaption>Vulnerable flood area count (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1208,7 +1208,7 @@ The count of vulnerable flood areas associated with each analysis area was recor
        :width: 70%
        :align: center
 
-       Vulnerable flood area count (BMA, 2018), by district
+       Vulnerable flood area count (bma, 2018), by district
 
 
 
@@ -1243,7 +1243,7 @@ Indicators
 ^^^^^^^^^^
 
 
-monitoring stations (PCD, 2019)
+Monitoring stations (pcd, 2019)
 -------------------------------
 
 The count of monitoring stations in each analysis area was recorded.
@@ -1257,8 +1257,8 @@ The count of monitoring stations in each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="monitoring stations (PCD, 2019), by district" src="./../png/Bangkok_ind_district_pcd_monitoring_stations.png">
-        <figcaption>monitoring stations (PCD, 2019), by district.         <a href="./../html/Bangkok_ind_district_pcd_monitoring_stations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Monitoring stations (pcd, 2019), by district" src="./../png/Bangkok_ind_district_pcd_monitoring_stations.png">
+        <figcaption>Monitoring stations (pcd, 2019), by district.         <a href="./../html/Bangkok_ind_district_pcd_monitoring_stations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1267,12 +1267,12 @@ The count of monitoring stations in each analysis area was recorded.
        :width: 70%
        :align: center
 
-       monitoring stations (PCD, 2019), by district
+       Monitoring stations (pcd, 2019), by district
 
 
 
 
-Number of days PM 2.5 exceeds Thai standard (50 µg/m³; January 2019, PCD)
+Number of days pm 2.5 exceeds thai standard (50 µg/m³; january 2019, pcd)
 -------------------------------------------------------------------------
 
 The average number of days PM 2.5 levels exceeded Thai standards during January 2019 were recorded for each analysis area, based on monitoring station records.
@@ -1286,8 +1286,8 @@ The average number of days PM 2.5 levels exceeded Thai standards during January 
     .. raw:: html
 
         <figure>
-        <img alt="Number of days PM 2.5 exceeds Thai standard (50 µg/m³; January 2019, PCD), by district" src="./../png/Bangkok_ind_district_pm2p5_days_exceeding_thai_standard.png">
-        <figcaption>Number of days PM 2.5 exceeds Thai standard (50 µg/m³; January 2019, PCD), by district.         <a href="./../html/Bangkok_ind_district_pm2p5_days_exceeding_thai_standard.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of days pm 2.5 exceeds thai standard (50 µg/m³; january 2019, pcd), by district" src="./../png/Bangkok_ind_district_pm2p5_days_exceeding_thai_standard.png">
+        <figcaption>Number of days pm 2.5 exceeds thai standard (50 µg/m³; january 2019, pcd), by district.         <a href="./../html/Bangkok_ind_district_pm2p5_days_exceeding_thai_standard.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1296,12 +1296,12 @@ The average number of days PM 2.5 levels exceeded Thai standards during January 
        :width: 70%
        :align: center
 
-       Number of days PM 2.5 exceeds Thai standard (50 µg/m³; January 2019, PCD), by district
+       Number of days pm 2.5 exceeds thai standard (50 µg/m³; january 2019, pcd), by district
 
 
 
 
-Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD)
+Number of days pm 2.5 exceeds who standard (25 µg/m³; january 2019, pcd)
 ------------------------------------------------------------------------
 
 The average number of days PM 2.5 levels exceeded WHO standards during January 2019 were recorded for each analysis area, based on monitoring station records.
@@ -1315,8 +1315,8 @@ The average number of days PM 2.5 levels exceeded WHO standards during January 2
     .. raw:: html
 
         <figure>
-        <img alt="Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD), by district" src="./../png/Bangkok_ind_district_pm2p5_days_exceeding_who_standard.png">
-        <figcaption>Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD), by district.         <a href="./../html/Bangkok_ind_district_pm2p5_days_exceeding_who_standard.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of days pm 2.5 exceeds who standard (25 µg/m³; january 2019, pcd), by district" src="./../png/Bangkok_ind_district_pm2p5_days_exceeding_who_standard.png">
+        <figcaption>Number of days pm 2.5 exceeds who standard (25 µg/m³; january 2019, pcd), by district.         <a href="./../html/Bangkok_ind_district_pm2p5_days_exceeding_who_standard.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1325,7 +1325,7 @@ The average number of days PM 2.5 levels exceeded WHO standards during January 2
        :width: 70%
        :align: center
 
-       Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD), by district
+       Number of days pm 2.5 exceeds who standard (25 µg/m³; january 2019, pcd), by district
 
 
 
@@ -1356,7 +1356,7 @@ Indicators
 ^^^^^^^^^^
 
 
-Number of restaurants (BMA, 2019)
+Number of restaurants (bma, 2019)
 ---------------------------------
 
 The number of restaurants within each analysis area was recorded.
@@ -1370,8 +1370,8 @@ The number of restaurants within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of restaurants (BMA, 2019), by district" src="./../png/Bangkok_ind_district_restaurants.png">
-        <figcaption>Number of restaurants (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of restaurants (bma, 2019), by district" src="./../png/Bangkok_ind_district_restaurants.png">
+        <figcaption>Number of restaurants (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1380,12 +1380,12 @@ The number of restaurants within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of restaurants (BMA, 2019), by district
+       Number of restaurants (bma, 2019), by district
 
 
 
 
-Number of restaurants per 10,000 population (BMA, 2019)
+Number of restaurants per 10,000 population (bma, 2019)
 -------------------------------------------------------
 
 The number of restaurants per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
@@ -1399,8 +1399,8 @@ The number of restaurants per 10,000 population within each analysis area was di
     .. raw:: html
 
         <figure>
-        <img alt="Number of restaurants per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_restaurants_per_10k_population.png">
-        <figcaption>Number of restaurants per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of restaurants per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_restaurants_per_10k_population.png">
+        <figcaption>Number of restaurants per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1409,12 +1409,12 @@ The number of restaurants per 10,000 population within each analysis area was di
        :width: 70%
        :align: center
 
-       Number of restaurants per 10,000 population (BMA, 2019), by district
+       Number of restaurants per 10,000 population (bma, 2019), by district
 
 
 
 
-Number of restaurants per square kilometre (BMA, 2019)
+Number of restaurants per square kilometre (bma, 2019)
 ------------------------------------------------------
 
 The number of restaurants per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
@@ -1428,8 +1428,8 @@ The number of restaurants per square kilometre within each analysis area was div
     .. raw:: html
 
         <figure>
-        <img alt="Number of restaurants per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_restaurants_per_sqkm.png">
-        <figcaption>Number of restaurants per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of restaurants per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_restaurants_per_sqkm.png">
+        <figcaption>Number of restaurants per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1438,12 +1438,12 @@ The number of restaurants per square kilometre within each analysis area was div
        :width: 70%
        :align: center
 
-       Number of restaurants per square kilometre (BMA, 2019), by district
+       Number of restaurants per square kilometre (bma, 2019), by district
 
 
 
 
-Number of supermarkets (BMA, 2019)
+Number of supermarkets (bma, 2019)
 ----------------------------------
 
 The number of supermarkets within each analysis area was recorded.
@@ -1457,8 +1457,8 @@ The number of supermarkets within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of supermarkets (BMA, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets.png">
-        <figcaption>Number of supermarkets (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of supermarkets (bma, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets.png">
+        <figcaption>Number of supermarkets (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1467,12 +1467,12 @@ The number of supermarkets within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of supermarkets (BMA, 2019), by district
+       Number of supermarkets (bma, 2019), by district
 
 
 
 
-Number of supermarkets per 10,000 population (BMA, 2019)
+Number of supermarkets per 10,000 population (bma, 2019)
 --------------------------------------------------------
 
 The number of supermarkets per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
@@ -1486,8 +1486,8 @@ The number of supermarkets per 10,000 population within each analysis area was d
     .. raw:: html
 
         <figure>
-        <img alt="Number of supermarkets per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets_per_10k_population.png">
-        <figcaption>Number of supermarkets per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of supermarkets per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets_per_10k_population.png">
+        <figcaption>Number of supermarkets per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1496,12 +1496,12 @@ The number of supermarkets per 10,000 population within each analysis area was d
        :width: 70%
        :align: center
 
-       Number of supermarkets per 10,000 population (BMA, 2019), by district
+       Number of supermarkets per 10,000 population (bma, 2019), by district
 
 
 
 
-Number of supermarkets per square kilometre (BMA, 2019)
+Number of supermarkets per square kilometre (bma, 2019)
 -------------------------------------------------------
 
 The number of supermarkets per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
@@ -1515,8 +1515,8 @@ The number of supermarkets per square kilometre within each analysis area was di
     .. raw:: html
 
         <figure>
-        <img alt="Number of supermarkets per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets_per_sqkm.png">
-        <figcaption>Number of supermarkets per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of supermarkets per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets_per_sqkm.png">
+        <figcaption>Number of supermarkets per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1525,12 +1525,12 @@ The number of supermarkets per square kilometre within each analysis area was di
        :width: 70%
        :align: center
 
-       Number of supermarkets per square kilometre (BMA, 2019), by district
+       Number of supermarkets per square kilometre (bma, 2019), by district
 
 
 
 
-Number of minimarts (BMA, 2019)
+Number of minimarts (bma, 2019)
 -------------------------------
 
 The number of minimarts within each analysis area was recorded.
@@ -1544,8 +1544,8 @@ The number of minimarts within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of minimarts (BMA, 2019), by district" src="./../png/Bangkok_ind_district_minimarts.png">
-        <figcaption>Number of minimarts (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of minimarts (bma, 2019), by district" src="./../png/Bangkok_ind_district_minimarts.png">
+        <figcaption>Number of minimarts (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1554,12 +1554,12 @@ The number of minimarts within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of minimarts (BMA, 2019), by district
+       Number of minimarts (bma, 2019), by district
 
 
 
 
-Number of minimarts per 10,000 population (BMA, 2019)
+Number of minimarts per 10,000 population (bma, 2019)
 -----------------------------------------------------
 
 The number of minimarts per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
@@ -1573,8 +1573,8 @@ The number of minimarts per 10,000 population within each analysis area was divi
     .. raw:: html
 
         <figure>
-        <img alt="Number of minimarts per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_minimarts_per_10k_population.png">
-        <figcaption>Number of minimarts per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of minimarts per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_minimarts_per_10k_population.png">
+        <figcaption>Number of minimarts per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1583,12 +1583,12 @@ The number of minimarts per 10,000 population within each analysis area was divi
        :width: 70%
        :align: center
 
-       Number of minimarts per 10,000 population (BMA, 2019), by district
+       Number of minimarts per 10,000 population (bma, 2019), by district
 
 
 
 
-Number of minimarts per square kilometre (BMA, 2019)
+Number of minimarts per square kilometre (bma, 2019)
 ----------------------------------------------------
 
 The number of minimarts per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
@@ -1602,8 +1602,8 @@ The number of minimarts per square kilometre within each analysis area was divid
     .. raw:: html
 
         <figure>
-        <img alt="Number of minimarts per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_minimarts_per_sqkm.png">
-        <figcaption>Number of minimarts per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of minimarts per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_minimarts_per_sqkm.png">
+        <figcaption>Number of minimarts per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1612,12 +1612,12 @@ The number of minimarts per square kilometre within each analysis area was divid
        :width: 70%
        :align: center
 
-       Number of minimarts per square kilometre (BMA, 2019), by district
+       Number of minimarts per square kilometre (bma, 2019), by district
 
 
 
 
-Number of stalls (BMA, 2019)
+Number of stalls (bma, 2019)
 ----------------------------
 
 The number of stalls within each analysis area was recorded.
@@ -1631,8 +1631,8 @@ The number of stalls within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of stalls (BMA, 2019), by district" src="./../png/Bangkok_ind_district_stalls.png">
-        <figcaption>Number of stalls (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of stalls (bma, 2019), by district" src="./../png/Bangkok_ind_district_stalls.png">
+        <figcaption>Number of stalls (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1641,12 +1641,12 @@ The number of stalls within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of stalls (BMA, 2019), by district
+       Number of stalls (bma, 2019), by district
 
 
 
 
-Number of stalls per 10,000 population (BMA, 2019)
+Number of stalls per 10,000 population (bma, 2019)
 --------------------------------------------------
 
 The number of stalls per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
@@ -1660,8 +1660,8 @@ The number of stalls per 10,000 population within each analysis area was divided
     .. raw:: html
 
         <figure>
-        <img alt="Number of stalls per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_stalls_per_10k_population.png">
-        <figcaption>Number of stalls per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of stalls per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_stalls_per_10k_population.png">
+        <figcaption>Number of stalls per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1670,12 +1670,12 @@ The number of stalls per 10,000 population within each analysis area was divided
        :width: 70%
        :align: center
 
-       Number of stalls per 10,000 population (BMA, 2019), by district
+       Number of stalls per 10,000 population (bma, 2019), by district
 
 
 
 
-Number of stalls per square kilometre (BMA, 2019)
+Number of stalls per square kilometre (bma, 2019)
 -------------------------------------------------
 
 The number of stalls per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
@@ -1689,8 +1689,8 @@ The number of stalls per square kilometre within each analysis area was divided 
     .. raw:: html
 
         <figure>
-        <img alt="Number of stalls per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_stalls_per_sqkm.png">
-        <figcaption>Number of stalls per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of stalls per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_stalls_per_sqkm.png">
+        <figcaption>Number of stalls per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1699,12 +1699,12 @@ The number of stalls per square kilometre within each analysis area was divided 
        :width: 70%
        :align: center
 
-       Number of stalls per square kilometre (BMA, 2019), by district
+       Number of stalls per square kilometre (bma, 2019), by district
 
 
 
 
-Number of markets (BMA, 2019)
+Number of markets (bma, 2019)
 -----------------------------
 
 The number of markets within each analysis area was recorded.
@@ -1718,8 +1718,8 @@ The number of markets within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of markets (BMA, 2019), by district" src="./../png/Bangkok_ind_district_markets.png">
-        <figcaption>Number of markets (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of markets (bma, 2019), by district" src="./../png/Bangkok_ind_district_markets.png">
+        <figcaption>Number of markets (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1728,12 +1728,12 @@ The number of markets within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of markets (BMA, 2019), by district
+       Number of markets (bma, 2019), by district
 
 
 
 
-Number of markets per 10,000 population (BMA, 2019)
+Number of markets per 10,000 population (bma, 2019)
 ---------------------------------------------------
 
 The number of markets per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
@@ -1747,8 +1747,8 @@ The number of markets per 10,000 population within each analysis area was divide
     .. raw:: html
 
         <figure>
-        <img alt="Number of markets per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_markets_per_10k_population.png">
-        <figcaption>Number of markets per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of markets per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_markets_per_10k_population.png">
+        <figcaption>Number of markets per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1757,12 +1757,12 @@ The number of markets per 10,000 population within each analysis area was divide
        :width: 70%
        :align: center
 
-       Number of markets per 10,000 population (BMA, 2019), by district
+       Number of markets per 10,000 population (bma, 2019), by district
 
 
 
 
-Number of markets per square kilometre (BMA, 2019)
+Number of markets per square kilometre (bma, 2019)
 --------------------------------------------------
 
 The number of markets per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
@@ -1776,8 +1776,8 @@ The number of markets per square kilometre within each analysis area was divided
     .. raw:: html
 
         <figure>
-        <img alt="Number of markets per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_markets_per_sqkm.png">
-        <figcaption>Number of markets per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of markets per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_markets_per_sqkm.png">
+        <figcaption>Number of markets per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1786,7 +1786,7 @@ The number of markets per square kilometre within each analysis area was divided
        :width: 70%
        :align: center
 
-       Number of markets per square kilometre (BMA, 2019), by district
+       Number of markets per square kilometre (bma, 2019), by district
 
 
 

@@ -161,7 +161,7 @@ def generate_metadata_rst(ind_metadata):
             for ind in ds.method_description_ind.unique():
                 df_ind = ds.query(f'method_description_ind == "{ind}"').copy()
                 # create heading for specific indicator
-                a = df_ind.iloc[0].alias
+                a = df_ind.iloc[0].alias.capitalize()
                 rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,a,'-'*len(a))
                 # add indicator method description
                 rst = '{}\r\n{}\r\n'.format(rst,df_ind.iloc[0].method_description_ind)
