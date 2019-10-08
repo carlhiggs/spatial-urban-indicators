@@ -30,13 +30,16 @@ Liveability indicator calculation code
     
 .. automodule:: _create_linkage_indicators
     :members:
+    
+.. automodule:: _create_raster_indicators
+    :members:
+    
+.. automodule:: _create_documentation
+    :members:
 
 
 Miscellaneous
 ~~~~~~~~~~~~~
 
 .. automodule:: process_aqi_json_to_geojson
-    :members:
-
-.. automodule:: _utils
     :members:

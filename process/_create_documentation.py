@@ -90,11 +90,11 @@ def generate_metadata_rst(ind_metadata):
                   ['data_dir'      ,'Data location relative to project folder']]
     # unformatted population items
     population_items = [
-     ['Population per sqkm','{locale}_02_population_{level}_population_per_sqkm'],
-     ['Households per sqkm','{locale}_02_population_{level}_households_per_sqkm'],
-     ['Communities per sqkm','{locale}_02_population_{level}_communities_per_sqkm'],
-     ['Population in communities per sqkm','{locale}_02_population_{level}_population_in_communities_per_sqkm'],
-     ['Population not in communities per sqkm','{locale}_02_population_{level}_population_not_in_communities_per_sqkm']
+     ['Population per km²','{locale}_02_population_{level}_population_per_sqkm'],
+     ['Households per km²','{locale}_02_population_{level}_households_per_sqkm'],
+     ['Communities per km²','{locale}_02_population_{level}_communities_per_sqkm'],
+     ['Population in communities per km²','{locale}_02_population_{level}_population_in_communities_per_sqkm','11'],
+     ['Population not in communities per km²','{locale}_02_population_{level}_population_not_in_communities_per_sqkm']
     ]
     # defined page heading as first line
     rst = 'Indicators\r\n==========\r\n'
@@ -136,7 +136,13 @@ def generate_metadata_rst(ind_metadata):
                 rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,popi[0],'-'*len(popi[0]))
                 for level in ['district','subdistrict']:
                     pop_map = popi[1].format(locale=locale,level=level)
-                    rst = '{}\r\n\r\n'.format(rst)
+                    if len(popi)==2:
+                        sdg = ''
+                        rst = '{}\r\n\r\n'.format(rst)
+                    else:
+                        sdg = popi[2].split(',')
+                        rst = '{}\r\n\r\nAligns with Sustainable Development Goals {}.r\nr\n'.format(rst,method,sdg)
+                    # todo: implement SDG code
                     map_code = (
                                 '\r\n'
                                 '.. only:: html\r\n\r\n'
@@ -157,14 +163,18 @@ def generate_metadata_rst(ind_metadata):
                     rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
         if ds.iloc[0].purpose=='indicators':
             # create heading for indicators
-            rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
+            # rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
             for ind in ds.method_description_ind.unique():
                 df_ind = ds.query(f'method_description_ind == "{ind}"').copy()
                 # create heading for specific indicator
-                a = df_ind.iloc[0].alias.capitalize()
+                a = df_ind.iloc[0].alias
+                a = a[:1].upper() + a[1:]
                 rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,a,'-'*len(a))
                 # add indicator method description
-                rst = '{}\r\n{}\r\n'.format(rst,df_ind.iloc[0].method_description_ind)
+                method = df_ind.iloc[0].method_description_ind
+                sdg = df_ind.iloc[0].sdg
+                # to do - parse SDG numbers and add in hyperlink
+                rst = '{}\r\n{}\r\nAligns with Sustainable Development Goals {}.r\n'.format(rst,method,sdg)
                 levels = df_ind.linkage_layer.unique()
                 # map_scale_text = f'View maps for {full_locale} at available scales:'
                 for level in df_ind.linkage_layer.unique(): 
