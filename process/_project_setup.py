@@ -282,5 +282,5 @@ map_style = '''
 '''    
 
 # specify that the above modules and all variables below are imported on 'from config.py import *'
-__all__ = [x for x in dir() if x not in ['__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
+__all__ = [x for x in dir() if x not in ['area','__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
  

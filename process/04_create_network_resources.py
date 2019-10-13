@@ -51,14 +51,14 @@ def main():
     print("Get networks and save as graphs.")
     ox.config(use_cache=True, log_console=True)
     if osmnx_retain_all == 'False':
-        osmnx_retain_all = False
+        retain_all = False
         print('''
         Note: "retain_all = False" ie. only main network segment is retained.
             Please ensure this is appropriate for your study region 
             (ie. networks on real islands may be excluded).
         ''') 
     else:
-        osmnx_retain_all = True
+        retain_all = True
         print('''
         Note: "retain_all = True" ie. all network segments will be retained.
             Please ensure this is appropriate for your study region 
@@ -81,7 +81,7 @@ def main():
       sql = '''SELECT geom_4326 AS geom FROM {}'''.format(buffered_study_region)
       polygon =  gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )['geom'][0]
       print('Creating and saving all roads network... '),
-      W = ox.graph_from_polygon(polygon,  network_type= 'all', retain_all = osmnx_retain_all)
+      W = ox.graph_from_polygon(polygon,  network_type= 'all', retain_all = retain_all)
       ox.save_graphml(W, 
          filename='{studyregion}_all_{osm_prefix}.graphml'.format(studyregion = buffered_study_region,
                                                                                 osm_prefix = osm_prefix), 
@@ -93,7 +93,7 @@ def main():
          folder = locale_dir)
       print('Done.')
       print('Creating and saving pedestrian roads network... '),
-      W = ox.graph_from_polygon(polygon,  custom_filter= pedestrian, retain_all = osmnx_retain_all)
+      W = ox.graph_from_polygon(polygon,  custom_filter= pedestrian, retain_all = retain_all)
       ox.save_graphml(W, 
                      filename='{studyregion}_pedestrian_{osm_prefix}.graphml'.format(studyregion = buffered_study_region,
                                                                                      osm_prefix = osm_prefix), 
@@ -155,45 +155,37 @@ def main():
         print("  - Done.")
     else:
         print("  - It appears that clean intersection data has already been prepared and imported for this region.")  
-    
-    # Create sample points
-    print("Create sample points at regular intervals along the network... ")
-    curs.execute('''SELECT 1 WHERE to_regclass('public.{}') IS NOT NULL;'''.format(points))
-    res = curs.fetchone()
-    if res is None:
-        sql = '''
-        CREATE TABLE {table} AS
-        WITH line AS 
-                (SELECT
-                    ogc_fid,
-                    (ST_Dump(ST_Transform(geom,32647))).geom AS geom
-                FROM edges),
-            linemeasure AS
-                (SELECT
-                    ogc_fid,
-                    ST_AddMeasure(line.geom, 0, ST_Length(line.geom)) AS linem,
-                    generate_series(0, ST_Length(line.geom)::int, {interval}) AS metres
-                FROM line),
-            geometries AS (
-                SELECT
-                    ogc_fid,
-                    metres,
-                    (ST_Dump(ST_GeometryN(ST_LocateAlong(linem, metres), 1))).geom AS geom 
-                FROM linemeasure)
-        SELECT
-            row_number() OVER() AS point_id,
-            ogc_fid,
-            metres,
-            ST_SetSRID(ST_MakePoint(ST_X(geom), ST_Y(geom)), {srid}) AS geom
-        FROM geometries;
-        '''.format(table = points,
-                   interval = point_sampling_interval,
-                   srid = srid)  
-        engine.execute(sql)      
-        engine.execute(grant_query)      
-        print("  - Sampling points table {} created with sampling at every {} metres along the pedestrian network.".format(points,point_sampling_interval))
-    else:
-        print("  - It appears that sample points table {} have already been prepared for this region.".format(points))  
+
+    print("Create network topology...")
+    sql = '''
+    ALTER TABLE edges ADD COLUMN "source" INTEGER;
+    ALTER TABLE edges ADD COLUMN "target" INTEGER;
+    --SELECT pgr_createTopology('edges',0.000001,'geom','ogc_fid');
+    '''
+    engine.execute(sql)      
+    curs.execute("SELECT MIN(ogc_fid), MAX(ogc_fid) FROM edges;")
+    min_id, max_id = curs.fetchone()
+    print(f"there are {max_id - min_id + 1} edges to be processed")
+    curs.close()
+
+    interval = 10000
+    for x in range(min_id, max_id+1, interval):
+        curs = conn.cursor()
+        curs.execute(
+        f"select pgr_createTopology('edges', 0.000001, 'geom', 'ogc_fid', rows_where:='id>={x} and id<{x+interval}');"
+    )
+        conn.commit()
+        x_max = x + interval - 1
+        if x_max > max_id:
+            x_max = max_id
+        print(f"edges {x} - {x_max} have be processed")
+        
+    sql = '''
+    CREATE INDEX edges_source_idx ON edges("source");
+    CREATE INDEX edges_target_idx ON edges("target");
+    '''
+    engine.execute(sql)
+    engine.execute(grant_query)      
         
         
     # # get map data

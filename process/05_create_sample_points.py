@@ -166,15 +166,15 @@ def main():
       LANGUAGE plpgsql VOLATILE
       COST 100;
     '''
-    engine.execute(sql.replace('%','%%'))
+    curs.execute(sql)
+    conn.commit()
     
     # create hexes with some additional offsetting to ensure complete study region coverage
     sql = '''
-    DROP TABLE IF EXISTS {hex_grid};           
-    CREATE TABLE {hex_grid} AS
+    CREATE TABLE IF NOT EXISTS {hex_grid} AS
     SELECT row_number() OVER () AS hex_id, geom
       FROM (
-      SELECT hex_grid({hex_area_km2}, 
+      SELECT hex_grid({hex_area_km2}::float, 
                       ST_XMin(geom)-{hex_buffer}, 
                       ST_YMin(geom)-{hex_buffer}, 
                       ST_XMax(geom)+{hex_buffer}, 
@@ -182,81 +182,73 @@ def main():
                       {srid}, 
                       {srid}, 
                       {srid}) geom, geom AS old_geom
-    FROM bangkok_thailand_2018_10000m) t
+    FROM {study_region}) t
     WHERE ST_Intersects(geom,old_geom);
-    CREATE UNIQUE INDEX {hex_grid}_idx ON {hex_grid} (hex_id);
-    CREATE INDEX {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
+    CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid}_idx ON {hex_grid} (hex_id);
+    CREATE INDEX IF NOT EXISTS {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
     '''.format(hex_grid = hex_grid,
                hex_area_km2 = hex_area_km2,
+               study_region = buffered_study_region,
                srid = srid,
-               hex_buffer = hex_buffer)           
+               hex_buffer = hex_buffer)       
+    
     engine.execute(sql)
     
     sql = '''
-    DROP TABLE IF EXISTS {hex_grid_buffer};           
-    CREATE TABLE {hex_grid_buffer} AS
+    CREATE TABLE IF NOT EXISTS {hex_grid_buffer} AS
     SELECT hex_id, 
            ST_Buffer(geom,{hex_buffer}) AS geom
       FROM {hex_grid};
-    CREATE UNIQUE INDEX {hex_grid_buffer}_idx ON {hex_grid_buffer} (hex_id);
-    CREATE INDEX {hex_grid_buffer}_geom_idx ON {hex_grid_buffer} USING GIST (geom);
+    CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid_buffer}_idx ON {hex_grid_buffer} (hex_id);
+    CREATE INDEX IF NOT EXISTS {hex_grid_buffer}_geom_idx ON {hex_grid_buffer} USING GIST (geom);
     '''.format(hex_grid = hex_grid,
                hex_grid_buffer = hex_grid_buffer,
                hex_buffer = hex_buffer)           
     engine.execute(sql)
     
     # Create sample points
-    print("Create sample points at regular intervals along the network... ")
-    if table_exists(points) is False:
-        sql = '''
-        CREATE TABLE {points} AS
-        WITH line AS 
-                (SELECT
-                    ogc_fid,
-                    (ST_Dump(ST_Transform(geom,32647))).geom AS geom
-                FROM edges),
-            linemeasure AS
-                (SELECT
-                    ogc_fid,
-                    ST_AddMeasure(line.geom, 0, ST_Length(line.geom)) AS linem,
-                    generate_series(0, ST_Length(line.geom)::int, {interval}) AS metres
-                FROM line),
-            geometries AS (
-                SELECT
-                    ogc_fid,
-                    metres,
-                    (ST_Dump(ST_GeometryN(ST_LocateAlong(linem, metres), 1))).geom AS geom 
-                FROM linemeasure)
-        SELECT
-            row_number() OVER() AS point_id,
-            ogc_fid,
-            metres,
-            ST_SetSRID(ST_MakePoint(ST_X(geom), ST_Y(geom)), {srid}) AS geom
-        FROM geometries;
-        CREATE UNIQUE INDEX {points}_idx ON {points} (point_id);
-        CREATE INDEX {points}_geom_idx ON {points} USING GIST (geom);
-        '''.format(points = points,
-                   interval = point_sampling_interval,
-                   srid = srid)  
-        engine.execute(sql)      
-        engine.execute(grant_query)      
-        print("  - Sampling points table {} created with sampling at every {} metres along the pedestrian network.".format(points,point_sampling_interval))
-    else:
-        print("  - It appears that sample points table {} have already been prepared for this region.".format(points))  
+    print("Create sample points at regular intervals along the network, if not already existing... "),
+    sql = '''
+    CREATE TABLE IF NOT EXISTS {points} AS
+    WITH line AS 
+            (SELECT
+                ogc_fid,
+                (ST_Dump(ST_Transform(geom,32647))).geom AS geom
+            FROM edges),
+        linemeasure AS
+            (SELECT
+                ogc_fid,
+                ST_AddMeasure(line.geom, 0, ST_Length(line.geom)) AS linem,
+                generate_series(0, ST_Length(line.geom)::int, {interval}) AS metres
+            FROM line),
+        geometries AS (
+            SELECT
+                ogc_fid,
+                metres,
+                (ST_Dump(ST_GeometryN(ST_LocateAlong(linem, metres), 1))).geom AS geom 
+            FROM linemeasure)
+    SELECT
+        row_number() OVER() AS point_id,
+        ogc_fid,
+        metres,
+        ST_SetSRID(ST_MakePoint(ST_X(geom), ST_Y(geom)), {srid}) AS geom
+    FROM geometries;
+    CREATE UNIQUE INDEX IF NOT EXISTS {points}_idx ON {points} (point_id);
+    CREATE INDEX IF NOT EXISTS {points}_geom_idx ON {points} USING GIST (geom);
+    '''.format(points = points,
+               interval = point_sampling_interval,
+               srid = srid)  
+    engine.execute(sql)      
+    engine.execute(grant_query)      
+    print("Done. (Sampling points table {} created with sampling at every {} metres along the pedestrian network.)".format(points,point_sampling_interval))
         
-    print("Associate sample points with overlay polygons (e.g. administrative boundaries, and hexagons for processing)")
-    
-    for table_id_tuple in [[hex_grid,"hex_id"],[areas[0]['name_s'],areas[0]['id']]]:
-        sql = '''
-            ALTER TABLE {points} ADD COLUMN IF NOT EXISTS "{id}" text;
-            UPDATE {points} p
-                SET "{id}" = a."{id}"
-                FROM {table} a
-                WHERE ST_Intersects(p.geom,a.geom);
-        '''.format(points = points,
-                   table = table_id_tuple[0],
-                   id = table_id_tuple[1])
-        engine.execute(sql)
+    # Add a buffered geometry field to sampling points
+    sql = '''
+        ALTER TABLE {points} ADD COLUMN IF NOT EXISTS "buffered_geom_{buffer}m" geometry;
+        UPDATE {points} SET "buffered_geom_{buffer}m" = ST_Buffer(geom,{buffer});
+    '''.format(points = points,
+               buffer = line_buffer)
+    engine.execute(sql)
     
     # grant access to the tables just created
     engine.execute(grant_query)
@@ -264,7 +256,7 @@ def main():
     # output to completion log					
     script_running_log(script, task, start, locale)
     
-    engine.close()
+    conn.close()
 
 if __name__ == '__main__':
     main()

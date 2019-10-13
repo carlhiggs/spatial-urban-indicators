@@ -7,8 +7,6 @@ Script:
     _create_linkage_indicators.py
 Purpose: 
     Create indicators based on linkage with boundary data from specification in datasets section of configuration file
-Authors: 
-    Carl Higgs
 
 """
 

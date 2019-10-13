@@ -32,30 +32,30 @@ print("Commencing task: {} at {}".format(task,time.strftime("%Y%m%d-%H%M%S")))
 if df_destinations.destination.is_unique is not True:
   sys.exit("Destination names in 'destinations' tab of _project_configuration.xlsx are not unique, but they should be.  Please fix this, push the change to all users alerting them to the issue, and try again.");
 
-### New idea for processing in PostGIS
+# # RE DO BELOW BASED ON DATASETS CONFIG --- if flagged as OD destination, import
 # list features for which we appear to have data
 # pre-processed destinations
-dest_processed_list =  sp.check_output('ogrinfo {}'.format(src_destinations)).split('\r\n')
-dest_processed_list = [x[(x.find(' ')+1):x.find(' (Point)')] for x in dest_processed_list[ dest_processed_list.index(''.join([x for x in dest_processed_list if x.startswith('1:')])):-1]]
-
+# dest_processed_list =  sp.check_output('ogrinfo {}'.format(src_destinations)).split('\r\n')
+# dest_processed_list = [x[(x.find(' ')+1):x.find(' (Point)')] for x in dest_processed_list[ dest_processed_list.index(''.join([x for x in dest_processed_list if x.startswith('1:')])):-1]]
+dest_processed_list = []
 # list destinations which have OpenStreetMap specified as their data source
 dest_osm_list = [x.encode('utf') for x in df_osm_dest.dest_name.unique().tolist()]
 
-print("\nCopy all pre-processed destinations to postgis..."),
-command = (
-        ' ogr2ogr -overwrite -progress -f "PostgreSQL" ' 
-        ' PG:"host={host} port=5432 dbname={db}'
-        ' user={user} password = {pwd}" '
-        ' {gdb} '
-        ' -lco geometry_name="geom"'.format(host = db_host,
-                                     db = db,
-                                     user = db_user,
-                                     pwd = db_pwd,
-                                     gdb = src_destinations) 
-        )
-print(command)
-sp.call(command, shell=True)
-print("Done (although, if it didn't work you can use the printed command above to do it manually)")
+# print("\nCopy all pre-processed destinations to postgis..."),
+# command = (
+        # ' ogr2ogr -overwrite -progress -f "PostgreSQL" ' 
+        # ' PG:"host={host} port=5432 dbname={db}'
+        # ' user={user} password = {pwd}" '
+        # ' {dest} '
+        # ' -lco geometry_name="geom"'.format(host = db_host,
+                                     # db = db,
+                                     # user = db_user,
+                                     # pwd = db_pwd,
+                                     # dest = src_destination) 
+        # )
+# print(command)
+# sp.call(command, shell=True)
+# print("Done (although, if it didn't work you can use the printed command above to do it manually)")
 
 # Create destination type table in sql database
 # connect to the PostgreSQL server
@@ -70,9 +70,7 @@ create_dest_type_table = '''
    dest_name varchar PRIMARY KEY,
    dest_name_full varchar,
    domain varchar NOT NULL,
-   count integer,
-   cutoff_closest integer,
-   cutoff_count integer);
+   count integer;
    '''
 curs.execute(create_dest_type_table)
 conn.commit()
@@ -85,8 +83,6 @@ create_study_destinations_table = '''
    dest_class varchar NOT NULL,
    dest_name varchar NOT NULL,
    geom geometry(POINT));
-  CREATE INDEX study_destinations_dest_name_idx ON study_destinations (dest_name);
-  CREATE INDEX study_destinations_geom_geom_idx ON study_destinations USING GIST (geom);
 '''
 curs.execute(create_study_destinations_table)
 conn.commit()
@@ -232,17 +228,15 @@ for dest in destination_list:
   else:
     print("No data appears to be stored for destination {}.".format(dest))
 
-# Copy study region destination table from PostgreSQL db to ArcGIS gdb
-print("Copy study destinations to ArcGIS gdb... "),
-curs.execute(grant_query)
+create_study_destinations_indices = '''
+  CREATE INDEX study_destinations_dest_name_idx ON study_destinations (dest_name);
+  CREATE INDEX study_destinations_geom_geom_idx ON study_destinations USING GIST (geom);
+'''
+curs.execute(create_study_destinations_indices)
 conn.commit()
-arcpy.env.workspace = db_sde_path
-arcpy.env.overwriteOutput = True 
-arcpy.CopyFeatures_management('public.study_destinations', os.path.join(gdb_path,'study_destinations')) 
-print("Done.")
+curs.execute(grant_query)
 
-
-# When destinations are imported for study region, we don't want to retain all of these; now, purgefor dest in purge_dest_list:
+# When destinations are imported for study region, we don't want to retain all of these; now, purge for dest in purge_dest_list:
 for dest in purge_dest_list:
    sql = "DROP TABLE IF EXISTS {}".format(dest)
    curs.execute(sql)

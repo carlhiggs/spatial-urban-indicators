@@ -79,12 +79,8 @@ Population statistics targetting Bangkok in 2018 were received from the BMA, ind
 Population data were linked with boundaries using corresponding subdistrict ID numbers.  Density measures were calculated using population statistics relative to analysis area size.  A derived 'population not in communities' indicator was also calculated, representing the disjunct between total population and the recorded population in communities.
 
 
-Indicators
-^^^^^^^^^^
-
-
-Population per sqkm
--------------------
+Population per km²
+------------------
 
 
 
@@ -95,8 +91,8 @@ Population per sqkm
     .. raw:: html
 
         <figure>
-        <img alt="Population per sqkm, by district" src="./../png/Bangkok_02_population_district_population_per_sqkm.png">
-        <figcaption>Population per sqkm, by district.         <a href="./../html/Bangkok_02_population_district_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        <img alt="Population per km², by district" src="./../png/Bangkok_02_population_district_population_per_sqkm.png">
+        <figcaption>Population per km², by district.         <a href="./../html/Bangkok_02_population_district_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -105,7 +101,7 @@ Population per sqkm
        :width: 70%
        :align: center
 
-       Population per sqkm, by district
+       Population per km², by district
 
 
 
@@ -118,8 +114,8 @@ Population per sqkm
     .. raw:: html
 
         <figure>
-        <img alt="Population per sqkm, by subdistrict" src="./../png/Bangkok_02_population_subdistrict_population_per_sqkm.png">
-        <figcaption>Population per sqkm, by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        <img alt="Population per km², by subdistrict" src="./../png/Bangkok_02_population_subdistrict_population_per_sqkm.png">
+        <figcaption>Population per km², by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -128,12 +124,62 @@ Population per sqkm
        :width: 70%
        :align: center
 
-       Population per sqkm, by subdistrict
+       Population per km², by subdistrict
 
 
 
 
-Households per sqkm
+Households per km²
+------------------
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Households per km², by district" src="./../png/Bangkok_02_population_district_households_per_sqkm.png">
+        <figcaption>Households per km², by district.         <a href="./../html/Bangkok_02_population_district_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/Bangkok_02_population_district_households_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Households per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Households per km², by subdistrict" src="./../png/Bangkok_02_population_subdistrict_households_per_sqkm.png">
+        <figcaption>Households per km², by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/Bangkok_02_population_subdistrict_households_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Households per km², by subdistrict
+
+
+
+
+Communities per km²
 -------------------
 
 
@@ -145,58 +191,8 @@ Households per sqkm
     .. raw:: html
 
         <figure>
-        <img alt="Households per sqkm, by district" src="./../png/Bangkok_02_population_district_households_per_sqkm.png">
-        <figcaption>Households per sqkm, by district.         <a href="./../html/Bangkok_02_population_district_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/Bangkok_02_population_district_households_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Households per sqkm, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Households per sqkm, by subdistrict" src="./../png/Bangkok_02_population_subdistrict_households_per_sqkm.png">
-        <figcaption>Households per sqkm, by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/Bangkok_02_population_subdistrict_households_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Households per sqkm, by subdistrict
-
-
-
-
-Communities per sqkm
---------------------
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Communities per sqkm, by district" src="./../png/Bangkok_02_population_district_communities_per_sqkm.png">
-        <figcaption>Communities per sqkm, by district.         <a href="./../html/Bangkok_02_population_district_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        <img alt="Communities per km², by district" src="./../png/Bangkok_02_population_district_communities_per_sqkm.png">
+        <figcaption>Communities per km², by district.         <a href="./../html/Bangkok_02_population_district_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -205,7 +201,7 @@ Communities per sqkm
        :width: 70%
        :align: center
 
-       Communities per sqkm, by district
+       Communities per km², by district
 
 
 
@@ -218,8 +214,8 @@ Communities per sqkm
     .. raw:: html
 
         <figure>
-        <img alt="Communities per sqkm, by subdistrict" src="./../png/Bangkok_02_population_subdistrict_communities_per_sqkm.png">
-        <figcaption>Communities per sqkm, by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        <img alt="Communities per km², by subdistrict" src="./../png/Bangkok_02_population_subdistrict_communities_per_sqkm.png">
+        <figcaption>Communities per km², by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -228,14 +224,16 @@ Communities per sqkm
        :width: 70%
        :align: center
 
-       Communities per sqkm, by subdistrict
+       Communities per km², by subdistrict
 
 
 
 
-Population in communities per sqkm
-----------------------------------
+Population in communities per km²
+---------------------------------
 
+
+Aligns with Sustainable Development Goals: 11.
 
 
 
@@ -245,8 +243,8 @@ Population in communities per sqkm
     .. raw:: html
 
         <figure>
-        <img alt="Population in communities per sqkm, by district" src="./../png/Bangkok_02_population_district_population_in_communities_per_sqkm.png">
-        <figcaption>Population in communities per sqkm, by district.         <a href="./../html/Bangkok_02_population_district_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        <img alt="Population in communities per km², by district" src="./../png/Bangkok_02_population_district_population_in_communities_per_sqkm.png">
+        <figcaption>Population in communities per km², by district.         <a href="./../html/Bangkok_02_population_district_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -255,10 +253,12 @@ Population in communities per sqkm
        :width: 70%
        :align: center
 
-       Population in communities per sqkm, by district
+       Population in communities per km², by district
 
 
 
+
+Aligns with Sustainable Development Goals: 11.
 
 
 
@@ -268,8 +268,8 @@ Population in communities per sqkm
     .. raw:: html
 
         <figure>
-        <img alt="Population in communities per sqkm, by subdistrict" src="./../png/Bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png">
-        <figcaption>Population in communities per sqkm, by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        <img alt="Population in communities per km², by subdistrict" src="./../png/Bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png">
+        <figcaption>Population in communities per km², by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -278,13 +278,13 @@ Population in communities per sqkm
        :width: 70%
        :align: center
 
-       Population in communities per sqkm, by subdistrict
+       Population in communities per km², by subdistrict
 
 
 
 
-Population not in communities per sqkm
---------------------------------------
+Population not in communities per km²
+-------------------------------------
 
 
 
@@ -295,8 +295,8 @@ Population not in communities per sqkm
     .. raw:: html
 
         <figure>
-        <img alt="Population not in communities per sqkm, by district" src="./../png/Bangkok_02_population_district_population_not_in_communities_per_sqkm.png">
-        <figcaption>Population not in communities per sqkm, by district.         <a href="./../html/Bangkok_02_population_district_population_not_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        <img alt="Population not in communities per km², by district" src="./../png/Bangkok_02_population_district_population_not_in_communities_per_sqkm.png">
+        <figcaption>Population not in communities per km², by district.         <a href="./../html/Bangkok_02_population_district_population_not_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -305,7 +305,7 @@ Population not in communities per sqkm
        :width: 70%
        :align: center
 
-       Population not in communities per sqkm, by district
+       Population not in communities per km², by district
 
 
 
@@ -318,8 +318,8 @@ Population not in communities per sqkm
     .. raw:: html
 
         <figure>
-        <img alt="Population not in communities per sqkm, by subdistrict" src="./../png/Bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.png">
-        <figcaption>Population not in communities per sqkm, by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        <img alt="Population not in communities per km², by subdistrict" src="./../png/Bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.png">
+        <figcaption>Population not in communities per km², by subdistrict.         <a href="./../html/Bangkok_02_population_subdistrict_population_not_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -328,7 +328,67 @@ Population not in communities per sqkm
        :width: 70%
        :align: center
 
-       Population not in communities per sqkm, by subdistrict
+       Population not in communities per km², by subdistrict
+
+
+
+
+Sentinel-5P NRTI NO2: Near Real-Time Nitrogen Dioxide
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Google Earth Engine was used to process Sentinel 5p data from the Copernicus satellite detailing total vertical column of NO2 (ratio of the slant column density of NO2 and the total air mass factor), taking the annual average from 13 October 2017 (commencement of the S5P monitoring mission) to 12 October 2018.  
+
+**Data source**: Copernicus Sentinel Data processed using Google Earth Engine
+
+**URL**: https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_NO2
+
+**Publication year**: 2019
+
+**Target year**: 2018
+
+**Acquisition date (yyyymmdd)**: 20191009
+
+**Licence**: Free, full and open access for lawful usage, with attribution
+
+**Licence URL**: https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice
+
+**Spatial reference (EPSG code)**: 4326.0
+
+**Date type**: raster:float64
+
+**Scale / Resolution**: 10
+
+**Notes**: Free access, but must acknowledge Copernicus Sentinel, year of data and if it has been modified.  Requires processing, as data is in half hourly updates.
+
+**Data location relative to project folder**: ./data/International/Google EarthEngine/copernicus_s5p_nrti_l3_no2-mean_col_num_density_20171013_20181012.tif
+
+
+Annual average NO₂ (Copernicus, 2017-18)
+----------------------------------------
+
+The total vertical column of NO2 is a measure of air pollution, however it is based on tropospheric and stratospheric presence of NO2 and measured in mmol per square metre; in contrast, health guidelines for exposure are usually based on ground monitoring of NO2, recorded in parts per billion.  As a spatially continuous measure, annual average NO2 is useful for indicating areas of relatively intense pollution and may be compared with ground based measures (ie. from monitoring stations) as well as longitudinally to monitor change over time.  For mapping purposes, NO2 was scaled as 1-e6 mmol per square metre (ie. divided by 0.000001).
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Annual average NO₂ (Copernicus, 2017-18), by subdistrict" src="./../png/Bangkok_ind_subdistrict_no2_2017_18.png">
+        <figcaption>Annual average NO₂ (Copernicus, 2017-18), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_no2_2017_18.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/Bangkok_ind_subdistrict_no2_2017_18.png
+       :width: 70%
+       :align: center
+
+       Annual average NO₂ (Copernicus, 2017-18), by subdistrict
 
 
 
@@ -358,17 +418,16 @@ A modelled fraction of vegetation cover (FCOVER, V2) 1km grid data product based
 
 **Scale / Resolution**: 1000
 
-**Data location relative to project folder**: ./data/ESA/Copernicus/subset_0_of_c_gls_FCOVER-RT6_201812200000_GLOBE_PROBAV_V2.tif
+**Data location relative to project folder**: ./data/International/EC-JRC/Copernicus/subset_0_of_c_gls_FCOVER-RT6_201812200000_GLOBE_PROBAV_V2.tif
 
 
-Indicators
-^^^^^^^^^^
-
-
-Vegetation percent (copernicus, 2018; mean)
+Vegetation Percent (Copernicus, 2018; mean)
 -------------------------------------------
 
 The estimated percentage of vegetation cover within each analysis area was calculated by first scaling the raster grid cell values by 100/250 ( a scale factor of 0.4) and then taking the mean (average) of all intersecting grid cells.
+
+Aligns with Sustainable Development Goals: 3, 11, 13, 15.
+
 
 
 
@@ -379,8 +438,8 @@ The estimated percentage of vegetation cover within each analysis area was calcu
     .. raw:: html
 
         <figure>
-        <img alt="Vegetation percent (copernicus, 2018; mean), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vegetation_pct_mean.png">
-        <figcaption>Vegetation percent (copernicus, 2018; mean), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vegetation_pct_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vegetation Percent (Copernicus, 2018; mean), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vegetation_pct_mean.png">
+        <figcaption>Vegetation Percent (Copernicus, 2018; mean), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vegetation_pct_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -389,7 +448,7 @@ The estimated percentage of vegetation cover within each analysis area was calcu
        :width: 70%
        :align: center
 
-       Vegetation percent (copernicus, 2018; mean), by subdistrict
+       Vegetation Percent (Copernicus, 2018; mean), by subdistrict
 
 
 
@@ -402,8 +461,8 @@ The estimated percentage of vegetation cover within each analysis area was calcu
     .. raw:: html
 
         <figure>
-        <img alt="Vegetation percent (copernicus, 2018; mean), by district" src="./../png/Bangkok_ind_district_vegetation_pct_mean.png">
-        <figcaption>Vegetation percent (copernicus, 2018; mean), by district.         <a href="./../html/Bangkok_ind_district_vegetation_pct_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vegetation Percent (Copernicus, 2018; mean), by district" src="./../png/Bangkok_ind_district_vegetation_pct_mean.png">
+        <figcaption>Vegetation Percent (Copernicus, 2018; mean), by district.         <a href="./../html/Bangkok_ind_district_vegetation_pct_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -412,15 +471,18 @@ The estimated percentage of vegetation cover within each analysis area was calcu
        :width: 70%
        :align: center
 
-       Vegetation percent (copernicus, 2018; mean), by district
+       Vegetation Percent (Copernicus, 2018; mean), by district
 
 
 
 
-Vegetation percent (copernicus, 2018; standard deviation)
+Vegetation Percent (Copernicus, 2018; standard deviation)
 ---------------------------------------------------------
 
 The estimated standard deviation of percentage of vegetation cover within each analysis area was calculated by first scaling the raster grid cell values by 100/250 ( a scale factor of 0.4) and then taking the standard deviation of all intersecting grid cells.  This is a measure of the degree to wich estimates vary across a particular area, and is a useful contextual measure to accompany the average vegetation percent for the area.
+
+Aligns with Sustainable Development Goals: 3, 11, 13, 15.
+
 
 
 
@@ -431,8 +493,8 @@ The estimated standard deviation of percentage of vegetation cover within each a
     .. raw:: html
 
         <figure>
-        <img alt="Vegetation percent (copernicus, 2018; standard deviation), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vegetation_pct_sd.png">
-        <figcaption>Vegetation percent (copernicus, 2018; standard deviation), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vegetation_pct_sd.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vegetation Percent (Copernicus, 2018; standard deviation), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vegetation_pct_sd.png">
+        <figcaption>Vegetation Percent (Copernicus, 2018; standard deviation), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vegetation_pct_sd.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -441,7 +503,7 @@ The estimated standard deviation of percentage of vegetation cover within each a
        :width: 70%
        :align: center
 
-       Vegetation percent (copernicus, 2018; standard deviation), by subdistrict
+       Vegetation Percent (Copernicus, 2018; standard deviation), by subdistrict
 
 
 
@@ -454,8 +516,8 @@ The estimated standard deviation of percentage of vegetation cover within each a
     .. raw:: html
 
         <figure>
-        <img alt="Vegetation percent (copernicus, 2018; standard deviation), by district" src="./../png/Bangkok_ind_district_vegetation_pct_sd.png">
-        <figcaption>Vegetation percent (copernicus, 2018; standard deviation), by district.         <a href="./../html/Bangkok_ind_district_vegetation_pct_sd.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vegetation Percent (Copernicus, 2018; standard deviation), by district" src="./../png/Bangkok_ind_district_vegetation_pct_sd.png">
+        <figcaption>Vegetation Percent (Copernicus, 2018; standard deviation), by district.         <a href="./../html/Bangkok_ind_district_vegetation_pct_sd.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -464,7 +526,7 @@ The estimated standard deviation of percentage of vegetation cover within each a
        :width: 70%
        :align: center
 
-       Vegetation percent (copernicus, 2018; standard deviation), by district
+       Vegetation Percent (Copernicus, 2018; standard deviation), by district
 
 
 
@@ -490,17 +552,16 @@ Data at subdistrict level were prepared by Korn Nitvimol (BMA) and supplied as a
 
 **Notes**: A count of health centers (as provided by Korn Nitviminol of BMA)
 
-**Data location relative to project folder**: ./data/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
-
-
-Indicators
-^^^^^^^^^^
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
 
 
 Health centres (combined, 2018)
 -------------------------------
 
 The count of health centers within each analysis area was calculated, based on the supplied data.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
 
 
 
@@ -554,6 +615,9 @@ Mental and behavioural disorder outpatients (2018)
 
 Outpatient numbers for mental and behavioural disorders were summed across each analysis area.
 
+Aligns with Sustainable Development Goals: 3, 11.
+
+
 
 
 
@@ -605,6 +669,9 @@ Hypertension outpatients (2018)
 -------------------------------
 
 Outpatient numbers for hypertension were summed across each analysis area.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
 
 
 
@@ -658,6 +725,9 @@ Diabetes outpatients (2018)
 
 Outpatient numbers for diabetes were summed across each analysis area.
 
+Aligns with Sustainable Development Goals: 3, 11.
+
+
 
 
 
@@ -709,6 +779,9 @@ Vital diseases (combined, 2018)
 -------------------------------
 
 Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
 
 
 
@@ -778,17 +851,16 @@ Data at district level were prepared by Korn Nitvimol (BMA) and supplied as an E
 
 **Notes**: Canal water quality monitoring data received from Korn Nitviminol (BMA) on 17 June 2019
 
-**Data location relative to project folder**: ./data/_from BMA/20190617/canal water quality 2018_final.xlsx
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/canal water quality 2018_final.xlsx
 
 
-Indicators
-^^^^^^^^^^
-
-
-Canal water storage do (mg/l), 2018
+Canal water storage DO (mg/L), 2018
 -----------------------------------
 
 The average milligrams of dissolved oxygen per litre (DO mg/L) recorded at sample points within each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
+
 
 
 
@@ -799,8 +871,8 @@ The average milligrams of dissolved oxygen per litre (DO mg/L) recorded at sampl
     .. raw:: html
 
         <figure>
-        <img alt="Canal water storage do (mg/l), 2018, by district" src="./../png/Bangkok_ind_district_water_quality_do.png">
-        <figcaption>Canal water storage do (mg/l), 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_do.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Canal water storage DO (mg/L), 2018, by district" src="./../png/Bangkok_ind_district_water_quality_do.png">
+        <figcaption>Canal water storage DO (mg/L), 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_do.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -809,15 +881,18 @@ The average milligrams of dissolved oxygen per litre (DO mg/L) recorded at sampl
        :width: 70%
        :align: center
 
-       Canal water storage do (mg/l), 2018, by district
+       Canal water storage DO (mg/L), 2018, by district
 
 
 
 
-Canal water storage bod (mg/l), 2018
+Canal water storage BOD (mg/L), 2018
 ------------------------------------
 
 The average milligrams of biochemical oxygen demand  per litre (DO mg/L) recorded at sample points within each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
+
 
 
 
@@ -828,8 +903,8 @@ The average milligrams of biochemical oxygen demand  per litre (DO mg/L) recorde
     .. raw:: html
 
         <figure>
-        <img alt="Canal water storage bod (mg/l), 2018, by district" src="./../png/Bangkok_ind_district_water_quality_bod.png">
-        <figcaption>Canal water storage bod (mg/l), 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_bod.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Canal water storage BOD (mg/L), 2018, by district" src="./../png/Bangkok_ind_district_water_quality_bod.png">
+        <figcaption>Canal water storage BOD (mg/L), 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_bod.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -838,15 +913,18 @@ The average milligrams of biochemical oxygen demand  per litre (DO mg/L) recorde
        :width: 70%
        :align: center
 
-       Canal water storage bod (mg/l), 2018, by district
+       Canal water storage BOD (mg/L), 2018, by district
 
 
 
 
-Canal water storage with < 2 mg/l do, 2018
+Canal water storage with < 2 mg/L DO, 2018
 ------------------------------------------
 
 The count of sample points with poor water quality (< 2 DO mg/L) was recorded for each analysis area.
+
+Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
+
 
 
 
@@ -857,8 +935,8 @@ The count of sample points with poor water quality (< 2 DO mg/L) was recorded fo
     .. raw:: html
 
         <figure>
-        <img alt="Canal water storage with < 2 mg/l do, 2018, by district" src="./../png/Bangkok_ind_district_water_quality_canals_poor.png">
-        <figcaption>Canal water storage with < 2 mg/l do, 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_canals_poor.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Canal water storage with < 2 mg/L DO, 2018, by district" src="./../png/Bangkok_ind_district_water_quality_canals_poor.png">
+        <figcaption>Canal water storage with < 2 mg/L DO, 2018, by district.         <a href="./../html/Bangkok_ind_district_water_quality_canals_poor.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -867,7 +945,7 @@ The count of sample points with poor water quality (< 2 DO mg/L) was recorded fo
        :width: 70%
        :align: center
 
-       Canal water storage with < 2 mg/l do, 2018, by district
+       Canal water storage with < 2 mg/L DO, 2018, by district
 
 
 
@@ -891,17 +969,16 @@ Data at district level were prepared by Korn Nitvimol (BMA) and supplied as an E
 
 **Scale / Resolution**: district
 
-**Data location relative to project folder**: ./data/_from BMA/20190809/transfer_1673010_files_4a5fe795/Fire Incidence in Bangkok 2018_kn8919.xlsx
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/Fire Incidence in Bangkok 2018_kn8919.xlsx
 
 
-Indicators
-^^^^^^^^^^
-
-
-Fire incidence (bma, 2018)
+Fire incidence (BMA, 2018)
 --------------------------
 
 The number of fire occurences recorded for each analysis area within 2018 was recorded.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
 
 
 
@@ -912,8 +989,8 @@ The number of fire occurences recorded for each analysis area within 2018 was re
     .. raw:: html
 
         <figure>
-        <img alt="Fire incidence (bma, 2018), by district" src="./../png/Bangkok_ind_fire_incidence.png">
-        <figcaption>Fire incidence (bma, 2018), by district.         <a href="./../html/Bangkok_ind_fire_incidence.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Fire incidence (BMA, 2018), by district" src="./../png/Bangkok_ind_fire_incidence.png">
+        <figcaption>Fire incidence (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_fire_incidence.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -922,7 +999,7 @@ The number of fire occurences recorded for each analysis area within 2018 was re
        :width: 70%
        :align: center
 
-       Fire incidence (bma, 2018), by district
+       Fire incidence (BMA, 2018), by district
 
 
 
@@ -946,17 +1023,16 @@ Data at subdistrict level were prepared by Korn Nitvimol (BMA) and supplied as a
 
 **Scale / Resolution**: locations in subdistricts
 
-**Data location relative to project folder**: ./data/_from BMA/20190809/transfer_1673010_files_4a5fe795/BKK indicator_flood_kn 63019.xlsx
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/BKK indicator_flood_kn 63019.xlsx
 
 
-Indicators
-^^^^^^^^^^
-
-
-Main road flood area location count (bma, 2018)
+Main road flood area location count (BMA, 2018)
 -----------------------------------------------
 
 The count of main road flood areas associated with each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
 
 
 
@@ -967,8 +1043,8 @@ The count of main road flood areas associated with each analysis area was record
     .. raw:: html
 
         <figure>
-        <img alt="Main road flood area location count (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_locations.png">
-        <figcaption>Main road flood area location count (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Main road flood area location count (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_locations.png">
+        <figcaption>Main road flood area location count (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -977,7 +1053,7 @@ The count of main road flood areas associated with each analysis area was record
        :width: 70%
        :align: center
 
-       Main road flood area location count (bma, 2018), by subdistrict
+       Main road flood area location count (BMA, 2018), by subdistrict
 
 
 
@@ -990,8 +1066,8 @@ The count of main road flood areas associated with each analysis area was record
     .. raw:: html
 
         <figure>
-        <img alt="Main road flood area location count (bma, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_locations.png">
-        <figcaption>Main road flood area location count (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Main road flood area location count (BMA, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_locations.png">
+        <figcaption>Main road flood area location count (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1000,15 +1076,18 @@ The count of main road flood areas associated with each analysis area was record
        :width: 70%
        :align: center
 
-       Main road flood area location count (bma, 2018), by district
+       Main road flood area location count (BMA, 2018), by district
 
 
 
 
-Average days of rain across 14 main road flood areas (bma, 2018)
+Average days of rain across 14 main road flood areas (BMA, 2018)
 ----------------------------------------------------------------
 
 The average number of days of rain recorded for 14 main road flood areas was taken for each analysis area.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
 
 
 
@@ -1019,8 +1098,8 @@ The average number of days of rain recorded for 14 main road flood areas was tak
     .. raw:: html
 
         <figure>
-        <img alt="Average days of rain across 14 main road flood areas (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_days_rain.png">
-        <figcaption>Average days of rain across 14 main road flood areas (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average days of rain across 14 main road flood areas (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_days_rain.png">
+        <figcaption>Average days of rain across 14 main road flood areas (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1029,7 +1108,7 @@ The average number of days of rain recorded for 14 main road flood areas was tak
        :width: 70%
        :align: center
 
-       Average days of rain across 14 main road flood areas (bma, 2018), by subdistrict
+       Average days of rain across 14 main road flood areas (BMA, 2018), by subdistrict
 
 
 
@@ -1042,8 +1121,8 @@ The average number of days of rain recorded for 14 main road flood areas was tak
     .. raw:: html
 
         <figure>
-        <img alt="Average days of rain across 14 main road flood areas (bma, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_days_rain.png">
-        <figcaption>Average days of rain across 14 main road flood areas (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average days of rain across 14 main road flood areas (BMA, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_days_rain.png">
+        <figcaption>Average days of rain across 14 main road flood areas (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_days_rain.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1052,15 +1131,18 @@ The average number of days of rain recorded for 14 main road flood areas was tak
        :width: 70%
        :align: center
 
-       Average days of rain across 14 main road flood areas (bma, 2018), by district
+       Average days of rain across 14 main road flood areas (BMA, 2018), by district
 
 
 
 
-Average maximum intensity across 14 main road flood areas (bma, 2018)
+Average maximum intensity across 14 main road flood areas (BMA, 2018)
 ---------------------------------------------------------------------
 
 The average maximum intensity recorded for 14 main road flood areas was taken for each analysis area.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
 
 
 
@@ -1071,8 +1153,8 @@ The average maximum intensity recorded for 14 main road flood areas was taken fo
     .. raw:: html
 
         <figure>
-        <img alt="Average maximum intensity across 14 main road flood areas (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_intensity.png">
-        <figcaption>Average maximum intensity across 14 main road flood areas (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average maximum intensity across 14 main road flood areas (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_intensity.png">
+        <figcaption>Average maximum intensity across 14 main road flood areas (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1081,7 +1163,7 @@ The average maximum intensity recorded for 14 main road flood areas was taken fo
        :width: 70%
        :align: center
 
-       Average maximum intensity across 14 main road flood areas (bma, 2018), by subdistrict
+       Average maximum intensity across 14 main road flood areas (BMA, 2018), by subdistrict
 
 
 
@@ -1094,8 +1176,8 @@ The average maximum intensity recorded for 14 main road flood areas was taken fo
     .. raw:: html
 
         <figure>
-        <img alt="Average maximum intensity across 14 main road flood areas (bma, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_intensity.png">
-        <figcaption>Average maximum intensity across 14 main road flood areas (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average maximum intensity across 14 main road flood areas (BMA, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_intensity.png">
+        <figcaption>Average maximum intensity across 14 main road flood areas (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_intensity.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1104,15 +1186,18 @@ The average maximum intensity recorded for 14 main road flood areas was taken fo
        :width: 70%
        :align: center
 
-       Average maximum intensity across 14 main road flood areas (bma, 2018), by district
+       Average maximum intensity across 14 main road flood areas (BMA, 2018), by district
 
 
 
 
-Average days of flooding across 14 main road flood areas (bma, 2018)
+Average days of flooding across 14 main road flood areas (BMA, 2018)
 --------------------------------------------------------------------
 
 The average number of days of flooding recorded for 14 main road flood areas was taken for each analysis area.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
 
 
 
@@ -1123,8 +1208,8 @@ The average number of days of flooding recorded for 14 main road flood areas was
     .. raw:: html
 
         <figure>
-        <img alt="Average days of flooding across 14 main road flood areas (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_days_flood.png">
-        <figcaption>Average days of flooding across 14 main road flood areas (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average days of flooding across 14 main road flood areas (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_main_road_flood_days_flood.png">
+        <figcaption>Average days of flooding across 14 main road flood areas (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1133,7 +1218,7 @@ The average number of days of flooding recorded for 14 main road flood areas was
        :width: 70%
        :align: center
 
-       Average days of flooding across 14 main road flood areas (bma, 2018), by subdistrict
+       Average days of flooding across 14 main road flood areas (BMA, 2018), by subdistrict
 
 
 
@@ -1146,8 +1231,8 @@ The average number of days of flooding recorded for 14 main road flood areas was
     .. raw:: html
 
         <figure>
-        <img alt="Average days of flooding across 14 main road flood areas (bma, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_days_flood.png">
-        <figcaption>Average days of flooding across 14 main road flood areas (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Average days of flooding across 14 main road flood areas (BMA, 2018), by district" src="./../png/Bangkok_ind_district_main_road_flood_days_flood.png">
+        <figcaption>Average days of flooding across 14 main road flood areas (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_main_road_flood_days_flood.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1156,15 +1241,18 @@ The average number of days of flooding recorded for 14 main road flood areas was
        :width: 70%
        :align: center
 
-       Average days of flooding across 14 main road flood areas (bma, 2018), by district
+       Average days of flooding across 14 main road flood areas (BMA, 2018), by district
 
 
 
 
-Vulnerable flood area count (bma, 2018)
+Vulnerable flood area count (BMA, 2018)
 ---------------------------------------
 
 The count of vulnerable flood areas associated with each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
 
 
 
@@ -1175,8 +1263,8 @@ The count of vulnerable flood areas associated with each analysis area was recor
     .. raw:: html
 
         <figure>
-        <img alt="Vulnerable flood area count (bma, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vulnerable_flood_areas.png">
-        <figcaption>Vulnerable flood area count (bma, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vulnerable flood area count (BMA, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_vulnerable_flood_areas.png">
+        <figcaption>Vulnerable flood area count (BMA, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1185,7 +1273,7 @@ The count of vulnerable flood areas associated with each analysis area was recor
        :width: 70%
        :align: center
 
-       Vulnerable flood area count (bma, 2018), by subdistrict
+       Vulnerable flood area count (BMA, 2018), by subdistrict
 
 
 
@@ -1198,8 +1286,8 @@ The count of vulnerable flood areas associated with each analysis area was recor
     .. raw:: html
 
         <figure>
-        <img alt="Vulnerable flood area count (bma, 2018), by district" src="./../png/Bangkok_ind_district_vulnerable_flood_areas.png">
-        <figcaption>Vulnerable flood area count (bma, 2018), by district.         <a href="./../html/Bangkok_ind_district_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Vulnerable flood area count (BMA, 2018), by district" src="./../png/Bangkok_ind_district_vulnerable_flood_areas.png">
+        <figcaption>Vulnerable flood area count (BMA, 2018), by district.         <a href="./../html/Bangkok_ind_district_vulnerable_flood_areas.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1208,7 +1296,7 @@ The count of vulnerable flood areas associated with each analysis area was recor
        :width: 70%
        :align: center
 
-       Vulnerable flood area count (bma, 2018), by district
+       Vulnerable flood area count (BMA, 2018), by district
 
 
 
@@ -1236,17 +1324,16 @@ Data from monitoring stations were prepared by Korn Nitvimol (BMA) and supplied 
 
 **Notes**: From article (Thara Bua Kham Si. 2019.  How many days does Bangkok people live in polluted air, toxic PM2.5 dust? Greenpeace.  January 2019. https://www.greenpeace.org/thailand/story/2122/people-living-with-air-pollution/ accessed 6 July 2019) citing data sourced from Thai Pollution Control Department websites http://air4thai.pcd.go.th and http://aqmthai.com/public_report.php
 
-**Data location relative to project folder**: ./data/_from BMA/20190809/transfer_1673010_files_4a5fe795/air quality in Bangkok 2019 kn 7719.xlsx
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/air quality in Bangkok 2019 kn 7719.xlsx
 
 
-Indicators
-^^^^^^^^^^
-
-
-Monitoring stations (pcd, 2019)
+Monitoring stations (PCD, 2019)
 -------------------------------
 
 The count of monitoring stations in each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
+
 
 
 
@@ -1257,8 +1344,8 @@ The count of monitoring stations in each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Monitoring stations (pcd, 2019), by district" src="./../png/Bangkok_ind_district_pcd_monitoring_stations.png">
-        <figcaption>Monitoring stations (pcd, 2019), by district.         <a href="./../html/Bangkok_ind_district_pcd_monitoring_stations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Monitoring stations (PCD, 2019), by district" src="./../png/Bangkok_ind_district_pcd_monitoring_stations.png">
+        <figcaption>Monitoring stations (PCD, 2019), by district.         <a href="./../html/Bangkok_ind_district_pcd_monitoring_stations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1267,15 +1354,18 @@ The count of monitoring stations in each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Monitoring stations (pcd, 2019), by district
+       Monitoring stations (PCD, 2019), by district
 
 
 
 
-Number of days pm 2.5 exceeds thai standard (50 µg/m³; january 2019, pcd)
+Number of days PM 2.5 exceeds Thai standard (50 µg/m³; January 2019, PCD)
 -------------------------------------------------------------------------
 
 The average number of days PM 2.5 levels exceeded Thai standards during January 2019 were recorded for each analysis area, based on monitoring station records.
+
+Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
+
 
 
 
@@ -1286,8 +1376,8 @@ The average number of days PM 2.5 levels exceeded Thai standards during January 
     .. raw:: html
 
         <figure>
-        <img alt="Number of days pm 2.5 exceeds thai standard (50 µg/m³; january 2019, pcd), by district" src="./../png/Bangkok_ind_district_pm2p5_days_exceeding_thai_standard.png">
-        <figcaption>Number of days pm 2.5 exceeds thai standard (50 µg/m³; january 2019, pcd), by district.         <a href="./../html/Bangkok_ind_district_pm2p5_days_exceeding_thai_standard.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of days PM 2.5 exceeds Thai standard (50 µg/m³; January 2019, PCD), by district" src="./../png/Bangkok_ind_district_pm2p5_days_exceeding_thai_standard.png">
+        <figcaption>Number of days PM 2.5 exceeds Thai standard (50 µg/m³; January 2019, PCD), by district.         <a href="./../html/Bangkok_ind_district_pm2p5_days_exceeding_thai_standard.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1296,15 +1386,18 @@ The average number of days PM 2.5 levels exceeded Thai standards during January 
        :width: 70%
        :align: center
 
-       Number of days pm 2.5 exceeds thai standard (50 µg/m³; january 2019, pcd), by district
+       Number of days PM 2.5 exceeds Thai standard (50 µg/m³; January 2019, PCD), by district
 
 
 
 
-Number of days pm 2.5 exceeds who standard (25 µg/m³; january 2019, pcd)
+Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD)
 ------------------------------------------------------------------------
 
 The average number of days PM 2.5 levels exceeded WHO standards during January 2019 were recorded for each analysis area, based on monitoring station records.
+
+Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
+
 
 
 
@@ -1315,8 +1408,8 @@ The average number of days PM 2.5 levels exceeded WHO standards during January 2
     .. raw:: html
 
         <figure>
-        <img alt="Number of days pm 2.5 exceeds who standard (25 µg/m³; january 2019, pcd), by district" src="./../png/Bangkok_ind_district_pm2p5_days_exceeding_who_standard.png">
-        <figcaption>Number of days pm 2.5 exceeds who standard (25 µg/m³; january 2019, pcd), by district.         <a href="./../html/Bangkok_ind_district_pm2p5_days_exceeding_who_standard.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD), by district" src="./../png/Bangkok_ind_district_pm2p5_days_exceeding_who_standard.png">
+        <figcaption>Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD), by district.         <a href="./../html/Bangkok_ind_district_pm2p5_days_exceeding_who_standard.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1325,7 +1418,7 @@ The average number of days PM 2.5 levels exceeded WHO standards during January 2
        :width: 70%
        :align: center
 
-       Number of days pm 2.5 exceeds who standard (25 µg/m³; january 2019, pcd), by district
+       Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD), by district
 
 
 
@@ -1333,7 +1426,7 @@ The average number of days PM 2.5 levels exceeded WHO standards during January 2
 Food entrepreneurs
 ~~~~~~~~~~~~~~~~~~
 
-Data comprising counts of restaurants, su[permarkets, minimarts, stalls and markets for each district were prepared by Korn Nitvimol (BMA) and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+Data comprising counts of restaurants, supermarkets, minimarts, stalls and markets for each district were prepared by Korn Nitvimol (BMA) and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
 **Data source**: Department of Environment and Sanitation, BMA
 
@@ -1349,17 +1442,16 @@ Data comprising counts of restaurants, su[permarkets, minimarts, stalls and mark
 
 **Scale / Resolution**: locations in districts
 
-**Data location relative to project folder**: ./data/_from BMA/20190820/transfer_1682928_files_504fdeaf/Num of food entrepreneur in Bangkok 2019 -kn15819.xlsx
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190820/transfer_1682928_files_504fdeaf/Num of food entrepreneur in Bangkok 2019 -kn15819.xlsx
 
 
-Indicators
-^^^^^^^^^^
-
-
-Number of restaurants (bma, 2019)
+Number of restaurants (BMA, 2019)
 ---------------------------------
 
 The number of restaurants within each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 11.
+
 
 
 
@@ -1370,8 +1462,8 @@ The number of restaurants within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of restaurants (bma, 2019), by district" src="./../png/Bangkok_ind_district_restaurants.png">
-        <figcaption>Number of restaurants (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of restaurants (BMA, 2019), by district" src="./../png/Bangkok_ind_district_restaurants.png">
+        <figcaption>Number of restaurants (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1380,15 +1472,18 @@ The number of restaurants within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of restaurants (bma, 2019), by district
+       Number of restaurants (BMA, 2019), by district
 
 
 
 
-Number of restaurants per 10,000 population (bma, 2019)
+Number of restaurants per 10,000 population (BMA, 2019)
 -------------------------------------------------------
 
 The number of restaurants per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
+
+Aligns with Sustainable Development Goals: 11.
+
 
 
 
@@ -1399,8 +1494,8 @@ The number of restaurants per 10,000 population within each analysis area was di
     .. raw:: html
 
         <figure>
-        <img alt="Number of restaurants per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_restaurants_per_10k_population.png">
-        <figcaption>Number of restaurants per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of restaurants per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_restaurants_per_10k_population.png">
+        <figcaption>Number of restaurants per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1409,15 +1504,18 @@ The number of restaurants per 10,000 population within each analysis area was di
        :width: 70%
        :align: center
 
-       Number of restaurants per 10,000 population (bma, 2019), by district
+       Number of restaurants per 10,000 population (BMA, 2019), by district
 
 
 
 
-Number of restaurants per square kilometre (bma, 2019)
+Number of restaurants per square kilometre (BMA, 2019)
 ------------------------------------------------------
 
 The number of restaurants per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
+
+Aligns with Sustainable Development Goals: 11.
+
 
 
 
@@ -1428,8 +1526,8 @@ The number of restaurants per square kilometre within each analysis area was div
     .. raw:: html
 
         <figure>
-        <img alt="Number of restaurants per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_restaurants_per_sqkm.png">
-        <figcaption>Number of restaurants per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of restaurants per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_restaurants_per_sqkm.png">
+        <figcaption>Number of restaurants per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_restaurants_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1438,15 +1536,18 @@ The number of restaurants per square kilometre within each analysis area was div
        :width: 70%
        :align: center
 
-       Number of restaurants per square kilometre (bma, 2019), by district
+       Number of restaurants per square kilometre (BMA, 2019), by district
 
 
 
 
-Number of supermarkets (bma, 2019)
+Number of supermarkets (BMA, 2019)
 ----------------------------------
 
 The number of supermarkets within each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1457,8 +1558,8 @@ The number of supermarkets within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of supermarkets (bma, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets.png">
-        <figcaption>Number of supermarkets (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of supermarkets (BMA, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets.png">
+        <figcaption>Number of supermarkets (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1467,15 +1568,18 @@ The number of supermarkets within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of supermarkets (bma, 2019), by district
+       Number of supermarkets (BMA, 2019), by district
 
 
 
 
-Number of supermarkets per 10,000 population (bma, 2019)
+Number of supermarkets per 10,000 population (BMA, 2019)
 --------------------------------------------------------
 
 The number of supermarkets per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1486,8 +1590,8 @@ The number of supermarkets per 10,000 population within each analysis area was d
     .. raw:: html
 
         <figure>
-        <img alt="Number of supermarkets per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets_per_10k_population.png">
-        <figcaption>Number of supermarkets per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of supermarkets per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets_per_10k_population.png">
+        <figcaption>Number of supermarkets per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1496,15 +1600,18 @@ The number of supermarkets per 10,000 population within each analysis area was d
        :width: 70%
        :align: center
 
-       Number of supermarkets per 10,000 population (bma, 2019), by district
+       Number of supermarkets per 10,000 population (BMA, 2019), by district
 
 
 
 
-Number of supermarkets per square kilometre (bma, 2019)
+Number of supermarkets per square kilometre (BMA, 2019)
 -------------------------------------------------------
 
 The number of supermarkets per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1515,8 +1622,8 @@ The number of supermarkets per square kilometre within each analysis area was di
     .. raw:: html
 
         <figure>
-        <img alt="Number of supermarkets per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets_per_sqkm.png">
-        <figcaption>Number of supermarkets per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of supermarkets per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_supermarkets_per_sqkm.png">
+        <figcaption>Number of supermarkets per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_supermarkets_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1525,15 +1632,18 @@ The number of supermarkets per square kilometre within each analysis area was di
        :width: 70%
        :align: center
 
-       Number of supermarkets per square kilometre (bma, 2019), by district
+       Number of supermarkets per square kilometre (BMA, 2019), by district
 
 
 
 
-Number of minimarts (bma, 2019)
+Number of minimarts (BMA, 2019)
 -------------------------------
 
 The number of minimarts within each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1544,8 +1654,8 @@ The number of minimarts within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of minimarts (bma, 2019), by district" src="./../png/Bangkok_ind_district_minimarts.png">
-        <figcaption>Number of minimarts (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of minimarts (BMA, 2019), by district" src="./../png/Bangkok_ind_district_minimarts.png">
+        <figcaption>Number of minimarts (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1554,15 +1664,18 @@ The number of minimarts within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of minimarts (bma, 2019), by district
+       Number of minimarts (BMA, 2019), by district
 
 
 
 
-Number of minimarts per 10,000 population (bma, 2019)
+Number of minimarts per 10,000 population (BMA, 2019)
 -----------------------------------------------------
 
 The number of minimarts per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1573,8 +1686,8 @@ The number of minimarts per 10,000 population within each analysis area was divi
     .. raw:: html
 
         <figure>
-        <img alt="Number of minimarts per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_minimarts_per_10k_population.png">
-        <figcaption>Number of minimarts per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of minimarts per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_minimarts_per_10k_population.png">
+        <figcaption>Number of minimarts per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1583,15 +1696,18 @@ The number of minimarts per 10,000 population within each analysis area was divi
        :width: 70%
        :align: center
 
-       Number of minimarts per 10,000 population (bma, 2019), by district
+       Number of minimarts per 10,000 population (BMA, 2019), by district
 
 
 
 
-Number of minimarts per square kilometre (bma, 2019)
+Number of minimarts per square kilometre (BMA, 2019)
 ----------------------------------------------------
 
 The number of minimarts per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1602,8 +1718,8 @@ The number of minimarts per square kilometre within each analysis area was divid
     .. raw:: html
 
         <figure>
-        <img alt="Number of minimarts per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_minimarts_per_sqkm.png">
-        <figcaption>Number of minimarts per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of minimarts per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_minimarts_per_sqkm.png">
+        <figcaption>Number of minimarts per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_minimarts_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1612,15 +1728,18 @@ The number of minimarts per square kilometre within each analysis area was divid
        :width: 70%
        :align: center
 
-       Number of minimarts per square kilometre (bma, 2019), by district
+       Number of minimarts per square kilometre (BMA, 2019), by district
 
 
 
 
-Number of stalls (bma, 2019)
+Number of stalls (BMA, 2019)
 ----------------------------
 
 The number of stalls within each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1631,8 +1750,8 @@ The number of stalls within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of stalls (bma, 2019), by district" src="./../png/Bangkok_ind_district_stalls.png">
-        <figcaption>Number of stalls (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of stalls (BMA, 2019), by district" src="./../png/Bangkok_ind_district_stalls.png">
+        <figcaption>Number of stalls (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1641,15 +1760,18 @@ The number of stalls within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of stalls (bma, 2019), by district
+       Number of stalls (BMA, 2019), by district
 
 
 
 
-Number of stalls per 10,000 population (bma, 2019)
+Number of stalls per 10,000 population (BMA, 2019)
 --------------------------------------------------
 
 The number of stalls per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1660,8 +1782,8 @@ The number of stalls per 10,000 population within each analysis area was divided
     .. raw:: html
 
         <figure>
-        <img alt="Number of stalls per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_stalls_per_10k_population.png">
-        <figcaption>Number of stalls per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of stalls per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_stalls_per_10k_population.png">
+        <figcaption>Number of stalls per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1670,15 +1792,18 @@ The number of stalls per 10,000 population within each analysis area was divided
        :width: 70%
        :align: center
 
-       Number of stalls per 10,000 population (bma, 2019), by district
+       Number of stalls per 10,000 population (BMA, 2019), by district
 
 
 
 
-Number of stalls per square kilometre (bma, 2019)
+Number of stalls per square kilometre (BMA, 2019)
 -------------------------------------------------
 
 The number of stalls per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1689,8 +1814,8 @@ The number of stalls per square kilometre within each analysis area was divided 
     .. raw:: html
 
         <figure>
-        <img alt="Number of stalls per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_stalls_per_sqkm.png">
-        <figcaption>Number of stalls per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of stalls per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_stalls_per_sqkm.png">
+        <figcaption>Number of stalls per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_stalls_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1699,15 +1824,18 @@ The number of stalls per square kilometre within each analysis area was divided 
        :width: 70%
        :align: center
 
-       Number of stalls per square kilometre (bma, 2019), by district
+       Number of stalls per square kilometre (BMA, 2019), by district
 
 
 
 
-Number of markets (bma, 2019)
+Number of markets (BMA, 2019)
 -----------------------------
 
 The number of markets within each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1718,8 +1846,8 @@ The number of markets within each analysis area was recorded.
     .. raw:: html
 
         <figure>
-        <img alt="Number of markets (bma, 2019), by district" src="./../png/Bangkok_ind_district_markets.png">
-        <figcaption>Number of markets (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of markets (BMA, 2019), by district" src="./../png/Bangkok_ind_district_markets.png">
+        <figcaption>Number of markets (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1728,15 +1856,18 @@ The number of markets within each analysis area was recorded.
        :width: 70%
        :align: center
 
-       Number of markets (bma, 2019), by district
+       Number of markets (BMA, 2019), by district
 
 
 
 
-Number of markets per 10,000 population (bma, 2019)
+Number of markets per 10,000 population (BMA, 2019)
 ---------------------------------------------------
 
 The number of markets per 10,000 population within each analysis area was divided by the population within that area divided by 10,000 and then recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1747,8 +1878,8 @@ The number of markets per 10,000 population within each analysis area was divide
     .. raw:: html
 
         <figure>
-        <img alt="Number of markets per 10,000 population (bma, 2019), by district" src="./../png/Bangkok_ind_district_markets_per_10k_population.png">
-        <figcaption>Number of markets per 10,000 population (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of markets per 10,000 population (BMA, 2019), by district" src="./../png/Bangkok_ind_district_markets_per_10k_population.png">
+        <figcaption>Number of markets per 10,000 population (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets_per_10k_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1757,15 +1888,18 @@ The number of markets per 10,000 population within each analysis area was divide
        :width: 70%
        :align: center
 
-       Number of markets per 10,000 population (bma, 2019), by district
+       Number of markets per 10,000 population (BMA, 2019), by district
 
 
 
 
-Number of markets per square kilometre (bma, 2019)
+Number of markets per square kilometre (BMA, 2019)
 --------------------------------------------------
 
 The number of markets per square kilometre within each analysis area was divided by the size of the area in square kilometres and then recorded.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
 
 
 
@@ -1776,8 +1910,8 @@ The number of markets per square kilometre within each analysis area was divided
     .. raw:: html
 
         <figure>
-        <img alt="Number of markets per square kilometre (bma, 2019), by district" src="./../png/Bangkok_ind_district_markets_per_sqkm.png">
-        <figcaption>Number of markets per square kilometre (bma, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of markets per square kilometre (BMA, 2019), by district" src="./../png/Bangkok_ind_district_markets_per_sqkm.png">
+        <figcaption>Number of markets per square kilometre (BMA, 2019), by district.         <a href="./../html/Bangkok_ind_district_markets_per_sqkm.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1786,7 +1920,7 @@ The number of markets per square kilometre within each analysis area was divided
        :width: 70%
        :align: center
 
-       Number of markets per square kilometre (bma, 2019), by district
+       Number of markets per square kilometre (BMA, 2019), by district
 
 
 

@@ -18,47 +18,29 @@ Now, we install `Docker`_, a tool which helps to install a raft of other require
 
 (now there is the tricky bit to do with project directory and data structure... A git repository sorts out the folder structure, but how about the data?  Should we host it somewhere? Git LFS?  We'll gloss over this for now)
 
-With these pre-requisites met, we can open up cmd.exe or PowerShell to the ind_bangkok project directory and at the command line type the following to change directory to the Docker set up script, run this and return to the main script directory:
+With these pre-requisites met, we can open up the windows command prompt (cmd.exe) or PowerShell to the ind_bangkok project directory and set up the computational environment, set up the project database, and commence analysis.
+
+Set up the computational environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From the project directory, enter the following command:
 
 .. code-block:: text
-   :linenos: 
    
-   cd ./process/docker
-   docker build -t ind_bangkok .
-   cd ../..
+   _compile_docker.bat
 
-The above step which sets up an isolated 'container' or computational environment with software for spatial analysis and visualisation will take some time.  This container is called 'ind_bangkok'. Once successfully complete, we can set up a seperate spatial database container (`PostgreSQL with PostGIS and PgRouting`_):
+The above step sets up an isolated 'container' or computational environment with software for spatial analysis and visualisation.  This will take some time.  This container is called 'ind_bangkok'.
+
+Set up the project database
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A seperate Docker container is set up for running the project database and associate software (`PostgreSQL with PostGIS and PgRouting`_).  This is the immediate location where indicators and spatial data are stored once processed.  Mapping programs like QGIS may connect to this database in order to map indicators, once processed.
+
+To set up the project database, enter the following command: 
 
 .. code-block:: text
    
    docker pull cityseer/postgis
-   
-To initialise the running of the spatial database in the background on your system you can execute the following:
-
-.. code-block:: text
-
-   docker run --name=pg_spatial -d -e PG_USER=hlc -e PG_PASSWORD=huilhuil!42 -e DB_NAME=ind_bangkok -p 127.0.0.1:5433:5432  --restart=unless-stopped --volume=/var/lib/pg_spatial:/postgresql/11/main cityseer/postgis:latest
-
-We are now ready to commence analysis!  To launch the ind_bangkok computational environment, type `ind_bangkok` in the ind_bangkok project's root directory.  Then type `cd process` to move into the script folder.
-
-Other operations
-~~~~~~~~~~~~~~~~
-
-# connect to database
-psql -p 5433 -h host.docker.internal -U postgres
-# database back up
-pg_dump postgresql://postgres:'huilhuil!42'@host.docker.internal:5433/li_bangkok_2018 > li_bangkok_2018.sql
-
-
-# run analysis environment as Bash command prompt (as root)
-docker run --rm -it -u 0 --name ind_bangkok --net=host -v %cd%:/home/jovyan/work ind_bangkok /bin/bash 
-
-# run analysis environment as Bash command prompt (as jovyan; ie. the default Jupyter notebook user)
-docker run --rm -it -u jovyan --name ind_bangkok --shm-size 2g --net=host -v %cd%:/home/jovyan/work ind_bangkok /bin/bash 
-
-# run analysis environment as Jupyter Lab (note - not yet conversing properly with database)
-docker run --rm -it --name ind_bangkok -p 8888:8888  -p 5433:5433 -v %cd%:/home/jovyan/work ind_bangkok
-
 
 .. _Windows subsystem for linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 .. _Ubuntu: https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows#0

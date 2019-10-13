@@ -3,12 +3,10 @@
 Database creation
 ~~~~~~~~~~~~~~~~~
 
-::
-
-    Script:  00_create_database.py
-    Purpose: Facilitate creation of a PostgreSQL database 
-    Authors: Carl Higgs
-    Context: Used to create database and related settings for creation of liveability indicators
+Script:  
+    00_create_database.py
+Purpose: 
+    Facilitate creation of a PostgreSQL database and related settings for creation of liveability indicators
 
 """
 

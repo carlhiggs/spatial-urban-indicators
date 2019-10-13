@@ -7,16 +7,6 @@ Script:
     _create_documentation.py
 Purpose: 
     Render the project documentation, based on the project configuration file and outputs.
-Authors: 
-    Carl Higgs
-    
-Inds not currently including:
-
-
-
-
-
-
 
 """
 
@@ -131,7 +121,7 @@ def generate_metadata_rst(ind_metadata):
         if ds.iloc[0].purpose=='population':
             # add description for further usage by indicators
             rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
-            rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
+            # rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
             for popi in population_items:
                 rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,popi[0],'-'*len(popi[0]))
                 for level in ['district','subdistrict']:
@@ -140,8 +130,8 @@ def generate_metadata_rst(ind_metadata):
                         sdg = ''
                         rst = '{}\r\n\r\n'.format(rst)
                     else:
-                        sdg = popi[2].split(',')
-                        rst = '{}\r\n\r\nAligns with Sustainable Development Goals {}.r\nr\n'.format(rst,method,sdg)
+                        sdg = popi[2]
+                        rst = '{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,sdg)
                     # todo: implement SDG code
                     map_code = (
                                 '\r\n'
@@ -174,7 +164,10 @@ def generate_metadata_rst(ind_metadata):
                 method = df_ind.iloc[0].method_description_ind
                 sdg = df_ind.iloc[0].sdg
                 # to do - parse SDG numbers and add in hyperlink
-                rst = '{}\r\n{}\r\nAligns with Sustainable Development Goals {}.r\n'.format(rst,method,sdg)
+                if str(sdg) not in ['','nan']:
+                    rst = '{}\r\n{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,method,sdg)
+                else:
+                    rst = '{}\r\n{}\r\n\r\n'.format(rst,method)
                 levels = df_ind.linkage_layer.unique()
                 # map_scale_text = f'View maps for {full_locale} at available scales:'
                 for level in df_ind.linkage_layer.unique(): 

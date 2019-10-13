@@ -3,22 +3,14 @@
 Population mapping
 ~~~~~~~~~~~~~~~~~~
 
-::
-
-    Script:  02_create_population.py
-    Purpose: 1) Import population raster and calculate values for polygons; 
-             2) Map population
-    Authors: Carl Higgs
-    Note:    The raster population method of this script has been commented 
-             out for Bangkok purposes, due to preference for agreed upon area 
-             level statistics for population.  As such, this script functions 
-             to map the population data and statistics processed in the study 
-             region creation script.
+Script:  
+    02_create_population.py
+Purpose: 
+    1) Import population raster and calculate values for polygons; 
+    2) Map population
 
 """
 
-import rasterio
-from rasterio.mask import mask
 import geopandas as gpd
 from geoalchemy2 import Geometry, WKTElement
 import folium
@@ -63,8 +55,6 @@ def main():
         # format to display superscript 2 for square kilometres
         for f in pop_data_fields_full:
             column_names[f] = f.replace('sqkm','km\u00B2')
-        # compile map attribution text
-        attribution = '{} | {} | {}'.format(map_attribution,areas[area]['attribution'],population_linkage[analysis_scale]['attribution'])
         # get study region map data for setting up map location
         map_data={}
         sql = '''SELECT ST_Transform(ST_Buffer(geom,3),4326) geom FROM {}'''.format(study_region)
@@ -94,6 +84,8 @@ def main():
                 map_name = '{}_02_population_{}_{}'.format(locale,area,field.replace('km\u00B2','sqkm').replace(' ','_'))
                 print("{}...".format(map_name))           
                 # initialise map
+                # compile map attribution text
+                attribution = '{} | {} | {}'.format(map_attribution,areas[area]['attribution'],population_linkage[analysis_scale]['attribution'])
                 m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
                 # Add in location names
                 folium.TileLayer(tiles='http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png',

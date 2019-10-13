@@ -3,11 +3,10 @@
 Define study region
 ~~~~~~~~~~~~~~~~~~~
 
-::
-
-    Script:  01_study_region_setup.py
-    Purpose: Python set up study region boundaries and associated population resources
-    Author:  Carl Higgs
+Script:  
+    01_study_region_setup.py
+Purpose: 
+    Python set up study region boundaries and associated population resources
 
 """
 
@@ -132,7 +131,8 @@ def main():
     engine.execute('''
     DROP TABLE IF EXISTS {buffered_study_region}; 
     CREATE TABLE {buffered_study_region} AS 
-          SELECT '{buffered_study_region_name}'::text AS "Study region buffer", 
+          SELECT '{study_region}'::text AS "region",
+                 '{buffered_study_region_name}'::text AS "Study region buffer", 
                  ST_Transform(ST_Buffer(geom,{buffer}),4326) AS geom_4326,
                  ST_Buffer(geom,{buffer}) AS geom 
             FROM {study_region};
@@ -149,9 +149,9 @@ def main():
         if not os.path.exists(path):
             os.makedirs(path)   
     
-    map_attribution = '{} | {}'.format(map_attribution,areas[area]['attribution'])
+    attribution = '{} | {}'.format(map_attribution,areas[area]['attribution'])
     # if population_linkage != {}:
-        # map_attribution = '{} | {}'.format(map_attribution,population_linkage[analysis_scale]['attribution'])
+        # attribution = '{} | {}'.format(attribution,population_linkage[analysis_scale]['attribution'])
     
     
     map_layers={}
@@ -179,7 +179,7 @@ def main():
                                 "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
                                 "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                                 "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                                "under ODbL.").format(map_attribution))
+                                "under ODbL.").format(attribution))
                                     ).add_to(m)
                             
     # add layers (not true choropleth - for this it is just a convenient way to colour polygons)

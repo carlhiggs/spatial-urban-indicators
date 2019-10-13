@@ -7,8 +7,6 @@ Script:
     _create_raster_indicators.py
 Purpose: 
     Create indicators from raster data sources based on aggregation to vector boundaries, from specification in datasets section of configuration file
-Authors: 
-    Carl Higgs
 
 """
 
@@ -29,7 +27,7 @@ from folium import plugins
 # import branca
 import psycopg2
 import json
-
+import matplotlib.pyplot as plt
 
 from script_running_log import script_running_log
 
@@ -92,14 +90,15 @@ def main():
         raster_clipped  = f'{dataset}_clipped.tif'
         raster_projected  = f'{dataset}_projected.tif'
         raster_band = int(df.loc[row,'raster_band'])
-        raster_mult = int(df.loc[row,'raster_mult'])
-        raster_offset = int(df.loc[row,'raster_offset'])
+        # raster_mult = int(df.loc[row,'raster_mult'])
+        raster_offset = float(df.loc[row,'raster_offset'])
         raster_nodata = int(df.loc[row,'raster_nodata'])
-        raster_range = [int(x) for x in df.loc[row,'raster_range'].split(',')]
-        if len(raster_range) == 2:
-            scale_factor = (1/raster_range[1]) * raster_mult
-        else:
-            scale_factor = 1
+        scale_factor = float(df.loc[row,'scale_factor'])
+        # raster_range = [int(x) for x in df.loc[row,'raster_range'].split(',')]
+        # if len(raster_range) == 2:
+            # scale_factor = (1/raster_range[1]) * raster_mult
+        # else:
+            # scale_factor = 1
         raster_dtype = df.loc[row,'data_type'].split(":")[1]
         # potential_column_width = len(map_field)
         # if potential_column_width < pd.get_option("display.max_colwidth"):
@@ -325,12 +324,13 @@ def main():
             # ie. no data over water, display as though 'zero' so it does not show
             raster_layer[raster_layer==raster_nodata] = 0
             raster_layer = scale_factor*(raster_layer + raster_offset)
+        # colormap=lambda x: (0, x, 0, x),#R,G,B,alpha,
         m.add_child(folium.raster_layers.ImageOverlay(raster_layer, 
                             name=source_name,
                             opacity=.7,
                             bounds=[[boundary[1],boundary[0]], 
                                     [boundary[3], boundary[2]]],
-                                    colormap=lambda x: (0, x, 0, x),#R,G,B,alpha,
+                            colormap=plt.get_cmap('YlGn'), 
                             legend_name=source_name,
                             overlay=True,
                             show=False

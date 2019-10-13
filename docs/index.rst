@@ -7,8 +7,8 @@ Urban Liveability in Bangkok
 Project documentation
 *********************
 .. toctree::
-   :maxdepth: 3
-   :caption: Contents:
+   :maxdepth: 4
+   :caption: Project documentation:
    
    about
    outputs
@@ -19,9 +19,8 @@ Technical documentation
 ***********************
 .. toctree::
    :maxdepth: 3
-   :caption: Contents:
+   :caption: Technical documentation:
    
    installation
    setup
    methods
-   genindex

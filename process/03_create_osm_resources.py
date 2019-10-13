@@ -32,7 +32,7 @@ def main():
     
     # create polygon boundary .poly file for extracting OSM             
     print("Create poly file, using command: "),
-    locale_poly = 'poly_10km_study_region_buffer.poly'
+    locale_poly = 'poly_{}.poly'.format(study_region)
     feature = (
      'PG:"dbname={db} host={host} port={port} user={user} password={pwd}" {layer}'
      ).format(db  = db, 
@@ -41,7 +41,7 @@ def main():
               user= db_user, 
               pwd = db_pwd, 
               layer = buffered_study_region)
-    command = 'python ogr2poly.py {feature} -f Description'.format(feature = feature)
+    command = 'python ogr2poly.py {feature} -f region'.format(feature = feature)
     print(command)
     sp.call(command, shell=True)
     command = 'mv {poly} {dir}/{poly}'.format(dir = locale_dir,poly = locale_poly)
