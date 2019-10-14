@@ -37,21 +37,21 @@ curs = conn.cursor()
 # Define tags for which presence of values is suggestive of some kind of open space 
 # These are defined in the _project_configuration worksheet 'open_space_defs' under the 'possible_os_tags' column.
 
-os_landuse = "'{}'".format("','".join([x.encode('utf') for x in df_osm["os_landuse"].dropna().tolist()]))
-os_boundary = "'{}'".format("','".join([x.encode('utf') for x in df_osm["os_boundary"].dropna().tolist()]))
+os_landuse  = "'{}'".format("','".join([str(x) for x in df_osm["os_landuse"].dropna().tolist()]))
+os_boundary = "'{}'".format("','".join([str(x) for x in df_osm["os_boundary"].dropna().tolist()]))
 
 specific_inclusion = 'p.{}'.format('\nOR p.'.join(df_osm['specific_inclusion'].dropna().tolist()))
 excluded_keys = '\nOR '.join(df_osm['exclusion_key'].dropna().apply(lambda x:'{var} IS NOT NULL'.format(var = x)).tolist())
 excluded_values = '\nOR '.join(df_osm[['exclusion_field','exclusion_list']].dropna().apply(lambda x:'"{var}" IN {list}'.format(var = x[0],list = x[1]),axis =1))
 exclusion_criteria = '{excluded_keys} \nOR {excluded_values}'.format(excluded_keys = excluded_keys,excluded_values=excluded_values)
 
-water_features = ','.join(["'{}'".format(x.encode('utf')) for x in df_osm["water_tags_for_natural_landuse_leisure"].dropna().tolist()])
-water_sports = ','.join(["'{}'".format(x.encode('utf')) for x in df_osm["water_sports"].dropna().tolist()])
-linear_waterway = ','.join(["'{}'".format(x.encode('utf')) for x in df_osm["linear_waterway"].dropna().tolist()])
+water_features  = ','.join(["'{}'".format(x) for x in df_osm["water_tags_for_natural_landuse_leisure"].dropna().tolist()])
+water_sports    = ','.join(["'{}'".format(x) for x in df_osm["water_sports"].dropna().tolist()])
+linear_waterway = ','.join(["'{}'".format(x) for x in df_osm["linear_waterway"].dropna().tolist()])
 
-linear_feature_criteria = '\n '.join(['{}'.format(x.encode('utf')) for x in df_osm["linear_feature_criteria"].dropna().tolist()])
+linear_feature_criteria = '\n '.join(['{}'.format(x) for x in df_osm["linear_feature_criteria"].dropna().tolist()])
 
-identifying_tags = ','.join(["'{}'".format(x.encode('utf')) for x in df_osm["identifying_tags_to_exclude_other_than_%name%"].dropna().tolist()])
+identifying_tags = ','.join(["'{}'".format(x) for x in df_osm["identifying_tags_to_exclude_other_than_%name%"].dropna().tolist()])
 exclude_tags_like_name = '''(SELECT array_agg(tags) from (SELECT DISTINCT(skeys(tags)) tags FROM open_space) t WHERE tags ILIKE '%name%')'''
 
 not_public_space = '({})'.format(','.join(df_osm["public_not_in"].dropna().tolist()))
@@ -63,7 +63,7 @@ additional_public_criteria = additional_public_criteria)
 # JSONB version of the query
 # public_space = '\n'.join(df_osm['public_field'].dropna().apply(lambda x:"AND (obj -> '{var}' IS NULL OR obj ->> '{var}' NOT IN {list})".format(var = x,list = not_public_space)).tolist())
     
-os_add_as_tags = ',\n'.join(['"{}"'.format(x.encode('utf')) for x in df_osm["os_add_as_tags"].dropna().tolist()])
+os_add_as_tags = ',\n'.join(['"{}"'.format(x) for x in df_osm["os_add_as_tags"].dropna().tolist()])
 
 
 aos_setup = ['''
@@ -232,55 +232,15 @@ WHERE o.linear_feature IS TRUE
   AND o.os_id != alt.os_id;
 ''',
 '''
--- Set up OS for distinction based on location within a school
-ALTER TABLE open_space ADD COLUMN in_school boolean; 
-UPDATE open_space SET in_school = FALSE;
-UPDATE open_space SET in_school = TRUE 
-  FROM school_polys 
- WHERE ST_CoveredBy(open_space.geom,school_polys.geom);
-ALTER TABLE open_space ADD COLUMN is_school boolean; 
-UPDATE open_space SET is_school = FALSE;
-''',
-'''
--- Insert school polygons in open space, restricting to relevant de-identified subset of tags (ie. no school names, contact details, etc)
-ALTER TABLE open_space ADD COLUMN school_tags jsonb; 
-INSERT INTO open_space (amenity,area_ha,school_tags,tags,is_school,geom)
-SELECT  amenity,
-        area_ha,
-        school_tags,
-        slice(tags, 
-              ARRAY['amenity',
-                    'designation'     ,
-                    'fee'             ,
-                    'grades'          ,
-                    'isced'           ,
-                    'school:gender'   ,
-                    'school:enrolment',
-                    'school:selective',
-                    'school:specialty']),
-        is_school,
-        geom
-FROM school_polys;
-''',
-'''
 -- Remove potentially identifying tags from records
 UPDATE open_space SET tags =  tags - {exclude_tags_like_name} - ARRAY[{identifying_tags}]
 ;
 '''.format(exclude_tags_like_name = exclude_tags_like_name,
            identifying_tags = identifying_tags),   
 '''
--- Create variable to indicate public access
+-- Create variable to indicate public access, default of True
 ALTER TABLE open_space ADD COLUMN IF NOT EXISTS public_access boolean; 
-UPDATE open_space SET public_access = FALSE;
-UPDATE open_space SET public_access = TRUE 
- WHERE is_school = FALSE
-   AND in_school = FALSE
- {and_public_space_criteria}
- ---- NOTE: the following criteria are for Melbourne test purposes but may not be appropriate nationally
- -- hence, commented out
- --AND (amenity IS NULL OR amenity NOT IN ('swimming_pool','swimming'))
- --AND (leisure IS NULL OR leisure NOT IN ('swimming_pool','swimming'))
- --AND (sport IS NULL OR sport NOT IN ('swimming_pool','swimming'))
+UPDATE open_space SET public_access = TRUE;
  ;
 '''.format(and_public_space_criteria = public_space),
  '''
@@ -326,15 +286,8 @@ UPDATE open_space SET geom_not_public = geom WHERE public_access = FALSE;
 ''',
 '''
 -- Create Areas of Open Space (AOS) table
--- this includes schools and contains indicators to differentiate schools, and parks within schools
--- the 'geom' attributes is the area within an AOS not including a school
+-- the 'geom' attributes is the area within an AOS 
 --    -- this is what we want to use to evaluate collective OS area within the AOS (aos_ha)
--- the 'geom' attribute is the area including the school (so if there is no school, this is equal to geom)
---    -- this is what we will use to create entry nodes for the parks (as otherwise school ovals would be inaccessible)
--- School AOS features 
---    -- can always be excluded from analysis, or an analysis can be restricted to focus on these.
---    -- contains a subset of anonymised tags present for the school itself 
---    -- specifically, 'designation', 'fee', 'grades', 'isced', 'school:gender', 'school:enrolment', 'school:selective', 'school:specialty'
 
 DROP TABLE IF EXISTS open_space_areas; 
 CREATE TABLE open_space_areas AS 
@@ -349,8 +302,6 @@ WITH clusters AS(
             AND (acceptable_linear_feature IS TRUE
                  OR 
                  linear_feature IS FALSE)))
-       AND in_school IS FALSE 
-       AND is_school IS FALSE
        AND (linear_feature IS FALSE 
             OR 
             (acceptable_linear_feature IS TRUE
@@ -362,24 +313,13 @@ WITH clusters AS(
      WHERE public_access IS FALSE
        AND within_public IS FALSE
        AND linear_waterway IS NULL
-  ----  This implicitly includes schools unless the following code is uncommented
-  --     AND in_school IS FALSE 
-  --     AND is_school IS FALSE
-  -- UNION
-  --   SELECT  unnest(ST_ClusterWithin(school_os.geom, .001)) AS gc
-  --     FROM open_space AS school_os 
-  --    WHERE (in_school IS TRUE 
-  --       OR is_school IS TRUE)
-  --      AND linear_waterway IS NULL
   UNION
     SELECT  linear_os.geom AS gc
       FROM open_space AS linear_os 
      WHERE (linear_feature IS TRUE 
        AND acceptable_linear_feature IS FALSE
-       AND in_school IS FALSE 
-       AND is_school IS FALSE)
        AND public_access IS TRUE
-       AND linear_waterway IS NULL
+       AND linear_waterway IS NULL)
   UNION
     SELECT  waterway_os.geom AS gc
       FROM open_space AS waterway_os 
@@ -391,7 +331,6 @@ WITH clusters AS(
 SELECT cluster_id as aos_id, 
        jsonb_agg(jsonb_strip_nulls(to_jsonb((SELECT d FROM (SELECT {os_add_as_tags}) d)) 
          || hstore_to_jsonb(tags) 
-         || jsonb_build_object('school_tags',school_tags) 
          || jsonb_build_object('tags_line',tags_line)
          || jsonb_build_object('tags_point',tags_point))) AS attributes,
        COUNT(1) AS numgeom,
@@ -411,7 +350,6 @@ CREATE INDEX idx_aos_jsb ON open_space_areas USING GIN (attributes);
 -- Create variable for AOS size 
 ALTER TABLE open_space_areas ADD COLUMN aos_ha_public double precision; 
 ALTER TABLE open_space_areas ADD COLUMN aos_ha_not_public double precision; 
--- note aos_ha_total includes school area
 ALTER TABLE open_space_areas ADD COLUMN aos_ha double precision; 
 ALTER TABLE open_space_areas ADD COLUMN aos_ha_water double precision; 
 ''',
@@ -439,13 +377,12 @@ UPDATE open_space_areas SET water_percent = 100 * aos_ha_water/aos_ha::numeric W
 ''',
 '''
 -- Create a linestring aos table 
--- the 'school_bounds' prereq feature un-nests the multipolygons to straight polygons, so we can take their exterior rings
 DROP TABLE IF EXISTS aos_line;
 CREATE TABLE aos_line AS 
-WITH school_bounds AS
+WITH bounds AS
    (SELECT aos_id, ST_SetSRID(st_astext((ST_Dump(geom)).geom),{srid}) AS geom  FROM open_space_areas)
 SELECT aos_id, ST_Length(geom)::numeric AS length, geom    
-FROM (SELECT aos_id, ST_ExteriorRing(geom) AS geom FROM school_bounds) t;
+FROM (SELECT aos_id, ST_ExteriorRing(geom) AS geom FROM bounds) t;
 '''.format(srid=srid),
 '''
 -- Generate a point every 20m along a park outlines: 

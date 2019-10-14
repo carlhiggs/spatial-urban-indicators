@@ -158,9 +158,9 @@ def main():
 
     print("Create network topology...")
     sql = '''
-    ALTER TABLE edges ADD COLUMN "source" INTEGER;
-    ALTER TABLE edges ADD COLUMN "target" INTEGER;
-    --SELECT pgr_createTopology('edges',0.000001,'geom','ogc_fid');
+    ALTER TABLE edges ADD COLUMN IF NOT EXISTS "source" INTEGER;
+    ALTER TABLE edges ADD COLUMN IF NOT EXISTS "target" INTEGER;
+    --SELECT pgr_createTopology('edges',0.0001,'geom','ogc_fid');
     '''
     engine.execute(sql)      
     curs.execute("SELECT MIN(ogc_fid), MAX(ogc_fid) FROM edges;")
@@ -172,17 +172,17 @@ def main():
     for x in range(min_id, max_id+1, interval):
         curs = conn.cursor()
         curs.execute(
-        f"select pgr_createTopology('edges', 0.000001, 'geom', 'ogc_fid', rows_where:='id>={x} and id<{x+interval}');"
-    )
+        f"select pgr_createTopology('edges', 0.0001, 'geom', 'ogc_fid', rows_where:='ogc_fid>={x} and ogc_fid<{x+interval}');"
+        )
         conn.commit()
         x_max = x + interval - 1
         if x_max > max_id:
             x_max = max_id
-        print(f"edges {x} - {x_max} have be processed")
+        print(f"edges {x} - {x_max} processed")
         
     sql = '''
-    CREATE INDEX edges_source_idx ON edges("source");
-    CREATE INDEX edges_target_idx ON edges("target");
+    CREATE INDEX IF NOT EXISTS edges_source_idx ON edges("source");
+    CREATE INDEX IF NOT EXISTS edges_target_idx ON edges("target");
     '''
     engine.execute(sql)
     engine.execute(grant_query)      
