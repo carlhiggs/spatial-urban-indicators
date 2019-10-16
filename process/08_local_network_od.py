@@ -3,7 +3,6 @@
 # Authors: Carl Higgs
 # Date: 20190208
 
-import arcpy, arcinfo
 import os
 import time
 import multiprocessing
@@ -33,13 +32,14 @@ curs = conn.cursor()
 curs.execute("SELECT count(*) FROM edges_vertices_pgr;")
 goal = list(curs)[0][0]
 curs.execute('''
-  SELECT id 
-  FROM   local_network_3200m n
-  LEFT JOIN edges_vertices_pgr e ON n.from_v = e.id
-  WHERE e.id IS NULL;
+  SELECT DISTINCT(from_v) 
+  FROM local_network_3200m
+  ORDER BY from_v ASC;
   ''')
-processed_id_list = list(curs)[0][0]
-if len(processed_id_list)==0:
+
+processed_id_list = [x[0] for x in list(curs)]
+processed = len(processed_id_list)
+if processed==0:
   processed_id_list = [0]
     
 
@@ -55,40 +55,47 @@ def process_local_network(from_id):
         print("SQL connection error")
         print(sys.exc_info()[1])
         return 100
-    to_id = from_id+1000
-    id_list_to_process = [x in range(from_id,to_id) if x not in processed_id_list]
-    last_id = max(id_list_to_process)
-    count = len(id_list_to_process)
-    sql = f'''
-         INSERT INTO local_network_3200m
-      SELECT from_v,node,edge,agg_cost
-      FROM pgr_drivingDistance(
-          'SELECT ogc_fid AS id, source, target, length::float8 as cost FROM edges',
-         [{id_list_to_process}],
-          3200,
-          false
-          )
-      ;
-     '''                       
-    curs.execute(sql)
-    conn.commit()       
-    place = "update progress (post OD matrix results, successful)"
-    # update current progress
-    curs.execute(f'''UPDATE {progress_table} SET processed = processed+{count}''')
+    try:   
+        to_id = from_id+1000
+        id_list_to_process = [x for x in range(from_id,to_id) if x not in processed_id_list]
+        if len(id_list_to_process) > 0:
+            last_id = max(id_list_to_process)
+            count = len(id_list_to_process)
+            id_array = ','.join([str(x) for x in id_list_to_process])
+            place = 'before local network query'
+            sql = f'''
+              INSERT INTO local_network_3200m
+              SELECT from_v,node,edge,agg_cost
+              FROM pgr_drivingDistance(
+                  'SELECT ogc_fid AS id, source, target, length::float8 as cost FROM edges',
+                  ARRAY[{id_array}],
+                 3200,
+                  false
+                  )
+              ;
+             '''      
+            # print(sql)
+            curs.execute(sql)
+            conn.commit()       
+            place = "update progress (post OD matrix results, successful)"
+            # update current progress
+            curs.execute(f'''UPDATE {progress_table} SET processed = processed+{count}''')
             conn.commit()
-    place = "check progress"
-    curs.execute(f'''SELECT processed from {progress_table}''')
-    progress = int(list(curs)[0][0])
-    place = 'final progress'
-    time = time.strftime("%Y%m%d-%H%M%S")
-    progressor(progress,
-               goal,
-               start,
-               f'''{progress}/{goal}; last id processed: {last_id}, at {time}''')) 
-  except:
-      print('''Error: {}\nPlace: {}'''.format( sys.exc_info(),place))  
-  finally:
-      conn.close()
+        else:
+            last_id = max(processed_id_list)
+        place = "check progress"
+        curs.execute(f'''SELECT processed from {progress_table}''')
+        progress = int(list(curs)[0][0])
+        place = 'final progress'
+        completion_time = time.strftime("%Y%m%d-%H%M%S")
+        progressor(progress,
+                   goal,
+                   start,
+                   f'''{progress}/{goal}; last id processed: {last_id}, at {completion_time}''') 
+    except:
+        print('''Error: {}\nPlace: {}'''.format( sys.exc_info(),place))  
+    finally:
+        conn.close()
     
 # MAIN PROCESS
 if __name__ == '__main__':
@@ -114,31 +121,30 @@ if __name__ == '__main__':
   place_to_start = min(processed_id_list)
   
   print("Create a table for tracking progress... "), 
-  create_progress_table = '''
+  create_progress_table = f'''
     DROP TABLE IF EXISTS {progress_table};
     CREATE TABLE IF NOT EXISTS {progress_table} (processed int);
-    INSERT INTO {progress_table} SELECT count(*) processed FROM {result_table};
-    '''.format(progress_table = progress_table,
-               result_table = result_table)
+    INSERT INTO {progress_table} (processed) VALUES ({processed});
+    '''
   # print(create_progress_table)
   curs.execute(create_progress_table)
   conn.commit()
   print("Done.")
-  evaluate_progress = '''
-   SELECT processed FROM {};
-  '''.format(progress_table)
+  evaluate_progress = f'''
+   SELECT processed FROM {progress_table};
+  '''
   curs.execute(evaluate_progress)
   processed = list(curs)[0][0] # assumes processing was not prematurely truncated
 
   if processed < goal:
     print("Commence multiprocessing..."),
     # Parallel processing setting
-    pool = multiprocessing.Pool(processes=nWorkers)
+    pool = multiprocessing.Pool(processes=cpu_count)
     # get list of ids over which to iterate
     # this assumes that the ids are sequential integers
-    iteration_list = [i*1000 for i in range(place_to_start,(goal+1000)/1000)]
-    # # Iterate process over hexes across nWorkers
-    divvy_load = math.ceil(len(iteration_list)/nWorkers)
+    iteration_list = [i*1000 for i in range(place_to_start,int((goal+1000)/1000))]
+    # # Iterate process over hexes across cpu_count
+    divvy_load = math.ceil(len(iteration_list)/cpu_count)
     pool.map(process_local_network, iteration_list, chunksize=divvy_load)
     evaluate_progress = '''
      SELECT processed FROM {};
