@@ -72,6 +72,7 @@ def process_local_network(from_id):
                  3200,
                   false
                   )
+              ON CONFLICT (id) DO NOTHING
               ;
              '''      
             # print(sql)
@@ -118,8 +119,6 @@ if __name__ == '__main__':
   curs.execute(create_results_table)
   conn.commit()
   
-  place_to_start = min(processed_id_list)
-  
   print("Create a table for tracking progress... "), 
   create_progress_table = f'''
     DROP TABLE IF EXISTS {progress_table};
@@ -138,6 +137,7 @@ if __name__ == '__main__':
 
   if processed < goal:
     print("Commence multiprocessing..."),
+    place_to_start = min(processed_id_list)
     # Parallel processing setting
     pool = multiprocessing.Pool(processes=cpu_count)
     # get list of ids over which to iterate
@@ -150,7 +150,7 @@ if __name__ == '__main__':
      SELECT processed FROM {};
     '''.format(progress_table)
     curs.execute(evaluate_progress)
-    processed = list(curs)[0]
+    processed = list(curs)[0][0]
     if processed < goal:
       print('''
       The script has finished running, however the number of results processed {} is still less than the goal{}.  
@@ -170,4 +170,12 @@ if __name__ == '__main__':
   if processed == goal:
     # this script will only be marked as successfully complete if the number of results processed matches the completion goal.
     script_running_log(script, task, start, locale)
+  print("Processing completed.\nCreating indices...",)           
+  sql = '''
+  CREATE INDEX IF NOT EXISTS local_network_3200m_idx   ON local_network_3200m("from_v",agg_cost);
+  CREATE INDEX IF NOT EXISTS local_network_3200m_edge  ON local_network_3200m("edge");
+  '''
+  curs.execute(sql)
+  conn.commit()
+  print("Done.")
   conn.close()

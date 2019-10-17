@@ -225,7 +225,7 @@ def main():
         WITH line AS 
                 (SELECT
                     ogc_fid,
-                    (ST_Dump(ST_Transform(geom,32647))).geom AS geom
+                    (ST_Dump(ST_Transform(geom,{srid}))).geom AS geom
                 FROM edges),
             linemeasure AS
                 (SELECT
