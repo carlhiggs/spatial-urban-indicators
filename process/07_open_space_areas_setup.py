@@ -58,7 +58,7 @@ not_public_space = '({})'.format(','.join(df_osm["public_not_in"].dropna().tolis
 additional_public_criteria = '({})'.format(' '.join(df_osm["additional_public_criteria"].dropna().tolist()))
 
 public_space = '\n'.join(df_osm['public_field'].dropna().apply(lambda x:'AND ("{var}" IS NULL OR "{var}" NOT IN {list})'.format(var = x,list = not_public_space)).tolist())
-public_space = '{public_space} AND {additional_public_criteria}'.format(public_space = public_space,
+public_space = '{additional_public_criteria} {public_space}'.format(public_space = public_space,
 additional_public_criteria = additional_public_criteria)
 # JSONB version of the query
 # public_space = '\n'.join(df_osm['public_field'].dropna().apply(lambda x:"AND (obj -> '{var}' IS NULL OR obj ->> '{var}' NOT IN {list})".format(var = x,list = not_public_space)).tolist())
@@ -66,15 +66,14 @@ additional_public_criteria = additional_public_criteria)
 os_add_as_tags = ',\n'.join(['"{}"'.format(x) for x in df_osm["os_add_as_tags"].dropna().tolist()])
 
 
-aos_setup = ['''
+aos_setup = [f'''
 -- Create a 'Not Open Space' table
 DROP TABLE IF EXISTS not_open_space;
 CREATE TABLE not_open_space AS 
 SELECT ST_Union(geom) AS geom FROM {osm_prefix}_polygon p 
 WHERE {exclusion_criteria};
-'''.format(osm_prefix = osm_prefix, 
-           exclusion_criteria = exclusion_criteria),
-'''
+''',
+f'''
 -- Create an 'Open Space' table
 DROP TABLE IF EXISTS open_space;
 CREATE TABLE open_space AS 
@@ -82,10 +81,7 @@ SELECT p.* FROM {osm_prefix}_polygon p
 WHERE ({specific_inclusion}
        OR p.landuse IN ({os_landuse})
        OR p.boundary IN ({os_boundary}));
-'''.format(osm_prefix = osm_prefix, 
-           specific_inclusion = specific_inclusion,
-           os_landuse = os_landuse,
-           os_boundary = os_boundary),
+''',
 '''
 -- Create unique POS id and add indices
 ALTER TABLE open_space ADD COLUMN os_id SERIAL PRIMARY KEY;         
@@ -106,13 +102,13 @@ DELETE FROM open_space WHERE ST_IsEmpty(geom);
 ALTER TABLE open_space ADD COLUMN area_ha double precision; 
 UPDATE open_space SET area_ha = ST_Area(geom)/10000.0;
 ''',
-'''
+f'''
 -- Create variable for associated line tags
 ALTER TABLE open_space ADD COLUMN tags_line jsonb; 
 WITH tags AS ( 
 SELECT o.os_id,
        jsonb_strip_nulls(to_jsonb((SELECT d FROM (SELECT l.amenity,l.leisure,l."natural",l.tourism,l.waterway) d)))AS attributes 
-FROM {osm_prefix}_line  l,open_space o'''.format(osm_prefix = osm_prefix)+
+FROM {osm_prefix}_line  l,open_space o''' +
 '''
 WHERE ST_Intersects (l.geom,o.geom) )
 UPDATE open_space o SET tags_line = attributes
@@ -125,13 +121,13 @@ WHERE o.os_id = t.os_id
   AND t.attributes IS NOT NULL
 ;
 ''',
-'''
+f'''
 -- Create variable for associated point tags
 ALTER TABLE open_space ADD COLUMN tags_point jsonb; 
 WITH tags AS ( 
 SELECT o.os_id,
        jsonb_strip_nulls(to_jsonb((SELECT d FROM (SELECT l.amenity,l.leisure,l."natural",l.tourism,l.historic) d)))AS attributes 
-FROM {osm_prefix}_point l,open_space o'''.format(osm_prefix = osm_prefix)+
+FROM {osm_prefix}_point l,open_space o''' +
 '''
 WHERE ST_Intersects (l.geom,o.geom) )
 UPDATE open_space o SET tags_point = attributes
@@ -144,7 +140,7 @@ WHERE o.os_id = t.os_id
   AND t.attributes IS NOT NULL
 ;
 ''',
-'''
+f'''
  -- Create water feature indicator
 ALTER TABLE open_space ADD COLUMN water_feature boolean;
 UPDATE open_space SET water_feature = FALSE;
@@ -158,16 +154,15 @@ UPDATE open_space SET water_feature = TRUE
       OR water IS NOT NULL 
       OR waterway IS NOT NULL 
       OR wetland IS NOT NULL;
-'''.format(water_features = water_features,
-           water_sports = water_sports),
-'''
+''',
+f'''
 ALTER TABLE open_space ADD COLUMN linear_waterway boolean; 
 UPDATE open_space SET linear_waterway = TRUE
  WHERE waterway IN ({linear_waterway}) 
     OR "natural" IN ({linear_waterway}) 
     OR landuse IN ({linear_waterway})
     OR leisure IN ({linear_waterway}) ;
-'''.format(linear_waterway = linear_waterway),
+''',
 '''
 -- Create variable for AOS water geometry
 ALTER TABLE open_space ADD COLUMN water_geom geometry; 
@@ -185,13 +180,13 @@ UPDATE open_space SET min_bounding_circle_diameter = 2*sqrt(min_bounding_circle_
 ALTER TABLE open_space ADD COLUMN roundness double precision; 
 UPDATE open_space SET roundness = ST_Area(geom)/(ST_Area(ST_MinimumBoundingCircle(geom)));
 ''',
-'''
+f'''
 -- Create indicator for linear features informed through EDA of OS topology
 ALTER TABLE open_space ADD COLUMN linear_feature boolean;
 UPDATE open_space SET linear_feature = FALSE;
 UPDATE open_space SET linear_feature = TRUE 
 WHERE {linear_feature_criteria};
-'''.format(linear_feature_criteria=linear_feature_criteria),
+''',
 '''
 ---- Create 'Acceptable Linear Feature' indicator
 ALTER TABLE open_space ADD COLUMN acceptable_linear_feature boolean;
@@ -231,18 +226,18 @@ WHERE o.linear_feature IS TRUE
   AND st_area(st_intersection(o.geom,alt.geom))/10000.0 > 0.4
   AND o.os_id != alt.os_id;
 ''',
-'''
+f'''
 -- Remove potentially identifying tags from records
 UPDATE open_space SET tags =  tags - {exclude_tags_like_name} - ARRAY[{identifying_tags}]
 ;
-'''.format(exclude_tags_like_name = exclude_tags_like_name,
-           identifying_tags = identifying_tags),   
-'''
+''',   
+f'''
 -- Create variable to indicate public access, default of True
 ALTER TABLE open_space ADD COLUMN IF NOT EXISTS public_access boolean; 
-UPDATE open_space SET public_access = TRUE;
+UPDATE open_space SET public_access = TRUE
+WHERE {public_space}
  ;
-'''.format(and_public_space_criteria = public_space),
+''',
  '''
  -- Check if area is within an indicated public access area
  ALTER TABLE open_space ADD COLUMN within_public boolean;
@@ -284,7 +279,7 @@ ALTER TABLE open_space ADD COLUMN IF NOT EXISTS geom_not_public geometry;
 UPDATE open_space SET geom_public = geom WHERE public_access = TRUE;
 UPDATE open_space SET geom_not_public = geom WHERE public_access = FALSE;
 ''',
-'''
+f'''
 -- Create Areas of Open Space (AOS) table
 -- the 'geom' attributes is the area within an AOS 
 --    -- this is what we want to use to evaluate collective OS area within the AOS (aos_ha)
@@ -341,7 +336,7 @@ SELECT cluster_id as aos_id,
        FROM open_space
        INNER JOIN unclustered USING(geom)
        GROUP BY cluster_id;   
-'''.format(os_add_as_tags = os_add_as_tags),
+''',
 ''' 
 CREATE UNIQUE INDEX aos_idx ON open_space_areas (aos_id);  
 CREATE INDEX idx_aos_jsb ON open_space_areas USING GIN (attributes);
@@ -375,7 +370,7 @@ ALTER TABLE open_space_areas ADD COLUMN water_percent numeric;
 UPDATE open_space_areas SET water_percent = 0; 
 UPDATE open_space_areas SET water_percent = 100 * aos_ha_water/aos_ha::numeric WHERE aos_ha > 0; 
 ''',
-'''
+f'''
 -- Create a linestring aos table 
 DROP TABLE IF EXISTS aos_line;
 CREATE TABLE aos_line AS 
@@ -383,7 +378,7 @@ WITH bounds AS
    (SELECT aos_id, ST_SetSRID(st_astext((ST_Dump(geom)).geom),{srid}) AS geom  FROM open_space_areas)
 SELECT aos_id, ST_Length(geom)::numeric AS length, geom    
 FROM (SELECT aos_id, ST_ExteriorRing(geom) AS geom FROM bounds) t;
-'''.format(srid=srid),
+''',
 '''
 -- Generate a point every 20m along a park outlines: 
 DROP TABLE IF EXISTS aos_nodes; 
@@ -402,7 +397,7 @@ CREATE INDEX aos_nodes_idx ON aos_nodes USING GIST (geom);
 ALTER TABLE aos_nodes ADD COLUMN aos_entryid varchar; 
 UPDATE aos_nodes SET aos_entryid = aos_id::text || ',' || node::text; 
 ''',
-'''
+f'''
 -- Create table of points within 30m of lines (should be your road network) 
 -- Distinct is used to avoid redundant duplication of points where they are within 20m of multiple roads 
 DROP TABLE IF EXISTS aos_nodes_30m_line;
@@ -411,7 +406,7 @@ SELECT DISTINCT n.*
 FROM aos_nodes n, 
      edges l
 WHERE ST_DWithin(n.geom ,l.geom,30);
-'''.format(osm_prefix = osm_prefix),
+''',
 '''
 -- Create subset data for public_open_space_areas
 DROP TABLE IF EXISTS aos_public_osm;

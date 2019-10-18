@@ -1,6 +1,6 @@
 # Bangkok Liveability #
 
-This repository contains the processes used in the Bangkok Liveability indicators project, 2019.
+This repository contains the processes used to create preliminary dataset resources in the  Bangkok liveability (2019) indicators project. It is based on scripts developed from the HLC national liveability indicators (2017-19) project.
 
 ### How do I get set up? ###
 
@@ -19,42 +19,33 @@ cd ../..
 * set up spatial database container, based on Postgis
 
 ```
-docker pull mdillon/postgis
+docker pull cityseer/postgis
 ```
 
 
 * run postgis server container
 
 ```
-docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=huilhuil!42 -e POSTGRES_DBNAME=ind_bangkok  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql mdillon/postgis
+docker run --name=pg_spatial -d -e PG_USER=hlc -e PG_PASSWORD=password -e DB_NAME=ind_bangkok -p 127.0.0.1:5433:5432 --restart=unless-stopped --volume=/var/lib/pg_spatial:/postgresql/11/main cityseer/postgis:latest
 ```
 
 * run analysis environment from Bash
 
 ```
-docker run --rm -it -u 0 --name ind_bangkok --net=host -v %cd%:/home/jovyan/work ind_bangkok /bin/bash 
+docker run --rm -it -u jovyan --name ind_bangkok --shm-size 2g --net=host -v %cd%:/home/jovyan/work ind_bangkok /bin/bash 
 ```
 
-### Progress ###
-The scripts in the 'process' folder have been brought in from a seperate Australia based national project.  They are in the process of being re-factored for a more stream-lined and generalised workflow.
+### To process ###
 
-Currently, the following have been part way updated for the Bangkok workflow:
+The scripts are run sequentially, after collating project data resources and defining these as well as study region and project parameters in the project set up file  _project_configuration.xlsx.
 
-* ./process/_project_configuration.xlsx
-
-* ./process/_project_setup.py
-
-* ./process/00_create_database.py
-
-* ./process/01_create_study_region.py
-
-* ./process/02_create_population.py
-
-* ./process/docker/*
-
-* ./process/_environment_setup.sh
-
-
+00_create_database.py
+01_create_study_region.py
+02_create_osm_resources.py
+03_create_network_resources.py
+04_create_sample_points.py
+05_compile_destinations.py
+06_open_space_areas_setup.py
 
 ### Contact ###
 
