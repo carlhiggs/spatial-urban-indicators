@@ -25,29 +25,6 @@ from script_running_log import script_running_log
 
 # Import custom variables for National Liveability indicator process
 from _project_setup import *
-
-def expand_indicators(df):
-    d = df.copy()
-    d.rate = d.rate.str.split(',')
-    d = d.explode('rate')
-    d['rate_scale'] = d.rate.apply(lambda x: str(x).split(':')[-1]).replace(['nan','overall'],'1').astype('float')
-    d.rate = d.rate.apply(lambda x: str(x).split(':')[0]).replace(['nan','overall'],'').str.strip()
-    d['rate_units'] = d.rate.replace('area','km²').replace('households','household')
-    d.index = d.index + d.rate.apply(lambda x: ('', '_per_'+x)[x != ''])
-    d.table_out_name = d.table_out_name + d.rate.apply(lambda x: ('', '_rate_'+x)[x != ''])
-    for field in ['alias','name_f','map_heading']:
-        d[field] = d.apply(lambda x: (x[field], x[field] +' per {}'.format(
-                                                                (x.rate_units,'{:,g} {}'.format(x.rate_scale,x.rate_units))[x.rate_scale!=1]
-                                                              ))[x['rate'] != ''],
-                                      axis=1)
-    d.method_description_ind = d.apply(lambda x: (x['method_description_ind'], 
-                                                  x['method_description_ind'] 
-                                                        + '  The indicator was rated as the rate per {}.'.format(
-                                                                (x.rate_units,'{:,g} {}'.format(x.rate_scale,x.rate_units))[x.rate_scale!=1]
-                                                              ))[x['rate'] != ''],
-                                       axis=1) 
-    
-    return(d)
     
 def main():
     # simple timer for log file
