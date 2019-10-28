@@ -24,6 +24,7 @@ from _project_setup import *
 def get_ind_metadata():
     # find and return records for all indicator data sources with a defined indicator method description
     df = df_datasets.loc[df_datasets['method_description_ind'].fillna('')!='',].copy()
+    df = expand_indicators(df)
     df['map'] = df.loc[:,'table_out_name'].apply(lambda x: f'{locale}_ind_{x}')
     df['description'] = df.apply(lambda x: '{}: {}'.format(x["map_heading"],x["map_field"]),axis=1)
     return df
@@ -88,110 +89,113 @@ def generate_metadata_rst(ind_metadata):
     ]
     # defined page heading as first line
     rst = 'Indicators\r\n==========\r\n'
-    for d in ind_metadata.data_name.unique():
-        # create heading for dataset
-        rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,d,'~'*len(d))
-        ds = ind_metadata.query(f'data_name == "{d}"').copy()
-        # add description for dataset
-        rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_data)
-        for i in data_items:
-            if '{}'.format(ds.iloc[0][i[0]]) not in ['','nan']:
-                rst = '{}\r\n**{}**: {}\r\n'.format(rst,i[1],ds.iloc[0][i[0]])
-        if ds.iloc[0].purpose=='boundaries':
-            # add description for further usage by indicators
-            rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
-            map_code = (
-                        '\r\n'
-                        '.. only:: html\r\n\r\n'
-                        '    .. raw:: html\r\n\r\n'
-                        '        <figure>\r\n'
-                        '        <img alt="{description}" src="./../png/{map}.png">\r\n'
-                        '        <figcaption>{description}. '
-                        '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
-                        '        </figure><br>\r\n\r\n'
-                        '.. only:: latex\r\n\r\n'
-                        '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
-                        '       :width: 70%\r\n'
-                        '       :align: center\r\n\r\n'
-                        '       {description}\r\n\r\n'
-                        ).format(description = f'{full_locale} study region',
-                                         map = '{}_01_study_region'.format(locale),
-                                 study_region = study_region)
-            rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
-        if ds.iloc[0].purpose=='population':
-            # add description for further usage by indicators
-            rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
-            # rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
-            for popi in population_items:
-                rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,popi[0],'-'*len(popi[0]))
-                for level in ['district','subdistrict']:
-                    pop_map = popi[1].format(locale=locale,level=level)
-                    if len(popi)==2:
-                        sdg = ''
-                        rst = '{}\r\n\r\n'.format(rst)
+    for dimension in ind_metadata.dimension.unique()
+        # create heading for dimension
+        rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,dimension,'>'*len(dimension))
+        for d in ind_metadata.data_name.unique():
+            # create heading for dataset
+            rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,d,'~'*len(d))
+            ds = ind_metadata.query(f'dimension == "{dimension}" & data_name == "{d}"').copy()
+            # add description for dataset
+            rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_data)
+            for i in data_items:
+                if '{}'.format(ds.iloc[0][i[0]]) not in ['','nan']:
+                    rst = '{}\r\n**{}**: {}\r\n'.format(rst,i[1],ds.iloc[0][i[0]])
+            if ds.iloc[0].purpose=='boundaries':
+                # add description for further usage by indicators
+                rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
+                map_code = (
+                            '\r\n'
+                            '.. only:: html\r\n\r\n'
+                            '    .. raw:: html\r\n\r\n'
+                            '        <figure>\r\n'
+                            '        <img alt="{description}" src="./../png/{map}.png">\r\n'
+                            '        <figcaption>{description}. '
+                            '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
+                            '        </figure><br>\r\n\r\n'
+                            '.. only:: latex\r\n\r\n'
+                            '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
+                            '       :width: 70%\r\n'
+                            '       :align: center\r\n\r\n'
+                            '       {description}\r\n\r\n'
+                            ).format(description = f'{full_locale} study region',
+                                             map = '{}_01_study_region'.format(locale),
+                                     study_region = study_region)
+                rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
+            if ds.iloc[0].purpose=='population':
+                # add description for further usage by indicators
+                rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
+                # rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
+                for popi in population_items:
+                    rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,popi[0],'-'*len(popi[0]))
+                    for level in ['district','subdistrict']:
+                        pop_map = popi[1].format(locale=locale,level=level)
+                        if len(popi)==2:
+                            sdg = ''
+                            rst = '{}\r\n\r\n'.format(rst)
+                        else:
+                            sdg = popi[2]
+                            rst = '{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,sdg)
+                        # todo: implement SDG code
+                        map_code = (
+                                    '\r\n'
+                                    '.. only:: html\r\n\r\n'
+                                    '    .. raw:: html\r\n\r\n'
+                                    '        <figure>\r\n'
+                                    '        <img alt="{description}" src="./../png/{map}.png">\r\n'
+                                    '        <figcaption>{description}. '
+                                    '        <a href="./../html/{map}.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>\r\n'
+                                    '        </figure><br>\r\n\r\n'
+                                    '.. only:: latex\r\n\r\n'
+                                    '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
+                                    '       :width: 70%\r\n'
+                                    '       :align: center\r\n\r\n'
+                                    '       {description}\r\n\r\n'
+                                    ).format(description = '{}, by {}'.format(popi[0],level).capitalize(),
+                                             map = pop_map.capitalize(),
+                                             study_region = study_region)
+                        rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
+            if ds.iloc[0].purpose=='indicators':
+                # create heading for indicators
+                # rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
+                for ind in ds.method_description_ind.unique():
+                    df_ind = ds.query(f'method_description_ind == "{ind}"').copy()
+                    # create heading for specific indicator
+                    a = df_ind.iloc[0].alias
+                    a = a[:1].upper() + a[1:]
+                    rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,a,'-'*len(a))
+                    # add indicator method description
+                    method = df_ind.iloc[0].method_description_ind
+                    sdg = df_ind.iloc[0].sdg
+                    # to do - parse SDG numbers and add in hyperlink
+                    if str(sdg) not in ['','nan']:
+                        rst = '{}\r\n{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,method,sdg)
                     else:
-                        sdg = popi[2]
-                        rst = '{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,sdg)
-                    # todo: implement SDG code
-                    map_code = (
-                                '\r\n'
-                                '.. only:: html\r\n\r\n'
-                                '    .. raw:: html\r\n\r\n'
-                                '        <figure>\r\n'
-                                '        <img alt="{description}" src="./../png/{map}.png">\r\n'
-                                '        <figcaption>{description}. '
-                                '        <a href="./../html/{map}.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>\r\n'
-                                '        </figure><br>\r\n\r\n'
-                                '.. only:: latex\r\n\r\n'
-                                '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
-                                '       :width: 70%\r\n'
-                                '       :align: center\r\n\r\n'
-                                '       {description}\r\n\r\n'
-                                ).format(description = '{}, by {}'.format(popi[0],level).capitalize(),
-                                         map = pop_map.capitalize(),
-                                         study_region = study_region)
-                    rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
-        if ds.iloc[0].purpose=='indicators':
-            # create heading for indicators
-            # rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
-            for ind in ds.method_description_ind.unique():
-                df_ind = ds.query(f'method_description_ind == "{ind}"').copy()
-                # create heading for specific indicator
-                a = df_ind.iloc[0].alias
-                a = a[:1].upper() + a[1:]
-                rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,a,'-'*len(a))
-                # add indicator method description
-                method = df_ind.iloc[0].method_description_ind
-                sdg = df_ind.iloc[0].sdg
-                # to do - parse SDG numbers and add in hyperlink
-                if str(sdg) not in ['','nan']:
-                    rst = '{}\r\n{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,method,sdg)
-                else:
-                    rst = '{}\r\n{}\r\n\r\n'.format(rst,method)
-                levels = df_ind.linkage_layer.unique()
-                # map_scale_text = f'View maps for {full_locale} at available scales:'
-                for level in df_ind.linkage_layer.unique(): 
-                    ind_map = 'bangkok_ind_{}'.format(df_ind.loc[df_ind.linkage_layer==level].table_out_name.to_list()[0])
-                    rst = '{}\r\n\r\n'.format(rst)
-                    map_code = (
-                                '\r\n'
-                                '.. only:: html\r\n\r\n'
-                                '    .. raw:: html\r\n\r\n'
-                                '        <figure>\r\n'
-                                '        <img alt="{description}" src="./../png/{map}.png">\r\n'
-                                '        <figcaption>{description}. '
-                                '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
-                                '        </figure><br>\r\n\r\n'
-                                '.. only:: latex\r\n\r\n'
-                                '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
-                                '       :width: 70%\r\n'
-                                '       :align: center\r\n\r\n'
-                                '       {description}\r\n\r\n'
-                                ).format(description = f'{a}, by {level}',
-                                         map = ind_map.capitalize(),
-                                         study_region = study_region)
-                    rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
-    return(rst)
+                        rst = '{}\r\n{}\r\n\r\n'.format(rst,method)
+                    levels = df_ind.linkage_layer.unique()
+                    # map_scale_text = f'View maps for {full_locale} at available scales:'
+                    for level in df_ind.linkage_layer.unique(): 
+                        ind_map = 'bangkok_ind_{}'.format(df_ind.loc[df_ind.linkage_layer==level].table_out_name.to_list()[0])
+                        rst = '{}\r\n\r\n'.format(rst)
+                        map_code = (
+                                    '\r\n'
+                                    '.. only:: html\r\n\r\n'
+                                    '    .. raw:: html\r\n\r\n'
+                                    '        <figure>\r\n'
+                                    '        <img alt="{description}" src="./../png/{map}.png">\r\n'
+                                    '        <figcaption>{description}. '
+                                    '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
+                                    '        </figure><br>\r\n\r\n'
+                                    '.. only:: latex\r\n\r\n'
+                                    '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
+                                    '       :width: 70%\r\n'
+                                    '       :align: center\r\n\r\n'
+                                    '       {description}\r\n\r\n'
+                                    ).format(description = f'{a}, by {level}',
+                                             map = ind_map.capitalize(),
+                                             study_region = study_region)
+                        rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
+        return(rst)
 
 def get_sphinx_conf_header():
     import time
