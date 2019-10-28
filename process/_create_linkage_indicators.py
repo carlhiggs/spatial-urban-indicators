@@ -26,6 +26,29 @@ from script_running_log import script_running_log
 # Import custom variables for National Liveability indicator process
 from _project_setup import *
 
+def expand_indicators(df):
+    d = df.copy()
+    d.rate = d.rate.str.split(',')
+    d = d.explode('rate')
+    d['rate_scale'] = d.rate.apply(lambda x: str(x).split(':')[-1]).replace(['nan','overall'],'1').astype('float')
+    d.rate = d.rate.apply(lambda x: str(x).split(':')[0]).replace(['nan','overall'],'').str.strip()
+    d['rate_units'] = d.rate.replace('area','km²').replace('households','household')
+    d.index = d.index + d.rate.apply(lambda x: ('', '_per_'+x)[x != ''])
+    d.table_out_name = d.table_out_name + d.rate.apply(lambda x: ('', '_rate_'+x)[x != ''])
+    for field in ['alias','name_f','map_heading']:
+        d[field] = d.apply(lambda x: (x[field], x[field] +' per {}'.format(
+                                                                (x.rate_units,'{:,g} {}'.format(x.rate_scale,x.rate_units))[x.rate_scale!=1]
+                                                              ))[x['rate'] != ''],
+                                      axis=1)
+    d.method_description_ind = d.apply(lambda x: (x['method_description_ind'], 
+                                                  x['method_description_ind'] 
+                                                        + '  The indicator was rated as the rate per {}.'.format(
+                                                                (x.rate_units,'{:,g} {}'.format(x.rate_scale,x.rate_units))[x.rate_scale!=1]
+                                                              ))[x['rate'] != ''],
+                                       axis=1) 
+    
+    return(d)
+    
 def main():
     # simple timer for log file
     start = time.time()
@@ -42,7 +65,7 @@ def main():
                       
     # retrieve subset of datasets which are files to be joined based on linkage
     df = df_datasets[df_datasets.index.str.startswith('linkage:')]
-    
+    df = expand_indicators(df)
     # get key fields from the specified population dataset
     population = pandas.read_csv(population_linkage[analysis_scale]['data'],index_col=population_linkage[analysis_scale]['linkage']) 
     population_numeric = [c for c in population.columns if np.issubdtype(population[c].dtype, np.number)]
@@ -74,7 +97,9 @@ def main():
         point_overlay_xy = df.loc[row,'point_overlay_xy']
         display_id = area_layer
         map_field = df.loc[row,'map_field']
-        density = df.loc[row,'density']
+        rate = df.loc[row,'rate']
+        rate_units = df.loc[row,'rate_units']
+        rate_scale = df.loc[row,'rate_scale']
         if aggregation not in ['','nan']:
             potential_column_width = len(map_field) 
         else:
@@ -130,50 +155,23 @@ def main():
             elif not '{}'.format(description)=='nan':
                 print("\t\tNo aggregation method specified; assuming that all records map to distinct areas.")
                 mdf = mdf[[map_field]]
-            if population_linkage != {} and str(density) not in ['','nan']:
-                density_field = df.loc[row,'alias']
-                # some sort of density calculation has been requested and must be processed
-                if density.startswith('population'):
-                    if len(density.split('.'))== 1:
-                        # default for population density is per 10,000 population
-                        density_units = 10000.0
-                    else:
-                        density_units = float(density.split('.')[1])
+            if rate != '':
+                if rate in ['area','population','household']:
+                    density_field = df.loc[row,'alias']
+                    rate_variable =  globals()['rate_{}'.format(rate)]
                     sql = '''
-                        SELECT a.{area}_id,
-                               population
-                        FROM {area} a
-                        '''.format(area = area_layer,
-                                   data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                                   data = map_name_suffix,
-                                   map_field = map_field,
-                                   id = linkage_id)
+                            SELECT a.{area}_id,
+                                   {field}
+                            FROM {area} a
+                            '''.format(area = area_layer,
+                                       field = rate_variable)
                     area_data = pandas.read_sql(sql, engine, index_col=f'{area_layer}_id')
                     mdf = mdf.join(area_data)
-                    mdf[density_field] = mdf[map_field]/(mdf['population']/density_units)
-                    mdf.drop(['population',map_field], axis=1, inplace=True)
-                elif density.startswith('sqkm'):
-                    if len(density.split('.'))==1:
-                        # default for area density is per sqkm
-                        density_units = 1.0
-                    else:
-                        density_units = float(density.split('.')[1])
-                    sql = '''
-                        SELECT a.{area}_id,
-                               area_sqkm
-                        FROM {area} a
-                        '''.format(area = area_layer,
-                                   data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                                   data = map_name_suffix,
-                                   map_field = map_field,
-                                   id = linkage_id)
-                    area_data = pandas.read_sql(sql, engine, index_col=f'{area_layer}_id')
-                    mdf = mdf.join(area_data)
-                    mdf[density_field] = mdf[map_field]/(mdf['area_sqkm']/density_units)
-                    mdf.drop(['area_sqkm',map_field], axis=1, inplace=True)
+                    mdf[density_field] = mdf[map_field]/(mdf[rate_variable]/rate_scale)
+                    mdf.drop([rate_variable,map_field], axis=1, inplace=True)
+                    map_field = density_field
                 else:
                     print(f'undefined density "{density}"; please check configuration for this indicator')
-                map_field = density_field
             # we create an alternate description field as it may be that the map_field variable is > 63 characters 
             # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
             # with the 
