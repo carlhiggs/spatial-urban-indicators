@@ -28,12 +28,6 @@ def get_ind_metadata():
     df['map'] = df.loc[:,'table_out_name'].apply(lambda x: f'{locale}_ind_{x}')
     df['description'] = df.apply(lambda x: '{}: {}'.format(x["map_heading"],x["map_field"]),axis=1)
     return df
-
-# def get_ind_metadata(prefix='linkage:'):
-    # df = df_datasets[df_datasets.index.str.startswith(prefix)].copy()
-    # df['map'] = df.loc[:,'table_out_name'].apply(lambda x: f'{locale}_ind_{x}')
-    # df['description'] = df.apply(lambda x: '{}: {}'.format(x["map_heading"],x["map_field"]),axis=1)
-    # return df[['map','description']]
     
 def create_html_select(ind_metadata):
     map_descriptions = ind_metadata.loc[ind_metadata['purpose']=='indicators',['map','description']].copy()
@@ -89,12 +83,17 @@ def generate_metadata_rst(ind_metadata):
     ]
     # defined page heading as first line
     rst = 'Indicators\r\n==========\r\n'
-    for dimension in ind_metadata.dimension.unique()
-        # create heading for dimension
-        rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,dimension,'>'*len(dimension))
-        for d in ind_metadata.data_name.unique():
+    dimensions = ind_metadata.dimension.unique()
+    dimensions.sort()
+    for dimension in dimensions:
+        dimension_text = dimension[3:]
+        # create heading for dimension 
+        rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,dimension_text,'~'*len(dimension_text))
+        for d in ind_metadata.loc[ind_metadata.dimension==dimension,'data_name'].unique():
+            print('{}: {}'.format(dimension,d))
             # create heading for dataset
-            rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,d,'~'*len(d))
+            if d != dimension_text:
+                rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,d,'-'*len(d))
             ds = ind_metadata.query(f'dimension == "{dimension}" & data_name == "{d}"').copy()
             # add description for dataset
             rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_data)
@@ -156,14 +155,12 @@ def generate_metadata_rst(ind_metadata):
                                              study_region = study_region)
                         rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
             if ds.iloc[0].purpose=='indicators':
-                # create heading for indicators
-                # rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
                 for ind in ds.method_description_ind.unique():
                     df_ind = ds.query(f'method_description_ind == "{ind}"').copy()
                     # create heading for specific indicator
                     a = df_ind.iloc[0].alias
                     a = a[:1].upper() + a[1:]
-                    rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,a,'-'*len(a))
+                    rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,a,'>'*len(a))
                     # add indicator method description
                     method = df_ind.iloc[0].method_description_ind
                     sdg = df_ind.iloc[0].sdg
@@ -195,7 +192,7 @@ def generate_metadata_rst(ind_metadata):
                                              map = ind_map.capitalize(),
                                              study_region = study_region)
                         rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
-        return(rst)
+    return(rst)
 
 def get_sphinx_conf_header():
     import time

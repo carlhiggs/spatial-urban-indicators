@@ -83,7 +83,7 @@ latex_elements = {
 }
 
 # Enable a draft watermark
-sphinxmark_enable = True
+sphinxmark_enable = False
 sphinxmark_div = 'document'
 sphinxmark_image = 'text'
 sphinxmark_text = 'BETA'

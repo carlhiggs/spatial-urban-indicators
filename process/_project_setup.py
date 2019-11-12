@@ -51,6 +51,7 @@ for var in [x for x in  df_parameters.index.values]:
     globals()[var] = df_parameters.loc[var][locale]
 # full_locale = df_parameters.loc['full_locale'][locale]
 df_datasets.name_s = df_datasets.name_s.fillna('')
+df_datasets.dimension = df_datasets.dimension.fillna('')
 df_datasets = df_datasets.query(
      '(purpose == "indicators" | purpose == "population" | purpose == "boundaries") & '
     f'target_region=="{full_locale}" & '

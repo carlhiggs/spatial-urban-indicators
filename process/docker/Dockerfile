@@ -99,6 +99,7 @@ RUN conda config --set show_channel_urls true                                   
  && conda install --strict-channel-priority --update-all --force-reinstall --yes \ 
       osmnx python-igraph psycopg2 geoalchemy2 rasterio xarray                   \
       folium sphinx xlrd geckodriver selenium seaborn bokeh                      \
+      rasterstats pandana                                                        \
  && conda install -y --channel conda-forge --force-reinstall proj4=5.2.0         \
  && conda clean --yes --all                                                      \
  && conda info --all                                                             \
@@ -109,7 +110,7 @@ ENV PATH=/home/jovyan/bin:$PATH
 
 # install additional python libraries
 # sphinx libraries are for documentation
-RUN pip install sphinx_rtd_theme sphinxmark rasterstats 
+RUN pip install sphinx_rtd_theme sphinxmark  
 
 # Add proj4 epsg codes to path (req'd for basemap)
 ENV PATH = /usr/share/proj:$PATH
