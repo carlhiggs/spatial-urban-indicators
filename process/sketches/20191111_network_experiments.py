@@ -105,10 +105,17 @@ sql_queries = {
       SET n2_distance = ST_Distance(s.geom,b.geom)::int
     FROM nodes b
     WHERE b.osmid = s.n2;
+    -- The above two queries took 148 mins for Bangkok
     ''',
     'Record closest node and distance for destination points'
     '''
     ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS ogc_fid text;
+    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS match_point_geom geometry;
+    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS match_point_distance int;
+    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS n1 text;
+    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS n2 text;
+    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS n1_distance int;
+    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS n2_distance int;
     UPDATE osm_destinations o
        SET ogc_fid = u.ogc_fid,
            match_point_geom = u.match_point_geom,
