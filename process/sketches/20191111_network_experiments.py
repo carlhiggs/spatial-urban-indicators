@@ -44,7 +44,7 @@ so these no longer require the inverted commas!
 
 import networkx as nx
 import time 
-import osmnx as ox
+# import osmnx as ox
 import numpy as np
 import requests
 import pandas as pd
@@ -83,36 +83,38 @@ engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_
 
 sql_queries = {
     'Create new columns and indices for sampling point edge and node relations':'''
-    ALTER TABLE sampling_points_30m ADD COLUMN IF NOT EXISTS n1 text;
-    ALTER TABLE sampling_points_30m ADD COLUMN IF NOT EXISTS n1_distance int;
-    ALTER TABLE sampling_points_30m ADD COLUMN IF NOT EXISTS n2 text;
-    ALTER TABLE sampling_points_30m ADD COLUMN IF NOT EXISTS n2_distance int;
-    CREATE INDEX IF NOT EXISTS sampling_points_30m_ogc_fid_idx ON sampling_points_30m (ogc_fid);
-    UPDATE sampling_points_30m s
-       SET n1 = e."from",
-           n2 = e."to"
-    FROM edges e
-    WHERE e.ogc_fid = s.ogc_fid;
-    CREATE INDEX IF NOT EXISTS sampling_points_30m_n1_idx ON sampling_points_30m (n1);
-    CREATE INDEX IF NOT EXISTS sampling_points_30m_n2_idx ON sampling_points_30m (n2);
-    ''',
-    'Record distance from sampling points to node pairs':'''
-    UPDATE sampling_points_30m s
-      SET n1_distance = ST_Length(ST_LineSubstring(t.edge_geom, LEAST(t.llp1,t.llpm),GREATEST(t.llp1,t.llpm)))::int,
-          n2_distance = ST_Length(ST_LineSubstring(t.edge_geom, LEAST(t.llp2,t.llpm),GREATEST(t.llp2,t.llpm)))::int
+    -- This full query took just over 30 seconds for Bangkok
+    CREATE TABLE sampling_temp AS
+    SELECT point_id,         
+           edge_ogc_fid,   
+           metres,
+           n1,               
+           n2,               
+           ST_Length(ST_LineSubstring(t.edge_geom, LEAST(t.llp1,t.llpm),GREATEST(t.llp1,t.llpm)))::int n1_distance,
+           ST_Length(ST_LineSubstring(t.edge_geom, LEAST(t.llp2,t.llpm),GREATEST(t.llp2,t.llpm)))::int n2_distance,
+           t.geom             
     FROM (
-        SELECT  s.point_id,
+        SELECT  s.point_id,         
+                s.ogc_fid edge_ogc_fid,   
+                s.metres,
+                "from" n1,               
+                "to" n2,     
                 e.geom AS edge_geom,
                 ST_LineLocatePoint(e.geom, n1.geom) llp1,
                 ST_LineLocatePoint(e.geom, s.geom) llpm,
-                ST_LineLocatePoint(e.geom, n2.geom) llp2
+                ST_LineLocatePoint(e.geom, n2.geom) llp2,
+                s.geom
         FROM sampling_points_30m s
         LEFT JOIN edges e  ON s.ogc_fid = e.ogc_fid
-        LEFT JOIN nodes n1 ON s.n1 = n1.osmid
-        LEFT JOIN nodes n2 ON s.n2 = n2.osmid
-        ) t
-    WHERE s.point_id = t.point_id;
-    -- The above two queries took 148 mins for Bangkok
+        LEFT JOIN nodes n1 ON e."from" = n1.osmid
+        LEFT JOIN nodes n2 ON e."to" = n2.osmid
+        ) t;
+    DROP TABLE sampling_points_30m;
+    ALTER TABLE sampling_temp RENAME TO sampling_points_30m;
+    CREATE UNIQUE INDEX IF NOT EXISTS sampling_points_30m_ix ON sampling_points_30m (point_id);
+    CREATE INDEX IF NOT EXISTS sampling_points_30m_edge_ogc_fid_idx ON sampling_points_30m (edge_ogc_fid);
+    CREATE INDEX IF NOT EXISTS sampling_points_30m_n1_idx ON sampling_points_30m (n1);
+    CREATE INDEX IF NOT EXISTS sampling_points_30m_n2_idx ON sampling_points_30m (n2);
     ''',
     'Record closest node and distance for destination points'
     '''
