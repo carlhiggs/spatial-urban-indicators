@@ -109,30 +109,36 @@ sql_queries = {
     ''',
     'Record closest node and distance for destination points'
     '''
-    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS ogc_fid text;
-    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS match_point_geom geometry;
-    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS match_point_distance int;
-    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS n1 text;
-    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS n2 text;
-    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS n1_distance int;
-    ALTER TABLE osm_destinations ADD COLUMN IF NOT EXISTS n2_distance int;
-    UPDATE osm_destinations o
-       SET ogc_fid = u.ogc_fid,
-           match_point_geom = u.match_point_geom,
-           match_point_distance = ST_Distance(o.geom,u.match_point_geom),
-           n1 = u.n1,
-           n2 = u.n2
+    CREATE TABLE destinations AS
+    SELECT 
+           u.dest_oid,
+           u.osm_id,
+           u.dest_name,
+           u.dest_name_full,
+           u.geom,
+           u.edge_ogc_fid,
+           u.match_point_geom,
+           ST_Distance(u.geom, u.match_point_geom)::int match_point_distance,
+           u.n1, 
+           u.n2, 
+           ST_Distance(u.match_point_geom,n1.geom)::int n1_distance,
+           ST_Distance(u.match_point_geom,n2.geom)::int n2_distance
     FROM
-    (SELECT dest_oid,
-            e.ogc_fid,
-            ST_ClosestPoint(d.geom,e.geom) AS match_point_geom, 
+    (SELECT d.dest_oid,
+            d.osm_id,
+            d.dest_name,
+            d.dest_name_full,
+            d.geom,
+            e.ogc_fid AS edge_ogc_fid,
+            ST_ClosestPoint(e.geom,d.geom) AS match_point_geom, 
             "from" n1,
             "to" n2
     FROM osm_destinations d
     CROSS JOIN edges e
     ORDER BY d.geom <#> e.geom
     LIMIT 1) u
-    WHERE u.dest_oid = o.dest_oid;  
+    LEFT JOIN nodes n1 ON u.n1 = n1.osmid
+    LEFT JOIN nodes n2 ON u.n2 = n1.osmid;
     '''
     }
 
