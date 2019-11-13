@@ -98,13 +98,20 @@ sql_queries = {
     ''',
     'Record distance from sampling points to node pairs':'''
     UPDATE sampling_points_30m s
-      SET n1_distance = ST_Distance(s.geom,a.geom)::int
-    FROM nodes a
-    WHERE a.osmid = s.n1;
-    UPDATE sampling_points_30m s
-      SET n2_distance = ST_Distance(s.geom,b.geom)::int
-    FROM nodes b
-    WHERE b.osmid = s.n2;
+      SET n1_distance = ST_Length(ST_LineSubstring(t.edge_geom, LEAST(t.llp1,t.llpm),GREATEST(t.llp1,t.llpm)))::int,
+          n2_distance = ST_Length(ST_LineSubstring(t.edge_geom, LEAST(t.llp2,t.llpm),GREATEST(t.llp2,t.llpm)))::int
+    FROM (
+        SELECT  s.point_id,
+                e.geom AS edge_geom,
+                ST_LineLocatePoint(e.geom, n1.geom) llp1,
+                ST_LineLocatePoint(e.geom, s.geom) llpm,
+                ST_LineLocatePoint(e.geom, n2.geom) llp2
+        FROM sampling_points_30m s
+        LEFT JOIN edges e  ON s.ogc_fid = e.ogc_fid
+        LEFT JOIN nodes n1 ON s.n1 = n1.osmid
+        LEFT JOIN nodes n2 ON s.n2 = n2.osmid
+        ) t
+    WHERE s.point_id = t.point_id;
     -- The above two queries took 148 mins for Bangkok
     ''',
     'Record closest node and distance for destination points'
