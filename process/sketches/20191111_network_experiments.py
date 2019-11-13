@@ -109,36 +109,59 @@ sql_queries = {
     ''',
     'Record closest node and distance for destination points'
     '''
-    CREATE TABLE destinations AS
-    SELECT 
-           u.dest_oid,
-           u.osm_id,
-           u.dest_name,
-           u.dest_name_full,
-           u.geom,
-           u.edge_ogc_fid,
-           u.match_point_geom,
-           ST_Distance(u.geom, u.match_point_geom)::int match_point_distance,
-           u.n1, 
-           u.n2, 
-           ST_Distance(u.match_point_geom,n1.geom)::int n1_distance,
-           ST_Distance(u.match_point_geom,n2.geom)::int n2_distance
+    CREATE MATERIALIZED VIEW destinations AS
+    SELECT  o.dest_oid,
+            o.osm_id,
+            o.dest_name,
+            o.dest_name_full,
+            o.edge_ogc_fid,
+            o.n1,
+            o.n2,
+            -- to determine length along a line, the origin must be located the lower proportion along the line,
+            -- hence the least and greatest queries
+            ST_Length(ST_LineSubstring(o.edge_geom, LEAST(llp1,llpm),GREATEST(llp1,llpm)))::int n1_distance,
+            ST_Length(ST_LineSubstring(o.edge_geom, LEAST(llp2,llpm),GREATEST(llp2,llpm)))::int n2_distance,
+            o.match_point_geom, 
+            o.geom
     FROM
+    (SELECT t.dest_oid,
+            t.osm_id,
+            t.dest_name,
+            t.dest_name_full,
+            t.geom,
+            t.edge_ogc_fid,
+            t.match_point_geom, 
+            t.n1,
+            t.n2,
+            t.edge_geom,
+            ST_LineLocatePoint(t.edge_geom, n1.geom) llp1,
+            ST_LineLocatePoint(t.edge_geom, t.match_point_geom) llpm,
+            ST_LineLocatePoint(t.edge_geom, n2.geom) llp2
+    FROM 
     (SELECT d.dest_oid,
             d.osm_id,
             d.dest_name,
             d.dest_name_full,
             d.geom,
-            e.ogc_fid AS edge_ogc_fid,
+            e.geom edge_geom,
+            e.edge_ogc_fid,
             ST_ClosestPoint(e.geom,d.geom) AS match_point_geom, 
-            "from" n1,
-            "to" n2
+            e.n1,
+            e.n2    
     FROM osm_destinations d
-    CROSS JOIN edges e
-    ORDER BY d.geom <#> e.geom
-    LIMIT 1) u
-    LEFT JOIN nodes n1 ON u.n1 = n1.osmid
-    LEFT JOIN nodes n2 ON u.n2 = n1.osmid;
+    CROSS JOIN LATERAL (
+        SELECT e.ogc_fid edge_ogc_fid, 
+               e."from" n1, 
+               e."to" n2,
+               e.geom
+        FROM edges e
+        ORDER BY e.geom <-> d.geom 
+        LIMIT 1
+    ) e 
+    ) t
+    LEFT JOIN nodes n1 ON t.n1 = n1.osmid
+    LEFT JOIN nodes n2 ON t.n2 = n2.osmid
+    ) o;
     '''
     }
 
