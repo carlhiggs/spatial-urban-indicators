@@ -50,19 +50,12 @@ import pandas as pd
 import geopandas as gpd
 import psycopg2
 from sqlalchemy import create_engine
-# from multiprocessing import  Pool
-# from functools import partial
-# from contextlib import contextmanager
+from multiprocessing import  Pool
+from functools import partial
 
 from _project_setup import *
 
 connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
-
-# @contextmanager
-# def poolcontext(*args, **kwargs):
-    # pool = Pool(*args, **kwargs)
-    # yield pool
-    # pool.terminate()
 
 def load_networkx_graph(graphml):
     # Set up network for analysis with NetworkX
@@ -84,27 +77,23 @@ def create_local_nodes_dict(node,graph,table = 'local_node_distances', distance 
     # Calculate node relations, for subset of nodes leading to destinations
     local_node_distances = nx.single_source_dijkstra_path_length(graph, node, cutoff=distance, weight='length')
     df = pd.DataFrame([[node,d,int(local_node_distances[d])] for d in local_node_distances],columns = ['node','inode','distance']).set_index('node')
-    # df.to_sql(table,engine,if_exists='append',index=True)
     return(df)
 
-def parallel_lapply_function(id_list, func, chunks = 10, n_cores=5):
+def parallelize_dataframe(id_list, func, n_cores=4,connection=connection):
+    engine = create_engine(connection)
     start_time = time.time()
-    process_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(start_time))
-    print(f"Started processing {func}() at {process_time}")
-    nrows = len(id_list)
-    chunk_size = int(np.ceil(nrows / float(chunks)))
-    pool = Pool(n_cores)
-    df = pd.concat(pool.map(func, id_list, chunk_size))
+    divvy_load = math.ceil(len(id_list)/n_cores)
+    pool = Pool(processes=n_cores)
+    df = pd.concat(pool.map(func,id_list,divvy_load))
     pool.close()
     pool.join()
-    df.to_sql(table,engine,if_exists='replace',index=True)
+    df.to_sql('local_node_distances',engine,if_exists='append',index=True)
+    ids = len(id_list)
+    nrows = len(df)
     end_time = time.time()
-    process_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(end_time))
-    print(f"Started processing {func}() at {process_time}")
-    print('''
-    {} rows: {} minutes; rate per 100,000: {} minutes"
-    '''.format(nrows,(end_time-start_time)/60,(end_time-start_time)/nrows*100000/60)
-    )
+    mins = (end_time-start_time)/60
+    rate = mins/nrows*100000
+    print(f"{ids} ids {nrows} rows: {mins} minutes; rate per 100,000: {rate} minutes")
     
 sql_queries = {
     'Create new columns and indices for sampling point edge and node relations':'''
@@ -207,8 +196,8 @@ sql_queries = {
     }
 
 def main():
-    conn = psycopg2.connect(database=db, user=db_user, password=db_pwd)
-    curs = conn.cursor()
+    # conn = psycopg2.connect(database=db, user=db_user, password=db_pwd)
+    # curs = conn.cursor()
     engine = create_engine(connection)
     # for q in sql_queries:
         # print(f'\n{q}... ')
@@ -218,7 +207,7 @@ def main():
         # end_time = time.time()
         # print("Completed in {} minutes.".format((end_time-start_time)/60))
         
-    # 
+    # conn.close()
     # load network graph
     graphml = os.path.join(locale_dir,f'{buffered_study_region}_pedestrian_{osm_prefix}.graphml')
     G = load_networkx_graph(graphml)
@@ -256,21 +245,17 @@ def main():
               node IS NOT NULL;
             '''
         distinct_destination_nodes = pd.read_sql(sql, engine)
+    
+    nodes = distinct_destination_nodes.node.values.tolist()
+    nrows = len(nodes)
+    chunk_size = 10
+    for x in range(0,nrows,chunk_size):
+        x_end = x+chunk_size-1
+        if x_end > nrows:
+            x_end = nrows
+        print(f"{x}:{x_end}")
+        parallelize_dataframe(nodes[x:x_end],partial(create_local_nodes_dict,graph = G))
         
-    start_time = time.time()
-    process_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(start_time))
-    print(f"Started processing local node distances () at {process_time}")
-    nrows = len(distinct_destination_nodes)
-    for node in distinct_destination_nodes.node.tolist():
-        df = create_local_nodes_dict(node,G)
-        df.to_sql(table,engine,if_exists='append',index=True)
-    end_time = time.time()
-    process_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(end_time))
-    print(f"Completed processing {func}() at {process_time}")
-    print('''
-    {} rows: {} minutes; rate per 100,000: {} minutes"
-    '''.format(nrows,(end_time-start_time)/60,(end_time-start_time)/nrows*100000/60)
-    )
 
 # Set up output dataframe
 # df = pd.DataFrame(list(G.nodes),columns=['node'])
