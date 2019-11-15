@@ -261,58 +261,10 @@ def main():
 
 
 sql = '''
-CREATE MATERIALIZED VIEW test_local_od AS
-SELECT s.point_id, 
-       s.edge_ogc_fid, 
-       s.n1, 
-       s.n2, 
-       s.n1_distance, 
-       s.n2_distance, 
-       d.dest_oid, 
-       d.dest_name_full, 
-       d.n1 AS n1d, 
-       d.n2 AS n2d, 
-       d.match_point_distance, 
-       l.node
-       l.inode, 
-       l.distance 
-FROM sampling_points_30m s, 
-     destinations d,
-     local_node_distances l 
-WHERE dest_name_full = 'Supermarket' 
-  AND l.node  IN (s.n1,s.n2) 
-  AND l.inode IN (d.n1,d.n2) 
-ORDER BY l.distance DESC 
-LIMIT 10;
-
-DROP MATERIALIZED VIEW test_local_od;
-EXPLAIN ANALYZE
-CREATE MATERIALIZED VIEW test_local_od AS
-SELECT s.point_id, 
-       s.edge_ogc_fid, 
-       s.n1, 
-       s.n2, 
-       s.n1_distance, 
-       s.n2_distance, 
-       d.dest_oid, 
-       d.dest_name_full, 
-       d.n1 AS n1d, 
-       d.n2 AS n2d, 
-       d.match_point_distance, 
-       l.node,
-       l.inode, 
-       l.distance 
-FROM sampling_points_30m s
-LEFT JOIN local_node_distances l 
-       ON s.n1 = l.node OR s.n2 = l.node
-LEFT JOIN destinations d 
-       ON d.n1 = l.inode OR s.n2 = l.inode
-WHERE dest_name_full = 'Supermarket' 
-  AND point_id IN (700014,700015)
-ORDER BY point_id,l.distance ASC 
-LIMIT 10;
-SELECT * FROM test_local_od;
-
+-- Create simplified views of origins and destinations,
+-- pooling the nodes and distances into single column.
+-- This will make evaluation of full minimum distances
+-- more straightforward.
 
 DROP MATERIALIZED VIEW IF EXISTS origins;
 CREATE MATERIALIZED VIEW origins AS
@@ -329,7 +281,6 @@ from sampling_points_30m s
 ORDER BY point_id, s_node, s_node_distance ASC;
 CREATE INDEX IF NOT EXISTS origins_ix ON origins (point_id);
 CREATE INDEX IF NOT EXISTS origins_node_idx ON origins (s_node);
-
 
 CREATE MATERIALIZED VIEW dests AS
 SELECT DISTINCT ON (dest_oid, d_node)
@@ -348,10 +299,23 @@ from destinations d
 CREATE INDEX IF NOT EXISTS dests_ix ON dests (dest_oid);
 CREATE INDEX IF NOT EXISTS dests_node_idx ON dests (d_node);
 
+CREATE MATERIALIZED VIEW node_lookup AS
+SELECT DISTINCT ON (node_osmid,pgr_node)
+       v.node_osmid,
+       v.pgr_node
+from edges e
+  cross join lateral (
+      values 
+        ("from", source), 
+        ("to", target)
+  ) as v(node_osmid, pgr_node);
+CREATE INDEX IF NOT EXISTS edge_lookup_ix ON edge_lookup (node_osmid);
+CREATE INDEX IF NOT EXISTS edge_lookup_node_idx ON edge_lookup (pgr_node);
 
+-- ensure the destination match node is also indexed
 CREATE INDEX IF NOT EXISTS local_node_distances_inode_idx ON local_node_distances (inode);
 
-
+-- An example of distance to destination query, using the networkx derived network
 DROP MATERIALIZED VIEW IF EXISTS test_local_od;
 EXPLAIN ANALYZE
 CREATE MATERIALIZED VIEW test_local_od AS
@@ -380,11 +344,20 @@ SELECT * FROM test_local_od;
 DROP MATERIALIZED VIEW IF EXISTS local_node_distances_pgr;
 EXPLAIN ANALYZE
 CREATE MATERIALIZED VIEW local_node_distances_pgr AS
-SELECT l.* 
+SELECT s.node_osmid AS s_node_osmid,
+       t.node_osmid AS t_node_osmid,
+       l.*
 FROM local_network_3200m l
-LEFT JOIN dests d ON d.d_node = l.node::text
-WHERE d.d_node IS NOT NULL;
-CREATE INDEX IF NOT EXISTS local_network_3200m_node_ix ON local_network_3200m (node);
+LEFT JOIN edge_lookup s ON s.pgr_node = l.from_v
+LEFT JOIN edge_lookup t ON t.pgr_node = l.node
+WHERE EXISTS 
+    (SELECT 1
+       FROM 
+      dests d 
+      WHERE d.d_node = t.node_osmid);
+CREATE INDEX IF NOT EXISTS local_node_distances_pgr_source_ix ON local_node_distances_pgr (node);
+CREATE INDEX IF NOT EXISTS local_node_distances_pgr_target_ix ON local_node_distances_pgr (node);
+CREATE INDEX IF NOT EXISTS local_node_distances_pgr_node_ix ON local_node_distances_pgr (node);
 
 
 DROP MATERIALIZED VIEW IF EXISTS test_local_od_pgr;
@@ -403,10 +376,10 @@ SELECT DISTINCT ON (point_id)
        l.agg_cost AS node_distance,
        s_node_distance + d_full_distance + l.agg_cost AS final_distance
 FROM origins s
-LEFT JOIN local_network_3200m l 
-       ON s.s_node = l.from_v::text
-LEFT JOIN dests d 
-       ON d.d_node = l.node::text
+LEFT JOIN local_node_distances_pgr l 
+       ON s.s_node = l.s_node_osmid
+RIGHT JOIN dests d 
+       ON d.d_node = l.t_node_osmid
 WHERE dest_name_full = 'Supermarket' 
   AND d_node IS NOT NULL
 ORDER BY point_id,final_distance ASC 
