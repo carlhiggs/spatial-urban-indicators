@@ -81,19 +81,12 @@ def create_local_nodes_dict(node,graph,table = 'local_node_distances', distance 
 
 def parallelize_dataframe(id_list, func, n_cores=4,connection=connection):
     engine = create_engine(connection)
-    start_time = time.time()
     divvy_load = math.ceil(len(id_list)/n_cores)
     pool = Pool(processes=n_cores)
     df = pd.concat(pool.map(func,id_list,divvy_load))
     pool.close()
     pool.join()
     df.to_sql('local_node_distances',engine,if_exists='append',index=True)
-    ids = len(id_list)
-    nrows = len(df)
-    end_time = time.time()
-    mins = (end_time-start_time)/60
-    rate = mins/nrows*100000
-    print(f"{ids} ids {nrows} rows: {mins} minutes; rate per 100,000: {rate} minutes")
     
 sql_queries = {
     'Create new columns and indices for sampling point edge and node relations':'''
@@ -146,6 +139,7 @@ sql_queries = {
             -- hence the least and greatest queries
             ST_Length(ST_LineSubstring(o.edge_geom, LEAST(llp1,llpm),GREATEST(llp1,llpm)))::int n1_distance,
             ST_Length(ST_LineSubstring(o.edge_geom, LEAST(llp2,llpm),GREATEST(llp2,llpm)))::int n2_distance,
+                ST_Distance(geom,match_point_geom)::int match_point_distance,
             o.match_point_geom, 
             o.geom
     FROM
@@ -248,17 +242,179 @@ def main():
     
     nodes = distinct_destination_nodes.node.values.tolist()
     nrows = len(nodes)
-    chunk_size = 10
+    chunk_size = 100
+    start_time = time.time()
     for x in range(0,nrows,chunk_size):
         x_end = x+chunk_size-1
         if x_end > nrows:
             x_end = nrows
         print(f"{x}:{x_end}")
         parallelize_dataframe(nodes[x:x_end],partial(create_local_nodes_dict,graph = G))
-        
+            
+    end_time = time.time()
+    mins = (end_time-start_time)/60
+    rate = mins/nrows*100000
+    print(f"Completed in {mins} minutes.")
 
 # Set up output dataframe
 # df = pd.DataFrame(list(G.nodes),columns=['node'])
+
+
+sql = '''
+CREATE MATERIALIZED VIEW test_local_od AS
+SELECT s.point_id, 
+       s.edge_ogc_fid, 
+       s.n1, 
+       s.n2, 
+       s.n1_distance, 
+       s.n2_distance, 
+       d.dest_oid, 
+       d.dest_name_full, 
+       d.n1 AS n1d, 
+       d.n2 AS n2d, 
+       d.match_point_distance, 
+       l.node
+       l.inode, 
+       l.distance 
+FROM sampling_points_30m s, 
+     destinations d,
+     local_node_distances l 
+WHERE dest_name_full = 'Supermarket' 
+  AND l.node  IN (s.n1,s.n2) 
+  AND l.inode IN (d.n1,d.n2) 
+ORDER BY l.distance DESC 
+LIMIT 10;
+
+DROP MATERIALIZED VIEW test_local_od;
+EXPLAIN ANALYZE
+CREATE MATERIALIZED VIEW test_local_od AS
+SELECT s.point_id, 
+       s.edge_ogc_fid, 
+       s.n1, 
+       s.n2, 
+       s.n1_distance, 
+       s.n2_distance, 
+       d.dest_oid, 
+       d.dest_name_full, 
+       d.n1 AS n1d, 
+       d.n2 AS n2d, 
+       d.match_point_distance, 
+       l.node,
+       l.inode, 
+       l.distance 
+FROM sampling_points_30m s
+LEFT JOIN local_node_distances l 
+       ON s.n1 = l.node OR s.n2 = l.node
+LEFT JOIN destinations d 
+       ON d.n1 = l.inode OR s.n2 = l.inode
+WHERE dest_name_full = 'Supermarket' 
+  AND point_id IN (700014,700015)
+ORDER BY point_id,l.distance ASC 
+LIMIT 10;
+SELECT * FROM test_local_od;
+
+
+DROP MATERIALIZED VIEW IF EXISTS origins;
+CREATE MATERIALIZED VIEW origins AS
+SELECT DISTINCT ON (point_id, s_node)
+       s.point_id, 
+       v.s_node, 
+       v.s_node_distance
+from sampling_points_30m s
+  cross join lateral (
+      values 
+        (n1, n1_distance), 
+        (n2, n2_distance)
+  ) as v(s_node, s_node_distance)
+ORDER BY point_id, s_node, s_node_distance ASC;
+CREATE INDEX IF NOT EXISTS origins_ix ON origins (point_id);
+CREATE INDEX IF NOT EXISTS origins_node_idx ON origins (s_node);
+
+
+CREATE MATERIALIZED VIEW dests AS
+SELECT DISTINCT ON (dest_oid, d_node)
+       d.dest_oid,
+       d.dest_name_full,
+       v.d_node, 
+       v.d_node_distance,
+       d.match_point_distance,
+       d_node_distance + match_point_distance AS d_full_distance
+from destinations d
+  cross join lateral (
+      values 
+        (n1, n1_distance), 
+        (n2, n2_distance)
+  ) as v(d_node, d_node_distance);
+CREATE INDEX IF NOT EXISTS dests_ix ON dests (dest_oid);
+CREATE INDEX IF NOT EXISTS dests_node_idx ON dests (d_node);
+
+
+CREATE INDEX IF NOT EXISTS local_node_distances_inode_idx ON local_node_distances (inode);
+
+
+DROP MATERIALIZED VIEW IF EXISTS test_local_od;
+EXPLAIN ANALYZE
+CREATE MATERIALIZED VIEW test_local_od AS
+SELECT DISTINCT ON (point_id)
+       s.point_id, 
+       s.s_node, 
+       s.s_node_distance, 
+       d.dest_oid, 
+       d.dest_name_full, 
+       d.d_node, 
+       d.d_full_distance, 
+       l.node,
+       l.inode, 
+       l.distance AS node_distance,
+       s_node_distance + d_full_distance + l.distance AS final_distance
+FROM origins s
+LEFT JOIN local_node_distances l 
+       ON s.s_node = l.node
+LEFT JOIN dests d 
+       ON d.d_node = l.inode
+WHERE dest_name_full = 'Supermarket' 
+ORDER BY point_id,final_distance ASC 
+LIMIT 10;
+SELECT * FROM test_local_od;
+
+DROP MATERIALIZED VIEW IF EXISTS local_node_distances_pgr;
+EXPLAIN ANALYZE
+CREATE MATERIALIZED VIEW local_node_distances_pgr AS
+SELECT l.* 
+FROM local_network_3200m l
+LEFT JOIN dests d ON d.d_node = l.node::text
+WHERE d.d_node IS NOT NULL;
+CREATE INDEX IF NOT EXISTS local_network_3200m_node_ix ON local_network_3200m (node);
+
+
+DROP MATERIALIZED VIEW IF EXISTS test_local_od_pgr;
+EXPLAIN ANALYZE
+CREATE MATERIALIZED VIEW test_local_od_pgr AS
+SELECT DISTINCT ON (point_id)
+       s.point_id, 
+       s.s_node, 
+       s.s_node_distance, 
+       d.dest_oid, 
+       d.dest_name_full, 
+       d.d_node, 
+       d.d_full_distance, 
+       l.from_v node,
+       l.node inode, 
+       l.agg_cost AS node_distance,
+       s_node_distance + d_full_distance + l.agg_cost AS final_distance
+FROM origins s
+LEFT JOIN local_network_3200m l 
+       ON s.s_node = l.from_v::text
+LEFT JOIN dests d 
+       ON d.d_node = l.node::text
+WHERE dest_name_full = 'Supermarket' 
+  AND d_node IS NOT NULL
+ORDER BY point_id,final_distance ASC 
+LIMIT 10;
+SELECT * FROM test_local_od_pgr;
+
+
+'''
 
     
 # Sausage buffer
