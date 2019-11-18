@@ -1729,6 +1729,63 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
     .. raw:: html
 
         <figure>
+        <img alt="Annual average NO₂ (Copernicus, 2017-18), by district" src="./../png/Bangkok_ind_district_no2_2017_18.png">
+        <figcaption>Annual average NO₂ (Copernicus, 2017-18), by district.         <a href="./../html/Bangkok_ind_district_no2_2017_18.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/Bangkok_ind_district_no2_2017_18.png
+       :width: 70%
+       :align: center
+
+       Annual average NO₂ (Copernicus, 2017-18), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Air quality by population src="./../png/plots/district_no2_2017_18_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Air quality by population per sqkm src="./../png/plots/district_no2_2017_18_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Air quality, ranked in ascending order src="./../png/plots/district_no2_2017_18.png">
+            </div>
+       <figcaption>Figures for Air quality with regard to Annual Average No₂ (1-E6 Mmol/M²; 2017-18) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_no2_2017_18.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Air quality with regard to Annual Average No₂ (1-E6 Mmol/M²; 2017-18).
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
         <img alt="Annual average NO₂ (Copernicus, 2017-18), by subdistrict" src="./../png/Bangkok_ind_subdistrict_no2_2017_18.png">
         <figcaption>Annual average NO₂ (Copernicus, 2017-18), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_no2_2017_18.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
@@ -3066,6 +3123,40 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
        :align: center
 
        Vegetation Percent (Copernicus, 2018; mean), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Green space by population src="./../png/plots/district_vegetation_pct_mean_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Green space by population per sqkm src="./../png/plots/district_vegetation_pct_mean_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Green space, ranked in ascending order src="./../png/plots/district_vegetation_pct_mean.png">
+            </div>
+       <figcaption>Figures for Green space with regard to Mean Vegetation Cover Percent  (Copernicus, December 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vegetation_pct_mean.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Green space with regard to Mean Vegetation Cover Percent  (Copernicus, December 2018).
 
 
 

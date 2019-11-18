@@ -106,6 +106,7 @@ Interactive maps
         <option value="bangkok_ind_subdistrict_vulnerable_flood_areas_rate_area">56 vulnerable flood areas in Bangkok year 2018 per km²: flood risk locations</option>
         <option value="bangkok_ind_subdistrict_vulnerable_flood_areas_rate_population">56 vulnerable flood areas in Bangkok year 2018 per 10,000 population: flood risk locations</option>
         <option value="bangkok_ind_subdistrict_vulnerable_flood_areas_rate_household">56 vulnerable flood areas in Bangkok year 2018 per 10,000 household: flood risk locations</option>
+        <option value="bangkok_ind_district_no2_2017_18">Air quality: Annual average NO₂ (1-e6 mmol/m²; 2017-18)</option>
         <option value="bangkok_ind_district_vegetation_pct_mean">Green space: mean vegetation cover percent  (Copernicus, December 2018)</option>
         <option value="bangkok_ind_district_vegetation_pct_sd">Green space: standard deviation vegetation cover percent  (Copernicus, December 2018)</option>
         <option value="bangkok_ind_subdistrict_no2_2017_18">Air quality: Annual average NO₂ (1-e6 mmol/m²; 2017-18)</option>

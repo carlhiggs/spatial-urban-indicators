@@ -266,10 +266,11 @@ sql = '''
 -- This will make evaluation of full minimum distances
 -- more straightforward.
 
-DROP MATERIALIZED VIEW IF EXISTS origins;
+DROP MATERIALIZED VIEW IF EXISTS origins CASCADE;
 CREATE MATERIALIZED VIEW origins AS
 SELECT DISTINCT ON (point_id, s_node)
        s.point_id, 
+       edge_ogc_fid,
        v.s_node, 
        v.s_node_distance
 from sampling_points_30m s
@@ -280,6 +281,7 @@ from sampling_points_30m s
   ) as v(s_node, s_node_distance)
 ORDER BY point_id, s_node, s_node_distance ASC;
 CREATE INDEX IF NOT EXISTS origins_ix ON origins (point_id);
+CREATE INDEX IF NOT EXISTS origins_edge_ix ON origins (edge_ogc_fid);
 CREATE INDEX IF NOT EXISTS origins_node_idx ON origins (s_node);
 
 CREATE MATERIALIZED VIEW dests AS
@@ -337,8 +339,8 @@ LEFT JOIN local_node_distances l
 LEFT JOIN dests d 
        ON d.d_node = l.inode
 WHERE dest_name_full = 'Supermarket' 
-ORDER BY point_id,final_distance ASC 
-LIMIT 10;
+  AND s.point_id IN (418,422,423,461,462,463,464,465,466,467)
+ORDER BY point_id,final_distance ASC ;
 SELECT * FROM test_local_od;
 
 DROP MATERIALIZED VIEW IF EXISTS local_node_distances_pgr;
@@ -382,9 +384,78 @@ RIGHT JOIN dests d
        ON d.d_node = l.t_node_osmid
 WHERE dest_name_full = 'Supermarket' 
   AND d_node IS NOT NULL
-ORDER BY point_id,final_distance ASC 
-LIMIT 10;
+  AND s.point_id IN (418,422,423,461,462,463,464,465,466,467)
+ORDER BY point_id,final_distance ASC;
 SELECT * FROM test_local_od_pgr;
+
+
+
+-- An example of distance to destination query,aggregated to network (good for visualisation)
+DROP MATERIALIZED VIEW IF EXISTS od_supermarket;
+EXPLAIN ANALYZE
+CREATE MATERIALIZED VIEW od_supermarket AS
+SELECT t.edge_ogc_fid,
+       t.dest_name_full,
+       COUNT(t.point_id) AS sample_point_count,
+       avg(t.final_distance) AS mean_distance_m
+FROM (
+SELECT DISTINCT ON (point_id)
+       s.point_id, 
+       s.edge_ogc_fid,
+       s.s_node, 
+       s.s_node_distance, 
+       d.dest_oid, 
+       d.dest_name_full, 
+       d.d_node, 
+       d.d_full_distance, 
+       l.node,
+       l.inode, 
+       l.distance AS node_distance,
+       s_node_distance + d_full_distance + l.distance AS final_distance
+FROM origins s
+LEFT JOIN local_node_distances l 
+       ON s.s_node = l.node
+LEFT JOIN dests d 
+       ON d.d_node = l.inode
+WHERE dest_name_full = 'Supermarket' 
+ORDER BY point_id,final_distance ASC) t
+GROUP BY edge_ogc_fid, dest_name_full;
+SELECT * FROM od_supermarket LIMIT 10;
+
+
+
+DROP MATERIALIZED VIEW IF EXISTS test_local_od_pgr;
+EXPLAIN ANALYZE
+CREATE MATERIALIZED VIEW test_local_od_pgr AS
+SELECT t.edge_ogc_fid,
+       t.dest_name_full,
+       COUNT(s.point_id) AS sample_point_count,
+       avg(t.final_distance) AS mean_distance_m
+FROM (
+SELECT DISTINCT ON (point_id)
+       s.point_id, 
+       s.edge_ogc_fid,
+       s.s_node, 
+       s.s_node_distance, 
+       d.dest_oid, 
+       d.dest_name_full, 
+       d.d_node, 
+       d.d_full_distance, 
+       l.s_node_osmid node,
+       l.t_node_osmid inode, 
+       l.agg_cost AS node_distance,
+       s_node_distance + d_full_distance + l.agg_cost AS final_distance
+FROM origins s
+LEFT JOIN local_node_distances_pgr l 
+       ON s.s_node = l.s_node_osmid
+RIGHT JOIN dests d 
+       ON d.d_node = l.t_node_osmid
+WHERE dest_name_full = 'Supermarket' 
+  AND d_node IS NOT NULL
+ORDER BY point_id,final_distance ASC) t
+GROUP BY edge_ogc_fid, t_dest_name_full;
+SELECT * FROM test_local_od_pgr;
+
 
 
 '''
