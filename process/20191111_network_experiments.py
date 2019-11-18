@@ -371,8 +371,8 @@ SELECT DISTINCT ON (point_id)
        d.dest_name_full, 
        d.d_node, 
        d.d_full_distance, 
-       l.s_node node,
-       l.t_node inode, 
+       l.s_node_osmid node,
+       l.t_node_osmid inode, 
        l.agg_cost AS node_distance,
        s_node_distance + d_full_distance + l.agg_cost AS final_distance
 FROM origins s

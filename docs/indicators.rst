@@ -1452,6 +1452,40 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) by population src="./../png/plots/fire_incidence_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) by population per sqkm src="./../png/plots/fire_incidence_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018), ranked in ascending order src="./../png/plots/fire_incidence.png">
+            </div>
+       <figcaption>Figures for สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) with regard to Fire Incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/fire_incidence.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) with regard to Fire Incidence.
+
+
+
+
 Fire incidence (BMA, 2018) per km²
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1480,6 +1514,40 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Fire incidence (BMA, 2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per km² by population src="./../png/plots/fire_incidence_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per km² by population per sqkm src="./../png/plots/fire_incidence_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per km², ranked in ascending order src="./../png/plots/fire_incidence_rate_area.png">
+            </div>
+       <figcaption>Figures for สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per km² with regard to Fire Incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/fire_incidence_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per km² with regard to Fire Incidence.
 
 
 
@@ -1516,6 +1584,40 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 population by population src="./../png/plots/fire_incidence_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 population by population per sqkm src="./../png/plots/fire_incidence_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 population, ranked in ascending order src="./../png/plots/fire_incidence_rate_population.png">
+            </div>
+       <figcaption>Figures for สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 population with regard to Fire Incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/fire_incidence_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 population with regard to Fire Incidence.
+
+
+
+
 Fire incidence (BMA, 2018) per 10,000 household
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1544,6 +1646,40 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Fire incidence (BMA, 2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 household by population src="./../png/plots/fire_incidence_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 household by population per sqkm src="./../png/plots/fire_incidence_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 household, ranked in ascending order src="./../png/plots/fire_incidence_rate_household.png">
+            </div>
+       <figcaption>Figures for สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 household with regard to Fire Incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/fire_incidence_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 household with regard to Fire Incidence.
 
 
 

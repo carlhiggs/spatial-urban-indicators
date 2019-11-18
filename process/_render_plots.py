@@ -45,7 +45,7 @@ def main():
     engine = create_engine(f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}")
                       
     # retrieve subset of datasets which are files to be joined based on linkage
-    df = df_datasets[df_datasets.index.str.startswith('linkage:')]
+    df = df_datasets[df_datasets.index.str.startswith('linkage:') | df_datasets.index.str.startswith('raster:')]
     df = expand_indicators(df)
     df = df[df['plot'].astype('str') != 'nan']    
     for row in df.index:
