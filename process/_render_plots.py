@@ -52,8 +52,9 @@ def main():
         data_type = valid_type(df.loc[row,'data_type'])
         description = df.loc[row,'alias']
         # heading = '{}'.format(df.loc[row,'map_heading'])
-        heading = '\n'.join(wrap('{}'.format(df.loc[row,'map_heading']), 50))
+        heading = '{}'.format(df.loc[row,'map_heading'])
         print(f"\n - {heading}")
+        # heading = '\n'.join(wrap(heading, 80))
         plot_data_y = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
         area_linkage_id = df.loc[row,'linkage_id']
@@ -112,7 +113,7 @@ def main():
         
         ax2 = sns.lmplot(x2, y, data=data, hue='regions_of_interest', fit_reg=False)
         ax2._legend.remove()
-        ax2.set(xlabel=x1.title(), ylabel=ylab,title = title)
+        ax2.set(xlabel=x2.title(), ylabel=ylab,title = title)
         label_point(data[x2], data[y], data['label'], plt.gca())
         # plt.show()
         location = f'../maps/{study_region}/png/plots/{y}_{x2}'.replace(' ','_')

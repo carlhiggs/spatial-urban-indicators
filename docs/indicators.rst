@@ -1893,6 +1893,31 @@ Aligns with Sustainable Development Goals: 3, 11.
 
     .. raw:: html
 
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Outpatient numbers for 68 Health Centers by population src="./../png/plots/district_outpatients_combined_diseases_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Outpatient numbers for 68 Health Centers by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Outpatient numbers for 68 Health Centers, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases.png">
+            </div>
+       <figcaption>Figures for Outpatient numbers for 68 Health Centers, clockwise from top: by population; by population per sqkm; ranked in ascending order..</figcaption>
+
+       </div><br>
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
         <figure>
         <img alt="Vital diseases (combined, 2018), by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_combined_diseases.png">
         <figcaption>Vital diseases (combined, 2018), by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
@@ -1938,6 +1963,31 @@ Aligns with Sustainable Development Goals: 3, 11.
 
        Vital diseases (combined, 2018) per km², by district
 
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Outpatient numbers for 68 Health Centers per km² by population src="./../png/plots/district_outpatients_combined_diseases_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Outpatient numbers for 68 Health Centers per km² by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Outpatient numbers for 68 Health Centers per km², ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_area.png">
+            </div>
+       <figcaption>Figures for Outpatient numbers for 68 Health Centers per km², clockwise from top: by population; by population per sqkm; ranked in ascending order..</figcaption>
+
+       </div><br>
 
 
 
@@ -2003,6 +2053,31 @@ Aligns with Sustainable Development Goals: 3, 11.
 
     .. raw:: html
 
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Outpatient numbers for 68 Health Centers per 10,000 population by population src="./../png/plots/district_outpatients_combined_diseases_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Outpatient numbers for 68 Health Centers per 10,000 population by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Outpatient numbers for 68 Health Centers per 10,000 population, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_population.png">
+            </div>
+       <figcaption>Figures for Outpatient numbers for 68 Health Centers per 10,000 population, clockwise from top: by population; by population per sqkm; ranked in ascending order..</figcaption>
+
+       </div><br>
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
         <figure>
         <img alt="Vital diseases (combined, 2018) per 10,000 population, by subdistrict" src="./../png/Bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.png">
         <figcaption>Vital diseases (combined, 2018) per 10,000 population, by subdistrict.         <a href="./../html/Bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
@@ -2048,6 +2123,31 @@ Aligns with Sustainable Development Goals: 3, 11.
 
        Vital diseases (combined, 2018) per 10,000 household, by district
 
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Outpatient numbers for 68 Health Centers per 10,000 household by population src="./../png/plots/district_outpatients_combined_diseases_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Outpatient numbers for 68 Health Centers per 10,000 household by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Outpatient numbers for 68 Health Centers per 10,000 household, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_household.png">
+            </div>
+       <figcaption>Figures for Outpatient numbers for 68 Health Centers per 10,000 household, clockwise from top: by population; by population per sqkm; ranked in ascending order..</figcaption>
+
+       </div><br>
 
 
 
