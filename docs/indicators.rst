@@ -1905,9 +1905,18 @@ Aligns with Sustainable Development Goals: 3, 11.
             <div id="div3" class="plot-box-large">
         	     <img alt=Outpatient numbers for 68 Health Centers, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases.png">
             </div>
-       <figcaption>Figures for Outpatient numbers for 68 Health Centers, clockwise from top: by population; by population per sqkm; ranked in ascending order..</figcaption>
+       <figcaption>Figures for Outpatient numbers for 68 Health Centers with regard to Vital Diseases (Combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Outpatient numbers for 68 Health Centers with regard to Vital Diseases (Combined; 2018).
+
 
 
 
@@ -1985,9 +1994,18 @@ Aligns with Sustainable Development Goals: 3, 11.
             <div id="div3" class="plot-box-large">
         	     <img alt=Outpatient numbers for 68 Health Centers per km², ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_area.png">
             </div>
-       <figcaption>Figures for Outpatient numbers for 68 Health Centers per km², clockwise from top: by population; by population per sqkm; ranked in ascending order..</figcaption>
+       <figcaption>Figures for Outpatient numbers for 68 Health Centers per km² with regard to Vital Diseases (Combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Outpatient numbers for 68 Health Centers per km² with regard to Vital Diseases (Combined; 2018).
+
 
 
 
@@ -2065,9 +2083,18 @@ Aligns with Sustainable Development Goals: 3, 11.
             <div id="div3" class="plot-box-large">
         	     <img alt=Outpatient numbers for 68 Health Centers per 10,000 population, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_population.png">
             </div>
-       <figcaption>Figures for Outpatient numbers for 68 Health Centers per 10,000 population, clockwise from top: by population; by population per sqkm; ranked in ascending order..</figcaption>
+       <figcaption>Figures for Outpatient numbers for 68 Health Centers per 10,000 population with regard to Vital Diseases (Combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Outpatient numbers for 68 Health Centers per 10,000 population with regard to Vital Diseases (Combined; 2018).
+
 
 
 
@@ -2145,9 +2172,18 @@ Aligns with Sustainable Development Goals: 3, 11.
             <div id="div3" class="plot-box-large">
         	     <img alt=Outpatient numbers for 68 Health Centers per 10,000 household, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_household.png">
             </div>
-       <figcaption>Figures for Outpatient numbers for 68 Health Centers per 10,000 household, clockwise from top: by population; by population per sqkm; ranked in ascending order..</figcaption>
+       <figcaption>Figures for Outpatient numbers for 68 Health Centers per 10,000 household with regard to Vital Diseases (Combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Outpatient numbers for 68 Health Centers per 10,000 household with regard to Vital Diseases (Combined; 2018).
+
 
 
 

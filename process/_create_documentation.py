@@ -208,7 +208,8 @@ def generate_metadata_rst(ind_metadata):
                                 desc1 = f'{ylab} by {x1}'
                                 desc2 = f'{ylab} by {x2}'
                                 desc3 = f'{ylab}, ranked in ascending order'
-                                description = f'Figures for {ylab}, clockwise from top: by {x1}; by {x2}; ranked in ascending order.'
+                                description = f'Figures for {ylab} with regard to {title} by {level}, clockwise from top: by {x1}; by {x2}; {level}s ranked in ascending order.'
+                                description_latex = '{}s ranked in ascending order by {} with regard to {}.'.format(level.title(),ylab,title)
                                 rst = '{}\r\n\r\n'.format(rst)
                                 plot_code = (
                                             '\r\n'
@@ -230,43 +231,10 @@ def generate_metadata_rst(ind_metadata):
                                             '       </div><br>\r\n\r\n'
                                             '.. only:: latex\r\n\r\n'
                                            f'    .. figure:: ../maps/{study_region}/{plot3}.png\r\n'
-                                            '       :width: 70%\r\n\r\n'
+                                            '       :width: 100%\r\n'
                                             '       :align: center\r\n\r\n'
-                                           f'       {desc3}\r\n\r\n'
+                                           f'       {description_latex}\r\n\r\n'
                                             )
-                                # plot_code = (
-                                            # '\r\n'
-                                            # '.. only:: html\r\n\r\n'
-                                            # '    .. raw:: html\r\n\r\n'
-                                            # '        <div id="plot-div">\r\n'
-                                            # '            <div id="div1" class="plot-box">\r\n'
-                                           # f'        	     <img alt={desc1} src="./../{plot1}.png" class="plot-img">\r\n'
-                                            # '            </div>\r\n'
-                                            # '            <div id="div2" class="plot-box">\r\n'
-                                           # f'        	     <img alt={desc2} src="./../{plot2}.png" class="plot-img">\r\n'
-                                            # '            </div><br>\r\n'
-                                            # '            <div id="div3" class="plot-box-large">\r\n'
-                                           # f'        	     <img alt={desc3} src="./../{plot3}.png" class="plot-img">\r\n'
-                                            # '            </div>\r\n'
-                                            # '       </div><br>\r\n'
-                                           # f'       <figcaption>{description}.</figcaption>\r\n'
-                                            # '       \r\n\r\n'
-                                            # '.. only:: latex\r\n\r\n'
-                                           # f'    .. figure:: ../maps/{study_region}/{plot1}.png\r\n'
-                                            # '       :width: 40%\r\n'
-                                            # '       :align: center\r\n\r\n'
-                                           # f'       {desc1}\r\n\r\n'
-                                            # '.. only:: latex\r\n\r\n'
-                                           # f'    .. figure:: ../maps/{study_region}/{plot2}.png\r\n'
-                                            # '       :width: 40%\r\n'
-                                            # '       :align: center\r\n\r\n'
-                                           # f'       {desc2}\r\n\r\n'
-                                            # '.. only:: latex\r\n\r\n'
-                                           # f'    .. figure:: ../maps/{study_region}/{plot3}.png\r\n'
-                                            # '       :width: 40%\r\n\r\n'
-                                            # '       :align: center\r\n\r\n'
-                                           # f'       {desc3}\r\n\r\n'
-                                            # )
                                 rst = '{}\r\n\r\n{}\r\n'.format(rst,plot_code)
     return(rst)
 
