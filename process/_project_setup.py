@@ -69,6 +69,8 @@ locale_maps = os.path.join('../maps/',study_region)
 # Study region buffer
 buffered_study_region = '{}_{}{}'.format(study_region,study_buffer,units)
 
+regions_of_interest = df_parameters.loc['full_locale',:].to_list()[2:]
+
 # sample points
 points = '{}_{}m'.format(points,point_sampling_interval)
 
