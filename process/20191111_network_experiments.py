@@ -332,16 +332,18 @@ SELECT DISTINCT ON (point_id)
        l.node,
        l.inode, 
        l.distance AS node_distance,
-       s_node_distance + d_full_distance + l.distance AS final_distance
+       s_node_distance + d_full_distance + l.distance AS final_distance,
+       g.geom
 FROM origins s
+LEFT JOIN sampling_points_30m g ON s.point_id = g.point_id
 LEFT JOIN local_node_distances l 
        ON s.s_node = l.node
 LEFT JOIN dests d 
        ON d.d_node = l.inode
 WHERE dest_name_full = 'Supermarket' 
-  AND s.point_id IN (418,422,423,461,462,463,464,465,466,467)
 ORDER BY point_id,final_distance ASC ;
-SELECT * FROM test_local_od;
+SELECT * FROM test_local_od LIMIT 10;
+
 
 DROP MATERIALIZED VIEW IF EXISTS local_node_distances_pgr;
 EXPLAIN ANALYZE
@@ -389,16 +391,36 @@ ORDER BY point_id,final_distance ASC;
 SELECT * FROM test_local_od_pgr;
 
 
+-- An example of distance to destination query, using the networkx derived network
+DROP MATERIALIZED VIEW IF EXISTS test_local_od_pgr;
+EXPLAIN ANALYZE
+CREATE MATERIALIZED VIEW test_local_od_pgr AS
+SELECT s.point_id, 
+       s.s_node, 
+       s.s_node_distance, 
+       d.dest_oid, 
+       d.dest_name_full, 
+       d.d_node, 
+       d.d_full_distance, 
+       l.s_node_osmid,
+       l.t_node_osmid, 
+       l.agg_cost AS node_distance,
+       s_node_distance + d_full_distance + l.agg_cost AS final_distance,
+       g.geom
+FROM origins s
+LEFT JOIN sampling_points_30m g ON s.point_id = g.point_id
+LEFT JOIN local_node_distances_pgr l 
+       ON s.s_node = l.s_node_osmid
+LEFT JOIN dests d 
+       ON d.d_node = l.t_node_osmid
+WHERE dest_name_full = 'Supermarket' 
+ORDER BY point_id,final_distance ASC ;
+SELECT * FROM test_local_od_pgr LIMIT 10;
 
 -- An example of distance to destination query,aggregated to network (good for visualisation)
 DROP MATERIALIZED VIEW IF EXISTS od_supermarket;
 EXPLAIN ANALYZE
 CREATE MATERIALIZED VIEW od_supermarket AS
-SELECT t.edge_ogc_fid,
-       t.dest_name_full,
-       COUNT(t.point_id) AS sample_point_count,
-       avg(t.final_distance) AS mean_distance_m
-FROM (
 SELECT DISTINCT ON (point_id)
        s.point_id, 
        s.edge_ogc_fid,
@@ -411,15 +433,19 @@ SELECT DISTINCT ON (point_id)
        l.node,
        l.inode, 
        l.distance AS node_distance,
-       s_node_distance + d_full_distance + l.distance AS final_distance
+       s_node_distance + d_full_distance + l.distance AS final_distance,
+       g.geom
 FROM origins s
+LEFT JOIN sampling_points_30m g ON s.point_id = g.point_id
 LEFT JOIN local_node_distances l 
        ON s.s_node = l.node
 LEFT JOIN dests d 
-       ON d.d_node = l.inode
+       ON l.inode = d.d_node
+       -- ON d.d_node = l.inode
 WHERE dest_name_full = 'Supermarket' 
-ORDER BY point_id,final_distance ASC) t
-GROUP BY edge_ogc_fid, dest_name_full;
+ORDER BY point_id,final_distance ASC;
+CREATE INDEX od_supermarket_idx ON od_supermarket (point_id);
+CREATE INDEX od_supermarket_gix ON od_supermarket USING GIST (geom);
 SELECT * FROM od_supermarket LIMIT 10;
 
 
