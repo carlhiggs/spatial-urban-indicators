@@ -417,12 +417,6 @@ SELECT DISTINCT ON (pos.aos_id) pos.*
                             jsonb_array_elements(attributes) obj
               WHERE obj->'public_access' = 'true'
               AND  pos.aos_id = o.aos_id);
-''',
-'''
--- Delete any sampling points which were created within the bounds of areas of open space
-DELETE FROM {points} p
-USING open_space_areas o
-WHERE ST_Intersects(o.geom,p.geom);
 '''
 ]
 

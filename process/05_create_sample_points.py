@@ -252,12 +252,12 @@ def main():
                    srid = srid)  
         engine.execute(sql)             
         # Add a buffered geometry field to sampling points
-        sql = '''
-            ALTER TABLE {points} ADD COLUMN IF NOT EXISTS "buffered_geom_{buffer}m" geometry;
-            UPDATE {points} SET "buffered_geom_{buffer}m" = ST_Buffer(geom,{buffer});
-        '''.format(points = points,
-                   buffer = line_buffer)
-        engine.execute(sql)
+        # sql = '''
+            # ALTER TABLE {points} ADD COLUMN IF NOT EXISTS "buffered_geom_{buffer}m" geometry;
+            # UPDATE {points} SET "buffered_geom_{buffer}m" = ST_Buffer(geom,{buffer});
+        # '''.format(points = points,
+                   # buffer = line_buffer)
+        # engine.execute(sql)
         print("Sampling points table {} created with sampling at every {} metres along the pedestrian network.".format(points,point_sampling_interval))
     else:
         print("  - The table {} has already been processed.".format(points)) 

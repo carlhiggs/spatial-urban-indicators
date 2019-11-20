@@ -86,6 +86,33 @@ def main():
     script = os.path.basename(sys.argv[0])
 
     engine = create_engine(connection)
+    
+    sql = f'''
+    -- Create simplified views of origins
+    -- pooling the nodes and distances into single column.
+    -- This will make evaluation of full minimum distances
+    -- more straightforward.
+
+    CREATE TABLE IF NOT EXISTS origins AS
+    SELECT DISTINCT ON (point_id, s_node)
+           s.point_id, 
+           edge_ogc_fid,
+           v.s_node, 
+           v.s_node_distance
+    from {points} s
+      cross join lateral (
+          values 
+            (n1, n1_distance), 
+            (n2, n2_distance)
+      ) as v(s_node, s_node_distance)
+    ORDER BY point_id, s_node, s_node_distance ASC;
+    CREATE INDEX IF NOT EXISTS origins_ix ON origins (point_id);
+    CREATE INDEX IF NOT EXISTS origins_edge_ix ON origins (edge_ogc_fid);
+    CREATE INDEX IF NOT EXISTS origins_node_idx ON origins (s_node);
+    COMMENT ON TABLE origins IS 'Created {now}: Long-form table of sample points associated with two closest nodes and their respective distances (any particular sample point would be expected to be associated with two nearest nodes, hence will be included on two rows).';
+    '''
+    engine.execute(sql)
+    
     # conn.close()
     # load network graph
     graphml = os.path.join(locale_dir,f'{buffered_study_region}_pedestrian_{osm_prefix}.graphml')
