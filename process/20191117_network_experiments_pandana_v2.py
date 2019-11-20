@@ -53,6 +53,7 @@ from sqlalchemy import create_engine
 import pandana
 
 from _project_setup import *
+now = time.strftime('%Y%m%d_%H%M')
 
 connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
 
@@ -73,12 +74,6 @@ def graphml_to_pandana(graphml):
     # For Bangkok: Network x graph set up in  .84 minutes
     return(network)
 
-def create_local_nodes_dict(node,graph,table = 'local_node_distances', distance = 3200):
-    # Calculate node relations, for subset of nodes leading to destinations
-    local_node_distances = nx.single_source_dijkstra_path_length(graph, node, cutoff=distance, weight='length')
-    df = pd.DataFrame([[node,d,int(local_node_distances[d])] for d in local_node_distances],columns = ['node','inode','distance']).set_index('node')
-    return(df)
-
 def pandanas_accessability(network, destinations, cutoff):
     network.precompute(cutoff + 1)
     network.set_pois(category='all', maxdist=cutoff, maxitems=1, x_col=destinations['lon'], y_col=destinations['lat'])
@@ -86,42 +81,11 @@ def pandanas_accessability(network, destinations, cutoff):
     return(result)
 
 def main():
-    # conn = psycopg2.connect(database=db, user=db_user, password=db_pwd)
-    # curs = conn.cursor()
-    engine = create_engine(connection)
-    # for q in sql_queries:
-        # print(f'\n{q}... ')
-        # start_time = time.time()
-        # curs.execute(sql_queries[q])
-        # conn.commit()
-        # end_time = time.time()
-        # print("Completed in {} minutes.".format((end_time-start_time)/60))
-    
-    sql = f'''
-    -- Create simplified views of origins
-    -- pooling the nodes and distances into single column.
-    -- This will make evaluation of full minimum distances
-    -- more straightforward.
+    # simple timer for log file
+    start = time.time()
+    script = os.path.basename(sys.argv[0])
 
-    CREATE MATERIALIZED VIEW IF NOT EXISTS origins AS
-    SELECT DISTINCT ON (point_id, s_node)
-           s.point_id, 
-           edge_ogc_fid,
-           v.s_node, 
-           v.s_node_distance
-    from {points} s
-      cross join lateral (
-          values 
-            (n1, n1_distance), 
-            (n2, n2_distance)
-      ) as v(s_node, s_node_distance)
-    ORDER BY point_id, s_node, s_node_distance ASC;
-    CREATE INDEX IF NOT EXISTS origins_ix ON origins (point_id);
-    CREATE INDEX IF NOT EXISTS origins_edge_ix ON origins (edge_ogc_fid);
-    CREATE INDEX IF NOT EXISTS origins_node_idx ON origins (s_node);
-    '''
-    engine.execute(sql)
-    
+    engine = create_engine(connection)
     # conn.close()
     # load network graph
     graphml = os.path.join(locale_dir,f'{buffered_study_region}_pedestrian_{osm_prefix}.graphml')
@@ -169,6 +133,11 @@ def main():
         FROM origins o
         LEFT JOIN od_node_pos_any n ON o.s_node::bigint = n.node_osmid
         ORDER BY point_id, s_node_distance ASC;
+        COMMENT ON TABLE ind_access_{destination} IS 'Created {now}: Estimates for access to the destination "{destination}" for each sample point.  A binary indicator of access is evaluated using a threshold of distance in metres <= {distance} m';
+        COMMENT ON COLUMN ind_access_{destination}.s_node_distance IS 'Distance (m) from sample point to network node with shortest distance to destination';
+        COMMENT ON COLUMN ind_access_{destination}.distance_m      IS 'Distance (m) from node to destination (shortest route accessible for this sample point) up to 1 metre beyond threshold of {distance}';
+        COMMENT ON COLUMN ind_access_{destination}.full_distance_m IS 'Distance (m) from sample point to destination (note: threshold limited distance; results beyond {distance}m are truncated';
+        COMMENT ON COLUMN ind_access_{destination}.access_{distance}m IS 'Indicator of access for sample point to destination within {distance}m inclusive (0 = no access; 1 = access)';
         '''
         engine.execute(sql)
 

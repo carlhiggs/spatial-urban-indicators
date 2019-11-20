@@ -127,7 +127,7 @@ sql_queries = {
     ''',
     'Record closest node and distance for destination points':'''
     -- took 2 seconds to run for Bangkok (10,047 destinations)
-    CREATE MATERIALIZED VIEW IF NOT EXISTS destinations AS
+    CREATE TABLE IF NOT EXISTS destinations AS
     SELECT  o.dest_oid,
             o.osm_id,
             o.dest_name,
@@ -186,20 +186,37 @@ sql_queries = {
     CREATE INDEX IF NOT EXISTS destinations_n1_idx ON destinations (n1);
     CREATE INDEX IF NOT EXISTS destinations_n2_idx ON destinations (n2);
     CREATE INDEX IF NOT EXISTS destinations_gix ON destinations USING GIST (geom);
+    ''',
+    '''
+    CREATE TABLE IF NOT EXISTS origins AS
+    SELECT DISTINCT ON (point_id, s_node)
+           s.point_id, 
+           edge_ogc_fid,
+           v.s_node, 
+           v.s_node_distance
+    from {points} s
+      cross join lateral (
+          values 
+            (n1, n1_distance), 
+            (n2, n2_distance)
+      ) as v(s_node, s_node_distance)
+    ORDER BY point_id, s_node, s_node_distance ASC;
+    CREATE INDEX IF NOT EXISTS origins_ix ON origins (point_id);
+    CREATE INDEX IF NOT EXISTS origins_edge_ix ON origins (edge_ogc_fid);
+    CREATE INDEX IF NOT EXISTS origins_node_idx ON origins (s_node);
+    COMMENT ON TABLE origins IS 'Created {now}: Long-form table of sample points associated with two closest nodes and their respective distances (any particular sample point would be expected to be associated with two nearest nodes, hence will be included on two rows).';
     '''
     }
 
 def main():
-    # conn = psycopg2.connect(database=db, user=db_user, password=db_pwd)
-    # curs = conn.cursor()
     engine = create_engine(connection)
-    # for q in sql_queries:
-        # print(f'\n{q}... ')
-        # start_time = time.time()
-        # curs.execute(sql_queries[q])
-        # conn.commit()
-        # end_time = time.time()
-        # print("Completed in {} minutes.".format((end_time-start_time)/60))
+    for q in sql_queries:
+        print(f'\n{q}... ')
+        start_time = time.time()
+        curs.execute(sql_queries[q])
+        conn.commit()
+        end_time = time.time()
+        print("Completed in {} minutes.".format((end_time-start_time)/60))
         
     # conn.close()
     # load network graph
