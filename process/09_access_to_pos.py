@@ -101,9 +101,9 @@ def main():
         COMMENT ON COLUMN ind_access_{destination}.access_{distance}m IS 'Indicator of access for sample point to destination within {distance}m inclusive (0 = no access; 1 = access)';
         '''
         engine.execute(sql)
-
-if __name__ == '__main__':
-    main()
     # output to completion log    
     script_running_log(script, task, start, locale)
     engine.dispose()
+
+if __name__ == '__main__':
+    main()

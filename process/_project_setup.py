@@ -40,10 +40,8 @@ cwd = os.path.join(os.getcwd(),'../process')
 xls = pandas.ExcelFile(os.path.join(cwd,'_project_configuration.xlsx'))
 df_parameters = pandas.read_excel(xls, 'Parameters',index_col=0)
 df_datasets = pandas.read_excel(xls, 'Datasets')
-df_inds = pandas.read_excel(xls, 'indicator_queries')
-df_destinations = pandas.read_excel(xls, 'destinations')
-df_osm = pandas.read_excel(xls, 'osm_and_open_space_defs')
-df_osm_dest = pandas.read_excel(xls, 'osm_dest_definitions')
+df_osm = pandas.read_excel(xls, 'osm_open_space')
+df_osm_dest = pandas.read_excel(xls, 'osm_destinations')
 
 # prepare and clean configuration entries
 df_parameters[locale] = df_parameters[locale].fillna('')
@@ -239,20 +237,7 @@ if no_forward_edge_issues == 1:
   snap_to_grid = 0.01
 
 # Destinations data directory
-dest_dir = os.path.join(folderPath,dest_dir)
-study_destinations = 'study_destinations'
-
-# array / list of destinations 
-# IMPORTANT -- These are specified in the 'destinations' worksheet of the _project_configuration.xlsx file
-#               - specify: destination, domain, cutoff and count distances as required
-#
-#           -- If new destinations are added, they should be appended to end of list 
-#              to ensure this order is respected across time.
-#
-# The table 'dest_type' will be created in Postgresql to keep track of destinations
-
-df_destinations = df_destinations.replace(pandas.np.nan, 'NULL', regex=True)
-destination_list = [x for x in df_destinations.destination.tolist()] # the destinations 
+# destination_list = [x for x in df_destinations.destination.tolist()] # the destinations 
 
 df_osm_dest = df_osm_dest.replace(pandas.np.nan, 'NULL', regex=True)
 

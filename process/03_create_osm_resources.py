@@ -1,12 +1,12 @@
 """
 
-Database creation
-~~~~~~~~~~~~~~~~~
+Collate OSM resources
+~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
     Script:  03_create_osm_resources.py
-    Purpose: Create pedestrian street networks for specified city (2019)
+    Purpose: Collate OSM resources for specified city (2019)
     Authors: Carl Higgs 
 
 """
@@ -25,7 +25,7 @@ def main():
     # simple timer for log file
     start = time.time()
     script = os.path.basename(sys.argv[0])
-    task = 'create destination indicator tables'
+    task = 'Collate OSM resources'
     
     conn = psycopg2.connect(database=db, user=db_user, password=db_pwd, host=db_host,port=db_port)
     curs = conn.cursor()
