@@ -54,7 +54,8 @@ query_include = ['population','boundaries','indicators','destinations']
 query_include = '|'.join(['purpose == "{}"'.format(p) for p in query_include])
 df_datasets = df_datasets.query(f'({query_include}) & target_region=="{full_locale}" & name_s!=""')
 df_datasets.set_index('name_s',inplace=True)
-
+df_datasets.areas = df_datasets.areas.str.split(',')
+df_datasets = df_datasets.explode('areas')
 # derived study region name (no need to change!)
 study_region = '{}_{}_{}'.format(locale,region,year).lower()
 db = 'li_{0}_{1}{2}'.format(locale,year,suffix).lower()
@@ -133,9 +134,6 @@ area_ids = ([areas[area]['id'] for area in areas] +
 
 area_id_types = [[areas[area]['id'],areas[area]['id_type']] for area in areas]
 
-# An SQL query to define the field's display format for mapping
-# 
-
 # Population
 population_field = 'Population ({} estimate)'.format(population_target)
 
@@ -145,7 +143,8 @@ for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]
     population_linkage[data_type] = {}
     population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_dir)
     population_linkage[data_type]['year_target'] = df_datasets.loc[pop_data].year_target
-    population_linkage[data_type]['linkage'] = '{}'.format(df_datasets.loc[pop_data].index_if_tabular)
+    # population_linkage[data_type]['linkage'] = '{}'.format(df_datasets.loc[pop_data].index_if_tabular)
+    population_linkage[data_type]['linkage'] =  areas['subdistrict']['id']
     licence = str(df_datasets.loc[pop_data]['licence'])
     if licence not in ['none specified','nan','']:
         licence_attrib = (
@@ -173,7 +172,6 @@ if population_grid != '':
                                         provider = df_datasets.loc[population_data]['provider'],
                                         licence_url = df_datasets.loc[population_data]['licence_url'],
                                         licence = df_datasets.loc[population_data]['licence'])
-
     population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
     population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),srid)
    

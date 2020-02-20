@@ -33,15 +33,13 @@ def main():
     task = 'Create indicators from linkage files'
     
     engine = create_engine(f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}")
-    
-    engine_sqlite = create_engine((
-                      'sqlite:///{path}/{output_name}.gpkg'
-                      ).format(output_name = '{}'.format(study_region),
-                               path = os.path.join(locale_maps,'gpkg')),
-                               module = sqlite3)
+    gpkg_path = os.path.join(locale_maps,'gpkg')
+    engine_sqlite = create_engine(f'sqlite:///{gpkg_path}/{study_region}.gpkg',module = sqlite3)
                       
     # retrieve subset of datasets which are files to be joined based on linkage
-    df = df_datasets[df_datasets.index.str.startswith('linkage:')]
+    df = df_datasets.query('type=="linkage"').copy()
+    df.rename(columns={"areas": "linkage_layer"},inplace=True)
+    df['linkage_id'] = df.linkage_layer.apply(lambda x: areas[x]['id'])
     df = expand_indicators(df)
     # get key fields from the specified population dataset
     population = pandas.read_csv(population_linkage[analysis_scale]['data'],index_col=population_linkage[analysis_scale]['linkage']) 

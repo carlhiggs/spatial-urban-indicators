@@ -28,7 +28,9 @@ def main():
     # get list of datasets used for access analysis
     df = df_datasets.query("purpose=='destinations'").copy().sort_index()
     # define destination type and name from dataset index
-    df[['destination','name']] =  df.apply(lambda x: x.name.split(':'),axis=1, result_type="expand")
+    df.rename(columns={"type": "destination"},inplace=True)
+    df['name'] = df.index
+    # df[['destination','name']] =  df.apply(lambda x: x.name.split(':'),axis=1, result_type="expand")
     # create OSM data flag
     df['osm'] = (df.provider.isin(['OpenStreetMap','OSM'])| df.destination.str.startswith('osm') | df.destination.str.endswith('osm'))
     # retrieve definitions for relevant OSM destinations
