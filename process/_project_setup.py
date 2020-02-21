@@ -56,6 +56,8 @@ df_datasets = df_datasets.query(f'({query_include}) & target_region=="{full_loca
 df_datasets.set_index('name_s',inplace=True)
 df_datasets.areas = df_datasets.areas.str.split(',')
 df_datasets = df_datasets.explode('areas')
+df_datasets.rename(columns={"areas": "linkage_layer"},inplace=True)
+
 # derived study region name (no need to change!)
 study_region = '{}_{}_{}'.format(locale,region,year).lower()
 db = 'li_{0}_{1}{2}'.format(locale,year,suffix).lower()
@@ -265,6 +267,12 @@ map_style = '''
 </style>
 <script>L_DISABLE_3D = true;</script>
 '''    
+
+
+# Expand indicator datasets using area information
+df_datasets['linkage_id'] = df_datasets.linkage_layer.apply(lambda x: areas[x]['id'] if str(x)!='nan' else '')
+df_datasets = expand_indicators(df_datasets)
+
 
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['area','__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]

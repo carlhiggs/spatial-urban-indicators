@@ -24,7 +24,6 @@ from _project_setup import *
 def get_ind_metadata():
     # find and return records for all indicator data sources with a defined indicator method description
     df = df_datasets.loc[df_datasets['method_description_ind'].fillna('')!='',].copy()
-    df = expand_indicators(df)
     df['map'] = df.loc[:,'table_out_name'].apply(lambda x: f'{locale}_ind_{x}')
     df['description'] = df.apply(lambda x: '{}: {}'.format(x["map_heading"],x["map_field"]),axis=1)
     return df
@@ -118,7 +117,7 @@ def generate_metadata_rst(ind_metadata):
                             '       :align: center\r\n\r\n'
                             '       {description}\r\n\r\n'
                             ).format(description = f'{full_locale} study region',
-                                             map = '{}_01_study_region'.format(locale),
+                                             map = '{}_01_study_region'.format(locale).lower(),
                                      study_region = study_region)
                 rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
             if ds.iloc[0].purpose=='population':
@@ -151,7 +150,7 @@ def generate_metadata_rst(ind_metadata):
                                     '       :align: center\r\n\r\n'
                                     '       {description}\r\n\r\n'
                                     ).format(description = '{}, by {}'.format(popi[0],level).capitalize(),
-                                             map = pop_map.capitalize(),
+                                             map = pop_map.lower(),
                                              study_region = study_region)
                         rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
             if ds.iloc[0].purpose=='indicators':
@@ -189,7 +188,7 @@ def generate_metadata_rst(ind_metadata):
                                     '       :align: center\r\n\r\n'
                                     '       {description}\r\n\r\n'
                                     ).format(description = f'{a}, by {level}',
-                                             map = ind_map.capitalize(),
+                                             map = ind_map.lower(),
                                              study_region = study_region)
                         rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
                         plots = df_ind[df_ind['plot'].astype('str')!='nan'].copy()

@@ -2,7 +2,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Bangkok Liveability'
-copyright = '2019, C Higgs, A Alderton, K Nitvimol and H Badland'
+copyright = '2020, C Higgs, A Alderton, K Nitvimol and H Badland'
 author = 'C Higgs, A Alderton, K Nitvimol and H Badland'
 
 # The full version, including alpha/beta/rc tags

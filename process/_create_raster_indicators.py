@@ -45,12 +45,9 @@ def main():
     engine_sqlite = create_engine(f'sqlite:///{gpkg_path}/{study_region}.gpkg',module = sqlite3)
     sql = f'''SELECT geom FROM {buffered_study_region}'''
     clipping_boundary = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )   
-                  
+    
     # retrieve subset of datasets which are relate to raster data
     df = df_datasets.query('type=="raster"').copy()
-    df.rename(columns={"areas": "linkage_layer"},inplace=True)
-    df['linkage_id'] = df.linkage_layer.apply(lambda x: areas[x]['id'])
-    df = expand_indicators(df)
     # get key fields from the specified population dataset
     population = pandas.read_csv(population_linkage[analysis_scale]['data'],index_col=population_linkage[analysis_scale]['linkage']) 
     population_numeric = [c for c in population.columns if np.issubdtype(population[c].dtype, np.number)]
@@ -86,112 +83,93 @@ def main():
         raster_clipped  = f'{dataset}_clipped.tif'
         raster_projected  = f'{dataset}_projected.tif'
         raster_band = int(df.loc[row,'raster_band'])
-        # raster_mult = int(df.loc[row,'raster_mult'])
         raster_offset = float(df.loc[row,'raster_offset'])
         raster_nodata = int(df.loc[row,'raster_nodata'])
         scale_factor = float(df.loc[row,'scale_factor'])
-        # raster_range = [int(x) for x in df.loc[row,'raster_range'].split(',')]
-        # if len(raster_range) == 2:
-            # scale_factor = (1/raster_range[1]) * raster_mult
-        # else:
-            # scale_factor = 1
-        raster_dtype = df.loc[row,'data_type'].split(":")[1]
-        # potential_column_width = len(map_field)
-        # if potential_column_width < pd.get_option("display.max_colwidth"):
-            # pd.set_option("display.max_colwidth", potential_column_width)
-            # gpd.pd.set_option("display.max_colwidth", potential_column_width)   
+        raster_dtype = df.loc[row,'data_type'].split(":")[1]  
         map_name = f'{locale}_ind_{map_name_suffix}'
         potential_column_width = len(map_field)+1
         if potential_column_width < pd.get_option("display.max_colwidth"):
             pd.set_option("display.max_colwidth", potential_column_width)
             gpd.pd.set_option("display.max_colwidth", potential_column_width)   
-        # clip and save raster
-        with rasterio.open(os.path.abspath(dataset)) as full_raster:
-            # set pop_vector to match crs of input raster
-            # the above works as tested (raster is epsg 4326)
-            # in theory, works if epsg is otherwise detectable in rasterio
-            clipping_boundary.to_crs({'init':full_raster.crs['init']},inplace=True)
-            coords = [json.loads(clipping_boundary.to_json())['features'][0]['geometry']]
-            out_img, out_transform = mask(full_raster, coords, crop=True)
-            out_meta = full_raster.meta.copy()
-            out_meta.update({
-                            "driver": "GTiff",
-                            "height": out_img.shape[1],
-                            "width":  out_img.shape[2],
-                            "transform": out_transform,
-                            "nodata": raster_nodata
-                            }) 
-        with rasterio.open(raster_clipped, "w", **out_meta) as dest:
-            dest.write(out_img)    
-        # reproject and save the re-projected clipped raster
-        # (see config file for reprojection function)
-        reproject_raster(inpath = raster_clipped, 
-                      outpath = raster_projected, 
-                      new_crs = 'EPSG:{}'.format(srid))   
-        # Aggregate raster in each subdistrict according to datasource set up (e.g. sum or average)
-        sql = '''SELECT "{}",geom FROM {}'''.format(areas[area_layer]['id'],areas[area_layer]['table'])
-        analysis_area = gpd.GeoDataFrame.from_postgis(sql,engine, geom_col='geom', index_col=area_linkage_id)
-        # create null field for population values
-        stats = zonal_stats(analysis_area,
-                             raster_projected,
-                             band_num=raster_band,
-                             no_data=raster_nodata,
-                             stats=raster_statistic,
-                             all_touched=True,
-                             geojson_out=True)
-        analysis_area[map_name_suffix] = np.nan    
-        analysis_area[map_name_suffix] = analysis_area[map_name_suffix].astype(raster_dtype)
-        for x in range(0,len(stats)):
-            analysis_area.loc[int(stats[x]['id']),map_name_suffix]=scale_factor*stats[x]['properties'][raster_statistic]+raster_offset
-        
-        # output vector layers with new summary statistic
-        analysis_area.drop(['geom'], axis=1, inplace=True)
-        analysis_area.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
-        print('\t- postgresql::{}/{}'.format(db,map_name_suffix))
-        analysis_area.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
-        print('\t- {path}/{output_name}.gpkg/{layer}'.format(output_name = '{}'.format(study_region),
-                                                        path = os.path.join(locale_maps,'gpkg'),
-                                                        layer = map_name_suffix))
-        analysis_area.to_csv('{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
-                                                                                  map_name_suffix),
-                                                     path = os.path.join(locale_maps,'csv')))
-        print('\t- {path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
-                                                                                  map_name_suffix),
-                                                     path = os.path.join(locale_maps,'csv')))
+        if engine.has_table(map_name_suffix):
+            print(f"    - {map_name_suffix} already exists in database.")
+            print("      Please drop this table if you wish it to be reprocessed.")
+        else:
+            # clip and save raster
+            with rasterio.open(os.path.abspath(dataset)) as full_raster:
+                # set pop_vector to match crs of input raster
+                # the above works as tested (raster is epsg 4326)
+                # in theory, works if epsg is otherwise detectable in rasterio
+                clipping_boundary.to_crs({'init':full_raster.crs['init']},inplace=True)
+                coords = [json.loads(clipping_boundary.to_json())['features'][0]['geometry']]
+                out_img, out_transform = mask(full_raster, coords, crop=True)
+                out_meta = full_raster.meta.copy()
+                out_meta.update({
+                                "driver": "GTiff",
+                                "height": out_img.shape[1],
+                                "width":  out_img.shape[2],
+                                "transform": out_transform,
+                                "nodata": raster_nodata
+                                }) 
+            with rasterio.open(raster_clipped, "w", **out_meta) as dest:
+                dest.write(out_img)    
+            # reproject and save the re-projected clipped raster
+            # (see config file for reprojection function)
+            reproject_raster(inpath = raster_clipped, 
+                          outpath = raster_projected, 
+                          new_crs = f'EPSG:{srid}')   
+            # Aggregate raster in each subdistrict according to datasource set up (e.g. sum or average)
+            sql = '''SELECT "{}",geom FROM {}'''.format(areas[area_layer]['id'],areas[area_layer]['table'])
+            analysis_area = gpd.GeoDataFrame.from_postgis(sql,engine, geom_col='geom', index_col=area_linkage_id)
+            # create null field for population values
+            stats = zonal_stats(analysis_area,
+                                 raster_projected,
+                                 band_num=raster_band,
+                                 no_data=raster_nodata,
+                                 stats=raster_statistic,
+                                 all_touched=True,
+                                 geojson_out=True)
+            analysis_area[map_name_suffix] = np.nan    
+            analysis_area[map_name_suffix] = analysis_area[map_name_suffix].astype(raster_dtype)
+            for x in range(0,len(stats)):
+                analysis_area.loc[int(stats[x]['id']),map_name_suffix]=scale_factor*stats[x]['properties'][raster_statistic]+raster_offset
+            # output vector layers with new summary statistic
+            analysis_area.drop(['geom'], axis=1, inplace=True)
+            analysis_area.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
+            print(f'\t- postgresql::{db}/{map_name_suffix}')
+            analysis_area.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
+            path = os.path.join(locale_maps,'gpkg')
+            print(f'\t- {path}/{study_region}.gpkg/{map_name_suffix}')
+            path = os.path.join(locale_maps,'csv')
+            analysis_area.to_csv('{path}/{study_region}_{map_name_suffix}.csv')
+            print('\t- {path}/{study_region}_{map_name_suffix}.csv')
         # Create map
         attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
         tables    = [buffered_study_region,study_region]
         fields    = ['Description','Description']
+        data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full))
         coalesce_na = '{}'.format(df.loc[row,'coalesce_na'])
         if coalesce_na in ['','nan']:
-            sql = '''
-                SELECT a.{area},
+            sql = f'''
+                SELECT a.{area_layer},
                        {data_fields}
-                       b.{data},
+                       b.{map_name_suffix},
                        ST_Transform(a.geom, 4326) AS geom 
-                FROM {area} a
-                LEFT JOIN {data} b 
-                USING ({id})
-                '''.format(area = area_layer,
-                           data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                           data = map_name_suffix,
-                           map_field = map_field,
-                           id = linkage_id)
+                FROM {area_layer} a
+                LEFT JOIN {map_name_suffix} b 
+                USING ({linkage_id})
+                '''
         else:
-            sql = '''
-                SELECT a.{area},
+            sql = f'''
+                SELECT a.{area_layer},
                        {data_fields}
-                       COALESCE(b.{data},{coalesce_na}) AS "{data}",
+                       COALESCE(b.{map_name_suffix},{coalesce_na}) AS "{map_name_suffix}",
                        ST_Transform(a.geom, 4326) AS geom 
-                FROM {area} a
-                LEFT JOIN {data} b 
-                USING ({id})
-                '''.format(area = area_layer,
-                           data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                           data = map_name_suffix,
-                           map_field = map_field,
-                           id = linkage_id,
-                           coalesce_na = coalesce_na)
+                FROM {area_layer} a
+                LEFT JOIN {map_name_suffix} b 
+                USING ({linkage_id})
+                '''
         map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
         map.rename(columns = {map_name_suffix : map_field}, inplace=True)
         map.rename(columns = column_names, inplace=True)
@@ -201,64 +179,62 @@ def main():
         xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
         bounds = map.bounds.transpose().to_dict()[0]
         # initialise map
-        m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
+        m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr=f'{attribution}')
         # Add in location names
         folium.TileLayer(tiles='http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
                         name='Location labels', 
                         show =False,
                         overlay=True,
-                        attr=((
-                            " {} | "
+                        attr=(
+                           f" {attribution} | "
                             "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
                             "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                             "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                            "under ODbL.").format(attribution))
-                                ).add_to(m)
+                            "under ODbL.")
+                             ).add_to(m)
         # Add in the actual basemap to be shown
         folium.TileLayer(tiles='http://tile.stamen.com/toner-background/{z}/{x}/{y}.png',
                         name='Basemap: Simple', 
                         show =False,
                         overlay=False,
-                        attr=((
-                            " {} | "
+                        attr=(
+                           f" {attribution} | "
                             "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
                             "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                             "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                            "under ODbL.").format(attribution))
-                                ).add_to(m)
+                            "under ODbL.")
+                             ).add_to(m)
         # Add in alternate basemap
         folium.TileLayer(tiles='OpenStreetMap',
                         name='Basemap: OpenStreetMap', 
                         show =False,
                         overlay=False,
-                        attr=((
-                            " {} | "
+                        attr=(
+                           f" {map_attribution} | "
                             "Map tiles: <a href=\"http://openstreetmap.org/\">© OpenStreetMap contributors</a>, " 
                             "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                             "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                            "under ODbL.").format(map_attribution))
+                            "under ODbL.")
                                 ).add_to(m)
         # Add in satellite basemap
         folium.TileLayer(tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' ,
                         name='Basemap: ESRI World Imagery (satellite)', 
                         show =True,
                         overlay=False,
-                        attr=((
-                            " {} | "
+                        attr=(
+                           f" {map_attribution} | "
                             "Map tiles: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community', " 
                             "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
                             "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
-                            "under ODbL.").format(map_attribution))
+                            "under ODbL.")
                                 ).add_to(m)
         # We add empty tile set in order to force display of data attribution; Basemaps are not overlay layers, so they are easily switchable
         folium.TileLayer(tiles='Null tiles',
                         name='Basemap: off', 
                         show =False,
                         overlay=False,
-                        attr=((
-                            " {}"
-                           ).format(attribution))
-                                ).add_to(m)
+                        attr=f" {attribution}"
+                        ).add_to(m)
         # Create choropleth map
         bins = 6
         # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
@@ -293,7 +269,7 @@ def main():
                         geo_data =map.to_json(),
                         name = map_field,
                         columns =[area_layer,map_field],
-                        key_on="feature.properties.{}".format(area_layer),
+                        key_on=f"feature.properties.{area_layer}",
                         fill_color='YlGn',
                         fill_opacity=0.7,
                         nan_fill_opacity=0.2,
@@ -338,27 +314,27 @@ def main():
         # Modify map heading (above legend)
         html = m.get_root().render()
         color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
-        old = '{}.svg = d3.select(".legend.leaflet-control").append("svg")'.format(color_map)
-        new = '''
+        old = f'{color_map}.svg = d3.select(".legend.leaflet-control").append("svg")'
+        new = f'''
         {color_map}.title = d3.select(".legend.leaflet-control").append("div")
                 .attr("style",'vertical-align: text-top;font-weight: bold;')
                 .text("{heading}");
         {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
-        '''.format(color_map=color_map,heading=heading)
+        '''
         html = html.replace(old,new)
         # move legend to lower right corner
         html = html.replace('''legend = L.control({position: \'topright''',
                             '''legend = L.control({position: \'bottomright''')
         # save map
         # map_name = '{}_ind_{}'.format(locale,map_name_suffix)
-        fid = open('{}/html/{}.html'.format(locale_maps,map_name), 'wb')
+        fid = open(f'{locale_maps}/html/{map_name}.html', 'wb')
         fid.write(html.encode('utf8'))
         fid.close()
         folium_to_image(os.path.join(locale_maps,'html'),
                         os.path.join(locale_maps,'png'),
                         map_name)
-        print('\t- {}/html/{}.html'.format(locale_maps,map_name))
-        print('\t- {}/png/{}.png'.format(locale_maps,map_name))
+        print(f'\t- {locale_maps}/html/{map_name}.html')
+        print(f'\t- {locale_maps}/png/{map_name}.png')
         print('')
     # output to completion log                  
     script_running_log(script, task, start, locale)
