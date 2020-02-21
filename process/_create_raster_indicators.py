@@ -274,7 +274,7 @@ def main():
                         fill_opacity=0.7,
                         nan_fill_opacity=0.2,
                         line_opacity=0.2,
-                        legend_name='{}, by {}'.format(legend_title,area_layer),
+                        legend_name=f'{legend_title}, by {area_layer}',
                         bins = bins,
                         smooth_factor = None,
                         reset=True,

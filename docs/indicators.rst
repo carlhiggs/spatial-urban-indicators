@@ -1282,7 +1282,7 @@ Google Earth Engine was used to process Sentinel 5p data from the Copernicus sat
 **Data location relative to project folder**: ./data/International/Google EarthEngine/copernicus_s5p_nrti_l3_no2-mean_col_num_density_20171013_20181012.tif
 
 
-Annual average NO₂ (Copernicus, 2017-18)
+Annual average NO2 (Copernicus, 2017-18)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 The total vertical column of NO2 is a measure of air pollution, however it is based on tropospheric and stratospheric presence of NO2 and measured in mmol per square metre; in contrast, health guidelines for exposure are usually based on ground monitoring of NO2, recorded in parts per billion.  As a spatially continuous measure, annual average NO2 is useful for indicating areas of relatively intense pollution and may be compared with ground based measures (ie. from monitoring stations) as well as longitudinally to monitor change over time.  For mapping purposes, NO2 was scaled as 1-e6 mmol per square metre (ie. divided by 0.000001).
@@ -1297,8 +1297,8 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
     .. raw:: html
 
         <figure>
-        <img alt="Annual average NO₂ (Copernicus, 2017-18), by subdistrict" src="./../png/bangkok_ind_subdistrict_no2_2017_18_mean.png">
-        <figcaption>Annual average NO₂ (Copernicus, 2017-18), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_no2_2017_18_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Annual average NO2 (Copernicus, 2017-18), by subdistrict" src="./../png/bangkok_ind_subdistrict_no2_2017_18_mean.png">
+        <figcaption>Annual average NO2 (Copernicus, 2017-18), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_no2_2017_18_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1307,7 +1307,7 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
        :width: 70%
        :align: center
 
-       Annual average NO₂ (Copernicus, 2017-18), by subdistrict
+       Annual average NO2 (Copernicus, 2017-18), by subdistrict
 
 
 
@@ -1320,8 +1320,8 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
     .. raw:: html
 
         <figure>
-        <img alt="Annual average NO₂ (Copernicus, 2017-18), by district" src="./../png/bangkok_ind_district_no2_2017_18_mean.png">
-        <figcaption>Annual average NO₂ (Copernicus, 2017-18), by district.         <a href="./../html/bangkok_ind_district_no2_2017_18_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Annual average NO2 (Copernicus, 2017-18), by district" src="./../png/bangkok_ind_district_no2_2017_18_mean.png">
+        <figcaption>Annual average NO2 (Copernicus, 2017-18), by district.         <a href="./../html/bangkok_ind_district_no2_2017_18_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -1330,7 +1330,7 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
        :width: 70%
        :align: center
 
-       Annual average NO₂ (Copernicus, 2017-18), by district
+       Annual average NO2 (Copernicus, 2017-18), by district
 
 
 
@@ -1354,7 +1354,7 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
             <div id="div3" class="plot-box-large">
         	     <img alt=Air quality, ranked in ascending order src="./../png/plots/district_no2_2017_18_mean.png">
             </div>
-       <figcaption>Figures for Air quality with regard to Annual Average No₂ (1-E6 Mmol/M²; 2017-18) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Air quality with regard to Annual Average No2 (1-E6 Mmol/M²; 2017-18) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -1364,7 +1364,7 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
        :width: 100%
        :align: center
 
-       Districts ranked in ascending order by Air quality with regard to Annual Average No₂ (1-E6 Mmol/M²; 2017-18).
+       Districts ranked in ascending order by Air quality with regard to Annual Average No2 (1-E6 Mmol/M²; 2017-18).
 
 
 

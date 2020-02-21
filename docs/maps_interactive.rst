@@ -42,8 +42,8 @@ Interactive maps
         <option value="bangkok_ind_district_minimarts_rate_area">Number of food entrepreneurs per km²: มินิมาร์ท/Mini-mart</option>
         <option value="bangkok_ind_district_minimarts_rate_population">Number of food entrepreneurs per 10,000 population: มินิมาร์ท/Mini-mart</option>
         <option value="bangkok_ind_district_minimarts_rate_household">Number of food entrepreneurs per 10,000 household: มินิมาร์ท/Mini-mart</option>
-        <option value="bangkok_ind_subdistrict_no2_2017_18_mean">Air quality: Annual average NO₂ (1-e6 mmol/m²; 2017-18)</option>
-        <option value="bangkok_ind_district_no2_2017_18_mean">Air quality: Annual average NO₂ (1-e6 mmol/m²; 2017-18)</option>
+        <option value="bangkok_ind_subdistrict_no2_2017_18_mean">Air quality: Annual average NO2 (1-e6 mmol/m²; 2017-18)</option>
+        <option value="bangkok_ind_district_no2_2017_18_mean">Air quality: Annual average NO2 (1-e6 mmol/m²; 2017-18)</option>
         <option value="bangkok_ind_subdistrict_outpatients_combined_diseases">Health center outpatients: vital diseases (combined; 2018)</option>
         <option value="bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area">Health center outpatients per km²: vital diseases (combined; 2018)</option>
         <option value="bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population">Health center outpatients per 10,000 population: vital diseases (combined; 2018)</option>
