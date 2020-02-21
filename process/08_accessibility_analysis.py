@@ -62,20 +62,36 @@ def main():
     df = df_datasets.query("purpose=='indicators' & type=='access'").copy().sort_index()
     # define destination type and name
     df['destination'] =  df.apply(lambda x: '_'.join(x.name.split('_')[1:]),axis=1)
-    # load network graph
-    graphml = os.path.join(locale_dir,f'{buffered_study_region}_pedestrian_{osm_prefix}.graphml')
-    network = graphml_to_pandana(graphml)
+    df_accessibility = df[['destination','resolution']].drop_duplicates().copy()
+    # evaluate main accessibility analysis completion:
+    accessibility_evaluated = True
+    for row in df_accessibility.itertuples():
+        destination = getattr(row,'destination')  
+        if not engine.has_table(destination,schema='destinations'):
+           # continue loop for next destination
+           continue
+        if not engine.has_table(f'od_node_{destination}',schema='distances'):
+            accessibility_evaluated = False
+            print("At least one destination has not been evaluated for accessibility.")
+            print("Load network graph...")
+            graphml = os.path.join(locale_dir,f'{buffered_study_region}_pedestrian_{osm_prefix}.graphml')
+            print("Setting up network for analysis...")
+            network = graphml_to_pandana(graphml)
+            break
+    
+    if accessibility_evaluated:
+        print("Basic analysis has been evaluated for all graphs; skipping loading of network.")
+        
     print("Estimating access within threshold for...")
-    for row in df.itertuples():
+    for row in df_accessibility.itertuples():
         destination = getattr(row,'destination')  
         print(f"{destination}")
         distance = getattr(row,'resolution')
-        area = getattr(row,'linkage_layer')
         if not engine.has_table(destination,schema='destinations'):
            print("  - this destination does not exist within the destinations database schema.")
            # continue loop for next destination
            continue
-        if not engine.has_table(f"access_{destination}",schema='ind_point'):
+        if not engine.has_table(f'od_node_{destination}',schema='distances'):
             sql = f'''
                 SELECT oid,
                 geom,
@@ -89,6 +105,7 @@ def main():
             access.index.name = 'node_osmid'
             access.columns = ['distance_m']
             access.to_sql(f'od_node_{destination}',index='node_osmid',schema='distances',if_exists='replace',con=engine)
+        if not engine.has_table(f"access_{destination}",schema='ind_point'):
             sql = f'''
             DROP TABLE IF EXISTS ind_point.access_{destination};
             CREATE TABLE ind_point.access_{destination} AS
@@ -99,7 +116,7 @@ def main():
                 s_node_distance + distance_m AS full_distance_m,
                 ((s_node_distance + distance_m)<={distance})::int access_{distance}m
             FROM origins o
-            LEFT JOIN od_node_pos_any n ON o.s_node::bigint = n.node_osmid
+            LEFT JOIN distances.od_node_{destination} n ON o.s_node::bigint = n.node_osmid
             ORDER BY point_id, s_node_distance ASC;
             COMMENT ON TABLE ind_point.access_{destination}                     IS 'Created {now}: Estimates for access to the destination "{destination}" for each sample point.  A binary indicator of access is evaluated using a threshold of distance in metres <= {distance} m';
             COMMENT ON COLUMN ind_point.access_{destination}.s_node_distance    IS 'Distance (m) from sample point to network node with shortest distance to destination';
@@ -108,8 +125,28 @@ def main():
             COMMENT ON COLUMN ind_point.access_{destination}.access_{distance}m IS 'Indicator of access for sample point to destination within {distance}m inclusive (0 = no access; 1 = access)';
             '''
             engine.execute(sql)
-        # if not engine.has_table(f"access_{destination}",schema='ind_area'):
-            
+        for row in df_accessibility.itertuples():
+            destination = getattr(row,'destination')  
+            print(f"{destination}")
+            distance = getattr(row,'resolution')
+            area = getattr(row,'linkage_layer')
+            if not engine.has_table(f"{area}_access_{destination}_{distance}m",schema='ind_area'):
+                # example aggregation code - not yet finished
+                # need to split by area, and weight larger aggregations using pop
+                sql = f'''
+                      CREATE TABLE ind_area.{area}_access_{destination}_{distance}m AS
+                      SELECT subdistrict_id, 
+                             subdistrict_en, 
+                             district_id, 
+                             district_en, 
+                             population, 
+                             COUNT(*) sample_points, 
+                             AVG(access_800m) 
+                        FROM sampling_points_30m 
+                      LEFT JOIN ind_point.access_train USING (point_id)
+                      LEFT JOIN subdistrict USING (subdistrict_id)
+                      GROUP BY subdistrict_id,subdistrict_en,district_id,district_en,population;
+                      '''
     # output to completion log    
     script_running_log(script, task, start, locale)
     engine.dispose()

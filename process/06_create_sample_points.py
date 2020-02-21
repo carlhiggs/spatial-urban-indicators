@@ -260,7 +260,8 @@ def main():
                 LEFT JOIN nodes n1 ON e."from" = n1.osmid
                 LEFT JOIN nodes n2 ON e."to" = n2.osmid
                 )
-        SELECT t.point_id,         
+        SELECT t.point_id,        
+               t.{area_analysis}, 
                t.edge_ogc_fid,   
                t.metres,
                t.n1,               
