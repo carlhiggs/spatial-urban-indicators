@@ -108,7 +108,7 @@ def main():
             COMMENT ON COLUMN ind_point.access_{destination}.access_{distance}m IS 'Indicator of access for sample point to destination within {distance}m inclusive (0 = no access; 1 = access)';
             '''
             engine.execute(sql)
-        if not engine.has_table(f"access_{destination}",schema='ind_area'):
+        # if not engine.has_table(f"access_{destination}",schema='ind_area'):
             
     # output to completion log    
     script_running_log(script, task, start, locale)
