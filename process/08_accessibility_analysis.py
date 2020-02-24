@@ -49,7 +49,7 @@ def main():
     # simple timer for log file
     start = time.time()
     script = os.path.basename(sys.argv[0])
-    task = 'Calculate access to public open space'
+    task = 'Analyse destination accessibility'
     engine = create_engine(connection)
     sql = '''
     CREATE SCHEMA IF NOT EXISTS distances;
@@ -61,7 +61,7 @@ def main():
     print('Associate destinations with required variables for accessibility analyses...')
     df = df_datasets.query("purpose=='indicators' & type=='access'").copy().sort_index()
     # define destination type and name
-    df['destination'] =  df.apply(lambda x: '_'.join(x.name.split('_')[1:]),axis=1)
+    df['destination'] =  df.index
     df_accessibility = df[['destination','resolution']].drop_duplicates().copy()
     # evaluate main accessibility analysis completion:
     accessibility_evaluated = True
@@ -71,6 +71,7 @@ def main():
            # continue loop for next destination
            continue
         if not engine.has_table(f'od_node_{destination}',schema='distances'):
+            # print(f'  - {destination}')
             accessibility_evaluated = False
             print("At least one destination has not been evaluated for accessibility.")
             print("Load network graph...")
@@ -125,28 +126,45 @@ def main():
             COMMENT ON COLUMN ind_point.access_{destination}.access_{distance}m IS 'Indicator of access for sample point to destination within {distance}m inclusive (0 = no access; 1 = access)';
             '''
             engine.execute(sql)
-        for row in df_accessibility.itertuples():
+            
+    print("Calculate area level aggregate indicators...")
+    for area in df.linkage_layer.unique():
+        area_id = areas[area]['id']
+        # note: for aggregation to areas to be successful, an area linkage layer must be defined
+        print(area)
+        for row in df.query(f"linkage_layer=='{area}'").itertuples():
             destination = getattr(row,'destination')  
-            print(f"{destination}")
+            print(f"  - {destination}")
             distance = getattr(row,'resolution')
-            area = getattr(row,'linkage_layer')
+            # SQL query differs if area of interest is main analytical layer
+            if area_id == area_analysis:
+                non_main_layer_id = ''
+            else:
+                non_main_layer_id = f'{area_id},'
             if not engine.has_table(f"{area}_access_{destination}_{distance}m",schema='ind_area'):
                 # example aggregation code - not yet finished
                 # need to split by area, and weight larger aggregations using pop
                 sql = f'''
-                      CREATE TABLE ind_area.{area}_access_{destination}_{distance}m AS
-                      SELECT subdistrict_id, 
-                             subdistrict_en, 
-                             district_id, 
-                             district_en, 
-                             population, 
-                             COUNT(*) sample_points, 
-                             AVG(access_800m) 
-                        FROM sampling_points_30m 
-                      LEFT JOIN ind_point.access_train USING (point_id)
-                      LEFT JOIN subdistrict USING (subdistrict_id)
-                      GROUP BY subdistrict_id,subdistrict_en,district_id,district_en,population;
-                      '''
+                       DROP TABLE IF EXISTS ind_area.{area}_access_{destination}_{distance}m;
+                       CREATE TABLE ind_area.{area}_access_{destination}_{distance}m AS
+                       SELECT {area_id},  
+                              SUM(population) population, 
+                              SUM(sample_points)  sample_points, 
+                              -- population weighted average of estimate for access
+                              ROUND(100*(SUM(population*(avg::numeric))/SUM(population))::numeric,2) AS percent_access
+                         FROM 
+                       (SELECT {area_analysis},  
+                               {non_main_layer_id}
+                               population, 
+                               COUNT(*) sample_points, 
+                               AVG(access_800m) AS avg
+                         FROM {points} 
+                       LEFT JOIN ind_point.access_train USING (point_id)
+                       LEFT JOIN {analysis_scale} USING ({area_analysis})
+                       GROUP BY {area_analysis}, {non_main_layer_id} population) t
+                       GROUP BY {area_id};
+                  '''
+                engine.execute(sql)
     # output to completion log    
     script_running_log(script, task, start, locale)
     engine.dispose()

@@ -34,7 +34,7 @@ def main():
     # create OSM data flag
     df['osm'] = (df.provider.isin(['OpenStreetMap','OSM'])| df.destination.str.startswith('osm') | df.destination.str.endswith('osm'))
     # retrieve definitions for relevant OSM destinations
-    df_osm = df_osm_dest.query('destination in {}'.format(df[df['osm']].name.values)).copy()
+    df_osm = df_osm_dest.query("destination in ['{}']".format("','".join( df[df['osm']].name.values))).copy()
     df_osm['condition'] = df_osm['condition'].replace('NULL','OR')
     df_osm_unique = df_osm[['destination','name','domain']].drop_duplicates(subset=['destination'])
     # The destination schema is used for storing destination features in the study region
@@ -140,50 +140,63 @@ def main():
               CREATE INDEX IF NOT EXISTS {name}_gix ON {schema}.{name} USING GIST (geom);
               '''
             engine.execute(sql)
-        if osm:
-            dest_condition = []
-            for condition in ['AND','OR','NOT']:
-            # for condition in df_osm_dest[df_osm_dest['destination']==destination]['condition'].unique():
-                # print(condition)
-                if condition == 'AND':
-                    clause = ' AND '.join(df_osm[(df_osm['destination']==name)&(df_osm['condition']=='AND')].apply(lambda x: "{} IS NOT NULL".format(x.key) if x.value=='NULL' else "{} = '{}'".format(x.key,x.value),axis=1).values.tolist())
-                    dest_condition.append(clause)
-                if condition == 'OR':
-                    clause = ' OR '.join(df_osm[(df_osm['destination']==name)&(df_osm['condition']=='OR')].apply(lambda x: "{} IS NOT NULL".format(x.key) if x.value=='NULL' else "{} = '{}'".format(x.key,x.value),axis=1).values.tolist())
-                    dest_condition.append(clause)
-                if condition != 'NOT':
-                    clause = ' AND '.join(df_osm[(df_osm['destination']==name)&(df_osm['condition']=='NOT')].apply(lambda x: "{} IS NOT NULL".format(x.key) if x.value=='NULL' else "{} != '{}' OR access IS NULL".format(x.key,x.value),axis=1).values.tolist())
-                    dest_condition.append(clause)
-            dest_condition = [x for x in dest_condition if x!='']
-            # print(len(dest_condition))
-            if len(dest_condition)==1:
-                dest_condition = dest_condition[0]
+        if osm:          
+            if str(data).startswith('query:'):
+                query = data.split(':')[1]
+                sql = f'''
+                       DROP TABLE IF EXISTS {schema}.{name};
+                       CREATE TABLE IF NOT EXISTS {schema}.{name} AS 
+                       SELECT (row_number() over())::int oid,
+                              'custom query' AS "data",
+                              a.* 
+                         FROM {query};
+                       '''
+                engine.execute(sql)
+                dest_condition = query
             else:
-                dest_condition = '({})'.format(') AND ('.join(dest_condition))
-            # print(dest_condition)
-            sql = f'''
-              DROP TABLE IF EXISTS {schema}.{name};
-              CREATE TABLE {schema}.{name} AS
-              SELECT (row_number() over())::int oid,
-                     osm_id,
-                     "data",
-                     geom
-              FROM
-              (SELECT * FROM
-                (SELECT osm_id,
-                        '{osm_prefix}_point' AS data,
-                        geom
-                   FROM {osm_prefix}_point d WHERE {dest_condition}) point
-                 UNION
-                (SELECT osm_id,
-                        '{osm_prefix}_polygon' AS data,
-                        ST_Centroid(d.geom)
-                   FROM {osm_prefix}_polygon d WHERE {dest_condition})
-               ORDER BY data, osm_id) t
-               ;
-            '''
-            # print(sql)
-            engine.execute(sql)
+                dest_condition = []
+                for condition in ['AND','OR','NOT']:
+                # for condition in df_osm_dest[df_osm_dest['destination']==destination]['condition'].unique():
+                    # print(condition)
+                    if condition == 'AND':
+                        clause = ' AND '.join(df_osm[(df_osm['destination']==name)&(df_osm['condition']=='AND')].apply(lambda x: "{} IS NOT NULL".format(x.key) if x.value=='NULL' else "{} = '{}'".format(x.key,x.value),axis=1).values.tolist())
+                        dest_condition.append(clause)
+                    if condition == 'OR':
+                        clause = ' OR '.join(df_osm[(df_osm['destination']==name)&(df_osm['condition']=='OR')].apply(lambda x: "{} IS NOT NULL".format(x.key) if x.value=='NULL' else "{} = '{}'".format(x.key,x.value),axis=1).values.tolist())
+                        dest_condition.append(clause)
+                    if condition != 'NOT':
+                        clause = ' AND '.join(df_osm[(df_osm['destination']==name)&(df_osm['condition']=='NOT')].apply(lambda x: "{} IS NOT NULL".format(x.key) if x.value=='NULL' else "{} != '{}' OR access IS NULL".format(x.key,x.value),axis=1).values.tolist())
+                        dest_condition.append(clause)
+                dest_condition = [x for x in dest_condition if x!='']
+                # print(len(dest_condition))
+                if len(dest_condition)==1:
+                    dest_condition = dest_condition[0]
+                else:
+                    dest_condition = '({})'.format(') AND ('.join(dest_condition))
+                # print(dest_condition)
+                sql = f'''
+                  DROP TABLE IF EXISTS {schema}.{name};
+                  CREATE TABLE {schema}.{name} AS
+                  SELECT (row_number() over())::int oid,
+                         osm_id,
+                         "data",
+                         geom
+                  FROM
+                  (SELECT * FROM
+                    (SELECT osm_id,
+                            '{osm_prefix}_point' AS data,
+                            geom
+                       FROM {osm_prefix}_point d WHERE {dest_condition}) point
+                     UNION
+                    (SELECT osm_id,
+                            '{osm_prefix}_polygon' AS data,
+                            ST_Centroid(d.geom)
+                       FROM {osm_prefix}_polygon d WHERE {dest_condition})
+                   ORDER BY data, osm_id) t
+                   ;
+                '''
+                # print(sql)
+                engine.execute(sql)
             # insert destinations from potentially different sources into combined table
             sql = f'''
                 INSERT INTO {schema}.{destination} (name, oid, geom)
