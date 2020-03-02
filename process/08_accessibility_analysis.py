@@ -141,7 +141,7 @@ def main():
                 non_main_layer_id = ''
             else:
                 non_main_layer_id = f'{area_id},'
-            if not engine.has_table(f"{area}_access_{destination}_{distance}m",schema='ind_area'):
+            if engine.has_table(f"{area}_access_{destination}_{distance}m",schema='ind_area'):
                 # example aggregation code - not yet finished
                 # need to split by area, and weight larger aggregations using pop
                 sql = f'''
@@ -151,19 +151,21 @@ def main():
                               SUM(population) population, 
                               SUM(sample_points)  sample_points, 
                               -- population weighted average of estimate for access
-                              ROUND(100*(SUM(population*(avg::numeric))/SUM(population))::numeric,2) AS percent_access
+                              100*(SUM(population*(avg::numeric))/SUM(population))::numeric AS percent_access
                          FROM 
                        (SELECT {area_analysis},  
                                {non_main_layer_id}
                                population, 
                                COUNT(*) sample_points, 
-                               AVG(access_800m) AS avg
+                               AVG(access_{distance}m) AS avg
                          FROM {points} 
-                       LEFT JOIN ind_point.access_train USING (point_id)
+                       LEFT JOIN ind_point.access_{destination} USING (point_id)
                        LEFT JOIN {analysis_scale} USING ({area_analysis})
                        GROUP BY {area_analysis}, {non_main_layer_id} population) t
-                       GROUP BY {area_id};
+                       GROUP BY {area_id}
+                       ORDER BY {area_id};
                   '''
+                # print(sql)
                 engine.execute(sql)
     # output to completion log    
     script_running_log(script, task, start, locale)
