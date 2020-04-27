@@ -125,7 +125,8 @@ def expand_indicators(df):
                                                                str(x.name),
                                                                ('', '_rate_'+str(x.rate))[str(x.rate) not in ['','nan']]])
                                                                .replace('__','_').rstrip('_'),
-                                           axis=1).values
+                                           axis=1)
+    d.index = d.table_out_name
     for field in ['alias','name_f','map_heading']:
         d.loc[d.rate.astype('str') != '',field] = d.loc[d.rate.astype('str') != ''].apply(lambda x: (x[field], x[field] +' per {}'.format(
                                                                 (x.rate_units,'{:,g} {}'.format(x.rate_scale,x.rate_units))[x.rate_scale!=1]
