@@ -51,6 +51,7 @@ def main():
             DROP TABLE IF EXISTS {schema}.{destination};
             DROP TABLE IF EXISTS {schema}.{name};
             '''
+        engine.execute(sql)
     # Create destination type table and destination in sql database
     # The destination type table is a summary of all destinations in study region
     sql = '''
@@ -94,7 +95,7 @@ def main():
             epsg = int(getattr(row,'epsg'))
             # transform data if not in project spatial reference
             if epsg!=srid:
-                transform =   f' -s_srs "ESPG:{epsg}" -t_srs "EPSG:{srid}" '
+                transform =   f' -s_srs "EPSG:{epsg}" -t_srs "EPSG:{srid}" '
             else:
                 transform = ''
             # get bounding box of buffered study region for clipping external data using ogr2ogr on import

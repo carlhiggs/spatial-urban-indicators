@@ -48,15 +48,6 @@ df_parameters[locale] = df_parameters[locale].fillna('')
 for var in [x for x in  df_parameters.index.values]:
     globals()[var] = df_parameters.loc[var][locale]
 # full_locale = df_parameters.loc['full_locale'][locale]
-df_datasets.name_s = df_datasets.name_s.fillna('')
-df_datasets.dimension = df_datasets.dimension.fillna('')
-query_include = ['population','boundaries','indicators','destinations']
-query_include = '|'.join(['purpose == "{}"'.format(p) for p in query_include])
-df_datasets = df_datasets.query(f'({query_include}) & target_region=="{full_locale}" & name_s!=""')
-df_datasets.set_index('name_s',inplace=True)
-df_datasets.areas = df_datasets.areas.str.split(',')
-df_datasets = df_datasets.explode('areas')
-df_datasets.rename(columns={"areas": "linkage_layer"},inplace=True)
 
 # derived study region name (no need to change!)
 study_region = '{}_{}_{}'.format(locale,region,year).lower()
@@ -73,6 +64,8 @@ regions_of_interest = df_parameters.loc['full_locale',:].to_list()[2:]
 
 # sample points
 points = '{}_{}m'.format(points,point_sampling_interval)
+
+df_datasets = compile_datasets(df_datasets,full_locale)
 
 # Region set up
 area_meta = {}
@@ -176,7 +169,11 @@ if population_grid != '':
                                         licence = df_datasets.loc[population_data]['licence'])
     population_raster_clipped =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),population_raster['epsg'])
     population_raster_projected =  '{}_clipped_{}.tif'.format(os.path.join(folderPath,'study_region',study_region,os.path.basename(population_raster['data'])[:-4]),srid)
-   
+
+# Expand indicator datasets using area information
+df_datasets['linkage_id'] = df_datasets.linkage_layer.apply(lambda x: areas[x]['id'] if str(x)!='nan' else '')
+df_datasets = expand_indicators(df_datasets)
+
 # Derived hex settings
 hex_grid = '{0}_hex_{1}{2}_diag'.format(study_region,hex_diag,units)
 hex_grid_buffer =  '{0}_hex_{1}{2}_diag_{3}{2}_buffer'.format(study_region,hex_diag,units,hex_buffer)
@@ -267,12 +264,6 @@ map_style = '''
 </style>
 <script>L_DISABLE_3D = true;</script>
 '''    
-
-
-# Expand indicator datasets using area information
-df_datasets['linkage_id'] = df_datasets.linkage_layer.apply(lambda x: areas[x]['id'] if str(x)!='nan' else '')
-df_datasets = expand_indicators(df_datasets)
-
 
 # specify that the above modules and all variables below are imported on 'from config.py import *'
 __all__ = [x for x in dir() if x not in ['area','__file__','__all__', '__builtins__', '__doc__', '__name__', '__package__']]
