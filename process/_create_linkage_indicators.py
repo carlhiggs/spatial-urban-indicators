@@ -20,11 +20,61 @@ from sqlalchemy import create_engine, NVARCHAR, event
 import folium
 import re
 import sqlite3
+import io
 
 from script_running_log import script_running_log
 
 # Import custom variables for National Liveability indicator process
 from _project_setup import *
+
+def set_columns_width(map_field,aggregation):
+    """
+    Define units value, based on whether rate and scaling values
+
+    Parameters
+    ----------
+    units: string
+        the generic defined units for this measure
+    rate_units: string
+        if this is a rate, the units of this rate
+    rate_scale: string
+        if this is a rate, the scale of the rate; if equal to 1, it is ignored.
+
+    Returns
+    -------
+    units string
+    """
+    
+    if aggregation not in ['','nan']:
+        potential_column_width = len(map_field) 
+    else:
+        potential_column_width = len(map_field) + len(aggregation) + 1
+    if potential_column_width < pd.get_option("display.max_colwidth"):
+        pd.set_option("display.max_colwidth", potential_column_width)
+    
+def format_units(units,rate_units,rate_scale):
+    """
+    Return formatted units value, based on whether rate and scaling values
+
+    Parameters
+    ----------
+    units: string
+        the generic defined units for this measure
+    rate_units: string
+        if this is a rate, the units of this rate
+    rate_scale: string
+        if this is a rate, the scale of the rate; if equal to 1, it is ignored.
+
+    Returns
+    -------
+    units string
+    """
+    if rate_units!='':
+        if rate_scale == 1:
+            units = f'per {rate_units}'
+        else:
+            units = f'per {rate_scale} {rate_units}'
+    return(units)
     
 def main():
     # simple timer for log file
@@ -62,6 +112,7 @@ def main():
     for row in df.index:
         dataset = df.loc[row,'data_dir']
         print('  - "{}"'.format(dataset))
+        # get information about this measure
         sheet = df.loc[row,'excel_sheet']
         data_type = valid_type(df.loc[row,'data_type'])
         description = df.loc[row,'alias']
@@ -74,102 +125,99 @@ def main():
         point_overlay_xy = df.loc[row,'point_overlay_xy']
         display_id = area_layer
         map_field = df.loc[row,'map_field']
+        units = df.loc[row,'units']
         rate = df.loc[row,'rate']
         rate_units = df.loc[row,'rate_units']
         rate_scale = df.loc[row,'rate_scale']
+        units = format_units(units,rate_units,rate_scale)
         target_year = df.loc[row,'year_target']
-        if aggregation not in ['','nan']:
-            potential_column_width = len(map_field) 
-        else:
-            potential_column_width = len(map_field) + len(aggregation) + 1
-        if potential_column_width < pd.get_option("display.max_colwidth"):
-            pd.set_option("display.max_colwidth", potential_column_width)
-            gpd.pd.set_option("display.max_colwidth", potential_column_width)   
+        set_columns_width(map_field,aggregation)  # adjust settings for display of field names 
         map_name = f'{locale}_ind_{map_name_suffix}'
         print('\t{}'.format(map_name))
         if os.path.isfile(f'{locale_maps}/html/{map_name}.html') and reprocess==False:
             print('\t - File appears to already have been processed (HTML output exists); skipping.')
         else:
-            if not area_layer in areas:
-               print("\t - Please check that the specified 'linkage_layer' corresponds to one of those set up in the Parameters sheet.")
-               continue
-            if not areas[area_layer]['id']==linkage_id:
-               print("\t - Please check that the specified 'linkage_id' corresponds to that of the specified linkage layer.")
-               continue
-            if description=='':
-                description = map_field
-                df.loc[row,'Description'] = map_field
-            source = df.loc[row,'provider']
-            mapxls = pd.ExcelFile('../{}'.format(dataset))
-            mdf = pd.read_excel(mapxls,sheet)
-            mdf = mdf.set_index(linkage_id)
-            mdf.index.name = area_linkage_id
-            fill_na = '{}'.format(df.loc[row,'fill_na'])
-            if fill_na not in ['','nan']:
-                fill_na = fill_na.split(',')
-                for field in fill_na:
-                    mdf[field] = mdf[field].fillna(method = 'ffill') 
-            if '{}'.format(point_overlay_xy) not in ['','nan']:
-                # this means an attempt has been made to define point data locations
-                point_overlay_xy = point_overlay_xy.split(',')
-                point_overlay_name = df.loc[row,'point_overlay_name']
-                point_overlay_hover_field = df.loc[row,'point_overlay_hover_field']
-                point_overlay = gpd.GeoDataFrame(mdf, geometry=gpd.points_from_xy(mdf[point_overlay_xy[0]],mdf[point_overlay_xy[1]]))
-            # aggregate data by ID using specified method, if specified.
-            # Note that currently only 'sum' and 'average' have been programmed as options.
-            aggregation_text = ''
-            popup_agg_text = ''
-            if aggregation =='count':
-                mdf[map_field] = 1
-                mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
-                aggregation_text = f" ({aggregation})"
-            if aggregation =='sum':
-                mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
-                aggregation_text = f" ({aggregation})"
-            elif aggregation == 'average':
-                mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
-                aggregation_text = f" ({aggregation})"
-                map_field = f'average {map_field}'
-            elif not '{}'.format(description)=='nan':
-                print("\t\tNo aggregation method specified; assuming that all records map to distinct areas.")
-                mdf = mdf[[map_field]]
-            if rate != '':
-                if rate in ['area','population','household']:
-                    density_field = df.loc[row,'alias']
-                    rate_variable =  globals()['rate_{}'.format(rate)]
-                    sql = f'''
-                            SELECT a.{area_linkage_id},
-                                   {rate_variable}
-                            FROM {area_layer} a
-                            '''
-                    area_data = pandas.read_sql(sql, engine, index_col=f'{area_linkage_id}')
-                    mdf = mdf.join(area_data)
-                    mdf[density_field] = mdf[map_field]/(mdf[rate_variable]/rate_scale)
-                    mdf.drop([rate_variable,map_field], axis=1, inplace=True)
-                    map_field = density_field
+            if 'skip_tables' not in sys.argv:
+                if not area_layer in areas:
+                   print("\t - Please check that the specified 'linkage_layer' corresponds to one of those set up in the Parameters sheet.")
+                   continue
+                if not areas[area_layer]['id']==linkage_id:
+                   print("\t - Please check that the specified 'linkage_id' corresponds to that of the specified linkage layer.")
+                   continue
+                if description=='':
+                    description = map_field
+                    df.loc[row,'Description'] = map_field
+                source = df.loc[row,'provider']
+                mapxls = pd.ExcelFile('../{}'.format(dataset))
+                mdf = pd.read_excel(mapxls,sheet)
+                mdf = mdf.set_index(linkage_id)
+                mdf.index.name = area_linkage_id
+                fill_na = '{}'.format(df.loc[row,'fill_na'])
+                if fill_na not in ['','nan']:
+                    fill_na = fill_na.split(',')
+                    for field in fill_na:
+                        mdf[field] = mdf[field].fillna(method = 'ffill') 
+                if '{}'.format(point_overlay_xy) not in ['','nan']:
+                    # this means an attempt has been made to define point data locations
+                    point_overlay_xy = point_overlay_xy.split(',')
+                    point_overlay_name = df.loc[row,'point_overlay_name']
+                    point_overlay_hover_field = df.loc[row,'point_overlay_hover_field']
+                    point_overlay = gpd.GeoDataFrame(mdf, geometry=gpd.points_from_xy(mdf[point_overlay_xy[0]],mdf[point_overlay_xy[1]]))
+                # aggregate data by ID using specified method, if specified.
+                # Note that currently only 'sum' and 'average' have been programmed as options.
+                aggregation_text = ''
+                popup_agg_text = ''
+                if aggregation =='count':
+                    mdf[map_field] = 1
+                    mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
+                    aggregation_text = f" ({aggregation})"
+                if aggregation =='sum':
+                    mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
+                    aggregation_text = f" ({aggregation})"
+                elif aggregation == 'average':
+                    mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
+                    aggregation_text = f" ({aggregation})"
+                    map_field = f'average {map_field}'
+                elif not '{}'.format(description)=='nan':
+                    print("\t\tNo aggregation method specified; assuming that all records map to distinct areas.")
+                    mdf = mdf[[map_field]]
+                if rate != '':
+                    if rate in ['area','population','household']:
+                        density_field = df.loc[row,'alias']
+                        rate_variable =  globals()['rate_{}'.format(rate)]
+                        sql = f'''
+                                SELECT a.{area_linkage_id},
+                                       {rate_variable}
+                                FROM {area_layer} a
+                                '''
+                        area_data = pandas.read_sql(sql, engine, index_col=f'{area_linkage_id}')
+                        mdf = mdf.join(area_data)
+                        mdf[density_field] = mdf[map_field]/(mdf[rate_variable]/rate_scale)
+                        mdf.drop([rate_variable,map_field], axis=1, inplace=True)
+                        map_field = density_field
+                    else:
+                        print(f'undefined density "{density}"; please check configuration for this indicator')
+                # we create an alternate description field as it may be that the map_field variable is > 63 characters 
+                # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
+                # with the 
+                # mdf['description'] = map_field
+                # Send to SQL database
+                # print(mdf.columns)
+                # mdf.columns = [map_name_suffix]
+                if len(mdf.columns) == 1:
+                    mdf.columns = [map_name_suffix]
                 else:
-                    print(f'undefined density "{density}"; please check configuration for this indicator')
-            # we create an alternate description field as it may be that the map_field variable is > 63 characters 
-            # in which case it would be truncated.  So we use the map_name_suffix as the field name for the data, and populate 'description'
-            # with the 
-            # mdf['description'] = map_field
-            # Send to SQL database
-            # print(mdf.columns)
-            # mdf.columns = [map_name_suffix]
-            if len(mdf.columns) == 1:
-                mdf.columns = [map_name_suffix]
-            else:
-                # print([map_name_suffix]+mdf.columns[1:])
-                mdf.columns = [map_name_suffix]+mdf.columns[1:]
-            mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
-            print(f'\t- postgresql::{db}/{map_name_suffix}')
-            mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
-            print('\t- {path}/{output_name}.gpkg/{layer}'.format(output_name = '{}'.format(study_region),
-                                                            path = os.path.join(locale_maps,'gpkg'),
-                                                            layer = map_name_suffix))
+                    # print([map_name_suffix]+mdf.columns[1:])
+                    mdf.columns = [map_name_suffix]+mdf.columns[1:]
+                mdf.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
+                print(f'\t- postgresql::{db}/{map_name_suffix}')
+                mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
+                print('\t- {path}/{output_name}.gpkg/{layer}'.format(output_name = '{}'.format(study_region),
+                                                                path = os.path.join(locale_maps,'gpkg'),
+                                                                layer = map_name_suffix))
             sql = f'''
                     SELECT a.{area_linkage_id} AS "Census Id",
-                           district AS "Boundary Name",
+                           district_en AS "Boundary Name",
                            {target_year} AS Year,
                            {map_name_suffix} AS "Value",
                            NULL AS "Trend"
@@ -177,23 +225,26 @@ def main():
                     LEFT JOIN {map_name_suffix} USING ({area_linkage_id})
                     '''
             csv_data = pandas.read_sql(sql, engine, index_col='Census Id')
-            import io
             s = io.StringIO()
             csv_data.to_csv(s,header=False)
-            # header = "'Boundary Name','year','Value','Trend'\n"
-            header = '''
-template_version,1.2,Ignore this row,,
-data_type,Per 10,0,Set data type as # % or a custom suffix,
-trend_year_start,,Set the year range for the start of trend calculation,,
-trend_year_end,,Set the year range for the end of trend calculation,,
-----------------------------------------------------------------------------------------------------------------------------------------------,,,,
-Census Id,Boundary Name,Year,Value,Trend
-----------------------------------------------------------------------------------------------------------------------------------------------,,,,
-'''
             body = s.getvalue()
-            mdf.to_csv('{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
+            # header = "'Boundary Name','year','Value','Trend'\n"
+            sep = '-'*142
+            csv_template = (
+                 'template_version,1.2,Ignore this row,,\n'
+                f'data_type,{units},0,Set data type as # % or a custom suffix,\r\n'
+                 'trend_year_start,,Set the year range for the start of trend calculation,,\r\n'
+                 'trend_year_end,,Set the year range for the end of trend calculation,,\r\n'
+                f'{sep},,,,\r\n'
+                 'Census Id,Boundary Name,Year,Value,Trend\r\n'
+                f'{sep},,,,\r\n'
+                f'{body}'
+                )
+            csv_file = '{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
                                                                                       map_name_suffix),
-                                                         path = os.path.join(locale_maps,'csv')))
+                                                         path = os.path.join(locale_maps,'csv'))
+            with open(csv_file, 'w') as output_file:
+                output_file.write(csv_template)
             print('\t- {path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
                                                                                       map_name_suffix),
                                                          path = os.path.join(locale_maps,'csv')))
