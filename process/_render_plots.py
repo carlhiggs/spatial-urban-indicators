@@ -75,7 +75,7 @@ def main():
         # Prepare plot
         y    = plot_data_y
         ylab = heading
-        title = map_field.title()
+        title = map_field
         x1   = 'population'     
         x2   = 'population per sqkm'
         sql = f'''
@@ -97,40 +97,66 @@ def main():
 
         #colours = ['#d01c8b','#f1b6da','#f7f7f7','#b8e186','#4dac26']
         #colour_binary = [colours[0], colours[-1]]
-
-        # scatterplots
-
-        ax1 = sns.lmplot(x1, y, data=data, hue='regions_of_interest', fit_reg=False)
-        ax1._legend.remove()
-        ax1.set(xlabel=x1.title(), ylabel=ylab,title = title)
-        label_point(data[x1], data[y], data['label'], plt.gca())
-        # plt.show()   
-        location = f'../maps/{study_region}/png/plots/{y}_{x1}'.replace(' ','_')
-        ax1.savefig(location, dpi=300)   
-        print(f"\t{location}")
-                
         
-        ax2 = sns.lmplot(x2, y, data=data, hue='regions_of_interest', fit_reg=False)
-        ax2._legend.remove()
-        ax2.set(xlabel=x2.title(), ylabel=ylab,title = title)
-        label_point(data[x2], data[y], data['label'], plt.gca())
-        # plt.show()
-        location = f'../maps/{study_region}/png/plots/{y}_{x2}'.replace(' ','_')
-        ax2.savefig(location, dpi=300)   
-        print(f"\t{location}")
+        if area_layer == 'district':
+            # scatterplots
+            g = sns.lmplot(x1, y, data=data, hue='regions_of_interest', fit_reg=False)
+            g._legend.remove()
+            g.set(xlabel=x1.title(), ylabel=title,title = heading)
+            label_point(data[x1], data[y], data['label'], plt.gca())
+            for ax in g.axes[:,0]:
+                ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
+                ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
+            plt.tight_layout()
+            # plt.show()   
+            location = f'../maps/{study_region}/png/plots/{y}_{x1}'.replace(' ','_')
+            g.savefig(location, dpi=300)   
+            plt.close()
+            print(f"\t{location}")
+            
+            g = sns.lmplot(x2, y, data=data, hue='regions_of_interest', fit_reg=False)
+            g._legend.remove()
+            g.set(xlabel=x2.title(), ylabel=title,title = heading)
+            label_point(data[x2], data[y], data['label'], plt.gca())
+            for ax in g.axes[:,0]:
+                ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
+                ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
+            plt.tight_layout()
+            # plt.show()
+            location = f'../maps/{study_region}/png/plots/{y}_{x2}'.replace(' ','_')
+            g.savefig(location, dpi=300)   
+            plt.close()
+            print(f"\t{location}")
 
-        # Horizontal bar plot
-        pd_data = data.sort_values(y)
-        plt.figure(figsize=(14,10))
-        ax3 = sns.barplot(pd_data[y], pd_data['full_label'])
-        ax3.get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
-        ax3.set(xlabel=ylab, ylabel=area_layer.title(),title = title)
-        ax3.set_yticklabels(pd_data['full_label'])
-        plt.tight_layout()
-        # plt.show()
-        location = f'../maps/{study_region}/png/plots/{y}'.replace(' ','_')
-        ax3.figure.savefig(location, dpi=300)   
-        print(f"\t{location}")
+            # Horizontal bar plot
+            pd_data = data.sort_values(y)
+            plt.figure(figsize=(14,10))
+            ax = sns.barplot(pd_data[y], pd_data['full_label'])
+            ax.set(xlabel=title, ylabel=area_layer.title(),title = heading)
+            ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
+            ax.set_yticklabels(pd_data['full_label'])
+            plt.tight_layout()
+            # plt.show()
+            location = f'../maps/{study_region}/png/plots/{y}'.replace(' ','_')
+            ax.figure.savefig(location, dpi=300)  
+            plt.close()
+            print(f"\t{location}")
+        
+        # if area_layer == 'subdistrict':
+            # # Horizontal box plot
+            # pd_data = data.sort_values(y)
+            # plt.figure(figsize=(14,10))
+            # ax = sns.boxplot(x = 'label', y=y, pd_data['full_label'], orient='h',data = data)
+            # ax = sns.swarmplot(x = 'label', y=y, pd_data['full_label'], orient='h',data = data)
+            # ax.get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
+            # ax.set(xlabel=ylab, ylabel=area_layer.title(),title = title)
+            # ax.set_yticklabels(pd_data['full_label'])
+            # plt.tight_layout()
+            # # plt.show()
+            # location = f'../maps/{study_region}/png/plots/{y}'.replace(' ','_')
+            # ax3.figure.savefig(location, dpi=300)  
+            # plt.close()            
+        
         
     # output to completion log                  
     script_running_log(script, task, start, locale)
