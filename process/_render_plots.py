@@ -1,12 +1,12 @@
 """
 
-Create linkage indicators
+Render plots
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Script:  
-    _create_linkage_indicators.py
+    _render_plots.py
 Purpose: 
-    Create indicators based on linkage with boundary data from specification in datasets section of configuration file
+    Create exploratory data plots
 
 """
 
@@ -45,9 +45,11 @@ def main():
     engine = create_engine(f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}")
                       
     # retrieve subset of datasets which are files to be joined based on linkage
-    df = df_datasets.query('type=="linkage" | type=="raster"').copy()
+    df = df_datasets.query('type=="linkage" | type=="raster" | type=="access"').copy()
+    # df = df_datasets.query('type=="access"').copy()
     df = df[df['plot'].astype('str') != 'nan']    
     for row in df.index:
+        row_type = df.loc[row,'type']
         data_type = valid_type(df.loc[row,'data_type'])
         description = df.loc[row,'alias']
         # heading = '{}'.format(df.loc[row,'map_heading'])
@@ -78,16 +80,33 @@ def main():
         title = map_field
         x1   = 'population'     
         x2   = 'population per sqkm'
-        sql = f'''
-        SELECT a.district_id,
-               a.district_en,
-               a.district_th,
-               a."{x1}",
-               a."{x2}",
-               d.{y}
-        FROM {area_layer} a
-        LEFT JOIN {y} d USING ({linkage_id});
-        '''
+        if row_type!='access':
+            sql = f'''
+            SELECT a.district_id,
+                   a.district_en,
+                   a.district_th,
+                   a."{x1}",
+                   a."{x2}",
+                   d.{y}
+            FROM {area_layer} a
+            LEFT JOIN {y} d USING ({linkage_id});
+            '''
+        else:
+            destination = row
+            distance = df.loc[row,'resolution']
+            table = f'ind_area.{destination}_{distance}m'.replace(f'{area_layer}_',f'{area_layer}_access_')
+            old_y = 'percent_access'
+            y = f'{table}_pop_pct'.replace('ind_area.','')
+            sql = f'''
+            SELECT a.district_id,
+                   a.district_en,
+                   a.district_th,
+                   a."{x1}",
+                   a."{x2}",
+                   d.{old_y} {y}
+            FROM {area_layer} a
+            LEFT JOIN {table} d USING ({linkage_id});
+            '''
         data = pd.read_sql(sql,engine)
         data['regions_of_interest'] = 'Other regions'
         data.loc[~(data.district_en.isin(regions_of_interest)),'regions_of_interest'] = 'Case studies'
@@ -100,6 +119,8 @@ def main():
         
         if area_layer == 'district':
             # scatterplots
+            font = {'family':'Garuda','size':6.0}
+            matplotlib.rc('font', **font)
             g = sns.lmplot(x1, y, data=data, hue='regions_of_interest', fit_reg=False)
             g._legend.remove()
             g.set(xlabel=x1.title(), ylabel=title,title = heading)
@@ -114,6 +135,8 @@ def main():
             plt.close()
             print(f"\t{location}")
             
+            font = {'family':'Garuda','size':6.0}
+            matplotlib.rc('font', **font)
             g = sns.lmplot(x2, y, data=data, hue='regions_of_interest', fit_reg=False)
             g._legend.remove()
             g.set(xlabel=x2.title(), ylabel=title,title = heading)
@@ -129,6 +152,8 @@ def main():
             print(f"\t{location}")
 
             # Horizontal bar plot
+            font = {'family':'Garuda','size':12.0}
+            matplotlib.rc('font', **font)
             pd_data = data.sort_values(y)
             plt.figure(figsize=(14,10))
             ax = sns.barplot(pd_data[y], pd_data['full_label'])

@@ -16,6 +16,30 @@ Todo:
 """
 
 import os
+    
+def format_units(units,rate_units,rate_scale):
+    """
+    Return formatted units value, based on whether rate and scaling values
+
+    Parameters
+    ----------
+    units: string
+        the generic defined units for this measure
+    rate_units: string
+        if this is a rate, the units of this rate
+    rate_scale: string
+        if this is a rate, the scale of the rate; if equal to 1, it is ignored.
+
+    Returns
+    -------
+    units string
+    """
+    if rate_units!='':
+        if rate_scale == 1:
+            units = f'per {rate_units}'
+        else:
+            units = f'per {rate_scale} {rate_units}'
+    return(units)
 
 # function for printing dictionaries in 'pretty' format to screen 
 def pretty(d, indent=0):
@@ -121,11 +145,21 @@ def expand_indicators(df):
     d.rate = d.rate.apply(lambda x: str(x).split(':')[0]).replace(['nan','overall'],'').str.strip()
     d['rate_units'] = d.rate.replace('area','km²').replace('households','household')
     d['table_out_name'] = d.index
+    # set general naming convention for indicators
     d.loc[d.purpose=='indicators','table_out_name'] = d.loc[d.purpose=='indicators',:].apply(lambda x: '_'.join([str(x['linkage_layer']),
                                                                str(x.name),
                                                                ('', '_rate_'+str(x.rate))[str(x.rate) not in ['','nan']]])
                                                                .replace('__','_').rstrip('_'),
                                            axis=1)
+    # set naming convention for accessibility indicators
+    d.loc[d.type=='access','table_out_name'] = d.loc[d.type=='access',].apply(lambda x: '{}_access_{}_{}m_pop_pct'.format(x['linkage_layer'],
+                                                                                                                          x.name,
+                                                                                                                          x['resolution']),
+                                                                              axis=1)
+    # set destination name from index value for access indicators only
+    d['destination'] = ''
+    d.loc[d.type=='access','destination'] = d.loc[d.type=='access',].index
+    # set table out name as the dataframe index
     d.index = d.table_out_name
     for field in ['alias','name_f','map_heading']:
         d.loc[d.rate.astype('str') != '',field] = d.loc[d.rate.astype('str') != ''].apply(lambda x: (x[field], x[field] +' per {}'.format(
@@ -398,3 +432,252 @@ def reproject_raster(inpath, outpath, new_crs):
                     dst_transform=transform,
                     dst_crs=dst_crs,
                     resampling=Resampling.nearest)
+                     
+def generate_isid_csv_template(engine,area_layer, area_linkage_id, target_year, measure, units, schema, table, csv_file):
+    """Prepare a CSV data template according to ISID specifications
+    
+    Args:
+        area_layer: string
+        area_linkage_id: string
+        target_year: string
+        measure: string (the measure of interest; ie. an attribute in a postgresql table)
+        units: string
+        schema: string (the schema where the measure of interest is stored in a table)
+        table: string (the table where the measure of interest is stored)
+        csv_file: the path to save the file
+    
+    Returns:
+        geojson feature: Geojson feature with date time variable
+    """
+    import io
+    import pandas
+    sql = f'''
+            SELECT a.{area_linkage_id} AS "Census Id",
+                   district_en AS "Boundary Name",
+                   {target_year} AS Year,
+                   {measure} AS "Value",
+                   NULL AS "Trend"
+            FROM {area_layer} a
+            LEFT JOIN {schema}.{table} USING ({area_linkage_id})
+            '''
+    csv_data = pandas.read_sql(sql, engine, index_col='Census Id')
+    s = io.StringIO()
+    csv_data.to_csv(s,header=False)
+    body = s.getvalue()
+    # header = "'Boundary Name','year','Value','Trend'\n"
+    sep = '-'*142
+    csv_template = (
+         'template_version,1.2,Ignore this row,,\n'
+        f'data_type,{units},0,Set data type as # % or a custom suffix,\r\n'
+         'trend_year_start,,Set the year range for the start of trend calculation,,\r\n'
+         'trend_year_end,,Set the year range for the end of trend calculation,,\r\n'
+        f'{sep},,,,\r\n'
+         'Census Id,Boundary Name,Year,Value,Trend\r\n'
+        f'{sep},,,,\r\n'
+        f'{body}'
+        )
+    with open(csv_file, 'w') as output_file:
+        output_file.write(csv_template)
+    print(f'\t- {csv_file}')
+
+def get_df_data_fields(df,fields):
+    """
+    Return attribute fields for df covariates for use when mapping
+    
+    df: a dataframe (eg of population data with various attributes)
+    fields: a list of fields of interest when mapping
+
+    Returns
+    -------
+    attributes list
+    """
+    import numpy as np
+    df_numeric = [c for c in df.columns if np.issubdtype(df[c].dtype, np.number)]
+    data_fields = fields.split(',')
+    data_fields_full = ['area_sqkm']
+    for f in data_fields:
+        data_fields_full.append(f)
+        if f in df_numeric:
+            data_fields_full.append(f'{f} per sqkm')
+    return(data_fields_full)
+    
+def generate_map(engine,map_name,map_attribution, attribution, area, heading, measure, map_field, linkage_id, schema, table, coalesce_na, data_fields,column_names, map_style,outpath, aggregation_text = '',point_overlay_xy= ''):
+    import geopandas as gpd
+    import folium
+    import re
+    additional_data = ','.join([f'a."{d}"' for d in data_fields])
+    if additional_data != '':
+        additional_data = f'{additional_data},'
+    if coalesce_na in ['','nan']:
+        sql = f'''
+            SELECT a.{area},
+                   {additional_data}
+                   b.{measure},
+                   ST_Transform(a.geom, 4326) AS geom 
+            FROM {area} a
+            LEFT JOIN {schema}.{table} b 
+            USING ({linkage_id})
+            '''
+    else:
+        sql = f'''
+            SELECT a.{area},
+                   {additional_data}
+                   COALESCE(b.{measure},{coalesce_na}) AS "{measure}",
+                   ST_Transform(a.geom, 4326) AS geom 
+            FROM {area} a
+            LEFT JOIN {schema}.{table} b 
+            USING ({linkage_id})
+            '''
+    map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
+    map.rename(columns = {measure : map_field}, inplace=True)
+    map.rename(columns = column_names, inplace=True)
+    map.rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
+    data_fields =[area]+[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in data_fields]+[map_field]    
+    # get map centroid from study region
+    xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
+    # initialise map
+    m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
+    # Add in location names
+    folium.TileLayer(tiles='http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
+                    name='Location labels', 
+                    show =False,
+                    overlay=True,
+                    attr=(
+                       f" {attribution} | "
+                        "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                        "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                        "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                        "under ODbL.")
+                    ).add_to(m)
+    # Add in the actual basemap to be shown
+    folium.TileLayer(tiles='http://tile.stamen.com/toner-background/{z}/{x}/{y}.png',
+                    name='Basemap: Simple', 
+                    show =True,
+                    overlay=False,
+                    attr=(
+                       f" {attribution} | "
+                        "Map tiles: <a href=\"http://stamen.com/\">Stamen Design</a>, " 
+                        "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                        "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                        "under ODbL.")
+                    ).add_to(m)
+    # Add in alternate basemap
+    folium.TileLayer(tiles='OpenStreetMap',
+                    name='Basemap: OpenStreetMap', 
+                    show =False,
+                    overlay=False,
+                    attr=(
+                        " {attribution} | "
+                        "Map tiles: <a href=\"http://openstreetmap.org/\">© OpenStreetMap contributors</a>, " 
+                        "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                        "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                        "under ODbL.")
+                    ).add_to(m)
+    # Add in satellite basemap
+    folium.TileLayer(tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' ,
+                    name='Basemap: ESRI World Imagery (satellite)', 
+                    show =False,
+                    overlay=False,
+                    attr=((
+                        " {} | "
+                        "Map tiles: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community', " 
+                        "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, featuring " 
+                        "data by <a href=\"https://wiki.osmfoundation.org/wiki/Licence/\">OpenStreetMap</a>, "
+                        "under ODbL.").format(map_attribution))
+                            ).add_to(m)
+    # We add empty tile set in order to force display of data attribution; Basemaps are not overlay layers, so they are easily switchable
+    folium.TileLayer(tiles='Null tiles',
+                    name='Basemap: off', 
+                    show =False,
+                    overlay=False,
+                    attr=f" {attribution}"
+                    ).add_to(m)
+    # Create choropleth map
+    bins = 6
+    # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
+    legend_bins = coalesce_na
+    if legend_bins in ['quartiles']:
+        bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
+    if legend_bins.startswith('equal'):
+        legend_bins = legend_bins.split(':')
+        if len(legend_bins) != 2:
+            bins = 6
+        else:
+            bins = legend_bins[1]
+    if legend_bins.startswith('custom'):
+        legend_bins = legend_bins.split(':')
+        if len(legend_bins) != 2:
+            bins = 6
+        else:
+            legend_bins = legend_bins[1].split(',')
+            bins = legend_bins
+    if bins == 6:
+        value_list = set(map[map_field].dropna().unique())
+        if len(value_list) < 6:
+            bins = len(value_list)
+            print(bins)
+            if len(value_list) < 3:
+                bins = list(value_list)+[max(value_list)+1]+[max(value_list)+2]
+    if len(map_field) > 1:
+        # make first letter of map field upper case for legend
+        legend_title = map_field[0].upper()+map_field[1:]
+    else:
+        legend_title = map_field
+    layer = folium.Choropleth(data=map,
+                    geo_data =map.to_json(),
+                    name = map_field,
+                    columns =[area,map_field],
+                    key_on=f"feature.properties.{area}",
+                    fill_color='YlGn',
+                    fill_opacity=0.7,
+                    nan_fill_opacity=0.2,
+                    line_opacity=0.2,
+                    legend_name=f'{legend_title}, by {area}{aggregation_text}',
+                    bins = bins,
+                    smooth_factor = None,
+                    reset=True,
+                    overlay = True
+                    ).add_to(m)
+    folium.features.GeoJsonTooltip(fields=data_fields,
+                                   localize=True,
+                                   labels=True, 
+                                   sticky=True
+                                   ).add_to(layer.geojson)    
+    if '{}'.format(point_overlay_xy) not in ['','nan']:
+        point_layer = folium.features.GeoJson(data=point_overlay.to_json(), 
+                                              name=point_overlay_name, 
+                                              tooltip=f"feature.properties.{point_overlay_hover_field}"
+                                              ).add_to(m)
+        folium.features.GeoJsonTooltip(fields=[c for c in point_overlay.columns if c is not 'geometry'],
+                                       localize=True,
+                                       labels=True, 
+                                       sticky=True
+                                       ).add_to(point_layer)  
+    # Add layer control
+    folium.LayerControl(collapsed=False).add_to(m)
+    m.fit_bounds(m.get_bounds())
+    m.get_root().html.add_child(folium.Element(map_style))
+    # Modify map heading (above legend)
+    html = m.get_root().render()
+    color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
+    old = '{}.svg = d3.select(".legend.leaflet-control").append("svg")'.format(color_map)
+    new = f'''
+    {color_map}.title = d3.select(".legend.leaflet-control").append("div")
+            .attr("style",'vertical-align: text-top;font-weight: bold;')
+            .text("{heading}");
+    {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
+    '''
+    html = html.replace(old,new)
+    # move legend to lower right corner
+    html = html.replace('''legend = L.control({position: \'topright''',
+                        '''legend = L.control({position: \'bottomright''')
+    # save map
+    fid = open(f'{outpath}/html/{map_name}.html', 'wb')
+    fid.write(html.encode('utf8'))
+    fid.close()
+    folium_to_image(os.path.join(outpath,'html'),
+                    os.path.join(outpath,'png'),
+                    map_name)
+    print(f'\t- {outpath}/html/{map_name}.html')
+    print(f'\t- {outpath}/png/{map_name}.png')
+    print('')

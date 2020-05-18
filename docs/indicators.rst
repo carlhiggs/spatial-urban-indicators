@@ -702,6 +702,40 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 by population src="./../png/plots/district_main_road_flood_days_flood_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 by population per sqkm src="./../png/plots/district_main_road_flood_days_flood_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018, ranked in ascending order src="./../png/plots/district_main_road_flood_days_flood.png">
+            </div>
+       <figcaption>Figures for 14 flood areas of main roads in Bangkok Year 2018 with regard to Days Of Flooding by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_days_flood.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 14 flood areas of main roads in Bangkok Year 2018 with regard to Days Of Flooding.
+
+
+
+
 Average days of rain across 14 main road flood areas (BMA, 2018)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -753,6 +787,40 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Average days of rain across 14 main road flood areas (BMA, 2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 by population src="./../png/plots/district_main_road_flood_days_rain_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 by population per sqkm src="./../png/plots/district_main_road_flood_days_rain_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018, ranked in ascending order src="./../png/plots/district_main_road_flood_days_rain.png">
+            </div>
+       <figcaption>Figures for 14 flood areas of main roads in Bangkok Year 2018 with regard to Days Of Rain by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_days_rain.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 14 flood areas of main roads in Bangkok Year 2018 with regard to Days Of Rain.
 
 
 
@@ -812,6 +880,40 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 by population src="./../png/plots/district_main_road_flood_intensity_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 by population per sqkm src="./../png/plots/district_main_road_flood_intensity_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018, ranked in ascending order src="./../png/plots/district_main_road_flood_intensity.png">
+            </div>
+       <figcaption>Figures for 14 flood areas of main roads in Bangkok Year 2018 with regard to Maximum Intensity by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_intensity.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 14 flood areas of main roads in Bangkok Year 2018 with regard to Maximum Intensity.
+
+
+
+
 Main road flood area location count (BMA, 2018)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -863,6 +965,40 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Main road flood area location count (BMA, 2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 by population src="./../png/plots/district_main_road_flood_locations_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 by population per sqkm src="./../png/plots/district_main_road_flood_locations_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018, ranked in ascending order src="./../png/plots/district_main_road_flood_locations.png">
+            </div>
+       <figcaption>Figures for 14 flood areas of main roads in Bangkok Year 2018 with regard to Main Road Flood Locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 14 flood areas of main roads in Bangkok Year 2018 with regard to Main Road Flood Locations.
 
 
 
@@ -922,6 +1058,40 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per km² by population src="./../png/plots/district_main_road_flood_locations_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per km² by population per sqkm src="./../png/plots/district_main_road_flood_locations_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per km², ranked in ascending order src="./../png/plots/district_main_road_flood_locations_rate_area.png">
+            </div>
+       <figcaption>Figures for 14 flood areas of main roads in Bangkok Year 2018 per km² with regard to Main Road Flood Locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 14 flood areas of main roads in Bangkok Year 2018 per km² with regard to Main Road Flood Locations.
+
+
+
+
 Main road flood area location count (BMA, 2018) per 10,000 population
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -973,6 +1143,40 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Main road flood area location count (BMA, 2018) per 10,000 population, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per 10,000 population by population src="./../png/plots/district_main_road_flood_locations_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per 10,000 population by population per sqkm src="./../png/plots/district_main_road_flood_locations_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per 10,000 population, ranked in ascending order src="./../png/plots/district_main_road_flood_locations_rate_population.png">
+            </div>
+       <figcaption>Figures for 14 flood areas of main roads in Bangkok Year 2018 per 10,000 population with regard to Main Road Flood Locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 14 flood areas of main roads in Bangkok Year 2018 per 10,000 population with regard to Main Road Flood Locations.
 
 
 
@@ -1032,6 +1236,40 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per 10,000 household by population src="./../png/plots/district_main_road_flood_locations_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per 10,000 household by population per sqkm src="./../png/plots/district_main_road_flood_locations_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=14 flood areas of main roads in Bangkok Year 2018 per 10,000 household, ranked in ascending order src="./../png/plots/district_main_road_flood_locations_rate_household.png">
+            </div>
+       <figcaption>Figures for 14 flood areas of main roads in Bangkok Year 2018 per 10,000 household with regard to Main Road Flood Locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 14 flood areas of main roads in Bangkok Year 2018 per 10,000 household with regard to Main Road Flood Locations.
+
+
+
+
 Vulnerable flood area count (BMA, 2018)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1083,6 +1321,40 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Vulnerable flood area count (BMA, 2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 by population src="./../png/plots/district_vulnerable_flood_areas_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 by population per sqkm src="./../png/plots/district_vulnerable_flood_areas_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018, ranked in ascending order src="./../png/plots/district_vulnerable_flood_areas.png">
+            </div>
+       <figcaption>Figures for 56 vulnerable flood areas in Bangkok year 2018 with regard to Flood Risk Locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 56 vulnerable flood areas in Bangkok year 2018 with regard to Flood Risk Locations.
 
 
 
@@ -1142,6 +1414,40 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per km² by population src="./../png/plots/district_vulnerable_flood_areas_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per km² by population per sqkm src="./../png/plots/district_vulnerable_flood_areas_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per km², ranked in ascending order src="./../png/plots/district_vulnerable_flood_areas_rate_area.png">
+            </div>
+       <figcaption>Figures for 56 vulnerable flood areas in Bangkok year 2018 per km² with regard to Flood Risk Locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 56 vulnerable flood areas in Bangkok year 2018 per km² with regard to Flood Risk Locations.
+
+
+
+
 Vulnerable flood area count (BMA, 2018) per 10,000 population
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1197,6 +1503,40 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per 10,000 population by population src="./../png/plots/district_vulnerable_flood_areas_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per 10,000 population by population per sqkm src="./../png/plots/district_vulnerable_flood_areas_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per 10,000 population, ranked in ascending order src="./../png/plots/district_vulnerable_flood_areas_rate_population.png">
+            </div>
+       <figcaption>Figures for 56 vulnerable flood areas in Bangkok year 2018 per 10,000 population with regard to Flood Risk Locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 56 vulnerable flood areas in Bangkok year 2018 per 10,000 population with regard to Flood Risk Locations.
+
+
+
+
 Vulnerable flood area count (BMA, 2018) per 10,000 household
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1248,6 +1588,40 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Vulnerable flood area count (BMA, 2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per 10,000 household by population src="./../png/plots/district_vulnerable_flood_areas_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per 10,000 household by population per sqkm src="./../png/plots/district_vulnerable_flood_areas_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=56 vulnerable flood areas in Bangkok year 2018 per 10,000 household, ranked in ascending order src="./../png/plots/district_vulnerable_flood_areas_rate_household.png">
+            </div>
+       <figcaption>Figures for 56 vulnerable flood areas in Bangkok year 2018 per 10,000 household with regard to Flood Risk Locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by 56 vulnerable flood areas in Bangkok year 2018 per 10,000 household with regard to Flood Risk Locations.
 
 
 
@@ -1427,6 +1801,40 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Air quality: PM2.5 by population src="./../png/plots/district_pcd_monitoring_stations_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Air quality: PM2.5 by population per sqkm src="./../png/plots/district_pcd_monitoring_stations_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Air quality: PM2.5, ranked in ascending order src="./../png/plots/district_pcd_monitoring_stations.png">
+            </div>
+       <figcaption>Figures for Air quality: PM2.5 with regard to Monitoring Stations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Air quality: PM2.5 with regard to Monitoring Stations.
+
+
+
+
 Monitoring stations (PCD, 2019) per km²
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1455,6 +1863,40 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
        :align: center
 
        Monitoring stations (PCD, 2019) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Air quality: PM2.5 per km² by population src="./../png/plots/district_pcd_monitoring_stations_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Air quality: PM2.5 per km² by population per sqkm src="./../png/plots/district_pcd_monitoring_stations_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Air quality: PM2.5 per km², ranked in ascending order src="./../png/plots/district_pcd_monitoring_stations_rate_area.png">
+            </div>
+       <figcaption>Figures for Air quality: PM2.5 per km² with regard to Monitoring Stations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Air quality: PM2.5 per km² with regard to Monitoring Stations.
 
 
 
@@ -1491,6 +1933,40 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Air quality: PM2.5 per 10,000 population by population src="./../png/plots/district_pcd_monitoring_stations_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Air quality: PM2.5 per 10,000 population by population per sqkm src="./../png/plots/district_pcd_monitoring_stations_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Air quality: PM2.5 per 10,000 population, ranked in ascending order src="./../png/plots/district_pcd_monitoring_stations_rate_population.png">
+            </div>
+       <figcaption>Figures for Air quality: PM2.5 per 10,000 population with regard to Monitoring Stations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Air quality: PM2.5 per 10,000 population with regard to Monitoring Stations.
+
+
+
+
 Monitoring stations (PCD, 2019) per 10,000 household
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1519,6 +1995,40 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
        :align: center
 
        Monitoring stations (PCD, 2019) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Air quality: PM2.5 per 10,000 household by population src="./../png/plots/district_pcd_monitoring_stations_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Air quality: PM2.5 per 10,000 household by population per sqkm src="./../png/plots/district_pcd_monitoring_stations_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Air quality: PM2.5 per 10,000 household, ranked in ascending order src="./../png/plots/district_pcd_monitoring_stations_rate_household.png">
+            </div>
+       <figcaption>Figures for Air quality: PM2.5 per 10,000 household with regard to Monitoring Stations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Air quality: PM2.5 per 10,000 household with regard to Monitoring Stations.
 
 
 
@@ -1555,6 +2065,40 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Air quality: PM2.5 by population src="./../png/plots/district_pm2p5_days_exceeding_thai_standard_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Air quality: PM2.5 by population per sqkm src="./../png/plots/district_pm2p5_days_exceeding_thai_standard_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Air quality: PM2.5, ranked in ascending order src="./../png/plots/district_pm2p5_days_exceeding_thai_standard.png">
+            </div>
+       <figcaption>Figures for Air quality: PM2.5 with regard to Days Exceeding Thai Standard (50 Μg/M³; January 2019, Pcd) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pm2p5_days_exceeding_thai_standard.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Air quality: PM2.5 with regard to Days Exceeding Thai Standard (50 Μg/M³; January 2019, Pcd).
+
+
+
+
 Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1583,6 +2127,40 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
        :align: center
 
        Number of days PM 2.5 exceeds WHO standard (25 µg/m³; January 2019, PCD), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Air quality: PM2.5 by population src="./../png/plots/district_pm2p5_days_exceeding_who_standard_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Air quality: PM2.5 by population per sqkm src="./../png/plots/district_pm2p5_days_exceeding_who_standard_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Air quality: PM2.5, ranked in ascending order src="./../png/plots/district_pm2p5_days_exceeding_who_standard.png">
+            </div>
+       <figcaption>Figures for Air quality: PM2.5 with regard to Days Exceeding Who Standard (25 Μg/M³; January 2019, Pcd) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pm2p5_days_exceeding_who_standard.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Air quality: PM2.5 with regard to Days Exceeding Who Standard (25 Μg/M³; January 2019, Pcd).
 
 
 
@@ -1803,6 +2381,206 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 Quality of life
 ~~~~~~~~~~~~~~~
+
+
+Opportunity to earn a fair wage
+-------------------------------
+
+A data table for  Poverty Indicators 2017: Cost Dimensions with records for Bangkok overall, districts, and subdistricts was retrieved from the Thai National Statistical Office (NSO).  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: National Statistical Office
+
+**URL**: http://www.nso.go.th/sites/2014/DocLib8/2560/central/urban/10_bangkok.xls
+
+**Publication year**: 2018
+
+**Target year**: 2017
+
+**Acquisition date (yyyymmdd)**: 20180121
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Notes**: The source data table also includes standard error as a measure of precision for each area estimate
+
+**Data location relative to project folder**: ./data/Thai/National Statistical Office/2017 poverty index/NSO_Bangkok_2017_poverty_index_en_cleaned.xlsx
+
+
+Average monthly cost of living per person (Baht; NSO, 2017)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The average monthly cost of living per person within each analysis area was recorded.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Average monthly cost of living per person (Baht; NSO, 2017), by district" src="./../png/bangkok_ind_district_cost_of_living_district.png">
+        <figcaption>Average monthly cost of living per person (Baht; NSO, 2017), by district.         <a href="./../html/bangkok_ind_district_cost_of_living_district.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_cost_of_living_district.png
+       :width: 70%
+       :align: center
+
+       Average monthly cost of living per person (Baht; NSO, 2017), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Opportunity to earn a fair wage by population src="./../png/plots/district_cost_of_living_district_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Opportunity to earn a fair wage by population per sqkm src="./../png/plots/district_cost_of_living_district_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Opportunity to earn a fair wage, ranked in ascending order src="./../png/plots/district_cost_of_living_district.png">
+            </div>
+       <figcaption>Figures for Opportunity to earn a fair wage with regard to Average Monthly Cost Of Living Per Person (Baht; Nso, 2017) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_cost_of_living_district.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Opportunity to earn a fair wage with regard to Average Monthly Cost Of Living Per Person (Baht; Nso, 2017).
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Average monthly cost of living per person (Baht; NSO, 2017), by subdistrict" src="./../png/bangkok_ind_subdistrict_cost_of_living_subdistrict.png">
+        <figcaption>Average monthly cost of living per person (Baht; NSO, 2017), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_cost_of_living_subdistrict.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_cost_of_living_subdistrict.png
+       :width: 70%
+       :align: center
+
+       Average monthly cost of living per person (Baht; NSO, 2017), by subdistrict
+
+
+
+
+Coefficient of inequality (NSO, 2017)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The coefficient of inequality within each analysis area was recorded.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Coefficient of inequality (NSO, 2017), by district" src="./../png/bangkok_ind_district_inequality_district.png">
+        <figcaption>Coefficient of inequality (NSO, 2017), by district.         <a href="./../html/bangkok_ind_district_inequality_district.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_inequality_district.png
+       :width: 70%
+       :align: center
+
+       Coefficient of inequality (NSO, 2017), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Opportunity to earn a fair wage by population src="./../png/plots/district_inequality_district_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Opportunity to earn a fair wage by population per sqkm src="./../png/plots/district_inequality_district_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Opportunity to earn a fair wage, ranked in ascending order src="./../png/plots/district_inequality_district.png">
+            </div>
+       <figcaption>Figures for Opportunity to earn a fair wage with regard to Coefficient Of Inequality (Nso, 2017) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_inequality_district.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Opportunity to earn a fair wage with regard to Coefficient Of Inequality (Nso, 2017).
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Coefficient of inequality (NSO, 2017), by subdistrict" src="./../png/bangkok_ind_subdistrict_inequality_subdistrict.png">
+        <figcaption>Coefficient of inequality (NSO, 2017), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_inequality_subdistrict.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_inequality_subdistrict.png
+       :width: 70%
+       :align: center
+
+       Coefficient of inequality (NSO, 2017), by subdistrict
+
+
 
 
 Vital diseases
@@ -2102,6 +2880,40 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients by population src="./../png/plots/district_outpatients_combined_diseases_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases.png">
+            </div>
+       <figcaption>Figures for Health center outpatients with regard to Vital Diseases (Combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients with regard to Vital Diseases (Combined; 2018).
+
+
+
+
 Vital diseases (combined, 2018) per km²
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2153,6 +2965,40 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Vital diseases (combined, 2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per km² by population src="./../png/plots/district_outpatients_combined_diseases_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per km² by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per km², ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_area.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per km² with regard to Vital Diseases (Combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per km² with regard to Vital Diseases (Combined; 2018).
 
 
 
@@ -2212,6 +3058,40 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 population by population src="./../png/plots/district_outpatients_combined_diseases_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 population by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per 10,000 population, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_population.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per 10,000 population with regard to Vital Diseases (Combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per 10,000 population with regard to Vital Diseases (Combined; 2018).
+
+
+
+
 Vital diseases (combined, 2018) per 10,000 household
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2263,6 +3143,40 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Vital diseases (combined, 2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 household by population src="./../png/plots/district_outpatients_combined_diseases_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 household by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per 10,000 household, ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_household.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per 10,000 household with regard to Vital Diseases (Combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per 10,000 household with regard to Vital Diseases (Combined; 2018).
 
 
 
@@ -2322,6 +3236,40 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients by population src="./../png/plots/district_outpatients_diabetes_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients by population per sqkm src="./../png/plots/district_outpatients_diabetes_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients, ranked in ascending order src="./../png/plots/district_outpatients_diabetes.png">
+            </div>
+       <figcaption>Figures for Health center outpatients with regard to Diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients with regard to Diabetes (2018).
+
+
+
+
 Diabetes outpatients (2018) per km²
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2373,6 +3321,40 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Diabetes outpatients (2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per km² by population src="./../png/plots/district_outpatients_diabetes_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per km² by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per km², ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_area.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per km² with regard to Diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per km² with regard to Diabetes (2018).
 
 
 
@@ -2432,6 +3414,40 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 population by population src="./../png/plots/district_outpatients_diabetes_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 population by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per 10,000 population, ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_population.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per 10,000 population with regard to Diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per 10,000 population with regard to Diabetes (2018).
+
+
+
+
 Diabetes outpatients (2018) per 10,000 household
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2483,6 +3499,40 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Diabetes outpatients (2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 household by population src="./../png/plots/district_outpatients_diabetes_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 household by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per 10,000 household, ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_household.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per 10,000 household with regard to Diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per 10,000 household with regard to Diabetes (2018).
 
 
 
@@ -2542,6 +3592,40 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients by population src="./../png/plots/district_outpatients_hypertension_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients by population per sqkm src="./../png/plots/district_outpatients_hypertension_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients, ranked in ascending order src="./../png/plots/district_outpatients_hypertension.png">
+            </div>
+       <figcaption>Figures for Health center outpatients with regard to Hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients with regard to Hypertension (2018).
+
+
+
+
 Hypertension outpatients (2018) per km²
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2593,6 +3677,40 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Hypertension outpatients (2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per km² by population src="./../png/plots/district_outpatients_hypertension_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per km² by population per sqkm src="./../png/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per km², ranked in ascending order src="./../png/plots/district_outpatients_hypertension_rate_area.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per km² with regard to Hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per km² with regard to Hypertension (2018).
 
 
 
@@ -2652,6 +3770,40 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 population by population src="./../png/plots/district_outpatients_hypertension_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 population by population per sqkm src="./../png/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per 10,000 population, ranked in ascending order src="./../png/plots/district_outpatients_hypertension_rate_population.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per 10,000 population with regard to Hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per 10,000 population with regard to Hypertension (2018).
+
+
+
+
 Hypertension outpatients (2018) per 10,000 household
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2703,6 +3855,40 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Hypertension outpatients (2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 household by population src="./../png/plots/district_outpatients_hypertension_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 household by population per sqkm src="./../png/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per 10,000 household, ranked in ascending order src="./../png/plots/district_outpatients_hypertension_rate_household.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per 10,000 household with regard to Hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per 10,000 household with regard to Hypertension (2018).
 
 
 
@@ -2762,6 +3948,40 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients by population src="./../png/plots/district_outpatients_mental_health_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients by population per sqkm src="./../png/plots/district_outpatients_mental_health_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients, ranked in ascending order src="./../png/plots/district_outpatients_mental_health.png">
+            </div>
+       <figcaption>Figures for Health center outpatients with regard to Mental And Behavioural Disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients with regard to Mental And Behavioural Disorders (2018).
+
+
+
+
 Mental and behavioural disorder outpatients (2018) per km²
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2813,6 +4033,40 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Mental and behavioural disorder outpatients (2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per km² by population src="./../png/plots/district_outpatients_mental_health_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per km² by population per sqkm src="./../png/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per km², ranked in ascending order src="./../png/plots/district_outpatients_mental_health_rate_area.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per km² with regard to Mental And Behavioural Disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_area.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per km² with regard to Mental And Behavioural Disorders (2018).
 
 
 
@@ -2872,6 +4126,40 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 population by population src="./../png/plots/district_outpatients_mental_health_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 population by population per sqkm src="./../png/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per 10,000 population, ranked in ascending order src="./../png/plots/district_outpatients_mental_health_rate_population.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per 10,000 population with regard to Mental And Behavioural Disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_population.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per 10,000 population with regard to Mental And Behavioural Disorders (2018).
+
+
+
+
 Mental and behavioural disorder outpatients (2018) per 10,000 household
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2927,8 +4215,292 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 household by population src="./../png/plots/district_outpatients_mental_health_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Health center outpatients per 10,000 household by population per sqkm src="./../png/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Health center outpatients per 10,000 household, ranked in ascending order src="./../png/plots/district_outpatients_mental_health_rate_household.png">
+            </div>
+       <figcaption>Figures for Health center outpatients per 10,000 household with regard to Mental And Behavioural Disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_household.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Health center outpatients per 10,000 household with regard to Mental And Behavioural Disorders (2018).
+
+
+
+
+Public Transport
+----------------
+
+Supermarket locations identified through key-value pair tags according to OSM guidelines or common usage patterns identified from OSM Taginfo were analysed for accessibility using a pedestrian network derived from OSM data using OSMnx.
+
+**Data source**: OpenStreetMap
+
+**Publication year**: 2019
+
+**Target year**: 2019
+
+**Acquisition date (yyyymmdd)**: 20191007
+
+**Licence**: ODbL
+
+**Licence URL**: https://wiki.osmfoundation.org/wiki/Licence
+
+**Scale / Resolution**: 800
+
+
+Percentage of residents living 800 metres distance of a supermarket (OSM, 2019)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.  [method to be further updated]
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living 800 metres distance of a supermarket (OSM, 2019), by subdistrict" src="./../png/bangkok_ind_subdistrict_access_supermarket_800m_pop_pct.png">
+        <figcaption>Percentage of residents living 800 metres distance of a supermarket (OSM, 2019), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_access_supermarket_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_supermarket_800m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living 800 metres distance of a supermarket (OSM, 2019), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living 800 metres distance of a supermarket (OSM, 2019), by district" src="./../png/bangkok_ind_district_access_supermarket_800m_pop_pct.png">
+        <figcaption>Percentage of residents living 800 metres distance of a supermarket (OSM, 2019), by district.         <a href="./../html/bangkok_ind_district_access_supermarket_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_supermarket_800m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living 800 metres distance of a supermarket (OSM, 2019), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Food environments: Supermarket acccess by population src="./../png/plots/district_access_supermarket_800m_pop_pct_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Food environments: Supermarket acccess by population per sqkm src="./../png/plots/district_access_supermarket_800m_pop_pct_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Food environments: Supermarket acccess, ranked in ascending order src="./../png/plots/district_access_supermarket_800m_pop_pct.png">
+            </div>
+       <figcaption>Figures for Food environments: Supermarket acccess with regard to Percentage Of Residents Living 800 Metres Distance Of A Supermarket (Osm, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_supermarket_800m_pop_pct.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Food environments: Supermarket acccess with regard to Percentage Of Residents Living 800 Metres Distance Of A Supermarket (Osm, 2019).
+
+
+
+
 Relaxing areas
 ~~~~~~~~~~~~~~
+
+
+Public Open Space
+-----------------
+
+A dataset of Areas of Public Open Space was derived from OpenStreetMap using a series of key-value pair tag queries in conjunction with morphological and heuristic criteria.  [description to be updated]
+
+**Data source**: OpenStreetMap
+
+**Publication year**: 2019
+
+**Target year**: 2019
+
+**Acquisition date (yyyymmdd)**: 20191007
+
+**Licence**: ODbL
+
+**Licence URL**: https://wiki.osmfoundation.org/wiki/Licence
+
+**Scale / Resolution**: 400
+
+**Notes**: User contributed data; Please note licence implications involving usage of OSM data when combined with other data sets
+
+
+Percentage of residents living within 400 metres of public open space  (OSM, 2019)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Accessability within 400m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.  [method to be further updated]
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living within 400 metres of public open space  (OSM, 2019), by subdistrict" src="./../png/bangkok_ind_subdistrict_access_pos_entry_any_400m_pop_pct.png">
+        <figcaption>Percentage of residents living within 400 metres of public open space  (OSM, 2019), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_access_pos_entry_any_400m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_pos_entry_any_400m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living within 400 metres of public open space  (OSM, 2019), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living within 400 metres of public open space  (OSM, 2019), by district" src="./../png/bangkok_ind_district_access_pos_entry_any_400m_pop_pct.png">
+        <figcaption>Percentage of residents living within 400 metres of public open space  (OSM, 2019), by district.         <a href="./../html/bangkok_ind_district_access_pos_entry_any_400m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_pos_entry_any_400m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living within 400 metres of public open space  (OSM, 2019), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Areas for passive recreation and physical activity by population src="./../png/plots/district_access_pos_entry_any_400m_pop_pct_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Areas for passive recreation and physical activity by population per sqkm src="./../png/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Areas for passive recreation and physical activity, ranked in ascending order src="./../png/plots/district_access_pos_entry_any_400m_pop_pct.png">
+            </div>
+       <figcaption>Figures for Areas for passive recreation and physical activity with regard to Percentage Of Residents Living Within 400 Metres Of Public Open Space  (Osm, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_any_400m_pop_pct.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Areas for passive recreation and physical activity with regard to Percentage Of Residents Living Within 400 Metres Of Public Open Space  (Osm, 2019).
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Areas for passive recreation and physical activity by population src="./../png/plots/district_access_pos_entry_large_400m_pop_pct_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Areas for passive recreation and physical activity by population per sqkm src="./../png/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Areas for passive recreation and physical activity, ranked in ascending order src="./../png/plots/district_access_pos_entry_large_400m_pop_pct.png">
+            </div>
+       <figcaption>Figures for Areas for passive recreation and physical activity with regard to Percentage Of Residents Living Within 400 Metres Of Large Public Open Space  (Osm, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_large_400m_pop_pct.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Areas for passive recreation and physical activity with regard to Percentage Of Residents Living Within 400 Metres Of Large Public Open Space  (Osm, 2019).
+
+
 
 
 Fraction of Vegetation Cover
@@ -3010,6 +4582,40 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
        :align: center
 
        Vegetation Percent (Copernicus, 2018; mean), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Green space by population src="./../png/plots/district_vegetation_pct_mean_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Green space by population per sqkm src="./../png/plots/district_vegetation_pct_mean_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Green space, ranked in ascending order src="./../png/plots/district_vegetation_pct_mean.png">
+            </div>
+       <figcaption>Figures for Green space with regard to Mean Vegetation Cover Percent  (Copernicus, December 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vegetation_pct_mean.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Green space with regard to Mean Vegetation Cover Percent  (Copernicus, December 2018).
 
 
 
@@ -3731,6 +5337,174 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
        :align: center
 
        Number of supermarkets (BMA, 2019) per 10,000 household, by district
+
+
+
+
+Health-promoting environments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Public Transport
+----------------
+
+info to be added
+
+**Data source**: BangkokGIS (BMA)
+
+**Publication year**: 2014
+
+**Target year**: 2014
+
+**Acquisition date (yyyymmdd)**: 20181210
+
+**Licence**: none specified
+
+**Spatial reference (EPSG code)**: 32647.0
+
+**Date type**: vector
+
+**Scale / Resolution**: 800
+
+**Data location relative to project folder**: ./data/Thai/BMA GIS/transport/terminal/terminal.shp
+
+
+Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+info to be added
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014), by subdistrict" src="./../png/bangkok_ind_subdistrict_access_ferry_800m_pop_pct.png">
+        <figcaption>Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_access_ferry_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_ferry_800m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014), by district" src="./../png/bangkok_ind_district_access_ferry_800m_pop_pct.png">
+        <figcaption>Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014), by district.         <a href="./../html/bangkok_ind_district_access_ferry_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_ferry_800m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014), by district
+
+
+
+
+Percentage of residents living 800 metres distance of any public transport (OSM, 2019)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.  [method to be further updated]
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by subdistrict" src="./../png/bangkok_ind_subdistrict_access_pt_any_800m_pop_pct.png">
+        <figcaption>Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_access_pt_any_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_pt_any_800m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by district" src="./../png/bangkok_ind_district_access_pt_any_800m_pop_pct.png">
+        <figcaption>Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by district.         <a href="./../html/bangkok_ind_district_access_pt_any_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_pt_any_800m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Mass transit availability by population src="./../png/plots/district_access_pt_any_800m_pop_pct_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Mass transit availability by population per sqkm src="./../png/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Mass transit availability, ranked in ascending order src="./../png/plots/district_access_pt_any_800m_pop_pct.png">
+            </div>
+       <figcaption>Figures for Mass transit availability with regard to Percentage Of Residents Living 800 Metres Distance Of Any Public Transport (Osm, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pt_any_800m_pop_pct.png
+       :width: 100%
+       :align: center
+
+       Districts ranked in ascending order by Mass transit availability with regard to Percentage Of Residents Living 800 Metres Distance Of Any Public Transport (Osm, 2019).
 
 
 
