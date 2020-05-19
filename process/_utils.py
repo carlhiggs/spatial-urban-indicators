@@ -3,12 +3,14 @@
 Utility functions
 ~~~~~~~~~~~~~~~~~
 
-::
-
-    Script:  _utils.py
-    Purpose: These functions may be used in other scripts to undertake specific tasks.
-    Authors: Carl Higgs
-    Context: Liveability indicator calculation (general tools for data wrangling)
+Script:  
+    _utils.py
+Purpose: 
+    These functions may be used in other scripts to undertake specific tasks.
+Authors: 
+    Carl Higgs
+Context: 
+    Liveability indicator calculation (general tools for data wrangling)
 
 Todo:
     * further refactor and abstract code as functions for autodoc purposes

@@ -122,12 +122,12 @@ Interactive maps
         <option value="bangkok_ind_district_vulnerable_flood_areas_rate_area">56 vulnerable flood areas in Bangkok year 2018 per km²: flood risk locations</option>
         <option value="bangkok_ind_district_vulnerable_flood_areas_rate_population">56 vulnerable flood areas in Bangkok year 2018 per 10,000 population: flood risk locations</option>
         <option value="bangkok_ind_district_vulnerable_flood_areas_rate_household">56 vulnerable flood areas in Bangkok year 2018 per 10,000 household: flood risk locations</option>
-        <option value="bangkok_ind_district_water_quality_bod">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018: BOD (mg/l)</option>
-        <option value="bangkok_ind_district_water_quality_canals_poor">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018: canal water storage with < 2 mg/L DO</option>
-        <option value="bangkok_ind_district_water_quality_canals_poor_rate_area">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018 per km²: canal water storage with < 2 mg/L DO</option>
-        <option value="bangkok_ind_district_water_quality_canals_poor_rate_population">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018 per 10,000 population: canal water storage with < 2 mg/L DO</option>
-        <option value="bangkok_ind_district_water_quality_canals_poor_rate_household">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018 per 10,000 household: canal water storage with < 2 mg/L DO</option>
-        <option value="bangkok_ind_district_water_quality_do">Water quality in canals with < 2  mg/L dissolved oxygen (DO), 2018: DO (mg/l)</option>
+        <option value="bangkok_ind_district_water_quality_bod">Water quality/pollution: BOD (mg/l)</option>
+        <option value="bangkok_ind_district_water_quality_canals_poor">Water quality/pollution: canal water storage sample locations</option>
+        <option value="bangkok_ind_district_water_quality_canals_poor_rate_area">Water quality/pollution per km²: canal water storage sample locations</option>
+        <option value="bangkok_ind_district_water_quality_canals_poor_rate_population">Water quality/pollution per 10,000 population: canal water storage sample locations</option>
+        <option value="bangkok_ind_district_water_quality_canals_poor_rate_household">Water quality/pollution per 10,000 household: canal water storage sample locations</option>
+        <option value="bangkok_ind_district_water_quality_do">Water quality/pollution: DO (mg/l)</option>
         </SELECT>
         
         <iframe name="iframe" id="maps_interactive" src="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" height="500px" width="100%"></iframe>

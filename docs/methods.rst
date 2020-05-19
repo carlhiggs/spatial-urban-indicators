@@ -29,8 +29,18 @@ Setting up resources
 .. automodule:: 04_create_network_resources
     :members:
     
-.. automodule:: 05_create_sample_points
+.. automodule:: 05_open_space_areas_setup
     :members:
+    
+.. automodule:: 06_create_sample_points
+    :members:
+    
+.. automodule:: 07_compile_destinations
+    :members:
+    
+.. automodule:: 08_accessibility_analysis
+    :members:
+
     
 Creating indicators
 -------------------
@@ -39,6 +49,9 @@ Creating indicators
     :members:
     
 .. automodule:: _create_raster_indicators
+    :members:
+    
+.. automodule:: _create_accessibility_indicators
     :members:
     
 Creating documentation
@@ -50,5 +63,5 @@ Creating documentation
 Other utilities
 ---------------
 
-.. automodule:: process_aqi_json_to_geojson
+.. automodule:: _utils
     :members:

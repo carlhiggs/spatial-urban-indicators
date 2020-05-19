@@ -1,20 +1,16 @@
-# Purpose: Prepare Areas of Open Space (AOS) for ntnl liveability indicators
-#           -- *** Assumes already in correct projection for project (e.g. GDA2020 GA LCC) *** 
-#           -- copies features within study region to project gdb
-#           -- calculates geodesic area in hectares
-#           -- makes temporary line feature from polygons
-#           -- traces vertices at set interval (aos_vertices in config file) -- pseudo entry points
-#           -- creates three subset features of AOS pseudo-entries, at intervals of 20, 30 and 50m from road network
-#           -- Preliminary EDA suggests the 30m distance pseudo entry points will be most appropriate to use 
-#              for OD network analysis
-#
-#         This assumes 
-#           -- a study region specific section of OSM has been prepared and is referenced in the setup xlsx file
-#           -- the postgis_sfcgal extension has been created in the active database
-#
-# Authors:  Carl Higgs, Julianna Rozek
-# Date:    20180626
+"""
 
+Accessibility analysis
+~~~~~~~~~~~~~~~~~~~~~~
+
+Script:  
+    05_open_space_areas_setup.py
+Purpose: 
+    Prepare a dataset of areas of open space using OpenStreetMap data
+Authors: 
+    Carl Higgs 
+    
+"""
 
 import subprocess as sp     # for executing external commands (e.g. pgsql2shp or ogr2ogr)
 import time
@@ -24,18 +20,18 @@ from script_running_log import script_running_log
 # Import custom variables for National Liveability indicator process
 from _project_setup import *
 
-# simple timer for log file
-start = time.time()
-script = os.path.basename(sys.argv[0])
-task = 'Prepare Areas of Open Space (AOS)'
-
-# connect to the PostgreSQL server and ensure privileges are granted for all public tables
-conn = psycopg2.connect(dbname=db, user=db_user, password=db_pwd)
-curs = conn.cursor()  
-
-connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
 
 def main():
+    # simple timer for log file
+    start = time.time()
+    script = os.path.basename(sys.argv[0])
+    task = 'Prepare Areas of Open Space (AOS)'
+
+    # connect to the PostgreSQL server and ensure privileges are granted for all public tables
+    conn = psycopg2.connect(dbname=db, user=db_user, password=db_pwd)
+    curs = conn.cursor()  
+
+    connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
 
     # Define tags for which presence of values is suggestive of some kind of open space 
     # These are defined in the _project_configuration worksheet 'open_space_defs' under the 'possible_os_tags' column.

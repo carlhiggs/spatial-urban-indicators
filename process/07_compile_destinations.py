@@ -3,11 +3,12 @@
 Compile destinations
 ~~~~~~~~~~~~~~~~~~~~
 
-::
-
-    Script:  06_compile_destinations.py
-    Purpose: Compile a schema of destination features
-    Authors: Carl Higgs 
+Script:  
+    06_compile_destinations.py
+Purpose: 
+    Compile a schema of destination features
+Authors: 
+    Carl Higgs 
 
 """
 import time
@@ -16,7 +17,6 @@ from sqlalchemy import create_engine
 from script_running_log import script_running_log
 from _project_setup import *
 
-connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
 
 def main():
     # simple timer for log file
@@ -24,6 +24,7 @@ def main():
     script = os.path.basename(sys.argv[0])
     task = 'Compile study region destinations'
     print("Commencing task: {} at {}".format(task,time.strftime("%Y%m%d-%H%M%S")))
+    connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
     engine = create_engine(connection)
     # get list of datasets used for access analysis
     df = df_datasets.query("purpose=='destinations'").copy().sort_index()

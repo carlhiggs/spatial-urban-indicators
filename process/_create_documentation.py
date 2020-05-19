@@ -77,8 +77,7 @@ def generate_metadata_rst(ind_metadata):
      ['Population per km²','{locale}_02_population_{level}_population_per_sqkm'],
      ['Households per km²','{locale}_02_population_{level}_households_per_sqkm'],
      ['Communities per km²','{locale}_02_population_{level}_communities_per_sqkm'],
-     ['Population in communities per km²','{locale}_02_population_{level}_population_in_communities_per_sqkm','11'],
-     ['Population not in communities per km²','{locale}_02_population_{level}_population_not_in_communities_per_sqkm']
+     ['Population in communities per km²','{locale}_02_population_{level}_population_in_communities_per_sqkm','11']
     ]
     # defined page heading as first line
     rst = 'Indicators\r\n==========\r\n'
@@ -197,8 +196,8 @@ def generate_metadata_rst(ind_metadata):
                         if n_plots > 0 and level=='district': 
                             for x in range(0,n_plots):
                                 y     =  plots['table_out_name'].values[x]
-                                ylab  =  plots['map_heading'].values[x]
-                                title =  plots['map_field'].values[x].title()
+                                ylab  =  plots['map_field'].values[x]
+                                title =  plots['map_heading'].values[x].title()
                                 x1   = 'population'     
                                 x2   = 'population per sqkm'
                                 plot1 = f'png/plots/{y}_{x1}'.replace(' ','_')
@@ -208,8 +207,8 @@ def generate_metadata_rst(ind_metadata):
                                     desc1 = f'{ylab} by {x1}'
                                     desc2 = f'{ylab} by {x2}'
                                     desc3 = f'{ylab}, ranked in ascending order'
-                                    description = f'Figures for {ylab} with regard to {title} by {level}, clockwise from top: by {x1}; by {x2}; {level}s ranked in ascending order.'
-                                    description_latex = '{}s ranked in ascending order by {} with regard to {}.'.format(level.title(),ylab,title)
+                                    description = f'Figures for {title} with regard to {ylab} by {level}, clockwise from top: by {x1}; by {x2}; {level}s ranked in ascending order.'
+                                    description_latex = f'{level}s ranked in ascending order by {ylab} with regard to {title}.'.capitalize()
                                     rst = '{}\r\n\r\n'.format(rst)
                                     plot_code = (
                                                 '\r\n'
@@ -230,10 +229,18 @@ def generate_metadata_rst(ind_metadata):
                                                f'       <figcaption>{description}.</figcaption>\r\n\r\n'
                                                 '       </div><br>\r\n\r\n'
                                                 '.. only:: latex\r\n\r\n'
-                                               f'    .. figure:: ../maps/{study_region}/{plot3}.png\r\n'
-                                                '       :width: 100%\r\n'
-                                                '       :align: center\r\n\r\n'
-                                               f'       {description_latex}\r\n\r\n'
+                                               f'   .. figure:: ../maps/{study_region}/{plot1}.png\r\n'
+                                                '      :width: 48%\r\n'
+                                                '      :align: center\r\n\r\n'
+                                               f'      Scatterplot of {ylab} by population for districts.\r\n\r\n'
+                                               f'   .. figure:: ../maps/{study_region}/{plot2}.png\r\n'
+                                                '      :width: 48%\r\n'
+                                                '      :align: center\r\n\r\n'
+                                               f'      Scatterplot of {ylab} by population density for districts.\r\n\r\n'
+                                               f'   .. figure:: ../maps/{study_region}/{plot3}.png\r\n'
+                                                '      :width: 100%\r\n'
+                                                '      :align: center\r\n\r\n'
+                                               f'      {description_latex}\r\n\r\n'
                                                 )
                                     rst = '{}\r\n\r\n{}\r\n'.format(rst,plot_code)
     return(rst)

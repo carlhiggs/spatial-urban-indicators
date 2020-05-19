@@ -1,7 +1,14 @@
 """
 
-Estimate access within threshold: Public open space
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Accessibility analysis
+~~~~~~~~~~~~~~~~~~~~~~
+
+Script:  
+    08_accessibility_analysis.py
+Purpose: 
+    Undertake accessibility analysis within threshold distance for defined destinations
+Authors: 
+    Carl Higgs 
 
 """
 
@@ -18,9 +25,6 @@ import pandana
 from script_running_log import script_running_log
 
 from _project_setup import *
-now = time.strftime('%Y%m%d_%H%M')
-
-connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
 
 def graphml_to_pandana(graphml):
     # Set up network for analysis with NetworkX
@@ -50,6 +54,8 @@ def main():
     start = time.time()
     script = os.path.basename(sys.argv[0])
     task = 'Analyse destination accessibility'
+    now = time.strftime('%Y%m%d_%H%M')
+    connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
     engine = create_engine(connection)
     sql = '''
     CREATE SCHEMA IF NOT EXISTS distances;

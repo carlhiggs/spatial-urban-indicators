@@ -8,6 +8,8 @@ Script:
 Purpose: 
     1) Import population raster and calculate values for polygons; 
     2) Map population
+Authors: 
+    Carl Higgs 
 
 """
 

@@ -3,11 +3,12 @@
 Create sample points and hex grid
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
-
-    Script:  05_create_sample_points.py
-    Purpose: Create hex grid and sample points
-    Authors: Carl Higgs
+Script:  
+    05_create_sample_points.py
+Purpose: 
+    Create hex grid and sample points
+Authors: 
+    Carl Higgs
 
 """
 

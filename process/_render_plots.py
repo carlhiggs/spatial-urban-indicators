@@ -92,20 +92,19 @@ def main():
             LEFT JOIN {y} d USING ({linkage_id});
             '''
         else:
-            destination = row
-            distance = df.loc[row,'resolution']
-            table = f'ind_area.{destination}_{distance}m'.replace(f'{area_layer}_',f'{area_layer}_access_')
-            old_y = 'percent_access'
-            y = f'{table}_pop_pct'.replace('ind_area.','')
+            y = plot_data_y
+            schema='ind_area'
+            table = plot_data_y.replace('_pop_pct','')
+            table_y = 'percent_access'
             sql = f'''
             SELECT a.district_id,
                    a.district_en,
                    a.district_th,
                    a."{x1}",
                    a."{x2}",
-                   d.{old_y} {y}
+                   d.{table_y} {y}
             FROM {area_layer} a
-            LEFT JOIN {table} d USING ({linkage_id});
+            LEFT JOIN {schema}.{table} d USING ({linkage_id});
             '''
         data = pd.read_sql(sql,engine)
         data['regions_of_interest'] = 'Other regions'
@@ -119,7 +118,7 @@ def main():
         
         if area_layer == 'district':
             # scatterplots
-            font = {'family':'Garuda','size':6.0}
+            font = {'family':'Garuda','size':9.0}
             matplotlib.rc('font', **font)
             g = sns.lmplot(x1, y, data=data, hue='regions_of_interest', fit_reg=False)
             g._legend.remove()
@@ -135,7 +134,7 @@ def main():
             plt.close()
             print(f"\t{location}")
             
-            font = {'family':'Garuda','size':6.0}
+            font = {'family':'Garuda','size':9.0}
             matplotlib.rc('font', **font)
             g = sns.lmplot(x2, y, data=data, hue='regions_of_interest', fit_reg=False)
             g._legend.remove()
