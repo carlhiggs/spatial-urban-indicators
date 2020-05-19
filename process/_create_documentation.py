@@ -57,7 +57,7 @@ def generate_interactive_maps_rst(html_select):
 '''
     return(f'{header}{html_select}{footer}')
 
-def generate_metadata_rst(ind_metadata):
+def generate_metadata_rst(ind_metadata,df_context):
     # a list of metadata items to report on
     data_items = [['provider'      ,'Data source'                             ],
                   ['source_url'    ,'URL'                                     ],
@@ -87,12 +87,24 @@ def generate_metadata_rst(ind_metadata):
         dimension_text = dimension[3:]
         # create heading for dimension 
         rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,dimension_text,'~'*len(dimension_text))
-        for d in ind_metadata.loc[ind_metadata.dimension==dimension,'data_name'].unique():
-            print('{}: {}'.format(dimension,d))
+        print(f'{dimension}:')
+        for category in ind_metadata.loc[ind_metadata.dimension==dimension,'indicator_category'].unique():
+          # create heading for indicator
+          if str(category) not in ('','nan'):
+            print(f'\t{category}')
+            category_thai = df_context.loc[df_context['English']==category,'Thai'].values[0]
+            category_definition = df_context.loc[df_context['English']==category,'Draft definition for Bangkok context'].values[0]
+            rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,category,'|'*len(category))
+            # add Thai name
+            rst = '{}\r\n{}\r\n'.format(rst,category_thai)
+            # add description for indicator
+            rst = '{}\r\n{}\r\n'.format(rst,category_definition)
+          for d in ind_metadata.loc[(ind_metadata.dimension==dimension)&(ind_metadata.indicator_category==category),'data_name'].unique():
+            print(f'\t - {d}')
             # create heading for dataset
             if d != dimension_text:
                 rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,d,'-'*len(d))
-            ds = ind_metadata.query(f'dimension == "{dimension}" & data_name == "{d}"').copy()
+            ds = ind_metadata.query(f'dimension == "{dimension}" & indicator_category=="{category}" & data_name == "{d}"').copy()
             # add description for dataset
             rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_data)
             for i in data_items:
@@ -303,7 +315,7 @@ def main():
         print(f"{maps_interactive}", file=text_file)
 
     with open("../docs/indicators.rst", "w") as text_file:
-        metadata = generate_metadata_rst(get_ind_metadata())
+        metadata = generate_metadata_rst(get_ind_metadata(),df_context)
         print(f"{metadata}", file=text_file)
         
     line_prepender('../docs/conf_template.py','../docs/conf.py',get_sphinx_conf_header())

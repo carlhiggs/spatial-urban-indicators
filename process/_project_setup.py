@@ -42,6 +42,11 @@ df_parameters = pandas.read_excel(xls, 'Parameters',index_col=0)
 df_datasets = pandas.read_excel(xls, 'Datasets')
 df_osm = pandas.read_excel(xls, 'osm_open_space')
 df_osm_dest = pandas.read_excel(xls, 'osm_destinations')
+df_context = pandas.read_excel(xls, 'Bangkok context definitions',header=[0,1],skiprows=[2])
+
+# set up indicator context document
+df_context = df_context[['Group','Indicator']][0:24].ffill()
+df_context.columns = df_context.columns.droplevel()
 
 # prepare and clean configuration entries
 df_parameters[locale] = df_parameters[locale].fillna('')

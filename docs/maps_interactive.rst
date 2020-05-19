@@ -8,14 +8,14 @@ Interactive maps
         <form name="change">
         <SELECT NAME="options" ONCHANGE="document.getElementById('maps_interactive').src = './../html/'+this.options[this.selectedIndex].value+'.html'">
         <option value="bangkok_02_population_subdistrict_population_per_sqkm">Please select a map to explore...</option>
-        <option value="bangkok_ind_district_cost_of_living_district">Opportunity to earn a fair wage: Average monthly cost of living per person (Baht; NSO, 2017)</option>
-        <option value="bangkok_ind_subdistrict_cost_of_living_subdistrict">Opportunity to earn a fair wage: Average monthly cost of living per person (Baht; NSO, 2017)</option>
-        <option value="bangkok_ind_subdistrict_access_ferry_800m_pop_pct">Mass transit availability: Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014)</option>
-        <option value="bangkok_ind_district_access_ferry_800m_pop_pct">Mass transit availability: Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014)</option>
-        <option value="bangkok_ind_district_fire_incidence">สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018): fire incidence</option>
-        <option value="bangkok_ind_district_fire_incidence_rate_area">สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per km²: fire incidence</option>
-        <option value="bangkok_ind_district_fire_incidence_rate_population">สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 population: fire incidence</option>
-        <option value="bangkok_ind_district_fire_incidence_rate_household">สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence in Bangkok 2018) per 10,000 household: fire incidence</option>
+        <option value="bangkok_ind_district_cost_of_living_district">Poverty indicators (NSO, 2017): Average monthly cost of living per person (Baht; NSO, 2017)</option>
+        <option value="bangkok_ind_subdistrict_cost_of_living_subdistrict">Poverty indicators (NSO, 2017): Average monthly cost of living per person (Baht; NSO, 2017)</option>
+        <option value="bangkok_ind_subdistrict_access_ferry_800m_pop_pct">Public transport accessibility: ferry terminal or pier (BMA, 2014): % living within 800 metres</option>
+        <option value="bangkok_ind_district_access_ferry_800m_pop_pct">Public transport accessibility: ferry terminal or pier (BMA, 2014): % living within 800 metres</option>
+        <option value="bangkok_ind_district_fire_incidence">Fire Incidence in Bangkok (BMA, 2018): fire incidence</option>
+        <option value="bangkok_ind_district_fire_incidence_rate_area">Fire Incidence in Bangkok (BMA, 2018) per km²: fire incidence</option>
+        <option value="bangkok_ind_district_fire_incidence_rate_population">Fire Incidence in Bangkok (BMA, 2018) per 10,000 population: fire incidence</option>
+        <option value="bangkok_ind_district_fire_incidence_rate_household">Fire Incidence in Bangkok (BMA, 2018) per 10,000 household: fire incidence</option>
         <option value="bangkok_ind_subdistrict_health_centres">Health centers (n = 68): health centers</option>
         <option value="bangkok_ind_subdistrict_health_centres_rate_area">Health centers (n = 68) per km²: health centers</option>
         <option value="bangkok_ind_subdistrict_health_centres_rate_population">Health centers (n = 68) per 10,000 population: health centers</option>
@@ -88,12 +88,12 @@ Interactive maps
         <option value="bangkok_ind_district_pcd_monitoring_stations_rate_household">Air quality: PM2.5 per 10,000 household: monitoring stations</option>
         <option value="bangkok_ind_district_pm2p5_days_exceeding_thai_standard">Air quality: PM2.5: days exceeding Thai standard (50 µg/m³; January 2019, PCD)</option>
         <option value="bangkok_ind_district_pm2p5_days_exceeding_who_standard">Air quality: PM2.5: days exceeding WHO standard (25 µg/m³; January 2019, PCD)</option>
-        <option value="bangkok_ind_subdistrict_access_pos_entry_any_400m_pop_pct">Areas for passive recreation and physical activity: Percentage of residents living within 400 metres of public open space  (OSM, 2019)</option>
-        <option value="bangkok_ind_district_access_pos_entry_any_400m_pop_pct">Areas for passive recreation and physical activity: Percentage of residents living within 400 metres of public open space  (OSM, 2019)</option>
-        <option value="bangkok_ind_subdistrict_access_pos_entry_large_400m_pop_pct">Areas for passive recreation and physical activity: Percentage of residents living within 400 metres of large public open space  (OSM, 2019)</option>
-        <option value="bangkok_ind_district_access_pos_entry_large_400m_pop_pct">Areas for passive recreation and physical activity: Percentage of residents living within 400 metres of large public open space  (OSM, 2019)</option>
-        <option value="bangkok_ind_subdistrict_access_pt_any_800m_pop_pct">Mass transit availability: Percentage of residents living 800 metres distance of any public transport (OSM, 2019)</option>
-        <option value="bangkok_ind_district_access_pt_any_800m_pop_pct">Mass transit availability: Percentage of residents living 800 metres distance of any public transport (OSM, 2019)</option>
+        <option value="bangkok_ind_subdistrict_access_pos_entry_any_400m_pop_pct">Areas for passive recreation and physical activity: % living within 400 metres of public open space  (OSM, 2019)</option>
+        <option value="bangkok_ind_district_access_pos_entry_any_400m_pop_pct">Areas for passive recreation and physical activity: % living within 400 metres of public open space  (OSM, 2019)</option>
+        <option value="bangkok_ind_subdistrict_access_pos_entry_large_400m_pop_pct">Areas for passive recreation and physical activity: % living within 400 metres of large public open space  (OSM, 2019)</option>
+        <option value="bangkok_ind_district_access_pos_entry_large_400m_pop_pct">Areas for passive recreation and physical activity: % living within 400 metres of large public open space  (OSM, 2019)</option>
+        <option value="bangkok_ind_subdistrict_access_pt_any_800m_pop_pct">Public transport accessibility: any public transport (OSM, 2019): % living within 800 metres</option>
+        <option value="bangkok_ind_district_access_pt_any_800m_pop_pct">Public transport accessibility: any public transport (OSM, 2019): % living within 800 metres</option>
         <option value="bangkok_ind_district_restaurants">Number of food entrepreneurs: ร้านอาหาร/Restaurant</option>
         <option value="bangkok_ind_district_restaurants_rate_area">Number of food entrepreneurs per km²: ร้านอาหาร/Restaurant</option>
         <option value="bangkok_ind_district_restaurants_rate_population">Number of food entrepreneurs per 10,000 population: ร้านอาหาร/Restaurant</option>
@@ -108,8 +108,8 @@ Interactive maps
         <option value="bangkok_ind_district_supermarkets_rate_area">Number of food entrepreneurs per km²: ซูเปอร์มาร์เกต/Supermarket</option>
         <option value="bangkok_ind_district_supermarkets_rate_population">Number of food entrepreneurs per 10,000 population: ซูเปอร์มาร์เกต/Supermarket</option>
         <option value="bangkok_ind_district_supermarkets_rate_household">Number of food entrepreneurs per 10,000 household: ซูเปอร์มาร์เกต/Supermarket</option>
-        <option value="bangkok_ind_subdistrict_access_train_800m_pop_pct">Mass transit availability: Percentage of residents living within 800 metres of a train station (BMA, 2014)</option>
-        <option value="bangkok_ind_district_access_train_800m_pop_pct">Mass transit availability: Percentage of residents living within 800 metres of a train station (BMA, 2014)</option>
+        <option value="bangkok_ind_subdistrict_access_train_800m_pop_pct">Public transport accessibility: train stations (BMA 2014): % living within 800 metres</option>
+        <option value="bangkok_ind_district_access_train_800m_pop_pct">Public transport accessibility: train stations (BMA 2014): % living within 800 metres</option>
         <option value="bangkok_ind_subdistrict_vegetation_pct_mean">Green space: mean vegetation cover percent  (Copernicus, December 2018)</option>
         <option value="bangkok_ind_district_vegetation_pct_mean">Green space: mean vegetation cover percent  (Copernicus, December 2018)</option>
         <option value="bangkok_ind_subdistrict_vegetation_pct_sd">Green space: standard deviation vegetation cover percent  (Copernicus, December 2018)</option>

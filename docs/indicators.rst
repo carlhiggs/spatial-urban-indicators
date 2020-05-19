@@ -5,286 +5,21 @@ Indicators
 Study region boundaries
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Bangkok subdistrict boundary data (BMA, 2019) were topologically corrected using GRASS and QGIS, to ensure polygon boundaries did not have gaps or overlaps.  Boundaries were matched with alternate spellings in both Thai and English for corresponding regions found in data from other organisations  and datasets  (e.g. NSO, HDX) in order to facilitate data linkage.   The final boundary layer was returned to BMA and agreed upon for usage. 
-
-**Data source**: BangkokGIS (BMA)
-
-**URL**: http://www.bangkokgis.com/bangkokgis_2008/userfiles/files/download/shapefile/administration/BMASubDistrict_Polygon.rar
-
-**Publication year**: 2018
-
-**Target year**: 2018
-
-**Acquisition date (yyyymmdd)**: 20190725
-
-**Licence**: none specified
-
-**Spatial reference (EPSG code)**: 32647.0
-
-**Date type**: vector
-
-**Scale / Resolution**: subdistrict
-
-**Notes**: English names not provided; these have been derived using manual linkage with data from HDX subdistricts and population data provided by BMA, with verification from Kornsupha Nitvimol of BMA.
-
-**Data location relative to project folder**: ./data/Bangkok_subdistricts_BMA_HLC_derived_20190805_cleaned_final.gpkg:subdistricts
-
-District and changwat boundaries were constructed through geometrical union of the constituent subdistricts they were aligned with.  Boundaries at all three scales (subdistrict, district, changwat) were imported into the project database and used as analysis areas when constructing other indicators, as required.  The area in square kilometres of each analysis area's polygonal extent was recorded.   The changwat (province) of Bangkok was used to define the Bangkok metropolitan study region extent.  A ten kilometre buffer extending beyond this is used when conducting analyses of access to resources, so that access to destinations outside the study region would be accounted for peri-urban regions when undertaking network analysis.  
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Bangkok study region" src="./../png/bangkok_01_study_region.png">
-        <figcaption>Bangkok study region.         <a href="./../html/bangkok_01_study_region.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_01_study_region.png
-       :width: 70%
-       :align: center
-
-       Bangkok study region
-
-
-
 
 Population and communities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Population statistics targetting Bangkok in 2018 were received from the Bangkok Metropolitan Administration, indexed by subdistrict. Fields included total population, sex strata, household, number of communities, and population in communities.  
-
-**Data source**: BMA
-
-**URL**: http://www.bangkok.go.th
-
-**Publication year**: 2019
-
-**Target year**: 2018
-
-**Acquisition date (yyyymmdd)**: 20190805
-
-**Licence**: none specified
-
-**Scale / Resolution**: subdistrict
-
-**Notes**: Derived population layer based on data received from Korn Nitviminol (BMA) via e-mail on 5 August 2019
-
-**Data location relative to project folder**: ./data/Bangkok_subdistrict_population_BMA_HLC_derived_20190808.csv
-
-Population data were linked with boundaries using corresponding subdistrict ID numbers.  Density measures were calculated using population statistics relative to analysis area size. 
-
-
-Population per km²
-------------------
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Population per km², by district" src="./../png/bangkok_02_population_district_population_per_sqkm.png">
-        <figcaption>Population per km², by district.         <a href="./../html/bangkok_02_population_district_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Population per km², by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Population per km², by subdistrict" src="./../png/bangkok_02_population_subdistrict_population_per_sqkm.png">
-        <figcaption>Population per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Population per km², by subdistrict
-
-
-
-
-Households per km²
-------------------
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Households per km², by district" src="./../png/bangkok_02_population_district_households_per_sqkm.png">
-        <figcaption>Households per km², by district.         <a href="./../html/bangkok_02_population_district_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_households_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Households per km², by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Households per km², by subdistrict" src="./../png/bangkok_02_population_subdistrict_households_per_sqkm.png">
-        <figcaption>Households per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_households_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Households per km², by subdistrict
-
-
-
-
-Communities per km²
--------------------
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Communities per km², by district" src="./../png/bangkok_02_population_district_communities_per_sqkm.png">
-        <figcaption>Communities per km², by district.         <a href="./../html/bangkok_02_population_district_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_communities_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Communities per km², by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Communities per km², by subdistrict" src="./../png/bangkok_02_population_subdistrict_communities_per_sqkm.png">
-        <figcaption>Communities per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_communities_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Communities per km², by subdistrict
-
-
-
-
-Population in communities per km²
----------------------------------
-
-
-Aligns with Sustainable Development Goals: 11.
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Population in communities per km², by district" src="./../png/bangkok_02_population_district_population_in_communities_per_sqkm.png">
-        <figcaption>Population in communities per km², by district.         <a href="./../html/bangkok_02_population_district_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_in_communities_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Population in communities per km², by district
-
-
-
-
-Aligns with Sustainable Development Goals: 11.
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Population in communities per km², by subdistrict" src="./../png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png">
-        <figcaption>Population in communities per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png
-       :width: 70%
-       :align: center
-
-       Population in communities per km², by subdistrict
-
-
-
 
 City problems impacting health and wellbeing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+A safe environment
+||||||||||||||||||
+
+สิ่งแวดล้อมปลอดภัย
+
+ - Environmental safety means to ensure that in the urban environment do not have a risk area to cause a fire, crime and road accidents.
 
 
 Fire incidence
@@ -360,7 +95,7 @@ Aligns with Sustainable Development Goals: 11, 13.
             <div id="div3" class="plot-box-large">
         	     <img alt=fire incidence, ranked in ascending order src="./../png/plots/district_fire_incidence.png">
             </div>
-       <figcaption>Figures for สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence In Bangkok 2018) with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Fire Incidence In Bangkok (Bma, 2018) with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -382,7 +117,7 @@ Aligns with Sustainable Development Goals: 11, 13.
       :width: 100%
       :align: center
 
-      Districts ranked in ascending order by fire incidence with regard to สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (fire incidence in bangkok 2018).
+      Districts ranked in ascending order by fire incidence with regard to fire incidence in bangkok (bma, 2018).
 
 
 
@@ -438,7 +173,7 @@ Aligns with Sustainable Development Goals: 11, 13.
             <div id="div3" class="plot-box-large">
         	     <img alt=fire incidence, ranked in ascending order src="./../png/plots/district_fire_incidence_rate_area.png">
             </div>
-       <figcaption>Figures for สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence In Bangkok 2018) Per Km² with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Fire Incidence In Bangkok (Bma, 2018) Per Km² with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -460,7 +195,7 @@ Aligns with Sustainable Development Goals: 11, 13.
       :width: 100%
       :align: center
 
-      Districts ranked in ascending order by fire incidence with regard to สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (fire incidence in bangkok 2018) per km².
+      Districts ranked in ascending order by fire incidence with regard to fire incidence in bangkok (bma, 2018) per km².
 
 
 
@@ -516,7 +251,7 @@ Aligns with Sustainable Development Goals: 11, 13.
             <div id="div3" class="plot-box-large">
         	     <img alt=fire incidence, ranked in ascending order src="./../png/plots/district_fire_incidence_rate_population.png">
             </div>
-       <figcaption>Figures for สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence In Bangkok 2018) Per 10,000 Population with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Fire Incidence In Bangkok (Bma, 2018) Per 10,000 Population with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -538,7 +273,7 @@ Aligns with Sustainable Development Goals: 11, 13.
       :width: 100%
       :align: center
 
-      Districts ranked in ascending order by fire incidence with regard to สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (fire incidence in bangkok 2018) per 10,000 population.
+      Districts ranked in ascending order by fire incidence with regard to fire incidence in bangkok (bma, 2018) per 10,000 population.
 
 
 
@@ -594,7 +329,7 @@ Aligns with Sustainable Development Goals: 11, 13.
             <div id="div3" class="plot-box-large">
         	     <img alt=fire incidence, ranked in ascending order src="./../png/plots/district_fire_incidence_rate_household.png">
             </div>
-       <figcaption>Figures for สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (Fire Incidence In Bangkok 2018) Per 10,000 Household with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Fire Incidence In Bangkok (Bma, 2018) Per 10,000 Household with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -616,9 +351,17 @@ Aligns with Sustainable Development Goals: 11, 13.
       :width: 100%
       :align: center
 
-      Districts ranked in ascending order by fire incidence with regard to สถิติอัคคีภัยจำแนกตามพื้นที่เขตในกรุงเทพมหานคร ปี 2561 (fire incidence in bangkok 2018) per 10,000 household.
+      Districts ranked in ascending order by fire incidence with regard to fire incidence in bangkok (bma, 2018) per 10,000 household.
 
 
+
+
+No flooding
+|||||||||||
+
+ไม่มีน้ำท่วม
+
+ - Floods means large amounts of water overflowing into normal land
 
 
 Flood risk
@@ -1885,6 +1628,16 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
 
 
 
+High quality air
+||||||||||||||||
+
+อากาศคุณภาพสูง
+
+ - "Air quality" refers to the weather conditions within the area around us. High quality air quality is at a level that is clean, clear and free from pollution such as smoke, dust, gas etc.
+- Human health, plants, animals and natural resources are threatened when air pollution reaches a high concentration.
+- Poor air quality affects or is harmful to human health and / or the environment.
+
+
 Air quality
 -----------
 
@@ -2379,6 +2132,15 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 
 
+Water quality/pollution
+|||||||||||||||||||||||
+
+คุณภาพน้ำ/มลพิษทางน้ำ
+
+ - Water quality refers to the physical, chemical, biological and sensory properties (taste) of water.
+- Water pollution means the presence of toxic chemicals in groundwater and biological substances that are more than is found in natural water and may pose a threat to human health and / or the environment.
+
+
 Canal water quality
 -------------------
 
@@ -2597,6 +2359,14 @@ Health-promoting environments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+Healthy population
+||||||||||||||||||
+
+ประชากรมีสุขภาพดี ทั้งทางกายและจิตใจ
+
+ - Healthy population means health status and health outcomes within a group of people.
+
+
 Public Transport
 ----------------
 
@@ -2736,17 +2506,17 @@ Accessability within 800m was evaluated using the Python network analysis packag
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=Percentage of residents living 800 metres distance of any public transport (OSM, 2019) by population src="./../png/plots/district_access_pt_any_800m_pop_pct_population.png" class="plot-img">
+        	     <img alt=% living within 800 metres by population src="./../png/plots/district_access_pt_any_800m_pop_pct_population.png" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=Percentage of residents living 800 metres distance of any public transport (OSM, 2019) by population per sqkm src="./../png/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.png" class="plot-img">
+        	     <img alt=% living within 800 metres by population per sqkm src="./../png/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.png" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=Percentage of residents living 800 metres distance of any public transport (OSM, 2019), ranked in ascending order src="./../png/plots/district_access_pt_any_800m_pop_pct.png">
+        	     <img alt=% living within 800 metres, ranked in ascending order src="./../png/plots/district_access_pt_any_800m_pop_pct.png">
             </div>
-       <figcaption>Figures for Mass Transit Availability with regard to Percentage of residents living 800 metres distance of any public transport (OSM, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Public Transport Accessibility: Any Public Transport (Osm, 2019) with regard to % living within 800 metres by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -2756,21 +2526,30 @@ Accessability within 800m was evaluated using the Python network analysis packag
       :width: 48%
       :align: center
 
-      Scatterplot of Percentage of residents living 800 metres distance of any public transport (OSM, 2019) by population for districts.
+      Scatterplot of % living within 800 metres by population for districts.
 
    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.png
       :width: 48%
       :align: center
 
-      Scatterplot of Percentage of residents living 800 metres distance of any public transport (OSM, 2019) by population density for districts.
+      Scatterplot of % living within 800 metres by population density for districts.
 
    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pt_any_800m_pop_pct.png
       :width: 100%
       :align: center
 
-      Districts ranked in ascending order by percentage of residents living 800 metres distance of any public transport (osm, 2019) with regard to mass transit availability.
+      Districts ranked in ascending order by % living within 800 metres with regard to public transport accessibility: any public transport (osm, 2019).
 
 
+
+
+Areas for passive recreation and physical activity
+||||||||||||||||||||||||||||||||||||||||||||||||||
+
+พื้นที่สำหรับพักผ่อนและออกกำลังกาย
+
+ - Physical activity means an individual or team activity that has a structure that requires facilities, courses, courts, or special equipment (football, golf, tennis, etc.)
+Passive recreation means recreational activities that do not require facilities such as a stadium or pavilion (walking, picnic, camping, swimming, biking, hiking, observing and photographing nature )
 
 
 Public Open Space
@@ -2857,17 +2636,17 @@ Accessability within 400m was evaluated using the Python network analysis packag
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=Percentage of residents living within 400 metres of public open space  (OSM, 2019) by population src="./../png/plots/district_access_pos_entry_any_400m_pop_pct_population.png" class="plot-img">
+        	     <img alt=% living within 400 metres of public open space  (OSM, 2019) by population src="./../png/plots/district_access_pos_entry_any_400m_pop_pct_population.png" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=Percentage of residents living within 400 metres of public open space  (OSM, 2019) by population per sqkm src="./../png/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.png" class="plot-img">
+        	     <img alt=% living within 400 metres of public open space  (OSM, 2019) by population per sqkm src="./../png/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.png" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=Percentage of residents living within 400 metres of public open space  (OSM, 2019), ranked in ascending order src="./../png/plots/district_access_pos_entry_any_400m_pop_pct.png">
+        	     <img alt=% living within 400 metres of public open space  (OSM, 2019), ranked in ascending order src="./../png/plots/district_access_pos_entry_any_400m_pop_pct.png">
             </div>
-       <figcaption>Figures for Areas For Passive Recreation And Physical Activity with regard to Percentage of residents living within 400 metres of public open space  (OSM, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Areas For Passive Recreation And Physical Activity with regard to % living within 400 metres of public open space  (OSM, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -2877,19 +2656,19 @@ Accessability within 400m was evaluated using the Python network analysis packag
       :width: 48%
       :align: center
 
-      Scatterplot of Percentage of residents living within 400 metres of public open space  (OSM, 2019) by population for districts.
+      Scatterplot of % living within 400 metres of public open space  (OSM, 2019) by population for districts.
 
    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.png
       :width: 48%
       :align: center
 
-      Scatterplot of Percentage of residents living within 400 metres of public open space  (OSM, 2019) by population density for districts.
+      Scatterplot of % living within 400 metres of public open space  (OSM, 2019) by population density for districts.
 
    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_any_400m_pop_pct.png
       :width: 100%
       :align: center
 
-      Districts ranked in ascending order by percentage of residents living within 400 metres of public open space  (osm, 2019) with regard to areas for passive recreation and physical activity.
+      Districts ranked in ascending order by % living within 400 metres of public open space  (osm, 2019) with regard to areas for passive recreation and physical activity.
 
 
 
@@ -2903,17 +2682,17 @@ Accessability within 400m was evaluated using the Python network analysis packag
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=Percentage of residents living within 400 metres of large public open space  (OSM, 2019) by population src="./../png/plots/district_access_pos_entry_large_400m_pop_pct_population.png" class="plot-img">
+        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019) by population src="./../png/plots/district_access_pos_entry_large_400m_pop_pct_population.png" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=Percentage of residents living within 400 metres of large public open space  (OSM, 2019) by population per sqkm src="./../png/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.png" class="plot-img">
+        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019) by population per sqkm src="./../png/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.png" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=Percentage of residents living within 400 metres of large public open space  (OSM, 2019), ranked in ascending order src="./../png/plots/district_access_pos_entry_large_400m_pop_pct.png">
+        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019), ranked in ascending order src="./../png/plots/district_access_pos_entry_large_400m_pop_pct.png">
             </div>
-       <figcaption>Figures for Areas For Passive Recreation And Physical Activity with regard to Percentage of residents living within 400 metres of large public open space  (OSM, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Areas For Passive Recreation And Physical Activity with regard to % living within 400 metres of large public open space  (OSM, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -2923,21 +2702,118 @@ Accessability within 400m was evaluated using the Python network analysis packag
       :width: 48%
       :align: center
 
-      Scatterplot of Percentage of residents living within 400 metres of large public open space  (OSM, 2019) by population for districts.
+      Scatterplot of % living within 400 metres of large public open space  (OSM, 2019) by population for districts.
 
    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.png
       :width: 48%
       :align: center
 
-      Scatterplot of Percentage of residents living within 400 metres of large public open space  (OSM, 2019) by population density for districts.
+      Scatterplot of % living within 400 metres of large public open space  (OSM, 2019) by population density for districts.
 
    .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_large_400m_pop_pct.png
       :width: 100%
       :align: center
 
-      Districts ranked in ascending order by percentage of residents living within 400 metres of large public open space  (osm, 2019) with regard to areas for passive recreation and physical activity.
+      Districts ranked in ascending order by % living within 400 metres of large public open space  (osm, 2019) with regard to areas for passive recreation and physical activity.
 
 
+
+
+Mass transit availability; connected public transport networks; increased provision of transit-oriented developments
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+ขนส่งมวลชนที่มีให้บริการ (เครือข่ายเชื่อมต่อ พัฒนาเพิ่มทางเลือก
+
+ - Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains
+- Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows;
+A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations
+B. Frequent public transport services during peak travel times
+C. Stations or stops showing a safe and convenient environment
+
+
+Public Transport
+----------------
+
+Combined BMA railway stations (BTS, MRT, airtportlink, and other train stations; BMA, 2014) were analysed for accessability using an OSM pedestrian network, derived using OSMnx.
+
+**Data source**: BangkokGIS (BMA)
+
+**Publication year**: 2014
+
+**Target year**: 2014
+
+**Acquisition date (yyyymmdd)**: 20181210
+
+**Licence**: none specified
+
+**Spatial reference (EPSG code)**: 32647.0
+
+**Date type**: vector
+
+**Scale / Resolution**: 800
+
+**Data location relative to project folder**: ./data/Thai/BMA GIS/transport/airportlink_station/airportlink_station.shp
+
+
+Percentage of residents living within 800 metres of a train station (BMA, 2014)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.  [method to be further updated]
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living within 800 metres of a train station (BMA, 2014), by subdistrict" src="./../png/bangkok_ind_subdistrict_access_train_800m_pop_pct.png">
+        <figcaption>Percentage of residents living within 800 metres of a train station (BMA, 2014), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_access_train_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_train_800m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living within 800 metres of a train station (BMA, 2014), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage of residents living within 800 metres of a train station (BMA, 2014), by district" src="./../png/bangkok_ind_district_access_train_800m_pop_pct.png">
+        <figcaption>Percentage of residents living within 800 metres of a train station (BMA, 2014), by district.         <a href="./../html/bangkok_ind_district_access_train_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_train_800m_pop_pct.png
+       :width: 70%
+       :align: center
+
+       Percentage of residents living within 800 metres of a train station (BMA, 2014), by district
+
+
+
+
+Greater tree coverage to provide shade
+||||||||||||||||||||||||||||||||||||||
+
+ต้นไม้ที่ให้ร่มเงาในวงกว้าง
+
+ - Greater tree coverage refers canopy trees, are huge trees with thick canopies or foliage coverings.
 
 
 Fraction of Vegetation Cover
@@ -3129,7 +3005,19 @@ Enhancing quality of life
 
 
 Opportunity to earn a fair wage
--------------------------------
+|||||||||||||||||||||||||||||||
+
+โอกาสในการมีรายได้จากการทำงานอย่างยุติธรรม
+
+ - "Wage" means the money that an employ and the employees agreed to pay compensation according to the employment contract for normal working hours on a daily, weekly, monthly, or other period. Or paid according to the work done by the employee during normal working hours of the working day and shall include the money that an employer pays to an employee on holidays and days off for which the employee does not work.
+- Fair wage means the wage rate for an employee under the national wage laws such as the minimum wage. Pay Overtime pay Holiday pay Social security payment etc.
+- Cost of living means the cost of a person or goods used to purchase goods and services according to the type and quantity needed for living, such as home expenses.
+-The Gini coefficient is defined as a ratio between 0 and 1. The low Gini coefficient shows equality in income distribution. If this value is higher, it will indicate an increasingly disparate income distribution. Gene's coefficient equal to 0 means absolute equality (Everyone has the same income) and 1 means complete inequality. (There is only one person with income. The rest of the people have no income at all). The Gini coefficient calculation is based on the assumption that no one has a lower income than zero.
+  
+
+
+Poverty Indicators 2017
+-----------------------
 
 A data table for  Poverty Indicators 2017: Cost Dimensions with records for Bangkok overall, districts, and subdistricts was retrieved from the Thai National Statistical Office (NSO).  Data were cleaned for processing and aligned with area IDs. 
 
@@ -3203,7 +3091,7 @@ The average monthly cost of living per person within each analysis area was reco
             <div id="div3" class="plot-box-large">
         	     <img alt=Average monthly cost of living per person (Baht; NSO, 2017), ranked in ascending order src="./../png/plots/district_cost_of_living_district.png">
             </div>
-       <figcaption>Figures for Opportunity To Earn A Fair Wage with regard to Average monthly cost of living per person (Baht; NSO, 2017) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+       <figcaption>Figures for Poverty Indicators (Nso, 2017) with regard to Average monthly cost of living per person (Baht; NSO, 2017) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
        </div><br>
 
@@ -3225,7 +3113,7 @@ The average monthly cost of living per person within each analysis area was reco
       :width: 100%
       :align: center
 
-      Districts ranked in ascending order by average monthly cost of living per person (baht; nso, 2017) with regard to opportunity to earn a fair wage.
+      Districts ranked in ascending order by average monthly cost of living per person (baht; nso, 2017) with regard to poverty indicators (nso, 2017).
 
 
 
@@ -3251,6 +3139,14 @@ The average monthly cost of living per person within each analysis area was reco
        Average monthly cost of living per person (Baht; NSO, 2017), by subdistrict
 
 
+
+
+Healthy population
+||||||||||||||||||
+
+ประชากรมีสุขภาพดี ทั้งทางกายและจิตใจ
+
+ - Healthy population means health status and health outcomes within a group of people.
 
 
 Vital diseases
@@ -3491,814 +3387,6 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Health centres (combined, 2018) per 10,000 household, by district
-
-
-
-
-Vital diseases (combined, 2018)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Vital diseases (combined, 2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases.png">
-        <figcaption>Vital diseases (combined, 2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases.png
-       :width: 70%
-       :align: center
-
-       Vital diseases (combined, 2018), by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Vital diseases (combined, 2018), by district" src="./../png/bangkok_ind_district_outpatients_combined_diseases.png">
-        <figcaption>Vital diseases (combined, 2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases.png
-       :width: 70%
-       :align: center
-
-       Vital diseases (combined, 2018), by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_population.png" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_population_per_sqkm.png" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases.png">
-            </div>
-       <figcaption>Figures for Health Center Outpatients with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_population.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of vital diseases (combined; 2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_population_per_sqkm.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of vital diseases (combined; 2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases.png
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by vital diseases (combined; 2018) with regard to health center outpatients.
-
-
-
-
-Vital diseases (combined, 2018) per km²
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.  The indicator was rated as the rate per km².
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Vital diseases (combined, 2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area.png">
-        <figcaption>Vital diseases (combined, 2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area.png
-       :width: 70%
-       :align: center
-
-       Vital diseases (combined, 2018) per km², by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Vital diseases (combined, 2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_combined_diseases_rate_area.png">
-        <figcaption>Vital diseases (combined, 2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_combined_diseases_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_area.png
-       :width: 70%
-       :align: center
-
-       Vital diseases (combined, 2018) per km², by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_area_population.png" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.png" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_area.png">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per Km² with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area_population.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of vital diseases (combined; 2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of vital diseases (combined; 2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area.png
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by vital diseases (combined; 2018) with regard to health center outpatients per km².
-
-
-
-
-Vital diseases (combined, 2018) per 10,000 population
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Vital diseases (combined, 2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.png">
-        <figcaption>Vital diseases (combined, 2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.png
-       :width: 70%
-       :align: center
-
-       Vital diseases (combined, 2018) per 10,000 population, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Vital diseases (combined, 2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_combined_diseases_rate_population.png">
-        <figcaption>Vital diseases (combined, 2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_combined_diseases_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_population.png
-       :width: 70%
-       :align: center
-
-       Vital diseases (combined, 2018) per 10,000 population, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_population_population.png" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.png" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_population.png">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population_population.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of vital diseases (combined; 2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of vital diseases (combined; 2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population.png
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by vital diseases (combined; 2018) with regard to health center outpatients per 10,000 population.
-
-
-
-
-Vital diseases (combined, 2018) per 10,000 household
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Vital diseases (combined, 2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_household.png">
-        <figcaption>Vital diseases (combined, 2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_household.png
-       :width: 70%
-       :align: center
-
-       Vital diseases (combined, 2018) per 10,000 household, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Vital diseases (combined, 2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_combined_diseases_rate_household.png">
-        <figcaption>Vital diseases (combined, 2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_combined_diseases_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_household.png
-       :width: 70%
-       :align: center
-
-       Vital diseases (combined, 2018) per 10,000 household, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_household_population.png" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.png" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_household.png">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household_population.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of vital diseases (combined; 2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of vital diseases (combined; 2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household.png
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by vital diseases (combined; 2018) with regard to health center outpatients per 10,000 household.
-
-
-
-
-Diabetes outpatients (2018)
->>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for diabetes were summed across each analysis area.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes.png">
-        <figcaption>Diabetes outpatients (2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018), by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018), by district" src="./../png/bangkok_ind_district_outpatients_diabetes.png">
-        <figcaption>Diabetes outpatients (2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018), by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_population.png" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_population_per_sqkm.png" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes.png">
-            </div>
-       <figcaption>Figures for Health Center Outpatients with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_population.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_population_per_sqkm.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes.png
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by diabetes (2018) with regard to health center outpatients.
-
-
-
-
-Diabetes outpatients (2018) per km²
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per km².
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png">
-        <figcaption>Diabetes outpatients (2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per km², by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_area.png">
-        <figcaption>Diabetes outpatients (2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_area.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per km², by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_area_population.png" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.png" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_area.png">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per Km² with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area_population.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area.png
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by diabetes (2018) with regard to health center outpatients per km².
-
-
-
-
-Diabetes outpatients (2018) per 10,000 population
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png">
-        <figcaption>Diabetes outpatients (2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per 10,000 population, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_population.png">
-        <figcaption>Diabetes outpatients (2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_population.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per 10,000 population, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_population_population.png" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.png" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_population.png">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population_population.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population.png
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by diabetes (2018) with regard to health center outpatients per 10,000 population.
-
-
-
-
-Diabetes outpatients (2018) per 10,000 household
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png">
-        <figcaption>Diabetes outpatients (2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per 10,000 household, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_household.png">
-        <figcaption>Diabetes outpatients (2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_household.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per 10,000 household, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_household_population.png" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.png" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_household.png">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household_population.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.png
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household.png
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by diabetes (2018) with regard to health center outpatients per 10,000 household.
 
 
 
@@ -5111,6 +4199,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
+Quality food
+||||||||||||
+
+อาหารมีคุณภาพ
+
+ - Food safety refers to the practice and conditions of maintaining food quality to prevent contamination and foodborne illnesses during preparation, management and storage
+- Food quality refers to properties and characteristics of food products that are acceptable to consumers and meet expectations that is a purchase that is worth the money when compared to the required properties.
+
+
 Food entrepreneurs
 ------------------
 
@@ -5773,6 +4870,432 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 
 
+Vital diseases
+--------------
+
+Data at subdistrict level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: Department of Health, BMA
+
+**Publication year**: 2018
+
+**Target year**: 2018
+
+**Acquisition date (yyyymmdd)**: 20190617
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
+
+
+Vital diseases (combined, 2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Vital diseases (combined, 2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases.png">
+        <figcaption>Vital diseases (combined, 2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases.png
+       :width: 70%
+       :align: center
+
+       Vital diseases (combined, 2018), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Vital diseases (combined, 2018), by district" src="./../png/bangkok_ind_district_outpatients_combined_diseases.png">
+        <figcaption>Vital diseases (combined, 2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_combined_diseases.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases.png
+       :width: 70%
+       :align: center
+
+       Vital diseases (combined, 2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases.png">
+            </div>
+       <figcaption>Figures for Health Center Outpatients with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_population.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of vital diseases (combined; 2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_population_per_sqkm.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of vital diseases (combined; 2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases.png
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by vital diseases (combined; 2018) with regard to health center outpatients.
+
+
+
+
+Vital diseases (combined, 2018) per km²
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.  The indicator was rated as the rate per km².
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Vital diseases (combined, 2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area.png">
+        <figcaption>Vital diseases (combined, 2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area.png
+       :width: 70%
+       :align: center
+
+       Vital diseases (combined, 2018) per km², by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Vital diseases (combined, 2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_combined_diseases_rate_area.png">
+        <figcaption>Vital diseases (combined, 2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_combined_diseases_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_area.png
+       :width: 70%
+       :align: center
+
+       Vital diseases (combined, 2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_area.png">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per Km² with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area_population.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of vital diseases (combined; 2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of vital diseases (combined; 2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area.png
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by vital diseases (combined; 2018) with regard to health center outpatients per km².
+
+
+
+
+Vital diseases (combined, 2018) per 10,000 population
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Vital diseases (combined, 2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.png">
+        <figcaption>Vital diseases (combined, 2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.png
+       :width: 70%
+       :align: center
+
+       Vital diseases (combined, 2018) per 10,000 population, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Vital diseases (combined, 2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_combined_diseases_rate_population.png">
+        <figcaption>Vital diseases (combined, 2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_combined_diseases_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_population.png
+       :width: 70%
+       :align: center
+
+       Vital diseases (combined, 2018) per 10,000 population, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_population.png">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population_population.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of vital diseases (combined; 2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of vital diseases (combined; 2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population.png
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by vital diseases (combined; 2018) with regard to health center outpatients per 10,000 population.
+
+
+
+
+Vital diseases (combined, 2018) per 10,000 household
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for all vital diseases (mental and behavioural disorders, hypertension, and diabetes) were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Vital diseases (combined, 2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_household.png">
+        <figcaption>Vital diseases (combined, 2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_household.png
+       :width: 70%
+       :align: center
+
+       Vital diseases (combined, 2018) per 10,000 household, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Vital diseases (combined, 2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_combined_diseases_rate_household.png">
+        <figcaption>Vital diseases (combined, 2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_combined_diseases_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_household.png
+       :width: 70%
+       :align: center
+
+       Vital diseases (combined, 2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_household.png">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household_population.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of vital diseases (combined; 2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of vital diseases (combined; 2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household.png
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by vital diseases (combined; 2018) with regard to health center outpatients per 10,000 household.
+
+
+
+
 Public Transport
 ----------------
 
@@ -5892,12 +5415,462 @@ Accessability within 800m was evaluated using the Python network analysis packag
 
 
 
+Mass transit availability; connected public transport networks; increased provision of transit-oriented developments
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+ขนส่งมวลชนที่มีให้บริการ (เครือข่ายเชื่อมต่อ พัฒนาเพิ่มทางเลือก
+
+ - Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains
+- Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows;
+A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations
+B. Frequent public transport services during peak travel times
+C. Stations or stops showing a safe and convenient environment
+
+
+Vital diseases
+--------------
+
+Data at subdistrict level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: Department of Health, BMA
+
+**Publication year**: 2018
+
+**Target year**: 2018
+
+**Acquisition date (yyyymmdd)**: 20190617
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
+
+
+Diabetes outpatients (2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for diabetes were summed across each analysis area.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes.png">
+        <figcaption>Diabetes outpatients (2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018), by district" src="./../png/bangkok_ind_district_outpatients_diabetes.png">
+        <figcaption>Diabetes outpatients (2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes.png">
+            </div>
+       <figcaption>Figures for Health Center Outpatients with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_population.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_population_per_sqkm.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes.png
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by diabetes (2018) with regard to health center outpatients.
+
+
+
+
+Diabetes outpatients (2018) per km²
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per km².
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png">
+        <figcaption>Diabetes outpatients (2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per km², by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_area.png">
+        <figcaption>Diabetes outpatients (2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_area.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_area_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_area.png">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per Km² with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area_population.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area.png
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by diabetes (2018) with regard to health center outpatients per km².
+
+
+
+
+Diabetes outpatients (2018) per 10,000 population
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png">
+        <figcaption>Diabetes outpatients (2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per 10,000 population, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_population.png">
+        <figcaption>Diabetes outpatients (2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_population.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per 10,000 population, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_population_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_population.png">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population_population.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population.png
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by diabetes (2018) with regard to health center outpatients per 10,000 population.
+
+
+
+
+Diabetes outpatients (2018) per 10,000 household
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png">
+        <figcaption>Diabetes outpatients (2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per 10,000 household, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_household.png">
+        <figcaption>Diabetes outpatients (2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_household.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_household_population.png" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.png" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_household.png">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household_population.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.png
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household.png
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by diabetes (2018) with regard to health center outpatients per 10,000 household.
+
+
+
+
 Social development
 ~~~~~~~~~~~~~~~~~~
 
 
 Opportunity to earn a fair wage
--------------------------------
+|||||||||||||||||||||||||||||||
+
+โอกาสในการมีรายได้จากการทำงานอย่างยุติธรรม
+
+ - "Wage" means the money that an employ and the employees agreed to pay compensation according to the employment contract for normal working hours on a daily, weekly, monthly, or other period. Or paid according to the work done by the employee during normal working hours of the working day and shall include the money that an employer pays to an employee on holidays and days off for which the employee does not work.
+- Fair wage means the wage rate for an employee under the national wage laws such as the minimum wage. Pay Overtime pay Holiday pay Social security payment etc.
+- Cost of living means the cost of a person or goods used to purchase goods and services according to the type and quantity needed for living, such as home expenses.
+-The Gini coefficient is defined as a ratio between 0 and 1. The low Gini coefficient shows equality in income distribution. If this value is higher, it will indicate an increasingly disparate income distribution. Gene's coefficient equal to 0 means absolute equality (Everyone has the same income) and 1 means complete inequality. (There is only one person with income. The rest of the people have no income at all). The Gini coefficient calculation is based on the assumption that no one has a lower income than zero.
+  
+
+
+Poverty Indicators 2017
+-----------------------
 
 A data table for  Poverty Indicators 2017: Cost Dimensions with records for Bangkok overall, districts, and subdistricts was retrieved from the Thai National Statistical Office (NSO).  Data were cleaned for processing and aligned with area IDs. 
 
