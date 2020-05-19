@@ -57,12 +57,12 @@ ENV PGCLIENTENCODING=UTF8
 RUN export LC_ALL LANG LANGUAGE PGCLIENTENCODING
 
 # Install OSM tools
-RUN wget https://bretth.dev.openstreetmap.org/osmosis-build/osmosis-latest.tgz  \
+RUN wget https://github.com/openstreetmap/osmosis/releases/download/0.48.0/osmosis-0.48.0.tgz  \
  && mkdir osmosis                                                               \
- && mv osmosis-latest.tgz osmosis                                               \
+ && mv osmosis-0.48.0.tgz osmosis                                               \
  && cd osmosis                                                                  \
- && tar xvfz osmosis-latest.tgz                                                 \
- && rm osmosis-latest.tgz                                                       \
+ && tar xvfz osmosis-0.48.0.tgz                                                 \
+ && rm osmosis-0.48.0.tgz                                                       \
  && chmod a+x bin/osmosis                    
 
 RUN apt-get install -y osm2pgsql
@@ -71,19 +71,30 @@ RUN apt-get install -y osm2pgsql
 RUN apt-get update && \
     apt-get install -y firefox
 
+
+
 # Install tinytex, a minimal TeX distribution for making pdf documentation
 RUN apt-get update && apt-get install -y perl wget libfontconfig1 && \
     wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh  && \
     apt-get clean
 ENV PATH="${PATH}:bin"
+
+# attempt to use alternate repository due to error:
+#  tlmgr: package repository http://mirror.aarnet.edu.au/pub/CTAN/systems/texlive/tlnet (not verified: gpg unavailable)
 RUN tlmgr install xetex xcolor pgf fancyhdr parskip babel-english  \ 
-    units lastpage mdwtools comment genmisc  fontawesome times     \
+    units lastpage mdwtools comment   fontawesome times     \
     fncychap titlesec tabulary varwidth wrapfig capt-of needspace  \
     polyglossia fontspec cmap gnu-freefont \
+    --repository=http://mirror.ctan.org/systems/texlive/tlnet \
  && fmtutil-sys --all
+# issue with genmisc, omitted
 
-# instal the make build tools, for compiling sphinx documentation
+
+# install the make build tools, for compiling sphinx documentation
 RUN apt-get update && apt-get install -y make
+
+# install tools for converting html to pdf
+RUN apt-get update && apt-get install -y wkhtmltopdf
 
 # install fonts (including locale-specific)
 RUN apt-get update && apt-get install -y fonts-unfonts-core fonts-unfonts-extra fonts-tlwg-loma fonts-tlwg-loma-otf fonts-thai-tlwg
@@ -97,14 +108,15 @@ RUN conda config --set show_channel_urls true                                   
  && conda config --prepend channels conda-forge                                  \
  && conda update --strict-channel-priority --yes -n base conda                   \
  && conda install --strict-channel-priority --update-all --force-reinstall --yes \ 
-      osmnx python-igraph psycopg2 geoalchemy2 rasterio xarray                   \
-      folium sphinx xlrd geckodriver selenium seaborn bokeh                      \
-      rasterstats pandana                                                        \
- && conda install -y --channel conda-forge --force-reinstall proj4=5.2.0         \
+      osmnx python-igraph psycopg2 geoalchemy2 rasterio                          \
+      folium sphinx xlrd selenium seaborn contextily                             \
+      rasterstats pandana  pyproj psutil                                         \
  && conda clean --yes --all                                                      \
  && conda info --all                                                             \
  && conda list
 
+# packages testing to not install: geckodriver bokeh xarray
+    
 # add latex tools to path
 ENV PATH=/home/jovyan/bin:$PATH
 
