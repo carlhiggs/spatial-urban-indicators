@@ -212,10 +212,10 @@ def generate_metadata_rst(ind_metadata,df_context):
                                 title =  plots['map_heading'].values[x].title()
                                 x1   = 'population'     
                                 x2   = 'population per sqkm'
-                                plot1 = f'png/plots/{y}_{x1}'.replace(' ','_')
-                                plot2 = f'png/plots/{y}_{x2}'.replace(' ','_')
-                                plot3 = f'png/plots/{y}'.replace(' ','_')
-                                if os.path.exists(f'../maps/{study_region}/{plot3}.png'):
+                                plot1 = f'{y}_{x1}'.replace(' ','_')
+                                plot2 = f'{y}_{x2}'.replace(' ','_')
+                                plot3 = f'{y}'.replace(' ','_')
+                                if os.path.exists(f'../maps/{study_region}/svg/plots/{plot3}.svg'):
                                     desc1 = f'{ylab} by {x1}'
                                     desc2 = f'{ylab} by {x2}'
                                     desc3 = f'{ylab}, ranked in ascending order'
@@ -228,28 +228,28 @@ def generate_metadata_rst(ind_metadata,df_context):
                                                 '    .. raw:: html\r\n\r\n'
                                                 '        <div id="plot-div">\r\n'
                                                 '            <div id="div1" class="plot-box">\r\n'
-                                               f'        	     <img alt={desc1} src="./../{plot1}.png" class="plot-img">\r\n'
+                                               f'        	     <img alt={desc1} src="./../svg/plots/{plot1}.svg" class="plot-img">\r\n'
                                                 '            </div>\r\n'
                                                 '            <div id="div2" class="plot-box">\r\n'
-                                               f'        	     <img alt={desc2} src="./../{plot2}.png" class="plot-img">\r\n'
+                                               f'        	     <img alt={desc2} src="./../svg/plots/{plot2}.svg" class="plot-img">\r\n'
                                                 '            </div><br>\r\n'
                                                 '       </div><br>\r\n'
                                                 '       <div>\r\n'
                                                 '            <div id="div3" class="plot-box-large">\r\n'
-                                               f'        	     <img alt={desc3} src="./../{plot3}.png">\r\n'
+                                               f'        	     <img alt={desc3} src="./../svg/plots/{plot3}.svg">\r\n'
                                                 '            </div>\r\n'
                                                f'       <figcaption>{description}.</figcaption>\r\n\r\n'
                                                 '       </div><br>\r\n\r\n'
                                                 '.. only:: latex\r\n\r\n'
-                                               f'   .. figure:: ../maps/{study_region}/{plot1}.png\r\n'
+                                               f'   .. figure:: ../maps/{study_region}/pdf/plots/{plot1}.pdf\r\n'
                                                 '      :width: 48%\r\n'
                                                 '      :align: center\r\n\r\n'
                                                f'      Scatterplot of {ylab} by population for districts.\r\n\r\n'
-                                               f'   .. figure:: ../maps/{study_region}/{plot2}.png\r\n'
+                                               f'   .. figure:: ../maps/{study_region}/pdf/plots/{plot2}.pdf\r\n'
                                                 '      :width: 48%\r\n'
                                                 '      :align: center\r\n\r\n'
                                                f'      Scatterplot of {ylab} by population density for districts.\r\n\r\n'
-                                               f'   .. figure:: ../maps/{study_region}/{plot3}.png\r\n'
+                                               f'   .. figure:: ../maps/{study_region}/pdf/plots/{plot3}.pdf\r\n'
                                                 '      :width: 100%\r\n'
                                                 '      :align: center\r\n\r\n'
                                                f'      {description_latex}\r\n\r\n'

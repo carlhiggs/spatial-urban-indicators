@@ -19,7 +19,7 @@ A safe environment
 
 สิ่งแวดล้อมปลอดภัย
 
- - Environmental safety means to ensure that in the urban environment do not have a risk area to cause a fire, crime and road accidents.
+Environmental safety means to ensure that in the urban environment do not have a risk area to cause a fire, crime and road accidents.
 
 
 Fire incidence
@@ -361,7 +361,7 @@ No flooding
 
 ไม่มีน้ำท่วม
 
- - Floods means large amounts of water overflowing into normal land
+Floods means large amounts of water overflowing into normal land
 
 
 Flood risk
@@ -1633,9 +1633,7 @@ High quality air
 
 อากาศคุณภาพสูง
 
- - "Air quality" refers to the weather conditions within the area around us. High quality air quality is at a level that is clean, clear and free from pollution such as smoke, dust, gas etc.
-- Human health, plants, animals and natural resources are threatened when air pollution reaches a high concentration.
-- Poor air quality affects or is harmful to human health and / or the environment.
+"Air quality" refers to the weather conditions within the area around us. High quality air quality is at a level that is clean, clear and free from pollution such as smoke, dust, gas etc.  Human health, plants, animals and natural resources are threatened when air pollution reaches a high concentration.  Poor air quality affects or is harmful to human health and / or the environment.
 
 
 Air quality
@@ -2137,8 +2135,7 @@ Water quality/pollution
 
 คุณภาพน้ำ/มลพิษทางน้ำ
 
- - Water quality refers to the physical, chemical, biological and sensory properties (taste) of water.
-- Water pollution means the presence of toxic chemicals in groundwater and biological substances that are more than is found in natural water and may pose a threat to human health and / or the environment.
+Water quality refers to the physical, chemical, biological and sensory properties (taste) of water. Water pollution means the presence of toxic chemicals in groundwater and biological substances that are more than is found in natural water and may pose a threat to human health and / or the environment.
 
 
 Canal water quality
@@ -2364,7 +2361,7 @@ Healthy population
 
 ประชากรมีสุขภาพดี ทั้งทางกายและจิตใจ
 
- - Healthy population means health status and health outcomes within a group of people.
+Healthy population means health status and health outcomes within a group of people.
 
 
 Public Transport
@@ -2548,7 +2545,7 @@ Areas for passive recreation and physical activity
 
 พื้นที่สำหรับพักผ่อนและออกกำลังกาย
 
- - Physical activity means an individual or team activity that has a structure that requires facilities, courses, courts, or special equipment (football, golf, tennis, etc.)
+Physical activity means an individual or team activity that has a structure that requires facilities, courses, courts, or special equipment (football, golf, tennis, etc.)
 Passive recreation means recreational activities that do not require facilities such as a stadium or pavilion (walking, picnic, camping, swimming, biking, hiking, observing and photographing nature )
 
 
@@ -2724,11 +2721,7 @@ Mass transit availability; connected public transport networks; increased provis
 
 ขนส่งมวลชนที่มีให้บริการ (เครือข่ายเชื่อมต่อ พัฒนาเพิ่มทางเลือก
 
- - Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains
-- Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows;
-A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations
-B. Frequent public transport services during peak travel times
-C. Stations or stops showing a safe and convenient environment
+Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains.   Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows:  A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations;  B. Frequent public transport services during peak travel times;  C. Stations or stops showing a safe and convenient environment
 
 
 Public Transport
@@ -2813,7 +2806,7 @@ Greater tree coverage to provide shade
 
 ต้นไม้ที่ให้ร่มเงาในวงกว้าง
 
- - Greater tree coverage refers canopy trees, are huge trees with thick canopies or foliage coverings.
+Greater tree coverage refers canopy trees, are huge trees with thick canopies or foliage coverings.
 
 
 Fraction of Vegetation Cover
@@ -3009,10 +3002,7 @@ Opportunity to earn a fair wage
 
 โอกาสในการมีรายได้จากการทำงานอย่างยุติธรรม
 
- - "Wage" means the money that an employ and the employees agreed to pay compensation according to the employment contract for normal working hours on a daily, weekly, monthly, or other period. Or paid according to the work done by the employee during normal working hours of the working day and shall include the money that an employer pays to an employee on holidays and days off for which the employee does not work.
-- Fair wage means the wage rate for an employee under the national wage laws such as the minimum wage. Pay Overtime pay Holiday pay Social security payment etc.
-- Cost of living means the cost of a person or goods used to purchase goods and services according to the type and quantity needed for living, such as home expenses.
--The Gini coefficient is defined as a ratio between 0 and 1. The low Gini coefficient shows equality in income distribution. If this value is higher, it will indicate an increasingly disparate income distribution. Gene's coefficient equal to 0 means absolute equality (Everyone has the same income) and 1 means complete inequality. (There is only one person with income. The rest of the people have no income at all). The Gini coefficient calculation is based on the assumption that no one has a lower income than zero.
+"Wage" means the money that an employ and the employees agreed to pay compensation according to the employment contract for normal working hours on a daily, weekly, monthly, or other period. Or paid according to the work done by the employee during normal working hours of the working day and shall include the money that an employer pays to an employee on holidays and days off for which the employee does not work.  Fair wage means the wage rate for an employee under the national wage laws such as the minimum wage. Pay Overtime pay Holiday pay Social security payment etc.  Cost of living means the cost of a person or goods used to purchase goods and services according to the type and quantity needed for living, such as home expenses.  The Gini coefficient is defined as a ratio between 0 and 1. The low Gini coefficient shows equality in income distribution. If this value is higher, it will indicate an increasingly disparate income distribution. Gene's coefficient equal to 0 means absolute equality (Everyone has the same income) and 1 means complete inequality. (There is only one person with income. The rest of the people have no income at all). The Gini coefficient calculation is based on the assumption that no one has a lower income than zero.
   
 
 
@@ -3146,7 +3136,7 @@ Healthy population
 
 ประชากรมีสุขภาพดี ทั้งทางกายและจิตใจ
 
- - Healthy population means health status and health outcomes within a group of people.
+Healthy population means health status and health outcomes within a group of people.
 
 
 Vital diseases
@@ -4204,8 +4194,7 @@ Quality food
 
 อาหารมีคุณภาพ
 
- - Food safety refers to the practice and conditions of maintaining food quality to prevent contamination and foodborne illnesses during preparation, management and storage
-- Food quality refers to properties and characteristics of food products that are acceptable to consumers and meet expectations that is a purchase that is worth the money when compared to the required properties.
+Food safety refers to the practice and conditions of maintaining food quality to prevent contamination and foodborne illnesses during preparation, management and storage.   Food quality refers to properties and characteristics of food products that are acceptable to consumers and meet expectations that is a purchase that is worth the money when compared to the required properties.
 
 
 Food entrepreneurs
@@ -5420,11 +5409,7 @@ Mass transit availability; connected public transport networks; increased provis
 
 ขนส่งมวลชนที่มีให้บริการ (เครือข่ายเชื่อมต่อ พัฒนาเพิ่มทางเลือก
 
- - Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains
-- Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows;
-A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations
-B. Frequent public transport services during peak travel times
-C. Stations or stops showing a safe and convenient environment
+Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains.   Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows:  A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations;  B. Frequent public transport services during peak travel times;  C. Stations or stops showing a safe and convenient environment
 
 
 Vital diseases
@@ -5862,10 +5847,7 @@ Opportunity to earn a fair wage
 
 โอกาสในการมีรายได้จากการทำงานอย่างยุติธรรม
 
- - "Wage" means the money that an employ and the employees agreed to pay compensation according to the employment contract for normal working hours on a daily, weekly, monthly, or other period. Or paid according to the work done by the employee during normal working hours of the working day and shall include the money that an employer pays to an employee on holidays and days off for which the employee does not work.
-- Fair wage means the wage rate for an employee under the national wage laws such as the minimum wage. Pay Overtime pay Holiday pay Social security payment etc.
-- Cost of living means the cost of a person or goods used to purchase goods and services according to the type and quantity needed for living, such as home expenses.
--The Gini coefficient is defined as a ratio between 0 and 1. The low Gini coefficient shows equality in income distribution. If this value is higher, it will indicate an increasingly disparate income distribution. Gene's coefficient equal to 0 means absolute equality (Everyone has the same income) and 1 means complete inequality. (There is only one person with income. The rest of the people have no income at all). The Gini coefficient calculation is based on the assumption that no one has a lower income than zero.
+"Wage" means the money that an employ and the employees agreed to pay compensation according to the employment contract for normal working hours on a daily, weekly, monthly, or other period. Or paid according to the work done by the employee during normal working hours of the working day and shall include the money that an employer pays to an employee on holidays and days off for which the employee does not work.  Fair wage means the wage rate for an employee under the national wage laws such as the minimum wage. Pay Overtime pay Holiday pay Social security payment etc.  Cost of living means the cost of a person or goods used to purchase goods and services according to the type and quantity needed for living, such as home expenses.  The Gini coefficient is defined as a ratio between 0 and 1. The low Gini coefficient shows equality in income distribution. If this value is higher, it will indicate an increasingly disparate income distribution. Gene's coefficient equal to 0 means absolute equality (Everyone has the same income) and 1 means complete inequality. (There is only one person with income. The rest of the people have no income at all). The Gini coefficient calculation is based on the assumption that no one has a lower income than zero.
   
 
 

@@ -231,9 +231,10 @@ def folium_to_image(input_dir='',output_dir='',map_name='',formats=['png'],width
             element.parentNode.removeChild(element);
             """, element)
         if 'png' in formats:
-            driver.save_screenshot('{}/{}.png'.format(output_dir,map_name))
-        # if 'pdf' in formats:
-            # import pdfkit
+            driver.save_screenshot(f'{output_dir}/{map_name}.png')
+        if 'pdf' in formats:
+            import pdfkit
+            pdfkit.from_string(driver.page_source, f'{output_dir}/{map_name}.pdf')
             # with open("{}/__folium_temp.html".format(output_dir), "w") as f:
                 # f.write(driver.page_source)
             # pdfkit.from_file("{}/__folium_temp.html".format(output_dir), 
@@ -678,8 +679,9 @@ def generate_map(engine,map_name,map_attribution, attribution, area, heading, me
     fid.write(html.encode('utf8'))
     fid.close()
     folium_to_image(os.path.join(outpath,'html'),
-                    os.path.join(outpath,'png'),
-                    map_name)
+                    os.path.join(outpath,'pdf'),
+                    map_name,
+                    formats=['pdf'])
     print(f'\t- {outpath}/html/{map_name}.html')
     print(f'\t- {outpath}/png/{map_name}.png')
     print('')
