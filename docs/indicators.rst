@@ -85,15 +85,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=fire incidence by population src="./../png/plots/district_fire_incidence_population.png" class="plot-img">
+        	     <img alt=fire incidence by population src="./../svg/plots/district_fire_incidence_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=fire incidence by population per sqkm src="./../png/plots/district_fire_incidence_population_per_sqkm.png" class="plot-img">
+        	     <img alt=fire incidence by population per sqkm src="./../svg/plots/district_fire_incidence_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=fire incidence, ranked in ascending order src="./../png/plots/district_fire_incidence.png">
+        	     <img alt=fire incidence, ranked in ascending order src="./../svg/plots/district_fire_incidence.svg">
             </div>
        <figcaption>Figures for Fire Incidence In Bangkok (Bma, 2018) with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -101,19 +101,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence.pdf
       :width: 100%
       :align: center
 
@@ -163,15 +163,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=fire incidence by population src="./../png/plots/district_fire_incidence_rate_area_population.png" class="plot-img">
+        	     <img alt=fire incidence by population src="./../svg/plots/district_fire_incidence_rate_area_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=fire incidence by population per sqkm src="./../png/plots/district_fire_incidence_rate_area_population_per_sqkm.png" class="plot-img">
+        	     <img alt=fire incidence by population per sqkm src="./../svg/plots/district_fire_incidence_rate_area_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=fire incidence, ranked in ascending order src="./../png/plots/district_fire_incidence_rate_area.png">
+        	     <img alt=fire incidence, ranked in ascending order src="./../svg/plots/district_fire_incidence_rate_area.svg">
             </div>
        <figcaption>Figures for Fire Incidence In Bangkok (Bma, 2018) Per Km² with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -179,19 +179,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_area_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_area_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_area.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -241,15 +241,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=fire incidence by population src="./../png/plots/district_fire_incidence_rate_population_population.png" class="plot-img">
+        	     <img alt=fire incidence by population src="./../svg/plots/district_fire_incidence_rate_population_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=fire incidence by population per sqkm src="./../png/plots/district_fire_incidence_rate_population_population_per_sqkm.png" class="plot-img">
+        	     <img alt=fire incidence by population per sqkm src="./../svg/plots/district_fire_incidence_rate_population_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=fire incidence, ranked in ascending order src="./../png/plots/district_fire_incidence_rate_population.png">
+        	     <img alt=fire incidence, ranked in ascending order src="./../svg/plots/district_fire_incidence_rate_population.svg">
             </div>
        <figcaption>Figures for Fire Incidence In Bangkok (Bma, 2018) Per 10,000 Population with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -257,19 +257,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_population_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_population_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -319,15 +319,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=fire incidence by population src="./../png/plots/district_fire_incidence_rate_household_population.png" class="plot-img">
+        	     <img alt=fire incidence by population src="./../svg/plots/district_fire_incidence_rate_household_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=fire incidence by population per sqkm src="./../png/plots/district_fire_incidence_rate_household_population_per_sqkm.png" class="plot-img">
+        	     <img alt=fire incidence by population per sqkm src="./../svg/plots/district_fire_incidence_rate_household_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=fire incidence, ranked in ascending order src="./../png/plots/district_fire_incidence_rate_household.png">
+        	     <img alt=fire incidence, ranked in ascending order src="./../svg/plots/district_fire_incidence_rate_household.svg">
             </div>
        <figcaption>Figures for Fire Incidence In Bangkok (Bma, 2018) Per 10,000 Household with regard to fire incidence by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -335,19 +335,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_household_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_household_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_fire_incidence_rate_household.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -452,15 +452,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=days of flooding by population src="./../png/plots/district_main_road_flood_days_flood_population.png" class="plot-img">
+        	     <img alt=days of flooding by population src="./../svg/plots/district_main_road_flood_days_flood_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=days of flooding by population per sqkm src="./../png/plots/district_main_road_flood_days_flood_population_per_sqkm.png" class="plot-img">
+        	     <img alt=days of flooding by population per sqkm src="./../svg/plots/district_main_road_flood_days_flood_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=days of flooding, ranked in ascending order src="./../png/plots/district_main_road_flood_days_flood.png">
+        	     <img alt=days of flooding, ranked in ascending order src="./../svg/plots/district_main_road_flood_days_flood.svg">
             </div>
        <figcaption>Figures for 14 Flood Areas Of Main Roads In Bangkok Year 2018 with regard to days of flooding by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -468,19 +468,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_days_flood_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days of flooding by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_days_flood_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days of flooding by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_days_flood.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood.pdf
       :width: 100%
       :align: center
 
@@ -553,15 +553,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=days of rain by population src="./../png/plots/district_main_road_flood_days_rain_population.png" class="plot-img">
+        	     <img alt=days of rain by population src="./../svg/plots/district_main_road_flood_days_rain_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=days of rain by population per sqkm src="./../png/plots/district_main_road_flood_days_rain_population_per_sqkm.png" class="plot-img">
+        	     <img alt=days of rain by population per sqkm src="./../svg/plots/district_main_road_flood_days_rain_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=days of rain, ranked in ascending order src="./../png/plots/district_main_road_flood_days_rain.png">
+        	     <img alt=days of rain, ranked in ascending order src="./../svg/plots/district_main_road_flood_days_rain.svg">
             </div>
        <figcaption>Figures for 14 Flood Areas Of Main Roads In Bangkok Year 2018 with regard to days of rain by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -569,19 +569,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_days_rain_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days of rain by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_days_rain_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days of rain by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_days_rain.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain.pdf
       :width: 100%
       :align: center
 
@@ -654,15 +654,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=maximum intensity by population src="./../png/plots/district_main_road_flood_intensity_population.png" class="plot-img">
+        	     <img alt=maximum intensity by population src="./../svg/plots/district_main_road_flood_intensity_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=maximum intensity by population per sqkm src="./../png/plots/district_main_road_flood_intensity_population_per_sqkm.png" class="plot-img">
+        	     <img alt=maximum intensity by population per sqkm src="./../svg/plots/district_main_road_flood_intensity_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=maximum intensity, ranked in ascending order src="./../png/plots/district_main_road_flood_intensity.png">
+        	     <img alt=maximum intensity, ranked in ascending order src="./../svg/plots/district_main_road_flood_intensity.svg">
             </div>
        <figcaption>Figures for 14 Flood Areas Of Main Roads In Bangkok Year 2018 with regard to maximum intensity by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -670,19 +670,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_intensity_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of maximum intensity by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_intensity_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of maximum intensity by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_intensity.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity.pdf
       :width: 100%
       :align: center
 
@@ -755,15 +755,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=main road flood locations by population src="./../png/plots/district_main_road_flood_locations_population.png" class="plot-img">
+        	     <img alt=main road flood locations by population src="./../svg/plots/district_main_road_flood_locations_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=main road flood locations by population per sqkm src="./../png/plots/district_main_road_flood_locations_population_per_sqkm.png" class="plot-img">
+        	     <img alt=main road flood locations by population per sqkm src="./../svg/plots/district_main_road_flood_locations_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=main road flood locations, ranked in ascending order src="./../png/plots/district_main_road_flood_locations.png">
+        	     <img alt=main road flood locations, ranked in ascending order src="./../svg/plots/district_main_road_flood_locations.svg">
             </div>
        <figcaption>Figures for 14 Flood Areas Of Main Roads In Bangkok Year 2018 with regard to main road flood locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -771,19 +771,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations.pdf
       :width: 100%
       :align: center
 
@@ -856,15 +856,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=main road flood locations by population src="./../png/plots/district_main_road_flood_locations_rate_area_population.png" class="plot-img">
+        	     <img alt=main road flood locations by population src="./../svg/plots/district_main_road_flood_locations_rate_area_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=main road flood locations by population per sqkm src="./../png/plots/district_main_road_flood_locations_rate_area_population_per_sqkm.png" class="plot-img">
+        	     <img alt=main road flood locations by population per sqkm src="./../svg/plots/district_main_road_flood_locations_rate_area_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=main road flood locations, ranked in ascending order src="./../png/plots/district_main_road_flood_locations_rate_area.png">
+        	     <img alt=main road flood locations, ranked in ascending order src="./../svg/plots/district_main_road_flood_locations_rate_area.svg">
             </div>
        <figcaption>Figures for 14 Flood Areas Of Main Roads In Bangkok Year 2018 Per Km² with regard to main road flood locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -872,19 +872,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_area_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_area_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_area.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -957,15 +957,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=main road flood locations by population src="./../png/plots/district_main_road_flood_locations_rate_population_population.png" class="plot-img">
+        	     <img alt=main road flood locations by population src="./../svg/plots/district_main_road_flood_locations_rate_population_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=main road flood locations by population per sqkm src="./../png/plots/district_main_road_flood_locations_rate_population_population_per_sqkm.png" class="plot-img">
+        	     <img alt=main road flood locations by population per sqkm src="./../svg/plots/district_main_road_flood_locations_rate_population_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=main road flood locations, ranked in ascending order src="./../png/plots/district_main_road_flood_locations_rate_population.png">
+        	     <img alt=main road flood locations, ranked in ascending order src="./../svg/plots/district_main_road_flood_locations_rate_population.svg">
             </div>
        <figcaption>Figures for 14 Flood Areas Of Main Roads In Bangkok Year 2018 Per 10,000 Population with regard to main road flood locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -973,19 +973,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_population_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_population_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -1058,15 +1058,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=main road flood locations by population src="./../png/plots/district_main_road_flood_locations_rate_household_population.png" class="plot-img">
+        	     <img alt=main road flood locations by population src="./../svg/plots/district_main_road_flood_locations_rate_household_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=main road flood locations by population per sqkm src="./../png/plots/district_main_road_flood_locations_rate_household_population_per_sqkm.png" class="plot-img">
+        	     <img alt=main road flood locations by population per sqkm src="./../svg/plots/district_main_road_flood_locations_rate_household_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=main road flood locations, ranked in ascending order src="./../png/plots/district_main_road_flood_locations_rate_household.png">
+        	     <img alt=main road flood locations, ranked in ascending order src="./../svg/plots/district_main_road_flood_locations_rate_household.svg">
             </div>
        <figcaption>Figures for 14 Flood Areas Of Main Roads In Bangkok Year 2018 Per 10,000 Household with regard to main road flood locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1074,19 +1074,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_household_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_household_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_main_road_flood_locations_rate_household.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -1159,15 +1159,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=flood risk locations by population src="./../png/plots/district_vulnerable_flood_areas_population.png" class="plot-img">
+        	     <img alt=flood risk locations by population src="./../svg/plots/district_vulnerable_flood_areas_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=flood risk locations by population per sqkm src="./../png/plots/district_vulnerable_flood_areas_population_per_sqkm.png" class="plot-img">
+        	     <img alt=flood risk locations by population per sqkm src="./../svg/plots/district_vulnerable_flood_areas_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=flood risk locations, ranked in ascending order src="./../png/plots/district_vulnerable_flood_areas.png">
+        	     <img alt=flood risk locations, ranked in ascending order src="./../svg/plots/district_vulnerable_flood_areas.svg">
             </div>
        <figcaption>Figures for 56 Vulnerable Flood Areas In Bangkok Year 2018 with regard to flood risk locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1175,19 +1175,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas.pdf
       :width: 100%
       :align: center
 
@@ -1260,15 +1260,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=flood risk locations by population src="./../png/plots/district_vulnerable_flood_areas_rate_area_population.png" class="plot-img">
+        	     <img alt=flood risk locations by population src="./../svg/plots/district_vulnerable_flood_areas_rate_area_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=flood risk locations by population per sqkm src="./../png/plots/district_vulnerable_flood_areas_rate_area_population_per_sqkm.png" class="plot-img">
+        	     <img alt=flood risk locations by population per sqkm src="./../svg/plots/district_vulnerable_flood_areas_rate_area_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=flood risk locations, ranked in ascending order src="./../png/plots/district_vulnerable_flood_areas_rate_area.png">
+        	     <img alt=flood risk locations, ranked in ascending order src="./../svg/plots/district_vulnerable_flood_areas_rate_area.svg">
             </div>
        <figcaption>Figures for 56 Vulnerable Flood Areas In Bangkok Year 2018 Per Km² with regard to flood risk locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1276,19 +1276,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_area_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_area_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_area.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -1361,15 +1361,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=flood risk locations by population src="./../png/plots/district_vulnerable_flood_areas_rate_population_population.png" class="plot-img">
+        	     <img alt=flood risk locations by population src="./../svg/plots/district_vulnerable_flood_areas_rate_population_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=flood risk locations by population per sqkm src="./../png/plots/district_vulnerable_flood_areas_rate_population_population_per_sqkm.png" class="plot-img">
+        	     <img alt=flood risk locations by population per sqkm src="./../svg/plots/district_vulnerable_flood_areas_rate_population_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=flood risk locations, ranked in ascending order src="./../png/plots/district_vulnerable_flood_areas_rate_population.png">
+        	     <img alt=flood risk locations, ranked in ascending order src="./../svg/plots/district_vulnerable_flood_areas_rate_population.svg">
             </div>
        <figcaption>Figures for 56 Vulnerable Flood Areas In Bangkok Year 2018 Per 10,000 Population with regard to flood risk locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1377,19 +1377,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_population_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_population_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -1462,15 +1462,15 @@ Aligns with Sustainable Development Goals: 11, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=flood risk locations by population src="./../png/plots/district_vulnerable_flood_areas_rate_household_population.png" class="plot-img">
+        	     <img alt=flood risk locations by population src="./../svg/plots/district_vulnerable_flood_areas_rate_household_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=flood risk locations by population per sqkm src="./../png/plots/district_vulnerable_flood_areas_rate_household_population_per_sqkm.png" class="plot-img">
+        	     <img alt=flood risk locations by population per sqkm src="./../svg/plots/district_vulnerable_flood_areas_rate_household_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=flood risk locations, ranked in ascending order src="./../png/plots/district_vulnerable_flood_areas_rate_household.png">
+        	     <img alt=flood risk locations, ranked in ascending order src="./../svg/plots/district_vulnerable_flood_areas_rate_household.svg">
             </div>
        <figcaption>Figures for 56 Vulnerable Flood Areas In Bangkok Year 2018 Per 10,000 Household with regard to flood risk locations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1478,19 +1478,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_household_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_household_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vulnerable_flood_areas_rate_household.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -1591,15 +1591,15 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=Annual average NO2 (1-e6 mmol/m²; 2017-18) by population src="./../png/plots/district_no2_2017_18_mean_population.png" class="plot-img">
+        	     <img alt=Annual average NO2 (1-e6 mmol/m²; 2017-18) by population src="./../svg/plots/district_no2_2017_18_mean_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=Annual average NO2 (1-e6 mmol/m²; 2017-18) by population per sqkm src="./../png/plots/district_no2_2017_18_mean_population_per_sqkm.png" class="plot-img">
+        	     <img alt=Annual average NO2 (1-e6 mmol/m²; 2017-18) by population per sqkm src="./../svg/plots/district_no2_2017_18_mean_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=Annual average NO2 (1-e6 mmol/m²; 2017-18), ranked in ascending order src="./../png/plots/district_no2_2017_18_mean.png">
+        	     <img alt=Annual average NO2 (1-e6 mmol/m²; 2017-18), ranked in ascending order src="./../svg/plots/district_no2_2017_18_mean.svg">
             </div>
        <figcaption>Figures for Air Quality with regard to Annual average NO2 (1-e6 mmol/m²; 2017-18) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1607,19 +1607,19 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_no2_2017_18_mean_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Annual average NO2 (1-e6 mmol/m²; 2017-18) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_no2_2017_18_mean_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Annual average NO2 (1-e6 mmol/m²; 2017-18) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_no2_2017_18_mean.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean.pdf
       :width: 100%
       :align: center
 
@@ -1703,15 +1703,15 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=monitoring stations by population src="./../png/plots/district_pcd_monitoring_stations_population.png" class="plot-img">
+        	     <img alt=monitoring stations by population src="./../svg/plots/district_pcd_monitoring_stations_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=monitoring stations by population per sqkm src="./../png/plots/district_pcd_monitoring_stations_population_per_sqkm.png" class="plot-img">
+        	     <img alt=monitoring stations by population per sqkm src="./../svg/plots/district_pcd_monitoring_stations_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=monitoring stations, ranked in ascending order src="./../png/plots/district_pcd_monitoring_stations.png">
+        	     <img alt=monitoring stations, ranked in ascending order src="./../svg/plots/district_pcd_monitoring_stations.svg">
             </div>
        <figcaption>Figures for Air Quality: Pm2.5 with regard to monitoring stations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1719,19 +1719,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of monitoring stations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of monitoring stations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations.pdf
       :width: 100%
       :align: center
 
@@ -1781,15 +1781,15 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=monitoring stations by population src="./../png/plots/district_pcd_monitoring_stations_rate_area_population.png" class="plot-img">
+        	     <img alt=monitoring stations by population src="./../svg/plots/district_pcd_monitoring_stations_rate_area_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=monitoring stations by population per sqkm src="./../png/plots/district_pcd_monitoring_stations_rate_area_population_per_sqkm.png" class="plot-img">
+        	     <img alt=monitoring stations by population per sqkm src="./../svg/plots/district_pcd_monitoring_stations_rate_area_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=monitoring stations, ranked in ascending order src="./../png/plots/district_pcd_monitoring_stations_rate_area.png">
+        	     <img alt=monitoring stations, ranked in ascending order src="./../svg/plots/district_pcd_monitoring_stations_rate_area.svg">
             </div>
        <figcaption>Figures for Air Quality: Pm2.5 Per Km² with regard to monitoring stations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1797,19 +1797,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_area_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of monitoring stations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_area_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of monitoring stations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_area.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -1859,15 +1859,15 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=monitoring stations by population src="./../png/plots/district_pcd_monitoring_stations_rate_population_population.png" class="plot-img">
+        	     <img alt=monitoring stations by population src="./../svg/plots/district_pcd_monitoring_stations_rate_population_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=monitoring stations by population per sqkm src="./../png/plots/district_pcd_monitoring_stations_rate_population_population_per_sqkm.png" class="plot-img">
+        	     <img alt=monitoring stations by population per sqkm src="./../svg/plots/district_pcd_monitoring_stations_rate_population_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=monitoring stations, ranked in ascending order src="./../png/plots/district_pcd_monitoring_stations_rate_population.png">
+        	     <img alt=monitoring stations, ranked in ascending order src="./../svg/plots/district_pcd_monitoring_stations_rate_population.svg">
             </div>
        <figcaption>Figures for Air Quality: Pm2.5 Per 10,000 Population with regard to monitoring stations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1875,19 +1875,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_population_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of monitoring stations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_population_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of monitoring stations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -1937,15 +1937,15 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=monitoring stations by population src="./../png/plots/district_pcd_monitoring_stations_rate_household_population.png" class="plot-img">
+        	     <img alt=monitoring stations by population src="./../svg/plots/district_pcd_monitoring_stations_rate_household_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=monitoring stations by population per sqkm src="./../png/plots/district_pcd_monitoring_stations_rate_household_population_per_sqkm.png" class="plot-img">
+        	     <img alt=monitoring stations by population per sqkm src="./../svg/plots/district_pcd_monitoring_stations_rate_household_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=monitoring stations, ranked in ascending order src="./../png/plots/district_pcd_monitoring_stations_rate_household.png">
+        	     <img alt=monitoring stations, ranked in ascending order src="./../svg/plots/district_pcd_monitoring_stations_rate_household.svg">
             </div>
        <figcaption>Figures for Air Quality: Pm2.5 Per 10,000 Household with regard to monitoring stations by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -1953,19 +1953,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_household_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of monitoring stations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_household_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of monitoring stations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pcd_monitoring_stations_rate_household.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -2015,15 +2015,15 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=days exceeding Thai standard (50 µg/m³; January 2019, PCD) by population src="./../png/plots/district_pm2p5_days_exceeding_thai_standard_population.png" class="plot-img">
+        	     <img alt=days exceeding Thai standard (50 µg/m³; January 2019, PCD) by population src="./../svg/plots/district_pm2p5_days_exceeding_thai_standard_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=days exceeding Thai standard (50 µg/m³; January 2019, PCD) by population per sqkm src="./../png/plots/district_pm2p5_days_exceeding_thai_standard_population_per_sqkm.png" class="plot-img">
+        	     <img alt=days exceeding Thai standard (50 µg/m³; January 2019, PCD) by population per sqkm src="./../svg/plots/district_pm2p5_days_exceeding_thai_standard_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=days exceeding Thai standard (50 µg/m³; January 2019, PCD), ranked in ascending order src="./../png/plots/district_pm2p5_days_exceeding_thai_standard.png">
+        	     <img alt=days exceeding Thai standard (50 µg/m³; January 2019, PCD), ranked in ascending order src="./../svg/plots/district_pm2p5_days_exceeding_thai_standard.svg">
             </div>
        <figcaption>Figures for Air Quality: Pm2.5 with regard to days exceeding Thai standard (50 µg/m³; January 2019, PCD) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -2031,19 +2031,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pm2p5_days_exceeding_thai_standard_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days exceeding Thai standard (50 µg/m³; January 2019, PCD) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pm2p5_days_exceeding_thai_standard_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days exceeding Thai standard (50 µg/m³; January 2019, PCD) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pm2p5_days_exceeding_thai_standard.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard.pdf
       :width: 100%
       :align: center
 
@@ -2093,15 +2093,15 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=days exceeding WHO standard (25 µg/m³; January 2019, PCD) by population src="./../png/plots/district_pm2p5_days_exceeding_who_standard_population.png" class="plot-img">
+        	     <img alt=days exceeding WHO standard (25 µg/m³; January 2019, PCD) by population src="./../svg/plots/district_pm2p5_days_exceeding_who_standard_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=days exceeding WHO standard (25 µg/m³; January 2019, PCD) by population per sqkm src="./../png/plots/district_pm2p5_days_exceeding_who_standard_population_per_sqkm.png" class="plot-img">
+        	     <img alt=days exceeding WHO standard (25 µg/m³; January 2019, PCD) by population per sqkm src="./../svg/plots/district_pm2p5_days_exceeding_who_standard_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=days exceeding WHO standard (25 µg/m³; January 2019, PCD), ranked in ascending order src="./../png/plots/district_pm2p5_days_exceeding_who_standard.png">
+        	     <img alt=days exceeding WHO standard (25 µg/m³; January 2019, PCD), ranked in ascending order src="./../svg/plots/district_pm2p5_days_exceeding_who_standard.svg">
             </div>
        <figcaption>Figures for Air Quality: Pm2.5 with regard to days exceeding WHO standard (25 µg/m³; January 2019, PCD) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -2109,19 +2109,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pm2p5_days_exceeding_who_standard_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days exceeding WHO standard (25 µg/m³; January 2019, PCD) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pm2p5_days_exceeding_who_standard_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days exceeding WHO standard (25 µg/m³; January 2019, PCD) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_pm2p5_days_exceeding_who_standard.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard.pdf
       :width: 100%
       :align: center
 
@@ -2503,15 +2503,15 @@ Accessability within 800m was evaluated using the Python network analysis packag
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=% living within 800 metres by population src="./../png/plots/district_access_pt_any_800m_pop_pct_population.png" class="plot-img">
+        	     <img alt=% living within 800 metres by population src="./../svg/plots/district_access_pt_any_800m_pop_pct_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=% living within 800 metres by population per sqkm src="./../png/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.png" class="plot-img">
+        	     <img alt=% living within 800 metres by population per sqkm src="./../svg/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=% living within 800 metres, ranked in ascending order src="./../png/plots/district_access_pt_any_800m_pop_pct.png">
+        	     <img alt=% living within 800 metres, ranked in ascending order src="./../svg/plots/district_access_pt_any_800m_pop_pct.svg">
             </div>
        <figcaption>Figures for Public Transport Accessibility: Any Public Transport (Osm, 2019) with regard to % living within 800 metres by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -2519,19 +2519,19 @@ Accessability within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pt_any_800m_pop_pct_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 800 metres by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 800 metres by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pt_any_800m_pop_pct.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -2633,15 +2633,15 @@ Accessability within 400m was evaluated using the Python network analysis packag
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=% living within 400 metres of public open space  (OSM, 2019) by population src="./../png/plots/district_access_pos_entry_any_400m_pop_pct_population.png" class="plot-img">
+        	     <img alt=% living within 400 metres of public open space  (OSM, 2019) by population src="./../svg/plots/district_access_pos_entry_any_400m_pop_pct_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=% living within 400 metres of public open space  (OSM, 2019) by population per sqkm src="./../png/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.png" class="plot-img">
+        	     <img alt=% living within 400 metres of public open space  (OSM, 2019) by population per sqkm src="./../svg/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=% living within 400 metres of public open space  (OSM, 2019), ranked in ascending order src="./../png/plots/district_access_pos_entry_any_400m_pop_pct.png">
+        	     <img alt=% living within 400 metres of public open space  (OSM, 2019), ranked in ascending order src="./../svg/plots/district_access_pos_entry_any_400m_pop_pct.svg">
             </div>
        <figcaption>Figures for Areas For Passive Recreation And Physical Activity with regard to % living within 400 metres of public open space  (OSM, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -2649,19 +2649,19 @@ Accessability within 400m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_any_400m_pop_pct_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 400 metres of public open space  (OSM, 2019) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 400 metres of public open space  (OSM, 2019) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_any_400m_pop_pct.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -2679,15 +2679,15 @@ Accessability within 400m was evaluated using the Python network analysis packag
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019) by population src="./../png/plots/district_access_pos_entry_large_400m_pop_pct_population.png" class="plot-img">
+        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019) by population src="./../svg/plots/district_access_pos_entry_large_400m_pop_pct_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019) by population per sqkm src="./../png/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.png" class="plot-img">
+        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019) by population per sqkm src="./../svg/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019), ranked in ascending order src="./../png/plots/district_access_pos_entry_large_400m_pop_pct.png">
+        	     <img alt=% living within 400 metres of large public open space  (OSM, 2019), ranked in ascending order src="./../svg/plots/district_access_pos_entry_large_400m_pop_pct.svg">
             </div>
        <figcaption>Figures for Areas For Passive Recreation And Physical Activity with regard to % living within 400 metres of large public open space  (OSM, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -2695,19 +2695,19 @@ Accessability within 400m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_large_400m_pop_pct_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 400 metres of large public open space  (OSM, 2019) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 400 metres of large public open space  (OSM, 2019) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_pos_entry_large_400m_pop_pct.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -2901,15 +2901,15 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=mean vegetation cover percent  (Copernicus, December 2018) by population src="./../png/plots/district_vegetation_pct_mean_population.png" class="plot-img">
+        	     <img alt=mean vegetation cover percent  (Copernicus, December 2018) by population src="./../svg/plots/district_vegetation_pct_mean_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=mean vegetation cover percent  (Copernicus, December 2018) by population per sqkm src="./../png/plots/district_vegetation_pct_mean_population_per_sqkm.png" class="plot-img">
+        	     <img alt=mean vegetation cover percent  (Copernicus, December 2018) by population per sqkm src="./../svg/plots/district_vegetation_pct_mean_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=mean vegetation cover percent  (Copernicus, December 2018), ranked in ascending order src="./../png/plots/district_vegetation_pct_mean.png">
+        	     <img alt=mean vegetation cover percent  (Copernicus, December 2018), ranked in ascending order src="./../svg/plots/district_vegetation_pct_mean.svg">
             </div>
        <figcaption>Figures for Green Space with regard to mean vegetation cover percent  (Copernicus, December 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -2917,19 +2917,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vegetation_pct_mean_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mean vegetation cover percent  (Copernicus, December 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vegetation_pct_mean_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mean vegetation cover percent  (Copernicus, December 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_vegetation_pct_mean.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean.pdf
       :width: 100%
       :align: center
 
@@ -3071,15 +3071,15 @@ The average monthly cost of living per person within each analysis area was reco
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=Average monthly cost of living per person (Baht; NSO, 2017) by population src="./../png/plots/district_cost_of_living_district_population.png" class="plot-img">
+        	     <img alt=Average monthly cost of living per person (Baht; NSO, 2017) by population src="./../svg/plots/district_cost_of_living_district_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=Average monthly cost of living per person (Baht; NSO, 2017) by population per sqkm src="./../png/plots/district_cost_of_living_district_population_per_sqkm.png" class="plot-img">
+        	     <img alt=Average monthly cost of living per person (Baht; NSO, 2017) by population per sqkm src="./../svg/plots/district_cost_of_living_district_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=Average monthly cost of living per person (Baht; NSO, 2017), ranked in ascending order src="./../png/plots/district_cost_of_living_district.png">
+        	     <img alt=Average monthly cost of living per person (Baht; NSO, 2017), ranked in ascending order src="./../svg/plots/district_cost_of_living_district.svg">
             </div>
        <figcaption>Figures for Poverty Indicators (Nso, 2017) with regard to Average monthly cost of living per person (Baht; NSO, 2017) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -3087,19 +3087,19 @@ The average monthly cost of living per person within each analysis area was reco
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_cost_of_living_district_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Average monthly cost of living per person (Baht; NSO, 2017) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_cost_of_living_district_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Average monthly cost of living per person (Baht; NSO, 2017) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_cost_of_living_district.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district.pdf
       :width: 100%
       :align: center
 
@@ -3445,15 +3445,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=hypertension (2018) by population src="./../png/plots/district_outpatients_hypertension_population.png" class="plot-img">
+        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=hypertension (2018) by population per sqkm src="./../png/plots/district_outpatients_hypertension_population_per_sqkm.png" class="plot-img">
+        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=hypertension (2018), ranked in ascending order src="./../png/plots/district_outpatients_hypertension.png">
+        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -3461,19 +3461,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension.pdf
       :width: 100%
       :align: center
 
@@ -3546,15 +3546,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=hypertension (2018) by population src="./../png/plots/district_outpatients_hypertension_rate_area_population.png" class="plot-img">
+        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_area_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=hypertension (2018) by population per sqkm src="./../png/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.png" class="plot-img">
+        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=hypertension (2018), ranked in ascending order src="./../png/plots/district_outpatients_hypertension_rate_area.png">
+        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_area.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per Km² with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -3562,19 +3562,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_area_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_area.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -3647,15 +3647,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=hypertension (2018) by population src="./../png/plots/district_outpatients_hypertension_rate_population_population.png" class="plot-img">
+        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_population_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=hypertension (2018) by population per sqkm src="./../png/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.png" class="plot-img">
+        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=hypertension (2018), ranked in ascending order src="./../png/plots/district_outpatients_hypertension_rate_population.png">
+        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_population.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -3663,19 +3663,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_population_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -3748,15 +3748,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=hypertension (2018) by population src="./../png/plots/district_outpatients_hypertension_rate_household_population.png" class="plot-img">
+        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_household_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=hypertension (2018) by population per sqkm src="./../png/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.png" class="plot-img">
+        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=hypertension (2018), ranked in ascending order src="./../png/plots/district_outpatients_hypertension_rate_household.png">
+        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_household.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -3764,19 +3764,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_household_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_hypertension_rate_household.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -3849,15 +3849,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population src="./../png/plots/district_outpatients_mental_health_population.png" class="plot-img">
+        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../png/plots/district_outpatients_mental_health_population_per_sqkm.png" class="plot-img">
+        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../png/plots/district_outpatients_mental_health.png">
+        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -3865,19 +3865,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health.pdf
       :width: 100%
       :align: center
 
@@ -3950,15 +3950,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population src="./../png/plots/district_outpatients_mental_health_rate_area_population.png" class="plot-img">
+        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_area_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../png/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.png" class="plot-img">
+        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../png/plots/district_outpatients_mental_health_rate_area.png">
+        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_area.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per Km² with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -3966,19 +3966,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_area_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_area.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -4051,15 +4051,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population src="./../png/plots/district_outpatients_mental_health_rate_population_population.png" class="plot-img">
+        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_population_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../png/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.png" class="plot-img">
+        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../png/plots/district_outpatients_mental_health_rate_population.png">
+        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_population.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -4067,19 +4067,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_population_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -4152,15 +4152,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population src="./../png/plots/district_outpatients_mental_health_rate_household_population.png" class="plot-img">
+        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_household_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../png/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.png" class="plot-img">
+        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../png/plots/district_outpatients_mental_health_rate_household.png">
+        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_household.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -4168,19 +4168,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_household_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_mental_health_rate_household.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -4945,15 +4945,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_population.png" class="plot-img">
+        	     <img alt=vital diseases (combined; 2018) by population src="./../svg/plots/district_outpatients_combined_diseases_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_population_per_sqkm.png" class="plot-img">
+        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../svg/plots/district_outpatients_combined_diseases_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases.png">
+        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../svg/plots/district_outpatients_combined_diseases.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -4961,19 +4961,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases.pdf
       :width: 100%
       :align: center
 
@@ -5046,15 +5046,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_area_population.png" class="plot-img">
+        	     <img alt=vital diseases (combined; 2018) by population src="./../svg/plots/district_outpatients_combined_diseases_rate_area_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.png" class="plot-img">
+        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../svg/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_area.png">
+        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../svg/plots/district_outpatients_combined_diseases_rate_area.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per Km² with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5062,19 +5062,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_area.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -5147,15 +5147,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_population_population.png" class="plot-img">
+        	     <img alt=vital diseases (combined; 2018) by population src="./../svg/plots/district_outpatients_combined_diseases_rate_population_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.png" class="plot-img">
+        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../svg/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_population.png">
+        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../svg/plots/district_outpatients_combined_diseases_rate_population.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5163,19 +5163,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -5248,15 +5248,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population src="./../png/plots/district_outpatients_combined_diseases_rate_household_population.png" class="plot-img">
+        	     <img alt=vital diseases (combined; 2018) by population src="./../svg/plots/district_outpatients_combined_diseases_rate_household_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../png/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.png" class="plot-img">
+        	     <img alt=vital diseases (combined; 2018) by population per sqkm src="./../svg/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../png/plots/district_outpatients_combined_diseases_rate_household.png">
+        	     <img alt=vital diseases (combined; 2018), ranked in ascending order src="./../svg/plots/district_outpatients_combined_diseases_rate_household.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to vital diseases (combined; 2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5264,19 +5264,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_combined_diseases_rate_household.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -5367,15 +5367,15 @@ Accessability within 800m was evaluated using the Python network analysis packag
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by population src="./../png/plots/district_access_supermarket_800m_pop_pct_population.png" class="plot-img">
+        	     <img alt=Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by population src="./../svg/plots/district_access_supermarket_800m_pop_pct_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by population per sqkm src="./../png/plots/district_access_supermarket_800m_pop_pct_population_per_sqkm.png" class="plot-img">
+        	     <img alt=Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by population per sqkm src="./../svg/plots/district_access_supermarket_800m_pop_pct_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=Percentage of residents living 800 metres distance of a supermarket (OSM, 2019), ranked in ascending order src="./../png/plots/district_access_supermarket_800m_pop_pct.png">
+        	     <img alt=Percentage of residents living 800 metres distance of a supermarket (OSM, 2019), ranked in ascending order src="./../svg/plots/district_access_supermarket_800m_pop_pct.svg">
             </div>
        <figcaption>Figures for Food Environments: Supermarket Acccess with regard to Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5383,19 +5383,19 @@ Accessability within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_supermarket_800m_pop_pct_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_supermarket_800m_pop_pct_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_access_supermarket_800m_pop_pct.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -5498,15 +5498,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_population.png" class="plot-img">
+        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_population_per_sqkm.png" class="plot-img">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes.png">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5514,19 +5514,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes.pdf
       :width: 100%
       :align: center
 
@@ -5599,15 +5599,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_area_population.png" class="plot-img">
+        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_area_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.png" class="plot-img">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_area.png">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_area.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per Km² with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5615,19 +5615,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_area.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -5700,15 +5700,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_population_population.png" class="plot-img">
+        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_population_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.png" class="plot-img">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_population.png">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_population.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5716,19 +5716,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -5801,15 +5801,15 @@ Aligns with Sustainable Development Goals: 3, 11.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../png/plots/district_outpatients_diabetes_rate_household_population.png" class="plot-img">
+        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_household_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../png/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.png" class="plot-img">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../png/plots/district_outpatients_diabetes_rate_household.png">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_household.svg">
             </div>
        <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5817,19 +5817,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_outpatients_diabetes_rate_household.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -5916,15 +5916,15 @@ The coefficient of inequality within each analysis area was recorded.
 
         <div id="plot-div">
             <div id="div1" class="plot-box">
-        	     <img alt=Coefficient of inequality (NSO, 2017) by population src="./../png/plots/district_inequality_district_population.png" class="plot-img">
+        	     <img alt=Coefficient of inequality (NSO, 2017) by population src="./../svg/plots/district_inequality_district_population.svg" class="plot-img">
             </div>
             <div id="div2" class="plot-box">
-        	     <img alt=Coefficient of inequality (NSO, 2017) by population per sqkm src="./../png/plots/district_inequality_district_population_per_sqkm.png" class="plot-img">
+        	     <img alt=Coefficient of inequality (NSO, 2017) by population per sqkm src="./../svg/plots/district_inequality_district_population_per_sqkm.svg" class="plot-img">
             </div><br>
        </div><br>
        <div>
             <div id="div3" class="plot-box-large">
-        	     <img alt=Coefficient of inequality (NSO, 2017), ranked in ascending order src="./../png/plots/district_inequality_district.png">
+        	     <img alt=Coefficient of inequality (NSO, 2017), ranked in ascending order src="./../svg/plots/district_inequality_district.svg">
             </div>
        <figcaption>Figures for Opportunity To Earn A Fair Wage with regard to Coefficient of inequality (NSO, 2017) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
 
@@ -5932,19 +5932,19 @@ The coefficient of inequality within each analysis area was recorded.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_inequality_district_population.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_inequality_district_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Coefficient of inequality (NSO, 2017) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_inequality_district_population_per_sqkm.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_inequality_district_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Coefficient of inequality (NSO, 2017) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/png/plots/district_inequality_district.png
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_inequality_district.pdf
       :width: 100%
       :align: center
 

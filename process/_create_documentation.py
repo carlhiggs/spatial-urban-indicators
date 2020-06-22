@@ -13,6 +13,7 @@ Purpose:
 import os
 import sys
 import pandas as pd
+import time
 
 # # Import variables from the Sphinx set up script
 # sys.path.insert(0, os.path.abspath('../docs'))
@@ -288,6 +289,9 @@ def make_locale_documentation(study_region):
 
     """
     print("Render the project documentation, based on the project configuration file and outputs...."),
+    date_yyyy_mm_dd =  time.strftime("%Y-%m-%d")
+    project_pdf_in = f'{full_locale} Liveability'.lower().replace(' ','')
+    project_pdf_out = f'{full_locale} Liveability {year} report {date_yyyy_mm_dd}' 
     # make = (
             # "make clean" 
             # "  && make html"
@@ -298,7 +302,7 @@ def make_locale_documentation(study_region):
             "  && make html"
            f"  && cp -rT _build/html ../maps/{study_region}/docs"
             "  && make latexpdf"
-           f"  && cp _build/latex/*.pdf ../maps/{study_region}"
+           f"  && cp _build/latex/{project_pdf_in}.pdf '../maps/{study_region}/{project_pdf_out}.pdf'"
             )
     sp.call(make, cwd ='../docs', shell=True)  
     print(" Done.")

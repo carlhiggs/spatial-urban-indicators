@@ -7,6 +7,8 @@ Script:
     01_study_region_setup.py
 Purpose: 
     Python set up study region boundaries and associated population resources
+Authors: 
+    Carl Higgs 
 
 """
 

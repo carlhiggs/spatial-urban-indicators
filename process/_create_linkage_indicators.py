@@ -126,6 +126,7 @@ def main():
         display_id = area_layer
         map_field = df.loc[row,'map_field']
         units = df.loc[row,'units']
+        evaluate = df.loc[row,'evaluate']
         rate = df.loc[row,'rate']
         rate_units = df.loc[row,'rate_units']
         rate_scale = df.loc[row,'rate_scale']
@@ -168,8 +169,7 @@ def main():
                 aggregation_text = ''
                 popup_agg_text = ''
                 if aggregation =='count':
-                    mdf[map_field] = 1
-                    mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
+                    mdf = mdf.groupby(mdf.index)[map_field].count().to_frame()
                     aggregation_text = f" ({aggregation})"
                 if aggregation =='sum':
                     mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
@@ -178,6 +178,10 @@ def main():
                     mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
                     aggregation_text = f" ({aggregation})"
                     map_field = f'average {map_field}'
+                elif aggregation == 'percent':
+                    mdf = mdf.eval(f'`{map_field}`{evaluate}').groupby(mdf.index).mean().to_frame()*100
+                    aggregation_text = f" (%)"
+                    map_field = f'percent {map_field} {evaluate}'
                 elif not '{}'.format(description)=='nan':
                     print("\t\tNo aggregation method specified; assuming that all records map to distinct areas.")
                     mdf = mdf[[map_field]]
