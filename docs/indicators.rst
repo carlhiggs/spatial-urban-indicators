@@ -76,6 +76,52 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Hazardous waste segregation (kg)  by population src="./../svg/plots/district_annual_hazardous_waste_kg_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Hazardous waste segregation (kg)  by population per sqkm src="./../svg/plots/district_annual_hazardous_waste_kg_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Hazardous waste segregation (kg) , ranked in ascending order src="./../svg/plots/district_annual_hazardous_waste_kg.svg">
+            </div>
+       <figcaption>Figures for Waste Collection with regard to Hazardous waste segregation (kg)  by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Hazardous waste segregation (kg)  by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Hazardous waste segregation (kg)  by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by hazardous waste segregation (kg)  with regard to waste collection.
+
+
+
+
 Percentage hazardous waste (kg, 2018)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -104,6 +150,52 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Percentage hazardous waste (kg, 2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Hazardous waste segregation (tonnes)  by population src="./../svg/plots/district_percentage_hazardous_waste_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Hazardous waste segregation (tonnes)  by population per sqkm src="./../svg/plots/district_percentage_hazardous_waste_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Hazardous waste segregation (tonnes) , ranked in ascending order src="./../svg/plots/district_percentage_hazardous_waste.svg">
+            </div>
+       <figcaption>Figures for Waste Collection with regard to Hazardous waste segregation (tonnes)  by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Hazardous waste segregation (tonnes)  by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Hazardous waste segregation (tonnes)  by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by hazardous waste segregation (tonnes)  with regard to waste collection.
 
 
 
@@ -162,6 +254,52 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=annual recyclable waste (tonnes) by population src="./../svg/plots/district_annual_recyclable_waste_tonnes_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=annual recyclable waste (tonnes) by population per sqkm src="./../svg/plots/district_annual_recyclable_waste_tonnes_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=annual recyclable waste (tonnes), ranked in ascending order src="./../svg/plots/district_annual_recyclable_waste_tonnes.svg">
+            </div>
+       <figcaption>Figures for Waste Collection with regard to annual recyclable waste (tonnes) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of annual recyclable waste (tonnes) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of annual recyclable waste (tonnes) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by annual recyclable waste (tonnes) with regard to waste collection.
+
+
+
+
 Annual solid waste (tonnes, 2018)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -194,6 +332,52 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=annual solid waste (tonnes) by population src="./../svg/plots/district_annual_solid_waste_tonnes_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=annual solid waste (tonnes) by population per sqkm src="./../svg/plots/district_annual_solid_waste_tonnes_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=annual solid waste (tonnes), ranked in ascending order src="./../svg/plots/district_annual_solid_waste_tonnes.svg">
+            </div>
+       <figcaption>Figures for Waste Collection with regard to annual solid waste (tonnes) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of annual solid waste (tonnes) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of annual solid waste (tonnes) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by annual solid waste (tonnes) with regard to waste collection.
+
+
+
+
 Percentage recyclable waste (tonnes, 2018)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -222,6 +406,52 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Percentage recyclable waste (tonnes, 2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=annual recyclable waste (tonnes) by population src="./../svg/plots/district_percentage_recyclable_waste_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=annual recyclable waste (tonnes) by population per sqkm src="./../svg/plots/district_percentage_recyclable_waste_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=annual recyclable waste (tonnes), ranked in ascending order src="./../svg/plots/district_percentage_recyclable_waste.svg">
+            </div>
+       <figcaption>Figures for Waste Collection with regard to annual recyclable waste (tonnes) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of annual recyclable waste (tonnes) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of annual recyclable waste (tonnes) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by annual recyclable waste (tonnes) with regard to waste collection.
 
 
 
@@ -290,6 +520,52 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Locations with reported crime by population src="./../svg/plots/district_crime_locations_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Locations with reported crime by population per sqkm src="./../svg/plots/district_crime_locations_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Locations with reported crime, ranked in ascending order src="./../svg/plots/district_crime_locations.svg">
+            </div>
+       <figcaption>Figures for Risk Areas with regard to Locations with reported crime by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_crime_locations_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Locations with reported crime by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_crime_locations_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Locations with reported crime by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_crime_locations.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by locations with reported crime with regard to risk areas.
+
+
+
+
 Number of locations with reported road accidents
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -318,6 +594,52 @@ Aligns with Sustainable Development Goals: 11, 13.
        :align: center
 
        Number of locations with reported road accidents, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Locations with reported road accidents by population src="./../svg/plots/district_road_accident_locations_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Locations with reported road accidents by population per sqkm src="./../svg/plots/district_road_accident_locations_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Locations with reported road accidents, ranked in ascending order src="./../svg/plots/district_road_accident_locations.svg">
+            </div>
+       <figcaption>Figures for Risk Areas with regard to Locations with reported road accidents by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_road_accident_locations_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Locations with reported road accidents by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_road_accident_locations_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Locations with reported road accidents by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_road_accident_locations.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by locations with reported road accidents with regard to risk areas.
 
 
 
@@ -1988,6 +2310,52 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Number of main road of traffic jam by district  by population src="./../svg/plots/district_main_road_traffic_jam_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Number of main road of traffic jam by district  by population per sqkm src="./../svg/plots/district_main_road_traffic_jam_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Number of main road of traffic jam by district , ranked in ascending order src="./../svg/plots/district_main_road_traffic_jam.svg">
+            </div>
+       <figcaption>Figures for Traffic Congestion with regard to Number of main road of traffic jam by district  by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Number of main road of traffic jam by district  by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Number of main road of traffic jam by district  by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by number of main road of traffic jam by district  with regard to traffic congestion.
+
+
+
+
 High quality air
 ||||||||||||||||
 
@@ -2943,6 +3311,52 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Total number of green areas (places) by population src="./../svg/plots/district_green_space_count_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Total number of green areas (places) by population per sqkm src="./../svg/plots/district_green_space_count_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Total number of green areas (places), ranked in ascending order src="./../svg/plots/district_green_space_count.svg">
+            </div>
+       <figcaption>Figures for Green Space with regard to Total number of green areas (places) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_count_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Total number of green areas (places) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_count_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Total number of green areas (places) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_count.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by total number of green areas (places) with regard to green space.
+
+
+
+
 Total public green area (m²) per capita
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2971,6 +3385,98 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
        :align: center
 
        Total public green area (m²) per capita, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Green space per capita (sqm) by population src="./../svg/plots/district_green_space_public_per_capita_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Green space per capita (sqm) by population per sqkm src="./../svg/plots/district_green_space_public_per_capita_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Green space per capita (sqm), ranked in ascending order src="./../svg/plots/district_green_space_public_per_capita.svg">
+            </div>
+       <figcaption>Figures for Green Space with regard to Green space per capita (sqm) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Green space per capita (sqm) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Green space per capita (sqm) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by green space per capita (sqm) with regard to green space.
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Total public green space percent by population src="./../svg/plots/district_green_space_public_percent_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Total public green space percent by population per sqkm src="./../svg/plots/district_green_space_public_percent_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Total public green space percent, ranked in ascending order src="./../svg/plots/district_green_space_public_percent.svg">
+            </div>
+       <figcaption>Figures for Green Space with regard to Total public green space percent by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Total public green space percent by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Total public green space percent by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by total public green space percent with regard to green space.
 
 
 
@@ -3240,6 +3746,264 @@ Greater tree coverage to provide shade
 ต้นไม้ที่ให้ร่มเงาในวงกว้าง
 
 Greater tree coverage refers canopy trees, are huge trees with thick canopies or foliage coverings.
+
+
+Enhanced vegetation index
+-------------------------
+
+Landsat 8 Collection 1 Tier 1 Annual EVI Composite data (LANDSAT/LC08/C01/T1_ANNUAL_EVI) was retrieved using Google Earth Engine for Bangkok for 2019, using the bounding box WGS84 coordinates [100.327866596872, 13.4851864441217, 100.938637619401, 13.9551828398924].  The Enhanced Vegetation Index (EVI) is generated from the Near-IR, Red and Blue bands of each scene, and ranges in value from -1.0 to 1.0. See Huete et al. (2002) for details.
+
+**Data source**: Landsat-8 data courtesy of the U.S. Geological Survey, processed using Google Earth Engine
+
+**URL**: https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC08_C01_T1_ANNUAL_EVI
+
+**Publication year**: 2020
+
+**Target year**: 2019
+
+**Acquisition date (yyyymmdd)**: 20200722
+
+**Licence**: none specified
+
+**Spatial reference (EPSG code)**: 4326.0
+
+**Date type**: raster:float64
+
+**Scale / Resolution**: 30
+
+**Notes**: Public domain; give credit to USGS and Google Earth Engine. 
+
+**Data location relative to project folder**: ./data/International/Google EarthEngine/LANDSAT_LC08_C01_T1_ANNUAL_EVI_20190101_20191231.tif
+
+
+Enhanced Vegetation Index (EVI, annual mean, 2019)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The mean Enhanced Vegetation Index (EVI) for each district and subdistrict was recorded
+
+Aligns with Sustainable Development Goals: 3, 11, 13, 15.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Enhanced Vegetation Index (EVI, annual mean, 2019), by subdistrict" src="./../png/bangkok_ind_subdistrict_vegetation_index_mean.png">
+        <figcaption>Enhanced Vegetation Index (EVI, annual mean, 2019), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_vegetation_index_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_index_mean.png
+       :width: 70%
+       :align: center
+
+       Enhanced Vegetation Index (EVI, annual mean, 2019), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Enhanced Vegetation Index (EVI, annual mean, 2019), by district" src="./../png/bangkok_ind_district_vegetation_index_mean.png">
+        <figcaption>Enhanced Vegetation Index (EVI, annual mean, 2019), by district.         <a href="./../html/bangkok_ind_district_vegetation_index_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_index_mean.png
+       :width: 70%
+       :align: center
+
+       Enhanced Vegetation Index (EVI, annual mean, 2019), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=mean Enhanced Vegetation Index (EVI) by population src="./../svg/plots/district_vegetation_index_mean_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=mean Enhanced Vegetation Index (EVI) by population per sqkm src="./../svg/plots/district_vegetation_index_mean_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=mean Enhanced Vegetation Index (EVI), ranked in ascending order src="./../svg/plots/district_vegetation_index_mean.svg">
+            </div>
+       <figcaption>Figures for Green Space with regard to mean Enhanced Vegetation Index (EVI) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mean Enhanced Vegetation Index (EVI) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mean Enhanced Vegetation Index (EVI) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by mean enhanced vegetation index (evi) with regard to green space.
+
+
+
+
+Normalised Difference Vegetation Index
+--------------------------------------
+
+Landsat 8 Collection 1 Tier 1 Annual NDVI Composite data (LANDSAT/LC08/C01/T1_ANNUAL_NDVI) was retrieved using Google Earth Engine for Bangkok for 2019, using the bounding box WGS84 coordinates [100.327866596872, 13.4851864441217, 100.938637619401, 13.9551828398924].  Normalized Difference Vegetation Index (NDVI) was generated from the Near-IR and Red bands of each scene as (NIR - Red) / (NIR + Red), and ranges in value from -1.0 to 1.0. 
+
+**Data source**: Landsat-8 data courtesy of the U.S. Geological Survey, processed using Google Earth Engine
+
+**URL**: https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC08_C01_T1_ANNUAL_NDVI
+
+**Publication year**: 2020
+
+**Target year**: 2019
+
+**Acquisition date (yyyymmdd)**: 20200722
+
+**Licence**: none specified
+
+**Spatial reference (EPSG code)**: 4326.0
+
+**Date type**: raster:float64
+
+**Scale / Resolution**: 30
+
+**Notes**: Public domain; give credit to USGS and Google Earth Engine. 
+
+**Data location relative to project folder**: ./data/International/Google EarthEngine/LANDSAT_LC08_C01_T1_ANNUAL_NDVI_20190101_20191231.tif
+
+
+Normalised Difference Vegetation Index (NDVI; annual mean, 2019)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The mean Normalized Difference Vegetation Index (NDVI) for each district and subdistrict was recorded
+
+Aligns with Sustainable Development Goals: 3, 11, 13, 15.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Normalised Difference Vegetation Index (NDVI; annual mean, 2019), by subdistrict" src="./../png/bangkok_ind_subdistrict_vegetation_ndvi_mean.png">
+        <figcaption>Normalised Difference Vegetation Index (NDVI; annual mean, 2019), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_vegetation_ndvi_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_ndvi_mean.png
+       :width: 70%
+       :align: center
+
+       Normalised Difference Vegetation Index (NDVI; annual mean, 2019), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Normalised Difference Vegetation Index (NDVI; annual mean, 2019), by district" src="./../png/bangkok_ind_district_vegetation_ndvi_mean.png">
+        <figcaption>Normalised Difference Vegetation Index (NDVI; annual mean, 2019), by district.         <a href="./../html/bangkok_ind_district_vegetation_ndvi_mean.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_ndvi_mean.png
+       :width: 70%
+       :align: center
+
+       Normalised Difference Vegetation Index (NDVI; annual mean, 2019), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=mean Normalised Difference Vegetation Index (NDVI) by population src="./../svg/plots/district_vegetation_ndvi_mean_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=mean Normalised Difference Vegetation Index (NDVI) by population per sqkm src="./../svg/plots/district_vegetation_ndvi_mean_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=mean Normalised Difference Vegetation Index (NDVI), ranked in ascending order src="./../svg/plots/district_vegetation_ndvi_mean.svg">
+            </div>
+       <figcaption>Figures for Green Space with regard to mean Normalised Difference Vegetation Index (NDVI) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mean Normalised Difference Vegetation Index (NDVI) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mean Normalised Difference Vegetation Index (NDVI) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by mean normalised difference vegetation index (ndvi) with regard to green space.
+
+
 
 
 Fraction of Vegetation Cover
@@ -3630,6 +4394,52 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 
 
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Number of households in the area expected to get impacts drought (registered farmers) by population src="./../svg/plots/district_drought_impacted_farmers_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Number of households in the area expected to get impacts drought (registered farmers) by population per sqkm src="./../svg/plots/district_drought_impacted_farmers_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Number of households in the area expected to get impacts drought (registered farmers), ranked in ascending order src="./../svg/plots/district_drought_impacted_farmers.svg">
+            </div>
+       <figcaption>Figures for Job Security with regard to Number of households in the area expected to get impacts drought (registered farmers) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Number of households in the area expected to get impacts drought (registered farmers) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Number of households in the area expected to get impacts drought (registered farmers) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by number of households in the area expected to get impacts drought (registered farmers) with regard to job security.
+
+
+
+
 Welfare card holders
 --------------------
 
@@ -3684,6 +4494,52 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
        :align: center
 
        Holders of a state welfare card in Bangkok (2017), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=State welfare card holders by population src="./../svg/plots/district_welfare_card_holders_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=State welfare card holders by population per sqkm src="./../svg/plots/district_welfare_card_holders_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=State welfare card holders, ranked in ascending order src="./../svg/plots/district_welfare_card_holders.svg">
+            </div>
+       <figcaption>Figures for Job Security with regard to State welfare card holders by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of State welfare card holders by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of State welfare card holders by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by state welfare card holders with regard to job security.
 
 
 
@@ -5083,8 +5939,8 @@ Data at subdistrict level were prepared by the Bangkok Metropolitan Administrati
 **Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
 
 
-Health centres (combined, 2018)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Health centers (n = 68)
+>>>>>>>>>>>>>>>>>>>>>>>
 
 The count of health centers within each analysis area was calculated, based on the supplied data.
 
@@ -5100,8 +5956,8 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres.png">
-        <figcaption>Health centres (combined, 2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centers (n = 68), by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres.png">
+        <figcaption>Health centers (n = 68), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -5110,7 +5966,7 @@ Aligns with Sustainable Development Goals: 3, 11.
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018), by subdistrict
+       Health centers (n = 68), by subdistrict
 
 
 
@@ -5123,8 +5979,8 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018), by district" src="./../png/bangkok_ind_district_health_centres.png">
-        <figcaption>Health centres (combined, 2018), by district.         <a href="./../html/bangkok_ind_district_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centers (n = 68), by district" src="./../png/bangkok_ind_district_health_centres.png">
+        <figcaption>Health centers (n = 68), by district.         <a href="./../html/bangkok_ind_district_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -5133,13 +5989,13 @@ Aligns with Sustainable Development Goals: 3, 11.
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018), by district
+       Health centers (n = 68), by district
 
 
 
 
-Health centres (combined, 2018) per km²
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Health centers (n = 68) per km²
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per km².
 
@@ -5155,8 +6011,8 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_area.png">
-        <figcaption>Health centres (combined, 2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centers (n = 68) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_area.png">
+        <figcaption>Health centers (n = 68) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -5165,7 +6021,7 @@ Aligns with Sustainable Development Goals: 3, 11.
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018) per km², by subdistrict
+       Health centers (n = 68) per km², by subdistrict
 
 
 
@@ -5178,8 +6034,8 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018) per km², by district" src="./../png/bangkok_ind_district_health_centres_rate_area.png">
-        <figcaption>Health centres (combined, 2018) per km², by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centers (n = 68) per km², by district" src="./../png/bangkok_ind_district_health_centres_rate_area.png">
+        <figcaption>Health centers (n = 68) per km², by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -5188,13 +6044,13 @@ Aligns with Sustainable Development Goals: 3, 11.
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018) per km², by district
+       Health centers (n = 68) per km², by district
 
 
 
 
-Health centres (combined, 2018) per 10,000 population
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Health centers (n = 68) per 10,000 population
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per 10,000 population.
 
@@ -5210,8 +6066,8 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_population.png">
-        <figcaption>Health centres (combined, 2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centers (n = 68) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_population.png">
+        <figcaption>Health centers (n = 68) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -5220,7 +6076,7 @@ Aligns with Sustainable Development Goals: 3, 11.
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018) per 10,000 population, by subdistrict
+       Health centers (n = 68) per 10,000 population, by subdistrict
 
 
 
@@ -5233,8 +6089,8 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_health_centres_rate_population.png">
-        <figcaption>Health centres (combined, 2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centers (n = 68) per 10,000 population, by district" src="./../png/bangkok_ind_district_health_centres_rate_population.png">
+        <figcaption>Health centers (n = 68) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -5243,13 +6099,13 @@ Aligns with Sustainable Development Goals: 3, 11.
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018) per 10,000 population, by district
+       Health centers (n = 68) per 10,000 population, by district
 
 
 
 
-Health centres (combined, 2018) per 10,000 household
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Health centers (n = 68) per 10,000 household
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per 10,000 household.
 
@@ -5265,8 +6121,8 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_household.png">
-        <figcaption>Health centres (combined, 2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centers (n = 68) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_household.png">
+        <figcaption>Health centers (n = 68) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -5275,7 +6131,7 @@ Aligns with Sustainable Development Goals: 3, 11.
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018) per 10,000 household, by subdistrict
+       Health centers (n = 68) per 10,000 household, by subdistrict
 
 
 
@@ -5288,8 +6144,8 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_health_centres_rate_household.png">
-        <figcaption>Health centres (combined, 2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Health centers (n = 68) per 10,000 household, by district" src="./../png/bangkok_ind_district_health_centres_rate_household.png">
+        <figcaption>Health centers (n = 68) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
@@ -5298,7 +6154,7 @@ Aligns with Sustainable Development Goals: 3, 11.
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018) per 10,000 household, by district
+       Health centers (n = 68) per 10,000 household, by district
 
 
 
@@ -6741,6 +7597,52 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
        :align: center
 
        The percentage contribution of local taxes to BMA's overall tax revenue (BMA, 2019), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Local Development Taxes by population src="./../svg/plots/district_percent_bma_income_from_local_taxes_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Local Development Taxes by population per sqkm src="./../svg/plots/district_percent_bma_income_from_local_taxes_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Local Development Taxes, ranked in ascending order src="./../svg/plots/district_percent_bma_income_from_local_taxes.svg">
+            </div>
+       <figcaption>Figures for Local Employment Opportunities with regard to Local Development Taxes by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Local Development Taxes by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Local Development Taxes by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by local development taxes with regard to local employment opportunities.
 
 
 

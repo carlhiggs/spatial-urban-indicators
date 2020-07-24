@@ -131,6 +131,10 @@ Interactive maps
         <option value="bangkok_ind_district_supermarkets_rate_household">Number of food entrepreneurs per 10,000 household: ซูเปอร์มาร์เกต/Supermarket</option>
         <option value="bangkok_ind_subdistrict_access_train_800m_pop_pct">Public transport accessibility: train stations (BMA 2014): % living within 800 metres</option>
         <option value="bangkok_ind_district_access_train_800m_pop_pct">Public transport accessibility: train stations (BMA 2014): % living within 800 metres</option>
+        <option value="bangkok_ind_subdistrict_vegetation_index_mean">Green space: mean Enhanced Vegetation Index (EVI)</option>
+        <option value="bangkok_ind_district_vegetation_index_mean">Green space: mean Enhanced Vegetation Index (EVI)</option>
+        <option value="bangkok_ind_subdistrict_vegetation_ndvi_mean">Green space: mean Normalised Difference Vegetation Index (NDVI)</option>
+        <option value="bangkok_ind_district_vegetation_ndvi_mean">Green space: mean Normalised Difference Vegetation Index (NDVI)</option>
         <option value="bangkok_ind_subdistrict_vegetation_pct_mean">Green space: mean vegetation cover percent  (Copernicus, December 2018)</option>
         <option value="bangkok_ind_district_vegetation_pct_mean">Green space: mean vegetation cover percent  (Copernicus, December 2018)</option>
         <option value="bangkok_ind_subdistrict_vegetation_pct_sd">Green space: standard deviation vegetation cover percent  (Copernicus, December 2018)</option>
