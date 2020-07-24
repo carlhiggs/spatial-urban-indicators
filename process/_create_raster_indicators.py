@@ -150,8 +150,8 @@ def main():
             path = os.path.join(locale_maps,'gpkg')
             print(f'\t- {path}/{study_region}.gpkg/{map_name_suffix}')
             path = os.path.join(locale_maps,'csv')
-            analysis_area.to_csv('{path}/{study_region}_{map_name_suffix}.csv')
-            print('\t- {path}/{study_region}_{map_name_suffix}.csv')
+            analysis_area.to_csv(f'{path}/{study_region}_{map_name_suffix}.csv')
+            print(f'\t- {path}/{study_region}_{map_name_suffix}.csv')
             
             # Create map
             attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
