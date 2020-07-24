@@ -14,12 +14,312 @@ City problems impacting health and wellbeing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+Zero waste
+||||||||||
+
+ไม่มีขยะ/ขยะเป็นศูนย์
+
+Garbage (waste) means unwanted or unusable materials or any substances that are discarded after first use or priceless things. Comparison is a co-product that has little economic value.  Waste is divided into 5 categories which are liquid waste, solid waste, organic waste, recyclable waste and hazardous waste.
+
+
+Hazardous waste
+---------------
+
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: Department of Environment, BMA
+
+**Publication year**: 2019
+
+**Target year**: 2018
+
+**Acquisition date (yyyymmdd)**: 20190911
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20200507/Hazardous waste segregation 2018-kn81519pter.xlsx
+
+
+Annual hazardous waste (kg, 2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The amount of hazardous waste segregation (kg) at waste transfer stations during 2018 was recorded for each district.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Annual hazardous waste (kg, 2018), by district" src="./../png/bangkok_ind_district_annual_hazardous_waste_kg.png">
+        <figcaption>Annual hazardous waste (kg, 2018), by district.         <a href="./../html/bangkok_ind_district_annual_hazardous_waste_kg.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_annual_hazardous_waste_kg.png
+       :width: 70%
+       :align: center
+
+       Annual hazardous waste (kg, 2018), by district
+
+
+
+
+Percentage hazardous waste (kg, 2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The percentage of total waste (solid and hazardous) taken to waste transfer stations during 2018  that was hazardous was recorded for each district.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage hazardous waste (kg, 2018), by district" src="./../png/bangkok_ind_district_percentage_hazardous_waste.png">
+        <figcaption>Percentage hazardous waste (kg, 2018), by district.         <a href="./../html/bangkok_ind_district_percentage_hazardous_waste.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_percentage_hazardous_waste.png
+       :width: 70%
+       :align: center
+
+       Percentage hazardous waste (kg, 2018), by district
+
+
+
+
+Solid waste
+-----------
+
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: Department of Environment, BMA
+
+**Publication year**: 2019
+
+**Target year**: 2018
+
+**Acquisition date (yyyymmdd)**: 20190911
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190911/transfer_1710171_files_127133c5/solid waste in Bangkok -kn08242019.xlsx
+
+
+Annual recyclable waste (tonnes, 2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The amount of recyclable waste (waste that is managed by recycling; tonnes) taken to waste transfer stations during 2018 was recorded for each district.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Annual recyclable waste (tonnes, 2018), by district" src="./../png/bangkok_ind_district_annual_recyclable_waste_tonnes.png">
+        <figcaption>Annual recyclable waste (tonnes, 2018), by district.         <a href="./../html/bangkok_ind_district_annual_recyclable_waste_tonnes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_annual_recyclable_waste_tonnes.png
+       :width: 70%
+       :align: center
+
+       Annual recyclable waste (tonnes, 2018), by district
+
+
+
+
+Annual solid waste (tonnes, 2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The amount of solid waste (tonnes) taken to waste transfer stations during 2018 was recorded for each district.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Annual solid waste (tonnes, 2018), by district" src="./../png/bangkok_ind_district_annual_solid_waste_tonnes.png">
+        <figcaption>Annual solid waste (tonnes, 2018), by district.         <a href="./../html/bangkok_ind_district_annual_solid_waste_tonnes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_annual_solid_waste_tonnes.png
+       :width: 70%
+       :align: center
+
+       Annual solid waste (tonnes, 2018), by district
+
+
+
+
+Percentage recyclable waste (tonnes, 2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The percentage of total waste (solid and recyclable) taken to waste transfer stations during 2018  that was recyclable was recorded for each district.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Percentage recyclable waste (tonnes, 2018), by district" src="./../png/bangkok_ind_district_percentage_recyclable_waste.png">
+        <figcaption>Percentage recyclable waste (tonnes, 2018), by district.         <a href="./../html/bangkok_ind_district_percentage_recyclable_waste.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_percentage_recyclable_waste.png
+       :width: 70%
+       :align: center
+
+       Percentage recyclable waste (tonnes, 2018), by district
+
+
+
+
 A safe environment
 ||||||||||||||||||
 
 สิ่งแวดล้อมปลอดภัย
 
 Environmental safety means to ensure that in the urban environment do not have a risk area to cause a fire, crime and road accidents.
+
+
+Risk areas
+----------
+
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: Department of City Law Enforcement, BMA
+
+**Publication year**: 2019
+
+**Target year**: 2019
+
+**Acquisition date (yyyymmdd)**: 20200511
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Notes**: Only one district has 30 locations; most have below 20.  Perhaps 15 would be a more meaningful target to aspire to?  Alternately, number of reported incidents could be a more meaningful metric.
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20200511/Risk Areas _crime_ in Bangkok _improved_kn20200510.xlsx
+
+
+Number of locations with reported crime
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The number of crime locations reported within each district was recorded, and subsequently evaluated against a target threshold.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of locations with reported crime, by district" src="./../png/bangkok_ind_district_crime_locations.png">
+        <figcaption>Number of locations with reported crime, by district.         <a href="./../html/bangkok_ind_district_crime_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_crime_locations.png
+       :width: 70%
+       :align: center
+
+       Number of locations with reported crime, by district
+
+
+
+
+Number of locations with reported road accidents
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The number of road accidents locations reported within each district was recorded, and subsequently evaluated against a target threshold.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of locations with reported road accidents, by district" src="./../png/bangkok_ind_district_road_accident_locations.png">
+        <figcaption>Number of locations with reported road accidents, by district.         <a href="./../html/bangkok_ind_district_road_accident_locations.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_road_accident_locations.png
+       :width: 70%
+       :align: center
+
+       Number of locations with reported road accidents, by district
+
+
 
 
 Fire incidence
@@ -382,8 +682,6 @@ Data at subdistrict level were prepared by the Bangkok Metropolitan Administrati
 **Date type**: float
 
 **Scale / Resolution**: area summary
-
-**Notes**: units of intensity  - mm?
 
 **Data location relative to project folder**: ./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/BKK indicator_flood_kn 63019.xlsx
 
@@ -1628,6 +1926,68 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
 
 
 
+Reduced/no car congestion
+|||||||||||||||||||||||||
+
+รถติดลดลง/ไม่มีรถติด
+
+Traffic congestion is a condition that slows down transportation speed. Resulting in longer travel times and increased stationary vehicles on long roads 
+
+
+Traffic jam
+-----------
+
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: BMA, sourced from  https://www.grandprix.co.th/10 , opened 25 September 2019
+
+**Publication year**: 2019
+
+**Target year**: 2018
+
+**Acquisition date (yyyymmdd)**: 20190930
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/9 main Roads of Traffic Jam in Bangkok year 2018 by district and road _kn20190925.xlsx
+
+
+Number of main road of traffic jams by district
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The count of main road traffic jams associated with each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of main road of traffic jams by district, by district" src="./../png/bangkok_ind_district_main_road_traffic_jam.png">
+        <figcaption>Number of main road of traffic jams by district, by district.         <a href="./../html/bangkok_ind_district_main_road_traffic_jam.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_traffic_jam.png
+       :width: 70%
+       :align: center
+
+       Number of main road of traffic jams by district, by district
+
+
+
+
 High quality air
 ||||||||||||||||
 
@@ -2192,6 +2552,38 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 
 
+Canal water storage BOD < 6 mg/L, 2018
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The percentage of sample locations with  biochemical oxygen demand  less than 6  mg/L recorded within each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Canal water storage BOD < 6 mg/L, 2018, by district" src="./../png/bangkok_ind_district_water_quality_bod_less_than_6mg_l.png">
+        <figcaption>Canal water storage BOD < 6 mg/L, 2018, by district.         <a href="./../html/bangkok_ind_district_water_quality_bod_less_than_6mg_l.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_bod_less_than_6mg_l.png
+       :width: 70%
+       :align: center
+
+       Canal water storage BOD < 6 mg/L, 2018, by district
+
+
+
+
 Canal water storage sample locations, 2018
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -2367,7 +2759,7 @@ Healthy population means health status and health outcomes within a group of peo
 Public Transport
 ----------------
 
-info to be added
+Ferry terminals / quays along the Chao Praya river and Canal Sansabai (BMA, 2014) were combined and analysed for accessability using an OSM pedestrian network, derived using OSMnx.
 
 **Data source**: BangkokGIS (BMA)
 
@@ -2385,13 +2777,11 @@ info to be added
 
 **Scale / Resolution**: 800
 
-**Data location relative to project folder**: ./data/Thai/BMA GIS/transport/terminal/terminal.shp
-
 
 Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-info to be added
+Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.
 
 
 
@@ -2437,59 +2827,6 @@ info to be added
        :align: center
 
        Percentage of residents living within 800 metres of a ferry terminal or pier (BMA, 2014), by district
-
-
-
-
-Percentage of residents living 800 metres distance of any public transport (OSM, 2019)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.  [method to be further updated]
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by subdistrict" src="./../png/bangkok_ind_subdistrict_access_pt_any_800m_pop_pct.png">
-        <figcaption>Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_access_pt_any_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_pt_any_800m_pop_pct.png
-       :width: 70%
-       :align: center
-
-       Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by district" src="./../png/bangkok_ind_district_access_pt_any_800m_pop_pct.png">
-        <figcaption>Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by district.         <a href="./../html/bangkok_ind_district_access_pt_any_800m_pop_pct.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_pt_any_800m_pop_pct.png
-       :width: 70%
-       :align: center
-
-       Percentage of residents living 800 metres distance of any public transport (OSM, 2019), by district
 
 
 
@@ -2540,6 +2877,104 @@ Accessability within 800m was evaluated using the Python network analysis packag
 
 
 
+Green space, pocket parks
+|||||||||||||||||||||||||
+
+พื้นที่สีเขียว/สวนหย่อม
+
+Public Parks and open spaces refer to official and unofficial land reserved for sports and recreation Including preserving the natural environment and providing green space for urban flood management.  The development of green areas / gardens / open spaces can increase the purpose of various uses ; Such as adding amenities to create happiness or enjoyment for the public or to promote the area to allow people to have activities to strengthen family relationships. For example, botanical parks, sports fields, children's playgrounds, marshes with water sports / fishing / community swimming pools, camps, picnic activities for families, dog parks. Actually, the actions can be considered for creating integrated projects for the benefit of results level with indicators 8.
+
+
+Green areas
+-----------
+
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: BMA
+
+**Publication year**: 2019
+
+**Target year**: 2019
+
+**Acquisition date (yyyymmdd)**: 20190930
+
+**Licence**: none specified
+
+**Licence URL**: Website 203.155.220.220/parks
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Notes**: Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20200511/Num_Green area in BKK by district 2019_Ha_kn20200509.xlsx
+
+
+Number of green areas
+>>>>>>>>>>>>>>>>>>>>>
+
+The number of green areas within each district was recorded.  Classification was based on a typology of 9 kinds of green space: outdoor stadium, golf course, water source, lowland, open space, big tree areas, agricultural areas, aquaculture areas and other areas.
+
+Aligns with Sustainable Development Goals: 3, 11, 13, 15.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of green areas, by district" src="./../png/bangkok_ind_district_green_space_count.png">
+        <figcaption>Number of green areas, by district.         <a href="./../html/bangkok_ind_district_green_space_count.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_green_space_count.png
+       :width: 70%
+       :align: center
+
+       Number of green areas, by district
+
+
+
+
+Total public green area (m²) per capita
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The total area of green space reported within each district was recorded, and subsequently evaluated against target thresholds with regard to total area, and per capita.
+
+Aligns with Sustainable Development Goals: 3, 11, 13, 15.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Total public green area (m²) per capita, by district" src="./../png/bangkok_ind_district_green_space_public_per_capita.png">
+        <figcaption>Total public green area (m²) per capita, by district.         <a href="./../html/bangkok_ind_district_green_space_public_per_capita.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_green_space_public_per_capita.png
+       :width: 70%
+       :align: center
+
+       Total public green area (m²) per capita, by district
+
+
+
+
 Areas for passive recreation and physical activity
 ||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -2574,7 +3009,7 @@ A dataset of Areas of Public Open Space was derived from OpenStreetMap using a s
 Percentage of residents living within 400 metres of public open space  (OSM, 2019)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-Accessability within 400m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.  [method to be further updated]
+Accessability within 400m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.
 
 
 
@@ -2745,13 +3180,11 @@ Combined BMA railway stations (BTS, MRT, airtportlink, and other train stations;
 
 **Scale / Resolution**: 800
 
-**Data location relative to project folder**: ./data/Thai/BMA GIS/transport/airportlink_station/airportlink_station.shp
-
 
 Percentage of residents living within 800 metres of a train station (BMA, 2014)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.  [method to be further updated]
+Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.
 
 
 
@@ -3131,65 +3564,46 @@ The average monthly cost of living per person within each analysis area was reco
 
 
 
-Healthy population
-||||||||||||||||||
+Job security
+||||||||||||
 
-ประชากรมีสุขภาพดี ทั้งทางกายและจิตใจ
+ความมั่นคงในการทำงาน
 
-Healthy population means health status and health outcomes within a group of people.
+Security at work or employment means the confidence of people that they will not lose their current job without sufficient or acceptable reason.
 
 
-Vital diseases
+Drought impact
 --------------
 
-Data at {area} level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of Health, BMA
+**Data source**: BMA
 
-**Publication year**: 2018
+**Publication year**: 2015
 
-**Target year**: 2018
+**Target year**: 2016
 
-**Acquisition date (yyyymmdd)**: 20190617
+**Acquisition date (yyyymmdd)**: 20191204
 
 **Licence**: none specified
+
+**Licence URL**: Ministry of Finance; Department of Social Development (BMA)
 
 **Date type**: integer
 
 **Scale / Resolution**: area summary
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
+**Notes**: Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/2_BKK agriculture _drought_2016 _ district _kn20191124.xlsx
 
 
-Health centres (combined, 2018)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Number of farmers expected to have been impacted drought (household; 2016)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-The count of health centers within each analysis area was calculated, based on the supplied data.
+Number of farmers (households) who expected to be impacted drought in 2016 was recorded for each district.
 
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Health centres (combined, 2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres.png">
-        <figcaption>Health centres (combined, 2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres.png
-       :width: 70%
-       :align: center
-
-       Health centres (combined, 2018), by subdistrict
-
+Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 
 
@@ -3201,27 +3615,53 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018), by district" src="./../png/bangkok_ind_district_health_centres.png">
-        <figcaption>Health centres (combined, 2018), by district.         <a href="./../html/bangkok_ind_district_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Number of farmers expected to have been impacted drought (household; 2016), by district" src="./../png/bangkok_ind_district_drought_impacted_farmers.png">
+        <figcaption>Number of farmers expected to have been impacted drought (household; 2016), by district.         <a href="./../html/bangkok_ind_district_drought_impacted_farmers.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres.png
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_drought_impacted_farmers.png
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018), by district
+       Number of farmers expected to have been impacted drought (household; 2016), by district
 
 
 
 
-Health centres (combined, 2018) per km²
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Welfare card holders
+--------------------
 
-The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per km².
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-Aligns with Sustainable Development Goals: 3, 11.
+**Data source**: BMA
+
+**Publication year**: 2017
+
+**Target year**: 2018
+
+**Acquisition date (yyyymmdd)**: 20191204
+
+**Licence**: none specified
+
+**Licence URL**: Ministry of Finance; Department of Social Development (BMA)
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Notes**: Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/1_Holders of a state welfare card in Bangkok by district_kn20191111.xlsx
+
+
+Holders of a state welfare card in Bangkok (2017)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The count of persons issued a state welfare card in Bangkok Year 2017 was recorded for each district.
+
+Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 
 
@@ -3233,958 +3673,17 @@ Aligns with Sustainable Development Goals: 3, 11.
     .. raw:: html
 
         <figure>
-        <img alt="Health centres (combined, 2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_area.png">
-        <figcaption>Health centres (combined, 2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        <img alt="Holders of a state welfare card in Bangkok (2017), by district" src="./../png/bangkok_ind_district_welfare_card_holders.png">
+        <figcaption>Holders of a state welfare card in Bangkok (2017), by district.         <a href="./../html/bangkok_ind_district_welfare_card_holders.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_area.png
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_welfare_card_holders.png
        :width: 70%
        :align: center
 
-       Health centres (combined, 2018) per km², by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Health centres (combined, 2018) per km², by district" src="./../png/bangkok_ind_district_health_centres_rate_area.png">
-        <figcaption>Health centres (combined, 2018) per km², by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_area.png
-       :width: 70%
-       :align: center
-
-       Health centres (combined, 2018) per km², by district
-
-
-
-
-Health centres (combined, 2018) per 10,000 population
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per 10,000 population.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Health centres (combined, 2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_population.png">
-        <figcaption>Health centres (combined, 2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_population.png
-       :width: 70%
-       :align: center
-
-       Health centres (combined, 2018) per 10,000 population, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Health centres (combined, 2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_health_centres_rate_population.png">
-        <figcaption>Health centres (combined, 2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_population.png
-       :width: 70%
-       :align: center
-
-       Health centres (combined, 2018) per 10,000 population, by district
-
-
-
-
-Health centres (combined, 2018) per 10,000 household
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per 10,000 household.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Health centres (combined, 2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_household.png">
-        <figcaption>Health centres (combined, 2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_household.png
-       :width: 70%
-       :align: center
-
-       Health centres (combined, 2018) per 10,000 household, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Health centres (combined, 2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_health_centres_rate_household.png">
-        <figcaption>Health centres (combined, 2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_household.png
-       :width: 70%
-       :align: center
-
-       Health centres (combined, 2018) per 10,000 household, by district
-
-
-
-
-Hypertension outpatients (2018)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for hypertension were summed across each analysis area.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Hypertension outpatients (2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_hypertension.png">
-        <figcaption>Hypertension outpatients (2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension.png
-       :width: 70%
-       :align: center
-
-       Hypertension outpatients (2018), by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Hypertension outpatients (2018), by district" src="./../png/bangkok_ind_district_outpatients_hypertension.png">
-        <figcaption>Hypertension outpatients (2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension.png
-       :width: 70%
-       :align: center
-
-       Hypertension outpatients (2018), by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension.svg">
-            </div>
-       <figcaption>Figures for Health Center Outpatients with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of hypertension (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of hypertension (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by hypertension (2018) with regard to health center outpatients.
-
-
-
-
-Hypertension outpatients (2018) per km²
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for hypertension were summed across each analysis area.  The indicator was rated as the rate per km².
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Hypertension outpatients (2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_hypertension_rate_area.png">
-        <figcaption>Hypertension outpatients (2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_area.png
-       :width: 70%
-       :align: center
-
-       Hypertension outpatients (2018) per km², by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Hypertension outpatients (2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_hypertension_rate_area.png">
-        <figcaption>Hypertension outpatients (2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_hypertension_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_area.png
-       :width: 70%
-       :align: center
-
-       Hypertension outpatients (2018) per km², by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_area_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_area.svg">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per Km² with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of hypertension (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of hypertension (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by hypertension (2018) with regard to health center outpatients per km².
-
-
-
-
-Hypertension outpatients (2018) per 10,000 population
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for hypertension were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Hypertension outpatients (2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_hypertension_rate_population.png">
-        <figcaption>Hypertension outpatients (2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_population.png
-       :width: 70%
-       :align: center
-
-       Hypertension outpatients (2018) per 10,000 population, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Hypertension outpatients (2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_hypertension_rate_population.png">
-        <figcaption>Hypertension outpatients (2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_hypertension_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_population.png
-       :width: 70%
-       :align: center
-
-       Hypertension outpatients (2018) per 10,000 population, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_population_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_population.svg">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of hypertension (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of hypertension (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by hypertension (2018) with regard to health center outpatients per 10,000 population.
-
-
-
-
-Hypertension outpatients (2018) per 10,000 household
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for hypertension were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Hypertension outpatients (2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_hypertension_rate_household.png">
-        <figcaption>Hypertension outpatients (2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_household.png
-       :width: 70%
-       :align: center
-
-       Hypertension outpatients (2018) per 10,000 household, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Hypertension outpatients (2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_hypertension_rate_household.png">
-        <figcaption>Hypertension outpatients (2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_hypertension_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_household.png
-       :width: 70%
-       :align: center
-
-       Hypertension outpatients (2018) per 10,000 household, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_household_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_household.svg">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of hypertension (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of hypertension (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by hypertension (2018) with regard to health center outpatients per 10,000 household.
-
-
-
-
-Mental and behavioural disorder outpatients (2018)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for mental and behavioural disorders were summed across each analysis area.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Mental and behavioural disorder outpatients (2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_mental_health.png">
-        <figcaption>Mental and behavioural disorder outpatients (2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health.png
-       :width: 70%
-       :align: center
-
-       Mental and behavioural disorder outpatients (2018), by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Mental and behavioural disorder outpatients (2018), by district" src="./../png/bangkok_ind_district_outpatients_mental_health.png">
-        <figcaption>Mental and behavioural disorder outpatients (2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health.png
-       :width: 70%
-       :align: center
-
-       Mental and behavioural disorder outpatients (2018), by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health.svg">
-            </div>
-       <figcaption>Figures for Health Center Outpatients with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of mental and behavioural disorders (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of mental and behavioural disorders (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by mental and behavioural disorders (2018) with regard to health center outpatients.
-
-
-
-
-Mental and behavioural disorder outpatients (2018) per km²
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for mental and behavioural disorders were summed across each analysis area.  The indicator was rated as the rate per km².
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Mental and behavioural disorder outpatients (2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_mental_health_rate_area.png">
-        <figcaption>Mental and behavioural disorder outpatients (2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_area.png
-       :width: 70%
-       :align: center
-
-       Mental and behavioural disorder outpatients (2018) per km², by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Mental and behavioural disorder outpatients (2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_mental_health_rate_area.png">
-        <figcaption>Mental and behavioural disorder outpatients (2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_mental_health_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_area.png
-       :width: 70%
-       :align: center
-
-       Mental and behavioural disorder outpatients (2018) per km², by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_area_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_area.svg">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per Km² with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of mental and behavioural disorders (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of mental and behavioural disorders (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by mental and behavioural disorders (2018) with regard to health center outpatients per km².
-
-
-
-
-Mental and behavioural disorder outpatients (2018) per 10,000 population
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for mental and behavioural disorders were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Mental and behavioural disorder outpatients (2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_mental_health_rate_population.png">
-        <figcaption>Mental and behavioural disorder outpatients (2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_population.png
-       :width: 70%
-       :align: center
-
-       Mental and behavioural disorder outpatients (2018) per 10,000 population, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Mental and behavioural disorder outpatients (2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_mental_health_rate_population.png">
-        <figcaption>Mental and behavioural disorder outpatients (2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_mental_health_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_population.png
-       :width: 70%
-       :align: center
-
-       Mental and behavioural disorder outpatients (2018) per 10,000 population, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_population_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_population.svg">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of mental and behavioural disorders (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of mental and behavioural disorders (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by mental and behavioural disorders (2018) with regard to health center outpatients per 10,000 population.
-
-
-
-
-Mental and behavioural disorder outpatients (2018) per 10,000 household
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for mental and behavioural disorders were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Mental and behavioural disorder outpatients (2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_mental_health_rate_household.png">
-        <figcaption>Mental and behavioural disorder outpatients (2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_household.png
-       :width: 70%
-       :align: center
-
-       Mental and behavioural disorder outpatients (2018) per 10,000 household, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Mental and behavioural disorder outpatients (2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_mental_health_rate_household.png">
-        <figcaption>Mental and behavioural disorder outpatients (2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_mental_health_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_household.png
-       :width: 70%
-       :align: center
-
-       Mental and behavioural disorder outpatients (2018) per 10,000 household, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_household_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_household.svg">
-            </div>
-       <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of mental and behavioural disorders (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of mental and behavioural disorders (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by mental and behavioural disorders (2018) with regard to health center outpatients per 10,000 household.
+       Holders of a state welfare card in Bangkok (2017), by district
 
 
 
@@ -4195,6 +3694,156 @@ Quality food
 อาหารมีคุณภาพ
 
 Food safety refers to the practice and conditions of maintaining food quality to prevent contamination and foodborne illnesses during preparation, management and storage.   Food quality refers to properties and characteristics of food products that are acceptable to consumers and meet expectations that is a purchase that is worth the money when compared to the required properties.
+
+
+Sidewalk hawkers
+----------------
+
+Data comprising counts of permitted sidewalk locations for hawkers/stalls, and the number of hawkers and stalls for each district were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: Department of City Law Enforcement, BMA
+
+**Publication year**: 2019
+
+**Target year**: 2019
+
+**Acquisition date (yyyymmdd)**: 20191204
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/3_BKK_sidewalk_hawkers - stalls _2019 _kn20190923.xlsx
+
+
+Number of  hawkers/stalls
+>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The number of permitted sidewalk points for hawker/stall locations was recorded
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of  hawkers/stalls, by district" src="./../png/bangkok_ind_district_hawker_count.png">
+        <figcaption>Number of  hawkers/stalls, by district.         <a href="./../html/bangkok_ind_district_hawker_count.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_hawker_count.png
+       :width: 70%
+       :align: center
+
+       Number of  hawkers/stalls, by district
+
+
+
+
+Number of  hawkers/stalls per km²
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The number of permitted sidewalk points for hawker/stall locations was recorded  The indicator was rated as the rate per km².
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of  hawkers/stalls per km², by district" src="./../png/bangkok_ind_district_hawker_count_rate_area.png">
+        <figcaption>Number of  hawkers/stalls per km², by district.         <a href="./../html/bangkok_ind_district_hawker_count_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_hawker_count_rate_area.png
+       :width: 70%
+       :align: center
+
+       Number of  hawkers/stalls per km², by district
+
+
+
+
+Number of  hawkers/stalls per 10,000 population
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The number of permitted sidewalk points for hawker/stall locations was recorded  The indicator was rated as the rate per 10,000 population.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of  hawkers/stalls per 10,000 population, by district" src="./../png/bangkok_ind_district_hawker_count_rate_population.png">
+        <figcaption>Number of  hawkers/stalls per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_hawker_count_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_hawker_count_rate_population.png
+       :width: 70%
+       :align: center
+
+       Number of  hawkers/stalls per 10,000 population, by district
+
+
+
+
+Number of  hawkers/stalls per 10,000 household
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The number of permitted sidewalk points for hawker/stall locations was recorded  The indicator was rated as the rate per 10,000 household.
+
+Aligns with Sustainable Development Goals: 2.1, 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of  hawkers/stalls per 10,000 household, by district" src="./../png/bangkok_ind_district_hawker_count_rate_household.png">
+        <figcaption>Number of  hawkers/stalls per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_hawker_count_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_hawker_count_rate_household.png
+       :width: 70%
+       :align: center
+
+       Number of  hawkers/stalls per 10,000 household, by district
+
+
 
 
 Food entrepreneurs
@@ -5308,7 +4957,7 @@ Supermarket locations identified through key-value pair tags according to OSM gu
 Percentage of residents living 800 metres distance of a supermarket (OSM, 2019)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.  [method to be further updated]
+Accessability within 800m was evaluated using the Python network analysis package Pandana for a series of sample points generated every 50 metres along the Bangkok OSM pedestrian network.   Population weighted averages for the proportion of sample points having access in each subdistrict were used to estimate the measure.
 
 
 
@@ -5400,6 +5049,1064 @@ Accessability within 800m was evaluated using the Python network analysis packag
       :align: center
 
       Districts ranked in ascending order by percentage of residents living 800 metres distance of a supermarket (osm, 2019) with regard to food environments: supermarket acccess.
+
+
+
+
+Healthy population
+||||||||||||||||||
+
+ประชากรมีสุขภาพดี ทั้งทางกายและจิตใจ
+
+Healthy population means health status and health outcomes within a group of people.
+
+
+Vital diseases
+--------------
+
+Data at subdistrict level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: Department of Health, BMA
+
+**Publication year**: 2018
+
+**Target year**: 2018
+
+**Acquisition date (yyyymmdd)**: 20190617
+
+**Licence**: none specified
+
+**Date type**: integer
+
+**Scale / Resolution**: area summary
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
+
+
+Health centres (combined, 2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The count of health centers within each analysis area was calculated, based on the supplied data.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Health centres (combined, 2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres.png">
+        <figcaption>Health centres (combined, 2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres.png
+       :width: 70%
+       :align: center
+
+       Health centres (combined, 2018), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Health centres (combined, 2018), by district" src="./../png/bangkok_ind_district_health_centres.png">
+        <figcaption>Health centres (combined, 2018), by district.         <a href="./../html/bangkok_ind_district_health_centres.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres.png
+       :width: 70%
+       :align: center
+
+       Health centres (combined, 2018), by district
+
+
+
+
+Health centres (combined, 2018) per km²
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per km².
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Health centres (combined, 2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_area.png">
+        <figcaption>Health centres (combined, 2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_area.png
+       :width: 70%
+       :align: center
+
+       Health centres (combined, 2018) per km², by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Health centres (combined, 2018) per km², by district" src="./../png/bangkok_ind_district_health_centres_rate_area.png">
+        <figcaption>Health centres (combined, 2018) per km², by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_area.png
+       :width: 70%
+       :align: center
+
+       Health centres (combined, 2018) per km², by district
+
+
+
+
+Health centres (combined, 2018) per 10,000 population
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per 10,000 population.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Health centres (combined, 2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_population.png">
+        <figcaption>Health centres (combined, 2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_population.png
+       :width: 70%
+       :align: center
+
+       Health centres (combined, 2018) per 10,000 population, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Health centres (combined, 2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_health_centres_rate_population.png">
+        <figcaption>Health centres (combined, 2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_population.png
+       :width: 70%
+       :align: center
+
+       Health centres (combined, 2018) per 10,000 population, by district
+
+
+
+
+Health centres (combined, 2018) per 10,000 household
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The count of health centers within each analysis area was calculated, based on the supplied data.  The indicator was rated as the rate per 10,000 household.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Health centres (combined, 2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_health_centres_rate_household.png">
+        <figcaption>Health centres (combined, 2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_health_centres_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_household.png
+       :width: 70%
+       :align: center
+
+       Health centres (combined, 2018) per 10,000 household, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Health centres (combined, 2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_health_centres_rate_household.png">
+        <figcaption>Health centres (combined, 2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_health_centres_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_household.png
+       :width: 70%
+       :align: center
+
+       Health centres (combined, 2018) per 10,000 household, by district
+
+
+
+
+Hypertension outpatients (2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for hypertension were summed across each analysis area.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Hypertension outpatients (2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_hypertension.png">
+        <figcaption>Hypertension outpatients (2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension.png
+       :width: 70%
+       :align: center
+
+       Hypertension outpatients (2018), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Hypertension outpatients (2018), by district" src="./../png/bangkok_ind_district_outpatients_hypertension.png">
+        <figcaption>Hypertension outpatients (2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_hypertension.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension.png
+       :width: 70%
+       :align: center
+
+       Hypertension outpatients (2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension.svg">
+            </div>
+       <figcaption>Figures for Health Center Outpatients with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of hypertension (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of hypertension (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by hypertension (2018) with regard to health center outpatients.
+
+
+
+
+Hypertension outpatients (2018) per km²
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for hypertension were summed across each analysis area.  The indicator was rated as the rate per km².
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Hypertension outpatients (2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_hypertension_rate_area.png">
+        <figcaption>Hypertension outpatients (2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_area.png
+       :width: 70%
+       :align: center
+
+       Hypertension outpatients (2018) per km², by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Hypertension outpatients (2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_hypertension_rate_area.png">
+        <figcaption>Hypertension outpatients (2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_hypertension_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_area.png
+       :width: 70%
+       :align: center
+
+       Hypertension outpatients (2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_area_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_area.svg">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per Km² with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of hypertension (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of hypertension (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by hypertension (2018) with regard to health center outpatients per km².
+
+
+
+
+Hypertension outpatients (2018) per 10,000 population
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for hypertension were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Hypertension outpatients (2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_hypertension_rate_population.png">
+        <figcaption>Hypertension outpatients (2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_population.png
+       :width: 70%
+       :align: center
+
+       Hypertension outpatients (2018) per 10,000 population, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Hypertension outpatients (2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_hypertension_rate_population.png">
+        <figcaption>Hypertension outpatients (2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_hypertension_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_population.png
+       :width: 70%
+       :align: center
+
+       Hypertension outpatients (2018) per 10,000 population, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_population_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_population.svg">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of hypertension (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of hypertension (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by hypertension (2018) with regard to health center outpatients per 10,000 population.
+
+
+
+
+Hypertension outpatients (2018) per 10,000 household
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for hypertension were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Hypertension outpatients (2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_hypertension_rate_household.png">
+        <figcaption>Hypertension outpatients (2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_hypertension_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_household.png
+       :width: 70%
+       :align: center
+
+       Hypertension outpatients (2018) per 10,000 household, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Hypertension outpatients (2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_hypertension_rate_household.png">
+        <figcaption>Hypertension outpatients (2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_hypertension_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_household.png
+       :width: 70%
+       :align: center
+
+       Hypertension outpatients (2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=hypertension (2018) by population src="./../svg/plots/district_outpatients_hypertension_rate_household_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=hypertension (2018) by population per sqkm src="./../svg/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=hypertension (2018), ranked in ascending order src="./../svg/plots/district_outpatients_hypertension_rate_household.svg">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to hypertension (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of hypertension (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of hypertension (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by hypertension (2018) with regard to health center outpatients per 10,000 household.
+
+
+
+
+Mental and behavioural disorder outpatients (2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for mental and behavioural disorders were summed across each analysis area.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Mental and behavioural disorder outpatients (2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_mental_health.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health.png
+       :width: 70%
+       :align: center
+
+       Mental and behavioural disorder outpatients (2018), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Mental and behavioural disorder outpatients (2018), by district" src="./../png/bangkok_ind_district_outpatients_mental_health.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_mental_health.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health.png
+       :width: 70%
+       :align: center
+
+       Mental and behavioural disorder outpatients (2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health.svg">
+            </div>
+       <figcaption>Figures for Health Center Outpatients with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mental and behavioural disorders (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mental and behavioural disorders (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by mental and behavioural disorders (2018) with regard to health center outpatients.
+
+
+
+
+Mental and behavioural disorder outpatients (2018) per km²
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for mental and behavioural disorders were summed across each analysis area.  The indicator was rated as the rate per km².
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Mental and behavioural disorder outpatients (2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_mental_health_rate_area.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_area.png
+       :width: 70%
+       :align: center
+
+       Mental and behavioural disorder outpatients (2018) per km², by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Mental and behavioural disorder outpatients (2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_mental_health_rate_area.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_mental_health_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_area.png
+       :width: 70%
+       :align: center
+
+       Mental and behavioural disorder outpatients (2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_area_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_area.svg">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per Km² with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mental and behavioural disorders (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mental and behavioural disorders (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by mental and behavioural disorders (2018) with regard to health center outpatients per km².
+
+
+
+
+Mental and behavioural disorder outpatients (2018) per 10,000 population
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for mental and behavioural disorders were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Mental and behavioural disorder outpatients (2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_mental_health_rate_population.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_population.png
+       :width: 70%
+       :align: center
+
+       Mental and behavioural disorder outpatients (2018) per 10,000 population, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Mental and behavioural disorder outpatients (2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_mental_health_rate_population.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_mental_health_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_population.png
+       :width: 70%
+       :align: center
+
+       Mental and behavioural disorder outpatients (2018) per 10,000 population, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_population_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_population.svg">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per 10,000 Population with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mental and behavioural disorders (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mental and behavioural disorders (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by mental and behavioural disorders (2018) with regard to health center outpatients per 10,000 population.
+
+
+
+
+Mental and behavioural disorder outpatients (2018) per 10,000 household
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for mental and behavioural disorders were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Mental and behavioural disorder outpatients (2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_mental_health_rate_household.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_mental_health_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_household.png
+       :width: 70%
+       :align: center
+
+       Mental and behavioural disorder outpatients (2018) per 10,000 household, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Mental and behavioural disorder outpatients (2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_mental_health_rate_household.png">
+        <figcaption>Mental and behavioural disorder outpatients (2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_mental_health_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_household.png
+       :width: 70%
+       :align: center
+
+       Mental and behavioural disorder outpatients (2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=mental and behavioural disorders (2018) by population src="./../svg/plots/district_outpatients_mental_health_rate_household_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=mental and behavioural disorders (2018) by population per sqkm src="./../svg/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=mental and behavioural disorders (2018), ranked in ascending order src="./../svg/plots/district_outpatients_mental_health_rate_household.svg">
+            </div>
+       <figcaption>Figures for Health Center Outpatients Per 10,000 Household with regard to mental and behavioural disorders (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mental and behavioural disorders (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of mental and behavioural disorders (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by mental and behavioural disorders (2018) with regard to health center outpatients per 10,000 household.
 
 
 
@@ -5972,6 +6679,68 @@ The coefficient of inequality within each analysis area was recorded.
        :align: center
 
        Coefficient of inequality (NSO, 2017), by subdistrict
+
+
+
+
+Local employment opportunities
+||||||||||||||||||||||||||||||
+
+โอกาสในการทำงานในท้องถิ่น
+
+Local job opportunities mean that the people living in an area can expect or assess whether there will be work in that area where they live.
+
+
+Taxes collected
+---------------
+
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  The data comprised sample point records of actual revenue by taxes collected by BMA district offices for the fiscale year of 2019, source dfrom the BMA Finance Department in October 2019.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: Finance Department, BMA
+
+**Publication year**: 2019
+
+**Target year**: 2019
+
+**Acquisition date (yyyymmdd)**: 20190617
+
+**Licence**: none specified
+
+**Date type**: float
+
+**Scale / Resolution**: area summary
+
+**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815206_files_409fa2da/BKK_taxes_district_19 _kn20191201.xlsx
+
+
+The percentage contribution of local taxes to BMA's overall tax revenue (BMA, 2019)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The percentage contribution of local taxes to BMA's overall tax revenue for 2019 was calculated by dividing the total revenue for each district (sum of house and building taxes, local development taxes, and signboard taxes) by the contribution from local deveopment taxes and multiplying this by 100.
+
+Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="The percentage contribution of local taxes to BMA's overall tax revenue (BMA, 2019), by district" src="./../png/bangkok_ind_district_percent_bma_income_from_local_taxes.png">
+        <figcaption>The percentage contribution of local taxes to BMA's overall tax revenue (BMA, 2019), by district.         <a href="./../html/bangkok_ind_district_percent_bma_income_from_local_taxes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_percent_bma_income_from_local_taxes.png
+       :width: 70%
+       :align: center
+
+       The percentage contribution of local taxes to BMA's overall tax revenue (BMA, 2019), by district
 
 
 

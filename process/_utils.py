@@ -163,7 +163,7 @@ def expand_indicators(df):
     d.loc[d.type=='access','destination'] = d.loc[d.type=='access',].index
     # set table out name as the dataframe index
     d.index = d.table_out_name
-    for field in ['alias','name_f','map_heading']:
+    for field in ['alias','map_heading']:
         d.loc[d.rate.astype('str') != '',field] = d.loc[d.rate.astype('str') != ''].apply(lambda x: (x[field], x[field] +' per {}'.format(
                                                                 (x.rate_units,'{:,g} {}'.format(x.rate_scale,x.rate_units))[x.rate_scale!=1]
                                                               ))[x['rate'] != ''],

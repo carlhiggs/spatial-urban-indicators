@@ -122,7 +122,7 @@ def main():
             matplotlib.rc('font', **font)
             g = sns.lmplot(x1, y, data=data, hue='regions_of_interest', fit_reg=False)
             g._legend.remove()
-            g.set(xlabel=x1.title(), ylabel=title,title = heading)
+            g.set(xlabel=x1.title(), ylabel=title)
             label_point(data[x1], data[y], data['label'], plt.gca())
             for ax in g.axes[:,0]:
                 ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
@@ -139,7 +139,7 @@ def main():
             matplotlib.rc('font', **font)
             g = sns.lmplot(x2, y, data=data, hue='regions_of_interest', fit_reg=False)
             g._legend.remove()
-            g.set(xlabel=x2.title(), ylabel=title,title = heading)
+            g.set(xlabel=x2.title(), ylabel=title)
             label_point(data[x2], data[y], data['label'], plt.gca())
             for ax in g.axes[:,0]:
                 ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
@@ -158,7 +158,7 @@ def main():
             pd_data = data.sort_values(y)
             plt.figure(figsize=(14,10))
             ax = sns.barplot(pd_data[y], pd_data['full_label'])
-            ax.set(xlabel=title, ylabel=area_layer.title(),title = heading)
+            ax.set(xlabel=title, ylabel=area_layer.title())
             ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
             ax.set_yticklabels(pd_data['full_label'])
             plt.tight_layout()
@@ -176,14 +176,13 @@ def main():
             # ax = sns.boxplot(x = 'label', y=y, pd_data['full_label'], orient='h',data = data)
             # ax = sns.swarmplot(x = 'label', y=y, pd_data['full_label'], orient='h',data = data)
             # ax.get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
-            # ax.set(xlabel=ylab, ylabel=area_layer.title(),title = title)
+            # ax.set(xlabel=title, ylabel=area_layer.title())
             # ax.set_yticklabels(pd_data['full_label'])
             # plt.tight_layout()
             # # plt.show()
             # location = f'../maps/{study_region}/png/plots/{y}'.replace(' ','_')
             # ax3.figure.savefig(location, dpi=300)  
-            # plt.close()            
-        
+            # plt.close()    
         
     # output to completion log                  
     script_running_log(script, task, start, locale)
