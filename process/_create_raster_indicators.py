@@ -161,7 +161,8 @@ def main():
             coalesce_na = '{}'.format(df.loc[row,'coalesce_na'])
             if coalesce_na in ['','nan']:
                 sql = f'''
-                    SELECT a.{area_layer},
+                    SELECT a.{linkage_id}
+                           a.{area_layer},
                            {data_fields}
                            b.{map_name_suffix},
                            ST_Transform(a.geom, 4326) AS geom 
@@ -171,7 +172,8 @@ def main():
                     '''
             else:
                 sql = f'''
-                    SELECT a.{area_layer},
+                    SELECT a.{linkage_id}
+                           a.{area_layer},
                            {data_fields}
                            COALESCE(b.{map_name_suffix},{coalesce_na}) AS "{map_name_suffix}",
                            ST_Transform(a.geom, 4326) AS geom 
@@ -277,8 +279,8 @@ def main():
             layer = folium.Choropleth(data=map,
                             geo_data =map.to_json(),
                             name = map_field,
-                            columns =[area_layer,map_field],
-                            key_on=f"feature.properties.{area_layer}",
+                            columns =[linkage_id,map_field],
+                            key_on=f"feature.properties.{linkage_id}",
                             fill_color='YlGn',
                             fill_opacity=0.7,
                             nan_fill_opacity=0.2,

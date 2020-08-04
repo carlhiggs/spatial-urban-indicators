@@ -173,6 +173,7 @@ def main():
                     aggregation_text = f" ({aggregation})"
                 if aggregation =='sum':
                     mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
+                    mdf = mdf.astype(data_type)
                     aggregation_text = f" ({aggregation})"
                 elif aggregation == 'average':
                     mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
@@ -261,7 +262,8 @@ def main():
                 coalesce_na = '{}'.format(df.loc[row,'coalesce_na'])
                 if coalesce_na in ['','nan']:
                     sql = '''
-                        SELECT a.{area},
+                        SELECT a.{id},
+                               a.{area},
                                {data_fields}
                                b.{data},
                                ST_Transform(a.geom, 4326) AS geom 
@@ -275,7 +277,8 @@ def main():
                                    id = linkage_id)
                 else:
                     sql = '''
-                        SELECT a.{area},
+                        SELECT a.{id},
+                               a.{area},
                                {data_fields}
                                COALESCE(b.{data},{coalesce_na}) AS "{data}",
                                ST_Transform(a.geom, 4326) AS geom 
@@ -355,7 +358,7 @@ def main():
                 # Create choropleth map
                 bins = 6
                 # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
-                legend_bins = '{}'.format(df.loc[row,'coalesce_na'])
+                legend_bins = '{}'.format(df.loc[row,'legend_bins'])
                 if legend_bins in ['quartiles']:
                     bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
                 if legend_bins.startswith('equal'):
@@ -385,8 +388,8 @@ def main():
                 layer = folium.Choropleth(data=map,
                                 geo_data =map.to_json(),
                                 name = map_field,
-                                columns =[area_layer,map_field],
-                                key_on=f"feature.properties.{area_layer}",
+                                columns =[linkage_id,map_field],
+                                key_on=f"feature.properties.{linkage_id}",
                                 fill_color='YlGn',
                                 fill_opacity=0.7,
                                 nan_fill_opacity=0.2,
