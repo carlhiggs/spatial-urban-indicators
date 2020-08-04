@@ -135,6 +135,7 @@ def main():
         set_columns_width(map_field,aggregation)  # adjust settings for display of field names 
         map_name = f'{locale}_ind_{map_name_suffix}'
         source = df.loc[row,'provider']
+        publication_year = df.loc[row,'year_published']
         print('\t{}'.format(map_name))
         if os.path.isfile(f'{locale_maps}/html/{map_name}.html') and reprocess==False:
             print('\t - File appears to already have been processed (HTML output exists); skipping.')
@@ -253,7 +254,9 @@ def main():
             # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
             if 'skip_maps' not in sys.argv:
                 # Create map
-                attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
+                area_attribution = areas[area_layer]['attribution']
+                data_attribution = f'{source} ({publication_year})'
+                attribution = f'{map_attribution} | {area_attribution} | data: {data_attribution}'
                 tables    = [buffered_study_region,study_region]
                 fields    = ['Description','Description']
                 coalesce_na = '{}'.format(df.loc[row,'coalesce_na'])
@@ -296,7 +299,7 @@ def main():
                 # get map centroid from study region
                 xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
                 # initialise map
-                m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
+                m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr=attribution)
                 # Add in location names
                 folium.TileLayer(tiles='http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
                                 name='Location labels', 
