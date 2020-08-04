@@ -116,7 +116,7 @@ def main():
         sheet = df.loc[row,'excel_sheet']
         data_type = valid_type(df.loc[row,'data_type'])
         description = df.loc[row,'alias']
-        heading = '{}: {}'.format(full_locale,df.loc[row,'map_heading'])
+        map_legend = '{}: {}'.format(full_locale,df.loc[row,'map_legend'])
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
         area_linkage_id = df.loc[row,'linkage_id']
@@ -153,6 +153,7 @@ def main():
                 mdf = pd.read_excel(mapxls,sheet)
                 mdf = mdf.set_index(linkage_id)
                 mdf.index.name = area_linkage_id
+                mdf[map_field] = mdf[map_field].astype(data_type)
                 fill_na = '{}'.format(df.loc[row,'fill_na'])
                 if fill_na not in ['','nan']:
                     fill_na = fill_na.split(',')
@@ -173,7 +174,6 @@ def main():
                     aggregation_text = f" ({aggregation})"
                 if aggregation =='sum':
                     mdf = mdf.groupby(mdf.index)[map_field].sum().to_frame()
-                    mdf = mdf.astype(data_type)
                     aggregation_text = f" ({aggregation})"
                 elif aggregation == 'average':
                     mdf = mdf.groupby(mdf.index)[map_field].mean().to_frame()
@@ -380,7 +380,9 @@ def main():
                         bins = len(value_list)
                         if len(value_list) < 3:
                             bins = list(value_list)+[max(value_list)+1]+[max(value_list)+2]
-                if len(map_field) > 1:
+                if
+                
+                elif len(map_field) > 1:
                     # make first letter of map field upper case for legend
                     legend_title = map_field[0].upper()+map_field[1:]
                 else:
@@ -394,7 +396,7 @@ def main():
                                 fill_opacity=0.7,
                                 nan_fill_opacity=0.2,
                                 line_opacity=0.2,
-                                legend_name=f'{legend_title}, by {area_layer}{aggregation_text}',
+                                legend_name=f'{map_legend}, by {area_layer}{aggregation_text}',
                                 bins = bins,
                                 smooth_factor = None,
                                 reset=True,
@@ -419,18 +421,6 @@ def main():
                 folium.LayerControl(collapsed=False).add_to(m)
                 m.fit_bounds(m.get_bounds())
                 m.get_root().html.add_child(folium.Element(map_style))
-                # Modify map heading (above legend)
-                html = m.get_root().render()
-                color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
-                old = '{}.svg = d3.select(".legend.leaflet-control").append("svg")'.format(color_map)
-                new = '''
-                {color_map}.title = d3.select(".legend.leaflet-control").append("div")
-                        .attr("style",'vertical-align: text-top;font-weight: bold;')
-                        .text("{heading}");
-                {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
-                '''.format(color_map=color_map,heading=heading)
-                html = html.replace(old,new)
-                # move legend to lower right corner
                 html = html.replace('''legend = L.control({position: \'topright''',
                                     '''legend = L.control({position: \'bottomright''')
                 # save map
