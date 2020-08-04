@@ -110,13 +110,13 @@ def main():
         column_names[f] = f.replace('sqkm','km\u00B2')
     
     for row in df.index:
-        dataset = df.loc[row,'data_dir']
+        dataset = df.loc[row,'data_file']
         print('  - "{}"'.format(dataset))
         # get information about this measure
         sheet = df.loc[row,'excel_sheet']
         data_type = valid_type(df.loc[row,'data_type'])
         description = df.loc[row,'alias']
-        map_legend = '{}: {}'.format(full_locale,df.loc[row,'map_legend'])
+        legend = '{}: {}'.format(full_locale,df.loc[row,'map_legend_override'])
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
         area_linkage_id = df.loc[row,'linkage_id']
@@ -134,6 +134,7 @@ def main():
         target_year = df.loc[row,'year_target']
         set_columns_width(map_field,aggregation)  # adjust settings for display of field names 
         map_name = f'{locale}_ind_{map_name_suffix}'
+        source = df.loc[row,'provider']
         print('\t{}'.format(map_name))
         if os.path.isfile(f'{locale_maps}/html/{map_name}.html') and reprocess==False:
             print('\t - File appears to already have been processed (HTML output exists); skipping.')
@@ -148,12 +149,10 @@ def main():
                 if description=='':
                     description = map_field
                     df.loc[row,'Description'] = map_field
-                source = df.loc[row,'provider']
                 mapxls = pd.ExcelFile('../{}'.format(dataset))
                 mdf = pd.read_excel(mapxls,sheet)
                 mdf = mdf.set_index(linkage_id)
                 mdf.index.name = area_linkage_id
-                mdf[map_field] = mdf[map_field].astype(data_type)
                 fill_na = '{}'.format(df.loc[row,'fill_na'])
                 if fill_na not in ['','nan']:
                     fill_na = fill_na.split(',')
@@ -166,9 +165,7 @@ def main():
                     point_overlay_hover_field = df.loc[row,'point_overlay_hover_field']
                     point_overlay = gpd.GeoDataFrame(mdf, geometry=gpd.points_from_xy(mdf[point_overlay_xy[0]],mdf[point_overlay_xy[1]]))
                 # aggregate data by ID using specified method, if specified.
-                # Note that currently only 'sum' and 'average' have been programmed as options.
                 aggregation_text = ''
-                popup_agg_text = ''
                 if aggregation =='count':
                     mdf = mdf.groupby(mdf.index)[map_field].count().to_frame()
                     aggregation_text = f" ({aggregation})"
@@ -380,13 +377,12 @@ def main():
                         bins = len(value_list)
                         if len(value_list) < 3:
                             bins = list(value_list)+[max(value_list)+1]+[max(value_list)+2]
-                if
-                
-                elif len(map_field) > 1:
+                if len(map_field) > 1:
                     # make first letter of map field upper case for legend
-                    legend_title = map_field[0].upper()+map_field[1:]
+                    legend_title = description[0].upper()+description[1:]
                 else:
-                    legend_title = map_field
+                    legend_title = description
+                legend_name = f'{legend_title}, by {area_layer}{aggregation_text}'
                 layer = folium.Choropleth(data=map,
                                 geo_data =map.to_json(),
                                 name = map_field,
@@ -396,7 +392,7 @@ def main():
                                 fill_opacity=0.7,
                                 nan_fill_opacity=0.2,
                                 line_opacity=0.2,
-                                legend_name=f'{map_legend}, by {area_layer}{aggregation_text}',
+                                legend_name=legend_name,
                                 bins = bins,
                                 smooth_factor = None,
                                 reset=True,
@@ -421,6 +417,25 @@ def main():
                 folium.LayerControl(collapsed=False).add_to(m)
                 m.fit_bounds(m.get_bounds())
                 m.get_root().html.add_child(folium.Element(map_style))
+                # Modify map 
+                html = m.get_root().render()
+                ## Wrap legend text if too long
+                if len(legend_name) > 75:
+                    import textwrap
+                    legend_lines = textwrap.wrap(legend_name, 75)
+                    legend_length = len(legend_name)
+                    n_lines = len(legend_lines)
+                    legend_height = 25 + 15 * n_lines
+                    old = f'''.attr("class", "caption")
+        .attr("y", 21)
+        .text('{legend_name}');'''
+                    new = ".append('tspan')".join(['''.attr('class','caption')
+        .attr("x", 0)
+        .attr("y", {pos})
+        .text('{x}')'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
+                    html = html.replace(old,new)
+                    html = html.replace('.attr("height", 40);',f'.attr("height", {legend_height});')
+                # move legend to lower right corner
                 html = html.replace('''legend = L.control({position: \'topright''',
                                     '''legend = L.control({position: \'bottomright''')
                 # save map

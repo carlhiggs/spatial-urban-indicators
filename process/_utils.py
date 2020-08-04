@@ -132,7 +132,7 @@ def compile_datasets(df_datasets,full_locale):
     df_datasets.dimension = df_datasets.dimension.fillna('')
     datasets = ['population','boundaries','indicators','destinations']
     query_include = '|'.join(['purpose == "{}"'.format(p) for p in datasets])
-    df_datasets = df_datasets.query(f'({query_include}) & target_region=="{full_locale}" & name_s!=""').copy()
+    df_datasets = df_datasets.query(f'({query_include}) & region=="{full_locale}" & name_s!=""').copy()
     df_datasets.set_index('name_s',inplace=True)
     df_datasets.areas = df_datasets.areas.str.split(',')
     df_datasets = df_datasets.explode('areas')
@@ -163,7 +163,7 @@ def expand_indicators(df):
     d.loc[d.type=='access','destination'] = d.loc[d.type=='access',].index
     # set table out name as the dataframe index
     d.index = d.table_out_name
-    for field in ['alias','map_heading']:
+    for field in ['alias']:
         d.loc[d.rate.astype('str') != '',field] = d.loc[d.rate.astype('str') != ''].apply(lambda x: (x[field], x[field] +' per {}'.format(
                                                                 (x.rate_units,'{:,g} {}'.format(x.rate_scale,x.rate_units))[x.rate_scale!=1]
                                                               ))[x['rate'] != ''],

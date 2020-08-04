@@ -65,7 +65,7 @@ def main():
         column_names[f] = f.replace('sqkm','km\u00B2')
 
     for row in df.index:
-        dataset = '../{}'.format(df.loc[row,'data_dir'])
+        dataset = '../{}'.format(df.loc[row,'data_file'])
         print(f'  - "{dataset}"')
         source_name = df.loc[row,'data_name']
         source = df.loc[row,'provider']
@@ -273,9 +273,10 @@ def main():
                         bins = list(value_list)+[max(value_list)+1]+[max(value_list)+2]
             if len(map_field) > 1:
                 # make first letter of map field upper case for legend
-                legend_title = map_field[0].upper()+map_field[1:]
+                legend_title = description[0].upper()+description[1:]
             else:
-                legend_title = map_field
+                legend_title = description
+            legend_name = f'{legend_title}, by {area_layer}'
             layer = folium.Choropleth(data=map,
                             geo_data =map.to_json(),
                             name = map_field,
@@ -285,7 +286,7 @@ def main():
                             fill_opacity=0.7,
                             nan_fill_opacity=0.2,
                             line_opacity=0.2,
-                            legend_name=f'{legend_title}, by {area_layer}',
+                            legend_name=legend_name,
                             bins = bins,
                             smooth_factor = None,
                             reset=True,
@@ -322,17 +323,24 @@ def main():
             folium.LayerControl(collapsed=False).add_to(m)
             m.fit_bounds(m.get_bounds())
             m.get_root().html.add_child(folium.Element(map_style))
-            # Modify map heading (above legend)
+            # Modify map 
             html = m.get_root().render()
-            color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
-            old = f'{color_map}.svg = d3.select(".legend.leaflet-control").append("svg")'
-            new = f'''
-            {color_map}.title = d3.select(".legend.leaflet-control").append("div")
-                    .attr("style",'vertical-align: text-top;font-weight: bold;')
-                    .text("{heading}");
-            {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
-            '''
-            html = html.replace(old,new)
+            ## Wrap legend text if too long
+            if len(legend_name) > 75:
+                import textwrap
+                legend_lines = textwrap.wrap(legend_name, 75)
+                legend_length = len(legend_name)
+                n_lines = len(legend_lines)
+                legend_height = 25 + 15 * n_lines
+                old = f'''.attr("class", "caption")
+    .attr("y", 21)
+    .text('{legend_name}');'''
+                new = ".append('tspan')".join(['''.attr('class','caption')
+    .attr("x", 0)
+    .attr("y", {pos})
+    .text('{x}')'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
+                html = html.replace(old,new)
+                html = html.replace('.attr("height", 40);',f'.attr("height", {legend_height});')
             # move legend to lower right corner
             html = html.replace('''legend = L.control({position: \'topright''',
                                 '''legend = L.control({position: \'bottomright''')

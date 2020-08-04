@@ -72,7 +72,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                   ['resolution'    ,'Scale / Resolution'                      ],
                   ['citations'     ,'Citation'                                ],
                   ['notes'         ,'Notes'                                   ],
-                  ['data_dir'      ,'Data location relative to project folder']]
+                  ['data_file'      ,'Data location relative to project folder']]
     # unformatted population items
     population_items = [
      ['Population per km²','{locale}_02_population_{level}_population_per_sqkm'],

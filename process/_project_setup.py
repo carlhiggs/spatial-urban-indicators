@@ -90,7 +90,7 @@ for area in area_meta['areas_of_interest']:
   # print('{} {}'.format(area,idx))
   if area_meta['area_datasets'] != '':
     areas[area] = {}
-    areas[area]['data'] = df_datasets[df_datasets.index== area_meta['area_datasets'][idx]].data_dir.values[0]
+    areas[area]['data'] = df_datasets[df_datasets.index== area_meta['area_datasets'][idx]].data_file.values[0]
     areas[area]['name'] = area_meta['area_names'][idx]
     areas[area]['table'] = re.sub('[^\s\w]+', '', areas[area]['name']).lower().strip().replace(' ','_')
     areas[area]['id'] = area_meta['area_ids'][idx]
@@ -141,7 +141,7 @@ population_linkage = {}
 for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]].index):
     data_type = pop_data.split(':')[1]
     population_linkage[data_type] = {}
-    population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_dir)
+    population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_file)
     population_linkage[data_type]['year_target'] = df_datasets.loc[pop_data].year_target
     # population_linkage[data_type]['linkage'] = '{}'.format(df_datasets.loc[pop_data].index_if_tabular)
     population_linkage[data_type]['linkage'] =  areas['subdistrict']['id']
@@ -161,7 +161,7 @@ for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]
 
 if population_grid != '':
     population_raster ={}
-    population_raster['data'] = '.{}'.format(df_datasets.loc[population_data]['data_dir'])
+    population_raster['data'] = '.{}'.format(df_datasets.loc[population_data]['data_file'])
     population_raster['band'] = int(df_datasets.loc[population_data]['band_if_raster'])
     population_raster['epsg'] = int(df_datasets.loc[population_data]['epsg'])
     population_raster['attribution'] = (
