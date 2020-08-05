@@ -437,36 +437,53 @@ def reproject_raster(inpath, outpath, new_crs):
                     resampling=Resampling.nearest)
                      
 # def generate_isid_csv_template(engine,area_layer, area_linkage_id, target_year, measure, units, schema, table, csv_file):
-def generate_isid_csv_template(engine,df_row, out_path, measure, schema, prefix='',suffix='',table=''):
+def generate_isid_csv_template(engine,df_row, out_path, schema='public', prefix='',suffix='',table='',measure=''):
     """Prepare a CSV data template according to ISID specifications
     
     Args:
-        area_layer: string
-        area_linkage_id: string
-        target_year: string
-        measure: string (the measure of interest; ie. an attribute in a postgresql table)
-        units: string
-        schema: string (the schema where the measure of interest is stored in a table)
-        table: string (the table where the measure of interest is stored)
-        csv_file: the path to save the file
+        
+    engine: sql db connection
+    df_row: a dataframe row of indicator attributes (Pandas)
+    out_path: directory to save file
+    schema: SQL database schema (if not public)
+    prefix: optional prefix for map table name (string)
+    suffix: optional suffix for map table name (string)
+    table: optional override of table name
+    measure: optional override of table attribute to map
     
-    Returns:
-        geojson feature: Geojson feature with date time variable
+    Saves
+    -------
+    
+    csv file matching template for upload to ISID map portal
     """
     import io
     import pandas
     
+    if table =='':
+        table = df_row.table_out_name
+    # get information about this measure
+    description = df_row.alias
+    aggregation = df_row.aggregation
+    area_layer = df_row.linkage_layer
+    linkage_id = df_row.linkage_id
+    map_field = df_row.map_field
+    target_year = df_row.year_target
+    units = df_row.units
+    rate = df_row.rate
+    rate_units = df_row.rate_units
+    rate_scale = df_row.rate_scale
+    units = format_units(units,rate_units,rate_scale)
+    if measure=='':
+        measure=map_field
     csv_file = f'{out_path}/{prefix}_{table}.csv'
-    
-    
     sql = f'''
-            SELECT a.{area_linkage_id} AS "Census Id",
+            SELECT a.{linkage_id} AS "Census Id",
                    district_en AS "Boundary Name",
                    {target_year} AS Year,
                    {measure} AS "Value",
                    NULL AS "Trend"
             FROM {area_layer} a
-            LEFT JOIN {schema}.{table} USING ({area_linkage_id})
+            LEFT JOIN {schema}.{table} USING ({linkage_id})
             '''
     csv_data = pandas.read_sql(sql, engine, index_col='Census Id')
     s = io.StringIO()
@@ -510,7 +527,7 @@ def get_df_data_fields(df,fields):
     return(data_fields_full)
     
 # def generate_map(engine,map_name,map_attribution, attribution, area, measure, description, map_field, linkage_id, schema, table, legend_bins, coalesce_na, data_fields,column_names, map_style,outpath, aggregation_text = '',point_overlay_xy= ''):
-def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',map_attribution='',area_attribution='',map_style_html_css='',schema='public',table=''):
+def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',map_attribution='',area_attribution='', map_style_html_css='',schema='public',table='',measure=''):
     """
     Generate html and png maps for a calculated indicator
     
@@ -544,12 +561,14 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
     linkage_id = df_row.linkage_id
     point_overlay_xy = df_row.point_overlay_xy
     map_field = df_row.map_field
+    if measure=='':
+        measure=map_field
     source = df_row.provider
     year_published = df_row.year_published
     coalesce_na = str(df_row.coalesce_na)
     legend_bins = str(df_row.legend_bins)
     aggregation - df_row.aggregation
-    get_aggregation_text(aggregation)
+    aggregation_text = get_aggregation_text(aggregation)
     attribution = f'{map_attribution} | {area_attribution} | data: {source} ({year_published})'
     potential_column_width = len(f'{map_field}_{aggregation}')
     if potential_column_width < pd.get_option("display.max_colwidth"):
@@ -713,8 +732,9 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
     folium.LayerControl(collapsed=False).add_to(m)
     m.fit_bounds(m.get_bounds())
     m.get_root().html.add_child(folium.Element(map_style_html_css))
+    html = m.get_root().render()
     ## Wrap legend text if too long 
-    ## (67 chars seems to work well, conservatively)
+    ## (65 chars seems to work well, conservatively)
     if len(legend_name) > 65:
         import textwrap
         legend_lines = textwrap.wrap(legend_name, 65)
@@ -722,16 +742,20 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
         n_lines = len(legend_lines)
         legend_height = 25 + 15 * n_lines
         old = f'''.attr("class", "caption")
-.attr("y", 21)
-.text('{legend_name}');'''
+        .attr("y", 21)
+        .text('{legend_name}');'''
         new = ".append('tspan')".join(['''.attr('class','caption')
-.attr("x", 0)
-.attr("y", {pos})
-.text('{x}')'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
+        .attr("x", 0)
+        .attr("y", {pos})
+        .text('{x}')'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
         html = html.replace(old,new)
         html = html.replace('.attr("height", 40);',f'.attr("height", {legend_height});')
-    # # Modify map heading (above legend)
-    # html = m.get_root().render()
+
+    # move legend to lower right corner
+    html = html.replace('''legend = L.control({position: \'topright''',
+                        '''legend = L.control({position: \'bottomright''')
+    
+    ## Modify map heading (above legend)
     # color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
     # old = '{}.svg = d3.select(".legend.leaflet-control").append("svg")'.format(color_map)
     # new = f'''
@@ -741,21 +765,22 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
     # {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
     # '''
     # html = html.replace(old,new)
-    # move legend to lower right corner
-    html = html.replace('''legend = L.control({position: \'topright''',
-                        '''legend = L.control({position: \'bottomright''')
+    
     # save map
-    fid = open(f'{outpath}/html/{map_name}.html', 'wb')
+    fid = open(f'{out_path}/html/{map_name}.html', 'wb')
     fid.write(html.encode('utf8'))
     fid.close()
-    folium_to_image(os.path.join(outpath,'html'),
-                    os.path.join(outpath,'pdf'),
-                    map_name,
-                    formats=['pdf'])
-    print(f'\t- {outpath}/html/{map_name}.html')
-    print(f'\t- {outpath}/png/{map_name}.png')
+    # folium_to_image(os.path.join(out_path,'html'),
+                    # os.path.join(out_path,'pdf'),
+                    # map_name,
+                    # formats=['pdf'])
+    folium_to_image(os.path.join(out_path,'html'),
+                                os.path.join(out_path,'png'),
+                                map_name)
+    print(f'\t- {out_path}/html/{map_name}.html')
+    print(f'\t- {out_path}/png/{map_name}.png')
     print('')
-    
+
 def get_aggregation_text(aggregation):
     """
     input: 

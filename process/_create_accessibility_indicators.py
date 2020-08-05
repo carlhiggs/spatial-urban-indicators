@@ -47,14 +47,15 @@ def main():
         area_attribution = areas[area]['attribution']
         print(area)
         for row in df.query(f"linkage_layer=='{area}'").itertuples():
-            map_name_suffix = row.table_out_name
-            table = map_name_suffix.replace('_pop_pct','')
+            table = row.table_out_name
+            map_name = table.replace('_pop_pct','')
             print('\t{}'.format(table))
             if 'skip_tables' not in sys.argv:
-                generate_isid_csv_template(engine, row, outpath=f'{locale_maps}/csv', measure, schema, prefix=study_region)
+                out_path=f'{locale_maps}/csv'
+                generate_isid_csv_template(engine, row, out_path, prefix=study_region, schema=schema,table=map_name,measure=measure)
             if 'skip_maps' not in sys.argv:
                 # Create map
-                generate_map(engine,row,out_path=locale_maps,data_fields=data_fields,prefix=locale,schema=schema,map_attribution=map_attribution,area_attribution=area_attribution,map_style_html_css=map_style,table=table)
+                generate_map(engine,row,out_path=locale_maps,data_fields=data_fields,prefix=locale,schema=schema,map_attribution=map_attribution,area_attribution=area_attribution,map_style_html_css=map_style,table=map_name,measure=measure)
                 
     # output to completion log                  
     script_running_log(script, task, start, locale)
