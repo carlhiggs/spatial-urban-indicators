@@ -22,6 +22,7 @@ import pandas
 import subprocess as sp
 import math 
 import re
+import numpy as np
 
 # import custom utility functions
 from _utils import *
@@ -240,7 +241,7 @@ if no_forward_edge_issues == 1:
 # Destinations data directory
 # destination_list = [x for x in df_destinations.destination.tolist()] # the destinations 
 
-df_osm_dest = df_osm_dest.replace(pandas.np.nan, 'NULL', regex=True)
+df_osm_dest = df_osm_dest.replace(np.nan, 'NULL', regex=True)
 
 # Colours for presenting maps
 colours = {}

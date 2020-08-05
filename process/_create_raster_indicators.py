@@ -325,20 +325,21 @@ def main():
             m.get_root().html.add_child(folium.Element(map_style))
             # Modify map 
             html = m.get_root().render()
-            ## Wrap legend text if too long
-            if len(legend_name) > 75:
+            ## Wrap legend text if too long 
+            ## (67 chars seems to work well, conservatively)
+            if len(legend_name) > 65:
                 import textwrap
-                legend_lines = textwrap.wrap(legend_name, 75)
+                legend_lines = textwrap.wrap(legend_name, 65)
                 legend_length = len(legend_name)
                 n_lines = len(legend_lines)
                 legend_height = 25 + 15 * n_lines
                 old = f'''.attr("class", "caption")
-    .attr("y", 21)
-    .text('{legend_name}');'''
+        .attr("y", 21)
+        .text('{legend_name}');'''
                 new = ".append('tspan')".join(['''.attr('class','caption')
-    .attr("x", 0)
-    .attr("y", {pos})
-    .text('{x}')'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
+        .attr("x", 0)
+        .attr("y", {pos})
+        .text('{x}')'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
                 html = html.replace(old,new)
                 html = html.replace('.attr("height", 40);',f'.attr("height", {legend_height});')
             # move legend to lower right corner
