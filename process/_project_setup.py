@@ -125,7 +125,6 @@ for area in area_meta['areas_of_interest']:
                                   ).format(source_url  = df_datasets.loc[area_meta['area_datasets'][idx]]['source_url'],
                                            provider    = df_datasets.loc[area_meta['area_datasets'][idx]]['provider'],
                                            licence_attrib = licence_attrib)
-    
 
 area_analysis  = areas[analysis_scale]['id']
 analysis_field = areas[analysis_scale]['name']

@@ -436,7 +436,8 @@ def reproject_raster(inpath, outpath, new_crs):
                     dst_crs=dst_crs,
                     resampling=Resampling.nearest)
                      
-def generate_isid_csv_template(engine,area_layer, area_linkage_id, target_year, measure, units, schema, table, csv_file):
+# def generate_isid_csv_template(engine,area_layer, area_linkage_id, target_year, measure, units, schema, table, csv_file):
+def generate_isid_csv_template(engine,df_row, out_path, measure, schema, prefix='',suffix='',table=''):
     """Prepare a CSV data template according to ISID specifications
     
     Args:
@@ -454,6 +455,10 @@ def generate_isid_csv_template(engine,area_layer, area_linkage_id, target_year, 
     """
     import io
     import pandas
+    
+    csv_file = f'{out_path}/{prefix}_{table}.csv'
+    
+    
     sql = f'''
             SELECT a.{area_linkage_id} AS "Census Id",
                    district_en AS "Boundary Name",
@@ -504,13 +509,60 @@ def get_df_data_fields(df,fields):
             data_fields_full.append(f'{f} per sqkm')
     return(data_fields_full)
     
-def generate_map(engine,map_name,map_attribution, attribution, area, measure, description, map_field, linkage_id, schema, table, legend_bins, coalesce_na, data_fields,column_names, map_style,outpath, aggregation_text = '',point_overlay_xy= ''):
+# def generate_map(engine,map_name,map_attribution, attribution, area, measure, description, map_field, linkage_id, schema, table, legend_bins, coalesce_na, data_fields,column_names, map_style,outpath, aggregation_text = '',point_overlay_xy= ''):
+def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',map_attribution='',area_attribution='',map_style_html_css='',schema='public',table=''):
+    """
+    Generate html and png maps for a calculated indicator
+    
+    engine: sql db connection
+    df_row: a dataframe row of indicator attributes (Pandas)
+    data_fields: a list of fields of interest when mapping (list)
+    prefix: optional prefix for map table name (string)
+    suffix: optional suffix for map table name (string)
+    map_attribution: attribution details for this map (ie. who is making it)
+    area_attribution: attribution details for area layers
+    map_tyle_html_css: html code defining style for map
+    schema: schema where sql table is found
+    table: optional override for table name (if other than defined in df_row)
+    
+    Saves
+    -------
+    
+    html and png files
+    """
     import geopandas as gpd
+    import pandas as pd
     import folium
     import re
-    additional_data = ','.join([f'a."{d}"' for d in data_fields])
-    if additional_data != '':
-        additional_data = f'{additional_data},'
+    if table =='':
+        table = df_row.table_out_name
+    map_name = f'{prefix}_ind_{table}'
+    # get information about this measure
+    description = df_row.alias
+    aggregation = df_row.aggregation
+    area = df_row.linkage_layer
+    linkage_id = df_row.linkage_id
+    point_overlay_xy = df_row.point_overlay_xy
+    map_field = df_row.map_field
+    source = df_row.provider
+    year_published = df_row.year_published
+    coalesce_na = str(df_row.coalesce_na)
+    legend_bins = str(df_row.legend_bins)
+    aggregation - df_row.aggregation
+    get_aggregation_text(aggregation)
+    attribution = f'{map_attribution} | {area_attribution} | data: {source} ({year_published})'
+    potential_column_width = len(f'{map_field}_{aggregation}')
+    if potential_column_width < pd.get_option("display.max_colwidth"):
+        pd.set_option("display.max_colwidth", potential_column_width)
+    if data_fields!='':
+        additional_data = ','.join([f'a."{d}"' for d in data_fields])
+        if additional_data != '':
+            additional_data = f'{additional_data},'
+        # create dictionary of additional covariate names for mapping (with superscript 2)
+        column_names = {}
+        # format to display superscript 2 for square kilometres
+        for f in data_fields:
+            column_names[f] = f.replace('sqkm','km\u00B2')
     if coalesce_na in ['','nan']:
         sql = f'''
             SELECT a.{area},
@@ -598,7 +650,7 @@ def generate_map(engine,map_name,map_attribution, attribution, area, measure, de
     # Create choropleth map
     bins = 6
     # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
-    legend_bins = coalesce_na
+    legend_bins = legend_bins
     if legend_bins in ['quartiles']:
         bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
     if legend_bins.startswith('equal'):
@@ -660,7 +712,7 @@ def generate_map(engine,map_name,map_attribution, attribution, area, measure, de
     # Add layer control
     folium.LayerControl(collapsed=False).add_to(m)
     m.fit_bounds(m.get_bounds())
-    m.get_root().html.add_child(folium.Element(map_style))
+    m.get_root().html.add_child(folium.Element(map_style_html_css))
     ## Wrap legend text if too long 
     ## (67 chars seems to work well, conservatively)
     if len(legend_name) > 65:
@@ -703,3 +755,25 @@ def generate_map(engine,map_name,map_attribution, attribution, area, measure, de
     print(f'\t- {outpath}/html/{map_name}.html')
     print(f'\t- {outpath}/png/{map_name}.png')
     print('')
+    
+def get_aggregation_text(aggregation):
+    """
+    input: 
+        aggregation: aggregation description (string)
+    output: 
+        formatted aggregation description or map field (string)
+    """
+    aggregation_text = ''
+    if aggregation =='count':
+        aggregation_text = f" ({aggregation})"
+    elif aggregation =='sum':
+        aggregation_text = f" ({aggregation})"
+    elif aggregation == 'average':
+        aggregation_text = f" ({aggregation})"
+    elif aggregation == 'percent':
+        aggregation_text = f" (%)"
+    else:
+        if str(aggregation)!='nan':
+            print(f"The aggregation '{aggregation}' is not recognised")
+        return('')
+    return(aggregation_text)

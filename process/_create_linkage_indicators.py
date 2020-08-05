@@ -184,6 +184,32 @@ def main():
                 elif not '{}'.format(description)=='nan':
                     print("\t\tNo aggregation method specified; assuming that all records map to distinct areas.")
                     mdf = mdf[[map_field]]
+                aggregation_text = get_aggregation_text(aggregation)
+                def get_aggregation_text(aggregation,field=False,map_field=''):
+                    """
+                    input: 
+                        aggregation: aggregation description (string)
+                        field: whether to output formatted aggregation or map field.  Default is formatted aggregation. (bool)
+                    output: formatted aggregation description or map field (string)
+                    """
+                    if aggregation =='count':
+                        aggregation_text = f" ({aggregation})"
+                    elif aggregation =='sum':
+                        aggregation_text = f" ({aggregation})"
+                    elif aggregation == 'average':
+                        aggregation_text = f" ({aggregation})"
+                        map_field = f'average {map_field}'
+                    elif aggregation == 'percent':
+                        aggregation_text = f" (%)"
+                        map_field = f'percent {map_field} {evaluate}'
+                    else:
+                        if str(aggregation)!='nan':
+                            print(f"The aggregation '{aggregation}' is not recognised")
+                    if not field:
+                        return(aggregation_text)
+                    else:
+                        return(map_field)
+                        
                 if rate != '':
                     if rate in ['area','population','household']:
                         density_field = df.loc[row,'alias']
