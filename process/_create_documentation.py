@@ -26,7 +26,8 @@ def get_ind_metadata():
     # find and return records for all indicator data sources with a defined indicator method description
     df = df_datasets.loc[df_datasets['method_description_ind'].fillna('')!='',].copy()
     df['map'] = df.loc[:,'table_out_name'].apply(lambda x: f'{locale}_ind_{x}')
-    df['description'] = df.apply(lambda x: '{}: {}'.format(x["map_heading"],x["map_field"]),axis=1)
+    # df['description'] = df.apply(lambda x: '{}: {}'.format(x["map_heading"],x["map_field"]),axis=1)
+    df['description'] = df['alias']
     return df
     
 def create_html_select(ind_metadata):
@@ -210,7 +211,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                             for x in range(0,n_plots):
                                 y     =  plots['table_out_name'].values[x]
                                 ylab  =  plots['map_field'].values[x]
-                                title =  plots['map_heading'].values[x].title()
+                                title =  plots['alias'].values[x].title()
                                 x1   = 'population'     
                                 x2   = 'population per sqkm'
                                 plot1 = f'{y}_{x1}'.replace(' ','_')

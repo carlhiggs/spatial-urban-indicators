@@ -218,42 +218,43 @@ def main():
                 print('\t- {path}/{output_name}.gpkg/{layer}'.format(output_name = '{}'.format(study_region),
                                                                 path = os.path.join(locale_maps,'gpkg'),
                                                                 layer = map_name_suffix))
-            sql = f'''
-                    SELECT a.{area_linkage_id} AS "Census Id",
-                           district_en AS "Boundary Name",
-                           {target_year} AS Year,
-                           {map_name_suffix} AS "Value",
-                           NULL AS "Trend"
-                    FROM {area_layer} a
-                    LEFT JOIN {map_name_suffix} USING ({area_linkage_id})
-                    '''
-            csv_data = pandas.read_sql(sql, engine, index_col='Census Id')
-            s = io.StringIO()
-            csv_data.to_csv(s,header=False)
-            body = s.getvalue()
-            # header = "'Boundary Name','year','Value','Trend'\n"
-            sep = '-'*142
-            csv_template = (
-                 'template_version,1.2,Ignore this row,,\n'
-                f'data_type,{units},0,Set data type as # % or a custom suffix,\r\n'
-                 'trend_year_start,,Set the year range for the start of trend calculation,,\r\n'
-                 'trend_year_end,,Set the year range for the end of trend calculation,,\r\n'
-                f'{sep},,,,\r\n'
-                 'Census Id,Boundary Name,Year,Value,Trend\r\n'
-                f'{sep},,,,\r\n'
-                f'{body}'
-                )
-            csv_file = '{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
-                                                                                      map_name_suffix),
-                                                         path = os.path.join(locale_maps,'csv'))
-            with open(csv_file, 'w') as output_file:
-                output_file.write(csv_template)
-            print('\t- {path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
-                                                                                      map_name_suffix),
-                                                         path = os.path.join(locale_maps,'csv')))
-            # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
+                sql = f'''
+                        SELECT a.{area_linkage_id} AS "Census Id",
+                               district_en AS "Boundary Name",
+                               {target_year} AS Year,
+                               {map_name_suffix} AS "Value",
+                               NULL AS "Trend"
+                        FROM {area_layer} a
+                        LEFT JOIN {map_name_suffix} USING ({area_linkage_id})
+                        '''
+                csv_data = pandas.read_sql(sql, engine, index_col='Census Id')
+                s = io.StringIO()
+                csv_data.to_csv(s,header=False)
+                body = s.getvalue()
+                # header = "'Boundary Name','year','Value','Trend'\n"
+                sep = '-'*142
+                csv_template = (
+                     'template_version,1.2,Ignore this row,,\n'
+                    f'data_type,{units},0,Set data type as # % or a custom suffix,\r\n'
+                     'trend_year_start,,Set the year range for the start of trend calculation,,\r\n'
+                     'trend_year_end,,Set the year range for the end of trend calculation,,\r\n'
+                    f'{sep},,,,\r\n'
+                     'Census Id,Boundary Name,Year,Value,Trend\r\n'
+                    f'{sep},,,,\r\n'
+                    f'{body}'
+                    )
+                csv_file = '{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
+                                                                                          map_name_suffix),
+                                                             path = os.path.join(locale_maps,'csv'))
+                with open(csv_file, 'w') as output_file:
+                    output_file.write(csv_template)
+                print('\t- {path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
+                                                                                          map_name_suffix),
+                                                             path = os.path.join(locale_maps,'csv')))
+                # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
+            
+            # Create map
             if 'skip_maps' not in sys.argv:
-                # Create map
                 area_attribution = areas[area_layer]['attribution']
                 data_attribution = f'{source} ({publication_year})'
                 attribution = f'{map_attribution} | {area_attribution} | data: {data_attribution}'

@@ -70,7 +70,6 @@ def main():
         source_name = df.loc[row,'data_name']
         source = df.loc[row,'provider']
         map_field = df.loc[row,'map_field']
-        heading = '{}: {}'.format(full_locale,df.loc[row,'map_heading'])
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
         area_linkage_id = df.loc[row,'linkage_id']
@@ -96,64 +95,66 @@ def main():
             print(f"    - {map_name_suffix} already exists in database.")
             print("      Please drop this table if you wish it to be reprocessed.")
         else:
-            if '.tif' not in dataset:
-                sys.exit("This code is designed to run with Geotiff's with the extension. tif")
-            if '.zip:' in dataset:
-                zip,tif = dataset.split(':')
-                zip = os.path.abspath(zip)
-                dataset = f'zip:///{zip}!/{tif}'
-            else:
-                dataset = os.path.abspath(dataset)
-            # clip and save raster
-            with rasterio.open(dataset) as full_raster:
-                # set pop_vector to match crs of input raster
-                # the above works as tested (raster is epsg 4326)
-                # in theory, works if epsg is otherwise detectable in rasterio
-                clipping_boundary.to_crs({'init':full_raster.crs['init']},inplace=True)
-                coords = [json.loads(clipping_boundary.to_json())['features'][0]['geometry']]
-                out_img, out_transform = mask(full_raster, coords, crop=True)
-                out_meta = full_raster.meta.copy()
-                out_meta.update({
-                                "driver": "GTiff",
-                                "height": out_img.shape[1],
-                                "width":  out_img.shape[2],
-                                "transform": out_transform,
-                                "nodata": raster_nodata
-                                }) 
-            with rasterio.open(raster_clipped, "w", **out_meta) as dest:
-                dest.write(out_img)    
-            # reproject and save the re-projected clipped raster
-            # (see config file for reprojection function)
-            reproject_raster(inpath = raster_clipped, 
-                          outpath = raster_projected, 
-                          new_crs = f'EPSG:{srid}')   
-            # Aggregate raster in each subdistrict according to datasource set up (e.g. sum or average)
-            sql = '''SELECT "{}",geom FROM {}'''.format(areas[area_layer]['id'],areas[area_layer]['table'])
-            analysis_area = gpd.GeoDataFrame.from_postgis(sql,engine, geom_col='geom', index_col=area_linkage_id)
-            # create null field for population values
-            stats = zonal_stats(analysis_area,
-                                 raster_projected,
-                                 band_num=raster_band,
-                                 no_data=raster_nodata,
-                                 stats=raster_statistic,
-                                 all_touched=True,
-                                 geojson_out=True)
-            analysis_area[map_name_suffix] = np.nan    
-            analysis_area[map_name_suffix] = analysis_area[map_name_suffix].astype(raster_dtype)
-            for x in range(0,len(stats)):
-                analysis_area.loc[int(stats[x]['id']),map_name_suffix]=scale_factor*stats[x]['properties'][raster_statistic]+raster_offset
-            # output vector layers with new summary statistic
-            analysis_area.drop(['geom'], axis=1, inplace=True)
-            analysis_area.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
-            print(f'\t- postgresql::{db}/{map_name_suffix}')
-            analysis_area.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
-            path = os.path.join(locale_maps,'gpkg')
-            print(f'\t- {path}/{study_region}.gpkg/{map_name_suffix}')
-            path = os.path.join(locale_maps,'csv')
-            analysis_area.to_csv(f'{path}/{study_region}_{map_name_suffix}.csv')
-            print(f'\t- {path}/{study_region}_{map_name_suffix}.csv')
+            if 'skip_tables' not in sys.argv:
+                if '.tif' not in dataset:
+                    sys.exit("This code is designed to run with Geotiff's with the extension. tif")
+                if '.zip:' in dataset:
+                    zip,tif = dataset.split(':')
+                    zip = os.path.abspath(zip)
+                    dataset = f'zip:///{zip}!/{tif}'
+                else:
+                    dataset = os.path.abspath(dataset)
+                # clip and save raster
+                with rasterio.open(dataset) as full_raster:
+                    # set pop_vector to match crs of input raster
+                    # the above works as tested (raster is epsg 4326)
+                    # in theory, works if epsg is otherwise detectable in rasterio
+                    clipping_boundary.to_crs({'init':full_raster.crs['init']},inplace=True)
+                    coords = [json.loads(clipping_boundary.to_json())['features'][0]['geometry']]
+                    out_img, out_transform = mask(full_raster, coords, crop=True)
+                    out_meta = full_raster.meta.copy()
+                    out_meta.update({
+                                    "driver": "GTiff",
+                                    "height": out_img.shape[1],
+                                    "width":  out_img.shape[2],
+                                    "transform": out_transform,
+                                    "nodata": raster_nodata
+                                    }) 
+                with rasterio.open(raster_clipped, "w", **out_meta) as dest:
+                    dest.write(out_img)    
+                # reproject and save the re-projected clipped raster
+                # (see config file for reprojection function)
+                reproject_raster(inpath = raster_clipped, 
+                              outpath = raster_projected, 
+                              new_crs = f'EPSG:{srid}')   
+                # Aggregate raster in each subdistrict according to datasource set up (e.g. sum or average)
+                sql = '''SELECT "{}",geom FROM {}'''.format(areas[area_layer]['id'],areas[area_layer]['table'])
+                analysis_area = gpd.GeoDataFrame.from_postgis(sql,engine, geom_col='geom', index_col=area_linkage_id)
+                # create null field for population values
+                stats = zonal_stats(analysis_area,
+                                     raster_projected,
+                                     band_num=raster_band,
+                                     no_data=raster_nodata,
+                                     stats=raster_statistic,
+                                     all_touched=True,
+                                     geojson_out=True)
+                analysis_area[map_name_suffix] = np.nan    
+                analysis_area[map_name_suffix] = analysis_area[map_name_suffix].astype(raster_dtype)
+                for x in range(0,len(stats)):
+                    analysis_area.loc[int(stats[x]['id']),map_name_suffix]=scale_factor*stats[x]['properties'][raster_statistic]+raster_offset
+                # output vector layers with new summary statistic
+                analysis_area.drop(['geom'], axis=1, inplace=True)
+                analysis_area.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
+                print(f'\t- postgresql::{db}/{map_name_suffix}')
+                analysis_area.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
+                path = os.path.join(locale_maps,'gpkg')
+                print(f'\t- {path}/{study_region}.gpkg/{map_name_suffix}')
+                path = os.path.join(locale_maps,'csv')
+                analysis_area.to_csv(f'{path}/{study_region}_{map_name_suffix}.csv')
+                print(f'\t- {path}/{study_region}_{map_name_suffix}.csv')
             
-            # Create map
+        # Create map
+        if 'skip_maps' not in sys.argv:
             attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
             tables    = [buffered_study_region,study_region]
             fields    = ['Description','Description']
