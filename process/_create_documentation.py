@@ -90,7 +90,7 @@ def generate_metadata_rst(ind_metadata,df_context):
         # create heading for dimension 
         rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,dimension_text,'~'*len(dimension_text))
         print(f'{dimension}:')
-        for category in ind_metadata.loc[ind_metadata.dimension==dimension,'indicator_category'].unique():
+        for category in ind_metadata.loc[ind_metadata.dimension==dimension,'category'].unique():
           # create heading for indicator
           if str(category) not in ('','nan'):
             print(f'\t{category}')
@@ -101,12 +101,12 @@ def generate_metadata_rst(ind_metadata,df_context):
             rst = '{}\r\n{}\r\n'.format(rst,category_thai)
             # add description for indicator
             rst = '{}\r\n{}\r\n'.format(rst,category_definition)
-          for d in ind_metadata.loc[(ind_metadata.dimension==dimension)&(ind_metadata.indicator_category==category),'data_name'].unique():
+          for d in ind_metadata.loc[(ind_metadata.dimension==dimension)&(ind_metadata.category==category),'data_name'].unique():
             print(f'\t - {d}')
             # create heading for dataset
             if d != dimension_text:
                 rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,d,'-'*len(d))
-            ds = ind_metadata.query(f'dimension == "{dimension}" & indicator_category=="{category}" & data_name == "{d}"').copy()
+            ds = ind_metadata.query(f'dimension == "{dimension}" & category=="{category}" & data_name == "{d}"').copy()
             # add description for dataset
             rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_data)
             for i in data_items:

@@ -42,6 +42,8 @@ def main():
     
     schema = 'ind_area'
     measure = 'percent_access'
+    prefix = locale
+    suffix = '_pop_pct'
     for area in df.linkage_layer.unique():
         area_id = areas[area]['id']
         area_attribution = areas[area]['attribution']
@@ -52,11 +54,13 @@ def main():
             print('\t{}'.format(table))
             if 'skip_tables' not in sys.argv:
                 out_path=f'{locale_maps}/csv'
-                generate_isid_csv_template(engine, row, out_path, prefix=study_region, schema=schema,table=map_name,measure=measure)
+                if not os.path.exists(f'{out_path}/{prefix}_{table}{suffix}.csv'):
+                    generate_isid_csv_template(engine, row, out_path, prefix=prefix,suffix=suffix, schema=schema,table=map_name,measure=measure)
             if 'skip_maps' not in sys.argv:
                 # Create map
-                generate_map(engine,row,out_path=locale_maps,data_fields=data_fields,prefix=locale,schema=schema,map_attribution=map_attribution,area_attribution=area_attribution,map_style_html_css=map_style,table=map_name,measure=measure)
-                
+                if not os.path.exists(f'{out_path}/html/{prefix}_ind_{table}{suffix}.html'):
+                    generate_map(engine,row,out_path=locale_maps,data_fields=data_fields,prefix=locale,suffix=suffix,schema=schema,map_attribution=map_attribution,area_attribution=area_attribution,map_style_html_css=map_style,table=map_name,measure=measure)
+    
     # output to completion log                  
     script_running_log(script, task, start, locale)
     engine.dispose()

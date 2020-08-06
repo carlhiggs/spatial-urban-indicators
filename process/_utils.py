@@ -475,7 +475,7 @@ def generate_isid_csv_template(engine,df_row, out_path, schema='public', prefix=
     units = format_units(units,rate_units,rate_scale)
     if measure=='':
         measure=map_field
-    csv_file = f'{out_path}/{prefix}_{table}.csv'
+    csv_file = f'{out_path}/{prefix}_{table}{suffix}.csv'
     sql = f'''
             SELECT a.{linkage_id} AS "Census Id",
                    district_en AS "Boundary Name",
@@ -553,7 +553,7 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
     import re
     if table =='':
         table = df_row.table_out_name
-    map_name = f'{prefix}_ind_{table}'
+    map_name = f'{prefix}_ind_{table}{suffix}'
     # get information about this measure
     description = df_row.alias
     aggregation = df_row.aggregation
@@ -745,11 +745,11 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
         legend_height = 25 + 15 * n_lines
         old = f'''.attr("class", "caption")
         .attr("y", 21)
-        .text('{legend_name}');'''
+        .text("{legend_name}");'''
         new = ".append('tspan')".join(['''.attr('class','caption')
         .attr("x", 0)
         .attr("y", {pos})
-        .text('{x}')'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
+        .text("{x}")'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
         html = html.replace(old,new)
         html = html.replace('.attr("height", 40);',f'.attr("height", {legend_height});')
 

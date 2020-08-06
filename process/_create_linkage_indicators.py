@@ -116,7 +116,6 @@ def main():
         sheet = df.loc[row,'excel_sheet']
         data_type = valid_type(df.loc[row,'data_type'])
         description = df.loc[row,'alias']
-        legend = '{}: {}'.format(full_locale,df.loc[row,'map_legend_override'])
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
         area_linkage_id = df.loc[row,'linkage_id']

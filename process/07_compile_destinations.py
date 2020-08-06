@@ -82,7 +82,7 @@ def main():
             );
         '''
         engine.execute(sql)
-        data = getattr(row,'data_dir')
+        data = getattr(row,'data_file')
         name = getattr(row,'name')
         domain = getattr(row,'data_name')
         osm = getattr(row,'osm')
