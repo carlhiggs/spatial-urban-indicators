@@ -69,6 +69,7 @@ def main():
         print(f'  - "{dataset}"')
         source_name = df.loc[row,'data_name']
         source = df.loc[row,'provider']
+        description = df.loc[row,'alias']
         map_field = df.loc[row,'map_field']
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
@@ -152,9 +153,10 @@ def main():
                 path = os.path.join(locale_maps,'csv')
                 analysis_area.to_csv(f'{path}/{study_region}_{map_name_suffix}.csv')
                 print(f'\t- {path}/{study_region}_{map_name_suffix}.csv')
-            
+        
         # Create map
         if 'skip_maps' not in sys.argv:
+            print('      Creating map...')
             attribution = '{} | {} | {} data: {}'.format(map_attribution,areas[area_layer]['attribution'],map_field,source)
             tables    = [buffered_study_region,study_region]
             fields    = ['Description','Description']
@@ -162,7 +164,7 @@ def main():
             coalesce_na = '{}'.format(df.loc[row,'coalesce_na'])
             if coalesce_na in ['','nan']:
                 sql = f'''
-                    SELECT a.{linkage_id}
+                    SELECT a.{linkage_id},
                            a.{area_layer},
                            {data_fields}
                            b.{map_name_suffix},
@@ -173,7 +175,7 @@ def main():
                     '''
             else:
                 sql = f'''
-                    SELECT a.{linkage_id}
+                    SELECT a.{linkage_id},
                            a.{area_layer},
                            {data_fields}
                            COALESCE(b.{map_name_suffix},{coalesce_na}) AS "{map_name_suffix}",
@@ -298,28 +300,28 @@ def main():
                                            labels=True, 
                                            sticky=True
                                            ).add_to(layer.geojson)    
-            # load up the clipped raster (assumed to be epsg4326)
-            with rasterio.open(raster_clipped) as src:
-                boundary = src.bounds
-                nodata = raster_nodata
-                raster_layer = src.read(1)
-                # raster_layer = raster_layer.astype(float)
-                # raster_layer[raster_layer==raster_nodata] = np.nan
-                # TECHNICALLY INVALID WORKAROUND FOR DISPLAY PURPOSES ONLY
-                # ie. no data over water, display as though 'zero' so it does not show
-                raster_layer[raster_layer==raster_nodata] = 0
-                raster_layer = scale_factor*(raster_layer + raster_offset)
-            # colormap=lambda x: (0, x, 0, x),#R,G,B,alpha,
-            m.add_child(folium.raster_layers.ImageOverlay(raster_layer, 
-                                name=source_name,
-                                opacity=.7,
-                                bounds=[[boundary[1],boundary[0]], 
-                                        [boundary[3], boundary[2]]],
-                                colormap=plt.get_cmap('YlGn'), 
-                                legend_name=source_name,
-                                overlay=True,
-                                show=False
-                                )) 
+            ## load up the clipped raster (assumed to be epsg4326)
+            #with rasterio.open(raster_clipped) as src:
+            #    boundary = src.bounds
+            #    nodata = raster_nodata
+            #    raster_layer = src.read(1)
+            #    # raster_layer = raster_layer.astype(float)
+            #    # raster_layer[raster_layer==raster_nodata] = np.nan
+            #    # TECHNICALLY INVALID WORKAROUND FOR DISPLAY PURPOSES ONLY
+            #    # ie. no data over water, display as though 'zero' so it does not show
+            #    raster_layer[raster_layer==raster_nodata] = 0
+            #    raster_layer = scale_factor*(raster_layer + raster_offset)
+            ## colormap=lambda x: (0, x, 0, x),#R,G,B,alpha,
+            #m.add_child(folium.raster_layers.ImageOverlay(raster_layer, 
+            #                    name=source_name,
+            #                    opacity=.7,
+            #                    bounds=[[boundary[1],boundary[0]], 
+            #                            [boundary[3], boundary[2]]],
+            #                    colormap=plt.get_cmap('YlGn'), 
+            #                    legend_name=source_name,
+            #                    overlay=True,
+            #                    show=False
+            #                    )) 
             # Add layer control
             folium.LayerControl(collapsed=False).add_to(m)
             m.fit_bounds(m.get_bounds())

@@ -34,7 +34,7 @@ from _project_setup import *
 def label_point(x, y, val, ax,x_offset=0):
     a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
     for i, point in a.iterrows():
-        ax.text(point['x']+x_offset, point['y'], str(point['val']))
+        ax.text(point['x']+x_offset, point['y'], str(point['val']),rotation=45)
 
 def main():
     # simple timer for log file
@@ -52,10 +52,8 @@ def main():
         row_type = df.loc[row,'type']
         data_type = valid_type(df.loc[row,'data_type'])
         description = df.loc[row,'alias']
-        # heading = '{}'.format(df.loc[row,'map_heading'])
-        heading = '{}'.format(df.loc[row,'map_heading'])
-        print(f"\n - {heading}")
-        # heading = '\n'.join(wrap(heading, 80))
+        print(f"\n - {description}")
+        description = '\n'.join(wrap(description, 80))
         plot_data_y = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
         area_linkage_id = df.loc[row,'linkage_id']
@@ -76,8 +74,8 @@ def main():
         map_name = f'{locale}_ind_{plot_data_y}'
         # Prepare plot
         y    = plot_data_y
-        ylab = heading
-        title = map_field
+        ylab = description
+        title = description
         x1   = 'population'     
         x2   = 'population per sqkm'
         if row_type!='access':
@@ -118,56 +116,67 @@ def main():
         
         if area_layer == 'district':
             # scatterplots
-            font = {'family':'Garuda','size':9.0}
-            matplotlib.rc('font', **font)
-            g = sns.lmplot(x1, y, data=data, hue='regions_of_interest', fit_reg=False)
-            g._legend.remove()
-            g.set(xlabel=x1.title(), ylabel=title)
-            label_point(data[x1], data[y], data['label'], plt.gca())
-            for ax in g.axes[:,0]:
-                ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
-                ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
-            plt.tight_layout()
-            # plt.show()   
+            # by population
             location = f'../maps/{study_region}/pdf/plots/{y}_{x1}.pdf'.replace(' ','_')
-            g.savefig(location)   
-            ax.figure.savefig(location.replace('pdf','svg'))
-            plt.close()
-            print(f"\t{location}")
+            if not os.path.exists(location):
+                font = {'family':'Garuda','size':9.0}
+                matplotlib.rc('font', **font)
+                g = sns.lmplot(x1, y, data=data, hue='regions_of_interest', fit_reg=False)
+                g._legend.remove()
+                g.set(xlabel=x1.capitalize(), ylabel=title)
+                label_point(data[x1], data[y], data['label'], plt.gca())
+                for ax in g.axes[:,0]:
+                    ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
+                    ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,.9g}".format(round(x,3))))
+                plt.tight_layout()
+                # plt.show()   
+                g.savefig(location)   
+                plt.close()
+                print(f"\t{location} saved.")
+            else:
+                print(f"\t{location} already exists.")
             
-            font = {'family':'Garuda','size':9.0}
-            matplotlib.rc('font', **font)
-            g = sns.lmplot(x2, y, data=data, hue='regions_of_interest', fit_reg=False)
-            g._legend.remove()
-            g.set(xlabel=x2.title(), ylabel=title)
-            label_point(data[x2], data[y], data['label'], plt.gca())
-            for ax in g.axes[:,0]:
-                ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
-                ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
-            plt.tight_layout()
-            # plt.show()
+            # by population per square kilometre
             location = f'../maps/{study_region}/pdf/plots/{y}_{x2}.pdf'.replace(' ','_')
-            g.savefig(location)   
-            ax.figure.savefig(location.replace('pdf','svg'))
-            plt.close()
-            print(f"\t{location}")
+            if not os.path.exists(location):
+                font = {'family':'Garuda','size':9.0}
+                matplotlib.rc('font', **font)
+                g = sns.lmplot(x2, y, data=data, hue='regions_of_interest', fit_reg=False)
+                g._legend.remove()
+                g.set(xlabel=x2.replace('sqkm','km\u00B2').capitalize(), ylabel=title)
+                label_point(data[x2], data[y], data['label'], plt.gca())
+                for ax in g.axes[:,0]:
+                    ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
+                    ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,.9g}".format(round(x,3))))
+                plt.tight_layout()
+                # plt.show()
+                
+                g.savefig(location)   
+                plt.close()
+                print(f"\t{location} saved.")
+            else:
+                print(f"\t{location} exists.")
 
             # Horizontal bar plot
-            font = {'family':'Garuda','size':12.0}
-            matplotlib.rc('font', **font)
-            pd_data = data.sort_values(y)
-            plt.figure(figsize=(14,10))
-            ax = sns.barplot(pd_data[y], pd_data['full_label'])
-            ax.set(xlabel=title, ylabel=area_layer.title())
-            ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,}".format(int(x))))
-            ax.set_yticklabels(pd_data['full_label'])
-            plt.tight_layout()
-            # plt.show()
             location = f'../maps/{study_region}/pdf/plots/{y}.pdf'.replace(' ','_')
-            ax.figure.savefig(location)  
-            ax.figure.savefig(location.replace('pdf','svg'))  
-            plt.close()
-            print(f"\t{location}")
+            if not os.path.exists(location):
+                font = {'family':'Garuda','size':12.0}
+                matplotlib.rc('font', **font)
+                pd_data = data.sort_values(y)
+                plt.figure(figsize=(14,10))
+                ax = sns.barplot(pd_data[y], pd_data['full_label'])
+                ax.set(xlabel=title, ylabel=area_layer.title())
+                ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.2g}"))
+                ax.set_yticklabels(pd_data['full_label'])
+                plt.tight_layout()
+                # plt.show()
+                
+                ax.figure.savefig(location)  
+                ax.figure.savefig(location.replace('pdf','svg'))  
+                plt.close()
+                print(f"\t{location} saved")
+            else:
+                print(f"\t{location} exists.")
         
         # if area_layer == 'subdistrict':
             # # Horizontal box plot

@@ -584,7 +584,8 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
             column_names[f] = f.replace('sqkm','km\u00B2')
     if coalesce_na in ['','nan']:
         sql = f'''
-            SELECT a.{area},
+            SELECT a.{linkage_id},
+                   a.{area},
                    {additional_data}
                    b.{measure},
                    ST_Transform(a.geom, 4326) AS geom 
@@ -594,7 +595,8 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
             '''
     else:
         sql = f'''
-            SELECT a.{area},
+            SELECT a.{linkage_id},
+                   a.{area},
                    {additional_data}
                    COALESCE(b.{measure},{coalesce_na}) AS "{measure}",
                    ST_Transform(a.geom, 4326) AS geom 
@@ -701,8 +703,8 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
     layer = folium.Choropleth(data=map,
                     geo_data =map.to_json(),
                     name = map_field,
-                    columns =[area,map_field],
-                    key_on=f"feature.properties.{area}",
+                    columns =[linkage_id,map_field],
+                    key_on=f"feature.properties.{linkage_id}",
                     fill_color='YlGn',
                     fill_opacity=0.7,
                     nan_fill_opacity=0.2,
