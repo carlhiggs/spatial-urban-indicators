@@ -63,12 +63,15 @@ def main():
         map_data['map_buffer'] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
         # get analytical layer data
         for area in areas:
+            linkage_id = areas[area]['id']
             sql = '''
-            SELECT {area},
+            SELECT {linkage_id},
+                   {area},
                    {data_fields}
                    ST_Transform(geom, 4326) AS geom 
             FROM {area} a
             '''.format(area = area,
+                       linkage_id=linkage_id,
                        data_fields = '"{}",'.format('","'.join(pop_data_fields_full)))
             map_data[area] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
             map_data[area].rename(columns = column_names, inplace=True)
@@ -83,6 +86,7 @@ def main():
             for area in areas:
               # this kind of map does not make sense for an overall summary
               if len(map_data[area].index.values) > 1:
+                linkage_id = areas[area]['id']
                 map_name = '{}_02_population_{}_{}'.format(locale,area,field.replace('km\u00B2','sqkm').replace(' ','_'))
                 print("{}...".format(map_name))           
                 # initialise map
@@ -135,17 +139,18 @@ def main():
                                    ).format(attribution))
                                         ).add_to(m)
                 # Create choropleth map layer
-                map_layers={}                   
+                map_layers={}     
+                legend_name = f'{field}, by {area}'
                 map_layers[area] = folium.Choropleth(data = map_data[area],
                                                      geo_data =map_data[area].to_json(),
                                                      name = '{} ({})'.format(field,area),
-                                                     columns =[area,field],
-                                                     key_on="feature.properties.{}".format(area),
+                                                     columns =[linkage_id,field],
+                                                     key_on="feature.properties.{}".format(linkage_id),
                                                      fill_color='YlGn',
                                                      fill_opacity=0.7,
                                                      nan_fill_opacity=0.2,
                                                      line_opacity=0.2,
-                                                     legend_name='{}, by {}'.format(field,area),
+                                                     legend_name=legend_name,
                                                      reset=True,
                                                      overlay = True
                                    ).add_to(m)
@@ -159,17 +164,24 @@ def main():
                 folium.LayerControl(collapsed=False).add_to(m)
                 m.fit_bounds(m.get_bounds())
                 m.get_root().html.add_child(folium.Element(map_style))
-                # Modify map heading (above legend)
                 html = m.get_root().render()
-                color_map =  re.search(r"color_map_[a-zA-Z0-9_]*\b|$",html).group()
-                old = '{}.svg = d3.select(".legend.leaflet-control").append("svg")'.format(color_map)
-                new = '''
-                {color_map}.title = d3.select(".legend.leaflet-control").append("div")
-                        .attr("style",'vertical-align: text-top;font-weight: bold;')
-                        .text("{heading}");
-                {color_map}.svg = d3.select(".legend.leaflet-control").append("svg")
-                '''.format(color_map=color_map,heading=heading)
-                html = html.replace(old,new)
+                ## Wrap legend text if too long 
+                ## (65 chars seems to work well, conservatively)
+                if len(legend_name) > 65:
+                    import textwrap
+                    legend_lines = textwrap.wrap(legend_name, 65)
+                    legend_length = len(legend_name)
+                    n_lines = len(legend_lines)
+                    legend_height = 25 + 15 * n_lines
+                    old = f'''.attr("class", "caption")
+        .attr("y", 21)
+        .text("{legend_name}");'''
+                    new = ".append('tspan')".join(['''.attr('class','caption')
+        .attr("x", 0)
+        .attr("y", {pos})
+        .text("{x}")'''.format(x=x,pos=21+15*legend_lines.index(x)) for x in legend_lines])
+                    html = html.replace(old,new)
+                    html = html.replace('.attr("height", 40);',f'.attr("height", {legend_height});')
                 # move legend to lower right corner
                 html = html.replace('''legend = L.control({position: \'topright''','''legend = L.control({position: \'bottomright''')
                 # save map

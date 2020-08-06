@@ -451,10 +451,8 @@ def generate_isid_csv_template(engine,df_row, out_path, schema='public', prefix=
     table: optional override of table name
     measure: optional override of table attribute to map
     
-    Saves
-    -------
-    
-    csv file matching template for upload to ISID map portal
+    Saves:
+        csv file matching template for upload to ISID map portal
     """
     import io
     import pandas
@@ -512,9 +510,8 @@ def get_df_data_fields(df,fields):
     df: a dataframe (eg of population data with various attributes)
     fields: a list of fields of interest when mapping
 
-    Returns
-    -------
-    attributes list
+    Returns:
+        attributes list
     """
     import numpy as np
     df_numeric = [c for c in df.columns if np.issubdtype(df[c].dtype, np.number)]
@@ -531,21 +528,20 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
     """
     Generate html and png maps for a calculated indicator
     
-    engine: sql db connection
-    df_row: a dataframe row of indicator attributes (Pandas)
-    data_fields: a list of fields of interest when mapping (list)
-    prefix: optional prefix for map table name (string)
-    suffix: optional suffix for map table name (string)
-    map_attribution: attribution details for this map (ie. who is making it)
-    area_attribution: attribution details for area layers
-    map_tyle_html_css: html code defining style for map
-    schema: schema where sql table is found
-    table: optional override for table name (if other than defined in df_row)
+    Args:
+        engine: sql db connection
+        df_row: a dataframe row of indicator attributes (Pandas)
+        data_fields: a list of fields of interest when mapping (list)
+        prefix: optional prefix for map table name (string)
+        suffix: optional suffix for map table name (string)
+        map_attribution: attribution details for this map (ie. who is making it)
+        area_attribution: attribution details for area layers
+        map_tyle_html_css: html code defining style for map
+        schema: schema where sql table is found
+        table: optional override for table name (if other than defined in df_row)
     
-    Saves
-    -------
-    
-    html and png files
+    Saves:
+        html and png files
     """
     import geopandas as gpd
     import pandas as pd

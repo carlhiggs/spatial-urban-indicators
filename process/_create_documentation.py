@@ -83,35 +83,37 @@ def generate_metadata_rst(ind_metadata,df_context):
     ]
     # defined page heading as first line
     rst = 'Indicators\r\n==========\r\n'
-    dimensions = ind_metadata.dimension.unique()
-    dimensions.sort()
+    dimensions = documentation_section_order.split(',')
     for dimension in dimensions:
-        dimension_text = dimension[3:]
         # create heading for dimension 
-        rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,dimension_text,'~'*len(dimension_text))
+        rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,dimension,'~'*len(dimension))
         print(f'{dimension}:')
         for category in ind_metadata.loc[ind_metadata.dimension==dimension,'category'].unique():
           # create heading for indicator
           if str(category) not in ('','nan'):
-            print(f'\t{category}')
-            category_thai = df_context.loc[df_context['English']==category,'Thai'].values[0]
-            category_definition = df_context.loc[df_context['English']==category,'Draft definition for Bangkok context'].values[0]
             rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,category,'|'*len(category))
-            # add Thai name
-            rst = '{}\r\n{}\r\n'.format(rst,category_thai)
-            # add description for indicator
-            rst = '{}\r\n{}\r\n'.format(rst,category_definition)
+            print(f'\t{category}')
+            if str(category) != 'data':
+                category_thai = df_context.loc[df_context['English']==category,'Thai'].values[0]
+                category_definition = df_context.loc[df_context['English']==category,'Draft definition for Bangkok context'].values[0]
+                # add Thai name
+                rst = '{}\r\n{}\r\n'.format(rst,category_thai)
+                # add description for indicator
+                rst = '{}\r\n{}\r\n'.format(rst,category_definition)
           for d in ind_metadata.loc[(ind_metadata.dimension==dimension)&(ind_metadata.category==category),'data_name'].unique():
             print(f'\t - {d}')
             # create heading for dataset
-            if d != dimension_text:
-                rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,d,'-'*len(d))
+            if d != dimension:
+                rst = '{}\r\n\r\nDataset: {}\r\n{}\r\n'.format(rst,d,'-'*(9+len(d)))
             ds = ind_metadata.query(f'dimension == "{dimension}" & category=="{category}" & data_name == "{d}"').copy()
             # add description for dataset
             rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_data)
             for i in data_items:
                 if '{}'.format(ds.iloc[0][i[0]]) not in ['','nan']:
-                    rst = '{}\r\n**{}**: {}\r\n'.format(rst,i[1],ds.iloc[0][i[0]])
+                    if i=='epsg' and str(ds.iloc[0][i[0]]).isdigit():
+                        rst = '{}\r\n**{}**: {}\r\n'.format(rst,i[1],int(ds.iloc[0][i[0]]))
+                    else:
+                        rst = '{}\r\n**{}**: ``{}``\r\n'.format(rst,i[1],str(ds.iloc[0][i[0]]).strip())
             if ds.iloc[0].purpose=='boundaries':
                 # add description for further usage by indicators
                 rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
@@ -276,19 +278,6 @@ def get_sphinx_conf_header():
     return(header)
 
 def make_locale_documentation(study_region):
-    """
-
-    Render documentation
-    ~~~~~~~~~~~~~~~~~~~~
-
-    Script:  
-        _create_documentation.py
-    Purpose: 
-        Render the project documentation, based on the project configuration file and outputs.
-    Authors: 
-        Carl Higgs
-
-    """
     print("Render the project documentation, based on the project configuration file and outputs...."),
     date_yyyy_mm_dd =  time.strftime("%Y-%m-%d")
     project_pdf_in = f'{full_locale} Liveability'.lower().replace(' ','')

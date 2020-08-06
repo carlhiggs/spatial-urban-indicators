@@ -6,8 +6,289 @@ Study region boundaries
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 
+data
+||||
+
+Bangkok subdistrict boundary data (BMA, 2019) were topologically corrected using GRASS and QGIS, to ensure polygon boundaries did not have gaps or overlaps.  Boundaries were matched with alternate spellings in both Thai and English for corresponding regions found in data from other organisations  and datasets  (e.g. NSO, HDX) in order to facilitate data linkage.   The final boundary layer was returned to BMA and agreed upon for usage. 
+
+**Data source**: ``BangkokGIS (BMA)``
+
+**URL**: ``http://www.bangkokgis.com/bangkokgis_2008/userfiles/files/download/shapefile/administration/BMASubDistrict_Polygon.rar``
+
+**Publication year**: ``2018``
+
+**Target year**: ``2018``
+
+**Acquisition date (yyyymmdd)**: ``20190725``
+
+**Licence**: ``none specified``
+
+**Spatial reference (EPSG code)**: ``32647.0``
+
+**Date type**: ``vector``
+
+**Scale / Resolution**: ``subdistrict``
+
+**Notes**: ``English names not provided; these have been derived using manual linkage with data from HDX subdistricts and population data provided by BMA, with verification from Kornsupha Nitvimol of BMA.``
+
+**Data location relative to project folder**: ``./data/Bangkok_subdistricts_BMA_HLC_derived_20190805_cleaned_final.gpkg:subdistricts``
+
+District and changwat boundaries were constructed through geometrical union of the constituent subdistricts they were aligned with.  Boundaries at all three scales (subdistrict, district, changwat) were imported into the project database and used as analysis areas when constructing other indicators, as required.  The area in square kilometres of each analysis area's polygonal extent was recorded.   The changwat (province) of Bangkok was used to define the Bangkok metropolitan study region extent.  A ten kilometre buffer extending beyond this is used when conducting analyses of access to resources, so that access to destinations outside the study region would be accounted for peri-urban regions when undertaking network analysis.  
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Bangkok study region" src="./../png/bangkok_01_study_region.png">
+        <figcaption>Bangkok study region.         <a href="./../html/bangkok_01_study_region.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_01_study_region.png
+       :width: 70%
+       :align: center
+
+       Bangkok study region
+
+
+
+
 Population and communities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+data
+||||
+
+Population statistics targetting Bangkok in 2018 were received from the Bangkok Metropolitan Administration, indexed by subdistrict. Fields included total population, sex strata, household, number of communities, and population in communities.  
+
+**Data source**: ``BMA``
+
+**URL**: ``http://www.bangkok.go.th``
+
+**Publication year**: ``2019``
+
+**Target year**: ``2018``
+
+**Acquisition date (yyyymmdd)**: ``20190805``
+
+**Licence**: ``none specified``
+
+**Scale / Resolution**: ``subdistrict``
+
+**Notes**: ``Derived population layer based on data received from Korn Nitviminol (BMA) via e-mail on 5 August 2019``
+
+**Data location relative to project folder**: ``./data/Bangkok_subdistrict_population_BMA_HLC_derived_20190808.csv``
+
+Population data were linked with boundaries using corresponding subdistrict ID numbers.  Density measures were calculated using population statistics relative to analysis area size. 
+
+
+Population per km²
+------------------
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Population per km², by district" src="./../png/bangkok_02_population_district_population_per_sqkm.png">
+        <figcaption>Population per km², by district.         <a href="./../html/bangkok_02_population_district_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Population per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Population per km², by subdistrict" src="./../png/bangkok_02_population_subdistrict_population_per_sqkm.png">
+        <figcaption>Population per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Population per km², by subdistrict
+
+
+
+
+Households per km²
+------------------
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Households per km², by district" src="./../png/bangkok_02_population_district_households_per_sqkm.png">
+        <figcaption>Households per km², by district.         <a href="./../html/bangkok_02_population_district_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_households_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Households per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Households per km², by subdistrict" src="./../png/bangkok_02_population_subdistrict_households_per_sqkm.png">
+        <figcaption>Households per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_households_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Households per km², by subdistrict
+
+
+
+
+Communities per km²
+-------------------
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Communities per km², by district" src="./../png/bangkok_02_population_district_communities_per_sqkm.png">
+        <figcaption>Communities per km², by district.         <a href="./../html/bangkok_02_population_district_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_communities_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Communities per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Communities per km², by subdistrict" src="./../png/bangkok_02_population_subdistrict_communities_per_sqkm.png">
+        <figcaption>Communities per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_communities_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Communities per km², by subdistrict
+
+
+
+
+Population in communities per km²
+---------------------------------
+
+
+Aligns with Sustainable Development Goals: 11.
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Population in communities per km², by district" src="./../png/bangkok_02_population_district_population_in_communities_per_sqkm.png">
+        <figcaption>Population in communities per km², by district.         <a href="./../html/bangkok_02_population_district_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_in_communities_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Population in communities per km², by district
+
+
+
+
+Aligns with Sustainable Development Goals: 11.
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Population in communities per km², by subdistrict" src="./../png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png">
+        <figcaption>Population in communities per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png
+       :width: 70%
+       :align: center
+
+       Population in communities per km², by subdistrict
+
+
 
 
 City problems impacting health and wellbeing
@@ -22,26 +303,26 @@ Zero waste
 Garbage (waste) means unwanted or unusable materials or any substances that are discarded after first use or priceless things. Comparison is a co-product that has little economic value.  Waste is divided into 5 categories which are liquid waste, solid waste, organic waste, recyclable waste and hazardous waste.
 
 
-Hazardous waste
----------------
+Dataset: Hazardous waste
+------------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of Environment, BMA
+**Data source**: ``Department of Environment, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190911
+**Acquisition date (yyyymmdd)**: ``20190911``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20200507/Hazardous waste segregation 2018-kn81519pter.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20200507/Hazardous waste segregation 2018-kn81519pter.xlsx``
 
 
 Annual hazardous waste (kg, 2018)
@@ -200,26 +481,26 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
-Solid waste
------------
+Dataset: Solid waste
+--------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of Environment, BMA
+**Data source**: ``Department of Environment, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190911
+**Acquisition date (yyyymmdd)**: ``20190911``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190911/transfer_1710171_files_127133c5/solid waste in Bangkok -kn08242019.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190911/transfer_1710171_files_127133c5/solid waste in Bangkok -kn08242019.xlsx``
 
 
 Annual recyclable waste (tonnes, 2018)
@@ -464,28 +745,28 @@ A safe environment
 Environmental safety means to ensure that in the urban environment do not have a risk area to cause a fire, crime and road accidents.
 
 
-Risk areas
-----------
+Dataset: Risk areas
+-------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of City Law Enforcement, BMA
+**Data source**: ``Department of City Law Enforcement, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20200511
+**Acquisition date (yyyymmdd)**: ``20200511``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Notes**: Only one district has 30 locations; most have below 20.  Perhaps 15 would be a more meaningful target to aspire to?  Alternately, number of reported incidents could be a more meaningful metric.
+**Notes**: ``Only one district has 30 locations; most have below 20.  Perhaps 15 would be a more meaningful target to aspire to?  Alternately, number of reported incidents could be a more meaningful metric.``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20200511/Risk Areas _crime_ in Bangkok _improved_kn20200510.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20200511/Risk Areas _crime_ in Bangkok _improved_kn20200510.xlsx``
 
 
 Number of locations with reported crime (2019)
@@ -644,26 +925,26 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
-Fire incidence
---------------
+Dataset: Fire incidence
+-----------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with IDs. 
 
-**Data source**: Fire and Rescue Department, BMA
+**Data source**: ``Fire and Rescue Department, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190809
+**Acquisition date (yyyymmdd)**: ``20190809``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: table
+**Date type**: ``table``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/Fire Incidence in Bangkok 2018_kn8919.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/Fire Incidence in Bangkok 2018_kn8919.xlsx``
 
 
 Fire incidence (2018)
@@ -986,26 +1267,26 @@ No flooding
 Floods means large amounts of water overflowing into normal land
 
 
-Flood risk
-----------
+Dataset: Flood risk
+-------------------
 
 Data at subdistrict level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of Drainage and Sewerage , BMA 
+**Data source**: ``Department of Drainage and Sewerage , BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190809
+**Acquisition date (yyyymmdd)**: ``20190809``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: float
+**Date type**: ``float``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/BKK indicator_flood_kn 63019.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/BKK indicator_flood_kn 63019.xlsx``
 
 
 Average days of flooding  (main road flood areas;  2018)
@@ -2119,34 +2400,34 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
-Sentinel-5P NRTI NO2: Near Real-Time Nitrogen Dioxide
------------------------------------------------------
+Dataset: Sentinel-5P NRTI NO2: Near Real-Time Nitrogen Dioxide
+--------------------------------------------------------------
 
 Google Earth Engine was used to process Sentinel 5p data from the Copernicus satellite detailing total vertical column of NO2 (ratio of the slant column density of NO2 and the total air mass factor), taking the annual average from 13 October 2017 (commencement of the S5P monitoring mission) to 12 October 2018.  
 
-**Data source**: Copernicus Sentinel Data processed using Google Earth Engine
+**Data source**: ``Copernicus Sentinel Data processed using Google Earth Engine``
 
-**URL**: https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_NO2
+**URL**: ``https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_NO2``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20191009
+**Acquisition date (yyyymmdd)**: ``20191009``
 
-**Licence**: Free, full and open access for lawful usage, with attribution
+**Licence**: ``Free, full and open access for lawful usage, with attribution``
 
-**Licence URL**: https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice
+**Licence URL**: ``https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice``
 
-**Spatial reference (EPSG code)**: 4326.0
+**Spatial reference (EPSG code)**: ``4326.0``
 
-**Date type**: raster:float64
+**Date type**: ``raster:float64``
 
-**Scale / Resolution**: 10
+**Scale / Resolution**: ``10``
 
-**Notes**: Free access, but must acknowledge Copernicus Sentinel, year of data and if it has been modified.  Requires processing, as data is in half hourly updates.
+**Notes**: ``Free access, but must acknowledge Copernicus Sentinel, year of data and if it has been modified.  Requires processing, as data is in half hourly updates.``
 
-**Data location relative to project folder**: ./data/International/Google EarthEngine/copernicus_s5p_nrti_l3_no2-mean_col_num_density_20171013_20181012.tif
+**Data location relative to project folder**: ``./data/International/Google EarthEngine/copernicus_s5p_nrti_l3_no2-mean_col_num_density_20171013_20181012.tif``
 
 
 Annual average NO2 (1-e6 mmol/m²; 2017-18)
@@ -2256,26 +2537,26 @@ Reduced/no car congestion
 Traffic congestion is a condition that slows down transportation speed. Resulting in longer travel times and increased stationary vehicles on long roads 
 
 
-Traffic jam
------------
+Dataset: Traffic jam
+--------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: BMA, sourced from  https://www.grandprix.co.th/10 , opened 25 September 2019
+**Data source**: ``BMA, sourced from  https://www.grandprix.co.th/10 , opened 25 September 2019``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190930
+**Acquisition date (yyyymmdd)**: ``20190930``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/9 main Roads of Traffic Jam in Bangkok year 2018 by district and road _kn20190925.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/9 main Roads of Traffic Jam in Bangkok year 2018 by district and road _kn20190925.xlsx``
 
 
 Number of main road of traffic jams (2018)
@@ -2364,30 +2645,30 @@ High quality air
 "Air quality" refers to the weather conditions within the area around us. High quality air quality is at a level that is clean, clear and free from pollution such as smoke, dust, gas etc.  Human health, plants, animals and natural resources are threatened when air pollution reaches a high concentration.  Poor air quality affects or is harmful to human health and / or the environment.
 
 
-Air quality: PM2.5
-------------------
+Dataset: Air quality: PM2.5
+---------------------------
 
 Data from monitoring stations were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with IDs for districts containing the monitoring stations.  Point locations for monitoring stations were acquired from monitoring station geojson data retrieved from http://air4thai.pcd.go.th and aligned with the supplied data.
 
-**Data source**: From article (Thara Bua Kham Si. 2019.  How many days does Bangkok people live in polluted air, toxic PM2.5 dust? Greenpeace.  January 2019. https://www.greenpeace.org/thailand/story/2122/people-living-with-air-pollution/ accessed 6 July 2019) citing data sourced from Thai Pollution Control Department websites http://air4thai.pcd.go.th and http://aqmthai.com/public_report.php
+**Data source**: ``From article (Thara Bua Kham Si. 2019.  How many days does Bangkok people live in polluted air, toxic PM2.5 dust? Greenpeace.  January 2019. https://www.greenpeace.org/thailand/story/2122/people-living-with-air-pollution/ accessed 6 July 2019) citing data sourced from Thai Pollution Control Department websites http://air4thai.pcd.go.th and http://aqmthai.com/public_report.php``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190809
+**Acquisition date (yyyymmdd)**: ``20190809``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Citation**: Thara Bua Kham Si. 2019.  How many days does Bangkok people live in polluted air, toxic PM2.5 dust? Greenpeace.  January 2019. https://www.greenpeace.org/thailand/story/2122/people-living-with-air-pollution/ accessed 6 July 2019
+**Citation**: ``Thara Bua Kham Si. 2019.  How many days does Bangkok people live in polluted air, toxic PM2.5 dust? Greenpeace.  January 2019. https://www.greenpeace.org/thailand/story/2122/people-living-with-air-pollution/ accessed 6 July 2019``
 
-**Notes**: From article (Thara Bua Kham Si. 2019.  How many days does Bangkok people live in polluted air, toxic PM2.5 dust? Greenpeace.  January 2019. https://www.greenpeace.org/thailand/story/2122/people-living-with-air-pollution/ accessed 6 July 2019) citing data sourced from Thai Pollution Control Department websites http://air4thai.pcd.go.th and http://aqmthai.com/public_report.php
+**Notes**: ``From article (Thara Bua Kham Si. 2019.  How many days does Bangkok people live in polluted air, toxic PM2.5 dust? Greenpeace.  January 2019. https://www.greenpeace.org/thailand/story/2122/people-living-with-air-pollution/ accessed 6 July 2019) citing data sourced from Thai Pollution Control Department websites http://air4thai.pcd.go.th and http://aqmthai.com/public_report.php``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/air quality in Bangkok 2019 kn 7719.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190809/transfer_1673010_files_4a5fe795/air quality in Bangkok 2019 kn 7719.xlsx``
 
 
 Air quality monitoring stations (2019)
@@ -2866,26 +3147,26 @@ Water quality/pollution
 Water quality refers to the physical, chemical, biological and sensory properties (taste) of water. Water pollution means the presence of toxic chemicals in groundwater and biological substances that are more than is found in natural water and may pose a threat to human health and / or the environment.
 
 
-Canal water quality
--------------------
+Dataset: Canal water quality
+----------------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  The data comprised sample point records of canal water quality for 130 canals where Dissolved Oxygen (DO) less than 2 amount 130 canals (224 storage points).  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of Drainage and Sewerage, BMA
+**Data source**: ``Department of Drainage and Sewerage, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190617
+**Acquisition date (yyyymmdd)**: ``20190617``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: float
+**Date type**: ``float``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/canal water quality 2018_final.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190617/canal water quality 2018_final.xlsx``
 
 
 Canal water storage BOD (mg/L; 2018)
@@ -3124,26 +3405,26 @@ Healthy population
 Healthy population means health status and health outcomes within a group of people.
 
 
-Public Transport
-----------------
+Dataset: Public Transport
+-------------------------
 
 Ferry terminals / quays along the Chao Praya river and Canal Sansabai (BMA, 2014) were combined and analysed for accessability using an OSM pedestrian network, derived using OSMnx.
 
-**Data source**: BangkokGIS (BMA)
+**Data source**: ``BangkokGIS (BMA)``
 
-**Publication year**: 2014
+**Publication year**: ``2014``
 
-**Target year**: 2014
+**Target year**: ``2014``
 
-**Acquisition date (yyyymmdd)**: 20181210
+**Acquisition date (yyyymmdd)**: ``20181210``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Spatial reference (EPSG code)**: 32647.0
+**Spatial reference (EPSG code)**: ``32647.0``
 
-**Date type**: vector
+**Date type**: ``vector``
 
-**Scale / Resolution**: 800
+**Scale / Resolution**: ``800``
 
 
 Percentage of residents living within 800 metres of a ferry terminal or pier (2014)
@@ -3299,30 +3580,30 @@ Green space, pocket parks
 Public Parks and open spaces refer to official and unofficial land reserved for sports and recreation Including preserving the natural environment and providing green space for urban flood management.  The development of green areas / gardens / open spaces can increase the purpose of various uses ; Such as adding amenities to create happiness or enjoyment for the public or to promote the area to allow people to have activities to strengthen family relationships. For example, botanical parks, sports fields, children's playgrounds, marshes with water sports / fishing / community swimming pools, camps, picnic activities for families, dog parks. Actually, the actions can be considered for creating integrated projects for the benefit of results level with indicators 8.
 
 
-Green areas
------------
+Dataset: Green areas
+--------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: BMA
+**Data source**: ``BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20190930
+**Acquisition date (yyyymmdd)**: ``20190930``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Licence URL**: Website 203.155.220.220/parks
+**Licence URL**: ``Website 203.155.220.220/parks``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Notes**: Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.
+**Notes**: ``Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20200511/Num_Green area in BKK by district 2019_Ha_kn20200509.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20200511/Num_Green area in BKK by district 2019_Ha_kn20200509.xlsx``
 
 
 Number of green areas (2019)
@@ -3536,26 +3817,26 @@ Physical activity means an individual or team activity that has a structure that
 Passive recreation means recreational activities that do not require facilities such as a stadium or pavilion (walking, picnic, camping, swimming, biking, hiking, observing and photographing nature )
 
 
-Public Open Space
------------------
+Dataset: Public Open Space
+--------------------------
 
 A dataset of Areas of Public Open Space was derived from OpenStreetMap using a series of key-value pair tag queries in conjunction with morphological and heuristic criteria.  [description to be updated]
 
-**Data source**: OpenStreetMap
+**Data source**: ``OpenStreetMap``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20191007
+**Acquisition date (yyyymmdd)**: ``20191007``
 
-**Licence**: ODbL
+**Licence**: ``ODbL``
 
-**Licence URL**: https://wiki.osmfoundation.org/wiki/Licence
+**Licence URL**: ``https://wiki.osmfoundation.org/wiki/Licence``
 
-**Scale / Resolution**: 400
+**Scale / Resolution**: ``400``
 
-**Notes**: User contributed data; Please note licence implications involving usage of OSM data when combined with other data sets
+**Notes**: ``User contributed data; Please note licence implications involving usage of OSM data when combined with other data sets``
 
 
 Percentage of residents living within 400 metres of public open space  (2019)
@@ -3711,26 +3992,26 @@ Mass transit availability; connected public transport networks; increased provis
 Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains.   Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows:  A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations;  B. Frequent public transport services during peak travel times;  C. Stations or stops showing a safe and convenient environment
 
 
-Public Transport
-----------------
+Dataset: Public Transport
+-------------------------
 
 Combined BMA railway stations (BTS, MRT, airtportlink, and other train stations; BMA, 2014) were analysed for accessability using an OSM pedestrian network, derived using OSMnx.
 
-**Data source**: BangkokGIS (BMA)
+**Data source**: ``BangkokGIS (BMA)``
 
-**Publication year**: 2014
+**Publication year**: ``2014``
 
-**Target year**: 2014
+**Target year**: ``2014``
 
-**Acquisition date (yyyymmdd)**: 20181210
+**Acquisition date (yyyymmdd)**: ``20181210``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Spatial reference (EPSG code)**: 32647.0
+**Spatial reference (EPSG code)**: ``32647.0``
 
-**Date type**: vector
+**Date type**: ``vector``
 
-**Scale / Resolution**: 800
+**Scale / Resolution**: ``800``
 
 
 Percentage of residents living within 800 metres of a train station (2014)
@@ -3840,32 +4121,32 @@ Greater tree coverage to provide shade
 Greater tree coverage refers canopy trees, are huge trees with thick canopies or foliage coverings.
 
 
-Enhanced vegetation index
--------------------------
+Dataset: Enhanced vegetation index
+----------------------------------
 
 Landsat 8 Collection 1 Tier 1 Annual EVI Composite data (LANDSAT/LC08/C01/T1_ANNUAL_EVI) was retrieved using Google Earth Engine for Bangkok for 2019, using the bounding box WGS84 coordinates [100.327866596872, 13.4851864441217, 100.938637619401, 13.9551828398924].  The Enhanced Vegetation Index (EVI) is generated from the Near-IR, Red and Blue bands of each scene, and ranges in value from -1.0 to 1.0. See Huete et al. (2002) for details.
 
-**Data source**: Landsat-8 data courtesy of the U.S. Geological Survey, processed using Google Earth Engine
+**Data source**: ``Landsat-8 data courtesy of the U.S. Geological Survey, processed using Google Earth Engine``
 
-**URL**: https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC08_C01_T1_ANNUAL_EVI
+**URL**: ``https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC08_C01_T1_ANNUAL_EVI``
 
-**Publication year**: 2020
+**Publication year**: ``2020``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20200722
+**Acquisition date (yyyymmdd)**: ``20200722``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Spatial reference (EPSG code)**: 4326.0
+**Spatial reference (EPSG code)**: ``4326.0``
 
-**Date type**: raster:float64
+**Date type**: ``raster:float64``
 
-**Scale / Resolution**: 30
+**Scale / Resolution**: ``30``
 
-**Notes**: Public domain; give credit to USGS and Google Earth Engine. 
+**Notes**: ``Public domain; give credit to USGS and Google Earth Engine.``
 
-**Data location relative to project folder**: ./data/International/Google EarthEngine/LANDSAT_LC08_C01_T1_ANNUAL_EVI_20190101_20191231.tif
+**Data location relative to project folder**: ``./data/International/Google EarthEngine/LANDSAT_LC08_C01_T1_ANNUAL_EVI_20190101_20191231.tif``
 
 
 Enhanced Vegetation Index (EVI, annual mean; 2019)
@@ -3969,32 +4250,32 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 
 
-Normalised Difference Vegetation Index
---------------------------------------
+Dataset: Normalised Difference Vegetation Index
+-----------------------------------------------
 
 Landsat 8 Collection 1 Tier 1 Annual NDVI Composite data (LANDSAT/LC08/C01/T1_ANNUAL_NDVI) was retrieved using Google Earth Engine for Bangkok for 2019, using the bounding box WGS84 coordinates [100.327866596872, 13.4851864441217, 100.938637619401, 13.9551828398924].  Normalized Difference Vegetation Index (NDVI) was generated from the Near-IR and Red bands of each scene as (NIR - Red) / (NIR + Red), and ranges in value from -1.0 to 1.0. 
 
-**Data source**: Landsat-8 data courtesy of the U.S. Geological Survey, processed using Google Earth Engine
+**Data source**: ``Landsat-8 data courtesy of the U.S. Geological Survey, processed using Google Earth Engine``
 
-**URL**: https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC08_C01_T1_ANNUAL_NDVI
+**URL**: ``https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC08_C01_T1_ANNUAL_NDVI``
 
-**Publication year**: 2020
+**Publication year**: ``2020``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20200722
+**Acquisition date (yyyymmdd)**: ``20200722``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Spatial reference (EPSG code)**: 4326.0
+**Spatial reference (EPSG code)**: ``4326.0``
 
-**Date type**: raster:float64
+**Date type**: ``raster:float64``
 
-**Scale / Resolution**: 30
+**Scale / Resolution**: ``30``
 
-**Notes**: Public domain; give credit to USGS and Google Earth Engine. 
+**Notes**: ``Public domain; give credit to USGS and Google Earth Engine.``
 
-**Data location relative to project folder**: ./data/International/Google EarthEngine/LANDSAT_LC08_C01_T1_ANNUAL_NDVI_20190101_20191231.tif
+**Data location relative to project folder**: ``./data/International/Google EarthEngine/LANDSAT_LC08_C01_T1_ANNUAL_NDVI_20190101_20191231.tif``
 
 
 Normalised Difference Vegetation Index (NDVI, annual mean; 2019)
@@ -4098,32 +4379,32 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 
 
-Fraction of Vegetation Cover
-----------------------------
+Dataset: Fraction of Vegetation Cover
+-------------------------------------
 
 A modelled fraction of vegetation cover (FCOVER, V2) 1km grid data product based on Copernicus satellite imagery targetting 20 December 2018 was downloaded in NetCDF (.nc) format.  Using the ESA SNAP software, a GeoTiff (.tif) excerpt was taken for the Bangkok region.  Band 1 of this satellite data product represents the fraction of vegetation cover.  Data values ranging from 0 to 250 are to be transformed to a 0 to 1 range to represent the fraction of vegetation cover within each grid portion.  Cell values of 255 represent no data, and were excluded.
 
-**Data source**: Copernicus Service Information
+**Data source**: ``Copernicus Service Information``
 
-**URL**: https://land.copernicus.eu/global/products/fcover
+**URL**: ``https://land.copernicus.eu/global/products/fcover``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190913
+**Acquisition date (yyyymmdd)**: ``20190913``
 
-**Licence**: Free, full and open access for lawful usage, with attribution
+**Licence**: ``Free, full and open access for lawful usage, with attribution``
 
-**Licence URL**: https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice
+**Licence URL**: ``https://sentinel.esa.int/documents/247904/690755/Sentinel_Data_Legal_Notice``
 
-**Spatial reference (EPSG code)**: 4326.0
+**Spatial reference (EPSG code)**: ``4326.0``
 
-**Date type**: raster:float64
+**Date type**: ``raster:float64``
 
-**Scale / Resolution**: 1000
+**Scale / Resolution**: ``1000``
 
-**Data location relative to project folder**: ./data/International/EC-JRC/Copernicus/subset_0_of_c_gls_FCOVER-RT6_201812200000_GLOBE_PROBAV_V2.tif
+**Data location relative to project folder**: ``./data/International/EC-JRC/Copernicus/subset_0_of_c_gls_FCOVER-RT6_201812200000_GLOBE_PROBAV_V2.tif``
 
 
 Vegetation Percent (mean; December 2018)
@@ -4294,26 +4575,26 @@ Healthy population
 Healthy population means health status and health outcomes within a group of people.
 
 
-Population by age groups
-------------------------
+Dataset: Population by age groups
+---------------------------------
 
 Bangkok population counts classified by years of age (December 2018) were cleaned for processing,  aligned with standard area identification codes, and used to derive average and standard deviation for age for each district and subdistrict.
 
-**Data source**: Department of Provincial Administration, Ministry of Interior (BMA)
+**Data source**: ``Department of Provincial Administration, Ministry of Interior (BMA)``
 
-**Publication year**: 2018
+**Publication year**: ``2018``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190930
+**Acquisition date (yyyymmdd)**: ``20190930``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: numeric
+**Date type**: ``numeric``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/Bangkok Population by age groups2018_kn08242019.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/Bangkok Population by age groups2018_kn08242019.xlsx``
 
 
 Average age (2018)
@@ -4417,26 +4698,26 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
-Vital diseases
---------------
+Dataset: Vital diseases
+-----------------------
 
 Data at subdistrict level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of Health, BMA
+**Data source**: ``Department of Health, BMA``
 
-**Publication year**: 2018
+**Publication year**: ``2018``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190617
+**Acquisition date (yyyymmdd)**: ``20190617``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx``
 
 
 Health centers (2018)
@@ -5476,30 +5757,30 @@ Opportunity to earn a fair wage
   
 
 
-Poverty Indicators 2017
------------------------
+Dataset: Poverty Indicators 2017
+--------------------------------
 
 A data table for  Poverty Indicators 2017: Cost Dimensions with records for Bangkok overall, districts, and subdistricts was retrieved from the Thai National Statistical Office (NSO).  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: National Statistical Office
+**Data source**: ``National Statistical Office``
 
-**URL**: http://www.nso.go.th/sites/2014/DocLib8/2560/central/urban/10_bangkok.xls
+**URL**: ``http://www.nso.go.th/sites/2014/DocLib8/2560/central/urban/10_bangkok.xls``
 
-**Publication year**: 2018
+**Publication year**: ``2018``
 
-**Target year**: 2017
+**Target year**: ``2017``
 
-**Acquisition date (yyyymmdd)**: 20180121
+**Acquisition date (yyyymmdd)**: ``20180121``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: numeric
+**Date type**: ``numeric``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Notes**: The source data table also includes standard error as a measure of precision for each area estimate
+**Notes**: ``The source data table also includes standard error as a measure of precision for each area estimate``
 
-**Data location relative to project folder**: ./data/Thai/National Statistical Office/2017 poverty index/NSO_Bangkok_2017_poverty_index_en_cleaned.xlsx
+**Data location relative to project folder**: ``./data/Thai/National Statistical Office/2017 poverty index/NSO_Bangkok_2017_poverty_index_en_cleaned.xlsx``
 
 
 Average monthly cost of living per person (Baht; 2017)
@@ -5609,30 +5890,30 @@ Job security
 Security at work or employment means the confidence of people that they will not lose their current job without sufficient or acceptable reason.
 
 
-Drought impact
---------------
+Dataset: Drought impact
+-----------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: BMA
+**Data source**: ``BMA``
 
-**Publication year**: 2015
+**Publication year**: ``2015``
 
-**Target year**: 2016
+**Target year**: ``2016``
 
-**Acquisition date (yyyymmdd)**: 20191204
+**Acquisition date (yyyymmdd)**: ``20191204``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Licence URL**: Ministry of Finance; Department of Social Development (BMA)
+**Licence URL**: ``Ministry of Finance; Department of Social Development (BMA)``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Notes**: Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.
+**Notes**: ``Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/2_BKK agriculture _drought_2016 _ district _kn20191124.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/2_BKK agriculture _drought_2016 _ district _kn20191124.xlsx``
 
 
 Number of registered farmer househoulds expected to be impacted by drought (2016)
@@ -5713,30 +5994,30 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 
 
-Welfare card holders
---------------------
+Dataset: Welfare card holders
+-----------------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: BMA
+**Data source**: ``BMA``
 
-**Publication year**: 2017
+**Publication year**: ``2017``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20191204
+**Acquisition date (yyyymmdd)**: ``20191204``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Licence URL**: Ministry of Finance; Department of Social Development (BMA)
+**Licence URL**: ``Ministry of Finance; Department of Social Development (BMA)``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Notes**: Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.
+**Notes**: ``Only two districts have 12 locations; perhaps <= 10 would be a more aspirational target.``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/1_Holders of a state welfare card in Bangkok by district_kn20191111.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/1_Holders of a state welfare card in Bangkok by district_kn20191111.xlsx``
 
 
 Holders of a state welfare card in Bangkok (2017)
@@ -5825,26 +6106,26 @@ Quality food
 Food safety refers to the practice and conditions of maintaining food quality to prevent contamination and foodborne illnesses during preparation, management and storage.   Food quality refers to properties and characteristics of food products that are acceptable to consumers and meet expectations that is a purchase that is worth the money when compared to the required properties.
 
 
-Food quality tests
-------------------
+Dataset: Food quality tests
+---------------------------
 
 Data on food quality testing across 50 Bangkok districts between October 2018 to July 2019  were acquired from the BMA Health Department.  The data was comprised of spreadsheets detailing the number of food establishments, and for each of 9 key quality stanards, the number of tests conducted and the number of tests which did not pass: การตรวจด้านกายภาพ Physical examination; ฟอร์มาลิน formalin; สารฟอกขาว Bleach; สารกันรา Mold; ยาฆ่าแมลง Insecticide; สีสังเคราะห์ Synthetic color; สารโพลาร์ Polar substance; กรดแร่อิสระ Free mineral acid; and ไอโอเดท Iodate.
 
-**Data source**: Health Department BMA
+**Data source**: ``Health Department BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20191204
+**Acquisition date (yyyymmdd)**: ``20191204``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815206_files_409fa2da/BKK_ Food quality testing_2018_19_kn20191114.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20191204/transfer_1815206_files_409fa2da/BKK_ Food quality testing_2018_19_kn20191114.xlsx``
 
 
 Percentage of food standards (/9) with 100% test pass rate (2019)
@@ -6007,26 +6288,26 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 
 
-Sidewalk hawkers
-----------------
+Dataset: Sidewalk hawkers
+-------------------------
 
 Data comprising counts of permitted sidewalk locations for hawkers/stalls, and the number of hawkers and stalls for each district were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of City Law Enforcement, BMA
+**Data source**: ``Department of City Law Enforcement, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20191204
+**Acquisition date (yyyymmdd)**: ``20191204``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/3_BKK_sidewalk_hawkers - stalls _2019 _kn20190923.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20191204/transfer_1815197_files_51cc5a2c/3_BKK_sidewalk_hawkers - stalls _2019 _kn20190923.xlsx``
 
 
 Number of  hawkers/stalls (2019)
@@ -6157,26 +6438,26 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 
 
-Food entrepreneurs
-------------------
+Dataset: Food entrepreneurs
+---------------------------
 
 Data comprising counts of restaurants, supermarkets, minimarts, stalls and markets for each district were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: BMA
+**Data source**: ``BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190820
+**Acquisition date (yyyymmdd)**: ``20190820``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190820/transfer_1682928_files_504fdeaf/Num of food entrepreneur in Bangkok 2019 -kn15819.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190820/transfer_1682928_files_504fdeaf/Num of food entrepreneur in Bangkok 2019 -kn15819.xlsx``
 
 
 Number of markets (2019)
@@ -6819,26 +7100,26 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 
 
-Vital diseases
---------------
+Dataset: Vital diseases
+-----------------------
 
 Data at subdistrict level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of Health, BMA
+**Data source**: ``Department of Health, BMA``
 
-**Publication year**: 2018
+**Publication year**: ``2018``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190617
+**Acquisition date (yyyymmdd)**: ``20190617``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx``
 
 
 Vital diseases (combined, 2018)
@@ -7245,24 +7526,24 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 
 
-Supermarket acccess
--------------------
+Dataset: Supermarket acccess
+----------------------------
 
 Supermarket locations identified through key-value pair tags according to OSM guidelines or common usage patterns identified from OSM Taginfo were analysed for accessibility using a pedestrian network derived from OSM data using OSMnx.
 
-**Data source**: OpenStreetMap
+**Data source**: ``OpenStreetMap``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20191007
+**Acquisition date (yyyymmdd)**: ``20191007``
 
-**Licence**: ODbL
+**Licence**: ``ODbL``
 
-**Licence URL**: https://wiki.osmfoundation.org/wiki/Licence
+**Licence URL**: ``https://wiki.osmfoundation.org/wiki/Licence``
 
-**Scale / Resolution**: 800
+**Scale / Resolution**: ``800``
 
 
 Percentage of residents living 800 metres distance of a supermarket (2019)
@@ -7372,26 +7653,26 @@ Access to temples, museums, music and other cultural events that provide opportu
 Accessing mental well-being facilities refers people have access to various locations for increasing their happiness and promoting good actions; these places or facilities such as religious places, museums, theaters, arts and craft centers, local plays, as well as cultural and music events in communities or neighborhoods.
 
 
-BMA Libraries and Museums
--------------------------
+Dataset: BMA Libraries and Museums
+----------------------------------
 
 Data on counts of libraries and museums by district and subdistrict were cleaned and associated with area linkage codes.
 
-**Data source**: Culture, Sports and Tourism Department BMA
+**Data source**: ``Culture, Sports and Tourism Department BMA``
 
-**Publication year**: 2018
+**Publication year**: ``2018``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190911
+**Acquisition date (yyyymmdd)**: ``20190911``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190911/transfer_1710171_files_127133c5/Library and Museum BKK 2018_kn082419.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190911/transfer_1710171_files_127133c5/Library and Museum BKK 2018_kn082419.xlsx``
 
 
 Number of museums (2018)
@@ -7596,26 +7877,26 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 
 
-BMA Youth centers
------------------
+Dataset: BMA Youth centers
+--------------------------
 
 Data on counts of youth centers, sports centers and sport yards and their usage counts within Bangkok districts (2018) were cleaned and associated with area linkage codes.
 
-**Data source**: Culture, Sports and Tourism Department BMA
+**Data source**: ``Culture, Sports and Tourism Department BMA``
 
-**Publication year**: 2018
+**Publication year**: ``2018``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190911
+**Acquisition date (yyyymmdd)**: ``20190911``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190911/transfer_1710171_files_127133c5/Youth centers in Bangkok 2018_kn 20190909.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190911/transfer_1710171_files_127133c5/Youth centers in Bangkok 2018_kn 20190909.xlsx``
 
 
 Number of sport centers (2018)
@@ -8554,26 +8835,26 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 
 
-BMA Places of Worship
----------------------
+Dataset: BMA Places of Worship
+------------------------------
 
 Data on counts of places of worship (Temples; Mosques; Christian, Hindu and Sikh churches; and Shrines ) were cleaned and associated with area linkage codes.
 
-**Data source**: Buddhism Division, National Buddhism Office; BMA district offices
+**Data source**: ``Buddhism Division, National Buddhism Office; BMA district offices``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2014
+**Target year**: ``2014``
 
-**Acquisition date (yyyymmdd)**: 20190930
+**Acquisition date (yyyymmdd)**: ``20190930``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/number of worship places 2014 by district _kn20190929.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/number of worship places 2014 by district _kn20190929.xlsx``
 
 
 Number of temples (2014)
@@ -8740,26 +9021,26 @@ Mass transit availability; connected public transport networks; increased provis
 Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains.   Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows:  A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations;  B. Frequent public transport services during peak travel times;  C. Stations or stops showing a safe and convenient environment
 
 
-Vital diseases
---------------
+Dataset: Vital diseases
+-----------------------
 
 Data at subdistrict level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Department of Health, BMA
+**Data source**: ``Department of Health, BMA``
 
-**Publication year**: 2018
+**Publication year**: ``2018``
 
-**Target year**: 2018
+**Target year**: ``2018``
 
-**Acquisition date (yyyymmdd)**: 20190617
+**Acquisition date (yyyymmdd)**: ``20190617``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx``
 
 
 Diabetes outpatients (2018)
@@ -9175,26 +9456,26 @@ Good quality education means that all learners learn the value of humanity. And 
 
 
 
-BMA School locations
---------------------
+Dataset: BMA School locations
+-----------------------------
 
 Data on locations of BMA primary schools (2016) was cleaned, such that it represented counts by subdistrict, and associated with district and subdistrict area linkage identifiers
 
-**Data source**: Education Department, BMA
+**Data source**: ``Education Department, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2016
+**Target year**: ``2016``
 
-**Acquisition date (yyyymmdd)**: 20191204
+**Acquisition date (yyyymmdd)**: ``20191204``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815206_files_409fa2da/V3_BMA schools _location_subdistrict_kn 20191203.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20191204/transfer_1815206_files_409fa2da/V3_BMA schools _location_subdistrict_kn 20191203.xlsx``
 
 
 Number of primary schools (2016)
@@ -9399,26 +9680,26 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 
 
-O-Net in BMA schools
---------------------
+Dataset: O-Net in BMA schools
+-----------------------------
 
 Data on the district average score of the test results of the National General Education (O-NET) for level 6 primary school students across four core subjects (Thai, mathematics, science and English) was cleaned and associated with area linkage codes.
 
-**Data source**: Education Department, BMA
+**Data source**: ``Education Department, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2016
+**Target year**: ``2016``
 
-**Acquisition date (yyyymmdd)**: 20200511
+**Acquisition date (yyyymmdd)**: ``20200511``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: numeric
+**Date type**: ``numeric``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20200511/O-NET in BMA schools Academic year 2018 __  only primalt level 6 _kn20200508.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20200511/O-NET in BMA schools Academic year 2018 __  only primalt level 6 _kn20200508.xlsx``
 
 
 Average National General Education (O-NET) score for BMA primary schools for each of four core subjects (Thai, mathematics, science and English; 2016)
@@ -9512,30 +9793,30 @@ Opportunity to earn a fair wage
   
 
 
-Poverty Indicators 2017
------------------------
+Dataset: Poverty Indicators 2017
+--------------------------------
 
 A data table for  Poverty Indicators 2017: Cost Dimensions with records for Bangkok overall, districts, and subdistricts was retrieved from the Thai National Statistical Office (NSO).  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: National Statistical Office
+**Data source**: ``National Statistical Office``
 
-**URL**: http://www.nso.go.th/sites/2014/DocLib8/2560/central/urban/10_bangkok.xls
+**URL**: ``http://www.nso.go.th/sites/2014/DocLib8/2560/central/urban/10_bangkok.xls``
 
-**Publication year**: 2018
+**Publication year**: ``2018``
 
-**Target year**: 2017
+**Target year**: ``2017``
 
-**Acquisition date (yyyymmdd)**: 20180121
+**Acquisition date (yyyymmdd)**: ``20180121``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: integer
+**Date type**: ``integer``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Notes**: The source data table also includes standard error as a measure of precision for each area estimate
+**Notes**: ``The source data table also includes standard error as a measure of precision for each area estimate``
 
-**Data location relative to project folder**: ./data/Thai/National Statistical Office/2017 poverty index/NSO_Bangkok_2017_poverty_index_en_cleaned.xlsx
+**Data location relative to project folder**: ``./data/Thai/National Statistical Office/2017 poverty index/NSO_Bangkok_2017_poverty_index_en_cleaned.xlsx``
 
 
 Coefficient of inequality (2017)
@@ -9645,26 +9926,26 @@ Local employment opportunities
 Local job opportunities mean that the people living in an area can expect or assess whether there will be work in that area where they live.
 
 
-Taxes collected
----------------
+Dataset: Taxes collected
+------------------------
 
 Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  The data comprised sample point records of actual revenue by taxes collected by BMA district offices for the fiscale year of 2019, source dfrom the BMA Finance Department in October 2019.  Data were cleaned for processing and aligned with area IDs. 
 
-**Data source**: Finance Department, BMA
+**Data source**: ``Finance Department, BMA``
 
-**Publication year**: 2019
+**Publication year**: ``2019``
 
-**Target year**: 2019
+**Target year**: ``2019``
 
-**Acquisition date (yyyymmdd)**: 20190617
+**Acquisition date (yyyymmdd)**: ``20190617``
 
-**Licence**: none specified
+**Licence**: ``none specified``
 
-**Date type**: float
+**Date type**: ``float``
 
-**Scale / Resolution**: area summary
+**Scale / Resolution**: ``area summary``
 
-**Data location relative to project folder**: ./data/Thai/_from BMA/20191204/transfer_1815206_files_409fa2da/BKK_taxes_district_19 _kn20191201.xlsx
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20191204/transfer_1815206_files_409fa2da/BKK_taxes_district_19 _kn20191201.xlsx``
 
 
 The percentage contribution of local taxes to overall BMA tax revenue (2019)
