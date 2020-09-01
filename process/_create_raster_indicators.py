@@ -96,7 +96,7 @@ def main():
             print(f"    - {map_name_suffix} already exists in database.")
             print("      Please drop this table if you wish it to be reprocessed.")
         else:
-            if 'skip_tables' not in sys.argv:
+            if 'skip_render' not in sys.argv:
                 if '.tif' not in dataset:
                     sys.exit("This code is designed to run with Geotiff's with the extension. tif")
                 if '.zip:' in dataset:
@@ -148,11 +148,14 @@ def main():
                 analysis_area.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
                 print(f'\t- postgresql::{db}/{map_name_suffix}')
                 analysis_area.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
-                path = os.path.join(locale_maps,'gpkg')
                 print(f'\t- {path}/{study_region}.gpkg/{map_name_suffix}')
+        
+        if 'skip_tables' not in sys.argv:
                 path = os.path.join(locale_maps,'csv')
-                analysis_area.to_csv(f'{path}/{study_region}_{map_name_suffix}.csv')
-                print(f'\t- {path}/{study_region}_{map_name_suffix}.csv')
+                ind = df.loc[row]
+                # print(ind)
+                generate_isid_csv_template(engine, ind, path, prefix=locale,measure=map_name_suffix)
+                # print(f'\t- {path}/{study_region}_{map_name_suffix}.csv')
         
         # Create map
         if 'skip_maps' not in sys.argv:

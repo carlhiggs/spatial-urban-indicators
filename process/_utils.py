@@ -478,7 +478,7 @@ def generate_isid_csv_template(engine,df_row, out_path, schema='public', prefix=
             SELECT a.{linkage_id} AS "Census Id",
                    district_en AS "Boundary Name",
                    {target_year} AS Year,
-                   {measure} AS "Value",
+                   "{measure}" AS "Value",
                    NULL AS "Trend"
             FROM {area_layer} a
             LEFT JOIN {schema}.{table} USING ({linkage_id})

@@ -2400,6 +2400,122 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 
 
+Reduced/no car congestion
+|||||||||||||||||||||||||
+
+รถติดลดลง/ไม่มีรถติด
+
+Traffic congestion is a condition that slows down transportation speed. Resulting in longer travel times and increased stationary vehicles on long roads 
+
+
+Dataset: Traffic jam
+--------------------
+
+Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
+
+**Data source**: ``BMA, sourced from  https://www.grandprix.co.th/10 , opened 25 September 2019``
+
+**Publication year**: ``2019``
+
+**Target year**: ``2018``
+
+**Acquisition date (yyyymmdd)**: ``20190930``
+
+**Licence**: ``none specified``
+
+**Date type**: ``integer``
+
+**Scale / Resolution**: ``area summary``
+
+**Data location relative to project folder**: ``./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/9 main Roads of Traffic Jam in Bangkok year 2018 by district and road _kn20190925.xlsx``
+
+
+Number of main road of traffic jams (2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The count of main road traffic jams associated with each analysis area was recorded.
+
+Aligns with Sustainable Development Goals: 11, 13.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Number of main road of traffic jams (2018), by district" src="./../png/bangkok_ind_district_main_road_traffic_jam.png">
+        <figcaption>Number of main road of traffic jams (2018), by district.         <a href="./../html/bangkok_ind_district_main_road_traffic_jam.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_traffic_jam.png
+       :width: 70%
+       :align: center
+
+       Number of main road of traffic jams (2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=Number of main road of traffic jam by district  by population src="./../svg/plots/district_main_road_traffic_jam_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=Number of main road of traffic jam by district  by population per sqkm src="./../svg/plots/district_main_road_traffic_jam_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=Number of main road of traffic jam by district , ranked in ascending order src="./../svg/plots/district_main_road_traffic_jam.svg">
+            </div>
+       <figcaption>Figures for Number Of Main Road Of Traffic Jams (2018) with regard to Number of main road of traffic jam by district  by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Number of main road of traffic jam by district  by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of Number of main road of traffic jam by district  by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by number of main road of traffic jam by district  with regard to number of main road of traffic jams (2018).
+
+
+
+
+High quality air
+||||||||||||||||
+
+อากาศคุณภาพสูง
+
+"Air quality" refers to the weather conditions within the area around us. High quality air quality is at a level that is clean, clear and free from pollution such as smoke, dust, gas etc.  Human health, plants, animals and natural resources are threatened when air pollution reaches a high concentration.  Poor air quality affects or is harmful to human health and / or the environment.
+
+
 Dataset: Sentinel-5P NRTI NO2: Near Real-Time Nitrogen Dioxide
 --------------------------------------------------------------
 
@@ -2527,122 +2643,6 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
       Districts ranked in ascending order by annual average no2 (1-e6 mmol/m²; 2017-18) with regard to annual average no2 (1-e6 mmol/m²; 2017-18).
 
 
-
-
-Reduced/no car congestion
-|||||||||||||||||||||||||
-
-รถติดลดลง/ไม่มีรถติด
-
-Traffic congestion is a condition that slows down transportation speed. Resulting in longer travel times and increased stationary vehicles on long roads 
-
-
-Dataset: Traffic jam
---------------------
-
-Data at district level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
-
-**Data source**: ``BMA, sourced from  https://www.grandprix.co.th/10 , opened 25 September 2019``
-
-**Publication year**: ``2019``
-
-**Target year**: ``2018``
-
-**Acquisition date (yyyymmdd)**: ``20190930``
-
-**Licence**: ``none specified``
-
-**Date type**: ``integer``
-
-**Scale / Resolution**: ``area summary``
-
-**Data location relative to project folder**: ``./data/Thai/_from BMA/20190930/transfer_1730651_files_296a713c/9 main Roads of Traffic Jam in Bangkok year 2018 by district and road _kn20190925.xlsx``
-
-
-Number of main road of traffic jams (2018)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-The count of main road traffic jams associated with each analysis area was recorded.
-
-Aligns with Sustainable Development Goals: 11, 13.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Number of main road of traffic jams (2018), by district" src="./../png/bangkok_ind_district_main_road_traffic_jam.png">
-        <figcaption>Number of main road of traffic jams (2018), by district.         <a href="./../html/bangkok_ind_district_main_road_traffic_jam.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_traffic_jam.png
-       :width: 70%
-       :align: center
-
-       Number of main road of traffic jams (2018), by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=Number of main road of traffic jam by district  by population src="./../svg/plots/district_main_road_traffic_jam_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=Number of main road of traffic jam by district  by population per sqkm src="./../svg/plots/district_main_road_traffic_jam_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=Number of main road of traffic jam by district , ranked in ascending order src="./../svg/plots/district_main_road_traffic_jam.svg">
-            </div>
-       <figcaption>Figures for Number Of Main Road Of Traffic Jams (2018) with regard to Number of main road of traffic jam by district  by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of Number of main road of traffic jam by district  by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of Number of main road of traffic jam by district  by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by number of main road of traffic jam by district  with regard to number of main road of traffic jams (2018).
-
-
-
-
-High quality air
-||||||||||||||||
-
-อากาศคุณภาพสูง
-
-"Air quality" refers to the weather conditions within the area around us. High quality air quality is at a level that is clean, clear and free from pollution such as smoke, dust, gas etc.  Human health, plants, animals and natural resources are threatened when air pollution reaches a high concentration.  Poor air quality affects or is harmful to human health and / or the environment.
 
 
 Dataset: Air quality: PM2.5
@@ -4936,6 +4936,410 @@ Aligns with Sustainable Development Goals: 3, 11.
        :align: center
 
        Health centers (2018) per 10,000 household, by district
+
+
+
+
+Diabetes outpatients (2018)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for diabetes were summed across each analysis area.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes.png">
+        <figcaption>Diabetes outpatients (2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018), by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018), by district" src="./../png/bangkok_ind_district_outpatients_diabetes.png">
+        <figcaption>Diabetes outpatients (2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018), by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes.svg">
+            </div>
+       <figcaption>Figures for Diabetes Outpatients (2018) with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by diabetes (2018) with regard to diabetes outpatients (2018).
+
+
+
+
+Diabetes outpatients (2018) per km²
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per km².
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png">
+        <figcaption>Diabetes outpatients (2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per km², by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_area.png">
+        <figcaption>Diabetes outpatients (2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_area.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per km², by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_area_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_area.svg">
+            </div>
+       <figcaption>Figures for Diabetes Outpatients (2018) Per Km² with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by diabetes (2018) with regard to diabetes outpatients (2018) per km².
+
+
+
+
+Diabetes outpatients (2018) per 10,000 population
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png">
+        <figcaption>Diabetes outpatients (2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per 10,000 population, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_population.png">
+        <figcaption>Diabetes outpatients (2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_population.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per 10,000 population, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_population_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_population.svg">
+            </div>
+       <figcaption>Figures for Diabetes Outpatients (2018) Per 10,000 Population with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by diabetes (2018) with regard to diabetes outpatients (2018) per 10,000 population.
+
+
+
+
+Diabetes outpatients (2018) per 10,000 household
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
+
+Aligns with Sustainable Development Goals: 3, 11.
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png">
+        <figcaption>Diabetes outpatients (2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per 10,000 household, by subdistrict
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <figure>
+        <img alt="Diabetes outpatients (2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_household.png">
+        <figcaption>Diabetes outpatients (2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
+        </figure><br>
+
+.. only:: latex
+
+    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_household.png
+       :width: 70%
+       :align: center
+
+       Diabetes outpatients (2018) per 10,000 household, by district
+
+
+
+
+
+
+
+.. only:: html
+
+    .. raw:: html
+
+        <div id="plot-div">
+            <div id="div1" class="plot-box">
+        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_household_population.svg" class="plot-img">
+            </div>
+            <div id="div2" class="plot-box">
+        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.svg" class="plot-img">
+            </div><br>
+       </div><br>
+       <div>
+            <div id="div3" class="plot-box-large">
+        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_household.svg">
+            </div>
+       <figcaption>Figures for Diabetes Outpatients (2018) Per 10,000 Household with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
+
+       </div><br>
+
+.. only:: latex
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.pdf
+      :width: 48%
+      :align: center
+
+      Scatterplot of diabetes (2018) by population density for districts.
+
+   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household.pdf
+      :width: 100%
+      :align: center
+
+      Districts ranked in ascending order by diabetes (2018) with regard to diabetes outpatients (2018) per 10,000 household.
 
 
 
@@ -9009,440 +9413,6 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
       :align: center
 
       Districts ranked in ascending order by temples with regard to number of temples (2014) per 1,000 population.
-
-
-
-
-Mass transit availability; connected public transport networks; increased provision of transit-oriented developments
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-ขนส่งมวลชนที่มีให้บริการ (เครือข่ายเชื่อมต่อ พัฒนาเพิ่มทางเลือก
-
-Mass transportation system Means a public transportation system in the metropolitan area, usually consisting of buses subway and elevated trains.   Convenient public transportation access means transportation systems that officially stop and send within 0.5 km of the reference point, such as homes, schools, workplaces, markets, etc. With additional characteristics as follows:  A) Public transportation can reach people with special needs, including people with physical disabilities and / or hearing impairments, including people with temporary disabilities. The elderly, children and others in vulnerable situations;  B. Frequent public transport services during peak travel times;  C. Stations or stops showing a safe and convenient environment
-
-
-Dataset: Vital diseases
------------------------
-
-Data at subdistrict level were prepared by the Bangkok Metropolitan Administration and supplied as an Excel workbook.  Data were cleaned for processing and aligned with area IDs. 
-
-**Data source**: ``Department of Health, BMA``
-
-**Publication year**: ``2018``
-
-**Target year**: ``2018``
-
-**Acquisition date (yyyymmdd)**: ``20190617``
-
-**Licence**: ``none specified``
-
-**Date type**: ``integer``
-
-**Scale / Resolution**: ``area summary``
-
-**Data location relative to project folder**: ``./data/Thai/_from BMA/20190617/vital diseases HC BMA 2018.xlsx``
-
-
-Diabetes outpatients (2018)
->>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for diabetes were summed across each analysis area.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018), by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes.png">
-        <figcaption>Diabetes outpatients (2018), by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018), by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018), by district" src="./../png/bangkok_ind_district_outpatients_diabetes.png">
-        <figcaption>Diabetes outpatients (2018), by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018), by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes.svg">
-            </div>
-       <figcaption>Figures for Diabetes Outpatients (2018) with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by diabetes (2018) with regard to diabetes outpatients (2018).
-
-
-
-
-Diabetes outpatients (2018) per km²
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per km².
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per km², by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png">
-        <figcaption>Diabetes outpatients (2018) per km², by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per km², by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per km², by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_area.png">
-        <figcaption>Diabetes outpatients (2018) per km², by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_area.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_area.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per km², by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_area_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_area.svg">
-            </div>
-       <figcaption>Figures for Diabetes Outpatients (2018) Per Km² with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by diabetes (2018) with regard to diabetes outpatients (2018) per km².
-
-
-
-
-Diabetes outpatients (2018) per 10,000 population
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per 10,000 population.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per 10,000 population, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png">
-        <figcaption>Diabetes outpatients (2018) per 10,000 population, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per 10,000 population, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per 10,000 population, by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_population.png">
-        <figcaption>Diabetes outpatients (2018) per 10,000 population, by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_population.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_population.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per 10,000 population, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_population_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_population.svg">
-            </div>
-       <figcaption>Figures for Diabetes Outpatients (2018) Per 10,000 Population with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by diabetes (2018) with regard to diabetes outpatients (2018) per 10,000 population.
-
-
-
-
-Diabetes outpatients (2018) per 10,000 household
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Outpatient numbers for diabetes were summed across each analysis area.  The indicator was rated as the rate per 10,000 household.
-
-Aligns with Sustainable Development Goals: 3, 11.
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per 10,000 household, by subdistrict" src="./../png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png">
-        <figcaption>Diabetes outpatients (2018) per 10,000 household, by subdistrict.         <a href="./../html/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per 10,000 household, by subdistrict
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Diabetes outpatients (2018) per 10,000 household, by district" src="./../png/bangkok_ind_district_outpatients_diabetes_rate_household.png">
-        <figcaption>Diabetes outpatients (2018) per 10,000 household, by district.         <a href="./../html/bangkok_ind_district_outpatients_diabetes_rate_household.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_household.png
-       :width: 70%
-       :align: center
-
-       Diabetes outpatients (2018) per 10,000 household, by district
-
-
-
-
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <div id="plot-div">
-            <div id="div1" class="plot-box">
-        	     <img alt=diabetes (2018) by population src="./../svg/plots/district_outpatients_diabetes_rate_household_population.svg" class="plot-img">
-            </div>
-            <div id="div2" class="plot-box">
-        	     <img alt=diabetes (2018) by population per sqkm src="./../svg/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.svg" class="plot-img">
-            </div><br>
-       </div><br>
-       <div>
-            <div id="div3" class="plot-box-large">
-        	     <img alt=diabetes (2018), ranked in ascending order src="./../svg/plots/district_outpatients_diabetes_rate_household.svg">
-            </div>
-       <figcaption>Figures for Diabetes Outpatients (2018) Per 10,000 Household with regard to diabetes (2018) by district, clockwise from top: by population; by population per sqkm; districts ranked in ascending order..</figcaption>
-
-       </div><br>
-
-.. only:: latex
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.pdf
-      :width: 48%
-      :align: center
-
-      Scatterplot of diabetes (2018) by population density for districts.
-
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household.pdf
-      :width: 100%
-      :align: center
-
-      Districts ranked in ascending order by diabetes (2018) with regard to diabetes outpatients (2018) per 10,000 household.
 
 
 
