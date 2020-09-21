@@ -1,60 +1,3 @@
-Indicators
-==========
-
-
-Study region boundaries
-~~~~~~~~~~~~~~~~~~~~~~~
-
-
-data
-||||
-
-Bangkok subdistrict boundary data (BMA, 2019) were topologically corrected using GRASS and QGIS, to ensure polygon boundaries did not have gaps or overlaps.  Boundaries were matched with alternate spellings in both Thai and English for corresponding regions found in data from other organisations  and datasets  (e.g. NSO, HDX) in order to facilitate data linkage.   The final boundary layer was returned to BMA and agreed upon for usage. 
-
-**Data source**: ``BangkokGIS (BMA)``
-
-**URL**: ``http://www.bangkokgis.com/bangkokgis_2008/userfiles/files/download/shapefile/administration/BMASubDistrict_Polygon.rar``
-
-**Publication year**: ``2018``
-
-**Target year**: ``2018``
-
-**Acquisition date (yyyymmdd)**: ``20190725``
-
-**Licence**: ``none specified``
-
-**Spatial reference (EPSG code)**: ``32647.0``
-
-**Date type**: ``vector``
-
-**Scale / Resolution**: ``subdistrict``
-
-**Notes**: ``English names not provided; these have been derived using manual linkage with data from HDX subdistricts and population data provided by BMA, with verification from Kornsupha Nitvimol of BMA.``
-
-**Data location relative to project folder**: ``./data/Bangkok_subdistricts_BMA_HLC_derived_20190805_cleaned_final.gpkg:subdistricts``
-
-District and changwat boundaries were constructed through geometrical union of the constituent subdistricts they were aligned with.  Boundaries at all three scales (subdistrict, district, changwat) were imported into the project database and used as analysis areas when constructing other indicators, as required.  The area in square kilometres of each analysis area's polygonal extent was recorded.   The changwat (province) of Bangkok was used to define the Bangkok metropolitan study region extent.  A ten kilometre buffer extending beyond this is used when conducting analyses of access to resources, so that access to destinations outside the study region would be accounted for peri-urban regions when undertaking network analysis.  
-
-
-
-.. only:: html
-
-    .. raw:: html
-
-        <figure>
-        <img alt="Bang Phlat study region" src="./../png/bang_phlat_01_study_region.png">
-        <figcaption>Bang Phlat study region.         <a href="./../html/bang_phlat_01_study_region.html" target="_blank">Open interactive map in new tab</a><br></figcaption>
-        </figure><br>
-
-.. only:: latex
-
-    .. figure:: ../maps/bang_phlat_thailand_2018/png/bang_phlat_01_study_region.png
-       :width: 70%
-       :align: center
-
-       Bang Phlat study region
-
-
 
 
 Population and communities
@@ -64,7 +7,7 @@ Population and communities
 data
 ||||
 
-Population statistics targetting Bangkok in 2018 were received from the Bangkok Metropolitan Administration, indexed by subdistrict. Fields included total population, sex strata, household, number of communities, and population in communities.  
+Population statistics targetting Bangkok in 2018 were received from the Bangkok Metropolitan Administration, indexed by subdistrict. 
 
 **Data source**: ``BMA``
 
@@ -84,7 +27,7 @@ Population statistics targetting Bangkok in 2018 were received from the Bangkok 
 
 **Data location relative to project folder**: ``./data/Bangkok_subdistrict_population_BMA_HLC_derived_20190808.csv``
 
-Population data were linked with boundaries using corresponding subdistrict ID numbers.  Density measures were calculated using population statistics relative to analysis area size. 
+Population data were linked with boundaries using corresponding subdistrict ID numbers, and were used to create plots of the Bang Phlat indicator values for subdistricts by population in 2018.
 
 
 Sense of community
@@ -92,7 +35,7 @@ Sense of community
 
 ความรู้สึกของชุมชน
 
-Sense of community refers to the feeling of the people in the community who feel that they are part of the community and want to be involved in sustainable development of the community.
+Sense of community refers to the feeling of people in a community that they are a part of that community, and share a desire to be involved in the sustainable development of that community.
 
 
 Dataset: Bang Phlat liveability indicators 2020-08-15
@@ -506,7 +449,7 @@ A safe environment
 
 สิ่งแวดล้อมปลอดภัย
 
-Environmental safety means to ensure that in the urban environment do not have a risk area to cause a fire, crime and road accidents.
+Environmental safety in an urban context refers to minimisation of risk of fire, crime and road accidents. 
 
 
 Dataset: Bang Phlat liveability indicators 2020-08-15
@@ -840,7 +783,7 @@ No flooding
 
 ไม่มีน้ำท่วม
 
-Floods means large amounts of water overflowing into normal land
+Floods means large amounts of water overflowing into normal land.
 
 
 Dataset: Bang Phlat liveability indicators 2020-08-15
@@ -946,7 +889,7 @@ Reduced/no car congestion
 
 รถติดลดลง/ไม่มีรถติด
 
-Traffic congestion is a condition that slows down transportation speed. Resulting in longer travel times and increased stationary vehicles on long roads 
+Traffic congestion is a condition that slows down transportation speed, resulting in longer travel times and increased occurances of stationary vehicles on long roads 
 
 
 Dataset: Bang Phlat liveability indicators 2020-08-15
@@ -1056,7 +999,7 @@ Healthy population
 
 ประชากรมีสุขภาพดี ทั้งทางกายและจิตใจ
 
-Healthy population means health status and health outcomes within a group of people.
+Healthy population refers to the health status and health outcomes within the population.
 
 
 Dataset: Bang Phlat liveability indicators 2020-08-15
@@ -1318,7 +1261,7 @@ Quality food
 
 อาหารมีคุณภาพ
 
-Food safety refers to the practice and conditions of maintaining food quality to prevent contamination and foodborne illnesses during preparation, management and storage.   Food quality refers to properties and characteristics of food products that are acceptable to consumers and meet expectations that is a purchase that is worth the money when compared to the required properties.
+Food safety refers to the practice and conditions of maintaining food quality to prevent contamination and foodborne illnesses during preparation, management and storage.   Food quality refers to properties and characteristics of food products that are acceptable to consumers and meet expectations of safety and value for money.
 
 
 Dataset: Bang Phlat liveability indicators 2020-08-15
@@ -1576,7 +1519,7 @@ Access to temples, museums, music and other cultural events that provide opportu
 
 การเข้าถึงวัด พิพิธภัณฑ์ การจัดงานด้านวัฒนธรรมและดนตรีที่เปิดโอกาสให้ประชาชนมารวมกัน ศูนย์ชุมชนที่ดำเนินการด้วยวัตถุประสงค์หลากหลาย
 
-Accessing mental well-being facilities refers people have access to various locations for increasing their happiness and promoting good actions; these places or facilities such as religious places, museums, theaters, arts and craft centers, local plays, as well as cultural and music events in communities or neighborhoods.
+Access to cultural facilities means that people have access to various locations for increasing their happiness and promoting good actions. Such places or facilities include religious sites, museums, theaters, arts and craft centers, theatre, as well as cultural and music events in communities or neighborhoods.
 
 
 Dataset: Bang Phlat liveability indicators 2020-08-15
@@ -2062,8 +2005,7 @@ High quality education and schools
 
 โรงเรียนและการศึกษาที่มีคุณภาพสูง
 
-Good quality education means that all learners learn the value of humanity. And have the knowledge needed to make an impact in improving the quality of life and well-being of each individual as well as participating in sustainable social and economic development.   Important basic education must have a level of literacy, calculation, basic scientific knowledge and life skills, including awareness and disease prevention.  Note: the secondary schools are not under the BMA’s responsibility.
-
+Good quality education means that all learners learn the value of humanity, have the knowledge needed to make an impact in improving the quality of life and well-being of each individual, as well as participating in sustainable social and economic development.   Important basic education encompasses an acceptable level of literacy and numeracy, basic scientific knowledge as well as life skills, including awareness and disease prevention.  Note: the secondary schools are not under the BMA’s responsibility.
 
 
 Dataset: Bang Phlat liveability indicators 2020-08-15
@@ -2314,8 +2256,4 @@ The numer of vocational training center in year 2018 was recorded.
       Subdistricts ranked in ascending order by vocational training center  with regard to the numer of vocational training center in year 2018.
 
 
-
-
-Social development
-~~~~~~~~~~~~~~~~~~
 

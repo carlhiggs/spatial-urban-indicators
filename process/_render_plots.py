@@ -104,6 +104,7 @@ def main():
             FROM {area_layer} a
             LEFT JOIN {schema}.{table} d USING ({linkage_id});
             '''
+        
         data = pd.read_sql(sql,engine)
         data['regions_of_interest'] = 'Other regions'
         data.loc[~(data[regions_of_interest_variable].isin(regions_of_interest)),'regions_of_interest'] = 'Case studies'
@@ -132,10 +133,12 @@ def main():
                 label_point(data[x1], data[y], data['label'], plt.gca())
                 for ax in g.axes[:,0]:
                     ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
-                    if data_type == 'integer':
-                        ax.yaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+                    if data_type in ['integer','Int64']:
+                        ax.get_yaxis().set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+                        ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
                     else:
                         ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,.9g}".format(round(x,3))))
+                
                 plt.tight_layout()
                 # plt.show()   
                 g.savefig(location)   
@@ -155,8 +158,9 @@ def main():
                 label_point(data[x2], data[y], data['label'], plt.gca())
                 for ax in g.axes[:,0]:
                     ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
-                    if data_type == 'integer':
-                        ax.yaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+                    if data_type in ['integer','Int64']:
+                        ax.get_yaxis().set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+                        ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
                     else:
                         ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,.9g}".format(round(x,3))))
                 
@@ -168,7 +172,7 @@ def main():
                 print(f"\t{location} saved.")
             else:
                 print(f"\t{location} exists.")
-
+            
             # Horizontal bar plot
             location = f'../maps/{study_region}/pdf/plots/{y}.pdf'.replace(' ','_')
             if not os.path.exists(location):
@@ -178,8 +182,9 @@ def main():
                 plt.figure(figsize=(14,10))
                 ax = sns.barplot(pd_data[y], pd_data['full_label'])
                 ax.set(xlabel=title, ylabel=area_layer.title())
-                if data_type == 'integer':
+                if data_type in ['integer','Int64']:
                     ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+                    ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
                 else:
                     ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.2g}"))
                 

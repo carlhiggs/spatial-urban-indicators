@@ -31,8 +31,8 @@ from _utils import *
 if len(sys.argv) >= 2:
   locale = '{studyregion}'.format(studyregion = sys.argv[1])
 else:
-  # locale = 'bang_phlat'
-  locale = 'bangkok'
+  locale = 'bang_phlat'
+  # locale = 'bangkok'
 if __name__ == '__main__':
   print("\nProcessing script {} for locale {}...\n".format(sys.argv[0],locale))
 

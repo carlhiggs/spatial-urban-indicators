@@ -2,11 +2,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Bang Phlat Liveability'
-copyright = '2020, C Higgs, A Alderton, K Nitvimol and H Badland'
-author = 'C Higgs, A Alderton, K Nitvimol and H Badland'
+copyright = '2020, K Nitvimol, C Higgs'
+author = 'K Nitvimol, C Higgs'
 
 # The full version, including alpha/beta/rc tags
-release = '1.1'
+release = '1.0'
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -80,6 +80,7 @@ latex_use_xindy = False
 latex_elements = {
     'papersize': 'a4paper',
     'figure_align': 'H',
+    'preamble':r'\renewcommand\pagenumbering[1]{}',
 }
 
 # Enable a draft watermark

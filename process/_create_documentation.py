@@ -82,7 +82,8 @@ def generate_metadata_rst(ind_metadata,df_context):
      ['Population in communities per km²','{locale}_02_population_{level}_population_in_communities_per_sqkm','11']
     ]
     # defined page heading as first line
-    rst = 'Indicators\r\n==========\r\n'
+    rst = ''
+    # rst = 'Indicators\r\n==========\r\n'
     dimensions = documentation_section_order.split(',')
     for dimension in dimensions:
         # create heading for dimension 
@@ -95,7 +96,7 @@ def generate_metadata_rst(ind_metadata,df_context):
             print(f'\t{category}')
             if str(category) != 'data':
                 category_thai = df_context.loc[df_context['English']==category,'Thai'].values[0]
-                category_definition = df_context.loc[df_context['English']==category,'Draft definition for Bangkok context'].values[0]
+                category_definition = df_context.loc[df_context['English']==category,'Definition'].values[0]
                 # add Thai name
                 rst = '{}\r\n{}\r\n'.format(rst,category_thai)
                 # add description for indicator
@@ -271,7 +272,7 @@ def get_sphinx_conf_header():
            f"\r\ncopyright = '{current_year}, {authors}'"
            f"\r\nauthor = '{authors}'"
             "\r\n\r\n# The full version, including alpha/beta/rc tags"
-           f"\r\nrelease = '{version}'\r\n"
+           f"\r\nrelease = '{version:.1f}'\r\n"
             )
     
     return(header)
@@ -301,8 +302,59 @@ def line_prepender(infile, outfile, line):
         lines = ''.join([line]+i.readlines())
         with open(outfile, "w") as o:
             print(lines, file=o)
-        
+
+def make_index(full_locale,authors,front_matter,technical_documentation):
+    current_date =  time.strftime("%d %B %Y")
+    if front_matter:
+        front_matter = """
+About
+*****
+
+    about
+    outputs
+"""
+    else:
+        front_matter = '   '
+    
+    if technical_documentation:
+       technical_documentation =  """
+Technical documentation
+***********************
+.. toctree::
+   :maxdepth: 4
+   
+   installation
+   setup
+   methods\n """
+    else:
+        technical_documentation =  '   '
+    
+    index_rst = f"""    
+.. {full_locale} Liveability documentation
+   {authors} on {current_date}.
+
+Urban Liveability in {full_locale}
+====================={'='*len(full_locale)}
+
+{front_matter}
+Indicators
+**********
+.. toctree::
+   :maxdepth: 5
+   
+   indicators
+   maps_interactive
+   
+{technical_documentation}
+"""
+    
+    return(index_rst)
+
 def main():
+    with open("../docs/index.rst", "w") as text_file:
+        index_rst =  make_index(full_locale,authors,front_matter,technical_documentation)
+        print(f"{index_rst}", file=text_file)
+    
     with open("../docs/maps_interactive.rst", "w") as text_file:
         maps_interactive = generate_interactive_maps_rst(create_html_select(get_ind_metadata()))
         print(f"{maps_interactive}", file=text_file)
