@@ -57,6 +57,8 @@ def main():
         # format to display superscript 2 for square kilometres
         for f in pop_data_fields_full:
             column_names[f] = f.replace('sqkm','km\u00B2')
+        
+        data_fields = '"{}",'.format('","'.join(pop_data_fields_full)).replace('"",','')
         # get study region map data for setting up map location
         map_data={}
         sql = '''SELECT ST_Transform(ST_Buffer(geom,3),4326) geom FROM {}'''.format(study_region)
@@ -64,15 +66,13 @@ def main():
         # get analytical layer data
         for area in areas:
             linkage_id = areas[area]['id']
-            sql = '''
+            sql = f'''
             SELECT {linkage_id},
                    {area},
                    {data_fields}
                    ST_Transform(geom, 4326) AS geom 
             FROM {area} a
-            '''.format(area = area,
-                       linkage_id=linkage_id,
-                       data_fields = '"{}",'.format('","'.join(pop_data_fields_full)))
+            '''
             map_data[area] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
             map_data[area].rename(columns = column_names, inplace=True)
             map_data[area].rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
@@ -209,19 +209,17 @@ def main():
     print(" Done.")
     sp.call(command, shell=True)     
     
-    print("Copying area population tables excerpt to geojson..."),
+    print("Copying area population tables excerpt to geojson (matching IISD template specification)..."),
     for area in areas:
+        geojson = f'{locale_maps}/geojson/{study_region}_{area}.geojson'
+        if os.path.exists(geojson):
+            os.remove(geojson)
         command = (
-                    'ogr2ogr -overwrite -f "GeoJSON" {path}/{output_name}.geojson '
-                    'PG:"host={host} user={user} dbname={db} password={pwd}" '
-                    '  "{tables}(geom)" '
-                    ).format(output_name = '{}_{}'.format(study_region,area),
-                             path = os.path.join(locale_maps,'geojson'),
-                             host = db_host,
-                             user = db_user,
-                             pwd = db_pwd,
-                             db = db,
-                             tables = area)
+                   f'''ogr2ogr -overwrite -f "GeoJSON" {geojson} '''
+                   f'''PG:"host={db_host} user={db_user} dbname={db} password={db_pwd}" '''
+                   f''' -sql 'SELECT {area}_id, {area}_en, {area}_th AS "name_th_TH", ST_Transform(geom,4326) geom FROM {area}' ''' 
+                   f''' -nln "{area}(geom)" '''
+                   )
         sp.call(command, shell=True)     
     print(" Done.")
     

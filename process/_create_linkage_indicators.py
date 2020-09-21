@@ -51,7 +51,7 @@ def set_columns_width(map_field,aggregation):
         potential_column_width = len(map_field) + len(aggregation) + 1
     if potential_column_width < pd.get_option("display.max_colwidth"):
         pd.set_option("display.max_colwidth", potential_column_width)
-    
+
 def format_units(units,rate_units,rate_scale):
     """
     Return formatted units value, based on whether rate and scaling values
@@ -75,7 +75,7 @@ def format_units(units,rate_units,rate_scale):
         else:
             units = f'per {rate_scale} {rate_units}'
     return(units)
-    
+
 def main():
     # simple timer for log file
     start = time.time()
@@ -92,7 +92,7 @@ def main():
         reprocess = False
                       
     # retrieve subset of datasets which are files to be joined based on linkage
-    df = df_datasets.query('type=="linkage"').copy()
+    df = df_datasets.query(f"type=='linkage'").copy()
     # get key fields from the specified population dataset
     population = pandas.read_csv(population_linkage[analysis_scale]['data'],index_col=population_linkage[analysis_scale]['linkage']) 
     population_numeric = [c for c in population.columns if np.issubdtype(population[c].dtype, np.number)]
@@ -104,6 +104,10 @@ def main():
         if f in population_numeric:
             pop_data_fields_full.append(f'{f} per sqkm')
             pop_data_fields_to_map.append(f'{f} per sqkm')
+    
+    pop_data_fields_full = [x for x in pop_data_fields_full if x!= ""]
+    pop_data_fields_to_map = [x for x in pop_data_fields_to_map if x!= ""]
+    
     column_names = {}
     # format to display superscript 2 for square kilometres
     for f in pop_data_fields_full:
@@ -149,9 +153,22 @@ def main():
                 if description=='':
                     description = map_field
                     df.loc[row,'Description'] = map_field
-                mapxls = pd.ExcelFile('../{}'.format(dataset))
-                mdf = pd.read_excel(mapxls,sheet)
-                mdf = mdf.set_index(linkage_id)
+                
+                if 'xlsx:' in dataset:
+                    try:
+                        # recording 1-indexed Excel header row to 0-index for ingestion with Pandas
+                        header_row = int(dataset.split('.xlsx:')[1])-1
+                        dataset = dataset.split(".xlsx:")[0] + '.xlsx'
+                        mapxls = pd.ExcelFile(f'../{dataset}')
+                        mdf = pd.read_excel(mapxls,sheet,header=header_row)
+                        mdf = mdf.set_index(linkage_id)
+                    except:
+                        sys.exit(f"Ingestion of supplied Excel dataset for linkage indicator failed; please check details (e.g. of header row) were correctly supplied.  Error report: { sys.exc_info()}")
+                else:
+                    mapxls = pd.ExcelFile(f'../{dataset}')
+                    mdf = pd.read_excel(mapxls,sheet)
+                    mdf = mdf.set_index(linkage_id)
+                
                 mdf.index.name = area_linkage_id
                 fill_na = '{}'.format(df.loc[row,'fill_na'])
                 if fill_na not in ['','nan']:

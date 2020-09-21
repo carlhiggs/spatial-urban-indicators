@@ -80,9 +80,9 @@ def main():
         x2   = 'population per sqkm'
         if row_type!='access':
             sql = f'''
-            SELECT a.district_id,
-                   a.district_en,
-                   a.district_th,
+            SELECT a.{area_layer},
+                   a.{area_layer}_en,
+                   a.{area_layer}_th,
                    a."{x1}",
                    a."{x2}",
                    d.{y}
@@ -95,9 +95,9 @@ def main():
             table = plot_data_y.replace('_pop_pct','')
             table_y = 'percent_access'
             sql = f'''
-            SELECT a.district_id,
-                   a.district_en,
-                   a.district_th,
+            SELECT a.{area_layer}_id,
+                   a.{area_layer}_en,
+                   a.{area_layer}_th,
                    a."{x1}",
                    a."{x2}",
                    d.{table_y} {y}
@@ -106,15 +106,20 @@ def main():
             '''
         data = pd.read_sql(sql,engine)
         data['regions_of_interest'] = 'Other regions'
-        data.loc[~(data.district_en.isin(regions_of_interest)),'regions_of_interest'] = 'Case studies'
-        data['label'] = data['district_th'] + ' ' + data['district_en']
+        data.loc[~(data[regions_of_interest_variable].isin(regions_of_interest)),'regions_of_interest'] = 'Case studies'
+        data['label'] = data[f'{area_layer}_th'] + ' ' + data[f'{area_layer}_en']
         data['full_label'] = data['label'] 
-        data.loc[~(data.district_en.isin(regions_of_interest)),'label'] = ''
-
+        data.loc[~(data[regions_of_interest_variable].isin(regions_of_interest)),'label'] = ''
+        
         #colours = ['#d01c8b','#f1b6da','#f7f7f7','#b8e186','#4dac26']
         #colour_binary = [colours[0], colours[-1]]
         
-        if area_layer == 'district':
+        for dir in ['pdf','svg']:
+            folder_dir = (f'../maps/{study_region}/{dir}/plots/')
+            if not os.path.exists(folder_dir):
+                os.makedirs(folder_dir)
+        
+        if area_layer == regions_of_interest_scale:
             # scatterplots
             # by population
             location = f'../maps/{study_region}/pdf/plots/{y}_{x1}.pdf'.replace(' ','_')
@@ -127,7 +132,10 @@ def main():
                 label_point(data[x1], data[y], data['label'], plt.gca())
                 for ax in g.axes[:,0]:
                     ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
-                    ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,.9g}".format(round(x,3))))
+                    if data_type == 'integer':
+                        ax.yaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+                    else:
+                        ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,.9g}".format(round(x,3))))
                 plt.tight_layout()
                 # plt.show()   
                 g.savefig(location)   
@@ -147,7 +155,11 @@ def main():
                 label_point(data[x2], data[y], data['label'], plt.gca())
                 for ax in g.axes[:,0]:
                     ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.0f}"))
-                    ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,.9g}".format(round(x,3))))
+                    if data_type == 'integer':
+                        ax.yaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+                    else:
+                        ax.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: "{:,.9g}".format(round(x,3))))
+                
                 plt.tight_layout()
                 # plt.show()
                 
@@ -166,7 +178,11 @@ def main():
                 plt.figure(figsize=(14,10))
                 ax = sns.barplot(pd_data[y], pd_data['full_label'])
                 ax.set(xlabel=title, ylabel=area_layer.title())
-                ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.2g}"))
+                if data_type == 'integer':
+                    ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+                else:
+                    ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: f"{x:,.2g}"))
+                
                 ax.set_yticklabels(pd_data['full_label'])
                 plt.tight_layout()
                 # plt.show()
@@ -177,21 +193,6 @@ def main():
                 print(f"\t{location} saved")
             else:
                 print(f"\t{location} exists.")
-        
-        # if area_layer == 'subdistrict':
-            # # Horizontal box plot
-            # pd_data = data.sort_values(y)
-            # plt.figure(figsize=(14,10))
-            # ax = sns.boxplot(x = 'label', y=y, pd_data['full_label'], orient='h',data = data)
-            # ax = sns.swarmplot(x = 'label', y=y, pd_data['full_label'], orient='h',data = data)
-            # ax.get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
-            # ax.set(xlabel=title, ylabel=area_layer.title())
-            # ax.set_yticklabels(pd_data['full_label'])
-            # plt.tight_layout()
-            # # plt.show()
-            # location = f'../maps/{study_region}/png/plots/{y}'.replace(' ','_')
-            # ax3.figure.savefig(location, dpi=300)  
-            # plt.close()    
         
     # output to completion log                  
     script_running_log(script, task, start, locale)

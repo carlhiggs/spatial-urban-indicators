@@ -43,7 +43,6 @@ def main():
     if len(list(set([areas[area]['data'] for area in areas])))==1:
       for area in areas:
         if area==analysis_scale:
-          area = analysis_scale
           # if aggregate_from_smallest and area != area_meta['areas_of_interest'][0]:
           if areas[area]['data'].endswith('zip'):
             # Open zipped file as geodataframe
@@ -56,6 +55,7 @@ def main():
             gdf[area] = gpd.read_file('../{}'.format(areas[area]['data']))
           # retain only known ids and geometry , and set index using analysis scale
           # FUTURE >>> consider adding optional retain fields
+          gdf[area] = gdf[area].query(region_where_clause_pandas)
           if area_sqkm != '':
             gdf[area] = gdf[area][area_ids+[area_sqkm,'geometry']]
             gdf[area].rename(columns={area_sqkm: "area_sqkm"},inplace=True)
@@ -126,7 +126,7 @@ def main():
            WHERE {where};
     '''.format(study_region = study_region,
                region_shape = region_shape,
-               where = region_where_clause))
+               where = region_where_clause_sql))
     
     print("\tCreate {} km buffered study region... ".format(study_buffer))
     engine.execute('''

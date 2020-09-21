@@ -1,7 +1,7 @@
 # Configuration file for the Sphinx documentation builder.
 # -- Project information -----------------------------------------------------
 
-project = 'Bangkok Liveability'
+project = 'Bang Phlat Liveability'
 copyright = '2020, C Higgs, A Alderton, K Nitvimol and H Badland'
 author = 'C Higgs, A Alderton, K Nitvimol and H Badland'
 

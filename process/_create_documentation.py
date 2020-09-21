@@ -138,36 +138,35 @@ def generate_metadata_rst(ind_metadata,df_context):
             if ds.iloc[0].purpose=='population':
                 # add description for further usage by indicators
                 rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
-                # rst = '{}\r\n\r\nIndicators\r\n^^^^^^^^^^\r\n'.format(rst)
-                for popi in population_items:
-                    rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,popi[0],'-'*len(popi[0]))
-                    for level in ['district','subdistrict']:
-                        pop_map = popi[1].format(locale=locale,level=level)
-                        if len(popi)==2:
-                            sdg = ''
-                            rst = '{}\r\n\r\n'.format(rst)
-                        else:
-                            sdg = popi[2]
-                            rst = '{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,sdg)
-                        # todo: implement SDG code
-                        map_code = (
-                                    '\r\n'
-                                    '.. only:: html\r\n\r\n'
-                                    '    .. raw:: html\r\n\r\n'
-                                    '        <figure>\r\n'
-                                    '        <img alt="{description}" src="./../png/{map}.png">\r\n'
-                                    '        <figcaption>{description}. '
-                                    '        <a href="./../html/{map}.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>\r\n'
-                                    '        </figure><br>\r\n\r\n'
-                                    '.. only:: latex\r\n\r\n'
-                                    '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
-                                    '       :width: 70%\r\n'
-                                    '       :align: center\r\n\r\n'
-                                    '       {description}\r\n\r\n'
-                                    ).format(description = '{}, by {}'.format(popi[0],level).capitalize(),
-                                             map = pop_map.lower(),
-                                             study_region = study_region)
-                        rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
+                if population_map_fields not in ['','nan']:
+                    for popi in population_items:
+                        rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,popi[0],'-'*len(popi[0]))
+                        for level in ['district','subdistrict']:
+                            pop_map = popi[1].format(locale=locale,level=level).lower()
+                            pop_description = description = '{}, by {}'.format(popi[0],level).capitalize()
+                            if len(popi)==2:
+                                sdg = ''
+                                rst = '{}\r\n\r\n'.format(rst)
+                            else:
+                                sdg = popi[2]
+                                rst = '{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,sdg)
+                            # todo: implement SDG code
+                            map_code = (
+                                        '\r\n'
+                                        '.. only:: html\r\n\r\n'
+                                        '    .. raw:: html\r\n\r\n'
+                                        '        <figure>\r\n'
+                                       f'        <img alt="{description}" src="./../png/{map}.png">\r\n'
+                                       f'        <figcaption>{description}. '
+                                       f'        <a href="./../html/{pop_map}.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>\r\n'
+                                        '        </figure><br>\r\n\r\n'
+                                        '.. only:: latex\r\n\r\n'
+                                       f'    .. figure:: ../maps/{study_region}/png/{pop_map}.png\r\n'
+                                        '       :width: 70%\r\n'
+                                        '       :align: center\r\n\r\n'
+                                       f'       {description}\r\n\r\n'
+                                        )
+                            rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
             if ds.iloc[0].purpose=='indicators':
                 for ind in ds.method_description_ind.unique():
                     df_ind = ds.query(f'method_description_ind == "{ind}"').copy()
@@ -180,36 +179,36 @@ def generate_metadata_rst(ind_metadata,df_context):
                     sdg = df_ind.iloc[0].sdg
                     # to do - parse SDG numbers and add in hyperlink
                     if str(sdg) not in ['','nan']:
-                        rst = '{}\r\n{}\r\n\r\nAligns with Sustainable Development Goals: {}.\r\n\r\n'.format(rst,method,sdg)
+                        rst = f'{rst}\r\n{method}\r\n\r\nAligns with Sustainable Development Goals: {sdg}.\r\n\r\n'
                     else:
-                        rst = '{}\r\n{}\r\n\r\n'.format(rst,method)
+                        rst = f'{rst}\r\n{method}\r\n\r\n'
                     levels = df_ind.linkage_layer.unique()
                     # map_scale_text = f'View maps for {full_locale} at available scales:'
                     for level in df_ind.linkage_layer.unique(): 
-                        ind_map = 'bangkok_ind_{}'.format(df_ind.loc[df_ind.linkage_layer==level].table_out_name.to_list()[0])
+                        ind_level = df_ind.loc[df_ind.linkage_layer==level].table_out_name.to_list()[0]
+                        ind_map = f'{locale}_ind_{ind_level}'.lower()
+                        ind_description = description = f'{a}, by {level}'
                         rst = '{}\r\n\r\n'.format(rst)
                         map_code = (
                                     '\r\n'
                                     '.. only:: html\r\n\r\n'
                                     '    .. raw:: html\r\n\r\n'
                                     '        <figure>\r\n'
-                                    '        <img alt="{description}" src="./../png/{map}.png">\r\n'
-                                    '        <figcaption>{description}. '
-                                    '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
+                                   f'        <img alt="{description}" src="./../png/{ind_map}.png">\r\n'
+                                   f'        <figcaption>{description}. '
+                                   f'        <a href="./../html/{ind_map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
                                     '        </figure><br>\r\n\r\n'
                                     '.. only:: latex\r\n\r\n'
-                                    '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
+                                   f'    .. figure:: ../maps/{study_region}/png/{ind_map}.png\r\n'
                                     '       :width: 70%\r\n'
                                     '       :align: center\r\n\r\n'
-                                    '       {description}\r\n\r\n'
-                                    ).format(description = f'{a}, by {level}',
-                                             map = ind_map.lower(),
-                                             study_region = study_region)
+                                   f'       {description}\r\n\r\n'
+                                    )
                         rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
                         plots = df_ind[df_ind['plot'].astype('str')!='nan'].copy()
-                        plots = plots[plots.linkage_layer=='district']
+                        plots = plots[plots.linkage_layer==regions_of_interest_scale]
                         n_plots = len(plots)
-                        if n_plots > 0 and level=='district': 
+                        if n_plots > 0 and level==regions_of_interest_scale: 
                             for x in range(0,n_plots):
                                 y     =  plots['table_out_name'].values[x]
                                 ylab  =  plots['map_field'].values[x]

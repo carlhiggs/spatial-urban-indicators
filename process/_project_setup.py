@@ -31,6 +31,7 @@ from _utils import *
 if len(sys.argv) >= 2:
   locale = '{studyregion}'.format(studyregion = sys.argv[1])
 else:
+  # locale = 'bang_phlat'
   locale = 'bangkok'
 if __name__ == '__main__':
   print("\nProcessing script {} for locale {}...\n".format(sys.argv[0],locale))
@@ -66,12 +67,17 @@ locale_maps = os.path.join('../maps/',study_region)
 # Study region buffer
 buffered_study_region = '{}_{}{}'.format(study_region,study_buffer,units)
 
-regions_of_interest = df_parameters.loc['full_locale',:].to_list()[2:]
+regions_of_interest =  [x.strip() for x in regions_of_interest.split(',')]
 
 # sample points
 points = '{}_{}m'.format(points,point_sampling_interval)
 
 df_datasets = compile_datasets(df_datasets,full_locale)
+
+region_where_clause_pandas = f""" {region_where_clause_id} == '{region_where_clause_match}' """
+region_where_clause_sql = f""" "{region_where_clause_id}" = '{region_where_clause_match}' """
+
+
 
 # Region set up
 area_meta = {}
