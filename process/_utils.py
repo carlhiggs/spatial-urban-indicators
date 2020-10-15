@@ -523,7 +523,6 @@ def get_df_data_fields(df,fields):
             data_fields_full.append(f'{f} per sqkm')
     return(data_fields_full)
     
-# def generate_map(engine,map_name,map_attribution, attribution, area, measure, description, map_field, linkage_id, schema, table, legend_bins, coalesce_na, data_fields,column_names, map_style,outpath, aggregation_text = '',point_overlay_xy= ''):
 def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',map_attribution='',area_attribution='', map_style_html_css='',schema='public',table='',measure=''):
     """
     Generate html and png maps for a calculated indicator
@@ -561,8 +560,6 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
         measure=map_field
     source = df_row.provider
     year_published = df_row.year_published
-    coalesce_na = str(df_row.coalesce_na)
-    legend_bins = str(df_row.legend_bins)
     aggregation - df_row.aggregation
     aggregation_text = get_aggregation_text(aggregation)
     attribution = f'{map_attribution} | {area_attribution} | data: {source} ({year_published})'
@@ -578,28 +575,16 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
         # format to display superscript 2 for square kilometres
         for f in data_fields:
             column_names[f] = f.replace('sqkm','km\u00B2')
-    if coalesce_na in ['','nan']:
-        sql = f'''
-            SELECT a.{linkage_id},
-                   a.{area},
-                   {additional_data}
-                   b.{measure},
-                   ST_Transform(a.geom, 4326) AS geom 
-            FROM {area} a
-            LEFT JOIN {schema}.{table} b 
-            USING ({linkage_id})
-            '''
-    else:
-        sql = f'''
-            SELECT a.{linkage_id},
-                   a.{area},
-                   {additional_data}
-                   COALESCE(b.{measure},{coalesce_na}) AS "{measure}",
-                   ST_Transform(a.geom, 4326) AS geom 
-            FROM {area} a
-            LEFT JOIN {schema}.{table} b 
-            USING ({linkage_id})
-            '''
+    sql = f'''
+        SELECT a.{linkage_id},
+               a.{area},
+               {additional_data}
+               b.{measure},
+               ST_Transform(a.geom, 4326) AS geom 
+        FROM {area} a
+        LEFT JOIN {schema}.{table} b 
+        USING ({linkage_id})
+        '''
     map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
     map.rename(columns = {measure : map_field}, inplace=True)
     map.rename(columns = column_names, inplace=True)
@@ -667,22 +652,22 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
     # Create choropleth map
     bins = 6
     # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
-    legend_bins = legend_bins
-    if legend_bins in ['quartiles']:
-        bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
-    if legend_bins.startswith('equal'):
-        legend_bins = legend_bins.split(':')
-        if len(legend_bins) != 2:
-            bins = 6
-        else:
-            bins = legend_bins[1]
-    if legend_bins.startswith('custom'):
-        legend_bins = legend_bins.split(':')
-        if len(legend_bins) != 2:
-            bins = 6
-        else:
-            legend_bins = legend_bins[1].split(',')
-            bins = legend_bins
+    # legend_bins = legend_bins
+    # if legend_bins in ['quartiles']:
+    #     bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
+    # if legend_bins.startswith('equal'):
+    #     legend_bins = legend_bins.split(':')
+    #     if len(legend_bins) != 2:
+    #         bins = 6
+    #     else:
+    #         bins = legend_bins[1]
+    # if legend_bins.startswith('custom'):
+    #     legend_bins = legend_bins.split(':')
+    #     if len(legend_bins) != 2:
+    #         bins = 6
+    #     else:
+    #         legend_bins = legend_bins[1].split(',')
+    #         bins = legend_bins
     if bins == 6:
         value_list = set(map[map_field].dropna().unique())
         if len(value_list) < 6:
@@ -721,7 +706,7 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
                                               name=point_overlay_name, 
                                               tooltip=f"feature.properties.{point_overlay_hover_field}"
                                               ).add_to(m)
-        folium.features.GeoJsonTooltip(fields=[c for c in point_overlay.columns if c is not 'geometry'],
+        folium.features.GeoJsonTooltip(fields=[c for c in point_overlay.columns if c != 'geometry'],
                                        localize=True,
                                        labels=True, 
                                        sticky=True

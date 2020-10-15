@@ -25,14 +25,8 @@ import geopandas as gpd
 from sqlalchemy import create_engine
 from geoalchemy2 import Geometry, WKTElement
 
-# import folium
-# from folium.plugins import MarkerCluster
-# from folium.plugins import FastMarkerCluster
-
-from bokeh.models import ColumnDataSource
-
 from script_running_log import script_running_log
-# Import custom variables for National Liveability indicator process
+# Import custom variables for liveability indicator process
 from _project_setup import *
 
 def main():

@@ -19,7 +19,7 @@ import time
 # sys.path.insert(0, os.path.abspath('../docs'))
 # from conf import *
 
-# Import custom variables for National Liveability indicator process
+# Import custom variables for liveability indicator process
 from _project_setup import *
 
 def get_ind_metadata():

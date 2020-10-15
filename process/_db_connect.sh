@@ -1,1 +1,0 @@
-psql -p 5433 -h host.docker.internal -U postgres

@@ -17,7 +17,7 @@ import time
 import psycopg2
 from script_running_log import script_running_log
 
-# Import custom variables for National Liveability indicator process
+# Import custom variables for liveability indicator process
 from _project_setup import *
 
 
@@ -32,38 +32,50 @@ def main():
     curs = conn.cursor()  
 
     connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
+    
+    # consolidate areas of open space criteria (defined in configuration file)
+    for v in df_os.index:
+        if df_os.loc[v].type == 'comma-seperated list':
+            df_os.loc[v].criteria = df_os.loc[v].criteria.split(',')
+        if df_os.loc[v].type == 'json':
+            df_os.loc[v].criteria = json.loads(df_os.loc[v].criteria)
+        if str(df_os.loc[v].comprehension )!='nan':
+            if df_os.loc[v].type != 'json':
+                df_os.loc[v].criteria = [df_os.loc[v].comprehension.format(x=x) for x in df_os.loc[v].criteria]
+            else:
+                df_os.loc[v].criteria = [df_os.loc[v].comprehension.format(x,tuple(df_os.loc[v].criteria[x])) for x in df_os.loc[v].criteria]
+        if str(df_os.loc[v].join )!='nan':
+            df_os.loc[v].criteria = '{}'.format(df_os.loc[v].join).join(df_os.loc[v].criteria)
+
+    specific_inclusion        = df_os.loc['os_inclusion'].criteria
+    os_landuse                = df_os.loc['os_landuse'].criteria
+    os_boundary               = df_os.loc['os_boundary'].criteria
+    excluded_keys             = df_os.loc['os_excluded_keys'].criteria
+    excluded_values           = df_os.loc['os_excluded_values'].criteria
+    exclusion_criteria = '{} OR {}'.format(df_os.loc['os_excluded_keys'].criteria,df_os.loc['os_excluded_values'].criteria)
+    exclude_tags_like_name = '''(SELECT array_agg(tags) from (SELECT DISTINCT(skeys(tags)) tags FROM open_space) t WHERE tags ILIKE '%name%')'''
+    water_features            = df_os.loc['os_water'].criteria              
+    linear_features           = df_os.loc['os_linear'].criteria                               
+    water_sports              = df_os.loc['os_water_sports'].criteria
+    linear_feature_criteria   = df_os.loc['linear_feature_criteria'].criteria
+    identifying_tags          = df_os.loc['identifying_tags_to_exclude_other_than_%name%'].criteria 
+    os_add_as_tags            = df_os.loc['os_add_as_tags'].criteria
+
+    public_space = '{} AND {}'.format(df_os.loc['public_not_in'].criteria,df_os.loc['additional_public_criteria'].criteria).replace(",)",")")
 
     # Define tags for which presence of values is suggestive of some kind of open space 
-    # These are defined in the _project_configuration worksheet 'open_space_defs' under the 'possible_os_tags' column.
-
-    os_landuse  = "'{}'".format("','".join([str(x) for x in df_osm["os_landuse"].dropna().tolist()]))
-    os_boundary = "'{}'".format("','".join([str(x) for x in df_osm["os_boundary"].dropna().tolist()]))
-
-    specific_inclusion = 'p.{}'.format('\nOR p.'.join(df_osm['specific_inclusion'].dropna().tolist()))
-    excluded_keys = '\nOR '.join(df_osm['exclusion_key'].dropna().apply(lambda x:'{var} IS NOT NULL'.format(var = x)).tolist())
-    excluded_values = '\nOR '.join(df_osm[['exclusion_field','exclusion_list']].dropna().apply(lambda x:'"{var}" IN {list}'.format(var = x[0],list = x[1]),axis =1))
-    exclusion_criteria = '{excluded_keys} \nOR {excluded_values}'.format(excluded_keys = excluded_keys,excluded_values=excluded_values)
-
-    water_features  = ','.join(["'{}'".format(x) for x in df_osm["water_tags_for_natural_landuse_leisure"].dropna().tolist()])
-    water_sports    = ','.join(["'{}'".format(x) for x in df_osm["water_sports"].dropna().tolist()])
-    linear_waterway = ','.join(["'{}'".format(x) for x in df_osm["linear_waterway"].dropna().tolist()])
-
-    linear_feature_criteria = '\n '.join(['{}'.format(x) for x in df_osm["linear_feature_criteria"].dropna().tolist()])
-
-    identifying_tags = ','.join(["'{}'".format(x) for x in df_osm["identifying_tags_to_exclude_other_than_%name%"].dropna().tolist()])
-    exclude_tags_like_name = '''(SELECT array_agg(tags) from (SELECT DISTINCT(skeys(tags)) tags FROM open_space) t WHERE tags ILIKE '%name%')'''
-
-    not_public_space = '({})'.format(','.join(df_osm["public_not_in"].dropna().tolist()))
-    additional_public_criteria = '({})'.format(' '.join(df_osm["additional_public_criteria"].dropna().tolist()))
-    potentially_public = df_osm['public_field'].dropna().tolist()
-    public_space = '\n'.join(df_osm['public_field'].dropna().apply(lambda x:'AND ("{var}" IS NULL OR "{var}" NOT IN {list})'.format(var = x,list = not_public_space)).tolist())
-    public_space = '{additional_public_criteria} {public_space}'.format(public_space = public_space,
-    additional_public_criteria = additional_public_criteria)
-    # JSONB version of the query
-    # public_space = '\n'.join(df_osm['public_field'].dropna().apply(lambda x:"AND (obj -> '{var}' IS NULL OR obj ->> '{var}' NOT IN {list})".format(var = x,list = not_public_space)).tolist())
-        
-    os_add_as_tags = ',\n'.join(['"{}"'.format(x) for x in df_osm["os_add_as_tags"].dropna().tolist()])
-
+    # These are defined in the _project_configuration worksheet 'open_space_defs' under the 'required_tags' column.
+    for shape in ['line','point','polygon','roads']:
+        required_tags = '\n'.join([(
+            f'ALTER TABLE {osm_prefix}_{shape} ADD COLUMN IF NOT EXISTS "{x}" varchar;'
+            ) for x in df_os.loc['os_required'].criteria]
+            )
+        sql = f'''
+        -- Add other columns which are important if they exists, but not important if they don't
+        -- --- except that there presence is required for ease of accurate querying.
+        {required_tags}'''
+        curs.execute(sql)
+        conn.commit()
 
     aos_setup = [f'''
     -- Create a 'Not Open Space' table
@@ -233,6 +245,7 @@ def main():
     f'''
     -- Create variable to indicate public access, default of True
     ALTER TABLE open_space ADD COLUMN IF NOT EXISTS public_access boolean; 
+    UPDATE open_space SET public_access = FALSE;
     UPDATE open_space SET public_access = TRUE
     WHERE {public_space}
      ;
@@ -396,26 +409,26 @@ def main():
     ALTER TABLE aos_nodes ADD COLUMN aos_entryid varchar; 
     UPDATE aos_nodes SET aos_entryid = aos_id::text || ',' || node::text; 
     ''',
+    '''
+    -- Create subset data for public_open_space_areas
+    DROP TABLE IF EXISTS aos_public_osm;
+    CREATE TABLE aos_public_osm AS
+    -- restrict to features > 10 sqm (e.g. 5m x 2m; this is very small, but plausible - and should be excluded)
+    SELECT * FROM open_space_areas WHERE aos_ha_public > 0.001;
+    CREATE INDEX aos_public_osm_idx ON aos_nodes (aos_id);
+    CREATE INDEX aos_public_osm_gix ON aos_nodes USING GIST (geom);
+    ''',
     f'''
     -- Create table of points within 30m of lines (should be your road network) 
     -- Distinct is used to avoid redundant duplication of points where they are within 20m of multiple roads 
     DROP TABLE IF EXISTS aos_nodes_30m_line;
     CREATE TABLE aos_nodes_30m_line AS 
     SELECT DISTINCT n.* 
-    FROM aos_nodes n, 
+    FROM aos_nodes n LEFT JOIN aos_public_osm a ON n.aos_id = a.aos_id, 
          edges l
-    WHERE ST_DWithin(n.geom ,l.geom,30);
-    ''',
-    '''
-    -- Create subset data for public_open_space_areas
-    DROP TABLE IF EXISTS aos_public_osm;
-    CREATE TABLE aos_public_osm AS
-    SELECT DISTINCT ON (pos.aos_id) pos.* 
-      FROM  open_space_areas pos
-     WHERE EXISTS (SELECT 1 FROM open_space_areas o,
-                                jsonb_array_elements(attributes) obj
-                  WHERE obj->'public_access' = 'true'
-                  AND  pos.aos_id = o.aos_id);
+    WHERE a.aos_id IS NOT NULL
+      AND ST_DWithin(n.geom ,l.geom,30);
+    CREATE INDEX aos_public_any_nodes_30m_line_gix ON aos_public_any_nodes_30m_line USING GIST (geom);
     '''
     ]
 

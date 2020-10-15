@@ -23,106 +23,61 @@
 ########################################################################
 
 FROM jupyter/base-notebook
-LABEL maintainer="Carl Higgs <carl.higgs@rmit.edu.au>"
+LABEL maintainer="Carl Higgs <carlhiggs@gmail.com>"
 
-# symlink and permissions
-USER root
-RUN ln -s /opt/conda/bin/jupyter /usr/local/bin
-
-# Install OpenJDK-8
-RUN apt-get update \
- && apt-get install -y openjdk-8-jdk \
- && apt-get install -y ant \
- && apt-get install ca-certificates-java \
- && apt-get clean \
- && update-ca-certificates -f;
-
+# set environment variables
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-RUN export JAVA_HOME
-
-# set locale
-ENV TZ 'Australia/Melbourne'
-RUN echo $TZ > /etc/timezone \ 
- && apt-get update && apt-get install -y tzdata \
- && rm /etc/localtime \
- && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
- && dpkg-reconfigure -f noninteractive tzdata \
- && apt-get clean \
- && locale-gen en_AU.UTF-8 
- 
-ENV LC_ALL=en_AU.UTF-8  
-ENV LANG=en_AU.UTF-8   
-ENV LANGUAGE=en_AU.UTF-8
 ENV PGCLIENTENCODING=UTF8
-RUN export LC_ALL LANG LANGUAGE PGCLIENTENCODING
-
-# Install OSM tools
-RUN wget https://github.com/openstreetmap/osmosis/releases/download/0.48.0/osmosis-0.48.0.tgz  \
- && mkdir osmosis                                                               \
- && mv osmosis-0.48.0.tgz osmosis                                               \
- && cd osmosis                                                                  \
- && tar xvfz osmosis-0.48.0.tgz                                                 \
- && rm osmosis-0.48.0.tgz                                                       \
- && chmod a+x bin/osmosis                    
-
-RUN apt-get install -y osm2pgsql
-
-# install firefox for web automation (e.g. html to png)
-RUN apt-get update && \
-    apt-get install -y firefox
-
-
-
-# Install tinytex, a minimal TeX distribution for making pdf documentation
-RUN apt-get update && apt-get install -y perl wget libfontconfig1 && \
-    wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh  && \
-    apt-get clean
+# add bin to path so tex commands can be run fromm commandline
 ENV PATH="${PATH}:bin"
 
-# attempt to use alternate repository due to error:
-#  tlmgr: package repository http://mirror.aarnet.edu.au/pub/CTAN/systems/texlive/tlnet (not verified: gpg unavailable)
+USER root
+RUN apt-get update && \
+    ln -s /opt/conda/bin/jupyter /usr/local/bin && \
+    # Install OpenJDK-8
+    apt-get install -y openjdk-8-jdk ant ca-certificates-java && \
+    update-ca-certificates -f && \
+    # Install required software
+    apt-get install -y osm2pgsql firefox perl wget libfontconfig1 make wkhtmltopdf \
+      fonts-unfonts-core fonts-unfonts-extra fonts-tlwg-loma fonts-tlwg-loma-otf fonts-thai-tlwg && \
+    # install OSM tools
+    wget https://github.com/openstreetmap/osmosis/releases/download/0.48.0/osmosis-0.48.0.tgz    && \
+    mkdir osmosis                                                                                && \
+    mv osmosis-0.48.0.tgz osmosis                                                                && \
+    cd osmosis                                                                                   && \
+    tar xvfz osmosis-0.48.0.tgz                                                                  && \
+    rm osmosis-0.48.0.tgz                                                                        && \
+    chmod a+x bin/osmosis                                                                        && \
+    # install TinyTex
+    wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh                               
 RUN tlmgr install xetex xcolor pgf fancyhdr parskip babel-english  \ 
-    units lastpage mdwtools comment   fontawesome times     \
-    fncychap titlesec tabulary varwidth wrapfig capt-of needspace  \
-    polyglossia fontspec cmap gnu-freefont \
-    --repository=http://mirror.ctan.org/systems/texlive/tlnet \
- && fmtutil-sys --all
-# issue with genmisc, omitted
-
-
-# install the make build tools, for compiling sphinx documentation
-RUN apt-get update && apt-get install -y make
-
-# install tools for converting html to pdf
-RUN apt-get update && apt-get install -y wkhtmltopdf
-
-# install fonts (including locale-specific)
-RUN apt-get update && apt-get install -y fonts-unfonts-core fonts-unfonts-extra fonts-tlwg-loma fonts-tlwg-loma-otf fonts-thai-tlwg
+        units lastpage mdwtools comment   fontawesome times     \
+        fncychap titlesec tabulary varwidth wrapfig capt-of needspace  \
+        polyglossia fontspec cmap gnu-freefont \
+        --repository=http://mirror.ctan.org/systems/texlive/tlnet                               && \
+    fmtutil-sys --all                                                                           && \
+    # Install conda packages
+    conda config --set show_channel_urls true                                                   && \
+    conda config --prepend channels conda-forge                                                 && \
+    conda update --strict-channel-priority --yes -n base conda                                  && \
+    conda install --strict-channel-priority --update-all --force-reinstall --yes \ 
+        osmnx python-igraph psycopg2 geoalchemy2 rasterio folium sphinx xlrd selenium seaborn \
+        contextily rasterstats pandana  pyproj psutil                                           && \
+    conda clean --yes --all                                                                     && \
+    conda info --all                                                                            && \
+    conda list                                                                                  && \
+    # additional Python libraries 
+    pip install sphinx_rtd_theme sphinxmark                                                     && \
+    apt-get clean 
 
 # launch notebook in the local working directory that we mount
 USER $NB_UID 
 WORKDIR /home/jovyan/work
 
-# configure conda and install packages
-RUN conda config --set show_channel_urls true                                    \
- && conda config --prepend channels conda-forge                                  \
- && conda update --strict-channel-priority --yes -n base conda                   \
- && conda install --strict-channel-priority --update-all --force-reinstall --yes \ 
-      osmnx python-igraph psycopg2 geoalchemy2 rasterio                          \
-      folium sphinx xlrd selenium seaborn contextily                             \
-      rasterstats pandana  pyproj psutil                                         \
- && conda clean --yes --all                                                      \
- && conda info --all                                                             \
- && conda list
 
-# packages testing to not install: geckodriver bokeh xarray
-    
+
 # add latex tools to path
 ENV PATH=/home/jovyan/bin:$PATH
-
-# install additional python libraries
-# sphinx libraries are for documentation
-RUN pip install sphinx_rtd_theme sphinxmark  
 
 # Add proj4 epsg codes to path (req'd for basemap)
 ENV PATH = /usr/share/proj:$PATH

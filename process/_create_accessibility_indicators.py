@@ -19,7 +19,7 @@ import sqlite3
 
 from script_running_log import script_running_log
 
-# Import custom variables for National Liveability indicator process
+# Import custom variables for liveability indicator process
 from _project_setup import *
  
 def main():

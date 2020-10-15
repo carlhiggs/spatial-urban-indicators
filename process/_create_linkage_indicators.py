@@ -24,7 +24,7 @@ import io
 
 from script_running_log import script_running_log
 
-# Import custom variables for National Liveability indicator process
+# Import custom variables for liveability indicator process
 from _project_setup import *
 
 def set_columns_width(map_field,aggregation):
@@ -375,22 +375,22 @@ def main():
                 # Create choropleth map
                 bins = 6
                 # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
-                legend_bins = '{}'.format(df.loc[row,'legend_bins'])
-                if legend_bins in ['quartiles']:
-                    bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
-                if legend_bins.startswith('equal'):
-                    legend_bins = legend_bins.split(':')
-                    if len(legend_bins) != 2:
-                        bins = 6
-                    else:
-                        bins = legend_bins[1]
-                if legend_bins.startswith('custom'):
-                    legend_bins = legend_bins.split(':')
-                    if len(legend_bins) != 2:
-                        bins = 6
-                    else:
-                        legend_bins = legend_bins[1].split(',')
-                        bins = legend_bins
+                # legend_bins = '{}'.format(df.loc[row,'legend_bins'])
+                # if legend_bins in ['quartiles']:
+                #     bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
+                # if legend_bins.startswith('equal'):
+                #     legend_bins = legend_bins.split(':')
+                #     if len(legend_bins) != 2:
+                #         bins = 6
+                #     else:
+                #         bins = legend_bins[1]
+                # if legend_bins.startswith('custom'):
+                #     legend_bins = legend_bins.split(':')
+                #     if len(legend_bins) != 2:
+                #         bins = 6
+                #     else:
+                #         legend_bins = legend_bins[1].split(',')
+                #         bins = legend_bins
                 if bins == 6:
                     value_list = set(map[map_field].dropna().unique())
                     if len(value_list) < 6:

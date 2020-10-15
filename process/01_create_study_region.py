@@ -151,9 +151,8 @@ def main():
             os.makedirs(path)   
     
     attribution = '{} | {}'.format(map_attribution,areas[area]['attribution'])
-    # if population_linkage != {}:
-        # attribution = '{} | {}'.format(attribution,population_linkage[analysis_scale]['attribution'])
-    
+    if population_linkage != {}:
+        attribution = '{} | {}'.format(attribution,population_linkage[analysis_scale]['attribution'])
     
     map_layers={}
     tables    = [buffered_study_region,study_region]

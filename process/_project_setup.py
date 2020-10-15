@@ -31,8 +31,9 @@ from _utils import *
 if len(sys.argv) >= 2:
   locale = '{studyregion}'.format(studyregion = sys.argv[1])
 else:
-  locale = 'bang_phlat'
-  # locale = 'bangkok'
+  # A default locale for analysis can be specified here
+  # locale = 'bang_phlat'
+  locale = 'bangkok'
 if __name__ == '__main__':
   print("\nProcessing script {} for locale {}...\n".format(sys.argv[0],locale))
 
@@ -41,8 +42,9 @@ cwd = os.path.join(os.getcwd(),'../process')
 # Load settings from _project_configuration.xlsx
 xls = pandas.ExcelFile(os.path.join(cwd,'_project_configuration.xlsx'))
 df_parameters = pandas.read_excel(xls, 'Parameters',index_col=0)
-df_datasets = pandas.read_excel(xls, 'Datasets')
-df_osm = pandas.read_excel(xls, 'osm_open_space')
+df_datasets = pandas.read_excel(xls, 'Resources')
+# df_osm = pandas.read_excel(xls, 'osm_open_space')
+df_os = pandas.read_excel(xls, 'osm_open_space').set_index('variable')
 df_osm_dest = pandas.read_excel(xls, 'osm_destinations')
 df_context = pandas.read_excel(xls, 'Bangkok context definitions',header=[0,1],skiprows=[2])
 
@@ -149,8 +151,7 @@ for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]
     population_linkage[data_type] = {}
     population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_file)
     population_linkage[data_type]['year_target'] = df_datasets.loc[pop_data].year_target
-    # population_linkage[data_type]['linkage'] = '{}'.format(df_datasets.loc[pop_data].index_if_tabular)
-    population_linkage[data_type]['linkage'] =  areas['subdistrict']['id']
+    population_linkage[data_type]['linkage'] =  areas[population_linkage[data_type]['resolution']]['id']
     licence = str(df_datasets.loc[pop_data]['licence'])
     if licence not in ['none specified','nan','']:
         licence_attrib = (

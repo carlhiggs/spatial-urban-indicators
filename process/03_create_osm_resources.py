@@ -19,7 +19,7 @@ import subprocess as sp
 from datetime import datetime
 import psycopg2 
 from script_running_log import script_running_log
-# Import custom variables for National Liveability indicator process
+# Import custom variables for liveability indicator process
 from _project_setup import *
 
 def main():
