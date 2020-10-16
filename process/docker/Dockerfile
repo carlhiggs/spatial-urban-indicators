@@ -7,7 +7,7 @@
 #        - Web: https://github.com/gboeing/osmnx
 #
 # Build an image from the dockerfile:
-# >>> docker build -t ind_bangkok .
+# >>> docker build -t carlhiggs/ind_bangkok .
 #
 # Run bash in this container and export final conda environment to a yml file:
 # >>> docker run --rm -it -u 0 --name ind_bangkok -v %cd%:/home/jovyan/work ind_bangkok /bin/bash
