@@ -128,12 +128,12 @@ def style_dict_fcn(type = 'qualitative',colour=0):
     }
 
 def compile_datasets(df_datasets,full_locale):
-    df_datasets.name_s = df_datasets.name_s.fillna('')
+    df_datasets.variable_name = df_datasets.variable_name.fillna('')
     df_datasets.dimension = df_datasets.dimension.fillna('')
     datasets = ['population','boundaries','indicators','destinations']
     query_include = '|'.join(['purpose == "{}"'.format(p) for p in datasets])
-    df_datasets = df_datasets.query(f'({query_include}) & region=="{full_locale}" & name_s!=""').copy()
-    df_datasets.set_index('name_s',inplace=True)
+    df_datasets = df_datasets.query(f'({query_include}) & region=="{full_locale}" & variable_name!=""').copy()
+    df_datasets.set_index('variable_name',inplace=True)
     df_datasets.areas = df_datasets.areas.str.split(',')
     df_datasets = df_datasets.explode('areas')
     df_datasets.rename(columns={"areas": "linkage_layer"},inplace=True)
@@ -163,7 +163,7 @@ def expand_indicators(df):
     d.loc[d.type=='access','destination'] = d.loc[d.type=='access',].index
     # set table out name as the dataframe index
     d.index = d.table_out_name
-    for field in ['alias']:
+    for field in ['indicator_measure']:
         d.loc[d.rate.astype('str') != '',field] = d.loc[d.rate.astype('str') != ''].apply(lambda x: (x[field], x[field] +' per {}'.format(
                                                                 (x.rate_units,'{:,g} {}'.format(x.rate_scale,x.rate_units))[x.rate_scale!=1]
                                                               ))[x['rate'] != ''],
@@ -460,7 +460,7 @@ def generate_isid_csv_template(engine,df_row, out_path, schema='public', prefix=
     if table =='':
         table = df_row.table_out_name
     # get information about this measure
-    description = df_row.alias
+    description = df_row.indicator_measure
     aggregation = df_row.aggregation
     area_layer = df_row.linkage_layer
     linkage_id = df_row.linkage_id
@@ -550,7 +550,7 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
         table = df_row.table_out_name
     map_name = f'{prefix}_ind_{table}{suffix}'
     # get information about this measure
-    description = df_row.alias
+    description = df_row.indicator_measure
     aggregation = df_row.aggregation
     area = df_row.linkage_layer
     linkage_id = df_row.linkage_id

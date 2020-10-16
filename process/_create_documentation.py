@@ -27,7 +27,7 @@ def get_ind_metadata():
     df = df_datasets.loc[df_datasets['method_description_ind'].fillna('')!='',].copy()
     df['map'] = df.loc[:,'table_out_name'].apply(lambda x: f'{locale}_ind_{x}')
     # df['description'] = df.apply(lambda x: '{}: {}'.format(x["map_heading"],x["map_field"]),axis=1)
-    df['description'] = df['alias']
+    df['description'] = df['indicator_measure']
     return df
     
 def create_html_select(ind_metadata):
@@ -172,7 +172,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                 for ind in ds.method_description_ind.unique():
                     df_ind = ds.query(f'method_description_ind == "{ind}"').copy()
                     # create heading for specific indicator
-                    a = df_ind.iloc[0].alias
+                    a = df_ind.iloc[0].indicator_measure
                     a = a[:1].upper() + a[1:]
                     rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,a,'>'*len(a))
                     # add indicator method description
@@ -213,7 +213,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                             for x in range(0,n_plots):
                                 y     =  plots['table_out_name'].values[x]
                                 ylab  =  plots['map_field'].values[x]
-                                title =  plots['alias'].values[x].title()
+                                title =  plots['indicator_measure'].values[x].title()
                                 x1   = 'population'     
                                 x2   = 'population per sqkm'
                                 plot1 = f'{y}_{x1}'.replace(' ','_')

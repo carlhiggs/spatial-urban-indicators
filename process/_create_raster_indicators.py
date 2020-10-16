@@ -69,7 +69,7 @@ def main():
         print(f'  - "{dataset}"')
         source_name = df.loc[row,'data_name']
         source = df.loc[row,'provider']
-        description = df.loc[row,'alias']
+        description = df.loc[row,'indicator_measure']
         map_field = df.loc[row,'map_field']
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
