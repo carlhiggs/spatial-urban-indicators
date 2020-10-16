@@ -6,7 +6,7 @@ Create sample points and hex grid
 Script:  
     05_create_sample_points.py
 Purpose: 
-    Create hex grid and sample points
+    Create sample points at regular intervals along the pedestrian street network for use in sampling accessibility to destinations.
 Authors: 
     Carl Higgs
 

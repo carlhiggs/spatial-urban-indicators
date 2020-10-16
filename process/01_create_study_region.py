@@ -6,7 +6,7 @@ Define study region
 Script:  
     01_study_region_setup.py
 Purpose: 
-    Python set up study region boundaries and associated population resources
+    Establishes study region boundaries and associated population resources
 Authors: 
     Carl Higgs 
 
@@ -143,10 +143,10 @@ def main():
                buffer = study_buffer))
               
     # Prepare map
-    if not os.path.exists(locale_maps):
-        os.makedirs(locale_maps)    
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)    
     for dir in ['html','png','pdf','gpkg','csv','geojson']:
-        path = os.path.join(locale_maps,dir)
+        path = os.path.join(output_dir,dir)
         if not os.path.exists(path):
             os.makedirs(path)   
     
@@ -205,12 +205,12 @@ def main():
     # checkout https://nbviewer.jupyter.org/gist/jtbaker/57a37a14b90feeab7c67a687c398142c?flush_cache=true
     # save map
     map_name = '{}_01_study_region'.format(locale)
-    m.save('{}/html/{}.html'.format(locale_maps,map_name))
-    folium_to_image(os.path.join(locale_maps,'html'),os.path.join(locale_maps,'png'),map_name)
+    m.save('{}/html/{}.html'.format(output_dir,map_name))
+    folium_to_image(os.path.join(output_dir,'html'),os.path.join(output_dir,'png'),map_name)
     
     print("\nPlease inspect results using interactive map saved in project maps folder:".format(map_name))
-    print('\t- {}/html/{}.html'.format(locale_maps,map_name))
-    print('\t- {}/png/{}.png'.format(locale_maps,map_name))
+    print('\t- {}/html/{}.html'.format(output_dir,map_name))
+    print('\t- {}/png/{}.png'.format(output_dir,map_name))
     
     print('')
     # output to completion log					

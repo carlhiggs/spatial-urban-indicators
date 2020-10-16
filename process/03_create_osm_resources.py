@@ -6,7 +6,7 @@ Collate OSM resources
 Script:  
     03_create_osm_resources.py
 Purpose: 
-    Collate OSM resources for specified city (2019)
+    Collate OSM resources for specified study region (2019)
 Authors: 
     Carl Higgs 
 

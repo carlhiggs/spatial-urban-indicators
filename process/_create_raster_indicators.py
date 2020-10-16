@@ -41,7 +41,7 @@ def main():
     task = 'Create indicators from raster files'
 
     engine = create_engine(f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}")
-    gpkg_path = os.path.join(locale_maps,'gpkg')
+    gpkg_path = os.path.join(output_dir,'gpkg')
     engine_sqlite = create_engine(f'sqlite:///{gpkg_path}/{study_region}.gpkg',module = sqlite3)
     sql = f'''SELECT geom FROM {buffered_study_region}'''
     clipping_boundary = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )   
@@ -151,7 +151,7 @@ def main():
                 print(f'\t- {path}/{study_region}.gpkg/{map_name_suffix}')
         
         if 'skip_tables' not in sys.argv:
-                path = os.path.join(locale_maps,'csv')
+                path = os.path.join(output_dir,'csv')
                 ind = df.loc[row]
                 # print(ind)
                 generate_isid_csv_template(engine, ind, path, prefix=locale,measure=map_name_suffix)
@@ -353,14 +353,14 @@ def main():
                                 '''legend = L.control({position: \'bottomright''')
             # save map
             # map_name = '{}_ind_{}'.format(locale,map_name_suffix)
-            fid = open(f'{locale_maps}/html/{map_name}.html', 'wb')
+            fid = open(f'{output_dir}/html/{map_name}.html', 'wb')
             fid.write(html.encode('utf8'))
             fid.close()
-            folium_to_image(os.path.join(locale_maps,'html'),
-                            os.path.join(locale_maps,'png'),
+            folium_to_image(os.path.join(output_dir,'html'),
+                            os.path.join(output_dir,'png'),
                             map_name)
-            print(f'\t- {locale_maps}/html/{map_name}.html')
-            print(f'\t- {locale_maps}/png/{map_name}.png')
+            print(f'\t- {output_dir}/html/{map_name}.html')
+            print(f'\t- {output_dir}/png/{map_name}.png')
             print('')
     # output to completion log                  
     script_running_log(script, task, start, locale)

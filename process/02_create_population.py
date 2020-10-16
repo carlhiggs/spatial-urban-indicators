@@ -185,12 +185,12 @@ def main():
                 # move legend to lower right corner
                 html = html.replace('''legend = L.control({position: \'topright''','''legend = L.control({position: \'bottomright''')
                 # save map
-                fid = open('{}/html/{}.html'.format(locale_maps,map_name), 'wb')
+                fid = open('{}/html/{}.html'.format(output_dir,map_name), 'wb')
                 fid.write(html.encode('utf8'))
                 fid.close()
                 # output map to image (eg png)
-                folium_to_image(input_dir  = os.path.join(locale_maps,'html'),
-                                output_dir = os.path.join(locale_maps,'png'),
+                folium_to_image(input_dir  = os.path.join(output_dir,'html'),
+                                output_dir = os.path.join(output_dir,'png'),
                                 map_name = map_name)
             print("\n")
     
@@ -200,7 +200,7 @@ def main():
                 'PG:"host={host} user={user} dbname={db} password={pwd}" '
                 '  {tables}'
                 ).format(output_name = '{}'.format(study_region),
-                         path = os.path.join(locale_maps,'gpkg'),
+                         path = os.path.join(output_dir,'gpkg'),
                          host = db_host,
                          user = db_user,
                          pwd = db_pwd,
@@ -211,7 +211,7 @@ def main():
     
     print("Copying area population tables excerpt to geojson (matching IISD template specification)..."),
     for area in areas:
-        geojson = f'{locale_maps}/geojson/{study_region}_{area}.geojson'
+        geojson = f'{output_dir}/geojson/{study_region}_{area}.geojson'
         if os.path.exists(geojson):
             os.remove(geojson)
         command = (

@@ -116,14 +116,14 @@ def main():
         #colour_binary = [colours[0], colours[-1]]
         
         for dir in ['pdf','svg']:
-            folder_dir = (f'../maps/{study_region}/{dir}/plots/')
+            folder_dir = (f'../output/{study_region}/{dir}/plots/')
             if not os.path.exists(folder_dir):
                 os.makedirs(folder_dir)
         
         if area_layer == regions_of_interest_scale:
             # scatterplots
             # by population
-            location = f'../maps/{study_region}/pdf/plots/{y}_{x1}.pdf'.replace(' ','_')
+            location = f'../output/{study_region}/pdf/plots/{y}_{x1}.pdf'.replace(' ','_')
             if not os.path.exists(location):
                 font = {'family':'Garuda','size':9.0}
                 matplotlib.rc('font', **font)
@@ -148,7 +148,7 @@ def main():
                 print(f"\t{location} already exists.")
             
             # by population per square kilometre
-            location = f'../maps/{study_region}/pdf/plots/{y}_{x2}.pdf'.replace(' ','_')
+            location = f'../output/{study_region}/pdf/plots/{y}_{x2}.pdf'.replace(' ','_')
             if not os.path.exists(location):
                 font = {'family':'Garuda','size':9.0}
                 matplotlib.rc('font', **font)
@@ -174,7 +174,7 @@ def main():
                 print(f"\t{location} exists.")
             
             # Horizontal bar plot
-            location = f'../maps/{study_region}/pdf/plots/{y}.pdf'.replace(' ','_')
+            location = f'../output/{study_region}/pdf/plots/{y}.pdf'.replace(' ','_')
             if not os.path.exists(location):
                 font = {'family':'Garuda','size':12.0}
                 matplotlib.rc('font', **font)

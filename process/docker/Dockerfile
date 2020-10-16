@@ -32,13 +32,13 @@ ENV PGCLIENTENCODING=UTF8
 ENV PATH="${PATH}:bin"
 
 USER root
-RUN apt-get update && \
-    ln -s /opt/conda/bin/jupyter /usr/local/bin && \
+RUN apt-get update                                                                               && \
+    ln -s /opt/conda/bin/jupyter /usr/local/bin                                                  && \
     # Install OpenJDK-8
-    apt-get install -y openjdk-8-jdk ant ca-certificates-java && \
-    update-ca-certificates -f && \
+    apt-get install -y openjdk-8-jdk ant ca-certificates-java                                    && \
+    update-ca-certificates -f                                                                    && \
     # Install required software
-    apt-get install -y osm2pgsql firefox perl wget libfontconfig1 make wkhtmltopdf \
+    apt-get install -y osm2pgsql firefox perl wget libfontconfig1 make wkhtmltopdf                  \
       fonts-unfonts-core fonts-unfonts-extra fonts-tlwg-loma fonts-tlwg-loma-otf fonts-thai-tlwg && \
     # install OSM tools
     wget https://github.com/openstreetmap/osmosis/releases/download/0.48.0/osmosis-0.48.0.tgz    && \
@@ -49,32 +49,30 @@ RUN apt-get update && \
     rm osmosis-0.48.0.tgz                                                                        && \
     chmod a+x bin/osmosis                                                                        && \
     # install TinyTex
-    wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh                               
-RUN tlmgr install xetex xcolor pgf fancyhdr parskip babel-english  \ 
-        units lastpage mdwtools comment   fontawesome times     \
-        fncychap titlesec tabulary varwidth wrapfig capt-of needspace  \
-        polyglossia fontspec cmap gnu-freefont \
-        --repository=http://mirror.ctan.org/systems/texlive/tlnet                               && \
-    fmtutil-sys --all                                                                           && \
+    wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh                               && \
+    tlmgr install xetex xcolor pgf fancyhdr parskip babel-english                                   \ 
+        units lastpage mdwtools comment fontawesome times                                           \
+        fncychap titlesec tabulary varwidth wrapfig capt-of needspace                               \
+        polyglossia fontspec cmap gnu-freefont  oberdiek upquote latexmk makeindex                  \
+        --repository=http://mirror.ctan.org/systems/texlive/tlnet                                && \
+    fmtutil-sys --all                                                                            && \
     # Install conda packages
-    conda config --set show_channel_urls true                                                   && \
-    conda config --prepend channels conda-forge                                                 && \
-    conda update --strict-channel-priority --yes -n base conda                                  && \
-    conda install --strict-channel-priority --update-all --force-reinstall --yes \ 
-        osmnx python-igraph psycopg2 geoalchemy2 rasterio folium sphinx xlrd selenium seaborn \
-        contextily rasterstats pandana  pyproj psutil                                           && \
-    conda clean --yes --all                                                                     && \
-    conda info --all                                                                            && \
-    conda list                                                                                  && \
-    # additional Python libraries 
-    pip install sphinx_rtd_theme sphinxmark                                                     && \
-    apt-get clean 
+    conda config --set show_channel_urls true                                                    && \
+    conda config --prepend channels conda-forge                                                  && \
+    conda update --strict-channel-priority --yes -n base conda                                   && \
+    conda install --strict-channel-priority --update-all --force-reinstall --yes                    \ 
+        osmnx python-igraph psycopg2 geoalchemy2 rasterio folium sphinx xlrd selenium seaborn       \
+        contextily rasterstats pandana  pyproj psutil                                            && \
+    conda clean --yes --all                                                                      && \
+    conda info --all                                                                             && \
+    conda list                                                                                   && \
+    # additional Python libraries
+    pip install sphinx_rtd_theme sphinxmark                                                      && \
+    apt-get clean                                                               
 
 # launch notebook in the local working directory that we mount
 USER $NB_UID 
 WORKDIR /home/jovyan/work
-
-
 
 # add latex tools to path
 ENV PATH=/home/jovyan/bin:$PATH

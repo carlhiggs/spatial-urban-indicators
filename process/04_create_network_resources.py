@@ -6,7 +6,7 @@ OpenStreetMap network setup
 Script:  
     04_create_network_resources.py
 Purpose: 
-    Create pedestrian street networks for specified city (2019)
+    Collate OSM resources for specified city (2019)
 Authors: 
     Carl Higgs 
 

@@ -83,7 +83,7 @@ def main():
     task = 'Create indicators from linkage files'
     
     engine = create_engine(f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}")
-    gpkg_path = os.path.join(locale_maps,'gpkg')
+    gpkg_path = os.path.join(output_dir,'gpkg')
     engine_sqlite = create_engine(f'sqlite:///{gpkg_path}/{study_region}.gpkg',module = sqlite3)
                       
     if 'reprocess' in sys.argv:
@@ -140,7 +140,7 @@ def main():
         source = df.loc[row,'provider']
         publication_year = df.loc[row,'year_published']
         print('\t{}'.format(map_name))
-        if os.path.isfile(f'{locale_maps}/html/{map_name}.html') and reprocess==False:
+        if os.path.isfile(f'{output_dir}/html/{map_name}.html') and reprocess==False:
             print('\t - File appears to already have been processed (HTML output exists); skipping.')
         else:
             if 'skip_tables' not in sys.argv:
@@ -232,7 +232,7 @@ def main():
                 print(f'\t- postgresql::{db}/{map_name_suffix}')
                 mdf.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
                 print('\t- {path}/{output_name}.gpkg/{layer}'.format(output_name = '{}'.format(study_region),
-                                                                path = os.path.join(locale_maps,'gpkg'),
+                                                                path = os.path.join(output_dir,'gpkg'),
                                                                 layer = map_name_suffix))
                 sql = f'''
                         SELECT a.{area_linkage_id} AS "Census Id",
@@ -261,12 +261,12 @@ def main():
                     )
                 csv_file = '{path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
                                                                                           map_name_suffix),
-                                                             path = os.path.join(locale_maps,'csv'))
+                                                             path = os.path.join(output_dir,'csv'))
                 with open(csv_file, 'w') as output_file:
                     output_file.write(csv_template)
                 print('\t- {path}/{output_name}.csv'.format(output_name = '{}_{}'.format(study_region,
                                                                                           map_name_suffix),
-                                                             path = os.path.join(locale_maps,'csv')))
+                                                             path = os.path.join(output_dir,'csv')))
                 # df.loc[row,:].to_frame().transpose().to_sql('data_sources', engine, if_exists='replace',index=False)
             
             # Create map
@@ -461,14 +461,14 @@ def main():
                                     '''legend = L.control({position: \'bottomright''')
                 # save map
                 # map_name = '{}_ind_{}'.format(locale,map_name_suffix)
-                fid = open(f'{locale_maps}/html/{map_name}.html', 'wb')
+                fid = open(f'{output_dir}/html/{map_name}.html', 'wb')
                 fid.write(html.encode('utf8'))
                 fid.close()
-                folium_to_image(os.path.join(locale_maps,'html'),
-                                os.path.join(locale_maps,'png'),
+                folium_to_image(os.path.join(output_dir,'html'),
+                                os.path.join(output_dir,'png'),
                                 map_name)
-                print(f'\t- {locale_maps}/html/{map_name}.html')
-                print(f'\t- {locale_maps}/png/{map_name}.png')
+                print(f'\t- {output_dir}/html/{map_name}.html')
+                print(f'\t- {output_dir}/png/{map_name}.png')
                 print('')
     # output to completion log                  
     script_running_log(script, task, start, locale)

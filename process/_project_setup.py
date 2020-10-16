@@ -64,7 +64,7 @@ db = 'li_{0}_{1}{2}'.format(locale,year,suffix).lower()
 
 # region specific output locations
 locale_dir = os.path.join(folderPath,'study_region','{}'.format(study_region))
-locale_maps = os.path.join('../maps/',study_region)
+output_dir = os.path.join('../output/',study_region)
 
 # Study region buffer
 buffered_study_region = '{}_{}{}'.format(study_region,study_buffer,units)
@@ -151,7 +151,7 @@ for pop_data in list(df_datasets[['population:' in x for x in df_datasets.index]
     population_linkage[data_type] = {}
     population_linkage[data_type]['data'] = '.{}'.format(df_datasets.loc[pop_data].data_file)
     population_linkage[data_type]['year_target'] = df_datasets.loc[pop_data].year_target
-    population_linkage[data_type]['linkage'] =  areas[population_linkage[data_type]['resolution']]['id']
+    population_linkage[data_type]['linkage'] =  areas[ df_datasets.loc[pop_data].resolution]['id']
     licence = str(df_datasets.loc[pop_data]['licence'])
     if licence not in ['none specified','nan','']:
         licence_attrib = (

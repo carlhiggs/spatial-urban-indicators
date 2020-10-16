@@ -118,22 +118,24 @@ def generate_metadata_rst(ind_metadata,df_context):
             if ds.iloc[0].purpose=='boundaries':
                 # add description for further usage by indicators
                 rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
+                map = '{}_01_study_region'.format(locale).lower()
+                description = f'{full_locale} study region'
                 map_code = (
                             '\r\n'
                             '.. only:: html\r\n\r\n'
                             '    .. raw:: html\r\n\r\n'
                             '        <figure>\r\n'
-                            '        <img alt="{description}" src="./../png/{map}.png">\r\n'
-                            '        <figcaption>{description}. '
-                            '        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
+                           f'        <img alt="{description}" src="./../png/{map}.png">\r\n'
+                           f'        <figcaption>{description}. '
+                           f'        <a href="./../html/{map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
                             '        </figure><br>\r\n\r\n'
                             '.. only:: latex\r\n\r\n'
-                            '    .. figure:: ../maps/{study_region}/png/{map}.png\r\n'
+                           f'    .. figure:: {output_dir}/png/{map}.png\r\n'
                             '       :width: 70%\r\n'
                             '       :align: center\r\n\r\n'
-                            '       {description}\r\n\r\n'
+                           f'       {description}\r\n\r\n'
                             ).format(description = f'{full_locale} study region',
-                                             map = '{}_01_study_region'.format(locale).lower(),
+                                             ,
                                      study_region = study_region)
                 rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
             if ds.iloc[0].purpose=='population':
@@ -144,7 +146,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                         rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,popi[0],'-'*len(popi[0]))
                         for level in ['district','subdistrict']:
                             pop_map = popi[1].format(locale=locale,level=level).lower()
-                            pop_description = description = '{}, by {}'.format(popi[0],level).capitalize()
+                            description = '{}, by {}'.format(popi[0],level).capitalize()
                             if len(popi)==2:
                                 sdg = ''
                                 rst = '{}\r\n\r\n'.format(rst)
@@ -162,7 +164,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                                        f'        <a href="./../html/{pop_map}.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>\r\n'
                                         '        </figure><br>\r\n\r\n'
                                         '.. only:: latex\r\n\r\n'
-                                       f'    .. figure:: ../maps/{study_region}/png/{pop_map}.png\r\n'
+                                       f'    .. figure:: {output_dir}/png/{pop_map}.png\r\n'
                                         '       :width: 70%\r\n'
                                         '       :align: center\r\n\r\n'
                                        f'       {description}\r\n\r\n'
@@ -200,7 +202,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                                    f'        <a href="./../html/{ind_map}.html" target="_blank">Open interactive map in new tab</a><br></figcaption>\r\n'
                                     '        </figure><br>\r\n\r\n'
                                     '.. only:: latex\r\n\r\n'
-                                   f'    .. figure:: ../maps/{study_region}/png/{ind_map}.png\r\n'
+                                   f'    .. figure:: {output_dir}/png/{ind_map}.png\r\n'
                                     '       :width: 70%\r\n'
                                     '       :align: center\r\n\r\n'
                                    f'       {description}\r\n\r\n'
@@ -219,7 +221,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                                 plot1 = f'{y}_{x1}'.replace(' ','_')
                                 plot2 = f'{y}_{x2}'.replace(' ','_')
                                 plot3 = f'{y}'.replace(' ','_')
-                                if os.path.exists(f'../maps/{study_region}/svg/plots/{plot3}.svg'):
+                                if os.path.exists(f'{output_dir}/svg/plots/{plot3}.svg'):
                                     desc1 = f'{ylab} by {x1}'
                                     desc2 = f'{ylab} by {x2}'
                                     desc3 = f'{ylab}, ranked in ascending order'
@@ -245,15 +247,15 @@ def generate_metadata_rst(ind_metadata,df_context):
                                                f'       <figcaption>{description}.</figcaption>\r\n\r\n'
                                                 '       </div><br>\r\n\r\n'
                                                 '.. only:: latex\r\n\r\n'
-                                               f'   .. figure:: ../maps/{study_region}/pdf/plots/{plot1}.pdf\r\n'
+                                               f'   .. figure:: {output_dir}/pdf/plots/{plot1}.pdf\r\n'
                                                 '      :width: 48%\r\n'
                                                 '      :align: center\r\n\r\n'
                                                f'      Scatterplot of {ylab} by population for districts.\r\n\r\n'
-                                               f'   .. figure:: ../maps/{study_region}/pdf/plots/{plot2}.pdf\r\n'
+                                               f'   .. figure:: {output_dir}/pdf/plots/{plot2}.pdf\r\n'
                                                 '      :width: 48%\r\n'
                                                 '      :align: center\r\n\r\n'
                                                f'      Scatterplot of {ylab} by population density for districts.\r\n\r\n'
-                                               f'   .. figure:: ../maps/{study_region}/pdf/plots/{plot3}.pdf\r\n'
+                                               f'   .. figure:: {output_dir}/pdf/plots/{plot3}.pdf\r\n'
                                                 '      :width: 100%\r\n'
                                                 '      :align: center\r\n\r\n'
                                                f'      {description_latex}\r\n\r\n'
@@ -285,14 +287,14 @@ def make_locale_documentation(study_region):
     # make = (
             # "make clean" 
             # "  && make html"
-           # f"  && cp -rT _build/html ../maps/{study_region}/docs"
+           # f"  && cp -rT _build/html {output_dir}/docs"
             # )
     make = (
             "make clean" 
             "  && make html"
-           f"  && cp -rT _build/html ../maps/{study_region}/docs"
+           f"  && cp -rT _build/html {output_dir}/docs"
             "  && make latexpdf"
-           f"  && cp _build/latex/{project_pdf_in}.pdf '../maps/{study_region}/{project_pdf_out}.pdf'"
+           f"  && cp _build/latex/{project_pdf_in}.pdf '{output_dir}/{project_pdf_out}.pdf'"
             )
     sp.call(make, cwd ='../docs', shell=True)  
     print(" Done.")
@@ -309,6 +311,7 @@ def make_index(full_locale,authors,front_matter,technical_documentation):
         front_matter = """
 About
 *****
+.. toctree::
 
     about
     outputs
@@ -325,7 +328,8 @@ Technical documentation
    
    installation
    setup
-   methods\n """
+   methods
+"""
     else:
         technical_documentation =  '   '
     
@@ -337,6 +341,7 @@ Urban Liveability in {full_locale}
 ====================={'='*len(full_locale)}
 
 {front_matter}
+
 Indicators
 **********
 .. toctree::

@@ -6,7 +6,7 @@ Database creation
 Script:  
     00_create_database.py
 Purpose: 
-    Facilitate creation of a PostgreSQL database and related settings for creation of liveability indicators
+    Initialises a PostgreSQL database and related settings for creation of liveability indicators for a particular study region.
 
 """
 
