@@ -50,12 +50,12 @@ RUN apt-get update                                                              
     chmod a+x bin/osmosis                                                                        && \
     # install TinyTex
     wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh                               && \
-    tlmgr install xetex xcolor pgf fancyhdr parskip babel-english                                   \ 
+    /home/jovyan/bin/tlmgr install xetex xcolor pgf fancyhdr parskip babel-english                  \ 
         units lastpage mdwtools comment fontawesome times                                           \
         fncychap titlesec tabulary varwidth wrapfig capt-of needspace                               \
         polyglossia fontspec cmap gnu-freefont  oberdiek upquote latexmk makeindex                  \
         --repository=http://mirror.ctan.org/systems/texlive/tlnet                                && \
-    fmtutil-sys --all                                                                            && \
+    /home/jovyan/bin/fmtutil-sys --all                                                           && \
     # Install conda packages
     conda config --set show_channel_urls true                                                    && \
     conda config --prepend channels conda-forge                                                  && \
