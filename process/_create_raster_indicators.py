@@ -164,29 +164,16 @@ def main():
             tables    = [buffered_study_region,study_region]
             fields    = ['Description','Description']
             data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full))
-            coalesce_na = '{}'.format(df.loc[row,'coalesce_na'])
-            if coalesce_na in ['','nan']:
-                sql = f'''
-                    SELECT a.{linkage_id},
-                           a.{area_layer},
-                           {data_fields}
-                           b.{map_name_suffix},
-                           ST_Transform(a.geom, 4326) AS geom 
-                    FROM {area_layer} a
-                    LEFT JOIN {map_name_suffix} b 
-                    USING ({linkage_id})
-                    '''
-            else:
-                sql = f'''
-                    SELECT a.{linkage_id},
-                           a.{area_layer},
-                           {data_fields}
-                           COALESCE(b.{map_name_suffix},{coalesce_na}) AS "{map_name_suffix}",
-                           ST_Transform(a.geom, 4326) AS geom 
-                    FROM {area_layer} a
-                    LEFT JOIN {map_name_suffix} b 
-                    USING ({linkage_id})
-                    '''
+            sql = f'''
+                SELECT a.{linkage_id},
+                       a.{area_layer},
+                       {data_fields}
+                       b.{map_name_suffix},
+                       ST_Transform(a.geom, 4326) AS geom 
+                FROM {area_layer} a
+                LEFT JOIN {map_name_suffix} b 
+                USING ({linkage_id})
+                '''
             map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
             map.rename(columns = {map_name_suffix : map_field}, inplace=True)
             map.rename(columns = column_names, inplace=True)
@@ -254,23 +241,6 @@ def main():
                             ).add_to(m)
             # Create choropleth map
             bins = 6
-            # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
-            # legend_bins = '{}'.format(df.loc[row,'coalesce_na'])
-            # if legend_bins in ['quartiles']:
-            #     bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
-            # if legend_bins.startswith('equal'):
-            #     legend_bins = legend_bins.split(':')
-            #     if len(legend_bins) != 2:
-            #         bins = 6
-            #     else:
-            #         bins = legend_bins[1]
-            # if legend_bins.startswith('custom'):
-            #     legend_bins = legend_bins.split(':')
-            #     if len(legend_bins) != 2:
-            #         bins = 6
-            #     else:
-            #         legend_bins = legend_bins[1].split(',')
-            #         bins = legend_bins
             if bins == 6:
                 value_list = set(map[map_field].dropna().unique())
                 if len(value_list) < 6:

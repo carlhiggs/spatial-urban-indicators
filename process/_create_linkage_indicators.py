@@ -276,38 +276,20 @@ def main():
                 attribution = f'{map_attribution} | {area_attribution} | data: {data_attribution}'
                 tables    = [buffered_study_region,study_region]
                 fields    = ['Description','Description']
-                coalesce_na = '{}'.format(df.loc[row,'coalesce_na'])
-                if coalesce_na in ['','nan']:
-                    sql = '''
-                        SELECT a.{id},
-                               a.{area},
-                               {data_fields}
-                               b.{data},
-                               ST_Transform(a.geom, 4326) AS geom 
-                        FROM {area} a
-                        LEFT JOIN {data} b 
-                        USING ({id})
-                        '''.format(area = area_layer,
-                                   data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                                   data = map_name_suffix,
-                                   map_field = map_field,
-                                   id = linkage_id)
-                else:
-                    sql = '''
-                        SELECT a.{id},
-                               a.{area},
-                               {data_fields}
-                               COALESCE(b.{data},{coalesce_na}) AS "{data}",
-                               ST_Transform(a.geom, 4326) AS geom 
-                        FROM {area} a
-                        LEFT JOIN {data} b 
-                        USING ({id})
-                        '''.format(area = area_layer,
-                                   data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
-                                   data = map_name_suffix,
-                                   map_field = map_field,
-                                   id = linkage_id,
-                                   coalesce_na = coalesce_na)
+                sql = '''
+                    SELECT a.{id},
+                           a.{area},
+                           {data_fields}
+                           b.{data},
+                           ST_Transform(a.geom, 4326) AS geom 
+                    FROM {area} a
+                    LEFT JOIN {data} b 
+                    USING ({id})
+                    '''.format(area = area_layer,
+                               data_fields = 'a."{}",'.format('","'.join(pop_data_fields_full)),
+                               data = map_name_suffix,
+                               map_field = map_field,
+                               id = linkage_id)
                 map = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom')
                 map.rename(columns = {map_name_suffix : map_field}, inplace=True)
                 map.rename(columns = column_names, inplace=True)
@@ -374,23 +356,6 @@ def main():
                                 ).add_to(m)
                 # Create choropleth map
                 bins = 6
-                # determine how to bin data (depending on skew, linear scale with 6 equal distance groups may not be appropriate)
-                # legend_bins = '{}'.format(df.loc[row,'legend_bins'])
-                # if legend_bins in ['quartiles']:
-                #     bins = list(map[map_field].quantile([0, 0.25, 0.5, 0.75, 1]))
-                # if legend_bins.startswith('equal'):
-                #     legend_bins = legend_bins.split(':')
-                #     if len(legend_bins) != 2:
-                #         bins = 6
-                #     else:
-                #         bins = legend_bins[1]
-                # if legend_bins.startswith('custom'):
-                #     legend_bins = legend_bins.split(':')
-                #     if len(legend_bins) != 2:
-                #         bins = 6
-                #     else:
-                #         legend_bins = legend_bins[1].split(',')
-                #         bins = legend_bins
                 if bins == 6:
                     value_list = set(map[map_field].dropna().unique())
                     if len(value_list) < 6:
@@ -428,7 +393,7 @@ def main():
                                                           name=point_overlay_name, 
                                                           tooltip=f"feature.properties.{point_overlay_hover_field}"
                                                           ).add_to(m)
-                    folium.features.GeoJsonTooltip(fields=[c for c in point_overlay.columns if c is not 'geometry'],
+                    folium.features.GeoJsonTooltip(fields=[c for c in point_overlay.columns if c != 'geometry'],
                                                    localize=True,
                                                    labels=True, 
                                                    sticky=True
