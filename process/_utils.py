@@ -591,9 +591,10 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
     map.rename(columns = {'area_km\u00B2':'area (km\u00B2)'}, inplace=True)
     data_fields =[area]+[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in data_fields]+[map_field]    
     # get map centroid from study region
-    xy = [float(map.centroid.y.mean()),float(map.centroid.x.mean())]    
+    sql = f"""SELECT AVG(ST_Y(centroid)) y,AVG(ST_X(centroid)) x FROM (SELECT ST_Transform(ST_Centroid(geom),4326) centroid FROM {area}) t;"""
+    location_centroid = [x for x in engine.execute(sql)][0]
     # initialise map
-    m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
+    m = folium.Map(location=location_centroid, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
     # Add in location names
     folium.TileLayer(tiles='http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
                     name='Location labels', 

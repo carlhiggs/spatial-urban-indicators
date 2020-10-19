@@ -79,7 +79,8 @@ def main():
         data_fields =[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_full]
         map_fields =[f.replace('sqkm','km\u00B2').replace('area_km\u00B2','area (km\u00B2)') for f in pop_data_fields_to_map]
         # set up initial map location and bounds
-        xy = [float(map_data['map_buffer'].centroid.y),float(map_data['map_buffer'].centroid.x)]  
+        sql = f"""SELECT AVG(ST_Y(centroid)) y,AVG(ST_X(centroid)) x FROM (SELECT ST_Transform(ST_Centroid(geom),4326) centroid FROM {analysis_scale}) t;"""
+        location_centroid = [x for x in engine.execute(sql)][0]
         bounds = map_data['map_buffer'].bounds.transpose().to_dict()[0]
         # Population map
         for field in map_fields:
@@ -92,7 +93,7 @@ def main():
                 # initialise map
                 # compile map attribution text
                 attribution = '{} | {} | {}'.format(map_attribution,areas[area]['attribution'],population_linkage[analysis_scale]['attribution'])
-                m = folium.Map(location=xy, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
+                m = folium.Map(location=location_centroid, zoom_start=11, tiles=None,control_scale=True, prefer_canvas=True,attr='{}'.format(attribution))
                 # Add in location names
                 folium.TileLayer(tiles='http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
                                 name='Location labels', 

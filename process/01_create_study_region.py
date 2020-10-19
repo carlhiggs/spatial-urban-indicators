@@ -167,9 +167,10 @@ def main():
         map_layers[table] = gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )
     
     # get map centroid from study region
-    xy = [float(map_layers[study_region].centroid.y),float(map_layers[study_region].centroid.x)]    
+    sql = f"""SELECT AVG(ST_Y(centroid)) y,AVG(ST_X(centroid)) x FROM (SELECT ST_Transform(ST_Centroid(geom),4326) centroid FROM {analysis_scale}) t;"""
+    location_centroid = [x for x in engine.execute(sql)][0]
     # initialise map
-    m = folium.Map(location=xy, zoom_start=10, tiles=None,control_scale=True, prefer_canvas=True)
+    m = folium.Map(location=location_centroid, zoom_start=10, tiles=None,control_scale=True, prefer_canvas=True)
     folium.TileLayer(tiles='Stamen Toner',
                             name='simple map', 
                             show =True,
