@@ -100,12 +100,14 @@ Following calculation of indicators, which generates a set of outputs for the st
    
 There is an optional `technical\_documentation` parameter in the `Parameters` worksheet of the configuration file, which may be set to True or False to determine whether the Technical documentation section detailing software installation, running, and methods will be included, or not.
 
+Depending on the number of indicators processed, the compilation of the PDF report may a few minutes to complete.
+
 Spatial indictor framework outputs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When the scripts described in the `Creating indicators` section above are run, various file outputs are created in the project `output` directory under a subfolder for the study region being processed (by default, 'bangkok_thailand_2018').
 
-Indicator data are output in a series of formats as a result of running the Bangkok Liveability scripted process.  These are represented by a series of folders for each output format.  
+Indicator data are output in a series of formats as a result of running the Bangkok Liveability scripted process.  These are represented by a series of folders for each output format, as described below.  In addition, if the `_create_documentation.py` script has been successfully run, there should also exist a named and dated documentation PDF report in the output folder for the study region.
 
 Documentation
 ~~~~~~~~~~~~~
