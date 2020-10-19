@@ -36,34 +36,7 @@ Docker
 When ever the project is to be run, Docker Desktop must be running as a background service on the user's computer.  If Docker is running, there should be the icon of a whale in the user's taskbar on Windows 10; if the cursor is hovered over this, it should say, 'Docker Desktop is running'.
 
 Spatial indicator framework for Healthy, Liveable Bangkok
----------------------------------------------------------
-
-With the above software successfully installed and running, the curated open source software framework for calculation of spatial indicators may be installed by entering the following from a Windows command prompt:
-
-.. code-block:: text
-   :linenos:
-
-   docker pull carlhiggs/ind_bangkok
-
-The above command is also included in the project analysis code, the installation of which is described in the following section.
-
-Spatial database
-----------------
-
-The project database is stored using a seperate Docker container which is used to run the SQL database software PostgreSQL with the spatial extension PostGIS.  This is the immediate location where indicators and spatial data are stored once processed.  Mapping programs like QGIS may connect to this database in order to map indicators, once processed. 
-
-The bangkok database is set up by running the following from the command line:
-
-.. code-block:: text
-   :linenos:
-
-   docker pull cityseer/postgis
-   docker run --name=pg_spatial -d -e PG_USER=hlc -e PG_PASSWORD=huilhuil!42 -e DB_NAME=ind_bangkok -p 127.0.0.1:5433:5432 --restart=unless-stopped --volume=/var/lib/pg_spatial:/postgresql/11/main cityseer/postgis:latest
-
-The password in the above command is `huilhuil!42` as this is the default specified in the project configuration.  It may be changed, but if so, should also be changed in the project configuration parameters, as described later in the setup process.
-
-Code requirements
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The code for running the Bangkok liveability analyses is hosted in a Git repository.  At the time of writing (16 October 2020) this is hosted in a private Bitbucket online repository, and so for now access must be granted manually. The code is provided under an MIT licence however, and will be made officially public via GitHub in tandem with publication of project methods.
 
@@ -75,6 +48,33 @@ To retrieve the repository, in a command window in the parent directory to where
    git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git 
 
 This should create the project directory 'ind_bangkok' along with a series of subfolders, including the folders 'data' (in which the data retrieved in the following step should be stored), and 'process' which contains the code required to run the project analyses.
+
+Initialise project spatial database
+-----------------------------------
+
+The project database is stored using a seperate Docker container which is used to run the SQL database software PostgreSQL with the spatial extension PostGIS.  This is the immediate location where indicators and spatial data are stored once processed.  Mapping programs like QGIS may connect to this database in order to map indicators, once processed. 
+
+The database is set up by running the command `initialise_database` from the the Windows command line in the project's parent directory (the "ind_bangkok" folder).  This will most likely only need to be done once, at project commencement, after which the database docker image should persist locally when Docker is running.
+
+This launches the `initialise_database.bat` batch file, which is a text document containing code which directs the computer to 
+
+ - retrieve the `cityseer/postgis` Docker image
+ - create a database container for running Postgis called `pg_spatial` with user 'hlc' and password 'huilhuil!42'.
+
+The default username and password may be changed in the batch file before running using a text editor to edit it; however, if these are modified they should also be changed in the project configuration parameters, as described later in the setup process.
+
+Launch the spatial analysis processing environment
+--------------------------------------------------
+
+With the software pre-requesites installed and running, and the code repository constructed in a project folder, the curated open source software framework for calculation of spatial indicators (the `ind_bangkok` "container") may be installed by typing and entering `ind_bangkok` from the project parent directory (the "ind_bangkok" folder) at the Windows command prompt.
+
+This launches the `ind_bangkok.bat` batch file, which is a text document containing code which directs the computer to
+
+ - pull the latest version of the project code
+ - retrieve the latest version of the `carlhiggs/ind_bangkok` docker image, if not presently installed
+ - launch the `ind_bangkok` docker container, which provides a Unix command prompt for running the project software
+
+If you close the terminal window in which the the spatial analysis processing container is running, it remains active in the background as long as the Docker service is running (e.g. until the computer is shut down).  To return to the command prompt from the `ind_bangkok` container, but still leave it running, you can also press Ctrl+p+q .  To return to the container from the prompt you can enter `docker attach ind_bangkok`.  Finally, to stop the container altogether, you can enter `docker stop ind_bangkok`.
 
 Data requirements
 ~~~~~~~~~~~~~~~~~

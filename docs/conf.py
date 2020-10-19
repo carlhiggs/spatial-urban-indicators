@@ -76,7 +76,7 @@ html_theme_options = {
 
 # To better support Thai when producing PDF
 latex_engine = 'xelatex'
-latex_use_xindy = False
+latex_use_xindy = True
 latex_elements = {
     'papersize': 'a4paper',
     'figure_align': 'H',

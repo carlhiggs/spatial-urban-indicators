@@ -46,7 +46,7 @@ District and changwat boundaries were constructed through geometrical union of t
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_01_study_region.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_01_study_region.png
        :width: 70%
        :align: center
 
@@ -97,13 +97,13 @@ Population per km²
     .. raw:: html
 
         <figure>
-        <img alt="Population per km², by district" src="./../png/<class 'map'>.png">
+        <img alt="Population per km², by district" src="./../png/bangkok_01_study_region.png">
         <figcaption>Population per km², by district.         <a href="./../html/bangkok_02_population_district_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_per_sqkm.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_02_population_district_population_per_sqkm.png
        :width: 70%
        :align: center
 
@@ -120,13 +120,13 @@ Population per km²
     .. raw:: html
 
         <figure>
-        <img alt="Population per km², by subdistrict" src="./../png/<class 'map'>.png">
+        <img alt="Population per km², by subdistrict" src="./../png/bangkok_01_study_region.png">
         <figcaption>Population per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_population_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_per_sqkm.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_per_sqkm.png
        :width: 70%
        :align: center
 
@@ -147,13 +147,13 @@ Households per km²
     .. raw:: html
 
         <figure>
-        <img alt="Households per km², by district" src="./../png/<class 'map'>.png">
+        <img alt="Households per km², by district" src="./../png/bangkok_01_study_region.png">
         <figcaption>Households per km², by district.         <a href="./../html/bangkok_02_population_district_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_households_per_sqkm.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_02_population_district_households_per_sqkm.png
        :width: 70%
        :align: center
 
@@ -170,13 +170,13 @@ Households per km²
     .. raw:: html
 
         <figure>
-        <img alt="Households per km², by subdistrict" src="./../png/<class 'map'>.png">
+        <img alt="Households per km², by subdistrict" src="./../png/bangkok_01_study_region.png">
         <figcaption>Households per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_households_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_households_per_sqkm.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_households_per_sqkm.png
        :width: 70%
        :align: center
 
@@ -197,13 +197,13 @@ Communities per km²
     .. raw:: html
 
         <figure>
-        <img alt="Communities per km², by district" src="./../png/<class 'map'>.png">
+        <img alt="Communities per km², by district" src="./../png/bangkok_01_study_region.png">
         <figcaption>Communities per km², by district.         <a href="./../html/bangkok_02_population_district_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_communities_per_sqkm.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_02_population_district_communities_per_sqkm.png
        :width: 70%
        :align: center
 
@@ -220,13 +220,13 @@ Communities per km²
     .. raw:: html
 
         <figure>
-        <img alt="Communities per km², by subdistrict" src="./../png/<class 'map'>.png">
+        <img alt="Communities per km², by subdistrict" src="./../png/bangkok_01_study_region.png">
         <figcaption>Communities per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_communities_per_sqkm.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_communities_per_sqkm.png
        :width: 70%
        :align: center
 
@@ -249,13 +249,13 @@ Aligns with Sustainable Development Goals: 11.
     .. raw:: html
 
         <figure>
-        <img alt="Population in communities per km², by district" src="./../png/<class 'map'>.png">
+        <img alt="Population in communities per km², by district" src="./../png/bangkok_01_study_region.png">
         <figcaption>Population in communities per km², by district.         <a href="./../html/bangkok_02_population_district_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_district_population_in_communities_per_sqkm.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_02_population_district_population_in_communities_per_sqkm.png
        :width: 70%
        :align: center
 
@@ -274,13 +274,13 @@ Aligns with Sustainable Development Goals: 11.
     .. raw:: html
 
         <figure>
-        <img alt="Population in communities per km², by subdistrict" src="./../png/<class 'map'>.png">
+        <img alt="Population in communities per km², by subdistrict" src="./../png/bangkok_01_study_region.png">
         <figcaption>Population in communities per km², by subdistrict.         <a href="./../html/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.html" target="_blank">Click to open interactive map in new tab.</a><br></figcaption>
         </figure><br>
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_02_population_subdistrict_population_in_communities_per_sqkm.png
        :width: 70%
        :align: center
 
@@ -346,7 +346,7 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_do.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_do.png
        :width: 70%
        :align: center
 
@@ -378,7 +378,7 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_bod.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_bod.png
        :width: 70%
        :align: center
 
@@ -410,7 +410,7 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor.png
        :width: 70%
        :align: center
 
@@ -442,7 +442,7 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor_rate_area.png
        :width: 70%
        :align: center
 
@@ -474,7 +474,7 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor_rate_population.png
        :width: 70%
        :align: center
 
@@ -506,7 +506,7 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_canals_poor_rate_household.png
        :width: 70%
        :align: center
 
@@ -538,7 +538,7 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_bod_less_than_6mg_l.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_water_quality_bod_less_than_6mg_l.png
        :width: 70%
        :align: center
 
@@ -600,7 +600,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_traffic_jam.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_main_road_traffic_jam.png
        :width: 70%
        :align: center
 
@@ -634,19 +634,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Number of main road of traffic jam by district  by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Number of main road of traffic jam by district  by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_traffic_jam.pdf
       :width: 100%
       :align: center
 
@@ -708,7 +708,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_annual_solid_waste_tonnes.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_annual_solid_waste_tonnes.png
        :width: 70%
        :align: center
 
@@ -742,19 +742,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of annual solid waste (tonnes) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of annual solid waste (tonnes) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_solid_waste_tonnes.pdf
       :width: 100%
       :align: center
 
@@ -786,7 +786,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_annual_recyclable_waste_tonnes.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_annual_recyclable_waste_tonnes.png
        :width: 70%
        :align: center
 
@@ -820,19 +820,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of annual recyclable waste (tonnes) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of annual recyclable waste (tonnes) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_recyclable_waste_tonnes.pdf
       :width: 100%
       :align: center
 
@@ -864,7 +864,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_percentage_recyclable_waste.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_percentage_recyclable_waste.png
        :width: 70%
        :align: center
 
@@ -898,19 +898,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of annual recyclable waste (tonnes) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of annual recyclable waste (tonnes) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percentage_recyclable_waste.pdf
       :width: 100%
       :align: center
 
@@ -964,7 +964,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_annual_hazardous_waste_kg.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_annual_hazardous_waste_kg.png
        :width: 70%
        :align: center
 
@@ -998,19 +998,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Hazardous waste segregation (kg)  by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Hazardous waste segregation (kg)  by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_annual_hazardous_waste_kg.pdf
       :width: 100%
       :align: center
 
@@ -1042,7 +1042,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_percentage_hazardous_waste.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_percentage_hazardous_waste.png
        :width: 70%
        :align: center
 
@@ -1076,19 +1076,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Hazardous waste segregation (tonnes)  by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Hazardous waste segregation (tonnes)  by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percentage_hazardous_waste.pdf
       :width: 100%
       :align: center
 
@@ -1150,7 +1150,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations.png
        :width: 70%
        :align: center
 
@@ -1173,7 +1173,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations.png
        :width: 70%
        :align: center
 
@@ -1207,19 +1207,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations.pdf
       :width: 100%
       :align: center
 
@@ -1251,7 +1251,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations_rate_area.png
        :width: 70%
        :align: center
 
@@ -1274,7 +1274,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations_rate_area.png
        :width: 70%
        :align: center
 
@@ -1308,19 +1308,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -1352,7 +1352,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations_rate_population.png
        :width: 70%
        :align: center
 
@@ -1375,7 +1375,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations_rate_population.png
        :width: 70%
        :align: center
 
@@ -1409,19 +1409,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -1453,7 +1453,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_locations_rate_household.png
        :width: 70%
        :align: center
 
@@ -1476,7 +1476,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_locations_rate_household.png
        :width: 70%
        :align: center
 
@@ -1510,19 +1510,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of main road flood locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_locations_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -1554,7 +1554,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_days_rain.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_days_rain.png
        :width: 70%
        :align: center
 
@@ -1577,7 +1577,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_days_rain.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_days_rain.png
        :width: 70%
        :align: center
 
@@ -1611,19 +1611,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days of rain by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days of rain by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_rain.pdf
       :width: 100%
       :align: center
 
@@ -1655,7 +1655,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_intensity.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_intensity.png
        :width: 70%
        :align: center
 
@@ -1678,7 +1678,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_intensity.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_intensity.png
        :width: 70%
        :align: center
 
@@ -1712,19 +1712,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of maximum intensity by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of maximum intensity by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_intensity.pdf
       :width: 100%
       :align: center
 
@@ -1756,7 +1756,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_days_flood.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_main_road_flood_days_flood.png
        :width: 70%
        :align: center
 
@@ -1779,7 +1779,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_days_flood.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_main_road_flood_days_flood.png
        :width: 70%
        :align: center
 
@@ -1813,19 +1813,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days of flooding by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days of flooding by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_main_road_flood_days_flood.pdf
       :width: 100%
       :align: center
 
@@ -1857,7 +1857,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas.png
        :width: 70%
        :align: center
 
@@ -1880,7 +1880,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas.png
        :width: 70%
        :align: center
 
@@ -1914,19 +1914,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas.pdf
       :width: 100%
       :align: center
 
@@ -1958,7 +1958,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas_rate_area.png
        :width: 70%
        :align: center
 
@@ -1981,7 +1981,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas_rate_area.png
        :width: 70%
        :align: center
 
@@ -2015,19 +2015,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -2059,7 +2059,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas_rate_population.png
        :width: 70%
        :align: center
 
@@ -2082,7 +2082,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas_rate_population.png
        :width: 70%
        :align: center
 
@@ -2116,19 +2116,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -2160,7 +2160,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vulnerable_flood_areas_rate_household.png
        :width: 70%
        :align: center
 
@@ -2183,7 +2183,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_vulnerable_flood_areas_rate_household.png
        :width: 70%
        :align: center
 
@@ -2217,19 +2217,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of flood risk locations by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vulnerable_flood_areas_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -2295,7 +2295,7 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_pcd_monitoring_stations.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_pcd_monitoring_stations.png
        :width: 70%
        :align: center
 
@@ -2329,19 +2329,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of stationID by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of stationID by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations.pdf
       :width: 100%
       :align: center
 
@@ -2373,7 +2373,7 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_pcd_monitoring_stations_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_pcd_monitoring_stations_rate_area.png
        :width: 70%
        :align: center
 
@@ -2407,19 +2407,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of stationID by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of stationID by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -2451,7 +2451,7 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_pcd_monitoring_stations_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_pcd_monitoring_stations_rate_population.png
        :width: 70%
        :align: center
 
@@ -2485,19 +2485,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of stationID by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of stationID by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -2529,7 +2529,7 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_pcd_monitoring_stations_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_pcd_monitoring_stations_rate_household.png
        :width: 70%
        :align: center
 
@@ -2563,19 +2563,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of stationID by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of stationID by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pcd_monitoring_stations_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -2607,7 +2607,7 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_pm2p5_days_exceeding_thai_standard.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_pm2p5_days_exceeding_thai_standard.png
        :width: 70%
        :align: center
 
@@ -2641,19 +2641,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days exceeding Thai standard (50 µg/m³; January 2019, PCD) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days exceeding Thai standard (50 µg/m³; January 2019, PCD) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_thai_standard.pdf
       :width: 100%
       :align: center
 
@@ -2685,7 +2685,7 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_pm2p5_days_exceeding_who_standard.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_pm2p5_days_exceeding_who_standard.png
        :width: 70%
        :align: center
 
@@ -2719,19 +2719,19 @@ Aligns with Sustainable Development Goals: 3, 7, 11, 2, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days exceeding WHO standard (25 µg/m³; January 2019, PCD) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of days exceeding WHO standard (25 µg/m³; January 2019, PCD) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_pm2p5_days_exceeding_who_standard.pdf
       :width: 100%
       :align: center
 
@@ -2791,7 +2791,7 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_no2_2017_18_mean.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_no2_2017_18_mean.png
        :width: 70%
        :align: center
 
@@ -2814,7 +2814,7 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_no2_2017_18_mean.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_no2_2017_18_mean.png
        :width: 70%
        :align: center
 
@@ -2848,19 +2848,19 @@ The total vertical column of NO2 is a measure of air pollution, however it is ba
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Annual average NO2 (1-e6 mmol/m²; 2017-18) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Annual average NO2 (1-e6 mmol/m²; 2017-18) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_no2_2017_18_mean.pdf
       :width: 100%
       :align: center
 
@@ -2922,7 +2922,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_fire_incidence.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_fire_incidence.png
        :width: 70%
        :align: center
 
@@ -2956,19 +2956,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence.pdf
       :width: 100%
       :align: center
 
@@ -3000,7 +3000,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_fire_incidence_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_fire_incidence_rate_area.png
        :width: 70%
        :align: center
 
@@ -3034,19 +3034,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -3078,7 +3078,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_fire_incidence_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_fire_incidence_rate_population.png
        :width: 70%
        :align: center
 
@@ -3112,19 +3112,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -3156,7 +3156,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_fire_incidence_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_fire_incidence_rate_household.png
        :width: 70%
        :align: center
 
@@ -3190,19 +3190,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of fire incidence by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_fire_incidence_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -3258,7 +3258,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_crime_locations.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_crime_locations.png
        :width: 70%
        :align: center
 
@@ -3292,19 +3292,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_crime_locations_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_crime_locations_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Locations with reported crime by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_crime_locations_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_crime_locations_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Locations with reported crime by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_crime_locations.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_crime_locations.pdf
       :width: 100%
       :align: center
 
@@ -3336,7 +3336,7 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_road_accident_locations.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_road_accident_locations.png
        :width: 70%
        :align: center
 
@@ -3370,19 +3370,19 @@ Aligns with Sustainable Development Goals: 11, 13.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_road_accident_locations_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_road_accident_locations_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Locations with reported road accidents by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_road_accident_locations_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_road_accident_locations_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Locations with reported road accidents by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_road_accident_locations.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_road_accident_locations.pdf
       :width: 100%
       :align: center
 
@@ -3452,7 +3452,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_green_space_public_percent.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_green_space_public_percent.png
        :width: 70%
        :align: center
 
@@ -3486,19 +3486,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Total public green space percent by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Total public green space percent by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_public_percent.pdf
       :width: 100%
       :align: center
 
@@ -3532,19 +3532,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Green space per capita (sqm) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Green space per capita (sqm) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_public_per_capita.pdf
       :width: 100%
       :align: center
 
@@ -3576,7 +3576,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_green_space_count.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_green_space_count.png
        :width: 70%
        :align: center
 
@@ -3610,19 +3610,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_count_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_count_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Total number of green areas (places) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_count_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_count_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Total number of green areas (places) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_green_space_count.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_green_space_count.pdf
       :width: 100%
       :align: center
 
@@ -3690,7 +3690,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_ndvi_mean.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_ndvi_mean.png
        :width: 70%
        :align: center
 
@@ -3713,7 +3713,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_ndvi_mean.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_ndvi_mean.png
        :width: 70%
        :align: center
 
@@ -3747,19 +3747,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mean Normalised Difference Vegetation Index (NDVI) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mean Normalised Difference Vegetation Index (NDVI) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_ndvi_mean.pdf
       :width: 100%
       :align: center
 
@@ -3819,7 +3819,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_index_mean.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_index_mean.png
        :width: 70%
        :align: center
 
@@ -3842,7 +3842,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_index_mean.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_index_mean.png
        :width: 70%
        :align: center
 
@@ -3876,19 +3876,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mean Enhanced Vegetation Index (EVI) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mean Enhanced Vegetation Index (EVI) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_index_mean.pdf
       :width: 100%
       :align: center
 
@@ -3948,7 +3948,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_pct_mean.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_pct_mean.png
        :width: 70%
        :align: center
 
@@ -3971,7 +3971,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_pct_mean.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_pct_mean.png
        :width: 70%
        :align: center
 
@@ -4005,19 +4005,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mean vegetation cover percent  (Copernicus, December 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mean vegetation cover percent  (Copernicus, December 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_vegetation_pct_mean.pdf
       :width: 100%
       :align: center
 
@@ -4049,7 +4049,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_pct_sd.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_vegetation_pct_sd.png
        :width: 70%
        :align: center
 
@@ -4072,7 +4072,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_pct_sd.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_vegetation_pct_sd.png
        :width: 70%
        :align: center
 
@@ -4134,7 +4134,7 @@ Accessibility within 400m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_pos_entry_any_400m_pop_pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_pos_entry_any_400m_pop_pct.png
        :width: 70%
        :align: center
 
@@ -4157,7 +4157,7 @@ Accessibility within 400m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_pos_entry_any_400m_pop_pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_access_pos_entry_any_400m_pop_pct.png
        :width: 70%
        :align: center
 
@@ -4191,19 +4191,19 @@ Accessibility within 400m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 400 metres of public open space  (OSM, 2019) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 400 metres of public open space  (OSM, 2019) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_any_400m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -4237,19 +4237,19 @@ Accessibility within 400m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 400 metres of large public open space  (OSM, 2019) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 400 metres of large public open space  (OSM, 2019) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pos_entry_large_400m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -4309,7 +4309,7 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_train_800m_pop_pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_train_800m_pop_pct.png
        :width: 70%
        :align: center
 
@@ -4332,7 +4332,7 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_train_800m_pop_pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_access_train_800m_pop_pct.png
        :width: 70%
        :align: center
 
@@ -4366,19 +4366,19 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_train_800m_pop_pct_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_train_800m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 800 metres by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_train_800m_pop_pct_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_train_800m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 800 metres by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_train_800m_pop_pct.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_train_800m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -4438,7 +4438,7 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_ferry_800m_pop_pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_ferry_800m_pop_pct.png
        :width: 70%
        :align: center
 
@@ -4461,7 +4461,7 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_ferry_800m_pop_pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_access_ferry_800m_pop_pct.png
        :width: 70%
        :align: center
 
@@ -4495,19 +4495,19 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_ferry_800m_pop_pct_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_ferry_800m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 800 metres by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_ferry_800m_pop_pct_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_ferry_800m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 800 metres by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_ferry_800m_pop_pct.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_ferry_800m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -4541,19 +4541,19 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 800 metres by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of % living within 800 metres by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_pt_any_800m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -4623,7 +4623,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_welfare_card_holders.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_welfare_card_holders.png
        :width: 70%
        :align: center
 
@@ -4657,19 +4657,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of State welfare card holders by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of State welfare card holders by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_welfare_card_holders.pdf
       :width: 100%
       :align: center
 
@@ -4727,7 +4727,7 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_drought_impacted_farmers.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_drought_impacted_farmers.png
        :width: 70%
        :align: center
 
@@ -4761,19 +4761,19 @@ Aligns with Sustainable Development Goals: 3, 11, 13, 15.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Number of households in the area expected to get impacts drought (registered farmers) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Number of households in the area expected to get impacts drought (registered farmers) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_drought_impacted_farmers.pdf
       :width: 100%
       :align: center
 
@@ -4835,7 +4835,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_age_mean_district.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_age_mean_district.png
        :width: 70%
        :align: center
 
@@ -4869,19 +4869,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_age_mean_district_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_age_mean_district_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of average age by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_age_mean_district_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_age_mean_district_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of average age by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_age_mean_district.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_age_mean_district.pdf
       :width: 100%
       :align: center
 
@@ -4904,7 +4904,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_age_mean_subdistrict.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_age_mean_subdistrict.png
        :width: 70%
        :align: center
 
@@ -4958,7 +4958,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres.png
        :width: 70%
        :align: center
 
@@ -4981,7 +4981,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_health_centres.png
        :width: 70%
        :align: center
 
@@ -5013,7 +5013,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_area.png
        :width: 70%
        :align: center
 
@@ -5036,7 +5036,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_area.png
        :width: 70%
        :align: center
 
@@ -5068,7 +5068,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_population.png
        :width: 70%
        :align: center
 
@@ -5091,7 +5091,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_population.png
        :width: 70%
        :align: center
 
@@ -5123,7 +5123,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_health_centres_rate_household.png
        :width: 70%
        :align: center
 
@@ -5146,7 +5146,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_health_centres_rate_household.png
        :width: 70%
        :align: center
 
@@ -5178,7 +5178,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health.png
        :width: 70%
        :align: center
 
@@ -5201,7 +5201,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health.png
        :width: 70%
        :align: center
 
@@ -5235,19 +5235,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health.pdf
       :width: 100%
       :align: center
 
@@ -5279,7 +5279,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_area.png
        :width: 70%
        :align: center
 
@@ -5302,7 +5302,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_area.png
        :width: 70%
        :align: center
 
@@ -5336,19 +5336,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -5380,7 +5380,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_population.png
        :width: 70%
        :align: center
 
@@ -5403,7 +5403,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_population.png
        :width: 70%
        :align: center
 
@@ -5437,19 +5437,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -5481,7 +5481,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_mental_health_rate_household.png
        :width: 70%
        :align: center
 
@@ -5504,7 +5504,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_mental_health_rate_household.png
        :width: 70%
        :align: center
 
@@ -5538,19 +5538,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of mental and behavioural disorders (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_mental_health_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -5582,7 +5582,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension.png
        :width: 70%
        :align: center
 
@@ -5605,7 +5605,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension.png
        :width: 70%
        :align: center
 
@@ -5639,19 +5639,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension.pdf
       :width: 100%
       :align: center
 
@@ -5683,7 +5683,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_area.png
        :width: 70%
        :align: center
 
@@ -5706,7 +5706,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_area.png
        :width: 70%
        :align: center
 
@@ -5740,19 +5740,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -5784,7 +5784,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_population.png
        :width: 70%
        :align: center
 
@@ -5807,7 +5807,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_population.png
        :width: 70%
        :align: center
 
@@ -5841,19 +5841,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -5885,7 +5885,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_hypertension_rate_household.png
        :width: 70%
        :align: center
 
@@ -5908,7 +5908,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_hypertension_rate_household.png
        :width: 70%
        :align: center
 
@@ -5942,19 +5942,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of hypertension (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_hypertension_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -5986,7 +5986,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes.png
        :width: 70%
        :align: center
 
@@ -6009,7 +6009,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes.png
        :width: 70%
        :align: center
 
@@ -6043,19 +6043,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes.pdf
       :width: 100%
       :align: center
 
@@ -6087,7 +6087,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_area.png
        :width: 70%
        :align: center
 
@@ -6110,7 +6110,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_area.png
        :width: 70%
        :align: center
 
@@ -6144,19 +6144,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -6188,7 +6188,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_population.png
        :width: 70%
        :align: center
 
@@ -6211,7 +6211,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_population.png
        :width: 70%
        :align: center
 
@@ -6245,19 +6245,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -6289,7 +6289,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_diabetes_rate_household.png
        :width: 70%
        :align: center
 
@@ -6312,7 +6312,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_diabetes_rate_household.png
        :width: 70%
        :align: center
 
@@ -6346,19 +6346,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of diabetes (2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_diabetes_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -6420,7 +6420,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases.png
        :width: 70%
        :align: center
 
@@ -6443,7 +6443,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases.png
        :width: 70%
        :align: center
 
@@ -6477,19 +6477,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases.pdf
       :width: 100%
       :align: center
 
@@ -6521,7 +6521,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_area.png
        :width: 70%
        :align: center
 
@@ -6544,7 +6544,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_area.png
        :width: 70%
        :align: center
 
@@ -6578,19 +6578,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_area.pdf
       :width: 100%
       :align: center
 
@@ -6622,7 +6622,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_population.png
        :width: 70%
        :align: center
 
@@ -6645,7 +6645,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_population.png
        :width: 70%
        :align: center
 
@@ -6679,19 +6679,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -6723,7 +6723,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_outpatients_combined_diseases_rate_household.png
        :width: 70%
        :align: center
 
@@ -6746,7 +6746,7 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_outpatients_combined_diseases_rate_household.png
        :width: 70%
        :align: center
 
@@ -6780,19 +6780,19 @@ Aligns with Sustainable Development Goals: 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of vital diseases (combined; 2018) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_outpatients_combined_diseases_rate_household.pdf
       :width: 100%
       :align: center
 
@@ -6842,7 +6842,7 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_supermarket_800m_pop_pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_access_supermarket_800m_pop_pct.png
        :width: 70%
        :align: center
 
@@ -6865,7 +6865,7 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_access_supermarket_800m_pop_pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_access_supermarket_800m_pop_pct.png
        :width: 70%
        :align: center
 
@@ -6899,19 +6899,19 @@ Accessibility within 800m was evaluated using the Python network analysis packag
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Percentage of residents living 800 metres distance of a supermarket (OSM, 2019) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_access_supermarket_800m_pop_pct.pdf
       :width: 100%
       :align: center
 
@@ -6965,7 +6965,7 @@ Aligns with Sustainable Development Goals: 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_restaurants.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_restaurants.png
        :width: 70%
        :align: center
 
@@ -6997,7 +6997,7 @@ Aligns with Sustainable Development Goals: 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_restaurants_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_restaurants_rate_area.png
        :width: 70%
        :align: center
 
@@ -7029,7 +7029,7 @@ Aligns with Sustainable Development Goals: 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_restaurants_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_restaurants_rate_population.png
        :width: 70%
        :align: center
 
@@ -7061,7 +7061,7 @@ Aligns with Sustainable Development Goals: 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_restaurants_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_restaurants_rate_household.png
        :width: 70%
        :align: center
 
@@ -7093,7 +7093,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_supermarkets.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_supermarkets.png
        :width: 70%
        :align: center
 
@@ -7125,7 +7125,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_supermarkets_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_supermarkets_rate_area.png
        :width: 70%
        :align: center
 
@@ -7157,7 +7157,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_supermarkets_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_supermarkets_rate_population.png
        :width: 70%
        :align: center
 
@@ -7189,7 +7189,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_supermarkets_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_supermarkets_rate_household.png
        :width: 70%
        :align: center
 
@@ -7221,7 +7221,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_minimarts.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_minimarts.png
        :width: 70%
        :align: center
 
@@ -7253,7 +7253,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_minimarts_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_minimarts_rate_area.png
        :width: 70%
        :align: center
 
@@ -7285,7 +7285,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_minimarts_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_minimarts_rate_population.png
        :width: 70%
        :align: center
 
@@ -7317,7 +7317,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_minimarts_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_minimarts_rate_household.png
        :width: 70%
        :align: center
 
@@ -7349,7 +7349,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_stalls.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_stalls.png
        :width: 70%
        :align: center
 
@@ -7381,7 +7381,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_stalls_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_stalls_rate_area.png
        :width: 70%
        :align: center
 
@@ -7413,7 +7413,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_stalls_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_stalls_rate_population.png
        :width: 70%
        :align: center
 
@@ -7445,7 +7445,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_stalls_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_stalls_rate_household.png
        :width: 70%
        :align: center
 
@@ -7477,7 +7477,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_markets.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_markets.png
        :width: 70%
        :align: center
 
@@ -7509,7 +7509,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_markets_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_markets_rate_area.png
        :width: 70%
        :align: center
 
@@ -7541,7 +7541,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_markets_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_markets_rate_population.png
        :width: 70%
        :align: center
 
@@ -7573,7 +7573,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_markets_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_markets_rate_household.png
        :width: 70%
        :align: center
 
@@ -7627,7 +7627,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_hawker_permitted_locations.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_hawker_permitted_locations.png
        :width: 70%
        :align: center
 
@@ -7659,7 +7659,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_hawker_permitted_locations_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_hawker_permitted_locations_rate_area.png
        :width: 70%
        :align: center
 
@@ -7691,7 +7691,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_hawker_permitted_locations_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_hawker_permitted_locations_rate_population.png
        :width: 70%
        :align: center
 
@@ -7723,7 +7723,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_hawker_permitted_locations_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_hawker_permitted_locations_rate_household.png
        :width: 70%
        :align: center
 
@@ -7777,7 +7777,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_test_count.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_test_count.png
        :width: 70%
        :align: center
 
@@ -7809,7 +7809,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_test_count_rate_area.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_test_count_rate_area.png
        :width: 70%
        :align: center
 
@@ -7841,7 +7841,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_test_count_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_test_count_rate_population.png
        :width: 70%
        :align: center
 
@@ -7873,7 +7873,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_test_count_rate_household.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_test_count_rate_household.png
        :width: 70%
        :align: center
 
@@ -7905,7 +7905,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_pct_standards_100pct.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_food_qual_pct_standards_100pct.png
        :width: 70%
        :align: center
 
@@ -7967,7 +7967,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_schools_primary_count.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_schools_primary_count.png
        :width: 70%
        :align: center
 
@@ -7990,7 +7990,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_schools_primary_count.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_schools_primary_count.png
        :width: 70%
        :align: center
 
@@ -8024,19 +8024,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of primary schools by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of primary schools by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_count.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_count.pdf
       :width: 100%
       :align: center
 
@@ -8068,7 +8068,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_schools_primary_count_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_schools_primary_count_rate_population.png
        :width: 70%
        :align: center
 
@@ -8091,7 +8091,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_schools_primary_count_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_schools_primary_count_rate_population.png
        :width: 70%
        :align: center
 
@@ -8125,19 +8125,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of primary schools by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of primary schools by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_count_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -8191,7 +8191,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_schools_primary_o_net_avg.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_schools_primary_o_net_avg.png
        :width: 70%
        :align: center
 
@@ -8225,19 +8225,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_o_net_avg_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_o_net_avg_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of average O-NET by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_o_net_avg_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_o_net_avg_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of average O-NET by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_schools_primary_o_net_avg.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_schools_primary_o_net_avg.pdf
       :width: 100%
       :align: center
 
@@ -8299,7 +8299,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_temples.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_temples.png
        :width: 70%
        :align: center
 
@@ -8333,19 +8333,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_temples_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_temples_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Temples by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_temples_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_temples_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Temples by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_temples.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_temples.pdf
       :width: 100%
       :align: center
 
@@ -8377,7 +8377,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_temples_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_temples_rate_population.png
        :width: 70%
        :align: center
 
@@ -8411,19 +8411,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_temples_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_temples_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Temples by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_temples_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_temples_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Temples by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_temples_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_temples_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -8477,7 +8477,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_museums.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_museums.png
        :width: 70%
        :align: center
 
@@ -8500,7 +8500,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_museums.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_museums.png
        :width: 70%
        :align: center
 
@@ -8534,19 +8534,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_museums_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_museums_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Number of Museums by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_museums_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_museums_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Number of Museums by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_museums.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_museums.pdf
       :width: 100%
       :align: center
 
@@ -8578,7 +8578,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_museums_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_museums_rate_population.png
        :width: 70%
        :align: center
 
@@ -8601,7 +8601,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_museums_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_museums_rate_population.png
        :width: 70%
        :align: center
 
@@ -8635,19 +8635,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_museums_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_museums_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Number of Museums by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_museums_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_museums_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Number of Museums by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_museums_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_museums_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -8701,7 +8701,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_youth_center_count.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_youth_center_count.png
        :width: 70%
        :align: center
 
@@ -8735,19 +8735,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_count_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_count_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Youth centers by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_count_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_count_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Youth centers by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_count.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_count.pdf
       :width: 100%
       :align: center
 
@@ -8779,7 +8779,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_youth_center_count_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_youth_center_count_rate_population.png
        :width: 70%
        :align: center
 
@@ -8813,19 +8813,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_count_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_count_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Youth centers by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_count_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_count_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Youth centers by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_count_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_count_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -8857,7 +8857,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_youth_center_usage.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_youth_center_usage.png
        :width: 70%
        :align: center
 
@@ -8891,19 +8891,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Youth center visits by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Youth center visits by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_usage.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_usage.pdf
       :width: 100%
       :align: center
 
@@ -8935,7 +8935,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_youth_center_usage_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_youth_center_usage_rate_population.png
        :width: 70%
        :align: center
 
@@ -8969,19 +8969,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Youth center visits by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Youth center visits by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_youth_center_usage_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -9013,7 +9013,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_sport_center_count.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_sport_center_count.png
        :width: 70%
        :align: center
 
@@ -9047,19 +9047,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_count_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_count_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport centers by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_count_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_count_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport centers by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_count.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_count.pdf
       :width: 100%
       :align: center
 
@@ -9091,7 +9091,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_sport_center_count_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_sport_center_count_rate_population.png
        :width: 70%
        :align: center
 
@@ -9125,19 +9125,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_count_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_count_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport centers by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_count_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_count_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport centers by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_count_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_count_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -9169,7 +9169,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_sport_center_usage.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_sport_center_usage.png
        :width: 70%
        :align: center
 
@@ -9203,19 +9203,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport center visits by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport center visits by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_usage.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_usage.pdf
       :width: 100%
       :align: center
 
@@ -9247,7 +9247,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_sport_center_usage_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_sport_center_usage_rate_population.png
        :width: 70%
        :align: center
 
@@ -9281,19 +9281,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport center visits by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport center visits by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_center_usage_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -9325,7 +9325,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_sport_yard_count.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_sport_yard_count.png
        :width: 70%
        :align: center
 
@@ -9359,19 +9359,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport yards by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport yards by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_count.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_count.pdf
       :width: 100%
       :align: center
 
@@ -9403,7 +9403,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_sport_yard_count_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_sport_yard_count_rate_population.png
        :width: 70%
        :align: center
 
@@ -9437,19 +9437,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport yards by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport yards by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_count_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -9481,7 +9481,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_sport_yard_usage.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_sport_yard_usage.png
        :width: 70%
        :align: center
 
@@ -9515,19 +9515,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport yard visits by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport yard visits by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage.pdf
       :width: 100%
       :align: center
 
@@ -9559,7 +9559,7 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_sport_yard_usage_rate_population.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_sport_yard_usage_rate_population.png
        :width: 70%
        :align: center
 
@@ -9593,19 +9593,19 @@ Aligns with Sustainable Development Goals: 2.1, 3, 11.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_rate_population_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_rate_population_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport yard visits by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_rate_population_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_rate_population_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Sport yard visits by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_rate_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_sport_yard_usage_rate_population.pdf
       :width: 100%
       :align: center
 
@@ -9669,7 +9669,7 @@ The average monthly cost of living per person within each analysis area was reco
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_cost_of_living_district.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_cost_of_living_district.png
        :width: 70%
        :align: center
 
@@ -9703,19 +9703,19 @@ The average monthly cost of living per person within each analysis area was reco
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Average monthly cost of living per person (Baht; NSO, 2017) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Average monthly cost of living per person (Baht; NSO, 2017) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_cost_of_living_district.pdf
       :width: 100%
       :align: center
 
@@ -9738,7 +9738,7 @@ The average monthly cost of living per person within each analysis area was reco
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_cost_of_living_subdistrict.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_cost_of_living_subdistrict.png
        :width: 70%
        :align: center
 
@@ -9806,7 +9806,7 @@ The coefficient of inequality within each analysis area was recorded.  Also know
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_inequality_district.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_inequality_district.png
        :width: 70%
        :align: center
 
@@ -9840,19 +9840,19 @@ The coefficient of inequality within each analysis area was recorded.  Also know
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_inequality_district_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_inequality_district_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Coefficient of inequality (NSO, 2017) by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_inequality_district_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_inequality_district_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Coefficient of inequality (NSO, 2017) by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_inequality_district.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_inequality_district.pdf
       :width: 100%
       :align: center
 
@@ -9875,7 +9875,7 @@ The coefficient of inequality within each analysis area was recorded.  Also know
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_subdistrict_inequality_subdistrict.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_subdistrict_inequality_subdistrict.png
        :width: 70%
        :align: center
 
@@ -9937,7 +9937,7 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-    .. figure:: ../maps/bangkok_thailand_2018/png/bangkok_ind_district_percent_bma_income_from_local_taxes.png
+    .. figure:: ../output/bangkok_thailand_2018/png/bangkok_ind_district_percent_bma_income_from_local_taxes.png
        :width: 70%
        :align: center
 
@@ -9971,19 +9971,19 @@ Aligns with Sustainable Development Goals: 3, 6, 9, 11, 12, 14.
 
 .. only:: latex
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes_population.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes_population.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Local Development Taxes by population for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes_population_per_sqkm.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes_population_per_sqkm.pdf
       :width: 48%
       :align: center
 
       Scatterplot of Local Development Taxes by population density for districts.
 
-   .. figure:: ../maps/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes.pdf
+   .. figure:: ../output/bangkok_thailand_2018/pdf/plots/district_percent_bma_income_from_local_taxes.pdf
       :width: 100%
       :align: center
 

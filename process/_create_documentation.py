@@ -134,9 +134,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                             '       :width: 70%\r\n'
                             '       :align: center\r\n\r\n'
                            f'       {description}\r\n\r\n'
-                            ).format(description = f'{full_locale} study region',
-                                             ,
-                                     study_region = study_region)
+                            )
                 rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
             if ds.iloc[0].purpose=='population':
                 # add description for further usage by indicators
@@ -293,7 +291,7 @@ def make_locale_documentation(study_region):
             "make clean" 
             "  && make html"
            f"  && cp -rT _build/html {output_dir}/docs"
-            "  && make latexpdf"
+            '  && make latexpdf LATEXMKOPTS "-silent -xelatex"'
            f"  && cp _build/latex/{project_pdf_in}.pdf '{output_dir}/{project_pdf_out}.pdf'"
             )
     sp.call(make, cwd ='../docs', shell=True)  
@@ -314,7 +312,6 @@ About
 .. toctree::
 
     about
-    outputs
 """
     else:
         front_matter = '   '
