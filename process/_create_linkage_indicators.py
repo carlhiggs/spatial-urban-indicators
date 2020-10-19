@@ -281,8 +281,6 @@ def main():
                            a.{area},
                            {data_fields}
                            b.{data},
-                           AVG(ST_Y(ST_Transform(ST_Centroid(geom),4326))) y_centroid,
-                           AVG(ST_X(ST_Transform(ST_Centroid(geom),4326))) x_centroid,
                            ST_Transform(a.geom, 4326) AS geom 
                     FROM {area} a
                     LEFT JOIN {data} b 
