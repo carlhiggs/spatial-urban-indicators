@@ -62,7 +62,7 @@ RUN apt-get update                                                              
     conda update --strict-channel-priority --yes -n base conda                                   && \
     conda install --strict-channel-priority --update-all --force-reinstall --yes                    \ 
         osmnx python-igraph psycopg2 geoalchemy2 rasterio folium sphinx xlrd selenium seaborn       \
-        contextily rasterstats pandana  pyproj psutil geckdriver                                 && \
+        contextily rasterstats pandana  pyproj psutil geckodriver                                 && \
     conda clean --yes --all                                                                      && \
     conda info --all                                                                             && \
     conda list                                                                                   && \
