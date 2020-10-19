@@ -110,7 +110,7 @@ def main():
                     # set pop_vector to match crs of input raster
                     # the above works as tested (raster is epsg 4326)
                     # in theory, works if epsg is otherwise detectable in rasterio
-                    clipping_boundary.to_crs({'init':full_raster.crs['init']},inplace=True)
+                    clipping_boundary.to_crs(full_raster.crs['init'],inplace=True)
                     coords = [json.loads(clipping_boundary.to_json())['features'][0]['geometry']]
                     out_img, out_transform = mask(full_raster, coords, crop=True)
                     out_meta = full_raster.meta.copy()
@@ -148,7 +148,7 @@ def main():
                 analysis_area.to_sql(map_name_suffix, engine, if_exists='replace', index=True)
                 print(f'\t- postgresql::{db}/{map_name_suffix}')
                 analysis_area.to_sql(map_name_suffix, engine_sqlite, if_exists='replace',index=True)
-                print(f'\t- {path}/{study_region}.gpkg/{map_name_suffix}')
+                print(f'\t- {output_dir}/gpkg/{study_region}.gpkg/{map_name_suffix}')
         
         if 'skip_tables' not in sys.argv:
                 path = os.path.join(output_dir,'csv')
