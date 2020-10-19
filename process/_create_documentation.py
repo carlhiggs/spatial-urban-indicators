@@ -291,7 +291,7 @@ def make_locale_documentation(study_region):
             "make clean" 
             "  && make html"
            f"  && cp -rT _build/html {output_dir}/docs"
-            '  && make latexpdf LATEXMKOPTS "-silent -xelatex"'
+            '  && make latexpdf LATEXMKOPTS="-silent"'
            f"  && cp _build/latex/{project_pdf_in}.pdf '{output_dir}/{project_pdf_out}.pdf'"
             )
     sp.call(make, cwd ='../docs', shell=True)  
