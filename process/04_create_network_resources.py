@@ -110,7 +110,7 @@ def main():
             intersections = ox.consolidate_intersections(G_proj, tolerance=intersection_tolerance, rebuild_graph=False, dead_ends=False, reconnect_edges=False)
             intersections.crs = G_proj.graph['crs']
             intersections_latlon = intersections.to_crs(epsg=4326)
-            points = ', '.join(["(ST_GeometryFromText('{}',4326))".format(x.wkt) for x in intersections_latlon])
+            points = ', '.join(["(ST_GeometryFromText('{}',4326))".format(x.wkt) for x in intersections_latlon]) 
             sql = f'''
             DROP TABLE IF EXISTS {intersections_table};
             CREATE TABLE {intersections_table} (point_4326 geometry);

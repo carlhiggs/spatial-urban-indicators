@@ -91,8 +91,8 @@ Once downloaded, the contents of the zipped folder should be extracted and locat
 .. _Docker: https://www.docker.com/products/docker-desktop
 .. _PostgreSQL with PostGIS and PgRouting: https://hub.docker.com/r/cityseer/postgis/
 
-Additional tips
-~~~~~~~~~~~~~~~
+Additional notes
+~~~~~~~~~~~~~~~~
 
  - Try to allocate at least 8Gb (> 8000mb) memory in the advanced settings of Docker Desktop (more than 2Gb, the default, is required; 8Gb works)
 
