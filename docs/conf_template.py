@@ -1,12 +1,3 @@
-# Configuration file for the Sphinx documentation builder.
-# -- Project information -----------------------------------------------------
-
-project = 'Bangkok Liveability'
-copyright = '2020, C Higgs, A Alderton, K Nitvimol and H Badland'
-author = 'C Higgs, A Alderton, K Nitvimol and H Badland'
-
-# The full version, including alpha/beta/rc tags
-release = '1.2'
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,

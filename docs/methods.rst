@@ -100,7 +100,7 @@ Following calculation of indicators, which generates a set of outputs for the st
    
 There is an optional `technical\_documentation` parameter in the `Parameters` worksheet of the configuration file, which may be set to True or False to determine whether the Technical documentation section detailing software installation, running, and methods will be included, or not.
 
-Depending on the number of indicators processed, the compilation of the PDF report may a few minutes to complete.
+Depending on the number of indicators processed, the compilation of the PDF report may a few take minutes to complete.
 
 Spatial indictor framework outputs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
