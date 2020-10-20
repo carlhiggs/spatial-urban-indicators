@@ -38,14 +38,11 @@ def main():
     conn = psycopg2.connect(database=db, user=db_user, password=db_pwd, host=db_host,port=db_port)
     curs = conn.cursor()
     
-    engine = create_engine("postgresql://{user}:{pwd}@{host}/{db}".format(user = db_user,
-                                                                          pwd  = db_pwd,
-                                                                          host = db_host,
-                                                                          db   = db)) 
+    engine = create_engine(f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}") 
     
     # Copy clean intersections to postgis
     print("Prepare and copy clean intersections to postgis... ")
-    curs.execute('''SELECT 1 WHERE to_regclass('public.{}') IS NOT NULL AND to_regclass('public.edges') IS NOT NULL AND to_regclass('public.nodes') IS NOT NULL;'''.format(intersections_table))
+    curs.execute(f'''SELECT 1 WHERE to_regclass('public.{intersections_table}') IS NOT NULL AND to_regclass('public.edges') IS NOT NULL AND to_regclass('public.nodes') IS NOT NULL;''')
     res = curs.fetchone()
     if res is None:
         print("Get networks and save as graphs.")
@@ -67,41 +64,23 @@ def main():
                 may also exist.  These could be problematic if sample points are 
                 snapped to erroneous, mal-connected segments.  Check results.).
             ''') 
-        if os.path.isfile(os.path.join(locale_dir,
-              '{studyregion}_pedestrian_{osm_prefix}.graphml'.format(studyregion = buffered_study_region,
-                                                                    osm_prefix = osm_prefix))):
-          print('Pedestrian road network for {} has already been processed; loading this up.'.format(buffered_study_region))
-          W = ox.load_graphml('{studyregion}_pedestrian_{osm_prefix}.graphml'.format(studyregion = buffered_study_region,
-                                                                                     osm_prefix = osm_prefix),
-                              folder = locale_dir)
+        if os.path.isfile(f'{locale_dir}/{buffered_study_region}_pedestrian_{osm_prefix}.graphml'):
+          print(f'Pedestrian road network for {buffered_study_region} has already been processed; loading this up.')
+          W = ox.load_graphml(f'{locale_dir}/{buffered_study_region}_pedestrian_{osm_prefix}.graphml')
         else:
           subtime = datetime.now()
           # # load buffered study region in EPSG4326 from postgis
-          sql = '''SELECT geom_4326 AS geom FROM {}'''.format(buffered_study_region)
+          sql = f'''SELECT geom_4326 AS geom FROM {buffered_study_region}'''
           polygon =  gpd.GeoDataFrame.from_postgis(sql, engine, geom_col='geom' )['geom'][0]
           print('Creating and saving all roads network... '),
           W = ox.graph_from_polygon(polygon,  network_type= 'all', retain_all = retain_all)
-          ox.save_graphml(W, 
-             filename='{studyregion}_all_{osm_prefix}.graphml'.format(studyregion = buffered_study_region,
-                                                                                    osm_prefix = osm_prefix), 
-             folder=locale_dir, 
-             gephi=False)
-          ox.save_graph_shapefile(W, 
-             filename='{studyregion}_all_{osm_prefix}'.format(studyregion = buffered_study_region,
-                                                                               osm_prefix = osm_prefix),
-             folder = locale_dir)
+          ox.save_graphml(W, filepath=f'{locale_dir}/{buffered_study_region}_all_{osm_prefix}.graphml',gephi=False)
+          ox.save_graph_shapefile(W, filepath=f'{locale_dir}/{buffered_study_region}_all_{osm_prefix}')
           print('Done.')
           print('Creating and saving pedestrian roads network... '),
-          W = ox.graph_from_polygon(polygon,  custom_filter= pedestrian, retain_all = retain_all)
-          ox.save_graphml(W, 
-                         filename='{studyregion}_pedestrian_{osm_prefix}.graphml'.format(studyregion = buffered_study_region,
-                                                                                         osm_prefix = osm_prefix), 
-              folder=locale_dir, 
-              gephi=False)
-          ox.save_graph_shapefile(W, 
-              filename = '{studyregion}_pedestrian_{osm_prefix}'.format(studyregion = buffered_study_region,
-                                                            osm_prefix = osm_prefix),
-              folder = locale_dir)
+          W = ox.graph_from_polygon(polygon,  custom_filter= pedestrian, retain_all = retain_all,network_type='walk')
+          ox.save_graphml(W,filepath=f'{locale_dir}/{buffered_study_region}_pedestrian_{osm_prefix}.graphml',gephi=False)
+          ox.save_graph_shapefile(W, filepath=f'{locale_dir}/{buffered_study_region}_pedestrian_{osm_prefix}')
           print('Done.')  
           
         print("Copy the network edges and nodes from shapefiles to Postgis..."),
@@ -111,20 +90,11 @@ def main():
             for feature in ['edges','nodes']:
                 command = (
                         ' ogr2ogr -overwrite -progress -f "PostgreSQL" ' 
-                        ' PG:"host={host} port={port} dbname={db}'
-                        ' user={user} password={pwd}" '
-                        ' {dir}/{studyregion}_pedestrian_{osm_prefix}/{feature}/{feature}.shp '
-                        ' -t_srs EPSG:{srid} '
-                        ' -lco geometry_name="geom"'.format(host = db_host,
-                                                            port=db_port,
-                                                            db = db,
-                                                            user = db_user,
-                                                            pwd = db_pwd,
-                                                            dir = locale_dir,
-                                                            srid = srid,
-                                                            studyregion = buffered_study_region,
-                                                            osm_prefix = osm_prefix,
-                                                            feature = feature) 
+                       f' PG:"host={db_host} port={db_port} dbname={db}'
+                       f' user={db_user} password={db_pwd}" '
+                       f' {locale_dir}/{buffered_study_region}_pedestrian_{osm_prefix}/{feature}.shp '
+                       f' -t_srs EPSG:{srid} '
+                        ' -lco geometry_name="geom"'
                         )
                 print(command)
                 sp.call(command, shell=True)
@@ -132,32 +102,33 @@ def main():
         else:
             print("  - It appears that pedestrian network edges and nodes have already been exported to Postgis.")  
         
-        # Copy clean intersections to postgis
-        print("Prepare and copy clean intersections to postgis... ")
-        curs.execute('''SELECT 1 WHERE to_regclass('public.{}') IS NOT NULL;'''.format(intersections_table))
-        res = curs.fetchone()
-        if res is None:
+        if not engine.has_table(intersections_table): 
+            ## Copy clean intersections to postgis
+            print("\nPrepare and copy clean intersections to postgis... ")
             # Clean intersections
             G_proj = ox.project_graph(W)
-            intersections = ox.clean_intersections(G_proj, tolerance=intersection_tolerance, dead_ends=False)
-            intersections.crs = G_proj.graph['crs']
-            intersections_latlon = intersections.to_crs(epsg=4326)
-            sql = '''
-            DROP TABLE IF EXISTS {table};
-            CREATE TABLE {table} (point_4326 geometry);
-            INSERT INTO {table} (point_4326) VALUES {points};
-            ALTER TABLE {table} ADD COLUMN geom geometry;
-            UPDATE {table} SET geom = ST_Transform(point_4326,{srid});
-            ALTER TABLE {table} DROP COLUMN point_4326;
-            '''.format(table = intersections_table,
-                    points = ', '.join(["(ST_GeometryFromText('{}',4326))".format(x.wkt) for x in intersections_latlon]),
-                    srid = srid)  
+            intersections = ox.consolidate_intersections(G_proj, tolerance=intersection_tolerance, rebuild_graph=False, dead_ends=False, reconnect_edges=False)
+            if rebuild:
+                points = ', '.join(["(ST_GeomFromText('POINT({} {})', 4326))".format(intersections.nodes[k]['lon'],intersections.nodes[k]['lat']) for k in intersections.nodes.keys() if 'lon' in intersections.nodes[k].keys()])
+            else:
+                intersections.crs = G_proj.graph['crs']
+                intersections_latlon = intersections.to_crs(epsg=4326)
+                points = ', '.join(["(ST_GeometryFromText('{}',4326))".format(x.wkt) for x in intersections_latlon])
+            
+            sql = f'''
+            DROP TABLE IF EXISTS {intersections_table};
+            CREATE TABLE {intersections_table} (point_4326 geometry);
+            INSERT INTO {intersections_table} (point_4326) VALUES {points};
+            ALTER TABLE {intersections_table} ADD COLUMN geom geometry;
+            UPDATE {intersections_table} SET geom = ST_Transform(point_4326,{srid});
+            ALTER TABLE {intersections_table} DROP COLUMN point_4326;
+            '''
             engine.execute(sql)      
             print("  - Done.")
         else:
             print("  - It appears that clean intersection data has already been prepared and imported for this region.")
     else:
-        print("  - It appears that pedestrian network and clean intersections have already been exported to Postgis.") 
+        print("\nIt appears that edges, nodes and clean intersection data have already been prepared and imported for this region.")
 
     curs.execute('''SELECT 1 WHERE to_regclass('public.edges_target_idx') IS NOT NULL;''')
     res = curs.fetchone()

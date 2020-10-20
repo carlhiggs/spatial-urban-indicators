@@ -14,6 +14,7 @@ Authors:
 
 import subprocess as sp     # for executing external commands (e.g. pgsql2shp or ogr2ogr)
 import time
+import json
 import psycopg2
 from script_running_log import script_running_log
 
@@ -169,10 +170,10 @@ def main():
     f'''
     ALTER TABLE open_space ADD COLUMN linear_waterway boolean; 
     UPDATE open_space SET linear_waterway = TRUE
-     WHERE waterway IN ({linear_waterway}) 
-        OR "natural" IN ({linear_waterway}) 
-        OR landuse IN ({linear_waterway})
-        OR leisure IN ({linear_waterway}) ;
+     WHERE waterway IN ({linear_features}) 
+        OR "natural" IN ({linear_features}) 
+        OR landuse IN ({linear_features})
+        OR leisure IN ({linear_features}) ;
     ''',
     '''
     -- Create variable for AOS water geometry
