@@ -31,9 +31,7 @@ def graphml_to_pandana(graphml):
     print("Setting up network for analysis with NetworkX...")
     start_time = time.time()    
     import osmnx as ox
-    file = os.path.basename(graphml)
-    folder = os.path.dirname(graphml)
-    G = ox.load_graphml(file, folder)
+    G = ox.load_graphml(graphml)
     gdf_nodes = ox.graph_to_gdfs(G, nodes=True, edges=False)
     gdf_edges = ox.graph_to_gdfs(G, nodes=False, edges=True)
     # get network from Pandana
@@ -67,7 +65,6 @@ def main():
     print('Associate destinations with required variables for accessibility analyses...')
     df = df_datasets.query(f"purpose=='indicators' & type=='access' & region=='{full_locale}'").copy().sort_index()
     # define destination type and name
-    df['destination'] =  df.index
     df_accessibility = df[['destination','resolution']].drop_duplicates().copy()
     # evaluate main accessibility analysis completion:
     accessibility_evaluated = True
@@ -81,7 +78,7 @@ def main():
             accessibility_evaluated = False
             print("At least one destination has not been evaluated for accessibility.")
             print("Load network graph...")
-            graphml = os.path.join(locale_dir,f'{buffered_study_region}_pedestrian_{osm_prefix}.graphml')
+            graphml = f'{locale_dir}/{buffered_study_region}_pedestrian_{osm_prefix}.graphml'
             print("Setting up network for analysis...")
             network = graphml_to_pandana(graphml)
             break

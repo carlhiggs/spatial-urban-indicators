@@ -108,13 +108,9 @@ def main():
             # Clean intersections
             G_proj = ox.project_graph(W)
             intersections = ox.consolidate_intersections(G_proj, tolerance=intersection_tolerance, rebuild_graph=False, dead_ends=False, reconnect_edges=False)
-            if rebuild:
-                points = ', '.join(["(ST_GeomFromText('POINT({} {})', 4326))".format(intersections.nodes[k]['lon'],intersections.nodes[k]['lat']) for k in intersections.nodes.keys() if 'lon' in intersections.nodes[k].keys()])
-            else:
-                intersections.crs = G_proj.graph['crs']
-                intersections_latlon = intersections.to_crs(epsg=4326)
-                points = ', '.join(["(ST_GeometryFromText('{}',4326))".format(x.wkt) for x in intersections_latlon])
-            
+            intersections.crs = G_proj.graph['crs']
+            intersections_latlon = intersections.to_crs(epsg=4326)
+            points = ', '.join(["(ST_GeometryFromText('{}',4326))".format(x.wkt) for x in intersections_latlon])
             sql = f'''
             DROP TABLE IF EXISTS {intersections_table};
             CREATE TABLE {intersections_table} (point_4326 geometry);

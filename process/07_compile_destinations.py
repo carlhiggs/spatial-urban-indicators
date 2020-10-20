@@ -38,7 +38,7 @@ def main():
     # retrieve definitions for relevant OSM destinations
     df_osm = df_osm_dest.query("destination in ['{}']".format("','".join( df[df['osm']].name.values))).copy()
     df_osm['condition'] = df_osm['condition'].replace('NULL','OR')
-    df_osm_unique = df_osm[['destination','name','domain']].drop_duplicates(subset=['destination'])
+    df_osm_unique = df_osm[['destination','name']].drop_duplicates(subset=['destination'])
     # The destination schema is used for storing destination features in the study region
     schema = 'destinations'
     sql = f'''
@@ -62,7 +62,6 @@ def main():
       (
        destination varchar,
        name varchar,
-       domain varchar NOT NULL,
        count integer,
        data varchar,
        PRIMARY KEY (destination, name, data)
@@ -85,10 +84,9 @@ def main():
         engine.execute(sql)
         data = getattr(row,'data_file')
         name = getattr(row,'name')
-        domain = getattr(row,'data_name')
         osm = getattr(row,'osm')
         encoding = getattr(row,'data_encoding')
-        # print(f"{destination} {data} {name} {domain} {osm}")
+        # print(f"{destination} {data} {name} {osm}")
         if str(encoding) not in ['','nan']:
             encoding = f'--config SHAPE_ENCODING {encoding}'
         else:
@@ -128,10 +126,9 @@ def main():
             sql = f'''SELECT count(*) FROM {schema}.{name};'''
             count = engine.execute(sql).fetchone()[0]
             sql = f'''
-                INSERT INTO destination_catalog (destination,name,domain,count,data)
+                INSERT INTO destination_catalog (destination,name,count,data)
                 SELECT '{destination}',
                        '{name}',
-                       '{domain}',
                         {count},
                        '{data}'
                 ON CONFLICT (destination, name, data) DO NOTHING;
@@ -212,14 +209,13 @@ def main():
             sql = f'''SELECT count(*) FROM {schema}.{name};'''
             count = engine.execute(sql).fetchone()[0]
             sql = f'''
-                INSERT INTO destination_catalog (destination,name,domain,count,data)
+                INSERT INTO destination_catalog (destination,name,count,data)
                 SELECT '{destination}' AS destination,
                        '{name}'        AS name,
-                       '{domain}'      AS domain,
                         {count}        AS count,
                         data || $$:{dest_condition}$$ AS data
                 FROM {schema}.{name}
-                GROUP BY destination, name, data, domain
+                GROUP BY destination, name, data
                 ON CONFLICT (destination, name, data) DO NOTHING;
             '''
             engine.execute(sql)
