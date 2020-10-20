@@ -32,6 +32,8 @@ def graphml_to_pandana(graphml):
     start_time = time.time()    
     import osmnx as ox
     G = ox.load_graphml(graphml)
+    if G.is_directed():
+        G = G.to_undirected()
     gdf_nodes = ox.graph_to_gdfs(G, nodes=True, edges=False)
     gdf_edges = ox.graph_to_gdfs(G, nodes=False, edges=True)
     # get network from Pandana
@@ -144,11 +146,8 @@ def main():
                 non_main_layer_id = ''
             else:
                 non_main_layer_id = f'{area_id},'
-            if engine.has_table(f"{area}_access_{destination}_{distance}m",schema='ind_area'):
-                # example aggregation code - not yet finished
-                # need to split by area, and weight larger aggregations using pop
+            if not engine.has_table(f"{area}_access_{destination}_{distance}m",schema='ind_area'):
                 sql = f'''
-                       DROP TABLE IF EXISTS ind_area.{area}_access_{destination}_{distance}m;
                        CREATE TABLE ind_area.{area}_access_{destination}_{distance}m AS
                        SELECT {area_id},  
                               SUM(population) population, 

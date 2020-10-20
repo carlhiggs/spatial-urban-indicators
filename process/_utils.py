@@ -560,7 +560,7 @@ def generate_map(engine,df_row,out_path='.',data_fields='',prefix='',suffix='',m
         measure=map_field
     source = df_row.provider
     year_published = df_row.year_published
-    aggregation - df_row.aggregation
+    aggregation = df_row.aggregation
     aggregation_text = get_aggregation_text(aggregation)
     attribution = f'{map_attribution} | {area_attribution} | data: {source} ({year_published})'
     potential_column_width = len(f'{map_field}_{aggregation}')
