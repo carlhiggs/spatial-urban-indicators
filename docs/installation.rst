@@ -79,9 +79,9 @@ If you close the terminal window in which the the spatial analysis processing co
 Data requirements
 ~~~~~~~~~~~~~~~~~
 
-`The collated input data <https://cloudstor.aarnet.edu.au/plus/s/gMMftKTJahNMX2Q>`_ used to create the baseline suite of Bangkok liveability indicators has been uploaded to a private CloudStor data repository for the moment.  This contains international and Thai sourced data, including data provided directly by the Bangkok Metropolitan Administration.
+`The collated input data <https://cloudstor.aarnet.edu.au/plus/s/gMMftKTJahNMX2Q/download>`_ used to create the baseline suite of Bangkok liveability indicators has been uploaded to a private CloudStor data repository for the moment.  This contains international and Thai sourced data, including data provided directly by the Bangkok Metropolitan Administration.
 
-At the time of writing, the data may be accessed from the provided link using the access word: BangkokLiveability@2020
+At the time of writing, the data may be accessed from the provided link using the access word `BangkokLiveability@2020`
 
 Once downloaded, the contents of the zipped folder should be extracted and located within the projects 'data' directory.
 
@@ -90,3 +90,12 @@ Once downloaded, the contents of the zipped folder should be extracted and locat
 .. _Git: https://git-scm.com/
 .. _Docker: https://www.docker.com/products/docker-desktop
 .. _PostgreSQL with PostGIS and PgRouting: https://hub.docker.com/r/cityseer/postgis/
+
+Additional notes
+~~~~~~~~~~~~~~~~
+
+ - Try to allocate at least 8Gb (> 8000mb) memory in the advanced settings of Docker Desktop (more than 2Gb, the default, is required; 8Gb works)
+
+ - If you find the database has stopped (a warning will be raised when running the scripts that the database doesn't exist), try "docker start pg_spatial" to re-start it if you re-run 'initialise_database.bat', this will mean you will have to re-run code to re-create and re-build the database --- so that is probably something you only want to do at project commencement
+
+ - Occasionally you might find that the Docker Desktop application doesn't run successfully the first time you launch it; if so, try restarting the application, and it will likely resolve the issue.

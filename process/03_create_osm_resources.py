@@ -88,7 +88,7 @@ def main():
         sp.call(command, shell=True)                           
         print("Done.")
         
-        required_fields_list = df_osm["required_tags"].dropna().tolist()
+        required_fields_list = df_os.loc['os_required'].criteria.split(',')
         
         for shape in ['line','point','polygon','roads']:
             # Define tags for which presence of values is suggestive of some kind of open space 

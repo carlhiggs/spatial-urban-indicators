@@ -31,9 +31,9 @@ def graphml_to_pandana(graphml):
     print("Setting up network for analysis with NetworkX...")
     start_time = time.time()    
     import osmnx as ox
-    file = os.path.basename(graphml)
-    folder = os.path.dirname(graphml)
-    G = ox.load_graphml(file, folder)
+    G = ox.load_graphml(graphml)
+    if G.is_directed():
+        G = G.to_undirected()
     gdf_nodes = ox.graph_to_gdfs(G, nodes=True, edges=False)
     gdf_edges = ox.graph_to_gdfs(G, nodes=False, edges=True)
     # get network from Pandana
@@ -67,7 +67,6 @@ def main():
     print('Associate destinations with required variables for accessibility analyses...')
     df = df_datasets.query(f"purpose=='indicators' & type=='access' & region=='{full_locale}'").copy().sort_index()
     # define destination type and name
-    df['destination'] =  df.index
     df_accessibility = df[['destination','resolution']].drop_duplicates().copy()
     # evaluate main accessibility analysis completion:
     accessibility_evaluated = True
@@ -81,7 +80,7 @@ def main():
             accessibility_evaluated = False
             print("At least one destination has not been evaluated for accessibility.")
             print("Load network graph...")
-            graphml = os.path.join(locale_dir,f'{buffered_study_region}_pedestrian_{osm_prefix}.graphml')
+            graphml = f'{locale_dir}/{buffered_study_region}_pedestrian_{osm_prefix}.graphml'
             print("Setting up network for analysis...")
             network = graphml_to_pandana(graphml)
             break
@@ -147,11 +146,8 @@ def main():
                 non_main_layer_id = ''
             else:
                 non_main_layer_id = f'{area_id},'
-            if engine.has_table(f"{area}_access_{destination}_{distance}m",schema='ind_area'):
-                # example aggregation code - not yet finished
-                # need to split by area, and weight larger aggregations using pop
+            if not engine.has_table(f"{area}_access_{destination}_{distance}m",schema='ind_area'):
                 sql = f'''
-                       DROP TABLE IF EXISTS ind_area.{area}_access_{destination}_{distance}m;
                        CREATE TABLE ind_area.{area}_access_{destination}_{distance}m AS
                        SELECT {area_id},  
                               SUM(population) population, 

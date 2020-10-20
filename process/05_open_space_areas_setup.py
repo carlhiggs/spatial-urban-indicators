@@ -14,12 +14,12 @@ Authors:
 
 import subprocess as sp     # for executing external commands (e.g. pgsql2shp or ogr2ogr)
 import time
+import json
 import psycopg2
 from script_running_log import script_running_log
 
 # Import custom variables for liveability indicator process
 from _project_setup import *
-
 
 def main():
     # simple timer for log file
@@ -30,8 +30,6 @@ def main():
     # connect to the PostgreSQL server and ensure privileges are granted for all public tables
     conn = psycopg2.connect(dbname=db, user=db_user, password=db_pwd)
     curs = conn.cursor()  
-
-    connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
     
     # consolidate areas of open space criteria (defined in configuration file)
     for v in df_os.index:
@@ -169,10 +167,10 @@ def main():
     f'''
     ALTER TABLE open_space ADD COLUMN linear_waterway boolean; 
     UPDATE open_space SET linear_waterway = TRUE
-     WHERE waterway IN ({linear_waterway}) 
-        OR "natural" IN ({linear_waterway}) 
-        OR landuse IN ({linear_waterway})
-        OR leisure IN ({linear_waterway}) ;
+     WHERE waterway IN ({linear_features}) 
+        OR "natural" IN ({linear_features}) 
+        OR landuse IN ({linear_features})
+        OR leisure IN ({linear_features}) ;
     ''',
     '''
     -- Create variable for AOS water geometry
@@ -428,7 +426,7 @@ def main():
          edges l
     WHERE a.aos_id IS NOT NULL
       AND ST_DWithin(n.geom ,l.geom,30);
-    CREATE INDEX aos_public_any_nodes_30m_line_gix ON aos_public_any_nodes_30m_line USING GIST (geom);
+    CREATE INDEX aos_nodes_30m_line_gix ON aos_nodes_30m_line USING GIST (geom);
     '''
     ]
 
