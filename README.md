@@ -10,7 +10,8 @@ Please see the seperately available technical documentation pdf and webinar for 
 
 * git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git
 
-* setup and run postgis database server container (at project commencement; else run 'docker start pg_spatial' if container has stopped)
+
+#### setup and run postgis database server container (at project commencement; else run 'docker start pg_spatial' if container has stopped) ####
 
 The user can either run the `initialise_database` batch script from the project directory, or,
 
@@ -19,7 +20,7 @@ docker pull cityseer/postgis
 docker run --name=pg_spatial -d -e PG_USER=hlc -e PG_PASSWORD=password -e DB_NAME=ind_bangkok -p 127.0.0.1:5433:5432 --restart=unless-stopped --volume=/var/lib/pg_spatial:/postgresql/11/main cityseer/postgis:latest
 ```
 
-* setup and run analysis environment
+#### setup and run analysis environment ####
 
 The user can either run the `ind_bangkok` batch script from the project directory, or,
 
