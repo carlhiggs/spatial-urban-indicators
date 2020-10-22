@@ -31,7 +31,7 @@ docker run --rm -it -u jovyan --name ind_bangkok --shm-size 2g --net=host -v %cd
 
 ### To process ###
 
-The initial set up scripts are run sequentially, after collating project data resources and defining these as well as study region and project parameters in the project set up file  _project_configuration.xlsx.  
+The initial set up scripts in the `process` folder are run sequentially, after collating project data resources and defining these as well as study region and project parameters in the project set up file  _project_configuration.xlsx.  
 
 Subsequently, scripts to create indicators,plots or documentation may be run as required.
 
