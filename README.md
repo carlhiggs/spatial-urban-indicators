@@ -4,12 +4,11 @@ This repository contains the processes used to create preliminary dataset resour
 
 ### How do I get set up? ###
 
-Please see the seperately available technical documentation pdf and webinar for full directions.
+Please see the seperately available technical documentation pdf and webinar for full directions, available on [CloudStor](https://cloudstor.aarnet.edu.au/plus/s/6Gvt3hS0Cj831A7).  The provided link is accessible using `BangkokLiveability@2020`.
 
-* install [Git](https://git-scm.com/downloads), [Docker](https://www.docker.com/products/docker-desktop) , and if required Windows Sub-system for Linux and Ubuntu
+* install [Git](https://git-scm.com/downloads), [Windows Sub-system for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and [Ubuntu](https://ubuntu.com/tutorials/ubuntu-on-windows#1-overview) (if required), and [Docker](https://www.docker.com/products/docker-desktop).
 
-* git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git
-
+* run `git clone https://carlhiggs@bitbucket.org/carlhiggs/ind_bangkok.git` to retrieve this repository, including project directory folder structure and code.
 
 #### setup and run postgis database server container (at project commencement; else run 'docker start pg_spatial' if container has stopped) ####
 
