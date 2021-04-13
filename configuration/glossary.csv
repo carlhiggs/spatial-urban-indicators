@@ -1,0 +1,28 @@
+﻿Term,Type,Description,URL
+BMA,acronym,Bangkok Municipal Administration,http://bangkok.go.th/
+CAMS,acronym ,Copernicus Atmosphere Monitoring Service,https://atmosphere.copernicus.eu/
+CGLS,acronym,Copernicus Global Land Service,https://land.copernicus.eu/global/index.html
+CO,abbreviation,Carbon monoxide,https://www.who.int/airpollution/ambient/pollutants/en/#page61
+DLT,acronym,"Department of Land and Transport, Thailand",https://www.dlt.go.th/en/
+EROS,acronym,USGS Earth Resources Observation and Science (EROS),https://www.usgs.gov/centers/eros
+GISTDA,acronym,Geo-Informatics and Space Technology Development Agency,https://www.gistda.or.th/main/en
+HDR,acronym,Human Development Reports (UNDP),http://www.hdr.undp.org/
+HDX,acronym,Humanitarian Data Exchange (UN OCHA),https://data.humdata.org/
+NASA,acronym,National Aeronautics and Space Administration (US space agency),https://www.nasa.gov/
+NO²,abbreviation,Nitrogen dioxide,https://www.who.int/airpollution/ambient/pollutants/en/#page41
+NSO,acronym,"National Statistical Office (Ministry of Information and Communication Technology), Thailand",http://web.nso.go.th/
+O³,abbreviation,Ozone,
+OBEC,acronym,"Office of the Basic Education Commission, Thailand",
+OCHA,acronym,Office for the Coordination of Humanitarian Affairs (UN),https://www.unocha.org/
+OSM,acronym,OpenStreetMap (open-licenced user-contributed map of the world),https://www.openstreetmap.org/
+OSMnx,acronym,Python library for analysis of OSM road network data using the NetworkX package,https://osmnx.readthedocs.io/en/stable/
+PCD ,acronym,"Pollution Control Department, Thailand",http://www.pcd.go.th/indexEng.cfm
+PM10,abbreviation,Fine particulate matter of 10 microns or less in width,https://www.who.int/airpollution/ambient/pollutants/en/#page61
+PM2.5,abbreviation,Fine particulate matter of 2.5 microns or less in width,https://www.who.int/airpollution/ambient/pollutants/en/#page61
+UN,acronym,United Nations,https://www.un.org/en/
+UNDP,acronym,UN Development Programme,https://www.undp.org/content/undp/en/home.html
+USGS,acronym,United States Geological Survey,https://www.usgs.gov/
+ESA,acronym,European Space Agency,https://www.esa.int/
+SNAP,software,The ESA Sentinel Application Platform software package; a tool for processing satellite data,https://step.esa.int/main/toolboxes/snap/
+SEDAC,acronym,Socio-Economic Data and Applications Centre (NASA),https://sedac.ciesin.columbia.edu/data/sets/browse
+DOPA,acronym,"Department of Provincial Administration, Thailand",

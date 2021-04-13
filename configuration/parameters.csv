@@ -1,0 +1,78 @@
+﻿parameter,group,description,bangkok,bang_phlat
+folderPath,project settings,The folder where data resources for the project are located,/home/jovyan/work/data,/home/jovyan/work/data
+full_locale,study_region,Full study region name,Bangkok,Bang Phlat
+suffix,study_region,Option suffix; useful if multiple regions were to be processed,,
+responsible,study_region,Person doing the analysis,carl.higgs@rmit.edu.au,carl.higgs@rmit.edu.au
+region,study_region,Broader region where study region is located,Thailand,Thailand
+region_shape,study_region,Administrative region short name used to define study region,changwat,district
+region_where_clause_id,study_region,id to match to identify region,changwat_en,district_en
+region_where_clause_match,study_region,value of 'region_where_clause_id' to use to identify region,Bangkok,Bang Phlat
+regions_of_interest_scale,project settings,"Specific regions of interest to highlight, e.g. in plots",district,subdistrict
+regions_of_interest_variable,project settings,"Specific regions of interest to highlight, e.g. in plots",district_en,subdistrict_en
+regions_of_interest,project settings,"Specific regions of interest to highlight, e.g. in plots","Bang Phlat, Suan Luang, Nong Chok","Bang Phlat, Bang O, Bang Bamru, Bang Yi Khan"
+year,project settings,Year (or timepoint) that the current indicators are targetting; this is used to name output resources,2018,2018
+SpatialRef,project settings,Project spatial reference name,WGS_1984_UTM_Zone_47N,WGS_1984_UTM_Zone_47N
+srid,project settings,Project spatial reference EPSG code (for Postgis),32647,32647
+units,project settings,Units used by the coordinate reference system,m,m
+units_full,project settings,Full name for the units,metres,metres
+study_buffer,project settings,"Study region buffer, to account for edge effects",1000,1000
+buffered_study_region_name,project settings,Buffered study region's name for map display purposes,1km study region buffer,1km study region buffer
+hex_diag,project settings,"Hexagon diagonal length and buffer distance (metres); hexagon sides will be half the length of this value; hexagon area is 3/2 * sqrt(3) * (hex_diag/2)^2; so with diag of 3000 m, area is 5845671.476 sq.m.",3200,3200
+hex_buffer,project settings,"Hexagon buffer distance, to account for edge effects",3200,3200
+cpu_count,project settings,Number of processors to use in multiprocessing scripts,6,6
+no_forward_edge_issues,project settings,Used to flag and mitigate potential geometry discrepencies,0,0
+population_grid,population,population raster dataset,,
+population_target,population,target year for population data,,
+population_linkage,population,area linkage of population dataset,population:subdistrict,population:subdistrict
+population_map_fields,population,fields for mapping purposes,"population,households,communities,population in communities,population not in communities",
+admin_db,sql,SQL settings to connect to Postgresql+Postgis Docker container,postgres,postgres
+db_host,sql,as above,127.0.0.1,127.0.0.1
+db_port,sql,as above,5433,5433
+db_user,sql,as above,hlc,hlc
+db_pwd,sql,as above,huilhuil!42,huilhuil!42
+osm_data,osm,Downloaded OpenStreetMap (OSM) data,International/OSM/thailand-latest.20191007.osm.pbf,International/OSM/thailand-latest.20191007.osm.pbf
+osm_date,osm,Date at which OSM download was current,20191007,20191007
+osm_source,osm,URL from which data was downloaded,https://download.geofabrik.de/asia/thailand-latest.osm.pbf,https://download.geofabrik.de/asia/thailand-latest.osm.pbf
+osmnx_retain_all,osm,Only retain main connected network when retrieving OSM roads,False,False
+area_filter,geographic data,Filter all admin files using common field and value?,FALSE,FALSE
+area_filter_field,geographic data,field to filter on,,
+area_filter_value,geographic data,value of field to filter on,,
+areas_of_interest,geographic data,The regions for which indicators are to be summarised within the study region,"subdistrict, district, changwat","subdistrict,district"
+area_datasets,geographic data,"Smallest region, with linkage codes of larger aggregations","boundaries, boundaries, boundaries","boundaries,boundaries"
+area_ids,geographic data,Unique identifiers for features of regions,"subdistrict_id, district_id, changwat_id","subdistrict_id,district_id"
+area_id_types,geographic data,data type of ids (string or integer),"integer,integer,integer","integer,integer"
+area_names,geographic data,Names used to display for regions (safe for fields and maps),"Subdistrict, District, Changwat","Subdistrict, District"
+area_display_main,geographic data,name of area for display purposes e.g. Thai name for area,"subdistrict_th,district_th,changwat_th","subdistrict_th,district_th"
+area_display_bracket,geographic data,optional name to display in brackets e.g. English name for area,"subdistrict_en,district_en,changwat_en","subdistrict_en,district_en"
+analysis_scale,geographic data,The main scale used for area level analysis,subdistrict,subdistrict
+aggregate_from_smallest,geographic data,are area scales all to be aggregated from the smallest data scale?,TRUE,TRUE
+area_sqkm,geographic data,Field containing area in square kilometres in smallest scale boundary data,,
+urban_data,geographic data,Polygon file detailing urban regions,,
+urban_name,geographic data,"Proper name,abbreviation",,
+urban_id,geographic data,Unique identifier for these features,,
+rate_area,indicators,Variable name used for standardising area (e.g. area_sqkm),area_sqkm,area_sqkm
+rate_population,indicators,Variable name used for standardising population,population,population
+rate_household,indicators,Variable name used for standardising households,households,households
+points_id,sample points,sampling points unique id,location_id,location_id
+points,sample points,name of point data locations used for sampling,sampling_points,sampling_points
+point_sampling_interval,sample points,interval in metres along which network is to be sampled,30,30
+intersection_tolerance,roads,tolerance in metres for cleaning intersections,12,12
+network_edges,roads,as above,edges,edges
+network_junctions,roads,as above,nodes,nodes
+distance,network analysis,sausage buffer network size  -- in units specified above,1600,1600
+tolerance,network analysis,search tolderance (in units specified above; features outside tolerance not located when adding locations); may need to increase if no locations are found,500,500
+line_buffer,network analysis,buffer distance for network lines as sausage buffer ,50,50
+limit,network analysis,distance is a limit beyond which not to search for destinations,3200,3200
+island_exception,network analysis,"list of regions which are okay to have network islands, if required",,
+aos_threshold,network analysis,Distance within which all Areas of Open Space are sought,3200,3200
+soft_threshold_slope,thresholding,For scaling binary cutoffs using a smooth transition; this parameter adjusts slope k of the transition,5,5
+pos_vertices,pos,used to create series of hypothetical entry points around park,50,50
+dest_dir,destinations,Destinations data directory,destinations,destinations
+destination_id,destinations,unique id to be used for destinations (dest category and object id combination),dest_oid,dest_oid
+map_attribution,mapping,Text displayed in footer of map outputs,"Bangkok Metropolitan Administration (BMA) and Healthy Liveable Cities group, RMIT University  2019-20.  Grey indicates no data.","Bangkok Metropolitan Administration (BMA) and Healthy Liveable Cities group, RMIT University  2019-20.  Grey indicates no data."
+authors,documentation,Authors of project,"C Higgs, A Alderton, K Nitvimol and H Badland","K Nitvimol, C Higgs"
+version,documentation,Version of documentation,1.2,1
+default_interactive_map,documentation,The default first map shown in 'interactive maps' section,bangkok_02_population_subdistrict_population_per_sqkm,bangphlat_02_population_subdistrict_population_per_sqkm
+documentation_section_order,documentation,"The order of sections in the documentation, corresponding to dimensions in the Datasets tab","Study region boundaries,Population and communities,City problems impacting health and wellbeing,Health-promoting environments,Enhancing quality of life,Social development","Population and communities,City problems impacting health and wellbeing,Health-promoting environments,Enhancing quality of life"
+front_matter,documentation,Include 'About' section?,TRUE,FALSE
+technical_documentation,documentation,Include technical documentation section?,TRUE,FALSE
