@@ -119,7 +119,7 @@ def main():
         # get information about this measure
         sheet = df.loc[row,'excel_sheet']
         data_type = valid_type(df.loc[row,'data_type'])
-        description = df.loc[row,'indicator_measure']
+        description = df.loc[row,'resource']
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
         area_linkage_id = df.loc[row,'linkage_id']
@@ -202,7 +202,7 @@ def main():
                     mdf = mdf[[map_field]]
                 if rate != '':
                     if rate in ['area','population','household']:
-                        density_field = df.loc[row,'indicator_measure']
+                        density_field = df.loc[row,'resource']
                         rate_variable =  globals()['rate_{}'.format(rate)]
                         sql = f'''
                                 SELECT a.{area_linkage_id},

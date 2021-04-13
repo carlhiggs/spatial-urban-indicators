@@ -51,7 +51,7 @@ def main():
     for row in df.index:
         row_type = df.loc[row,'type']
         data_type = valid_type(df.loc[row,'data_type'])
-        description = df.loc[row,'indicator_measure']
+        description = df.loc[row,'resource']
         description = '\n'.join(wrap(description, 80))
         plot_data_y = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']

@@ -27,11 +27,11 @@ def get_ind_metadata():
     df = df_datasets.loc[df_datasets['method_description_ind'].fillna('')!='',].copy()
     df['map'] = df.loc[:,'table_out_name'].apply(lambda x: f'{locale}_ind_{x}')
     # df['description'] = df.apply(lambda x: '{}: {}'.format(x["map_heading"],x["map_field"]),axis=1)
-    df['description'] = df['indicator_measure']
+    df['description'] = df['resource']
     return df
     
 def create_html_select(ind_metadata):
-    map_descriptions = ind_metadata.loc[ind_metadata['purpose']=='indicators',['map','description']].copy()
+    map_descriptions = ind_metadata.loc[ind_metadata['role']=='indicators',['map','description']].copy()
     text = '\r\n'.join(map_descriptions.apply(lambda x: '        <option value="{}">{}</option>'.format(x[0],x[1]),axis=1).to_list())
     return(text)
 
@@ -115,7 +115,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                         rst = '{}\r\n**{}**: {}\r\n'.format(rst,i[1],int(ds.iloc[0][i[0]]))
                     else:
                         rst = '{}\r\n**{}**: ``{}``\r\n'.format(rst,i[1],str(ds.iloc[0][i[0]]).strip())
-            if ds.iloc[0].purpose=='boundaries':
+            if ds.iloc[0].role=='boundaries':
                 # add description for further usage by indicators
                 rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
                 map = '{}_01_study_region'.format(locale).lower()
@@ -136,7 +136,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                            f'       {description}\r\n\r\n'
                             )
                 rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
-            if ds.iloc[0].purpose=='population':
+            if ds.iloc[0].role=='population':
                 # add description for further usage by indicators
                 rst = '{}\r\n{}\r\n'.format(rst,ds.iloc[0].method_description_ind)
                 if population_map_fields not in ['','nan']:
@@ -168,11 +168,11 @@ def generate_metadata_rst(ind_metadata,df_context):
                                        f'       {description}\r\n\r\n'
                                         )
                             rst = '{}\r\n\r\n{}\r\n'.format(rst,map_code)
-            if ds.iloc[0].purpose=='indicators':
+            if ds.iloc[0].role=='indicators':
                 for ind in ds.method_description_ind.unique():
                     df_ind = ds.query(f'method_description_ind == "{ind}"').copy()
                     # create heading for specific indicator
-                    a = df_ind.iloc[0].indicator_measure
+                    a = df_ind.iloc[0].resource
                     a = a[:1].upper() + a[1:]
                     rst = '{}\r\n\r\n{}\r\n{}\r\n'.format(rst,a,'>'*len(a))
                     # add indicator method description
@@ -213,7 +213,7 @@ def generate_metadata_rst(ind_metadata,df_context):
                             for x in range(0,n_plots):
                                 y     =  plots['table_out_name'].values[x]
                                 ylab  =  plots['map_field'].values[x]
-                                title =  plots['indicator_measure'].values[x].title()
+                                title =  plots['resource'].values[x].title()
                                 x1   = 'population'     
                                 x2   = 'population per sqkm'
                                 plot1 = f'{y}_{x1}'.replace(' ','_')

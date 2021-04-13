@@ -1,20 +1,20 @@
 ########################################################################
-# Bangkok Liveability Dockerfile
-#  - Modified by Carl Higgs 20190405
+# Spatial Urban Indicators Dockerfile
+#  - Carl Higgs
 #  - Based on OSMNX Dockerfile, by Geoff Boeing
 #  - see original OSMnx licence
 #        - License: MIT, see full license in LICENSE.txt
 #        - Web: https://github.com/gboeing/osmnx
 #
 # Build an image from the dockerfile:
-# >>> docker build -t carlhiggs/ind_bangkok .
+# >>> docker build -t carlhiggs/sui .
 #
 # Run bash in this container and export final conda environment to a yml file:
-# >>> docker run --rm -it -u 0 --name ind_bangkok -v %cd%:/home/jovyan/work ind_bangkok /bin/bash
+# >>> docker run --rm -it -u 0 --name sui -v %cd%:/home/jovyan/work sui /bin/bash
 # >>> conda env export -n base > /home/jovyan/work/environment.yml
 #
 # Run jupyter lab in this container:
-# >>> docker run --rm -it --name ind_bangkok -p 8888:8888 -v %cd%:/home/jovyan/work ind_bangkok
+# >>> docker run --rm -it --name sui -p 8888:8888 -v %cd%:/home/jovyan/work sui
 #
 # Stop/delete all local docker containers/images:
 # >>> docker stop $(docker ps -aq)

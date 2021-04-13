@@ -69,7 +69,7 @@ def main():
         print(f'  - "{dataset}"')
         source_name = df.loc[row,'data_name']
         source = df.loc[row,'provider']
-        description = df.loc[row,'indicator_measure']
+        description = df.loc[row,'resource']
         map_field = df.loc[row,'map_field']
         map_name_suffix = df.loc[row,'table_out_name'].replace(' ','_',).replace('-','_')
         area_layer = df.loc[row,'linkage_layer']
@@ -274,28 +274,6 @@ def main():
                                            labels=True, 
                                            sticky=True
                                            ).add_to(layer.geojson)    
-            ## load up the clipped raster (assumed to be epsg4326)
-            #with rasterio.open(raster_clipped) as src:
-            #    boundary = src.bounds
-            #    nodata = raster_nodata
-            #    raster_layer = src.read(1)
-            #    # raster_layer = raster_layer.astype(float)
-            #    # raster_layer[raster_layer==raster_nodata] = np.nan
-            #    # TECHNICALLY INVALID WORKAROUND FOR DISPLAY PURPOSES ONLY
-            #    # ie. no data over water, display as though 'zero' so it does not show
-            #    raster_layer[raster_layer==raster_nodata] = 0
-            #    raster_layer = scale_factor*(raster_layer + raster_offset)
-            ## colormap=lambda x: (0, x, 0, x),#R,G,B,alpha,
-            #m.add_child(folium.raster_layers.ImageOverlay(raster_layer, 
-            #                    name=source_name,
-            #                    opacity=.7,
-            #                    bounds=[[boundary[1],boundary[0]], 
-            #                            [boundary[3], boundary[2]]],
-            #                    colormap=plt.get_cmap('YlGn'), 
-            #                    legend_name=source_name,
-            #                    overlay=True,
-            #                    show=False
-            #                    )) 
             # Add layer control
             folium.LayerControl(collapsed=False).add_to(m)
             m.fit_bounds(m.get_bounds())

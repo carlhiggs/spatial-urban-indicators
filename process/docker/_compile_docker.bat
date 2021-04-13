@@ -1,1 +1,1 @@
-docker build -t ind_bangkok .
+docker build -t sui .

@@ -65,7 +65,7 @@ def main():
     engine.execute(sql)
     # load 
     print('Associate destinations with required variables for accessibility analyses...')
-    df = df_datasets.query(f"purpose=='indicators' & type=='access' & region=='{full_locale}'").copy().sort_index()
+    df = df_datasets.query(f"role=='indicators' & type=='access' & region=='{full_locale}'").copy().sort_index()
     # define destination type and name
     df_accessibility = df[['destination','resolution']].drop_duplicates().copy()
     # evaluate main accessibility analysis completion:

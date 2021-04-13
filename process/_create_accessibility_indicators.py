@@ -33,7 +33,7 @@ def main():
     engine_sqlite = create_engine(f'sqlite:///{gpkg_path}/{study_region}.gpkg',module = sqlite3)
                       
     # retrieve subset of datasets which are files to be joined based on accessibility analyses (previously run)
-    df = df_datasets.query("purpose=='indicators' & type=='access'").copy().sort_index()
+    df = df_datasets.query("role=='indicators' & type=='access'").copy().sort_index()
     
     # retrieve list of additional covariate names from population data set
     population = pandas.read_csv(population_linkage[analysis_scale]['data'],

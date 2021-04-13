@@ -27,7 +27,7 @@ def main():
     connection = f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}"
     engine = create_engine(connection)
     # get list of datasets used for access analysis
-    df = df_datasets.query(f"purpose=='destinations'").copy().sort_index()
+    df = df_datasets.query(f"role=='destinations'").copy().sort_index()
     # define destination type and name from dataset index
     df.drop('destination',axis=1,inplace=True)
     df.rename(columns={"type": "destination"},inplace=True)

@@ -10,9 +10,6 @@ Process PCD Air4Thai monitoring station data
     Authors: Carl Higgs
     Context: Format spatial locations of monitoring stations and their associated 
              measurements for use in liveability indicators
-
-Todo:
-    * further refactor and abstract code as functions for autodoc purposes
     
 """
 
